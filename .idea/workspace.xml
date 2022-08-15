@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e2f309c-779e-46e4-9a2d-90f8e6016324" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/qscbm/DodoOpenJava/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/qscbm/DodoOpenJava/Utils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/qscbm/DodoOpenJava/api/BotApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/qscbm/DodoOpenJava/api/ChannelApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/qscbm/DodoOpenJava/api/ChannelTextApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/qscbm/DodoOpenJava/api/IslandApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/qscbm/DodoOpenJava/api/MemberApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/qscbm/DodoOpenJava/api/NTFApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/qscbm/DodoOpenJava/api/PersonalApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/qscbm/DodoOpenJava/api/ResourceApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/qscbm/DodoOpenJava/api/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +15,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -49,9 +42,15 @@
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
   }
 }]]></component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn install" />
+    </option>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
@@ -60,7 +59,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1660543902162</updated>
-      <workItem from="1660543904582" duration="626000" />
+      <workItem from="1660543904582" duration="1141000" />
+      <workItem from="1660546854090" duration="1954000" />
+      <workItem from="1660549044493" duration="2648000" />
     </task>
     <servers />
   </component>
