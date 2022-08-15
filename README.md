@@ -24,3 +24,15 @@ Dodo开放平台：https://open.imdodo.com/
   </dependency>
 ```
 #### Gradle
+```xml
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+
+	dependencies {
+	        implementation 'com.github.mcchampions:DodoOpenJava:v1.0'
+	}
+```
