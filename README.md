@@ -10,17 +10,17 @@ Dodo开放平台：https://open.imdodo.com/
 ### 添加依赖
 ### Maven：
 ```xml
-  <repositories>
-		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
-		</repository>
-	</repositories>
+<repositories>
+  <repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+  </repository>
+</repositories>
 
   <dependency>
-	    <groupId>com.github.mcchampions</groupId>
-	    <artifactId>DodoOpenJava</artifactId>
-	    <version>v1.0</version>
-	</dependency>
+    <groupId>com.github.mcchampions</groupId>
+    <artifactId>DodoOpenJava</artifactId>
+    <version>v1.0</version>
+  </dependency>
 ```
 #### Gradle
