@@ -1,8 +1,9 @@
-package me.qscbm.DodoOpenJava;
+package io.github.mcchampions.DodoOpenJava;
 
 import okhttp3.*;
 
 import java.io.*;
+
 
 public class Utils {
     static OkHttpClient client = new OkHttpClient();

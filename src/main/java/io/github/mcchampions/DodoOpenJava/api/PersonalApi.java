@@ -1,10 +1,13 @@
-package me.qscbm.DodoOpenJava.api;
+package io.github.mcchampions.DodoOpenJava.api;
 
 import com.alibaba.fastjson.JSONObject;
-import me.qscbm.DodoOpenJava.Utils;
+import io.github.mcchampions.DodoOpenJava.Utils;
 
 import java.io.IOException;
 
+/**
+ * 私信API
+ */
 public class PersonalApi {
     public static String url,parm;
 

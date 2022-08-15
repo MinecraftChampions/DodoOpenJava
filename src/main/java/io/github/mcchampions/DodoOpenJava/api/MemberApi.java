@@ -1,12 +1,15 @@
-package me.qscbm.DodoOpenJava.api;
+package io.github.mcchampions.DodoOpenJava.api;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import me.qscbm.DodoOpenJava.Utils;
+import io.github.mcchampions.DodoOpenJava.Utils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 
+/**
+ * 成员API
+ */
 public class MemberApi {
     public static String url,parm;
 

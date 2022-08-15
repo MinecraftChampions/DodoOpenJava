@@ -1,10 +1,13 @@
-package me.qscbm.DodoOpenJava.api;
+package io.github.mcchampions.DodoOpenJava.api;
 
 import com.alibaba.fastjson.JSONObject;
-import me.qscbm.DodoOpenJava.Utils;
+import io.github.mcchampions.DodoOpenJava.Utils;
 
 import java.io.IOException;
 
+/**
+ * 资源API
+ */
 public class ResourceApi {
     public static String url;
 
