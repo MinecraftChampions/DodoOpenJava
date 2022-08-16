@@ -66,4 +66,25 @@ public class Utils {
     public static String Authorization(String clientId, String token) {
         return "Bot " + clientId + "." + token;
     }
+    
+    /**
+     * 模拟浏览器发送请求
+     *
+     * @param parm 发送附带参数
+     * @param url 链接地址
+     * @param Authorization Authorization
+     * @return 返回JSON文本
+     */
+     public static String sendRequest(String url) throws IOException {
+        Request request = new Request.Builder()
+                            .url(url)
+                            .addHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36")
+                            .get()
+                            .build();
+         Response response = client.newCall(request).execute();
+
+         String a = response.body().string();
+         response.close();
+         return  a;
+     }
 }
