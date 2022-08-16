@@ -11,7 +11,7 @@ import java.io.IOException;
 public class ResourceApi {
     public static String url;
 
-    public static String setChannelVideoMessageSend(String clientId, String token, String path, Boolean returnJSONText) throws IOException {
+    public static String uploadResource(String clientId, String token, String path, Boolean returnJSONText) throws IOException {
         return uploadResource(Utils.Authorization(clientId,token), path, returnJSONText);
     }
 
