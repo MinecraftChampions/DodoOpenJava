@@ -14,7 +14,6 @@ public class Utils {
      * @param parm 发送附带参数
      * @param url 链接地址
      * @param Authorization Authorization
-     * @return 返回JSON文本
      */
      public static String sendRequest(String url, String parm,String Authorization) throws IOException {
         Request request = new Request.Builder().url(url).addHeader("Content-Type", "application/json").addHeader("Authorization", Authorization)
@@ -69,11 +68,7 @@ public class Utils {
     
     /**
      * 模拟浏览器发送请求
-     *
-     * @param parm 发送附带参数
      * @param url 链接地址
-     * @param Authorization Authorization
-     * @return 返回JSON文本
      */
      public static String sendRequest(String url) throws IOException {
         Request request = new Request.Builder()
