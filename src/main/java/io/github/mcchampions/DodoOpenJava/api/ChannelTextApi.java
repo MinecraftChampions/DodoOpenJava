@@ -392,7 +392,7 @@ public class ChannelTextApi {
     }
 
     /**
-     * 编辑消息
+     * 撤回消息
      *
      * @param clientId 机器人唯一标识
      * @param token 机器人鉴权Token
@@ -404,7 +404,7 @@ public class ChannelTextApi {
     }
 
     /**
-     * 编辑消息
+     * 撤回消息
      *
      * @param Authorization Authorization
      * @param messageId 消息ID
@@ -423,7 +423,7 @@ public class ChannelTextApi {
     }
 
     /**
-     * 编辑消息
+     * 撤回消息
      *
      * @param clientId 机器人唯一标识
      * @param token 机器人鉴权Token
@@ -436,7 +436,7 @@ public class ChannelTextApi {
     }
 
     /**
-     * 编辑消息
+     * 撤回消息
      *
      * @param Authorization Authorization
      * @param messageId 消息ID

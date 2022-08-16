@@ -4,7 +4,9 @@ import okhttp3.*;
 
 import java.io.*;
 
-
+/**
+ * 一些相关的方法
+ */
 public class Utils {
     static OkHttpClient client = new OkHttpClient();
 

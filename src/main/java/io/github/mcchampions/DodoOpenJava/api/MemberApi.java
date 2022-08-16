@@ -402,8 +402,8 @@ public class MemberApi {
      * @param reason 禁言原因，原因不能大于64个字符或32个汉字
      * @param returnJSONText 返回原本的出参JSON文本还是经过解析后的参数,由于没有什么好解析的,所以如果设置为false就返回null
      */
-    public static String setMembeReasonrMuteAdd(String clientId, String token, String islandId, String DodoId, int duration, String reason, Boolean returnJSONText) throws IOException {
-        return setMembeReasonrMuteAdd(Utils.Authorization(clientId, token), islandId, DodoId, duration, reason, returnJSONText);
+    public static String setMemberReasonrMuteAdd(String clientId, String token, String islandId, String DodoId, int duration, String reason, Boolean returnJSONText) throws IOException {
+        return setMemberReasonrMuteAdd(Utils.Authorization(clientId, token), islandId, DodoId, duration, reason, returnJSONText);
     }
 
     /**
@@ -416,7 +416,7 @@ public class MemberApi {
      * @param reason 禁言原因，原因不能大于64个字符或32个汉字
      * @param returnJSONText 返回原本的出参JSON文本还是经过解析后的参数,由于没有什么好解析的,所以如果设置为false就返回null
      */
-    public static String setMembeReasonrMuteAdd(String Authorization, String islandId, String DodoId, int duration, String reason, Boolean returnJSONText) throws IOException {
+    public static String setMemberReasonrMuteAdd(String Authorization, String islandId, String DodoId, int duration, String reason, Boolean returnJSONText) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/member/ban/set";
         parm = "{\n" +
                 "    \"islandId\": \"" + islandId + "\",\n" +
@@ -509,8 +509,8 @@ public class MemberApi {
      * @param reason 封禁理由
      * @param returnJSONText 返回原本的出参JSON文本还是经过解析后的参数,由于没有什么好解析的,所以如果设置为false就返回null
      */
-    public static String setMembeReasonBanAdd(String clientId, String token, String islandId, String DodoId, String reason, Boolean returnJSONText) throws IOException {
-        return setMembeReasonBanAdd(Utils.Authorization(clientId, token), islandId, DodoId, reason, returnJSONText);
+    public static String setMemberReasonBanAdd(String clientId, String token, String islandId, String DodoId, String reason, Boolean returnJSONText) throws IOException {
+        return setMemberReasonBanAdd(Utils.Authorization(clientId, token), islandId, DodoId, reason, returnJSONText);
     }
 
     /**
@@ -522,7 +522,7 @@ public class MemberApi {
      * @param reason 封禁理由
      * @param returnJSONText 返回原本的出参JSON文本还是经过解析后的参数,由于没有什么好解析的,所以如果设置为false就返回null
      */
-    public static String setMembeReasonBanAdd(String Authorization, String islandId, String DodoId, String reason, Boolean returnJSONText) throws IOException {
+    public static String setMemberReasonBanAdd(String Authorization, String islandId, String DodoId, String reason, Boolean returnJSONText) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/member/ban/add";
         parm = "{\n" +
                 "    \"islandId\": \"" + islandId + "\",\n" +
