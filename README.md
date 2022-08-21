@@ -20,7 +20,7 @@ Dodo开放平台：https://open.imdodo.com/
   <dependency>
     <groupId>com.github.mcchampions</groupId>
     <artifactId>DodoOpenJava</artifactId>
-    <version>v4.0</version>
+    <version>v4.1</version>
   </dependency>
 ```
 #### Gradle
@@ -33,6 +33,6 @@ Dodo开放平台：https://open.imdodo.com/
 	}
 
 	dependencies {
-	        implementation 'com.github.mcchampions:DodoOpenJava:v4.0'
+	        implementation 'com.github.mcchampions:DodoOpenJava:v4.1'
 	}
 ```
