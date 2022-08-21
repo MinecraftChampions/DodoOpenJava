@@ -1,5 +1,6 @@
 package io.github.mcchampions.DodoOpenJava;
 
+import io.github.mcchampions.DodoOpenJava.Event.EventManage;
 import okhttp3.*;
 
 import java.io.*;
@@ -39,11 +40,12 @@ public class Utils {
      * @param Authorization Authorization
      */
     public static String uploadFile(String Authorization, String path, String url) throws IOException {
+        File File = new File(path);
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         MediaType mediaType = MediaType.parse("text/plain");
         RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
-                .addFormDataPart("file","Parm.png",
+                .addFormDataPart("file",File.getName(),
                         RequestBody.create(MediaType.parse("application/octet-stream"),
                                 new File(path)))
                 .build();
