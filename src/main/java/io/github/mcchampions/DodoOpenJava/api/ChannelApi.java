@@ -192,4 +192,76 @@ public class ChannelApi {
         }
         return Parm;
     }
+    
+    /**
+     * 编辑频道
+     *
+     * @param clientId 机器人唯一标识
+     * @param token 机器人鉴权Token
+     * @param islandId 群号
+     * @param channelName 频道名
+     * @param channelId 频道号
+     * @param returnJSONText 返回原本的JSON文本还是直接返回null
+     */
+    public static String editChannel(String clientId, String token, String islandId, String channelName, String channelId, Boolean returnJSONText) throws IOException {
+        return editChannel(Utils.Authorization(clientId, token), islandId, channelName, channelId, returnJSONText);
+    }
+
+    /**
+     * 编辑频道
+     *
+     * @param Authorization Authorization
+     * @param islandId 群号
+     * @param channelName 频道名
+     * @param channelId 频道号
+     * @param returnJSONText 返回原本的JSON文本还是直接返回null
+     */
+    public static String editChannel(String Authorization, String islandId, String channelName, String channelId, Boolean returnJSONText) throws IOException {
+        url = "https://botopen.imdodo.com/api/v1/channel/edit";
+        parm = "{\n" +
+                "    \"islandId\": \"" + islandId + "\",\n" +
+                "    \"channelId\": \"" + channelId + "\",\n" +
+                "    \"channelName\": \"" + channelName + "\"\n" +
+                "}";
+        String Parm = Utils.sendRequest(parm, url, Authorization);
+        if (!returnJSONText) {
+            Parm = null;
+        }
+        return Parm;
+    }
+    
+    /**
+     * 删除频道
+     *
+     * @param clientId 机器人唯一标识
+     * @param token 机器人鉴权Token
+     * @param islandId 群号
+     * @param channelId 频道号
+     * @param returnJSONText 返回原本的JSON文本还是直接返回null
+     */
+    public static String deleteChannel(String clientId, String token, String islandId, String channelId, Boolean returnJSONText) throws IOException {
+        return deleteChannel(Utils.Authorization(clientId, token), islandId, channelId, returnJSONText);
+    }
+
+    /**
+     * 删除频道
+     *
+     * @param Authorization Authorization
+     * @param islandId 群号
+     * @param channelName 频道名
+     * @param channelId 频道号
+     * @param returnJSONText 返回原本的JSON文本还是直接返回null
+     */
+    public static String deleteChannel(String Authorization, String islandId, String channelId, Boolean returnJSONText) throws IOException {
+        url = "https://botopen.imdodo.com/api/v1/channel/remove";
+        parm = "{\n" +
+                "    \"islandId\": \"" + islandId + "\",\n" +
+                "    \"channelId\": \"" + channelId + "\"\n" +
+                "}";
+        String Parm = Utils.sendRequest(parm, url, Authorization);
+        if (!returnJSONText) {
+            Parm = null;
+        }
+        return Parm;
+    }
 }
