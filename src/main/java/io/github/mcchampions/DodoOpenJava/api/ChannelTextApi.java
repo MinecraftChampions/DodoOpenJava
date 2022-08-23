@@ -355,7 +355,7 @@ public class ChannelTextApi {
     }
 
     /**
-     * 编辑消息
+     * 编辑文字消息
      *
      * @param clientId 机器人唯一标识
      * @param token 机器人鉴权Token
@@ -368,7 +368,7 @@ public class ChannelTextApi {
     }
 
     /**
-     * 编辑消息
+     * 编辑文字消息
      *
      * @param Authorization Authorization
      * @param messageId 待编辑的消息ID
@@ -569,4 +569,76 @@ public class ChannelTextApi {
         }
         return Parm;
     }
+
+    /**
+     * 发送卡片消息
+     *
+     * @param clientId 机器人唯一标识
+     * @param token 机器人鉴权Token
+     * @param channelId 频道号
+     * @param messageBody 卡片代码（去卡片编辑器生成直接复制,记得在行尾加换行符）
+     * @param returnJSONText true返回原本的json文本，false返回消息ID
+     */
+    public static String sendCardMessage(String clientId, String token, String channelId, String messageBody, Boolean returnJSONText) throws IOException {
+        return sendCardMessage(Utils.Authorization(clientId,token), channelId, messageBody, returnJSONText);
+    }
+
+    /**
+     * 发送卡片消息
+     *
+     * @param Authorization Authorization
+     * @param channelId 频道号
+     * @param messageBody 卡片代码（去卡片编辑器生成直接复制,记得在行尾加换行符）
+     * @param returnJSONText true返回原本的json文本，false返回消息ID
+     */
+    public static String sendCardMessage(String Authorization, String channelId,String messageBody, Boolean returnJSONText) throws IOException {
+        url = "https://botopen.imdodo.com/api/v1/channel/message/send";
+        parm = "{\n" +
+                "    \"channelId\": \"" + channelId + "\",\n" +
+                "    \"messageType\": 6,\n" +
+                "    \"messageBody\": " + messageBody +
+                "}";
+        String Parm = Utils.sendRequest(parm, url, Authorization);
+        if (!returnJSONText) {
+            String MessageID = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
+            Parm = MessageID;
+        }
+        return Parm;
+    }
+
+    /**
+     * 编辑卡片消息
+     *
+     * @param clientId 机器人唯一标识
+     * @param token 机器人鉴权Token
+     * @param messageId 待编辑的消息ID
+     * @param messageBody 卡片代码（去卡片编辑器生成直接复制,记得在行尾加换行符）
+     * @param returnJSONText 是否返回json文本
+     */
+    public static String setChannelCardMessageEdit(String clientId, String token, String messageId, String messageBody, Boolean returnJSONText) throws IOException {
+        return setChannelCardMessageEdit(Utils.Authorization(clientId,token), messageId, messageBody, returnJSONText);
+    }
+
+    /**
+     * 编辑卡片消息
+     *
+     * @param Authorization Authorization
+     * @param messageId 待编辑的消息ID
+     * @param messageBody 卡片代码（去卡片编辑器生成直接复制,记得在行尾加换行符）
+     * @param returnJSONText 是否返回json文本
+     */
+    public static String setChannelCardMessageEdit(String Authorization, String messageId, String messageBody, Boolean returnJSONText) throws IOException {
+        url = "https://botopen.imdodo.com/api/v1/channel/message/edit";
+        parm = "{\n" +
+                "    \"messageId\": \"" + messageId	 + "\",\n" +
+                "    \"messageType\": 1,\n" +
+                "    \"messageBody\": " + messageBody +
+                "}";
+        String Parm = Utils.sendRequest(parm, url, Authorization);
+        if (!returnJSONText) {
+            Parm = null;
+        }
+        return Parm;
+    }
+
 }

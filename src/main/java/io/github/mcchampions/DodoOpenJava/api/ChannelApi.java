@@ -89,6 +89,7 @@ public class ChannelApi {
         }
         return Parm;
     }
+
     /**
      * 获取频道信息
      *
@@ -151,6 +152,43 @@ public class ChannelApi {
                         "    是否为默认访问频道: \"" + defaultFlag + "\"\n" +
                         "    分组ID: \"" + groupId + "\"\n" +
                         "    分组名称: \"" + groupName + "\"\n";
+        }
+        return Parm;
+    }
+
+    /**
+     * 创建频道
+     *
+     * @param clientId 机器人唯一标识
+     * @param token 机器人鉴权Token
+     * @param islandId 群号
+     * @param channelName 频道名
+     * @param channelType 频道类型
+     * @param returnJSONText 返回原本的JSON文本还是直接返回频道ID
+     */
+    public static String addChannel(String clientId, String token, String islandId, String channelName, int channelType, Boolean returnJSONText) throws IOException {
+        return addChannel(Utils.Authorization(clientId, token), islandId, channelName, channelType, returnJSONText);
+    }
+
+    /**
+     * 创建频道
+     *
+     * @param Authorization Authorization
+     * @param islandId 群号
+     * @param channelName 频道名
+     * @param channelType 频道类型
+     * @param returnJSONText 返回原本的JSON文本还是直接返回频道ID
+     */
+    public static String addChannel(String Authorization, String islandId, String channelName, int channelType, Boolean returnJSONText) throws IOException {
+        url = "https://botopen.imdodo.com/api/v1/channel/add";
+        parm = "{\n" +
+                "    \"islandId\": \"" + islandId + "\",\n" +
+                "    \"channelName\": \"" + channelName + "\",\n" +
+                "    \"channelType\": " + channelType + "\n" +
+                "}";
+        String Parm = Utils.sendRequest(parm, url, Authorization);
+        if (!returnJSONText) {
+            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("channelId");
         }
         return Parm;
     }
