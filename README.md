@@ -8,7 +8,7 @@ JavaDoc：https://mcchampions.github.io/
 Dodo开放平台：https://open.imdodo.com/
 
 ### 添加依赖
-### Maven：
+#### Maven：
 ```xml
 <repositories>
   <repository>
