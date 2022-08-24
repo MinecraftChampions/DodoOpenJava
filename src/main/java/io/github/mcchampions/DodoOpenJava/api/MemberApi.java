@@ -159,7 +159,6 @@ public class MemberApi {
             String personalNickName = JSONText.getString("personalNickName");
             String avatarUrl = JSONText.getString("avatarUrl");
             String joinTime = JSONText.getString("joinTime");
-            String islandID = JSONText.getString("islandId");
             String SexType,ISBOT,OnlineDevice,OnlineStatus;
             int sex = JSONText.getIntValue("sex");
             int level = JSONText.getIntValue("level");

@@ -1,9 +1,10 @@
 package io.github.mcchampions.DodoOpenJava;
 
-import io.github.mcchampions.DodoOpenJava.Event.EventManage;
 import okhttp3.*;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.Objects;
 
 /**
  * 一些相关的方法
@@ -19,7 +20,7 @@ public class Utils {
      * @param Authorization Authorization
      */
      public static String sendRequest(String url, String parm,String Authorization) throws IOException {
-        Request request = new Request.Builder().url(url).addHeader("Content-Type", "application/json").addHeader("Authorization", Authorization)
+         Request request = new Request.Builder().url(url).addHeader("Content-Type", "application/json").addHeader("Authorization", Authorization)
                 .url(url)
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Authorization", Authorization)
@@ -27,7 +28,7 @@ public class Utils {
                 .build();
          Response response = client.newCall(request).execute();
 
-         String a = response.body().string();
+         String a = Objects.requireNonNull(response.body()).string();
          response.close();
          return  a;
      }
@@ -43,7 +44,6 @@ public class Utils {
         File File = new File(path);
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
-        MediaType mediaType = MediaType.parse("text/plain");
         RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
                 .addFormDataPart("file",File.getName(),
                         RequestBody.create(MediaType.parse("application/octet-stream"),
@@ -55,8 +55,9 @@ public class Utils {
                 .addHeader("Content-Type","multipart/form-data")
                 .method("POST", body)
                 .build();
-        Response response = client.newCall(request).execute();
-        return response.body().string();
+        try (Response response = client.newCall(request).execute()) {
+            return Objects.requireNonNull(response.body()).string();
+        }
     }
 
     /**
@@ -82,7 +83,7 @@ public class Utils {
                             .build();
          Response response = client.newCall(request).execute();
 
-         String a = response.body().string();
+         String a = Objects.requireNonNull(response.body()).string();
          response.close();
          return  a;
      }

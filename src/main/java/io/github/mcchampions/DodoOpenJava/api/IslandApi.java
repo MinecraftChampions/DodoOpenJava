@@ -38,7 +38,6 @@ public class IslandApi {
                 "    \"islandId\": \"" + islandId + "\"\n" +
                 "}";
         String Parm = Utils.sendRequest(parm, url, Authorization);
-        String island;
         if (!returnJSONText) {
             JSONObject JSONText = JSONObject.parseObject(Parm).getJSONObject("data");
             String islandID = JSONText.getString("islandID");
@@ -49,7 +48,7 @@ public class IslandApi {
             String description = JSONText.getString("description");
             String defaultChannelId	 = JSONText.getString("defaultChannelId");
             String systemChannelId	 = JSONText.getString("systemChannelId");
-            island= "群号: \"" + islandID + "\"\n" +
+            Parm = "群号: \"" + islandID + "\"\n" +
                     "群名称: \"" + islandName + "\"\n" +
                     "群头像: \"" + coverUrl + "\"\n" +
                     "成员数量: \"" + memberCount + "\"\n" +

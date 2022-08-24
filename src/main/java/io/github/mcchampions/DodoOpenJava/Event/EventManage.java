@@ -12,9 +12,8 @@ public class EventManage {
         EventTrigger.main(Authorization);
     }
     public void notifyListeners(Event e) {
-        Iterator<Listener> iter = listeners.iterator();
-        while (iter.hasNext()) {
-            iter.next().event(e);
+        for (Listener listener : (Iterable<Listener>) listeners) {
+            listener.event(e);
         }
     }
     protected void trigger(Event e) {

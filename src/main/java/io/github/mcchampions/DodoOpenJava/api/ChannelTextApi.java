@@ -43,8 +43,7 @@ public class ChannelTextApi {
                 "}";
         String Parm = Utils.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            String MessageID = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
-            Parm = MessageID;
+            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
         return Parm;
     }
@@ -84,8 +83,7 @@ public class ChannelTextApi {
                 "}";
         String Parm = Utils.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            String MessageID = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
-            Parm = MessageID;
+            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
         return Parm;
     }
@@ -137,8 +135,7 @@ public class ChannelTextApi {
                 "}";
         String Parm = Utils.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            String MessageID = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
-            Parm = MessageID;
+            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
         return Parm;
     }
@@ -181,8 +178,7 @@ public class ChannelTextApi {
                 "}";
         String Parm = Utils.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            String MessageID = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
-            Parm = MessageID;
+            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
         return Parm;
     }
@@ -219,8 +215,7 @@ public class ChannelTextApi {
                 "}";
         String Parm = Utils.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            String MessageID = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
-            Parm = MessageID;
+            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
         return Parm;
     }
@@ -266,8 +261,7 @@ public class ChannelTextApi {
                 "}";
         String Parm = Utils.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            String MessageID = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
-            Parm = MessageID;
+            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
         return Parm;
     }
@@ -304,8 +298,7 @@ public class ChannelTextApi {
                 "}";
         String Parm = Utils.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            String MessageID = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
-            Parm = MessageID;
+            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
         return Parm;
     }
@@ -348,8 +341,7 @@ public class ChannelTextApi {
                 "}";
         String Parm = Utils.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            String MessageID = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
-            Parm = MessageID;
+            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
         return Parm;
     }
@@ -542,8 +534,8 @@ public class ChannelTextApi {
      * @param id 表情ID
      * @param returnJSONText 是否返回json文本
      */
-    public static String setChannelMessageBotReactionRemove(String clientId, String token, String messageId, String id, String dodoId, Boolean returnJSONText) throws IOException {
-        return setChannelMessageBotReactionRemove(Utils.Authorization(clientId,token), messageId, id, dodoId, returnJSONText);
+    public static String setChannelMessageBotReactionRemove(String clientId, String token, String messageId, String id, Boolean returnJSONText) throws IOException {
+        return setChannelMessageBotReactionRemove(Utils.Authorization(clientId,token), messageId, id, returnJSONText);
     }
 
     /**
@@ -554,7 +546,7 @@ public class ChannelTextApi {
      * @param id 表情ID
      * @param returnJSONText 是否返回json文本
      */
-    public static String setChannelMessageBotReactionRemove(String Authorization, String messageId, String id, String dodoId, Boolean returnJSONText) throws IOException {
+    public static String setChannelMessageBotReactionRemove(String Authorization, String messageId, String id, Boolean returnJSONText) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/channel/message/reaction/remove";
         parm = "{\n" +
                 "    \"messageId\": \"" + messageId + "\",\n" +
@@ -600,8 +592,7 @@ public class ChannelTextApi {
                 "}";
         String Parm = Utils.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            String MessageID = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
-            Parm = MessageID;
+            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
         return Parm;
     }

@@ -49,25 +49,16 @@ public class ChannelApi {
                 String channelId = JSONObject.parseObject(JSONText).getString("channelId");
                 String channelName = JSONObject.parseObject(JSONText).getString("channelName");
                 int channelTypeInt = JSONObject.parseObject(JSONText).getIntValue("channelType");
-                String channelType = null;
-                switch(channelTypeInt) {
-                    case 1:
-                        channelType = "文字频道";
-                        break;
-                    case 2:
-                        channelType = "语音频道";
-                        break;
-                    case  4:
-                        channelType = "帖子频道";
-                        break;
-                    case 5:
-                        channelType = "链接频道";
-                        break;
-                    case 6:
-                        channelType = "资料频道";
-                }
+                String channelType = switch (channelTypeInt) {
+                    case 1 -> "文字频道";
+                    case 2 -> "语音频道";
+                    case 4 -> "帖子频道";
+                    case 5 -> "链接频道";
+                    case 6 -> "资料频道";
+                    default -> null;
+                };
                 int defaultFlagInt = JSONObject.parseObject(JSONText).getIntValue("defaultFlag");
-                String defaultFlag = null;
+                String defaultFlag;
                 if (defaultFlagInt == 0) {
                     defaultFlag = "否";
                 } else {
@@ -120,25 +111,16 @@ public class ChannelApi {
             String ChannelId = JSONText.getString("channelId");
             String channelName = JSONText.getString("channelName");
             int channelTypeInt = JSONText.getIntValue("channelType");
-            String channelType = null;
-            switch(channelTypeInt) {
-                case 1:
-                    channelType = "文字频道";
-                    break;
-                case 2:
-                    channelType = "语音频道";
-                    break;
-                case  4:
-                    channelType = "帖子频道";
-                    break;
-                case 5:
-                    channelType = "链接频道";
-                    break;
-                case 6:
-                    channelType = "资料频道";
-            }
+            String channelType = switch (channelTypeInt) {
+                case 1 -> "文字频道";
+                case 2 -> "语音频道";
+                case 4 -> "帖子频道";
+                case 5 -> "链接频道";
+                case 6 -> "资料频道";
+                default -> null;
+            };
             int defaultFlagInt = JSONText.getIntValue("defaultFlag");
-            String defaultFlag = null;
+            String defaultFlag;
             if (defaultFlagInt == 0) {
                 defaultFlag = "否";
             } else {
@@ -248,7 +230,6 @@ public class ChannelApi {
      *
      * @param Authorization Authorization
      * @param islandId 群号
-     * @param channelName 频道名
      * @param channelId 频道号
      * @param returnJSONText 返回原本的JSON文本还是直接返回null
      */

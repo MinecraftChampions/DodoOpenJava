@@ -43,8 +43,7 @@ public class PersonalApi {
                 "}";
         String Parm = Utils.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            String MessageID = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
-            Parm = MessageID;
+            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
         return Parm;
     }
@@ -96,8 +95,7 @@ public class PersonalApi {
                 "}";
         String Parm = Utils.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            String MessageID = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
-            Parm = MessageID;
+            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
         return Parm;
     }
@@ -140,8 +138,7 @@ public class PersonalApi {
                 "}";
         String Parm = Utils.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            String MessageID = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
-            Parm = MessageID;
+            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
         return Parm;
     }
@@ -178,8 +175,7 @@ public class PersonalApi {
                 "}";
         String Parm = Utils.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            String MessageID = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
-            Parm = MessageID;
+            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
         return Parm;
     }
@@ -225,8 +221,7 @@ public class PersonalApi {
                 "}";
         String Parm = Utils.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            String MessageID = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
-            Parm = MessageID;
+            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
         return Parm;
     }

@@ -5,6 +5,7 @@ import okhttp3.*;
 import okio.ByteString;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -31,7 +32,7 @@ public class EventTrigger {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                wssLo= JSONObject.parseObject(response.body().string()).getJSONObject("data").getString("endpoint");
+                wssLo= JSONObject.parseObject(Objects.requireNonNull(response.body()).string()).getJSONObject("data").getString("endpoint");
                 //TODO 建立wss链接
                 //getLogger().info(wssLo);
                 response.close();
