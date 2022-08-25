@@ -11,6 +11,12 @@ public interface CommandExecutor {
     String MainCommand();
 
     /**
+     * 需要的权限
+     * @return 权限
+     */
+    String Permissions();
+
+    /**
      * 命令处理
      * @param dodoId 发送者DodoId
      * @param args 参数

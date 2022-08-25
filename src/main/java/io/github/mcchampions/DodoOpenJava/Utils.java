@@ -1,9 +1,11 @@
 package io.github.mcchampions.DodoOpenJava;
 
 import okhttp3.*;
+import org.apache.commons.lang3.StringUtils;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -87,4 +89,30 @@ public class Utils {
          response.close();
          return  a;
      }
+
+    /**
+     * 获取配置文件内容
+     *
+     * @param filePath 文件路径
+     * @return 文件内容
+     */
+    public static String readConfig(String filePath) {
+        File file = new File(filePath);
+        Reader reader;
+        List<String> a = new ArrayList<>();
+        try {
+            reader = new InputStreamReader(new FileInputStream(file));
+            int tempchar;
+            while ((tempchar = reader.read()) != -1) {
+                if (((char) tempchar) != '\r') {
+                    a.add(String.valueOf((char) tempchar));
+                }
+            }
+            reader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String[] c = a.toArray(new String[0]);
+        return StringUtils.join(c);
+    }
 }

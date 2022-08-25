@@ -1,7 +1,8 @@
 ﻿# DodoOpenJava
 Dodo开放平台的JavaSDK
 
-尚在开发中，我们目前已经支持全部的接口，不支持事件（因为okhttp的库实在做不到）（如何监听事件直接丢wiki里了）
+尚在开发中，我们目前已经支持全部的接口和事件
+目前还新增了权限系统以及命令系统
 
 JavaDoc：https://mcchampions.github.io/
 
@@ -20,7 +21,7 @@ Dodo开放平台：https://open.imdodo.com/
   <dependency>
     <groupId>com.github.mcchampions</groupId>
     <artifactId>DodoOpenJava</artifactId>
-    <version>v6.1</version>
+    <version>v7.0</version>
   </dependency>
 ```
 #### Gradle
@@ -33,6 +34,6 @@ Dodo开放平台：https://open.imdodo.com/
 	}
 
 	dependencies {
-	        implementation 'com.github.mcchampions:DodoOpenJava:v6.1'
+	        implementation 'com.github.mcchampions:DodoOpenJava:v7.0'
 	}
 ```
