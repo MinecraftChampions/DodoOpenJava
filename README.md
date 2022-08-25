@@ -2,6 +2,7 @@
 Dodo开放平台的JavaSDK
 
 尚在开发中，我们目前已经支持全部的接口和事件
+
 目前还新增了权限系统以及命令系统
 
 JavaDoc：https://mcchampions.github.io/
