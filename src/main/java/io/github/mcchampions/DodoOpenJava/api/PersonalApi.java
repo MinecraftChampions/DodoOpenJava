@@ -1,7 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.api;
 
 import com.alibaba.fastjson.JSONObject;
-import io.github.mcchampions.DodoOpenJava.Utils;
+import io.github.mcchampions.DodoOpenJava.Utils.Util;
 
 import java.io.IOException;
 
@@ -21,7 +21,7 @@ public class PersonalApi {
      * @param returnJSONText true返回原本的json文本，false返回消息ID
      */
     public static String setPersonalMessageSend(String clientId, String token, String dodoId, String Message, Boolean returnJSONText) throws IOException {
-        return setPersonalMessageSend(Utils.Authorization(clientId,token), dodoId, Message, returnJSONText);
+        return setPersonalMessageSend(Util.Authorization(clientId,token), dodoId, Message, returnJSONText);
     }
 
     /**
@@ -41,7 +41,7 @@ public class PersonalApi {
                 "        \"content\": \"" + Message + "\"\n" +
                 "    }\n" +
                 "}";
-        String Parm = Utils.sendRequest(parm, url, Authorization);
+        String Parm = Util.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -61,7 +61,7 @@ public class PersonalApi {
      * @param returnJSONText true返回原本的json文本，false返回消息ID
      */
     public static String setdodoPictureMessageSend(String clientId, String token, String dodoId, String Url, int width, int height, Boolean isOriginal, Boolean returnJSONText) throws IOException {
-        return setdodoPictureMessageSend(Utils.Authorization(clientId,token), dodoId, Url, width, height, isOriginal, returnJSONText);
+        return setdodoPictureMessageSend(Util.Authorization(clientId,token), dodoId, Url, width, height, isOriginal, returnJSONText);
     }
 
     /**
@@ -93,7 +93,7 @@ public class PersonalApi {
                 "        \"isOriginal\": " + Original + "\n" +
                 "    }\n" +
                 "}";
-        String Parm = Utils.sendRequest(parm, url, Authorization);
+        String Parm = Util.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -112,7 +112,7 @@ public class PersonalApi {
      * @param returnJSONText true返回原本的json文本，false返回消息ID
      */
     public static String setdodoPictureMessageSend(String clientId, String token, String dodoId, String Url, int width, int height, Boolean returnJSONText) throws IOException {
-        return setdodoPictureMessageSend(Utils.Authorization(clientId,token), dodoId, Url, width, height, returnJSONText);
+        return setdodoPictureMessageSend(Util.Authorization(clientId,token), dodoId, Url, width, height, returnJSONText);
     }
 
     /**
@@ -136,7 +136,7 @@ public class PersonalApi {
                 "        \"height\": " + height + "\n" +
                 "    }\n" +
                 "}";
-        String Parm = Utils.sendRequest(parm, url, Authorization);
+        String Parm = Util.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -153,7 +153,7 @@ public class PersonalApi {
      * @param returnJSONText true返回原本的json文本，false返回消息ID
      */
     public static String setdodoVideoMessageSend(String clientId, String token, String dodoId, String Url, Boolean returnJSONText) throws IOException {
-        return setdodoVideoMessageSend(Utils.Authorization(clientId,token), dodoId, Url, returnJSONText);
+        return setdodoVideoMessageSend(Util.Authorization(clientId,token), dodoId, Url, returnJSONText);
     }
 
     /**
@@ -173,7 +173,7 @@ public class PersonalApi {
                 "        \"url\": \"" + Url + "\"\n" +
                 "    }\n" +
                 "}";
-        String Parm = Utils.sendRequest(parm, url, Authorization);
+        String Parm = Util.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -193,7 +193,7 @@ public class PersonalApi {
      * @param returnJSONText true返回原本的json文本，false返回消息ID
      */
     public static String setdodoVideoMessageSend(String clientId, String token, String dodoId, String Url, String coverUrl, long duration, long size, Boolean returnJSONText) throws IOException {
-        return setdodoVideoMessageSend(Utils.Authorization(clientId,token), dodoId, Url, coverUrl, duration, size, returnJSONText);
+        return setdodoVideoMessageSend(Util.Authorization(clientId,token), dodoId, Url, coverUrl, duration, size, returnJSONText);
     }
 
     /**
@@ -219,7 +219,7 @@ public class PersonalApi {
                 "        \"size\": " + size + "\n" +
                 "    }\n" +
                 "}";
-        String Parm = Utils.sendRequest(parm, url, Authorization);
+        String Parm = Util.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }

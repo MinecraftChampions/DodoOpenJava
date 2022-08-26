@@ -2,7 +2,7 @@ package io.github.mcchampions.DodoOpenJava.api;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import io.github.mcchampions.DodoOpenJava.Utils;
+import io.github.mcchampions.DodoOpenJava.Utils.Util;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
@@ -24,7 +24,7 @@ public class MemberApi {
      * @param returnJSONText 是否返回原本的JSON参数，如果是false，则返回经过解析后的文本
      */
     public static String getMemberList(String clientId, String token, String islandId, int pageSize, long maxId, Boolean returnJSONText) throws IOException {
-        return getMemberList(Utils.Authorization(clientId, token), islandId, pageSize, maxId, returnJSONText);
+        return getMemberList(Util.Authorization(clientId, token), islandId, pageSize, maxId, returnJSONText);
     }
 
     /**
@@ -43,7 +43,7 @@ public class MemberApi {
                 "    \"pageSize\": \"" + pageSize + "\",\n" +
                 "    \"maxId\": \"" + maxId + "\"\n" +
                 "}";
-        String Parm = Utils.sendRequest(parm, url, Authorization);
+        String Parm = Util.sendRequest(parm, url, Authorization);
         String PARM;
         if (!returnJSONText) {
             JSONArray JSONList = JSONObject.parseObject(Parm).getJSONObject("data").getJSONArray("list");
@@ -134,7 +134,7 @@ public class MemberApi {
      * @param returnJSONText 是否返回原本的JSON参数，如果是false，则返回经过解析后的文本
      */
     public static String getMemberInfo(String clientId, String token, String islandId,String DodoId, Boolean returnJSONText) throws IOException {
-        return getMemberInfo(Utils.Authorization(clientId, token), islandId, DodoId,returnJSONText);
+        return getMemberInfo(Util.Authorization(clientId, token), islandId, DodoId,returnJSONText);
     }
 
     /**
@@ -151,7 +151,7 @@ public class MemberApi {
                 "    \"islandId\": \"" + islandId + "\",\n" +
                 "    \"dodoId\": \"" + DodoId + "\"\n" +
                 "}";
-        String Parm = Utils.sendRequest(parm, url, Authorization);
+        String Parm = Util.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             JSONObject JSONText = JSONObject.parseObject(Parm).getJSONObject("data");
             String dodoId = JSONText.getString("dodoId");
@@ -231,7 +231,7 @@ public class MemberApi {
      * @param returnJSONText 返回原本的出参JSON文本还是经过解析后的参数
      */
     public static String getMemberRoleList(String clientId, String token, String islandId, String DodoId, Boolean returnJSONText) throws IOException {
-        return getMemberRoleList(Utils.Authorization(clientId, token), islandId, DodoId, returnJSONText);
+        return getMemberRoleList(Util.Authorization(clientId, token), islandId, DodoId, returnJSONText);
     }
 
     /**
@@ -248,7 +248,7 @@ public class MemberApi {
                 "    \"islandId\": \"" + islandId + "\",\n" +
                 "    \"dodoID\": \"" + DodoId + "\"\n" +
                 "}";
-        String Parm = Utils.sendRequest(parm, url, Authorization);
+        String Parm = Util.sendRequest(parm, url, Authorization);
         String role;
         if (!returnJSONText) {
             JSONArray JSONList = JSONObject.parseObject(Parm).getJSONArray("data");
@@ -287,7 +287,7 @@ public class MemberApi {
      * @param returnJSONText 返回原本的出参JSON文本还是经过解析后的参数
      */
     public static String getMemberInvitationInfo(String clientId, String token, String islandId, String DodoId, Boolean returnJSONText) throws IOException {
-        return getMemberInvitationInfo(Utils.Authorization(clientId, token), islandId, DodoId, returnJSONText);
+        return getMemberInvitationInfo(Util.Authorization(clientId, token), islandId, DodoId, returnJSONText);
     }
 
     /**
@@ -304,7 +304,7 @@ public class MemberApi {
                 "    \"islandId\": \"" + islandId + "\",\n" +
                 "    \"dodoId\": \"" + DodoId + "\"\n" +
                 "}";
-        String Parm = Utils.sendRequest(parm, url, Authorization);
+        String Parm = Util.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             String DoDoId = JSONObject.parseObject(Parm).getJSONObject("data").getString("dodoId");
             String nickName = JSONObject.parseObject(Parm).getJSONObject("data").getString("nickName");
@@ -327,7 +327,7 @@ public class MemberApi {
      * @param returnJSONText 返回原本的出参JSON文本还是经过解析后的参数,由于没有什么好解析的,所以如果设置为false就返回null
      */
     public static String setMemberNickNameEdit(String clientId, String token, String islandId, String DodoId, String nickName, Boolean returnJSONText) throws IOException {
-        return setMemberNickNameEdit(Utils.Authorization(clientId, token), islandId, DodoId, nickName, returnJSONText);
+        return setMemberNickNameEdit(Util.Authorization(clientId, token), islandId, DodoId, nickName, returnJSONText);
     }
 
     /**
@@ -346,7 +346,7 @@ public class MemberApi {
                 "    \"dodoId\": \"" + DodoId + "\",\n" +
                 "    \"nickName\": \"" + nickName + "\"\n" +
                 "}";
-        String Parm = Utils.sendRequest(parm, url, Authorization);
+        String Parm = Util.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -364,7 +364,7 @@ public class MemberApi {
      * @param returnJSONText 返回原本的出参JSON文本还是经过解析后的参数,由于没有什么好解析的,所以如果设置为false就返回null
      */
     public static String setMemberMuteAdd(String clientId, String token, String islandId, String DodoId, int duration, Boolean returnJSONText) throws IOException {
-        return setMemberMuteAdd(Utils.Authorization(clientId, token), islandId, DodoId, duration, returnJSONText);
+        return setMemberMuteAdd(Util.Authorization(clientId, token), islandId, DodoId, duration, returnJSONText);
     }
 
     /**
@@ -383,7 +383,7 @@ public class MemberApi {
                 "    \"dodoId\": \"" + DodoId + "\",\n" +
                 "    \"duration\": " + duration + "\n" +
                 "}";
-        String Parm = Utils.sendRequest(parm, url, Authorization);
+        String Parm = Util.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -402,7 +402,7 @@ public class MemberApi {
      * @param returnJSONText 返回原本的出参JSON文本还是经过解析后的参数,由于没有什么好解析的,所以如果设置为false就返回null
      */
     public static String setMemberReasonrMuteAdd(String clientId, String token, String islandId, String DodoId, int duration, String reason, Boolean returnJSONText) throws IOException {
-        return setMemberReasonrMuteAdd(Utils.Authorization(clientId, token), islandId, DodoId, duration, reason, returnJSONText);
+        return setMemberReasonrMuteAdd(Util.Authorization(clientId, token), islandId, DodoId, duration, reason, returnJSONText);
     }
 
     /**
@@ -423,7 +423,7 @@ public class MemberApi {
                 "    \"duration\": " + duration + ",\n" +
                 "    \"reason\": \"" + reason + "\"\n" +
                 "}";
-        String Parm = Utils.sendRequest(parm, url, Authorization);
+        String Parm = Util.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -440,7 +440,7 @@ public class MemberApi {
      * @param returnJSONText 返回原本的出参JSON文本还是经过解析后的参数,由于没有什么好解析的,所以如果设置为false就返回null
      */
     public static String setMemberMuteRemove(String clientId, String token, String islandId, String DodoId, Boolean returnJSONText) throws IOException {
-        return setMemberMuteRemove(Utils.Authorization(clientId, token), islandId, DodoId, returnJSONText);
+        return setMemberMuteRemove(Util.Authorization(clientId, token), islandId, DodoId, returnJSONText);
     }
 
     /**
@@ -457,7 +457,7 @@ public class MemberApi {
                 "    \"islandId\": \"" + islandId + "\",\n" +
                 "    \"dodoId\": \"" + DodoId + "\"\n" +
                 "}";
-        String Parm = Utils.sendRequest(parm, url, Authorization);
+        String Parm = Util.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -474,7 +474,7 @@ public class MemberApi {
      * @param returnJSONText 返回原本的出参JSON文本还是经过解析后的参数,由于没有什么好解析的,所以如果设置为false就返回null
      */
     public static String setMemberBanAdd(String clientId, String token, String islandId, String DodoId, Boolean returnJSONText) throws IOException {
-        return setMemberBanAdd(Utils.Authorization(clientId, token), islandId, DodoId, returnJSONText);
+        return setMemberBanAdd(Util.Authorization(clientId, token), islandId, DodoId, returnJSONText);
     }
 
     /**
@@ -491,7 +491,7 @@ public class MemberApi {
                 "    \"islandId\": \"" + islandId + "\",\n" +
                 "    \"dodoId\": \"" + DodoId + "\"\n" +
                 "}";
-        String Parm = Utils.sendRequest(parm, url, Authorization);
+        String Parm = Util.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -509,7 +509,7 @@ public class MemberApi {
      * @param returnJSONText 返回原本的出参JSON文本还是经过解析后的参数,由于没有什么好解析的,所以如果设置为false就返回null
      */
     public static String setMemberReasonBanAdd(String clientId, String token, String islandId, String DodoId, String reason, Boolean returnJSONText) throws IOException {
-        return setMemberReasonBanAdd(Utils.Authorization(clientId, token), islandId, DodoId, reason, returnJSONText);
+        return setMemberReasonBanAdd(Util.Authorization(clientId, token), islandId, DodoId, reason, returnJSONText);
     }
 
     /**
@@ -528,7 +528,7 @@ public class MemberApi {
                 "    \"dodoId\": \"" + DodoId + "\",\n" +
                 "    \"reason\": \"" + reason + "\"\n" +
                 "}";
-        String Parm = Utils.sendRequest(parm, url, Authorization);
+        String Parm = Util.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -546,7 +546,7 @@ public class MemberApi {
      * @param returnJSONText 返回原本的出参JSON文本还是经过解析后的参数,由于没有什么好解析的,所以如果设置为false就返回null
      */
     public static String setMembeChannelBanAdd(String clientId, String token, String islandId, String DodoId, String noticeChannelId, Boolean returnJSONText) throws IOException {
-        return setMembeChannelBanAdd(Utils.Authorization(clientId, token), islandId, DodoId, noticeChannelId, returnJSONText);
+        return setMembeChannelBanAdd(Util.Authorization(clientId, token), islandId, DodoId, noticeChannelId, returnJSONText);
     }
 
     /**
@@ -565,7 +565,7 @@ public class MemberApi {
                 "    \"dodoId\": \"" + DodoId + "\",\n" +
                 "    \"noticeChannelId\": \"" + noticeChannelId + "\"\n" +
                 "}";
-        String Parm = Utils.sendRequest(parm, url, Authorization);
+        String Parm = Util.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -584,7 +584,7 @@ public class MemberApi {
      * @param returnJSONText 返回原本的出参JSON文本还是经过解析后的参数,由于没有什么好解析的,所以如果设置为false就返回null
      */
     public static String setMemberBanAdd(String clientId, String token, String islandId, String DodoId, String noticeChannelId, String reason, Boolean returnJSONText) throws IOException {
-        return setMemberBanAdd(Utils.Authorization(clientId, token), islandId, DodoId, noticeChannelId, reason, returnJSONText);
+        return setMemberBanAdd(Util.Authorization(clientId, token), islandId, DodoId, noticeChannelId, reason, returnJSONText);
     }
 
     /**
@@ -605,7 +605,7 @@ public class MemberApi {
                 "    \"noticeChannelId\": \"" + noticeChannelId + "\",\n" +
                 "    \"reason\": \"" + reason + "\"\n" +
                 "}";
-        String Parm = Utils.sendRequest(parm, url, Authorization);
+        String Parm = Util.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -622,7 +622,7 @@ public class MemberApi {
      * @param returnJSONText 返回原本的出参JSON文本还是经过解析后的参数,由于没有什么好解析的,所以如果设置为false就返回null
      */
     public static String setMemberBanRemove(String clientId, String token, String islandId, String DodoId, Boolean returnJSONText) throws IOException {
-        return setMemberBanRemove(Utils.Authorization(clientId, token), islandId, DodoId, returnJSONText);
+        return setMemberBanRemove(Util.Authorization(clientId, token), islandId, DodoId, returnJSONText);
     }
 
     /**
@@ -639,7 +639,7 @@ public class MemberApi {
                 "    \"islandId\": \"" + islandId + "\",\n" +
                 "    \"dodoId\": \"" + DodoId + "\"\n" +
                 "}";
-        String Parm = Utils.sendRequest(parm, url, Authorization);
+        String Parm = Util.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }

@@ -2,7 +2,7 @@ package io.github.mcchampions.DodoOpenJava.api;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import io.github.mcchampions.DodoOpenJava.Utils;
+import io.github.mcchampions.DodoOpenJava.Utils.Util;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
@@ -21,7 +21,7 @@ public class ChannelApi {
      * @param returnJSONText 是否返回原本的JSON参数，如果是false，则返回经过解析后的文本
      */
     public static String getChannelList(String clientId, String token, String islandId, Boolean returnJSONText) throws IOException {
-        return getChannelList(Utils.Authorization(clientId,token), islandId, returnJSONText);
+        return getChannelList(Util.Authorization(clientId,token), islandId, returnJSONText);
     }
 
     /**
@@ -37,7 +37,7 @@ public class ChannelApi {
                 "    \"islandId\": \"" + islandId + "\"\n" +
                 "}";
         String channel;
-        String Parm = Utils.sendRequest(parm, url, Authorization);
+        String Parm = Util.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             JSONArray JSONList = JSONObject.parseObject(Parm).getJSONArray("data");
             int JSONListSize = JSONList.size();
@@ -90,7 +90,7 @@ public class ChannelApi {
      * @param returnJSONText 是否返回原本的JSON参数，如果是false，则返回经过解析后的文本
      */
     public static String getChannelInfo(String clientId, String token, String channelId, Boolean returnJSONText) throws IOException {
-        return getChannelInfo(Utils.Authorization(clientId, token), channelId, returnJSONText);
+        return getChannelInfo(Util.Authorization(clientId, token), channelId, returnJSONText);
     }
 
     /**
@@ -105,7 +105,7 @@ public class ChannelApi {
         parm = "{\n" +
                 "    \"channelId\": \"" + channelId + "\"\n" +
                 "}";
-        String Parm = Utils.sendRequest(parm, url, Authorization);
+        String Parm = Util.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             JSONObject JSONText = JSONObject.parseObject(Parm).getJSONObject("data");
             String ChannelId = JSONText.getString("channelId");
@@ -149,7 +149,7 @@ public class ChannelApi {
      * @param returnJSONText 返回原本的JSON文本还是直接返回频道ID
      */
     public static String addChannel(String clientId, String token, String islandId, String channelName, int channelType, Boolean returnJSONText) throws IOException {
-        return addChannel(Utils.Authorization(clientId, token), islandId, channelName, channelType, returnJSONText);
+        return addChannel(Util.Authorization(clientId, token), islandId, channelName, channelType, returnJSONText);
     }
 
     /**
@@ -168,7 +168,7 @@ public class ChannelApi {
                 "    \"channelName\": \"" + channelName + "\",\n" +
                 "    \"channelType\": " + channelType + "\n" +
                 "}";
-        String Parm = Utils.sendRequest(parm, url, Authorization);
+        String Parm = Util.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("channelId");
         }
@@ -186,7 +186,7 @@ public class ChannelApi {
      * @param returnJSONText 返回原本的JSON文本还是直接返回null
      */
     public static String editChannel(String clientId, String token, String islandId, String channelName, String channelId, Boolean returnJSONText) throws IOException {
-        return editChannel(Utils.Authorization(clientId, token), islandId, channelName, channelId, returnJSONText);
+        return editChannel(Util.Authorization(clientId, token), islandId, channelName, channelId, returnJSONText);
     }
 
     /**
@@ -205,7 +205,7 @@ public class ChannelApi {
                 "    \"channelId\": \"" + channelId + "\",\n" +
                 "    \"channelName\": \"" + channelName + "\"\n" +
                 "}";
-        String Parm = Utils.sendRequest(parm, url, Authorization);
+        String Parm = Util.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -222,7 +222,7 @@ public class ChannelApi {
      * @param returnJSONText 返回原本的JSON文本还是直接返回null
      */
     public static String deleteChannel(String clientId, String token, String islandId, String channelId, Boolean returnJSONText) throws IOException {
-        return deleteChannel(Utils.Authorization(clientId, token), islandId, channelId, returnJSONText);
+        return deleteChannel(Util.Authorization(clientId, token), islandId, channelId, returnJSONText);
     }
 
     /**
@@ -239,7 +239,7 @@ public class ChannelApi {
                 "    \"islandId\": \"" + islandId + "\",\n" +
                 "    \"channelId\": \"" + channelId + "\"\n" +
                 "}";
-        String Parm = Utils.sendRequest(parm, url, Authorization);
+        String Parm = Util.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }

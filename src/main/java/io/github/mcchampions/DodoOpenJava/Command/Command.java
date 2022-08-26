@@ -1,7 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.Command;
 
 import io.github.mcchampions.DodoOpenJava.Event.EventManage;
-import io.github.mcchampions.DodoOpenJava.Utils;
+import io.github.mcchampions.DodoOpenJava.Utils.Util;
 import io.github.mcchampions.DodoOpenJava.permissions;
 
 import java.util.List;
@@ -23,7 +23,7 @@ public class Command {
      */
     public void initCommand(CommandExecutor Class, String clientId, String token) {
         commands.add(Class);
-        e.register(new CommandTrigger(), Utils.Authorization(clientId,token));
+        e.register(new CommandTrigger(), Util.Authorization(clientId,token));
     }
 
     /**
@@ -34,7 +34,7 @@ public class Command {
      */
     public void initCommand(List<CommandExecutor> Class, String clientId, String token) {
         this.commands = Class;
-        e.register(new CommandTrigger(), Utils.Authorization(clientId,token));
+        e.register(new CommandTrigger(), Util.Authorization(clientId,token));
     }
 
     /**

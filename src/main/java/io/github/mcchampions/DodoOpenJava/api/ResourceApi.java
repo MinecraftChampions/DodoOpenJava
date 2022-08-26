@@ -1,7 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.api;
 
 import com.alibaba.fastjson.JSONObject;
-import io.github.mcchampions.DodoOpenJava.Utils;
+import io.github.mcchampions.DodoOpenJava.Utils.Util;
 
 import java.io.IOException;
 
@@ -12,12 +12,12 @@ public class ResourceApi {
     public static String url;
 
     public static String uploadResource(String clientId, String token, String path, Boolean returnJSONText) throws IOException {
-        return uploadResource(Utils.Authorization(clientId,token), path, returnJSONText);
+        return uploadResource(Util.Authorization(clientId,token), path, returnJSONText);
     }
 
     public static String uploadResource(String Authorization, String path, Boolean returnJSONText) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/resource/picture/upload";
-        String Parm = Utils.uploadFile(Authorization, path, url);
+        String Parm = Util.uploadFile(Authorization, path, url);
         if (!returnJSONText) {
             String URL = JSONObject.parseObject(Parm).getJSONObject("data").getString("url");
             int width = JSONObject.parseObject(Parm).getJSONObject("data").getIntValue("width");
