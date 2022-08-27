@@ -1,7 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.api;
 
 import com.alibaba.fastjson.JSONObject;
-import io.github.mcchampions.DodoOpenJava.Utils.Util;
+import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
 
 import java.io.IOException;
 
@@ -19,7 +19,7 @@ public class BotApi {
      * @param returnJSONText 返回原本的出参JSON文本还是经过解析后的参数
      */
     public static String getBotInfo(String clientId, String token, Boolean returnJSONText) throws IOException {
-        return getBotInfo(Util.Authorization(clientId,token),returnJSONText);
+        return getBotInfo(BaseUtil.Authorization(clientId,token),returnJSONText);
     }
 
     /**
@@ -31,7 +31,7 @@ public class BotApi {
     public static String getBotInfo(String Authorization, Boolean returnJSONText) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/bot/info";
         parm = "{}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             String clientId = JSONObject.parseObject(Parm).getJSONObject("data").getString("clientId");
             String dodoId = JSONObject.parseObject(Parm).getJSONObject("data").getString("dodoId");
@@ -54,7 +54,7 @@ public class BotApi {
      * @param returnJSONText 返回原本的出参JSON文本还是经过解析后的参数，由于没什么好解析的，所以false就是返回null
      */
     public static String setBotIslandLeave(String clientId, String token, String islandId, Boolean returnJSONText) throws IOException {
-        return setBotIslandLeave(Util.Authorization(clientId, token), islandId, returnJSONText);
+        return setBotIslandLeave(BaseUtil.Authorization(clientId, token), islandId, returnJSONText);
     }
 
     /**
@@ -69,7 +69,7 @@ public class BotApi {
         parm = "{\n" +
                 "    \"islandId\": \"" + islandId + "\"\n" +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }

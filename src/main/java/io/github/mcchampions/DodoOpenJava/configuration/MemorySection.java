@@ -1,6 +1,6 @@
 package io.github.mcchampions.DodoOpenJava.configuration;
 
-import io.github.mcchampions.DodoOpenJava.Utils.NumberConversions;
+import io.github.mcchampions.DodoOpenJava.Utils.NumberUtil;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -287,12 +287,12 @@ public class MemorySection implements ConfigurationSection {
 
     public int getInt(String path) {
         Object def = getDefault(path);
-        return getInt(path, (def instanceof Number) ? NumberConversions.toInt(def) : 0);
+        return getInt(path, (def instanceof Number) ? NumberUtil.toInt(def) : 0);
     }
 
     public int getInt(String path, int def) {
         Object val = get(path, def);
-        return (val instanceof Number) ? NumberConversions.toInt(val) : def;
+        return (val instanceof Number) ? NumberUtil.toInt(val) : def;
     }
 
     public boolean isInt(String path) {
@@ -317,12 +317,12 @@ public class MemorySection implements ConfigurationSection {
 
     public double getDouble(String path) {
         Object def = getDefault(path);
-        return getDouble(path, (def instanceof Number) ? NumberConversions.toDouble(def) : 0);
+        return getDouble(path, (def instanceof Number) ? NumberUtil.toDouble(def) : 0);
     }
 
     public double getDouble(String path, double def) {
         Object val = get(path, def);
-        return (val instanceof Number) ? NumberConversions.toDouble(val) : def;
+        return (val instanceof Number) ? NumberUtil.toDouble(val) : def;
     }
 
     public boolean isDouble(String path) {
@@ -332,12 +332,12 @@ public class MemorySection implements ConfigurationSection {
 
     public long getLong(String path) {
         Object def = getDefault(path);
-        return getLong(path, (def instanceof Number) ? NumberConversions.toLong(def) : 0);
+        return getLong(path, (def instanceof Number) ? NumberUtil.toLong(def) : 0);
     }
 
     public long getLong(String path, long def) {
         Object val = get(path, def);
-        return (val instanceof Number) ? NumberConversions.toLong(val) : def;
+        return (val instanceof Number) ? NumberUtil.toLong(val) : def;
     }
 
     public boolean isLong(String path) {

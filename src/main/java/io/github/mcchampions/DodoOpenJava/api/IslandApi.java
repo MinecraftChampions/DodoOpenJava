@@ -2,7 +2,7 @@ package io.github.mcchampions.DodoOpenJava.api;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import io.github.mcchampions.DodoOpenJava.Utils.Util;
+import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
@@ -22,7 +22,7 @@ public class IslandApi {
      * @param returnJSONText 是否返回原本的JSON参数，如果是false，则返回经过解析后的文本
      */
     public static String getIslandInfo(String clientId, String token, String islandId, Boolean returnJSONText) throws IOException {
-        return getIslandInfo(Util.Authorization(clientId, token), islandId, returnJSONText);
+        return getIslandInfo(BaseUtil.Authorization(clientId, token), islandId, returnJSONText);
     }
 
     /**
@@ -37,7 +37,7 @@ public class IslandApi {
         parm = "{\n" +
                 "    \"islandId\": \"" + islandId + "\"\n" +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             JSONObject JSONText = JSONObject.parseObject(Parm).getJSONObject("data");
             String islandID = JSONText.getString("islandID");
@@ -68,7 +68,7 @@ public class IslandApi {
      * @param returnJSONText 是否返回原本的JSON参数，如果是false，则返回经过解析后的文本
      */
     public static String getIslandList(String clientId, String token, Boolean returnJSONText) throws IOException {
-        return getIslandList(Util.Authorization(clientId,token), returnJSONText);
+        return getIslandList(BaseUtil.Authorization(clientId,token), returnJSONText);
     }
 
     /**
@@ -81,7 +81,7 @@ public class IslandApi {
         url = "https://botopen.imdodo.com/api/v1/island/list";
         parm = "{}";
         String island;
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             JSONArray JSONList = JSONObject.parseObject(Parm).getJSONArray("data");
             int JSONListSize = JSONList.size();
@@ -124,7 +124,7 @@ public class IslandApi {
      * @param returnJSONText 是否返回原本的JSON参数，如果是false，则返回经过解析后的文本
      */
     public static String getIslandLevelRankList(String clientId, String token, String islandId, int pageSize, long maxId, Boolean returnJSONText) throws IOException {
-        return getIslandLevelRankList(Util.Authorization(clientId, token), islandId, pageSize, maxId, returnJSONText);
+        return getIslandLevelRankList(BaseUtil.Authorization(clientId, token), islandId, pageSize, maxId, returnJSONText);
     }
 
     /**
@@ -143,7 +143,7 @@ public class IslandApi {
                 "    \"pageSize\": \"" + pageSize + "\",\n" +
                 "    \"maxId\": \"" + maxId + "\"\n" +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         String PARM;
         if (!returnJSONText) {
             JSONArray JSONList = JSONObject.parseObject(Parm).getJSONArray("data");
@@ -179,7 +179,7 @@ public class IslandApi {
      * @param returnJSONText 是否返回原本的JSON参数，如果是false，则返回经过解析后的文本
      */
     public static String getIslandMuteList(String clientId, String token, String islandId, Boolean returnJSONText) throws IOException {
-        return getIslandMuteList(Util.Authorization(clientId, token), islandId, returnJSONText);
+        return getIslandMuteList(BaseUtil.Authorization(clientId, token), islandId, returnJSONText);
     }
 
     /**
@@ -194,7 +194,7 @@ public class IslandApi {
         parm = "{\n" +
                 "    \"islandID\": \"" + islandId + "\"\n" +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if(!returnJSONText) {
             JSONArray JSONList = JSONObject.parseObject(Parm).getJSONObject("data").getJSONArray("list");
             int JSONListSize = JSONList.size();
@@ -222,7 +222,7 @@ public class IslandApi {
      * @param returnJSONText 是否返回原本的JSON参数，如果是false，则返回经过解析后的文本
      */
     public static String getIslandBanList(String clientId, String token, String islandId, Boolean returnJSONText) throws IOException {
-        return getIslandBanList(Util.Authorization(clientId, token), islandId, returnJSONText);
+        return getIslandBanList(BaseUtil.Authorization(clientId, token), islandId, returnJSONText);
     }
 
     /**
@@ -237,7 +237,7 @@ public class IslandApi {
         parm = "{\n" +
                 "    \"islandId\": \"" + islandId + "\"\n" +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if(!returnJSONText) {
             JSONArray JSONList = JSONObject.parseObject(Parm).getJSONObject("data").getJSONArray("list");
             int JSONListSize = JSONList.size();

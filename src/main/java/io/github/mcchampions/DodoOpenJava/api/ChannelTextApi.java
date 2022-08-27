@@ -1,7 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.api;
 
 import com.alibaba.fastjson.JSONObject;
-import io.github.mcchampions.DodoOpenJava.Utils.Util;
+import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
 
 import java.io.IOException;
 
@@ -21,7 +21,7 @@ public class ChannelTextApi {
      * @param returnJSONText true返回原本的json文本，false返回消息ID
      */
     public static String setChannelMessageSend(String clientId, String token, String channelId, String Message, Boolean returnJSONText) throws IOException {
-        return setChannelMessageSend(Util.Authorization(clientId,token), channelId, Message, returnJSONText);
+        return setChannelMessageSend(BaseUtil.Authorization(clientId,token), channelId, Message, returnJSONText);
     }
 
     /**
@@ -41,7 +41,7 @@ public class ChannelTextApi {
                 "        \"content\": \"" + Message + "\"\n" +
                 "    }\n" +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -59,7 +59,7 @@ public class ChannelTextApi {
      * @param returnJSONText true返回原本的json文本，false返回消息ID
      */
     public static String referencedMessage(String clientId, String token, String channelId, String Message, String referencedMessageId, Boolean returnJSONText) throws IOException {
-        return referencedMessage(Util.Authorization(clientId,token), channelId, Message, referencedMessageId, returnJSONText);
+        return referencedMessage(BaseUtil.Authorization(clientId,token), channelId, Message, referencedMessageId, returnJSONText);
     }
 
     /**
@@ -81,7 +81,7 @@ public class ChannelTextApi {
                 "        \"referencedMessageId\": \"" + referencedMessageId + "\"\n" +
                 "    }\n" +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -101,7 +101,7 @@ public class ChannelTextApi {
      * @param returnJSONText true返回原本的json文本，false返回消息ID
      */
     public static String setChannelPictureMessageSend(String clientId, String token, String channelId, String Url, int width, int height, Boolean isOriginal, Boolean returnJSONText) throws IOException {
-        return setChannelPictureMessageSend(Util.Authorization(clientId,token), channelId, Url, width, height, isOriginal, returnJSONText);
+        return setChannelPictureMessageSend(BaseUtil.Authorization(clientId,token), channelId, Url, width, height, isOriginal, returnJSONText);
     }
 
     /**
@@ -133,7 +133,7 @@ public class ChannelTextApi {
                 "        \"isOriginal\": " + Original + "\n" +
                 "    }\n" +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -152,7 +152,7 @@ public class ChannelTextApi {
      * @param returnJSONText true返回原本的json文本，false返回消息ID
      */
     public static String setChannelPictureMessageSend(String clientId, String token, String channelId, String Url, int width, int height, Boolean returnJSONText) throws IOException {
-        return setChannelPictureMessageSend(Util.Authorization(clientId,token), channelId, Url, width, height, returnJSONText);
+        return setChannelPictureMessageSend(BaseUtil.Authorization(clientId,token), channelId, Url, width, height, returnJSONText);
     }
 
     /**
@@ -176,7 +176,7 @@ public class ChannelTextApi {
                 "        \"height\": " + height + "\n" +
                 "    }\n" +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -193,7 +193,7 @@ public class ChannelTextApi {
      * @param returnJSONText true返回原本的json文本，false返回消息ID
      */
     public static String setChannelVideoMessageSend(String clientId, String token, String channelId, String Url, Boolean returnJSONText) throws IOException {
-        return setChannelVideoMessageSend(Util.Authorization(clientId,token), channelId, Url, returnJSONText);
+        return setChannelVideoMessageSend(BaseUtil.Authorization(clientId,token), channelId, Url, returnJSONText);
     }
 
     /**
@@ -213,7 +213,7 @@ public class ChannelTextApi {
                 "        \"url\": \"" + Url + "\"\n" +
                 "    }\n" +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -233,7 +233,7 @@ public class ChannelTextApi {
      * @param returnJSONText true返回原本的json文本，false返回消息ID
      */
     public static String setChannelVideoMessageSend(String clientId, String token, String channelId, String Url, String coverUrl, long duration, long size, Boolean returnJSONText) throws IOException {
-        return setChannelVideoMessageSend(Util.Authorization(clientId,token), channelId, Url, coverUrl, duration, size, returnJSONText);
+        return setChannelVideoMessageSend(BaseUtil.Authorization(clientId,token), channelId, Url, coverUrl, duration, size, returnJSONText);
     }
 
     /**
@@ -259,7 +259,7 @@ public class ChannelTextApi {
                 "        \"size\": " + size + "\n" +
                 "    }\n" +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -276,7 +276,7 @@ public class ChannelTextApi {
      * @param returnJSONText true返回原本的json文本，false返回消息ID
      */
     public static String setChannelShareMessageSend(String clientId, String token, String channelId, String jumpUrl, Boolean returnJSONText) throws IOException {
-        return setChannelShareMessageSend(Util.Authorization(clientId,token), channelId, jumpUrl, returnJSONText);
+        return setChannelShareMessageSend(BaseUtil.Authorization(clientId,token), channelId, jumpUrl, returnJSONText);
     }
 
     /**
@@ -296,7 +296,7 @@ public class ChannelTextApi {
                 "        \"jumpUrl\": \"" + jumpUrl + "\"\n" +
                 "    }\n" +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -315,7 +315,7 @@ public class ChannelTextApi {
      * @param returnJSONText true返回原本的json文本，false返回消息ID
      */
     public static String setChannelFileMessageSend(String clientId, String token, String channelId, String Url, String name, long size, Boolean returnJSONText) throws IOException {
-        return setChannelFileMessageSend(Util.Authorization(clientId,token), channelId, Url, name, size, returnJSONText);
+        return setChannelFileMessageSend(BaseUtil.Authorization(clientId,token), channelId, Url, name, size, returnJSONText);
     }
 
     /**
@@ -339,7 +339,7 @@ public class ChannelTextApi {
                 "        \"size\": " + size + "\n" +
                 "    }\n" +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -356,7 +356,7 @@ public class ChannelTextApi {
      * @param returnJSONText 是否返回json文本
      */
     public static String setChannelMessageEdit(String clientId, String token, String messageId, String content, Boolean returnJSONText) throws IOException {
-        return setChannelMessageEdit(Util.Authorization(clientId,token), messageId, content, returnJSONText);
+        return setChannelMessageEdit(BaseUtil.Authorization(clientId,token), messageId, content, returnJSONText);
     }
 
     /**
@@ -376,7 +376,7 @@ public class ChannelTextApi {
                 "        \"content\": \"" + content + "\"\n" +
                 "    }\n" +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -392,7 +392,7 @@ public class ChannelTextApi {
      * @param returnJSONText 是否返回json文本
      */
     public static String setChannelMessageWithdraw(String clientId, String token, String messageId, Boolean returnJSONText) throws IOException {
-        return setChannelMessageWithdraw(Util.Authorization(clientId,token), messageId, returnJSONText);
+        return setChannelMessageWithdraw(BaseUtil.Authorization(clientId,token), messageId, returnJSONText);
     }
 
     /**
@@ -407,7 +407,7 @@ public class ChannelTextApi {
         parm = "{\n" +
                 "    \"messageId\": \"" + messageId + "\"\n" +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -424,7 +424,7 @@ public class ChannelTextApi {
      * @param returnJSONText 是否返回json文本
      */
     public static String setChannelMessageWithdrawWithReason(String clientId, String token, String messageId, String reason, Boolean returnJSONText) throws IOException {
-        return setChannelMessageWithdrawWithReason(Util.Authorization(clientId,token), messageId, reason, returnJSONText);
+        return setChannelMessageWithdrawWithReason(BaseUtil.Authorization(clientId,token), messageId, reason, returnJSONText);
     }
 
     /**
@@ -441,7 +441,7 @@ public class ChannelTextApi {
                 "    \"messageId\": \"" + messageId + "\",\n" +
                 "    \"reason\": \"" + reason + "\"\n" +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -458,7 +458,7 @@ public class ChannelTextApi {
      * @param returnJSONText 是否返回json文本
      */
     public static String setChannelMessageReactionAdd(String clientId, String token, String messageId, String id, Boolean returnJSONText) throws IOException {
-        return setChannelMessageReactionAdd(Util.Authorization(clientId,token), messageId, id, returnJSONText);
+        return setChannelMessageReactionAdd(BaseUtil.Authorization(clientId,token), messageId, id, returnJSONText);
     }
 
     /**
@@ -478,7 +478,7 @@ public class ChannelTextApi {
                 "        \"id\": \"" + id + "\"\n" +
                 "    }\n" +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -496,7 +496,7 @@ public class ChannelTextApi {
      * @param returnJSONText 是否返回json文本
      */
     public static String setChannelMessageReactionRemove(String clientId, String token, String messageId, String id, String dodoId, Boolean returnJSONText) throws IOException {
-        return setChannelMessageReactionRemove(Util.Authorization(clientId,token), messageId, id, dodoId, returnJSONText);
+        return setChannelMessageReactionRemove(BaseUtil.Authorization(clientId,token), messageId, id, dodoId, returnJSONText);
     }
 
     /**
@@ -518,7 +518,7 @@ public class ChannelTextApi {
                 "    },\n" +
                 "    \"dodoId\": \"" + dodoId + "\"\n" +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -535,7 +535,7 @@ public class ChannelTextApi {
      * @param returnJSONText 是否返回json文本
      */
     public static String setChannelMessageBotReactionRemove(String clientId, String token, String messageId, String id, Boolean returnJSONText) throws IOException {
-        return setChannelMessageBotReactionRemove(Util.Authorization(clientId,token), messageId, id, returnJSONText);
+        return setChannelMessageBotReactionRemove(BaseUtil.Authorization(clientId,token), messageId, id, returnJSONText);
     }
 
     /**
@@ -555,7 +555,7 @@ public class ChannelTextApi {
                 "        \"id\": \"" + id + "\",\n" +
                 "    }\n" +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -572,7 +572,7 @@ public class ChannelTextApi {
      * @param returnJSONText true返回原本的json文本，false返回消息ID
      */
     public static String sendCardMessage(String clientId, String token, String channelId, String messageBody, Boolean returnJSONText) throws IOException {
-        return sendCardMessage(Util.Authorization(clientId,token), channelId, messageBody, returnJSONText);
+        return sendCardMessage(BaseUtil.Authorization(clientId,token), channelId, messageBody, returnJSONText);
     }
 
     /**
@@ -590,7 +590,7 @@ public class ChannelTextApi {
                 "    \"messageType\": 6,\n" +
                 "    \"messageBody\": " + messageBody +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -607,7 +607,7 @@ public class ChannelTextApi {
      * @param returnJSONText 是否返回json文本
      */
     public static String setChannelCardMessageEdit(String clientId, String token, String messageId, String messageBody, Boolean returnJSONText) throws IOException {
-        return setChannelCardMessageEdit(Util.Authorization(clientId,token), messageId, messageBody, returnJSONText);
+        return setChannelCardMessageEdit(BaseUtil.Authorization(clientId,token), messageId, messageBody, returnJSONText);
     }
 
     /**
@@ -625,7 +625,7 @@ public class ChannelTextApi {
                 "    \"messageType\": 1,\n" +
                 "    \"messageBody\": " + messageBody +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }

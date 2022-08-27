@@ -1,7 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.api;
 
 import com.alibaba.fastjson.JSONObject;
-import io.github.mcchampions.DodoOpenJava.Utils.Util;
+import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
 
 import java.io.IOException;
 
@@ -23,7 +23,7 @@ public class NTFApi {
      * @param returnJSONText 是否返回原本的JSON参数，如果是false，则返回经过解析后的文本
      */
     public static String getMemberNftStatus(String clientId, String token, String islandId, String dodoId, String platform, Boolean returnJSONText) throws IOException {
-        return getMemberNftStatus(Util.Authorization(clientId, token), islandId, dodoId, platform, returnJSONText);
+        return getMemberNftStatus(BaseUtil.Authorization(clientId, token), islandId, dodoId, platform, returnJSONText);
     }
 
     /**
@@ -42,7 +42,7 @@ public class NTFApi {
                 "    \"dodoId\": \"" + dodoId + "\",\n" +
                 "    \"platform\": \"" + platform + "\"\n" +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if(!returnJSONText) {
             int isBandPlatformType = JSONObject.parseObject(Parm).getJSONObject("data").getIntValue("isBandPlatform");
             int isHaveIssuerType = JSONObject.parseObject(Parm).getJSONObject("data").getIntValue("isHaveIssuer");
@@ -85,7 +85,7 @@ public class NTFApi {
      * @param returnJSONText 是否返回原本的JSON参数，如果是false，则返回经过解析后的文本
      */
     public static String getMemberNftStatus(String clientId, String token, String islandId, String dodoId, String platform, String issuer, String series, Boolean returnJSONText) throws IOException {
-        return getMemberNftStatus(Util.Authorization(clientId, token), islandId, dodoId, platform, issuer, series, returnJSONText);
+        return getMemberNftStatus(BaseUtil.Authorization(clientId, token), islandId, dodoId, platform, issuer, series, returnJSONText);
     }
 
     /**
@@ -106,7 +106,7 @@ public class NTFApi {
                 "    \"issuer\": \"" + issuer + "\",\n" +
                 "    \"series\": \"" + series + "\"\n" +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if(!returnJSONText) {
             int isBandPlatformType = JSONObject.parseObject(Parm).getJSONObject("data").getIntValue("isBandPlatform");
             int isHaveIssuerType = JSONObject.parseObject(Parm).getJSONObject("data").getIntValue("isHaveIssuer");

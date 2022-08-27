@@ -2,7 +2,7 @@ package io.github.mcchampions.DodoOpenJava.api;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import io.github.mcchampions.DodoOpenJava.Utils.Util;
+import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
@@ -24,7 +24,7 @@ public class Role {
      * @param returnJSONText 返回原本的出参JSON文本还是经过解析后的参数
      */
     public static String getRoleList(String clientId, String token, String islandId, Boolean returnJSONText) throws IOException {
-        return getRoleList(Util.Authorization(clientId, token), islandId, returnJSONText);
+        return getRoleList(BaseUtil.Authorization(clientId, token), islandId, returnJSONText);
     }
 
     /**
@@ -39,7 +39,7 @@ public class Role {
         parm = "{\n" +
                 "    \"islandId\": \"" + islandId + "\"\n" +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         String island;
         if (!returnJSONText) {
             JSONArray JSONList = JSONObject.parseObject(Parm).getJSONArray("data");
@@ -79,7 +79,7 @@ public class Role {
      * @param returnJSONText 返回原本的出参JSON文本还是经过解析后的参数，由于没什么好解析的，所以false就是返回null
      */
     public static String setRoleMemberAdd(String clientId, String token, String islandId, String DodoId, String roleId, Boolean returnJSONText) throws IOException {
-        return setRoleMemberAdd(Util.Authorization(clientId, token), islandId, DodoId, roleId, returnJSONText);
+        return setRoleMemberAdd(BaseUtil.Authorization(clientId, token), islandId, DodoId, roleId, returnJSONText);
     }
 
     /**
@@ -98,7 +98,7 @@ public class Role {
                 "    \"dodoId\": \"" + DodoId + "\",\n" +
                 "    \"roleId\": \"" + roleId + "\"\n" +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -116,7 +116,7 @@ public class Role {
      * @param returnJSONText 返回原本的出参JSON文本还是经过解析后的参数，由于没什么好解析的，所以false就是返回null
      */
     public static String setRoleMemberRemove(String clientId, String token, String islandId, String DodoId, String roleId, Boolean returnJSONText) throws IOException {
-        return setRoleMemberRemove(Util.Authorization(clientId, token), islandId, DodoId, roleId, returnJSONText);
+        return setRoleMemberRemove(BaseUtil.Authorization(clientId, token), islandId, DodoId, roleId, returnJSONText);
     }
 
     /**
@@ -135,7 +135,7 @@ public class Role {
                 "    \"dodoId\": \"" + DodoId + "\",\n" +
                 "    \"roleId\": \"" + roleId + "\"\n" +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -155,7 +155,7 @@ public class Role {
      * @param returnJSONText 返回原本的出参JSON文本还是返回身份组ID
      */
     public static String addRole(String clientId, String token, String islandId, String roleName, String roleColor,int position, String permission, Boolean returnJSONText) throws IOException {
-        return addRole(Util.Authorization(clientId, token), islandId, roleName, roleColor, position, permission, returnJSONText);
+        return addRole(BaseUtil.Authorization(clientId, token), islandId, roleName, roleColor, position, permission, returnJSONText);
     }
 
     /**
@@ -196,7 +196,7 @@ public class Role {
 
         param.add("\n}");
         parm = StringUtils.join(param.toArray());
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("roleId");
         }
@@ -217,7 +217,7 @@ public class Role {
      * @param returnJSONText 返回原本的出参JSON文本还是返回null
      */
     public static String editRole(String clientId, String token, String islandId, String roleId, String roleName, String roleColor,int position, String permission, Boolean returnJSONText) throws IOException {
-        return editRole(Util.Authorization(clientId, token), islandId, roleId, roleName, roleColor, position, permission, returnJSONText);
+        return editRole(BaseUtil.Authorization(clientId, token), islandId, roleId, roleName, roleColor, position, permission, returnJSONText);
     }
 
     /**
@@ -260,7 +260,7 @@ public class Role {
 
         param.add("\n}");
         parm = StringUtils.join(param.toArray());
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -277,7 +277,7 @@ public class Role {
      * @param returnJSONText 返回原本的出参JSON文本还是经过解析后的参数，由于没什么好解析的，所以false就是返回null
      */
     public static String deleteRole(String clientId, String token, String islandId, String roleId, Boolean returnJSONText) throws IOException {
-        return deleteRole(Util.Authorization(clientId, token), islandId, roleId, returnJSONText);
+        return deleteRole(BaseUtil.Authorization(clientId, token), islandId, roleId, returnJSONText);
     }
 
     /**
@@ -294,7 +294,7 @@ public class Role {
                 "    \"islandId\": \"" + islandId + "\",\n" +
                 "    \"roleId\": \"" + roleId + "\"\n" +
                 "}";
-        String Parm = Util.sendRequest(parm, url, Authorization);
+        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
