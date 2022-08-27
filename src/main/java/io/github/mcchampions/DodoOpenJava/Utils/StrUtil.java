@@ -1,17 +1,19 @@
 package io.github.mcchampions.DodoOpenJava.Utils;
 
+import org.apache.commons.lang3.StringUtils;
 import java.util.Locale;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * 一些字符串的实用方法
+ * 一些 字符串 的实用方法
  */
 public class StrUtil {
     public final static Pattern DEL_PATTERN = Pattern.compile("[%]");
     public final static Pattern HUMP_PATTERN = Pattern.compile("[A-Z]");
     public final static Pattern LINE_PATTERN = Pattern.compile("_(\\w)");
+
     /**
      * 是否为空
      *
@@ -44,16 +46,23 @@ public class StrUtil {
 
     /**
      * 首字母大写
+     *
      * @param str 字符串
      * @return 首字母大写字符串
      */
     public static String capture(String str) {
-        char[] chars = str.toCharArray();
-        if (Character.isLowerCase(chars[0])) {
-            chars[0]-=32;
-            return String.valueOf(chars);
-        }
-        return str;
+        return StringUtils.capitalize(str);
+    }
+
+    /**
+     * 重复拼接字符串
+     *
+     * @param str 字符串
+     * @param repeatInt 重复次数
+     * @return 字符串
+     */
+    public static String repeat(String str, int repeatInt) {
+        return StringUtils.repeat(str, repeatInt);
     }
 
     /**
@@ -146,7 +155,8 @@ public class StrUtil {
     public static UUID getUUID(String uuid) {
         try {
             return UUID.fromString(uuid);
-        } catch (final IllegalArgumentException ignored) {}
+        } catch (final IllegalArgumentException ignored) {
+        }
         return null;
     }
 
@@ -156,8 +166,7 @@ public class StrUtil {
      * @param c Char
      * @return Unicode 字符
      */
-    public static String unicode(char c)
-    {
-        return "\\u" + String.format( "%04x", (int) c ).toUpperCase(Locale.ROOT);
+    public static String unicode(char c) {
+        return "\\u" + String.format("%04x", (int) c).toUpperCase(Locale.ROOT);
     }
 }

@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * 关于数字的一些实用方法
+ * 关于 数字 的一些实用方法
  */
 public class NumberUtil {
     public final static Pattern NUMERIC = Pattern.compile("^-?\\d+(\\.\\d+)?$");

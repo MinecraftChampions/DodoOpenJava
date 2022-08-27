@@ -144,7 +144,7 @@ public class DataUtil {
     }
 
     /**
-     * LocalDateTime 转date
+     * LocalDateTime 转 date
      *
      * @param localDateTime localDateTime
      * @return Date

@@ -10,7 +10,7 @@ import java.net.*;
 import java.util.*;
 
 /**
- * 一些关于网请求的相关方法
+ * 一些关于 网络请求 的相关方法
  */
 public class NetUtil {
     static OkHttpClient client = new OkHttpClient();

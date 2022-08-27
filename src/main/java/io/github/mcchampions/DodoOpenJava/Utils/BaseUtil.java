@@ -1,5 +1,8 @@
 package io.github.mcchampions.DodoOpenJava.Utils;
 
+/**
+ * 一些常用的方法
+ */
 public class BaseUtil {
     /**
      * 拼接 Authorization

@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 关于Bean的一些实用方法
+ * 关于 Bean 的一些实用方法
  */
 public class BeanUtil {
     private final static String CLASS = "class";

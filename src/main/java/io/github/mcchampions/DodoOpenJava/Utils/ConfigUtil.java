@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 关于配置文件的一些方法
+ * 关于 配置文件 的一些方法
  */
 public class ConfigUtil {
 
