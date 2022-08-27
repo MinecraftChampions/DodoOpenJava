@@ -2,6 +2,7 @@ package io.github.mcchampions.DodoOpenJava.api;
 
 import com.alibaba.fastjson.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
+import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
 
 import java.io.IOException;
 
@@ -31,7 +32,7 @@ public class BotApi {
     public static String getBotInfo(String Authorization, Boolean returnJSONText) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/bot/info";
         parm = "{}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             String clientId = JSONObject.parseObject(Parm).getJSONObject("data").getString("clientId");
             String dodoId = JSONObject.parseObject(Parm).getJSONObject("data").getString("dodoId");
@@ -69,7 +70,7 @@ public class BotApi {
         parm = "{\n" +
                 "    \"islandId\": \"" + islandId + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }

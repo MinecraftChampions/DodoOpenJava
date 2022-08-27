@@ -3,6 +3,7 @@ package io.github.mcchampions.DodoOpenJava.api;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
+import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
@@ -37,7 +38,7 @@ public class IslandApi {
         parm = "{\n" +
                 "    \"islandId\": \"" + islandId + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             JSONObject JSONText = JSONObject.parseObject(Parm).getJSONObject("data");
             String islandID = JSONText.getString("islandID");
@@ -81,7 +82,7 @@ public class IslandApi {
         url = "https://botopen.imdodo.com/api/v1/island/list";
         parm = "{}";
         String island;
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             JSONArray JSONList = JSONObject.parseObject(Parm).getJSONArray("data");
             int JSONListSize = JSONList.size();
@@ -143,7 +144,7 @@ public class IslandApi {
                 "    \"pageSize\": \"" + pageSize + "\",\n" +
                 "    \"maxId\": \"" + maxId + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         String PARM;
         if (!returnJSONText) {
             JSONArray JSONList = JSONObject.parseObject(Parm).getJSONArray("data");
@@ -194,7 +195,7 @@ public class IslandApi {
         parm = "{\n" +
                 "    \"islandID\": \"" + islandId + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if(!returnJSONText) {
             JSONArray JSONList = JSONObject.parseObject(Parm).getJSONObject("data").getJSONArray("list");
             int JSONListSize = JSONList.size();
@@ -237,7 +238,7 @@ public class IslandApi {
         parm = "{\n" +
                 "    \"islandId\": \"" + islandId + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if(!returnJSONText) {
             JSONArray JSONList = JSONObject.parseObject(Parm).getJSONObject("data").getJSONArray("list");
             int JSONListSize = JSONList.size();

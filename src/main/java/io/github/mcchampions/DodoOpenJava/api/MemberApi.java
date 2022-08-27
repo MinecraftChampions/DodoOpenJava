@@ -3,6 +3,7 @@ package io.github.mcchampions.DodoOpenJava.api;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
+import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
@@ -43,7 +44,7 @@ public class MemberApi {
                 "    \"pageSize\": \"" + pageSize + "\",\n" +
                 "    \"maxId\": \"" + maxId + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         String PARM;
         if (!returnJSONText) {
             JSONArray JSONList = JSONObject.parseObject(Parm).getJSONObject("data").getJSONArray("list");
@@ -151,7 +152,7 @@ public class MemberApi {
                 "    \"islandId\": \"" + islandId + "\",\n" +
                 "    \"dodoId\": \"" + DodoId + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             JSONObject JSONText = JSONObject.parseObject(Parm).getJSONObject("data");
             String dodoId = JSONText.getString("dodoId");
@@ -248,7 +249,7 @@ public class MemberApi {
                 "    \"islandId\": \"" + islandId + "\",\n" +
                 "    \"dodoID\": \"" + DodoId + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         String role;
         if (!returnJSONText) {
             JSONArray JSONList = JSONObject.parseObject(Parm).getJSONArray("data");
@@ -304,7 +305,7 @@ public class MemberApi {
                 "    \"islandId\": \"" + islandId + "\",\n" +
                 "    \"dodoId\": \"" + DodoId + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             String DoDoId = JSONObject.parseObject(Parm).getJSONObject("data").getString("dodoId");
             String nickName = JSONObject.parseObject(Parm).getJSONObject("data").getString("nickName");
@@ -346,7 +347,7 @@ public class MemberApi {
                 "    \"dodoId\": \"" + DodoId + "\",\n" +
                 "    \"nickName\": \"" + nickName + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -383,7 +384,7 @@ public class MemberApi {
                 "    \"dodoId\": \"" + DodoId + "\",\n" +
                 "    \"duration\": " + duration + "\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -423,7 +424,7 @@ public class MemberApi {
                 "    \"duration\": " + duration + ",\n" +
                 "    \"reason\": \"" + reason + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -457,7 +458,7 @@ public class MemberApi {
                 "    \"islandId\": \"" + islandId + "\",\n" +
                 "    \"dodoId\": \"" + DodoId + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -491,7 +492,7 @@ public class MemberApi {
                 "    \"islandId\": \"" + islandId + "\",\n" +
                 "    \"dodoId\": \"" + DodoId + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -528,7 +529,7 @@ public class MemberApi {
                 "    \"dodoId\": \"" + DodoId + "\",\n" +
                 "    \"reason\": \"" + reason + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -565,7 +566,7 @@ public class MemberApi {
                 "    \"dodoId\": \"" + DodoId + "\",\n" +
                 "    \"noticeChannelId\": \"" + noticeChannelId + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -605,7 +606,7 @@ public class MemberApi {
                 "    \"noticeChannelId\": \"" + noticeChannelId + "\",\n" +
                 "    \"reason\": \"" + reason + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -639,7 +640,7 @@ public class MemberApi {
                 "    \"islandId\": \"" + islandId + "\",\n" +
                 "    \"dodoId\": \"" + DodoId + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }

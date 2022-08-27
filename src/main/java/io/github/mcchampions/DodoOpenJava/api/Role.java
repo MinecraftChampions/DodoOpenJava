@@ -3,6 +3,7 @@ package io.github.mcchampions.DodoOpenJava.api;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
+import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
@@ -39,7 +40,7 @@ public class Role {
         parm = "{\n" +
                 "    \"islandId\": \"" + islandId + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         String island;
         if (!returnJSONText) {
             JSONArray JSONList = JSONObject.parseObject(Parm).getJSONArray("data");
@@ -98,7 +99,7 @@ public class Role {
                 "    \"dodoId\": \"" + DodoId + "\",\n" +
                 "    \"roleId\": \"" + roleId + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -135,7 +136,7 @@ public class Role {
                 "    \"dodoId\": \"" + DodoId + "\",\n" +
                 "    \"roleId\": \"" + roleId + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -196,7 +197,7 @@ public class Role {
 
         param.add("\n}");
         parm = StringUtils.join(param.toArray());
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("roleId");
         }
@@ -260,7 +261,7 @@ public class Role {
 
         param.add("\n}");
         parm = StringUtils.join(param.toArray());
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -294,7 +295,7 @@ public class Role {
                 "    \"islandId\": \"" + islandId + "\",\n" +
                 "    \"roleId\": \"" + roleId + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }

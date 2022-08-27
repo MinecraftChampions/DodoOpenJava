@@ -3,6 +3,7 @@ package io.github.mcchampions.DodoOpenJava.api;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
+import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
@@ -37,7 +38,7 @@ public class ChannelApi {
                 "    \"islandId\": \"" + islandId + "\"\n" +
                 "}";
         String channel;
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             JSONArray JSONList = JSONObject.parseObject(Parm).getJSONArray("data");
             int JSONListSize = JSONList.size();
@@ -105,7 +106,7 @@ public class ChannelApi {
         parm = "{\n" +
                 "    \"channelId\": \"" + channelId + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             JSONObject JSONText = JSONObject.parseObject(Parm).getJSONObject("data");
             String ChannelId = JSONText.getString("channelId");
@@ -168,7 +169,7 @@ public class ChannelApi {
                 "    \"channelName\": \"" + channelName + "\",\n" +
                 "    \"channelType\": " + channelType + "\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("channelId");
         }
@@ -205,7 +206,7 @@ public class ChannelApi {
                 "    \"channelId\": \"" + channelId + "\",\n" +
                 "    \"channelName\": \"" + channelName + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -239,7 +240,7 @@ public class ChannelApi {
                 "    \"islandId\": \"" + islandId + "\",\n" +
                 "    \"channelId\": \"" + channelId + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }

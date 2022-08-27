@@ -43,6 +43,20 @@ public class StrUtil {
     }
 
     /**
+     * 首字母大写
+     * @param str 字符串
+     * @return 首字母大写字符串
+     */
+    public static String capture(String str) {
+        char[] chars = str.toCharArray();
+        if (Character.isLowerCase(chars[0])) {
+            chars[0]-=32;
+            return String.valueOf(chars);
+        }
+        return str;
+    }
+
+    /**
      * 将#替换成空格
      *
      * @param str 字符串

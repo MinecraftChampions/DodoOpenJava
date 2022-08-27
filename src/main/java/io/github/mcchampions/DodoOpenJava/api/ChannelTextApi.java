@@ -2,6 +2,7 @@ package io.github.mcchampions.DodoOpenJava.api;
 
 import com.alibaba.fastjson.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
+import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
 
 import java.io.IOException;
 
@@ -41,7 +42,7 @@ public class ChannelTextApi {
                 "        \"content\": \"" + Message + "\"\n" +
                 "    }\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -81,7 +82,7 @@ public class ChannelTextApi {
                 "        \"referencedMessageId\": \"" + referencedMessageId + "\"\n" +
                 "    }\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -133,7 +134,7 @@ public class ChannelTextApi {
                 "        \"isOriginal\": " + Original + "\n" +
                 "    }\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -176,7 +177,7 @@ public class ChannelTextApi {
                 "        \"height\": " + height + "\n" +
                 "    }\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -213,7 +214,7 @@ public class ChannelTextApi {
                 "        \"url\": \"" + Url + "\"\n" +
                 "    }\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -259,7 +260,7 @@ public class ChannelTextApi {
                 "        \"size\": " + size + "\n" +
                 "    }\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -296,7 +297,7 @@ public class ChannelTextApi {
                 "        \"jumpUrl\": \"" + jumpUrl + "\"\n" +
                 "    }\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -339,7 +340,7 @@ public class ChannelTextApi {
                 "        \"size\": " + size + "\n" +
                 "    }\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -376,7 +377,7 @@ public class ChannelTextApi {
                 "        \"content\": \"" + content + "\"\n" +
                 "    }\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -407,7 +408,7 @@ public class ChannelTextApi {
         parm = "{\n" +
                 "    \"messageId\": \"" + messageId + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -441,7 +442,7 @@ public class ChannelTextApi {
                 "    \"messageId\": \"" + messageId + "\",\n" +
                 "    \"reason\": \"" + reason + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -478,7 +479,7 @@ public class ChannelTextApi {
                 "        \"id\": \"" + id + "\"\n" +
                 "    }\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -518,7 +519,7 @@ public class ChannelTextApi {
                 "    },\n" +
                 "    \"dodoId\": \"" + dodoId + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -555,7 +556,7 @@ public class ChannelTextApi {
                 "        \"id\": \"" + id + "\",\n" +
                 "    }\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }
@@ -590,7 +591,7 @@ public class ChannelTextApi {
                 "    \"messageType\": 6,\n" +
                 "    \"messageBody\": " + messageBody +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -625,7 +626,7 @@ public class ChannelTextApi {
                 "    \"messageType\": 1,\n" +
                 "    \"messageBody\": " + messageBody +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }

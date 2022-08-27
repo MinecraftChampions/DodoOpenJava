@@ -2,6 +2,7 @@ package io.github.mcchampions.DodoOpenJava.api;
 
 import com.alibaba.fastjson.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
+import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
 
 import java.io.IOException;
 
@@ -41,7 +42,7 @@ public class PersonalApi {
                 "        \"content\": \"" + Message + "\"\n" +
                 "    }\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -93,7 +94,7 @@ public class PersonalApi {
                 "        \"isOriginal\": " + Original + "\n" +
                 "    }\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -136,7 +137,7 @@ public class PersonalApi {
                 "        \"height\": " + height + "\n" +
                 "    }\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -173,7 +174,7 @@ public class PersonalApi {
                 "        \"url\": \"" + Url + "\"\n" +
                 "    }\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }
@@ -219,7 +220,7 @@ public class PersonalApi {
                 "        \"size\": " + size + "\n" +
                 "    }\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
         }

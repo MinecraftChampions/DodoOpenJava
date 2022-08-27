@@ -14,6 +14,7 @@ import java.util.Map;
  * 关于配置文件的一些方法
  */
 public class ConfigUtil {
+
     /**
      * 加载文件
      *
@@ -100,7 +101,7 @@ public class ConfigUtil {
      * @param outFile 复制到的文件对象
      * @return true就是成功，false就是失败
      */
-    public static boolean copy(File inFile, File outFile) {
+    public static Boolean copy(File inFile, File outFile) {
         if (!inFile.exists()) {
             return false;
         }
@@ -135,6 +136,42 @@ public class ConfigUtil {
         return true;
     }
 
+    /**
+     * 复制Jar包里的文件
+     * @param inPath 文件位于jar包里的路径（前面不带/）（如“config.yml")
+     * @param outPath 复制到的文件路径（如C:/config.yml)
+     * @return true 成功，false 失败
+     */
+    public static Boolean copyResourcesToFile(String inPath, String outPath) throws IOException {
+        int firstIndex = outPath.lastIndexOf(System.getProperty("path.separator")) + 1;
+        int lastIndex = outPath.lastIndexOf(File.separator) + 1;
+        File OutPath = new File(outPath.substring(firstIndex, lastIndex));
+        if (!OutPath.exists()) {
+            OutPath.mkdirs();
+        }
+
+        if (new File(inPath).exists()) {
+            return false;
+        }
+        FileOutputStream outputStream = new FileOutputStream(outPath);
+        try (InputStream inputStream = ConfigUtil.class.getResourceAsStream(inPath)) {
+            if (inputStream != null) {
+                inputStream.transferTo(outputStream);
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 获取当前jar包的路径（不包含jar包本身）
+     * @return 路径（如：”C:/Test/“)
+     */
+    public static String getJarPath() {
+        String path = java.net.URLDecoder.decode(System.getProperty("java.class.path"));
+        int firstIndex = path.lastIndexOf(System.getProperty("path.separator")) + 1;
+        int lastIndex = path.lastIndexOf(File.separator) + 1;
+        return path.substring(firstIndex, lastIndex);
+    }
     /**
      * 读取json文件
      *

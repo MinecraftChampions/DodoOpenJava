@@ -2,6 +2,7 @@ package io.github.mcchampions.DodoOpenJava.api;
 
 import com.alibaba.fastjson.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
+import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
 
 import java.io.IOException;
 
@@ -42,7 +43,7 @@ public class NTFApi {
                 "    \"dodoId\": \"" + dodoId + "\",\n" +
                 "    \"platform\": \"" + platform + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if(!returnJSONText) {
             int isBandPlatformType = JSONObject.parseObject(Parm).getJSONObject("data").getIntValue("isBandPlatform");
             int isHaveIssuerType = JSONObject.parseObject(Parm).getJSONObject("data").getIntValue("isHaveIssuer");
@@ -106,7 +107,7 @@ public class NTFApi {
                 "    \"issuer\": \"" + issuer + "\",\n" +
                 "    \"series\": \"" + series + "\"\n" +
                 "}";
-        String Parm = BaseUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if(!returnJSONText) {
             int isBandPlatformType = JSONObject.parseObject(Parm).getJSONObject("data").getIntValue("isBandPlatform");
             int isHaveIssuerType = JSONObject.parseObject(Parm).getJSONObject("data").getIntValue("isHaveIssuer");
