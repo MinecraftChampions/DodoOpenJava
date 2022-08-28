@@ -41,30 +41,4 @@ public class BeanUtil {
         }
         return map;
     }
-
-    /**
-     * map转bean
-     *
-     * @param type beanType
-     * @param map  map
-     * @return bean
-     */
-    public static <T> T mapToBean(Class<T> type, Map<?, ?> map) {
-        T obj = null;
-        try {
-            BeanInfo beanInfo = Introspector.getBeanInfo(type);
-            obj = type.newInstance();
-            PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
-            for (PropertyDescriptor descriptor : propertyDescriptors) {
-                String propertyName = descriptor.getName();
-                if (map.containsKey(propertyName)) {
-                    Object value = map.get(propertyName);
-                    descriptor.getWriteMethod().invoke(obj, value);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return obj;
-    }
 }

@@ -68,11 +68,9 @@ public class NetUtil {
                 .url(url)
                 .post(RequestBody.create(MediaType.parse("application/json"),param))
                 .build();
-        Iterator<Map.Entry<String,String>> iter = Header.entrySet().iterator();
-        while (iter.hasNext()) {
-            request.newBuilder().addHeader(iter.next().getKey(),iter.next().getValue());
+        for (int i = 0; i < MapUtil.ergodicMaps(Header).size(); i++) {
+            request.newBuilder().addHeader(MapUtil.ergodicMaps(Header).get(i).get(0).toString(), MapUtil.ergodicMaps(Header).get(i).get(1).toString());
         }
-
         Response response = client.newCall(request).execute();
 
         String a = Objects.requireNonNull(response.body()).string();
@@ -142,9 +140,8 @@ public class NetUtil {
                 .url(url)
                 .get()
                 .build();
-        Iterator<Map.Entry<String,String>> iter = Header.entrySet().iterator();
-        while (iter.hasNext()) {
-            request.newBuilder().addHeader(iter.next().getKey(),iter.next().getValue());
+        for (int i = 0; i < MapUtil.ergodicMaps(Header).size(); i++) {
+            request.newBuilder().addHeader(MapUtil.ergodicMaps(Header).get(i).get(0).toString(), MapUtil.ergodicMaps(Header).get(i).get(1).toString());
         }
 
         Response response = client.newCall(request).execute();
