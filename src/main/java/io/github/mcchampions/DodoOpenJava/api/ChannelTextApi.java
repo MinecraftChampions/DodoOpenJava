@@ -1,6 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.api;
 
 import com.alibaba.fastjson2.JSONObject;
+import io.github.mcchampions.DodoOpenJava.Card.Card;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
 import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
 
@@ -569,10 +570,10 @@ public class ChannelTextApi {
      * @param clientId 机器人唯一标识
      * @param token 机器人鉴权Token
      * @param channelId 频道号
-     * @param messageBody 卡片代码（去卡片编辑器生成直接复制,记得在行尾加换行符）
+     * @param messageBody 卡片代码
      * @param returnJSONText true返回原本的json文本，false返回消息ID
      */
-    public static String sendCardMessage(String clientId, String token, String channelId, String messageBody, Boolean returnJSONText) throws IOException {
+    public static String sendCardMessage(String clientId, String token, String channelId, Card messageBody, Boolean returnJSONText) throws IOException {
         return sendCardMessage(BaseUtil.Authorization(clientId,token), channelId, messageBody, returnJSONText);
     }
 
@@ -581,15 +582,15 @@ public class ChannelTextApi {
      *
      * @param Authorization Authorization
      * @param channelId 频道号
-     * @param messageBody 卡片代码（去卡片编辑器生成直接复制,记得在行尾加换行符）
+     * @param messageBody 卡片代码
      * @param returnJSONText true返回原本的json文本，false返回消息ID
      */
-    public static String sendCardMessage(String Authorization, String channelId,String messageBody, Boolean returnJSONText) throws IOException {
+    public static String sendCardMessage(String Authorization, String channelId,Card messageBody, Boolean returnJSONText) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/channel/message/send";
         parm = "{\n" +
                 "    \"channelId\": \"" + channelId + "\",\n" +
                 "    \"messageType\": 6,\n" +
-                "    \"messageBody\": " + messageBody +
+                "    \"messageBody\": " + messageBody.toJSONObject().toString() +
                 "}";
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
@@ -604,10 +605,10 @@ public class ChannelTextApi {
      * @param clientId 机器人唯一标识
      * @param token 机器人鉴权Token
      * @param messageId 待编辑的消息ID
-     * @param messageBody 卡片代码（去卡片编辑器生成直接复制,记得在行尾加换行符）
+     * @param messageBody 卡片代码
      * @param returnJSONText 是否返回json文本
      */
-    public static String setChannelCardMessageEdit(String clientId, String token, String messageId, String messageBody, Boolean returnJSONText) throws IOException {
+    public static String setChannelCardMessageEdit(String clientId, String token, String messageId, Card messageBody, Boolean returnJSONText) throws IOException {
         return setChannelCardMessageEdit(BaseUtil.Authorization(clientId,token), messageId, messageBody, returnJSONText);
     }
 
@@ -616,15 +617,15 @@ public class ChannelTextApi {
      *
      * @param Authorization Authorization
      * @param messageId 待编辑的消息ID
-     * @param messageBody 卡片代码（去卡片编辑器生成直接复制,记得在行尾加换行符）
+     * @param messageBody 卡片代码
      * @param returnJSONText 是否返回json文本
      */
-    public static String setChannelCardMessageEdit(String Authorization, String messageId, String messageBody, Boolean returnJSONText) throws IOException {
+    public static String setChannelCardMessageEdit(String Authorization, String messageId, Card messageBody, Boolean returnJSONText) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/channel/message/edit";
         parm = "{\n" +
                 "    \"messageId\": \"" + messageId	 + "\",\n" +
                 "    \"messageType\": 1,\n" +
-                "    \"messageBody\": " + messageBody +
+                "    \"messageBody\": " + messageBody.toJSONObject().toString() +
                 "}";
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
