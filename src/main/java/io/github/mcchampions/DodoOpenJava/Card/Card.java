@@ -241,7 +241,7 @@ public class Card {
     }
 
     /**
-     * 怎级啊倒计时组件
+     * 增加倒计时组件
      * @param style 显示样式
      * @param endTime 结束时间戳
      * @param title 标题
@@ -253,7 +253,7 @@ public class Card {
         return true;
     }
     /**
-     * 怎级啊倒计时组件
+     * 增加倒计时组件
      * @param style 显示样式
      * @param endTime 结束时间戳
      * @return 成功
