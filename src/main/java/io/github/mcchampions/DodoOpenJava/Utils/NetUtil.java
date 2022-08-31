@@ -1,5 +1,6 @@
 package io.github.mcchampions.DodoOpenJava.Utils;
 
+import io.github.mcchampions.DodoOpenJava.configuration.Configuration;
 import okhttp3.*;
 import org.apache.commons.lang3.StringUtils;
 
@@ -167,7 +168,7 @@ public class NetUtil {
                 .build();
         Response response = client.newCall(request).execute();
 
-        byte[] bytes = response.body().bytes();
+        byte[] bytes = Objects.requireNonNull(response.body()).bytes();
 
         if (saveDir.exists()) {
             saveDir.mkdirs();
@@ -194,12 +195,12 @@ public class NetUtil {
                 .build();
         Response response = client.newCall(request).execute();
 
-        byte[] bytes = response.body().bytes();
+        byte[] bytes = Objects.requireNonNull(response.body()).bytes();
 
         if (saveDir.exists()) {
             saveDir.mkdirs();
         }
-        String folder = saveDir + File.separator + StringUtils.substringAfterLast(url, "/");;
+        String folder = saveDir + File.separator + StringUtils.substringAfterLast(url, "/");
         File file = new File(folder);
         FileOutputStream fos = new FileOutputStream(file);
         fos.write(bytes);

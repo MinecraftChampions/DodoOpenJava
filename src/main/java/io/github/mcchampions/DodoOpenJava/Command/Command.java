@@ -15,6 +15,8 @@ public class Command {
 
     EventManage e = new EventManage();
 
+    public static String SenderAuthorization;
+
     /**
      * 初始化命令系统
      * @param Class 命令处理所在的类
@@ -24,6 +26,7 @@ public class Command {
     public void initCommand(CommandExecutor Class, String clientId, String token) {
         commands.add(Class);
         e.register(new CommandTrigger(), BaseUtil.Authorization(clientId,token));
+        SenderAuthorization = BaseUtil.Authorization(clientId,token);
     }
 
     /**
@@ -35,6 +38,7 @@ public class Command {
     public void initCommand(List<CommandExecutor> Class, String clientId, String token) {
         this.commands = Class;
         e.register(new CommandTrigger(), BaseUtil.Authorization(clientId,token));
+        SenderAuthorization = BaseUtil.Authorization(clientId,token);
     }
 
     /**
@@ -45,6 +49,7 @@ public class Command {
     public void initCommand(CommandExecutor Class, String Authorization) {
         commands.add(Class);
         e.register(new CommandTrigger(), Authorization);
+        SenderAuthorization = Authorization;
     }
 
     /**
@@ -55,24 +60,25 @@ public class Command {
     public void initCommand(List<CommandExecutor> Class, String Authorization) {
         this.commands = Class;
         e.register(new CommandTrigger(), Authorization);
+        SenderAuthorization = Authorization;
     }
 
     /**
      * 触发命令
-     * @param DodoId 发送者DodoId
+     * @param sender 发送者
      * @param Command 命令名
      * @param args 命令参数
      */
-    public Boolean Trigger(String DodoId, String Command, String[] args) {
+    public Boolean Trigger(CommandSender sender, String Command, String[] args) {
         Boolean hasCommand = false;
         for (int i = 0; i < commands.size(); i++) {
             CommandExecutor command = commands.get(i);
             if (Objects.equals(command.MainCommand(), Command)) {
                 permissions perm = new permissions();
-                if (perm.checkPermission(DodoId, command.Permissions())) {
+                if (perm.checkPermission(sender.getSenderDodoId(), command.Permissions())) {
                     i = commands.size();
                     hasCommand = true;
-                    command.onCommand(DodoId, args);
+                    command.onCommand(sender, args);
                 }
             }
         }

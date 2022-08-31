@@ -18,8 +18,8 @@ public interface CommandExecutor {
 
     /**
      * 命令处理
-     * @param dodoId 发送者DodoId
+     * @param sender 发送者
      * @param args 参数
      */
-    void onCommand(String dodoId, String[] args);
+    void onCommand(CommandSender sender, String[] args);
 }

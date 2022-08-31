@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * 身份组API
  */
-public class Role {
+public class RoleApi {
     public static String url,parm;
 
     /**
