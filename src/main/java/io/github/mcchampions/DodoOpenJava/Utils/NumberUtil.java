@@ -1,7 +1,5 @@
 package io.github.mcchampions.DodoOpenJava.Utils;
 
-import com.alibaba.fastjson.JSONObject;
-
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

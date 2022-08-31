@@ -1,7 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.api;
 
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONArray;
+import com.alibaba.fastjson2.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
 import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
 import org.apache.commons.lang3.StringUtils;

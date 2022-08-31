@@ -1,6 +1,6 @@
 package io.github.mcchampions.DodoOpenJava;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
@@ -70,7 +70,7 @@ public class permissions {
         }
 
         for (int i = 0; i < json.getJSONArray("perms").size(); i++) {
-            if (Objects.equals(perm, (String) json.getJSONArray("perms").get(i))) {
+            if (Objects.equals(perm, json.getJSONArray("perms").get(i))) {
                 i = json.getJSONArray("perms").size();
                 hasPerm = true;
             }
@@ -79,7 +79,7 @@ public class permissions {
         if (!hasPerm) {
             Bson eq = Filters.eq("Group", getUserGroup(DodoId));
             Document doc = new Document();
-            List<String> perms = json.getJSONArray("perms");
+            List<String> perms = json.getJSONArray("perms").toJavaList(String.class);
             perms.add(perm);
             doc.put("$set",new Document("perms", perms));
             collection.updateOne(eq, doc);
@@ -113,7 +113,7 @@ public class permissions {
         }
 
         for (int i = 0; i < json.getJSONArray("perms").size(); i++) {
-            if (Objects.equals(perm, (String) json.getJSONArray("perms").get(i))) {
+            if (Objects.equals(perm, json.getJSONArray("perms").get(i))) {
                 i = json.getJSONArray("perms").size();
                 hasPerm = true;
             }
@@ -122,7 +122,7 @@ public class permissions {
         if (hasPerm) {
             Bson eq = Filters.eq("Group", getUserGroup(DodoId));
             Document doc = new Document();
-            List<String> perms = json.getJSONArray("perms");
+            List<String> perms = json.getJSONArray("perms").toJavaList(String.class);
             perms.remove(perm);
             doc.put("$set",new Document("perms", perms));
             collection.updateOne(eq, doc);
@@ -153,7 +153,7 @@ public class permissions {
             collection.insertOne(doc);
         }
 
-        return (List<String>) json.getJSONArray("perms");
+        return json.getJSONArray("perms").toJavaList(String.class);
     }
 
     /**
@@ -176,7 +176,7 @@ public class permissions {
             collection.insertOne(doc);
         }
 
-        return (List<String>) json.getJSONArray("perms");
+        return json.getJSONArray("perms").toJavaList(String.class);
     }
 
     /**
@@ -235,7 +235,7 @@ public class permissions {
         Document document = (Document) find;
         JSONObject json = JSONObject.parseObject(document.toJson());
         for (int i = 0; i < json.getJSONArray("perms").size(); i++) {
-            if (Objects.equals(perm, (String) json.getJSONArray("perms").get(i))) {
+            if (Objects.equals(perm, json.getJSONArray("perms").get(i))) {
                 i = json.getJSONArray("perms").size();
                 hasPerm = true;
             }
@@ -244,7 +244,7 @@ public class permissions {
         if (!hasPerm) {
             Bson eq = Filters.eq("isDefault", json.getBoolean("isDefault"));
             Document doc = new Document();
-            List<String> perms = json.getJSONArray("perms");
+            List<String> perms = json.getJSONArray("perms").toJavaList(String.class);
             perms.add(perm);
             doc.put("$set",new Document("perms", perms));
             collection.updateOne(eq, doc);
@@ -270,7 +270,7 @@ public class permissions {
         Document document = (Document) find;
         JSONObject json = JSONObject.parseObject(document.toJson());
         for (int i = 0; i < json.getJSONArray("perms").size(); i++) {
-            if (!Objects.equals(perm, (String) json.getJSONArray("perms").get(i))) {
+            if (!Objects.equals(perm, json.getJSONArray("perms").get(i))) {
                 i = json.getJSONArray("perms").size();
                 hasPerm = false;
             }
@@ -279,7 +279,7 @@ public class permissions {
         if (hasPerm) {
             Bson eq = Filters.eq("isDefault", json.getBoolean("isDefault"));
             Document doc = new Document();
-            List<String> perms = json.getJSONArray("perms");
+            List<String> perms = json.getJSONArray("perms").toJavaList(String.class);
             perms.remove(perm);
             doc.put("$set",new Document("perms", perms));
             collection.updateOne(eq, doc);
@@ -356,7 +356,7 @@ public class permissions {
         Document document = (Document) find;
         JSONObject json = JSONObject.parseObject(document.toJson());
         for (int i = 0; i < json.getJSONArray("perms").size(); i++) {
-            if (Objects.equals(ExtendGroup, (String) json.getJSONArray("extends").get(i))) {
+            if (Objects.equals(ExtendGroup, json.getJSONArray("extends").get(i))) {
                 i = json.getJSONArray("extends").size();
                 hasExtend = true;
             }
@@ -365,7 +365,7 @@ public class permissions {
         if (!hasExtend) {
             Bson eq = Filters.eq("isDefault", json.getBoolean("isDefault"));
             Document doc = new Document();
-            List<String> Extends = json.getJSONArray("extends");
+            List<String> Extends = json.getJSONArray("extends").toJavaList(String.class);
             Extends.add(ExtendGroup);
             doc.put("$set",new Document("extends", Extends));
             collection.updateOne(eq, doc);
@@ -391,7 +391,7 @@ public class permissions {
         Document document = (Document) find;
         JSONObject json = JSONObject.parseObject(document.toJson());
         for (int i = 0; i < json.getJSONArray("extends").size(); i++) {
-            if (!Objects.equals(ExtendGroup, (String) json.getJSONArray("extends").get(i))) {
+            if (!Objects.equals(ExtendGroup, json.getJSONArray("extends").get(i))) {
                 i = json.getJSONArray("extends").size();
                 hasExtends = false;
             }
@@ -400,7 +400,7 @@ public class permissions {
         if (hasExtends) {
             Bson eq = Filters.eq("isDefault", json.getBoolean("isDefault"));
             Document doc = new Document();
-            List<String> Extends = json.getJSONArray("extends");
+            List<String> Extends = json.getJSONArray("extends").toJavaList(String.class);
             Extends.remove(ExtendGroup);
             doc.put("$set",new Document("extends", Extends));
             collection.updateOne(eq, doc);
@@ -477,7 +477,7 @@ public class permissions {
         Document document = (Document) find;
         JSONObject json = JSONObject.parseObject(document.toJson());
 
-        return (List<String>) json.getJSONArray("extends");
+        return json.getJSONArray("extends").toJavaList(String.class);
     }
 
     /**

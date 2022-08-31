@@ -1,6 +1,5 @@
 package io.github.mcchampions.DodoOpenJava.Utils;
 
-import io.github.mcchampions.DodoOpenJava.configuration.Configuration;
 import okhttp3.*;
 import org.apache.commons.lang3.StringUtils;
 

@@ -1,6 +1,6 @@
 package io.github.mcchampions.DodoOpenJava.Utils;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
@@ -15,7 +15,7 @@ public class JsonUtil {
      * @return JSONObject
      */
     public static JSONObject toJson(String string) {
-        return com.alibaba.fastjson.JSON.parseObject(string);
+        return com.alibaba.fastjson2.JSON.parseObject(string);
     }
 
     /**
@@ -25,7 +25,7 @@ public class JsonUtil {
      * @return JSONObject
      */
     public static JSONObject bsonToJson(Bson bson) {
-        return com.alibaba.fastjson.JSON.parseObject(bson.toBsonDocument().toJson());
+        return com.alibaba.fastjson2.JSON.parseObject(bson.toBsonDocument().toJson());
     }
 
     /**
@@ -35,7 +35,7 @@ public class JsonUtil {
      * @return JSONObject
      */
     public static JSONObject documentToJson(Document document) {
-        return com.alibaba.fastjson.JSON.parseObject(document.toJson());
+        return com.alibaba.fastjson2.JSON.parseObject(document.toJson());
     }
 
     /**
