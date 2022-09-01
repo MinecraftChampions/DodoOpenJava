@@ -7,8 +7,6 @@ import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 身份组API
@@ -172,32 +170,25 @@ public class RoleApi {
      */
     public static String addRole(String Authorization, String islandId, String roleName, String roleColor,int position, String permission, Boolean returnJSONText) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/role/add";
-        List<String> param = new ArrayList<>();
-        param.add("{" +
-                "\n  \"islandId\": \"" + islandId + "\"");
+        JSONObject param = JSONObject.parseObject("{" +
+                "\n  \"islandId\": \"" + islandId + "\"}");
         if (roleName != null) {
-            param.add("," +
-                    ",\n  \"roleName\": \"" + roleName + "\"");
+            param.put("roleName", roleName);
         }
 
         if (roleColor != null) {
-            param.add("," +
-                    ",\n  \"roleColor\": \"" + roleColor + "\"");
+            param.put("roleColor", roleColor);
         }
 
         if (position != 1) {
-            param.add("," +
-                    ",\n  \"position\": " + position);
+            param.put("position", position);
         }
 
         if (roleColor != null) {
-            param.add("," +
-                    ",\n  \"permission\": \"" + permission + "\"");
+            param.put("permission", permission);
         }
 
-        param.add("\n}");
-        parm = StringUtils.join(param.toArray());
-        String Parm = NetUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(param.toString(), url, Authorization);
         if (!returnJSONText) {
             Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("roleId");
         }
@@ -235,33 +226,25 @@ public class RoleApi {
      */
     public static String editRole(String Authorization, String islandId, String roleId, String roleName, String roleColor,int position, String permission, Boolean returnJSONText) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/role/edit";
-        List<String> param = new ArrayList<>();
-        param.add("{" +
-                "\n  \"islandId\": \"" + islandId + "\"" +
-                ",\n  \"roleId\": \"" + roleId + "\"");
+        JSONObject param = JSONObject.parseObject("{" +
+                "\n  \"islandId\": \"" + islandId + "\"," +
+                "\n  \"roleId\": \"" + roleId + "\"}");
         if (roleName != null) {
-            param.add("," +
-                    ",\n  \"roleName\": \"" + roleName + "\"");
+            param.put("roleName", roleName);
         }
 
         if (roleColor != null) {
-            param.add("," +
-                    ",\n  \"roleColor\": \"" + roleColor + "\"");
+            param.put("roleColor", roleColor);
         }
 
         if (position != 1) {
-            param.add("," +
-                    ",\n  \"position\": " + position);
+            param.put("position", position);
         }
 
         if (roleColor != null) {
-            param.add("," +
-                    ",\n  \"permission\": \"" + permission + "\"");
+            param.put("permission", permission);
         }
-
-        param.add("\n}");
-        parm = StringUtils.join(param.toArray());
-        String Parm = NetUtil.sendRequest(parm, url, Authorization);
+        String Parm = NetUtil.sendRequest(param.toString(), url, Authorization);
         if (!returnJSONText) {
             Parm = null;
         }

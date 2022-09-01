@@ -1,5 +1,6 @@
 package io.github.mcchampions.DodoOpenJava.Card;
 
+import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Card.Enums.*;
 import io.github.mcchampions.DodoOpenJava.Utils.MapUtil;
@@ -130,41 +131,15 @@ public class Card {
 
     /**
      * 增加文字组件
-     * @param type 文本类型
-     * @param content 文本
+     * @param section 组件对象
      * @return 成功
      */
-    public static Boolean addSectionComponent(TextType type, String content) {
+    public static Boolean addSectionComponent(Section section) {
         if (JsonCard.isEmpty()) initCard();
-        String Type;
-        if (Objects.equals(type.toString(), "Markdown")) Type = "dodo-md"; else Type = "plain-text";
-        JsonCard.getJSONObject("card").getJSONArray("components").add(JSONObject.parseObject("{\"type\": \"section\",\"text\": { \"type\": \"" + Type + "\", \"content\": \"" + content + "\"}}"));
+        JsonCard.getJSONObject("card").getJSONArray("components").add(section.toJSONObject());
         return true;
     }
 
-    /**
-     * 增加多栏文字组件
-     * @param col 栏数
-     * @param text 文本，为了方便读取用Map存储，前一个代表文本类型，后面代表文本
-     * @return 成功
-     */
-    public static Boolean addColsSectionComponent(Cols col, Map<TextType,String> text) {
-        if (JsonCard.isEmpty()) initCard();
-        int Col = switch (col.toString()) {
-            case "two" -> 2;
-            case "three" -> 3;
-            case "four" -> 4;
-            case "five" -> 5;
-            default -> 6;
-        };
-        JsonCard.getJSONObject("card").getJSONArray("components").add(JSONObject.parseObject("{\"type\": \"section\",\"text\": { \"type\": \"paragraph\", \"cols\": " + Col + ",\"fields\": []}}"));
-        for(int i = 0; i < MapUtil.ergodicMaps(text).size();i++) {
-            String Type;
-            if (Objects.equals(MapUtil.ergodicMaps(text).get(i).get(0).toString(), "Markdown")) Type = "dodo-md"; else Type = "plain-text";
-            JsonCard.getJSONObject("card").getJSONArray("components").getJSONObject(JsonCard.getJSONObject("card").getJSONArray("components").size() - 1).getJSONObject("text").getJSONArray("fields").add(JSONObject.parseObject("{\"text\": { \"type\": \"" + Type + "\", \"content\": \"" + MapUtil.ergodicMaps(text).get(i).get(1) + "\"}}"));
-        }
-        return true;
-    }
 
     /**
      * 增加备注组件
@@ -282,6 +257,64 @@ public class Card {
     public static Boolean removeComponent(int count) {
         if (JsonCard.isEmpty()) initCard();
         JsonCard.getJSONObject("card").getJSONArray("components").remove(count + 1);
+        return true;
+    }
+
+    /**
+     * 增加一个交互按钮组件
+     * @param button 按钮颜色
+     * @return 成功
+     */
+    public static Boolean addButton(Button button) {
+        JsonCard.getJSONObject("card").getJSONArray("components").add(button.toJSONObject());
+        return true;
+    }
+
+    /**
+     * 增加列表选择器组件
+     * <p>
+     * 不需要参数的请填写null
+     * @param interactCustomId 自定义交互id
+     * @param placeholder 输入框提示
+     * @param min 最少选中个数
+     * @param max 最多选中个数
+     * @param element 数据，为了方便用Map存储，前面为选项名。后面为选项描述，不需要请填写null
+     * @return 成功
+     */
+    public static Boolean addListSelector(String interactCustomId, String placeholder, int min, int max, Map<String,String> element) {
+        if (JsonCard.isEmpty()) initCard();
+
+        JSONObject json1 = new JSONObject();
+        json1.put("type", "list-selector");
+        json1.put("interactCustomId", interactCustomId);
+        json1.put("placeholder", placeholder);
+        json1.put("min", min);
+        json1.put("max", max);
+        JSONArray arr = new JSONArray();
+        json1.put("elements", arr);
+
+        for(int i = 0; i < MapUtil.ergodicMaps(element).size();i++) {
+            JSONObject json2 = new JSONObject();
+
+            json2.put("name", MapUtil.ergodicMaps(element).get(i).get(0));
+            json2.put("desc", MapUtil.ergodicMaps(element).get(i).get(1));
+
+            json1.getJSONArray("elements").add(json2);
+        }
+
+        JsonCard.getJSONObject("card").getJSONArray("components").add(json1);
+        return true;
+    }
+
+    public static Boolean addSection(Align align,Section section,Button button) {
+        if (JsonCard.isEmpty()) initCard();
+
+        JSONObject json1 = new JSONObject();
+        json1.put("type", "section");
+        json1.put("text", section);
+        json1.put("align", align.toString());
+        json1.put("accessory", button.toJSONObject());
+        JsonCard.getJSONObject("card").getJSONArray("components").add(json1);
         return true;
     }
 }
