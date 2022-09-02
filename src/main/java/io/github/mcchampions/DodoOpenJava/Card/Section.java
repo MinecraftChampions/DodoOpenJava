@@ -11,15 +11,15 @@ import java.util.Objects;
  * 关于文字这一类
  */
 public class Section {
-    public static JSONObject JsonText;
+    public JSONObject JsonText;
 
-    public static Boolean isParagraph;
+    public Boolean isParagraph;
 
     /**
      * 是否不存在
      * @return true/false
      */
-    public static Boolean isEmpty() {
+    public Boolean isEmpty() {
         return JsonText.isEmpty();
     }
 
@@ -28,7 +28,7 @@ public class Section {
      * @param text Text
      * @return true/false
      */
-    public static Boolean isEmpty(Section text) {
+    public Boolean isEmpty(Section text) {
         return text.toJSONObject().isEmpty();
     }
 
@@ -36,7 +36,7 @@ public class Section {
      * 转换为JSON对象
      * @return true
      */
-    public static JSONObject toJSONObject() {
+    public JSONObject toJSONObject() {
         return JsonText;
     }
 
@@ -44,7 +44,7 @@ public class Section {
      * 初始化Section
      * @return true/false
      */
-    public static Boolean initText(SectionType type) {
+    public Boolean initText(SectionType type) {
         if (JsonText.isEmpty()) {
             if (!Objects.equals(type.toString(), "Paragraph")) {
                 String Type = switch (type.toString()) {
@@ -98,7 +98,7 @@ public class Section {
      * @param content 文本
      * @return 成功
      */
-    public static Boolean editContent(String content) {
+    public Boolean editContent(String content) {
         if (JsonText.isEmpty()) initText(SectionType.Markdown);
         JsonText.getJSONObject("text").replace("content", content);
         return true;
@@ -109,7 +109,7 @@ public class Section {
      * @param type 类别
      * @return 成功
      */
-    public static Boolean editContentType(TextType type) {
+    public Boolean editContentType(TextType type) {
         if (JsonText.isEmpty()) initText(SectionType.Markdown);
         String Type;
         if (Objects.equals(type.toString(), "Markdown")) Type = "dodo-md"; else Type = "plain-text";
@@ -123,7 +123,7 @@ public class Section {
      * @param count 第几个（从1开始）
      * @return 成功
      */
-    public static Boolean editParagraphContent(String content,int count) {
+    public Boolean editParagraphContent(String content,int count) {
         if (JsonText.isEmpty()) initText(SectionType.Paragraph);
         JsonText.getJSONObject("text").getJSONArray("fields").getJSONObject(count - 1).replace("content", content);
         return true;
@@ -135,7 +135,7 @@ public class Section {
      * @param count 第几个（从1开始）
      * @return 成功
      */
-    public static Boolean editParagraphContentType(TextType type, int count) {
+    public Boolean editParagraphContentType(TextType type, int count) {
         if (JsonText.isEmpty()) initText(SectionType.Paragraph);
         String Type;
         if (Objects.equals(type.toString(), "Markdown")) Type = "dodo-md"; else Type = "plain-text";
@@ -148,7 +148,7 @@ public class Section {
      * @param col 栏数
      * @return 成功
      */
-    public static Boolean editParagraphContentCols(Cols col) {
+    public Boolean editParagraphContentCols(Cols col) {
         if (JsonText.isEmpty()) initText(SectionType.Paragraph);
         int Col = switch (col.toString()) {
             case "two" -> 2;
@@ -166,7 +166,7 @@ public class Section {
      * @param count 第几个（从1开始）
      * @return 成功
      */
-    public static Boolean editParagraphContentType(int count) {
+    public Boolean editParagraphContentType(int count) {
         if (JsonText.isEmpty()) initText(SectionType.Paragraph);
         JsonText.getJSONObject("text").getJSONArray("fields").remove(count - 1);
         return true;

@@ -1,6 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.Event;
 
 import com.alibaba.fastjson2.JSONObject;
+import io.github.mcchampions.DodoOpenJava.Event.events.*;
 import okhttp3.*;
 import okio.ByteString;
 
@@ -51,9 +52,20 @@ public class EventTrigger {
 
         @Override
         public void onMessage(WebSocket webSocket, ByteString bytes) {
-            String jsontext=bytes.utf8();
+            JSONObject jsontext = JSONObject.parseObject(bytes.utf8());
             EventManage event = new EventManage();
-            event.trigger(new Event(this,jsontext));
+            EventObject e= switch (jsontext.getJSONObject("data").getString("eventType")) {
+                case "1001" -> new PersonalMessageEvent(jsontext);
+                case "2001" -> new MessageEvent(jsontext);
+                case "3001" -> new MessageReactionEvent(jsontext);
+                case "3002" -> new CardMessageButtonClickEvent(jsontext);
+                case "3003" -> new CardMessageFormSubmitEvent(jsontext);
+                case "3004" -> new CardMessageListSubmitEvent(jsontext);
+                case "4001" -> new MemberJoinEvent(jsontext);
+                case "4002" -> new MemberLeaveEvent(jsontext);
+                default -> new EventObject() {};
+            };
+            event.trigger(e);
         }
 
         @Override

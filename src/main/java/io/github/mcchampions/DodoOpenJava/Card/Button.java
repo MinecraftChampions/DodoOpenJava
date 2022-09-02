@@ -11,13 +11,13 @@ import java.util.Objects;
  * 按钮这个对象
  */
 public class Button {
-    public static JSONObject JsonButton;
+    public JSONObject JsonButton;
 
     /**
      * 是否不存在
      * @return true/false
      */
-    public static Boolean isEmpty() {
+    public Boolean isEmpty() {
         return JsonButton.isEmpty();
     }
 
@@ -25,7 +25,7 @@ public class Button {
      * 转换为JSON对象
      * @return true
      */
-    public static JSONObject toJSONObject() {
+    public JSONObject toJSONObject() {
         return JsonButton;
     }
     /**
@@ -37,7 +37,7 @@ public class Button {
      * @param object 按钮点击动作的值，不是表单就是String类型，是表单就传入Form
      * @return true/false
      */
-    public static Boolean addButton(Color ButtonColor, String ButtonName, String interactCustomId, ButtonAction action, Object object) {
+    public Boolean addButton(Color ButtonColor, String ButtonName, String interactCustomId, ButtonAction action, Object object) {
         Form form = new Form();
         String value = "";
         boolean isForm = false;
@@ -87,7 +87,7 @@ public class Button {
      * @param object 按钮点击动作的值，不是表单就是String类型，是表单就传入Form
      * @return true/false
      */
-    public static Boolean addButton(Color ButtonColor, String ButtonName, ButtonAction action,Object object) {
+    public Boolean addButton(Color ButtonColor, String ButtonName, ButtonAction action,Object object) {
         Form form = new Form();
         String value = "";
         boolean isForm = false;

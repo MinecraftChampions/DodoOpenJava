@@ -14,13 +14,13 @@ import java.util.Objects;
  * 卡片消息
  */
 public class Card {
-    public static JSONObject JsonCard;
+    public JSONObject JsonCard;
 
     /**
      * 是否不存在
      * @return true/false
      */
-    public static Boolean isEmpty() {
+    public Boolean isEmpty() {
         return JsonCard.isEmpty();
     }
 
@@ -29,7 +29,7 @@ public class Card {
      * @param card Card
      * @return true/false
      */
-    public static Boolean isEmpty(Card card) {
+    public Boolean isEmpty(Card card) {
         return card.toJSONObject().isEmpty();
     }
 
@@ -37,7 +37,7 @@ public class Card {
      * 转换为JSON对象
      * @return true
      */
-    public static JSONObject toJSONObject() {
+    public JSONObject toJSONObject() {
         return JsonCard;
     }
 
@@ -46,7 +46,7 @@ public class Card {
      * @param card JSON
      * @return true
      */
-    public static Boolean initCard(JSONObject card) {
+    public Boolean initCard(JSONObject card) {
         JsonCard = card;
         return true;
     }
@@ -55,7 +55,7 @@ public class Card {
      * 初始化卡片
      * @return true/false
      */
-    public static Boolean initCard() {
+    public Boolean initCard() {
         if (JsonCard.isEmpty()) {
             JsonCard = JSONObject.parseObject("""
                     {
@@ -76,7 +76,7 @@ public class Card {
      * @param theme 分割
      * @return true
      */
-    public static Boolean editTheme(Theme theme) {
+    public Boolean editTheme(Theme theme) {
         if (JsonCard.isEmpty()) initCard();
         JsonCard.getJSONObject("card").replace("theme", StrUtil.toLowerCase(theme.toString()));
         return true;
@@ -87,7 +87,7 @@ public class Card {
      * @param title 标题
      * @return 成功
      */
-    public static Boolean editTitle(String title) {
+    public Boolean editTitle(String title) {
         if (JsonCard.isEmpty()) initCard();
         JsonCard.getJSONObject("card").replace("title", title);
         return true;
@@ -98,7 +98,7 @@ public class Card {
      * @param content 文本
      * @return 成功
      */
-    public static Boolean editContent(String content) {
+    public Boolean editContent(String content) {
         if (JsonCard.isEmpty()) initCard();
         JsonCard.replace("content", content);
         return true;
@@ -108,7 +108,7 @@ public class Card {
      * 移除文本
      * @return true/false
      */
-    public static Boolean removeContent() {
+    public Boolean removeContent() {
         if (JsonCard.isEmpty()) initCard();
         if (!JsonCard.containsKey("content")) return false;
         JsonCard.remove("content");
@@ -121,7 +121,7 @@ public class Card {
      * @param title 标题
      * @return 成功
      */
-    public static Boolean addHeaderComponent(TextType type, String title) {
+    public Boolean addHeaderComponent(TextType type, String title) {
         if (JsonCard.isEmpty()) initCard();
         String Type;
         if (Objects.equals(type.toString(), "Markdown")) Type = "dodo-md"; else Type = "plain-text";
@@ -134,7 +134,7 @@ public class Card {
      * @param section 组件对象
      * @return 成功
      */
-    public static Boolean addSectionComponent(Section section) {
+    public Boolean addSectionComponent(Section section) {
         if (JsonCard.isEmpty()) initCard();
         JsonCard.getJSONObject("card").getJSONArray("components").add(section.toJSONObject());
         return true;
@@ -146,7 +146,7 @@ public class Card {
      * @param text 组件，为了方便读取用Map存储，前一个代表组件类型类型，后面代表值（如果为图片就是连接，为文本就是内容）（参数名取这个是因为不想改了。。。）
      * @return 成功
      */
-    public static Boolean addTextRemarkComponent(Map<RemarkType,String> text) {
+    public Boolean addTextRemarkComponent(Map<RemarkType,String> text) {
         if (JsonCard.isEmpty()) initCard();
 
         JsonCard.getJSONObject("card").getJSONArray("components").add(JSONObject.parseObject("{\"type\": \"remark\",\"elements\": []}"));
@@ -168,7 +168,7 @@ public class Card {
      * @param url 连接
      * @return 成功
      */
-    public static Boolean addImageComponent(String url) {
+    public Boolean addImageComponent(String url) {
         if (JsonCard.isEmpty()) initCard();
         JsonCard.getJSONObject("card").getJSONArray("components").add(JSONObject.parseObject("{\"type\": \"image\", \"src\": \"" + url + "\"}"));
         return true;
@@ -179,7 +179,7 @@ public class Card {
      * @param urls 图片的连接
      * @return 成功
      */
-    public static Boolean addImageGroupComponent(List<String> urls) {
+    public Boolean addImageGroupComponent(List<String> urls) {
         if (JsonCard.isEmpty()) initCard();
 
         JsonCard.getJSONObject("card").getJSONArray("components").add(JSONObject.parseObject("{\"type\": \"image-group\", \"elements\": []}"));
@@ -197,7 +197,7 @@ public class Card {
      * @param title 标题
      * @return 成功
      */
-    public static Boolean addVideoComponent(String videoUrl, String coverUrl, String title) {
+    public Boolean addVideoComponent(String videoUrl, String coverUrl, String title) {
         if (JsonCard.isEmpty()) initCard();
         JsonCard.getJSONObject("card").getJSONArray("components").add(JSONObject.parseObject("{\"type\": \"video\", \"src\": \"" + videoUrl + "\", \"cover\": \"" + coverUrl + "\",\"title\": \"" + title + "\"}"));
         return true;
@@ -209,7 +209,7 @@ public class Card {
      * @param coverUrl 封面连接
      * @return 成功
      */
-    public static Boolean addVideoComponent(String videoUrl, String coverUrl) {
+    public Boolean addVideoComponent(String videoUrl, String coverUrl) {
         if (JsonCard.isEmpty()) initCard();
         JsonCard.getJSONObject("card").getJSONArray("components").add(JSONObject.parseObject("{\"type\": \"video\", \"src\": \"" + videoUrl + "\", \"cover\": \"" + coverUrl + "\"}"));
         return true;
@@ -222,7 +222,7 @@ public class Card {
      * @param title 标题
      * @return 成功
      */
-    public static Boolean addCountdownComponent(Style style, Long endTime, String title) {
+    public Boolean addCountdownComponent(Style style, Long endTime, String title) {
         if (JsonCard.isEmpty()) initCard();
         JsonCard.getJSONObject("card").getJSONArray("components").add(JSONObject.parseObject("{\"type\": \"countdown\", \"endTime\": " + endTime + ", \"style\": \"" + style.toString() + "\",\"title\": \"" + title + "\"}"));
         return true;
@@ -233,7 +233,7 @@ public class Card {
      * @param endTime 结束时间戳
      * @return 成功
      */
-    public static Boolean addCountdownComponent(Style style, Long endTime) {
+    public Boolean addCountdownComponent(Style style, Long endTime) {
         if (JsonCard.isEmpty()) initCard();
         JsonCard.getJSONObject("card").getJSONArray("components").add(JSONObject.parseObject("{\"type\": \"countdown\", \"endTime\": " + endTime + ", \"style\": \"" + style.toString() + "\"}"));
         return true;
@@ -243,7 +243,7 @@ public class Card {
      * 添加分割线
      * @return 成功
      */
-    public static Boolean addDividerComponent() {
+    public Boolean addDividerComponent() {
         if (JsonCard.isEmpty()) initCard();
         JsonCard.getJSONObject("card").getJSONArray("components").add(JSONObject.parseObject("{\"type\": \"divider\"}"));
         return true;
@@ -254,7 +254,7 @@ public class Card {
      * @param count 第几个组件（从1开始）
      * @return 成功
      */
-    public static Boolean removeComponent(int count) {
+    public Boolean removeComponent(int count) {
         if (JsonCard.isEmpty()) initCard();
         JsonCard.getJSONObject("card").getJSONArray("components").remove(count + 1);
         return true;
@@ -265,7 +265,7 @@ public class Card {
      * @param button 按钮颜色
      * @return 成功
      */
-    public static Boolean addButton(Button button) {
+    public Boolean addButton(Button button) {
         JsonCard.getJSONObject("card").getJSONArray("components").add(button.toJSONObject());
         return true;
     }
@@ -281,7 +281,7 @@ public class Card {
      * @param element 数据，为了方便用Map存储，前面为选项名。后面为选项描述，不需要请填写null
      * @return 成功
      */
-    public static Boolean addListSelector(String interactCustomId, String placeholder, int min, int max, Map<String,String> element) {
+    public Boolean addListSelector(String interactCustomId, String placeholder, int min, int max, Map<String,String> element) {
         if (JsonCard.isEmpty()) initCard();
 
         JSONObject json1 = new JSONObject();
@@ -306,7 +306,7 @@ public class Card {
         return true;
     }
 
-    public static Boolean addSection(Align align,Section section,Button button) {
+    public Boolean addSection(Align align,Section section,Button button) {
         if (JsonCard.isEmpty()) initCard();
 
         JSONObject json1 = new JSONObject();

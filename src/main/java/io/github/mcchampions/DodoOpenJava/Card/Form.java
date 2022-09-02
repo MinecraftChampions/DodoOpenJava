@@ -7,13 +7,13 @@ import io.github.mcchampions.DodoOpenJava.Card.Enums.Rows;
  * 回传表单
  */
 public class Form {
-    public static JSONObject JsonForm;
+    public JSONObject JsonForm;
 
     /**
      * 是否不存在
      * @return true/false
      */
-    public static Boolean isEmpty() {
+    public Boolean isEmpty() {
         return JsonForm.isEmpty();
     }
 
@@ -22,7 +22,7 @@ public class Form {
      * @param card Card
      * @return true/false
      */
-    public static Boolean isEmpty(Card card) {
+    public Boolean isEmpty(Card card) {
         return card.toJSONObject().isEmpty();
     }
 
@@ -30,7 +30,7 @@ public class Form {
      * 转换为JSON对象
      * @return true
      */
-    public static JSONObject toJSONObject() {
+    public JSONObject toJSONObject() {
         return JsonForm;
     }
 
@@ -39,7 +39,7 @@ public class Form {
      * @param Form JSON
      * @return true
      */
-    public static Boolean initCard(JSONObject Form) {
+    public Boolean initCard(JSONObject Form) {
         JsonForm = Form;
         return true;
     }
@@ -48,7 +48,7 @@ public class Form {
      * 初始化回传表单
      * @return true/false
      */
-    public static Boolean initCard() {
+    public Boolean initCard() {
         if (JsonForm.isEmpty()) {
             JsonForm = JSONObject.parseObject("""
                     {
@@ -64,7 +64,7 @@ public class Form {
      * @param title 标题
      * @return 成功
      */
-    public static Boolean editContent(String title) {
+    public Boolean editContent(String title) {
         if (JsonForm.isEmpty()) initCard();
         JsonForm.replace("title", title);
         return true;
@@ -75,7 +75,7 @@ public class Form {
      * @param count 第几个数据（从1开始）
      * @return 成功
      */
-    public static Boolean removeElement(int count) {
+    public Boolean removeElement(int count) {
         if (JsonForm.isEmpty()) initCard();
         JsonForm.getJSONArray("elements").remove(count + 1);
         return true;
@@ -90,7 +90,7 @@ public class Form {
      * @param maxChar 最大字符数，介于1~4000，且最大字符数不得小于最小字符数
      * @return true/false
      */
-    public static Boolean addElement(String key, String title, Rows rows, int minChar, int maxChar) {
+    public Boolean addElement(String key, String title, Rows rows, int minChar, int maxChar) {
         JSONObject json = new JSONObject();
         if (minChar < 0) return false;
         if (minChar > 4000) return false;
@@ -125,7 +125,7 @@ public class Form {
      * @param maxChar 最大字符数，介于1~4000，且最大字符数不得小于最小字符数
      * @return true/false
      */
-    public static Boolean addElement(String key, String placeholder, String title, Rows rows, int minChar, int maxChar) {
+    public Boolean addElement(String key, String placeholder, String title, Rows rows, int minChar, int maxChar) {
         JSONObject json = new JSONObject();
         if (minChar < 0) return false;
         if (minChar > 4000) return false;
