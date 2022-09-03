@@ -2,12 +2,26 @@ package io.github.mcchampions.DodoOpenJava.Event.events;
 
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
-import io.github.mcchampions.DodoOpenJava.Event.EventObject;
+import io.github.mcchampions.DodoOpenJava.Event.Event;
+import io.github.mcchampions.DodoOpenJava.Event.HandlerList;
+
+import javax.annotation.Nonnull;
 
 /**
  * 卡片消息表单回传事件
  */
-public class CardMessageFormSubmitEvent implements EventObject {
+public class CardMessageFormSubmitEvent extends Event {
+    private static final HandlerList handlers = new HandlerList();
+
+    @Override
+    @Nonnull
+    public HandlerList getHandlers() {
+        return handlers;
+    }
+
+    public static HandlerList getHandlerList() {
+        return handlers;
+    }
     public Integer timestamp;
 
     public String eventId;

@@ -1,12 +1,26 @@
 package io.github.mcchampions.DodoOpenJava.Event.events;
 
 import com.alibaba.fastjson2.JSONObject;
-import io.github.mcchampions.DodoOpenJava.Event.EventObject;
+import io.github.mcchampions.DodoOpenJava.Event.Event;
+import io.github.mcchampions.DodoOpenJava.Event.HandlerList;
+
+import javax.annotation.Nonnull;
 
 /**
  * 消息事件
  */
-public class MessageEvent implements EventObject {
+public class MessageEvent extends Event {
+    private static final HandlerList handlers = new HandlerList();
+
+    @Override
+    @Nonnull
+    public HandlerList getHandlers() {
+        return handlers;
+    }
+
+    public static HandlerList getHandlerList() {
+        return handlers;
+    }
     public Integer timestamp;
 
     public String eventId;

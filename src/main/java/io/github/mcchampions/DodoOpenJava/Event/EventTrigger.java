@@ -20,10 +20,15 @@ public class EventTrigger {
             .pingInterval(30, TimeUnit.SECONDS) //保活心跳
             .build();
     static WebSocket mWebSocket;
+
+    static Boolean enable = false;
     public static void main(String Authorization) {
+        if (enable = true) return;
         Request requestc = new Request.Builder().url("https://botopen.imdodo.com/api/v1/websocket/connection").addHeader("Content-Type", "application/json").addHeader("Authorization", Authorization)
                 .post(RequestBody.create(MediaType.parse("application/json"), "{}"))
                 .build();
+
+        enable = true;
 
         okHttpClient.newCall(requestc).enqueue(new Callback() {
             @Override
@@ -54,18 +59,64 @@ public class EventTrigger {
         public void onMessage(WebSocket webSocket, ByteString bytes) {
             JSONObject jsontext = JSONObject.parseObject(bytes.utf8());
             EventManage event = new EventManage();
-            EventObject e= switch (jsontext.getJSONObject("data").getString("eventType")) {
-                case "1001" -> new PersonalMessageEvent(jsontext);
-                case "2001" -> new MessageEvent(jsontext);
-                case "3001" -> new MessageReactionEvent(jsontext);
-                case "3002" -> new CardMessageButtonClickEvent(jsontext);
-                case "3003" -> new CardMessageFormSubmitEvent(jsontext);
-                case "3004" -> new CardMessageListSubmitEvent(jsontext);
-                case "4001" -> new MemberJoinEvent(jsontext);
-                case "4002" -> new MemberLeaveEvent(jsontext);
-                default -> new EventObject() {};
-            };
-            event.trigger(e);
+            switch (jsontext.getJSONObject("data").getString("eventType")) {
+                case "1001":
+                    try {
+                        new EventManage().fireEvent(new PersonalMessageEvent(jsontext));
+                    } catch (EventException e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                case "2001":
+                    try {
+                        new EventManage().fireEvent(new MessageEvent(jsontext));
+                    } catch (EventException e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                case "3001":
+                    try {
+                        new EventManage().fireEvent(new MessageReactionEvent(jsontext));
+                    } catch (EventException e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                case "3002":
+                    try {
+                        new EventManage().fireEvent(new CardMessageButtonClickEvent(jsontext));
+                    } catch (EventException e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                case "3003":
+                    try {
+                        new EventManage().fireEvent(new CardMessageFormSubmitEvent(jsontext));
+                    } catch (EventException e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                case "3004":
+                    try {
+                        new EventManage().fireEvent(new CardMessageListSubmitEvent(jsontext));
+                    } catch (EventException e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                case "4001":
+                    try {
+                        new EventManage().fireEvent(new MemberJoinEvent(jsontext));
+                    } catch (EventException e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                case "4002":
+                    try {
+                        new EventManage().fireEvent(new MemberLeaveEvent(jsontext));
+                    } catch (EventException e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+            }
         }
 
         @Override
