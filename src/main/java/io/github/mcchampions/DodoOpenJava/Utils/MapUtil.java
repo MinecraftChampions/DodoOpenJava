@@ -19,9 +19,9 @@ public class MapUtil {
      * @param map 指定Map
      * @return 返回集合（集合中内置了一个集合，索引0是key，1是Value）
      */
-    public static List<List<?>> ergodicMaps(Map<?, ?> map) {
+    public static List<List<Object>> ergodicMaps(Map<?, ?> map) {
         Iterator<? extends Map.Entry<?, ?>> iter = map.entrySet().iterator();
-        List<List<?>> list = new ArrayList<>();
+        List<List<Object>> list = new ArrayList<>();
         while (iter.hasNext()) {
             List<Object> List = new ArrayList<>();
             List.add(iter.next().getKey());

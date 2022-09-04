@@ -18,7 +18,7 @@ public class HandlerList {
     /**
      * 所有已经创建的HandlerList,用于bakeAll().
      */
-    private static ArrayList<HandlerList> allLists = new ArrayList<HandlerList>();
+    private static ArrayList<HandlerList> allLists = new ArrayList<>();
 
     /**
      * 用EventPriority来创建和初始化一个新的HandlerList.
@@ -27,9 +27,9 @@ public class HandlerList {
      * <p>
      */
     public HandlerList() {
-        handlerslots = new EnumMap<EventPriority, ArrayList<RegisteredListener>>(EventPriority.class);
+        handlerslots = new EnumMap<>(EventPriority.class);
         for (EventPriority o : EventPriority.values()) {
-            handlerslots.put(o, new ArrayList<RegisteredListener>());
+            handlerslots.put(o, new ArrayList<>());
         }
         synchronized (allLists) {
             allLists.add(this);
@@ -54,7 +54,7 @@ public class HandlerList {
      */
     public synchronized void register(@NotNull RegisteredListener listener) {
         if (handlerslots.get(listener.getPriority()).contains(listener))
-            throw new IllegalStateException("This listener is already registered to priority " + listener.getPriority().toString());
+            throw new IllegalStateException("This listener is already registered to priority " + listener.getPriority());
         handlers = null;
         handlerslots.get(listener.getPriority()).add(listener);
     }
@@ -75,7 +75,7 @@ public class HandlerList {
      */
     public synchronized void bake() {
         if (handlers != null) return; // don't re-bake when still valid
-        List<RegisteredListener> entries = new ArrayList<RegisteredListener>();
+        List<RegisteredListener> entries = new ArrayList<>();
         for (Map.Entry<EventPriority, ArrayList<RegisteredListener>> entry : handlerslots.entrySet()) {
             entries.addAll(entry.getValue());
         }

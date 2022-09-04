@@ -4,6 +4,7 @@ import com.alibaba.fastjson2.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Event.events.*;
 import okhttp3.*;
 import okio.ByteString;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -32,12 +33,12 @@ public class EventTrigger {
 
         okHttpClient.newCall(requestc).enqueue(new Callback() {
             @Override
-            public void onFailure(Call call, IOException e) {
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
 
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 wssLo= JSONObject.parseObject(Objects.requireNonNull(response.body()).string()).getJSONObject("data").getString("endpoint");
                 //TODO 建立wss链接
                 //getLogger().info(wssLo);
@@ -56,9 +57,8 @@ public class EventTrigger {
         }
 
         @Override
-        public void onMessage(WebSocket webSocket, ByteString bytes) {
+        public void onMessage(@NotNull WebSocket webSocket, ByteString bytes) {
             JSONObject jsontext = JSONObject.parseObject(bytes.utf8());
-            EventManage event = new EventManage();
             switch (jsontext.getJSONObject("data").getString("eventType")) {
                 case "1001":
                     try {
@@ -120,7 +120,7 @@ public class EventTrigger {
         }
 
         @Override
-        public void onClosed(WebSocket webSocket, int code, String reason) {
+        public void onClosed(@NotNull WebSocket webSocket, int code, @NotNull String reason) {
             mWebSocket.close(1000,"正常关闭");
         }
     }

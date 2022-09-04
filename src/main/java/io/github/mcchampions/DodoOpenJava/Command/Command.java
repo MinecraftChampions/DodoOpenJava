@@ -2,7 +2,8 @@ package io.github.mcchampions.DodoOpenJava.Command;
 
 import io.github.mcchampions.DodoOpenJava.Event.EventManage;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
-import io.github.mcchampions.DodoOpenJava.permissions;
+import io.github.mcchampions.DodoOpenJava.permissions.Permissions;
+import io.github.mcchampions.DodoOpenJava.permissions.User;
 
 import java.util.List;
 import java.util.Objects;
@@ -74,8 +75,7 @@ public class Command {
         for (int i = 0; i < commands.size(); i++) {
             CommandExecutor command = commands.get(i);
             if (Objects.equals(command.MainCommand(), Command)) {
-                permissions perm = new permissions();
-                if (perm.checkPermission(sender.getSenderDodoId(), command.Permissions())) {
+                if (User.hasPerm(sender.getSenderDodoId(), command.Permissions())) {
                     i = commands.size();
                     hasCommand = true;
                     command.onCommand(sender, args);

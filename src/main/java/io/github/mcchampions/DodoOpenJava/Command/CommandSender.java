@@ -12,34 +12,34 @@ import java.io.IOException;
  * 命令发送者
  */
 public class CommandSender {
-    public static String SenderDodoId;
+    public String SenderDodoId;
 
-    public static String ChannelId;
+    public String ChannelId;
 
-    public static String IslandId;
+    public String IslandId;
 
-    public static String AvatarUrl;
+    public String AvatarUrl;
 
-    public static String SenderNickName;
+    public String SenderNickName;
 
-    public static String SenderName;
+    public String SenderName;
 
-    public static String JoinTime;
+    public String JoinTime;
 
-    public static String MessageId;
+    public String MessageId;
 
     /**
      * 获取DodoID
      * @return DodoID
      */
-    public static String getSenderDodoId() {
+    public String getSenderDodoId() {
         return SenderDodoId;
     }
     /**
      * 获取频道ID
      * @return 频道ID
      */
-    public static String getChannelId() {
+    public String getChannelId() {
         return ChannelId;
     }
 
@@ -47,7 +47,7 @@ public class CommandSender {
      * 获取群号
      * @return 群号
      */
-    public static String getIslandId() {
+    public String getIslandId() {
         return IslandId;
     }
 
@@ -55,7 +55,7 @@ public class CommandSender {
      * 获取头像URL
      * @return 头像URL
      */
-    public static String getAvatarUrl() {
+    public String getAvatarUrl() {
         return AvatarUrl;
     }
 
@@ -63,7 +63,7 @@ public class CommandSender {
      * 获取发送者群昵称
      * @return 群昵称
      */
-    public static String getSenderNickName() {
+    public String getSenderNickName() {
         return SenderNickName;
     }
 
@@ -71,7 +71,7 @@ public class CommandSender {
      * 获取发送者原本名称
      * @return 原名
      */
-    public static String getSenderName() {
+    public String getSenderName() {
         return SenderName;
     }
 
@@ -79,7 +79,7 @@ public class CommandSender {
      * 获取加入时间
      * @return 加入时间
      */
-    public static String getJoinTime() {
+    public String getJoinTime() {
         return JoinTime;
     }
 
@@ -87,7 +87,7 @@ public class CommandSender {
      * 初始化发送者这个类型
      * @param jsontext JSONText
      */
-    public static void InitSender(JSONObject jsontext) {
+    public void InitSender(JSONObject jsontext) {
         SenderNickName = jsontext.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("nickName");
         SenderName = jsontext.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("nickName");
         JoinTime = jsontext.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("joinTime");
@@ -103,7 +103,7 @@ public class CommandSender {
      * @param Message 消息
      * @throws IOException 发送失败时抛出
      */
-    public static void referencedMessage(String Message) throws IOException {
+    public void referencedMessage(String Message) throws IOException {
         ChannelTextApi.referencedMessage(Command.SenderAuthorization, ChannelId, Message, MessageId, false);
     }
 
@@ -112,7 +112,7 @@ public class CommandSender {
      * @param NickName 群昵称
      * @throws IOException 编辑失败后抛出
      */
-    public static void editSenderNickName(String NickName) throws IOException {
+    public void editSenderNickName(String NickName) throws IOException {
         MemberApi.setMemberNickNameEdit(Command.SenderAuthorization,IslandId,SenderDodoId,NickName,false);
     }
 
@@ -121,7 +121,7 @@ public class CommandSender {
      * @param Time 时间（秒为单位）
      * @throws IOException 失败后抛出
      */
-    public static void muteSender(int Time) throws IOException {
+    public void muteSender(int Time) throws IOException {
         MemberApi.setMemberMuteAdd(Command.SenderAuthorization, IslandId, SenderDodoId,Time,false);
     }
 
@@ -131,7 +131,7 @@ public class CommandSender {
      * @param reason 禁言理由
      * @throws IOException 失败后抛出
      */
-    public static void muteSender(int Time, String reason) throws IOException {
+    public void muteSender(int Time, String reason) throws IOException {
         MemberApi.setMemberReasonrMuteAdd(Command.SenderAuthorization, IslandId, SenderDodoId,Time,reason,false);
     }
 
@@ -139,7 +139,7 @@ public class CommandSender {
      * 取消禁言成员
      * @throws IOException 失败后抛出
      */
-    public static void removeMuteSender() throws IOException {
+    public void removeMuteSender() throws IOException {
         MemberApi.setMemberMuteRemove(Command.SenderAuthorization,IslandId,SenderDodoId,false);
     }
 
@@ -148,7 +148,7 @@ public class CommandSender {
      * @param reason 封禁理由
      * @throws IOException 失败后抛出
      */
-    public static void banSender(String reason) throws IOException {
+    public void banSender(String reason) throws IOException {
         MemberApi.setMemberReasonBanAdd(Command.SenderAuthorization, IslandId, SenderDodoId,reason,false);
     }
 
@@ -156,7 +156,7 @@ public class CommandSender {
      * 封禁成员
      * @throws IOException 失败后抛出
      */
-    public static void banSender() throws IOException {
+    public void banSender() throws IOException {
         MemberApi.setMemberBanAdd(Command.SenderAuthorization, IslandId, SenderDodoId,false);
     }
 
@@ -164,7 +164,7 @@ public class CommandSender {
      * 取消封禁成员
      * @throws IOException 失败后抛出
      */
-    public static void removeBanSender() throws IOException {
+    public void removeBanSender() throws IOException {
         MemberApi.setMemberBanRemove(Command.SenderAuthorization,IslandId,SenderDodoId,false);
     }
 
@@ -173,7 +173,7 @@ public class CommandSender {
      * @param Message 私信
      * @throws IOException 失败后抛出
      */
-    public static void sendPrivateMessage(String Message) throws IOException {
+    public void sendPrivateMessage(String Message) throws IOException {
         PersonalApi.setPersonalMessageSend(Command.SenderAuthorization,SenderDodoId,MessageId,false);
     }
 
@@ -182,7 +182,7 @@ public class CommandSender {
      * @param RoleId 权限组ID
      * @throws IOException 失败后抛出
      */
-    public static void giveRole(String RoleId) throws IOException {
+    public void giveRole(String RoleId) throws IOException {
         RoleApi.setRoleMemberAdd(Command.SenderAuthorization,IslandId,SenderDodoId,RoleId,false);
     }
 
@@ -191,7 +191,7 @@ public class CommandSender {
      * @param RoleId 权限组ID
      * @throws IOException 失败后抛出
      */
-    public static void removeRole(String RoleId) throws IOException {
+    public void removeRole(String RoleId) throws IOException {
         RoleApi.setRoleMemberRemove(Command.SenderAuthorization,IslandId,SenderDodoId,RoleId,false);
     }
 }

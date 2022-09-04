@@ -22,8 +22,18 @@ public class ConfigUtil {
      * @return fileConfiguration 文件
      */
     public static FileConfiguration load(String child) {
-        File langFile = new File(child);
-        return YamlConfiguration.loadConfiguration(langFile);
+        File file = new File(child);
+        return YamlConfiguration.loadConfiguration(file);
+    }
+
+    /**
+     * 加载文件
+     *
+     * @param file 文件
+     * @return fileConfiguration 文件
+     */
+    public static FileConfiguration load(File file) {
+        return YamlConfiguration.loadConfiguration(file);
     }
 
     /**
@@ -87,11 +97,12 @@ public class ConfigUtil {
      * @param comments          注释
      * @param child             文件路径
      */
-    public static void setPathIsNotContains(FileConfiguration fileConfiguration, String path, Object value, List<String> comments, String child) {
+    public static Boolean setPathIsNotContains(FileConfiguration fileConfiguration, String path, Object value, List<String> comments, String child) {
         if (fileConfiguration.contains(path)) {
-            return;
+            return false;
         }
         setPath(fileConfiguration, path, value, comments, child);
+        return true;
     }
 
     /**
@@ -175,7 +186,7 @@ public class ConfigUtil {
     /**
      * 读取json文件
      *
-     * @param fileName json文件名
+     * @param fileName json文件
      * @return 返回json字符串
      */
     public static String readJsonFile(File fileName) {
