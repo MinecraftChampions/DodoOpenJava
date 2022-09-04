@@ -20,7 +20,7 @@ Dodo开放平台：https://open.imdodo.com/
 </repositories>
 
   <dependency>
-    <groupId>com.github.mcchampions</groupId>
+    <groupId>com.github.minecraftchampions</groupId>
     <artifactId>DodoOpenJava</artifactId>
     <version>v8.4</version>
   </dependency>
@@ -35,6 +35,6 @@ Dodo开放平台：https://open.imdodo.com/
 	}
 
 	dependencies {
-	        implementation 'com.github.mcchampions:DodoOpenJava:v8.4'
+	        implementation 'com.github.minecraftchampions:DodoOpenJava:v8.4'
 	}
 ```
