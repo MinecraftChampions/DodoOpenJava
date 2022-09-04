@@ -15,5 +15,9 @@ public enum DataType {
     /**
      * MongoDB数据库
      */
-    MongoDB
+    MongoDB,
+    /**
+     * Xml文件
+     */
+    Xml
 }

@@ -1,12 +1,14 @@
 {
-  "DodoId": {
-    "Group": "Default",
-    "perms": [
-      "perm.seven"
-    ]
-  },
-  "666666": {
-    "Group": "Owner",
-    "perms": []
+  "Users": {
+    "DodoId": {
+      "Group": "Default",
+      "perms": [
+        "perm.seven"
+      ]
+    },
+    "666666": {
+      "Group": "Owner",
+      "perms": []
+    }
   }
 }

@@ -184,10 +184,10 @@ public class ConfigUtil {
         return path.substring(firstIndex, lastIndex);
     }
     /**
-     * 读取json文件
+     * 读取文件
      *
      * @param fileName json文件
-     * @return 返回json字符串
+     * @return 返回字符串
      */
     public static String readJsonFile(File fileName) {
         try {

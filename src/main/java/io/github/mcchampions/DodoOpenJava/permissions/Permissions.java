@@ -8,6 +8,7 @@ import io.github.mcchampions.DodoOpenJava.Event.events.*;
 import io.github.mcchampions.DodoOpenJava.Utils.ConfigUtil;
 import io.github.mcchampions.DodoOpenJava.permissions.Data.Json;
 import io.github.mcchampions.DodoOpenJava.permissions.Data.MongoDB;
+import io.github.mcchampions.DodoOpenJava.permissions.Data.Xml;
 import io.github.mcchampions.DodoOpenJava.permissions.Data.Yaml;
 
 import java.io.IOException;
@@ -35,21 +36,7 @@ public class Permissions implements Listener {
      * @throws IOException 初始化出现问题抛出
      */
     public static Boolean init(DataType type, String ip, String ad) throws IOException {
-        if (Objects.equals(type.toString(), "MongoDB")) {
-            MongoDB mongoDB = new MongoDB();
-            mongoDB.initPermissions(ip,25077);
-        } else if (Objects.equals(type.toString(), "YAML")) {
-            Yaml.init();
-        } else if (Objects.equals(type.toString(), "JSON")) {
-            Json.init();
-        } else {
-            return false;
-        }
-        EM.registerEvents(new Permissions(),ad);
-        Permissions.type = type;
-        Permissions.ad = ad;
-        listener();
-        return true;
+        return init(type,ip,25077,ad);
     }
 
     /**
@@ -60,21 +47,7 @@ public class Permissions implements Listener {
      * @throws IOException 初始化出现问题抛出
      */
     public static Boolean init(DataType type,String ad) throws IOException {
-        if (Objects.equals(type.toString(), "MongoDB")) {
-            MongoDB mongoDB = new MongoDB();
-            mongoDB.initPermissions("127.0.0.1",25077);
-        } else if (Objects.equals(type.toString(), "YAML")) {
-            Yaml.init();
-        } else if (Objects.equals(type.toString(), "JSON")) {
-            Json.init();
-        } else {
-            return false;
-        }
-        EM.registerEvents(new Permissions(),ad);
-        Permissions.type = type;
-        Permissions.ad = ad;
-        listener();
-        return true;
+        return init(type,"127.0.0.1",25077,ad);
     }
 
     /**
@@ -86,21 +59,7 @@ public class Permissions implements Listener {
      * @throws IOException 初始化出现问题抛出
      */
     public static Boolean init(DataType type,int port,String ad) throws IOException {
-        if (Objects.equals(type.toString(), "MongoDB")) {
-            MongoDB mongoDB = new MongoDB();
-            mongoDB.initPermissions("127.0.0.1",port);
-        } else if (Objects.equals(type.toString(), "YAML")) {
-            Yaml.init();
-        } else if (Objects.equals(type.toString(), "JSON")) {
-            Json.init();
-        } else {
-            return false;
-        }
-        EM.registerEvents(new Permissions(),ad);
-        Permissions.type = type;
-        Permissions.ad = ad;
-        listener();
-        return true;
+        return init(type,"127.0.0.1",port,ad);
     }
 
     /**
@@ -120,6 +79,8 @@ public class Permissions implements Listener {
             Yaml.init();
         } else if (Objects.equals(type.toString(), "JSON")) {
             Json.init();
+        } else if (Objects.equals(type.toString(), "JSON")) {
+            Xml.init();
         } else {
             return false;
         }
