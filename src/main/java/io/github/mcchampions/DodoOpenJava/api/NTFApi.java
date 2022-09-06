@@ -11,7 +11,7 @@ import java.io.IOException;
  */
 
 public class NTFApi {
-    public static String parm,url;
+    public static String param,url;
 
     /**
      * 获取成员数字藏品判断
@@ -21,10 +21,11 @@ public class NTFApi {
      * @param islandId 群号
      * @param dodoId DodoId
      * @param platform 数藏平台
-     * @param returnJSONText 是否返回原本的JSON参数，如果是false，则返回经过解析后的文本
+     * @return JSON对象
+     * @throws IOException 失败后抛出
      */
-    public static String getMemberNftStatus(String clientId, String token, String islandId, String dodoId, String platform, Boolean returnJSONText) throws IOException {
-        return getMemberNftStatus(BaseUtil.Authorization(clientId, token), islandId, dodoId, platform, returnJSONText);
+    public static JSONObject getMemberNftStatus(String clientId, String token, String islandId, String dodoId, String platform) throws IOException {
+        return getMemberNftStatus(BaseUtil.Authorization(clientId, token), islandId, dodoId, platform);
     }
 
     /**
@@ -34,45 +35,17 @@ public class NTFApi {
      * @param islandId 群号
      * @param dodoId DodoId
      * @param platform 数藏平台
-     * @param returnJSONText 是否返回原本的JSON参数，如果是false，则返回经过解析后的文本
+     * @return JSON对象
+     * @throws IOException 失败后抛出
      */
-    public static String getMemberNftStatus(String Authorization, String islandId, String dodoId, String platform, Boolean returnJSONText) throws IOException {
+    public static JSONObject getMemberNftStatus(String Authorization, String islandId, String dodoId, String platform) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/member/nft/status";
-        parm = "{\n" +
-                "    \"islandId\": \"" + islandId + "\",\n" +
-                "    \"dodoId\": \"" + dodoId + "\",\n" +
-                "    \"platform\": \"" + platform + "\"\n" +
+        param = "{" +
+                "    \"islandId\": \"" + islandId + "\"," +
+                "    \"dodoId\": \"" + dodoId + "\"," +
+                "    \"platform\": \"" + platform + "\"" +
                 "}";
-        String Parm = NetUtil.sendRequest(parm, url, Authorization);
-        if(!returnJSONText) {
-            int isBandPlatformType = new JSONObject(Parm).getJSONObject("data").getInt("isBandPlatform");
-            int isHaveIssuerType = new JSONObject(Parm).getJSONObject("data").getInt("isHaveIssuer");
-            int isHaveSeriesType = new JSONObject(Parm).getJSONObject("data").getInt("isHaveSeries");
-            String isHaveSeries, isHaveIssuer, isBandPlatform;
-
-            if (isBandPlatformType == 0) {
-                isBandPlatform = "否";
-            } else {
-                isBandPlatform = "是";
-            }
-
-            if (isHaveIssuerType == 0) {
-                isHaveIssuer = "否";
-            } else {
-                isHaveIssuer = "是";
-            }
-
-            if (isHaveSeriesType == 0) {
-                isHaveSeries = "否";
-            } else {
-                isHaveSeries = "是";
-            }
-
-            Parm =  "是否已绑定该数藏平台: \"" + isBandPlatform + "\"\n" +
-                    "是否拥有该发行方的NFT: \"" + isHaveIssuer + "\"\n" +
-                    "是否拥有该系列的NFT: \"" + isHaveSeries + "\"\n";
-        }
-        return Parm;
+        return  new JSONObject(NetUtil.sendRequest(param, url, Authorization));
     }
 
     /**
@@ -83,10 +56,11 @@ public class NTFApi {
      * @param islandId 群号
      * @param dodoId DodoId
      * @param platform 数藏平台
-     * @param returnJSONText 是否返回原本的JSON参数，如果是false，则返回经过解析后的文本
+     * @return JSON对象
+     * @throws IOException 失败后抛出
      */
-    public static String getMemberNftStatus(String clientId, String token, String islandId, String dodoId, String platform, String issuer, String series, Boolean returnJSONText) throws IOException {
-        return getMemberNftStatus(BaseUtil.Authorization(clientId, token), islandId, dodoId, platform, issuer, series, returnJSONText);
+    public static JSONObject getMemberNftStatus(String clientId, String token, String islandId, String dodoId, String platform, String issuer, String series) throws IOException {
+        return getMemberNftStatus(BaseUtil.Authorization(clientId, token), islandId, dodoId, platform, issuer, series);
     }
 
     /**
@@ -96,46 +70,16 @@ public class NTFApi {
      * @param islandId 群号
      * @param dodoId DodoId
      * @param platform 数藏平台
-     * @param returnJSONText 是否返回原本的JSON参数，如果是false，则返回经过解析后的文本
      */
-    public static String getMemberNftStatus(String Authorization, String islandId, String dodoId, String platform, String issuer, String series, Boolean returnJSONText) throws IOException {
+    public static JSONObject getMemberNftStatus(String Authorization, String islandId, String dodoId, String platform, String issuer, String series) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/member/nft/status";
-        parm = "{\n" +
-                "    \"islandId\": \"" + islandId + "\",\n" +
-                "    \"dodoId\": \"" + dodoId + "\",\n" +
-                "    \"platform\": \"" + platform + "\",\n" +
-                "    \"issuer\": \"" + issuer + "\",\n" +
-                "    \"series\": \"" + series + "\"\n" +
+        param = "{" +
+                "    \"islandId\": \"" + islandId + "\"," +
+                "    \"dodoId\": \"" + dodoId + "\"," +
+                "    \"platform\": \"" + platform + "\"," +
+                "    \"issuer\": \"" + issuer + "\"," +
+                "    \"series\": \"" + series + "\"" +
                 "}";
-        String Parm = NetUtil.sendRequest(parm, url, Authorization);
-        if(!returnJSONText) {
-            int isBandPlatformType = new JSONObject(Parm).getJSONObject("data").getInt("isBandPlatform");
-            int isHaveIssuerType = new JSONObject(Parm).getJSONObject("data").getInt("isHaveIssuer");
-            int isHaveSeriesType = new JSONObject(Parm).getJSONObject("data").getInt("isHaveSeries");
-            String isHaveSeries, isHaveIssuer, isBandPlatform;
-
-            if (isBandPlatformType == 0) {
-                isBandPlatform = "否";
-            } else {
-                isBandPlatform = "是";
-            }
-
-            if (isHaveIssuerType == 0) {
-                isHaveIssuer = "否";
-            } else {
-                isHaveIssuer = "是";
-            }
-
-            if (isHaveSeriesType == 0) {
-                isHaveSeries = "否";
-            } else {
-                isHaveSeries = "是";
-            }
-
-            Parm =  "是否已绑定该数藏平台: \"" + isBandPlatform + "\"\n" +
-                    "是否拥有该发行方的NFT: \"" + isHaveIssuer + "\"\n" +
-                    "是否拥有该系列的NFT: \"" + isHaveSeries + "\"\n";
-        }
-        return Parm;
+        return  new JSONObject(NetUtil.sendRequest(param, url, Authorization));
     }
 }

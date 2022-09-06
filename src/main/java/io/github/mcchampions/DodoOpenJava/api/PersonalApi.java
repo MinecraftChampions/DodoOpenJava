@@ -1,8 +1,8 @@
 package io.github.mcchampions.DodoOpenJava.api;
 
-import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
 import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import java.io.IOException;
  * 私信API
  */
 public class PersonalApi {
-    public static String url,parm;
+    public static String url, param;
 
     /**
      * 发送文本消息
@@ -19,10 +19,11 @@ public class PersonalApi {
      * @param token 机器人鉴权Token
      * @param Message 发送的消息
      * @param dodoId Dodo号
-     * @param returnJSONText true返回原本的json文本，false返回消息ID
+     * @return JSON对象
+     * @throws IOException 失败后抛出
      */
-    public static String setPersonalMessageSend(String clientId, String token, String dodoId, String Message, Boolean returnJSONText) throws IOException {
-        return setPersonalMessageSend(BaseUtil.Authorization(clientId,token), dodoId, Message, returnJSONText);
+    public static JSONObject sendPersonalMessage(String clientId, String token, String dodoId, String Message) throws IOException {
+        return sendPersonalMessage(BaseUtil.Authorization(clientId,token), dodoId, Message);
     }
 
     /**
@@ -31,22 +32,19 @@ public class PersonalApi {
      * @param Authorization Authorization
      * @param Message 发送的消息
      * @param dodoId Dodo号
-     * @param returnJSONText true返回原本的json文本，false返回消息ID
+     * @return JSON对象
+     * @throws IOException 失败后抛出
      */
-    public static String setPersonalMessageSend(String Authorization, String dodoId, String Message, Boolean returnJSONText) throws IOException {
+    public static JSONObject sendPersonalMessage(String Authorization, String dodoId, String Message) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/personal/message/send";
-        parm = "{\n" +
-                "    \"dodoId\": \"" + dodoId + "\",\n" +
-                "    \"messageType\": 1,\n" +
-                "    \"messageBody\": {\n" +
-                "        \"content\": \"" + Message + "\"\n" +
-                "    }\n" +
+        param = "{" +
+                "    \"dodoId\": \"" + dodoId + "\"," +
+                "    \"messageType\": 1," +
+                "    \"messageBody\": {" +
+                "        \"content\": \"" + Message + "\"" +
+                "    }" +
                 "}";
-        String Parm = NetUtil.sendRequest(parm, url, Authorization);
-        if (!returnJSONText) {
-            Parm = new JSONObject(Parm).getJSONObject("data").getString("messageId");
-        }
-        return Parm;
+        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
     }
 
     /**
@@ -59,10 +57,11 @@ public class PersonalApi {
      * @param height 图片高度
      * @param width 图片宽度
      * @param isOriginal 是否原图
-     * @param returnJSONText true返回原本的json文本，false返回消息ID
+     * @return JSON对象
+     * @throws IOException 失败后抛出
      */
-    public static String setdodoPictureMessageSend(String clientId, String token, String dodoId, String Url, int width, int height, Boolean isOriginal, Boolean returnJSONText) throws IOException {
-        return setdodoPictureMessageSend(BaseUtil.Authorization(clientId,token), dodoId, Url, width, height, isOriginal, returnJSONText);
+    public static JSONObject sendDodoPictureMessage(String clientId, String token, String dodoId, String Url, int width, int height, Boolean isOriginal) throws IOException {
+        return sendDodoPictureMessage(BaseUtil.Authorization(clientId,token), dodoId, Url, width, height, isOriginal);
     }
 
     /**
@@ -74,9 +73,10 @@ public class PersonalApi {
      * @param height 图片高度
      * @param width 图片宽度
      * @param isOriginal 是否原图
-     * @param returnJSONText true返回原本的json文本，false返回消息ID
+     * @return JSON对象
+     * @throws IOException 失败后抛出
      */
-    public static String setdodoPictureMessageSend(String Authorization, String dodoId, String Url, int width, int height, Boolean isOriginal, Boolean returnJSONText) throws IOException {
+    public static JSONObject sendDodoPictureMessage(String Authorization, String dodoId, String Url, int width, int height, Boolean isOriginal) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/personal/message/send";
         int Original;
         if (isOriginal) {
@@ -84,21 +84,17 @@ public class PersonalApi {
         } else {
             Original = 0;
         }
-        parm = "{\n" +
-                "    \"dodoId\": \"" + dodoId + "\",\n" +
-                "    \"messageType\": 2,\n" +
-                "    \"messageBody\": {\n" +
-                "        \"url\": \"" + Url + "\",\n" +
-                "        \"width\": " + width + ",\n" +
-                "        \"height\": " + height + ",\n" +
-                "        \"isOriginal\": " + Original + "\n" +
-                "    }\n" +
+        param = "{" +
+                "    \"dodoId\": \"" + dodoId + "\"," +
+                "    \"messageType\": 2," +
+                "    \"messageBody\": {" +
+                "        \"url\": \"" + Url + "\"," +
+                "        \"width\": " + width + "," +
+                "        \"height\": " + height + "," +
+                "        \"isOriginal\": " + Original + "" +
+                "    }" +
                 "}";
-        String Parm = NetUtil.sendRequest(parm, url, Authorization);
-        if (!returnJSONText) {
-            Parm = new JSONObject(Parm).getJSONObject("data").getString("messageId");
-        }
-        return Parm;
+        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
     }
 
     /**
@@ -110,10 +106,11 @@ public class PersonalApi {
      * @param Url 图片url地址
      * @param height 图片高度
      * @param width 图片宽度
-     * @param returnJSONText true返回原本的json文本，false返回消息ID
+     * @return JSON对象
+     * @throws IOException 失败后抛出
      */
-    public static String setdodoPictureMessageSend(String clientId, String token, String dodoId, String Url, int width, int height, Boolean returnJSONText) throws IOException {
-        return setdodoPictureMessageSend(BaseUtil.Authorization(clientId,token), dodoId, Url, width, height, returnJSONText);
+    public static JSONObject sendDodoPictureMessage(String clientId, String token, String dodoId, String Url, int width, int height) throws IOException {
+        return sendDodoPictureMessage(BaseUtil.Authorization(clientId,token), dodoId, Url, width, height);
     }
 
     /**
@@ -124,24 +121,21 @@ public class PersonalApi {
      * @param Url 图片url地址
      * @param height 图片高度
      * @param width 图片宽度
-     * @param returnJSONText true返回原本的json文本，false返回消息ID
+     * @return JSON对象
+     * @throws IOException 失败后抛出
      */
-    public static String setdodoPictureMessageSend(String Authorization, String dodoId, String Url, int width, int height,  Boolean returnJSONText) throws IOException {
+    public static JSONObject sendDodoPictureMessage(String Authorization, String dodoId, String Url, int width, int height) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/personal/message/send";
-        parm = "{\n" +
-                "    \"dodoId\": \"" + dodoId + "\",\n" +
-                "    \"messageType\": 2,\n" +
-                "    \"messageBody\": {\n" +
-                "        \"url\": \"" + Url + "\",\n" +
-                "        \"width\": " + width + ",\n" +
-                "        \"height\": " + height + "\n" +
-                "    }\n" +
+        param = "{" +
+                "    \"dodoId\": \"" + dodoId + "\"," +
+                "    \"messageType\": 2," +
+                "    \"messageBody\": {" +
+                "        \"url\": \"" + Url + "\"," +
+                "        \"width\": " + width + "," +
+                "        \"height\": " + height + "" +
+                "    }" +
                 "}";
-        String Parm = NetUtil.sendRequest(parm, url, Authorization);
-        if (!returnJSONText) {
-            Parm = new JSONObject(Parm).getJSONObject("data").getString("messageId");
-        }
-        return Parm;
+        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
     }
 
     /**
@@ -151,10 +145,11 @@ public class PersonalApi {
      * @param token 机器人鉴权Token
      * @param dodoId dodo号
      * @param Url 视频url地址
-     * @param returnJSONText true返回原本的json文本，false返回消息ID
+     * @return JSON对象
+     * @throws IOException 失败后抛出
      */
-    public static String setdodoVideoMessageSend(String clientId, String token, String dodoId, String Url, Boolean returnJSONText) throws IOException {
-        return setdodoVideoMessageSend(BaseUtil.Authorization(clientId,token), dodoId, Url, returnJSONText);
+    public static JSONObject sendDodoVideoMessage(String clientId, String token, String dodoId, String Url) throws IOException {
+        return sendDodoVideoMessage(BaseUtil.Authorization(clientId,token), dodoId, Url);
     }
 
     /**
@@ -163,22 +158,19 @@ public class PersonalApi {
      * @param Authorization Authorization
      * @param dodoId dodo号
      * @param Url 视频url地址
-     * @param returnJSONText true返回原本的json文本，false返回消息ID
+     * @return JSON对象
+     * @throws IOException 失败后抛出
      */
-    public static String setdodoVideoMessageSend(String Authorization, String dodoId, String Url, Boolean returnJSONText) throws IOException {
+    public static JSONObject sendDodoVideoMessage(String Authorization, String dodoId, String Url) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/personal/message/send";
-        parm = "{\n" +
-                "    \"dodoId\": \"" + dodoId + "\",\n" +
-                "    \"messageType\": 3,\n" +
-                "    \"messageBody\": {\n" +
-                "        \"url\": \"" + Url + "\"\n" +
-                "    }\n" +
+        param = "{" +
+                "    \"dodoId\": \"" + dodoId + "\"," +
+                "    \"messageType\": 3," +
+                "    \"messageBody\": {" +
+                "        \"url\": \"" + Url + "\"" +
+                "    }" +
                 "}";
-        String Parm = NetUtil.sendRequest(parm, url, Authorization);
-        if (!returnJSONText) {
-            Parm = new JSONObject(Parm).getJSONObject("data").getString("messageId");
-        }
-        return Parm;
+        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
     }
 
     /**
@@ -191,10 +183,11 @@ public class PersonalApi {
      * @param coverUrl 封面url地址
      * @param duration 视频长度
      * @param size 视频大小
-     * @param returnJSONText true返回原本的json文本，false返回消息ID
+     * @return JSON对象
+     * @throws IOException 失败后抛出
      */
-    public static String setdodoVideoMessageSend(String clientId, String token, String dodoId, String Url, String coverUrl, long duration, long size, Boolean returnJSONText) throws IOException {
-        return setdodoVideoMessageSend(BaseUtil.Authorization(clientId,token), dodoId, Url, coverUrl, duration, size, returnJSONText);
+    public static JSONObject sendDodoVideoMessage(String clientId, String token, String dodoId, String Url, String coverUrl, long duration, long size) throws IOException {
+        return sendDodoVideoMessage(BaseUtil.Authorization(clientId,token), dodoId, Url, coverUrl, duration, size);
     }
 
     /**
@@ -206,24 +199,21 @@ public class PersonalApi {
      * @param coverUrl 封面url地址
      * @param duration 视频长度
      * @param size 视频大小
-     * @param returnJSONText true返回原本的json文本，false返回消息ID
+     * @return JSON对象
+     * @throws IOException 失败后抛出
      */
-    public static String setdodoVideoMessageSend(String Authorization, String dodoId, String Url, String coverUrl, long duration, long size, Boolean returnJSONText) throws IOException {
+    public static JSONObject sendDodoVideoMessage(String Authorization, String dodoId, String Url, String coverUrl, long duration, long size) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/personal/message/send";
-        parm = "{\n" +
-                "    \"dodoId\": \"" + dodoId + "\",\n" +
-                "    \"messageType\": 3,\n" +
-                "    \"messageBody\": {\n" +
-                "        \"url\": \"" + Url + "\",\n" +
-                "        \"coverUrl\": \"" + coverUrl + "\",\n" +
-                "        \"duration\": " + duration + ",\n" +
-                "        \"size\": " + size + "\n" +
-                "    }\n" +
+        param = "{" +
+                "    \"dodoId\": \"" + dodoId + "\"," +
+                "    \"messageType\": 3," +
+                "    \"messageBody\": {" +
+                "        \"url\": \"" + Url + "\"," +
+                "        \"coverUrl\": \"" + coverUrl + "\"," +
+                "        \"duration\": " + duration + "," +
+                "        \"size\": " + size + "" +
+                "    }" +
                 "}";
-        String Parm = NetUtil.sendRequest(parm, url, Authorization);
-        if (!returnJSONText) {
-            Parm = new JSONObject(Parm).getJSONObject("data").getString("messageId");
-        }
-        return Parm;
+        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
     }
 }

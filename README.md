@@ -22,7 +22,7 @@ Dodo开放平台：https://open.imdodo.com/
   <dependency>
     <groupId>com.github.minecraftchampions</groupId>
     <artifactId>DodoOpenJava</artifactId>
-    <version>v8.7</version>
+    <version>v8.8</version>
   </dependency>
 ```
 #### Gradle

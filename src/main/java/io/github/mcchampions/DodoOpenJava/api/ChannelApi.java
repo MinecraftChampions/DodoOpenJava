@@ -1,10 +1,8 @@
 package io.github.mcchampions.DodoOpenJava.api;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
 import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 
@@ -12,17 +10,18 @@ import java.io.IOException;
  * 频道API
  */
 public class ChannelApi {
-    public static String url,parm;
+    public static String url, param;
     /**
      * 获取频道列表
      *
      * @param clientId 机器人唯一标识
      * @param token 机器人鉴权Token
      * @param islandId 群号
-     * @param returnJSONText 是否返回原本的JSON参数，如果是false，则返回经过解析后的文本
+     * @return JSON对象
+     * @throws IOException 失败后抛出
      */
-    public static String getChannelList(String clientId, String token, String islandId, Boolean returnJSONText) throws IOException {
-        return getChannelList(BaseUtil.Authorization(clientId,token), islandId, returnJSONText);
+    public static JSONObject getChannelList(String clientId, String token, String islandId) throws IOException {
+        return getChannelList(BaseUtil.Authorization(clientId,token), islandId);
     }
 
     /**
@@ -30,56 +29,16 @@ public class ChannelApi {
      *
      * @param Authorization Authorization
      * @param islandId 群号
-     * @param returnJSONText 是否返回原本的JSON参数，如果是false，则返回经过解析后的文本
+     * @return JSON对象
+     * @throws IOException 失败后抛出
      */
-    public static String getChannelList(String Authorization, String islandId,Boolean returnJSONText) throws IOException {
+    public static JSONObject getChannelList(String Authorization, String islandId) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/channel/list";
-        parm = "{\n" +
-                "    \"islandId\": \"" + islandId + "\"\n" +
+        param = "{" +
+                "    \"islandId\": \"" + islandId + "\"" +
                 "}";
         String channel;
-        String Parm = NetUtil.sendRequest(parm, url, Authorization);
-        if (!returnJSONText) {
-            JSONArray JSONList = new JSONObject(Parm).getJSONArray("data");
-            int JSONListSize = JSONList.toList().size();
-            String[] List = new String[0];
-            for (int i = 0;i < JSONListSize;i++) {
-                Object object = JSONList.get(i);
-                String JSONText = object.toString();
-                String channelCount = String.valueOf(i + 1);
-                String channelId = new JSONObject(JSONText).getString("channelId");
-                String channelName = new JSONObject(JSONText).getString("channelName");
-                int channelTypeInt = new JSONObject(JSONText).getInt("channelType");
-                String channelType = switch (channelTypeInt) {
-                    case 1 -> "文字频道";
-                    case 2 -> "语音频道";
-                    case 4 -> "帖子频道";
-                    case 5 -> "链接频道";
-                    case 6 -> "资料频道";
-                    default -> null;
-                };
-                int defaultFlagInt = new JSONObject(JSONText).getInt("defaultFlag");
-                String defaultFlag;
-                if (defaultFlagInt == 0) {
-                    defaultFlag = "否";
-                } else {
-                    defaultFlag = "是";
-                }
-                String groupId = new JSONObject(JSONText).getString("groupId");
-                String groupName = new JSONObject(JSONText).getString("defaultChannelId");
-                channel = "  频道" + channelCount + ": \n" +
-                          "    频道ID: \"" + channelId + "\"\n" +
-                          "    频道名称: \"" + channelName + "\"\n" +
-                          "    频道类型: \"" + channelType + "\"\n" +
-                          "    是否为默认访问频道: \"" + defaultFlag + "\"\n" +
-                          "    分组ID: \"" + groupId + "\"\n" +
-                          "    分组名称: \"" + groupName + "\"\n";
-                List[i] = channel;
-            }
-            String islandList = StringUtils.join(List);
-            Parm = "群列表:\n" + islandList;
-        }
-        return Parm;
+        return  new JSONObject(NetUtil.sendRequest(param, url, Authorization));
     }
 
     /**
@@ -88,10 +47,11 @@ public class ChannelApi {
      * @param clientId 机器人唯一标识
      * @param token 机器人鉴权Token
      * @param channelId 频道号
-     * @param returnJSONText 是否返回原本的JSON参数，如果是false，则返回经过解析后的文本
+     * @return JSON对象
+     * @throws IOException 失败后抛出
      */
-    public static String getChannelInfo(String clientId, String token, String channelId, Boolean returnJSONText) throws IOException {
-        return getChannelInfo(BaseUtil.Authorization(clientId, token), channelId, returnJSONText);
+    public static JSONObject getChannelInfo(String clientId, String token, String channelId) throws IOException {
+        return getChannelInfo(BaseUtil.Authorization(clientId, token), channelId);
     }
 
     /**
@@ -99,44 +59,15 @@ public class ChannelApi {
      *
      * @param Authorization Authorization
      * @param channelId 频道号
-     * @param returnJSONText 是否返回原本的JSON参数，如果是false，则返回经过解析后的文本
+     * @return JSON对象
+     * @throws IOException 失败后抛出
      */
-    public static String getChannelInfo(String Authorization, String channelId, Boolean returnJSONText) throws IOException {
+    public static JSONObject getChannelInfo(String Authorization, String channelId) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/channel/info";
-        parm = "{\n" +
-                "    \"channelId\": \"" + channelId + "\"\n" +
+        param = "{" +
+                "    \"channelId\": \"" + channelId + "\"" +
                 "}";
-        String Parm = NetUtil.sendRequest(parm, url, Authorization);
-        if (!returnJSONText) {
-            JSONObject JSONText = new JSONObject(Parm).getJSONObject("data");
-            String ChannelId = JSONText.getString("channelId");
-            String channelName = JSONText.getString("channelName");
-            int channelTypeInt = JSONText.getInt("channelType");
-            String channelType = switch (channelTypeInt) {
-                case 1 -> "文字频道";
-                case 2 -> "语音频道";
-                case 4 -> "帖子频道";
-                case 5 -> "链接频道";
-                case 6 -> "资料频道";
-                default -> null;
-            };
-            int defaultFlagInt = JSONText.getInt("defaultFlag");
-            String defaultFlag;
-            if (defaultFlagInt == 0) {
-                defaultFlag = "否";
-            } else {
-                defaultFlag = "是";
-            }
-            String groupId = JSONText.getString("groupId");
-            String groupName = JSONText.getString("defaultChannelId");
-            Parm = "    频道ID: \"" + ChannelId + "\"\n" +
-                        "    频道名称: \"" + channelName + "\"\n" +
-                        "    频道类型: \"" + channelType + "\"\n" +
-                        "    是否为默认访问频道: \"" + defaultFlag + "\"\n" +
-                        "    分组ID: \"" + groupId + "\"\n" +
-                        "    分组名称: \"" + groupName + "\"\n";
-        }
-        return Parm;
+        return  new JSONObject(NetUtil.sendRequest(param, url, Authorization));
     }
 
     /**
@@ -147,10 +78,11 @@ public class ChannelApi {
      * @param islandId 群号
      * @param channelName 频道名
      * @param channelType 频道类型
-     * @param returnJSONText 返回原本的JSON文本还是直接返回频道ID
+     * @return JSON对象
+     * @throws IOException 失败后抛出
      */
-    public static String addChannel(String clientId, String token, String islandId, String channelName, int channelType, Boolean returnJSONText) throws IOException {
-        return addChannel(BaseUtil.Authorization(clientId, token), islandId, channelName, channelType, returnJSONText);
+    public static JSONObject addChannel(String clientId, String token, String islandId, String channelName, int channelType) throws IOException {
+        return addChannel(BaseUtil.Authorization(clientId, token), islandId, channelName, channelType);
     }
 
     /**
@@ -160,20 +92,17 @@ public class ChannelApi {
      * @param islandId 群号
      * @param channelName 频道名
      * @param channelType 频道类型
-     * @param returnJSONText 返回原本的JSON文本还是直接返回频道ID
+     * @return JSON对象
+     * @throws IOException 失败后抛出
      */
-    public static String addChannel(String Authorization, String islandId, String channelName, int channelType, Boolean returnJSONText) throws IOException {
+    public static JSONObject addChannel(String Authorization, String islandId, String channelName, int channelType) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/channel/add";
-        parm = "{\n" +
-                "    \"islandId\": \"" + islandId + "\",\n" +
-                "    \"channelName\": \"" + channelName + "\",\n" +
-                "    \"channelType\": " + channelType + "\n" +
+        param = "{" +
+                "    \"islandId\": \"" + islandId + "\"," +
+                "    \"channelName\": \"" + channelName + "\"," +
+                "    \"channelType\": " + channelType + "" +
                 "}";
-        String Parm = NetUtil.sendRequest(parm, url, Authorization);
-        if (!returnJSONText) {
-            Parm = new JSONObject(Parm).getJSONObject("data").getString("channelId");
-        }
-        return Parm;
+        return  new JSONObject(NetUtil.sendRequest(param, url, Authorization));
     }
     
     /**
@@ -184,10 +113,11 @@ public class ChannelApi {
      * @param islandId 群号
      * @param channelName 频道名
      * @param channelId 频道号
-     * @param returnJSONText 返回原本的JSON文本还是直接返回null
+     * @return JSON对象
+     * @throws IOException 失败后抛出
      */
-    public static String editChannel(String clientId, String token, String islandId, String channelName, String channelId, Boolean returnJSONText) throws IOException {
-        return editChannel(BaseUtil.Authorization(clientId, token), islandId, channelName, channelId, returnJSONText);
+    public static JSONObject editChannel(String clientId, String token, String islandId, String channelName, String channelId) throws IOException {
+        return editChannel(BaseUtil.Authorization(clientId, token), islandId, channelName, channelId);
     }
 
     /**
@@ -197,20 +127,17 @@ public class ChannelApi {
      * @param islandId 群号
      * @param channelName 频道名
      * @param channelId 频道号
-     * @param returnJSONText 返回原本的JSON文本还是直接返回null
+     * @return JSON对象
+     * @throws IOException 失败后抛出
      */
-    public static String editChannel(String Authorization, String islandId, String channelName, String channelId, Boolean returnJSONText) throws IOException {
+    public static JSONObject editChannel(String Authorization, String islandId, String channelName, String channelId) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/channel/edit";
-        parm = "{\n" +
-                "    \"islandId\": \"" + islandId + "\",\n" +
-                "    \"channelId\": \"" + channelId + "\",\n" +
-                "    \"channelName\": \"" + channelName + "\"\n" +
+        param = "{" +
+                "    \"islandId\": \"" + islandId + "\"," +
+                "    \"channelId\": \"" + channelId + "\"," +
+                "    \"channelName\": \"" + channelName + "\"" +
                 "}";
-        String Parm = NetUtil.sendRequest(parm, url, Authorization);
-        if (!returnJSONText) {
-            Parm = null;
-        }
-        return Parm;
+        return  new JSONObject(NetUtil.sendRequest(param, url, Authorization));
     }
     
     /**
@@ -220,10 +147,11 @@ public class ChannelApi {
      * @param token 机器人鉴权Token
      * @param islandId 群号
      * @param channelId 频道号
-     * @param returnJSONText 返回原本的JSON文本还是直接返回null
+     * @return JSON对象
+     * @throws IOException 失败后抛出
      */
-    public static String deleteChannel(String clientId, String token, String islandId, String channelId, Boolean returnJSONText) throws IOException {
-        return deleteChannel(BaseUtil.Authorization(clientId, token), islandId, channelId, returnJSONText);
+    public static JSONObject deleteChannel(String clientId, String token, String islandId, String channelId) throws IOException {
+        return deleteChannel(BaseUtil.Authorization(clientId, token), islandId, channelId);
     }
 
     /**
@@ -232,18 +160,15 @@ public class ChannelApi {
      * @param Authorization Authorization
      * @param islandId 群号
      * @param channelId 频道号
-     * @param returnJSONText 返回原本的JSON文本还是直接返回null
+     * @return JSON对象
+     * @throws IOException 失败后抛出
      */
-    public static String deleteChannel(String Authorization, String islandId, String channelId, Boolean returnJSONText) throws IOException {
+    public static JSONObject deleteChannel(String Authorization, String islandId, String channelId) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/channel/remove";
-        parm = "{\n" +
-                "    \"islandId\": \"" + islandId + "\",\n" +
-                "    \"channelId\": \"" + channelId + "\"\n" +
+        param = "{" +
+                "    \"islandId\": \"" + islandId + "\"," +
+                "    \"channelId\": \"" + channelId + "\"" +
                 "}";
-        String Parm = NetUtil.sendRequest(parm, url, Authorization);
-        if (!returnJSONText) {
-            Parm = null;
-        }
-        return Parm;
+        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
     }
 }

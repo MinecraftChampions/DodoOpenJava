@@ -12,21 +12,27 @@ import java.io.IOException;
 public class ResourceApi {
     public static String url;
 
-    public static String uploadResource(String clientId, String token, String path, Boolean returnJSONText) throws IOException {
-        return uploadResource(BaseUtil.Authorization(clientId,token), path, returnJSONText);
+    /**
+     * 上传资源
+     * @param clientId 机器人唯一标识
+     * @param token 机器人鉴权Token
+     * @param path 路径
+     * @return JSON对象
+     * @throws IOException 失败后抛出
+     */
+    public static JSONObject uploadResource(String clientId, String token, String path) throws IOException {
+        return uploadResource(BaseUtil.Authorization(clientId,token), path);
     }
 
-    public static String uploadResource(String Authorization, String path, Boolean returnJSONText) throws IOException {
+    /**
+     * 上传资源
+     * @param Authorization Authorization
+     * @param path 路径
+     * @return JSON对象
+     * @throws IOException 失败后抛出
+     */
+    public static JSONObject uploadResource(String Authorization, String path) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/resource/picture/upload";
-        String Parm = NetUtil.uploadFile(Authorization, path, url);
-        if (!returnJSONText) {
-            String URL = new JSONObject(Parm).getJSONObject("data").getString("url");
-            int width = new JSONObject(Parm).getJSONObject("data").getInt("width");
-            int height = new JSONObject(Parm).getJSONObject("data").getInt("height");
-            Parm = "图片URL地址: \"" + URL + "\"\n" +
-                   "图片宽度: \"" + width + "\"\n" +
-                   "图片高度: \"" + height + "\"";
-        }
-        return Parm;
+        return new JSONObject(NetUtil.uploadFile(Authorization, path, url));
     }
 }

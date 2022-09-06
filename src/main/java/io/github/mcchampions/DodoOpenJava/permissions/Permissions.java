@@ -24,53 +24,53 @@ public class Permissions implements Listener {
 
     public static DataType type;
 
-    public static String ad;
+    public static String Authorization;
 
     /**
      * 初始化
      * @param type 数据存储类型
      * @param ip IP
-     * @param ad 机器人AD
+     * @param Authorization Authorization
      * @return true成功，false失败
      * @throws IOException 初始化出现问题抛出
      */
-    public static Boolean init(DataType type, String ip, String ad) throws IOException {
-        return init(type,ip,25077,ad);
+    public static Boolean init(DataType type, String ip, String Authorization) throws IOException {
+        return init(type,ip,25077,Authorization);
     }
 
     /**
      * 初始化
      * @param type 数据存储类型
-     * @param ad 机器人AD
+     * @param Authorization 机器人Authorization
      * @return true成功，false失败
      * @throws IOException 初始化出现问题抛出
      */
-    public static Boolean init(DataType type,String ad) throws IOException {
-        return init(type,"127.0.0.1",25077,ad);
+    public static Boolean init(DataType type,String Authorization) throws IOException {
+        return init(type,"127.0.0.1",25077,Authorization);
     }
 
     /**
      * 初始化
      * @param type 数据存储类型
      * @param port 端口
-     * @param ad 机器人AD
+     * @param Authorization 机器人Authorization
      * @return true成功，false失败
      * @throws IOException 初始化出现问题抛出
      */
-    public static Boolean init(DataType type,int port,String ad) throws IOException {
-        return init(type,"127.0.0.1",port,ad);
+    public static Boolean init(DataType type,int port,String Authorization) throws IOException {
+        return init(type,"127.0.0.1",port,Authorization);
     }
 
     /**
      * 初始化
      * @param type 数据存储类型
      * @param ip ip
-     * @param ad 机器人AD
+     * @param Authorization 机器人Authorization
      * @param port 端口
      * @return true成功，false失败
      * @throws IOException 初始化出现问题抛出
      */
-    public static Boolean init(DataType type,String ip, int port,String ad) throws IOException {
+    public static Boolean init(DataType type,String ip, int port,String Authorization) throws IOException {
         if (Objects.equals(type.toString(), "MongoDB")) {
             MongoDB mongoDB = new MongoDB();
             mongoDB.initPermissions(ip,port);
@@ -83,55 +83,82 @@ public class Permissions implements Listener {
         } else {
             return false;
         }
-        EM.registerEvents(new Permissions(),ad);
+        EM.registerEvents(new Permissions(),Authorization);
         Permissions.type = type;
-        Permissions.ad = ad;
+        Permissions.Authorization = Authorization;
         listener();
         return true;
     }
 
+    /**
+     * 监听事件并判断用户权限是否初始化，如果没有则初始化
+     * @param e 事件
+     */
     @EventHandler
     public void onMessageEvent(MessageEvent e) {
         User.editUserGroup(e.getDodoId(),User.getUserGroup(e.getDodoId()));
         User.addPerm(e.getDodoId(), "");
     }
 
+    /**
+     * 监听事件并判断用户权限是否初始化，如果没有则初始化
+     * @param e 事件
+     */
     @EventHandler
     public void onCardMessageButtonClickEvent(CardMessageButtonClickEvent e) {
         User.editUserGroup(e.getDodoId(),User.getUserGroup(e.getDodoId()));
         User.addPerm(e.getDodoId(), "");
     }
 
+    /**
+     * 监听事件并判断用户权限是否初始化，如果没有则初始化
+     * @param e 事件
+     */
     @EventHandler
     public void onCardMessageListSubmitEvent(CardMessageListSubmitEvent e) {
         User.editUserGroup(e.getDodoId(),User.getUserGroup(e.getDodoId()));
         User.addPerm(e.getDodoId(), "");
     }
 
+    /**
+     * 监听事件并判断用户权限是否初始化，如果没有则初始化
+     * @param e 事件
+     */
     @EventHandler
     public void onCardMessageFormSubmitEvent(CardMessageFormSubmitEvent e) {
         User.editUserGroup(e.getDodoId(),User.getUserGroup(e.getDodoId()));
         User.addPerm(e.getDodoId(), "");
     }
 
+    /**
+     * 监听事件并判断用户权限是否初始化，如果没有则初始化
+     * @param e 事件
+     */
     @EventHandler
     public void onMemberJoinEvent(MemberJoinEvent e) {
         User.editUserGroup(e.getDodoId(),User.getUserGroup(e.getDodoId()));
         User.addPerm(e.getDodoId(), "");
     }
 
+    /**
+     * 监听事件并判断用户权限是否初始化，如果没有则初始化
+     * @param e 事件
+     */
     @EventHandler
     public void onMessageReactionEvent(MessageReactionEvent e) {
         User.editUserGroup(e.getDodoId(),User.getUserGroup(e.getDodoId()));
         User.addPerm(e.getDodoId(), "");
     }
 
+    /**
+     * 监听事件并判断用户权限是否初始化，如果没有则初始化
+     * @param e 事件
+     */
     @EventHandler
     public void onPersonalMessageEvent(PersonalMessageEvent e) {
         User.editUserGroup(e.getDodoId(),User.getUserGroup(e.getDodoId()));
         User.addPerm(e.getDodoId(), "");
     }
-
     /**
      * 监听文件更改
      * @throws IOException 处理异常时抛出
@@ -150,7 +177,7 @@ public class Permissions implements Listener {
                     if (event.kind() == StandardWatchEventKinds.OVERFLOW) {
                         continue;
                     }
-                    init(type,ad);
+                    init(type,Authorization);
                 }
                 if (!key.reset()) {
                     break;

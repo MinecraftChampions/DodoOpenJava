@@ -110,7 +110,6 @@ public class PermissionsGroup {
 
     /**
      * 编辑权限组名字
-     * @return 名字
      */
     public void editName(String name) {
         this.name = name;
