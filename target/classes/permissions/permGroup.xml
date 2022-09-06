@@ -1,0 +1,24 @@
+<Groups>
+    <name>
+        <isDefault>false</isDefault>
+        <perm>perm.one</perm>
+        <perm>perm.two.two.six</perm>
+        <perm>perm.three.one</perm>
+        <perm>perm.four.*</perm>
+    </name>
+    <Default>
+        <isDefault>true</isDefault>
+        <perm>perm.one</perm>
+        <perm>perm.two.two.six</perm>
+        <perm>perm.three.one</perm>
+        <perm>perm.four.default</perm>
+    </Default>
+    <Admin>
+        <isDefault>false</isDefault>
+        <perm>perm.*</perm>
+    </Admin>
+    <Owner>
+        <isDefault>false</isDefault>
+        <perm>*</perm>
+    </Owner>
+</Groups>

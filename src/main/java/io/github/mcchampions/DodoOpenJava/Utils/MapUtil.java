@@ -1,6 +1,6 @@
 package io.github.mcchampions.DodoOpenJava.Utils;
 
-import com.alibaba.fastjson2.JSONObject;
+import org.json.JSONObject;
 
 import java.beans.BeanInfo;
 import java.beans.Introspector;
@@ -64,6 +64,6 @@ public class MapUtil {
      * @return bean
      */
     public static JSONObject mapToJson(Map<?, ?> map) {
-        return JSONObject.parseObject(map.toString());
+        return new JSONObject(map);
     }
 }

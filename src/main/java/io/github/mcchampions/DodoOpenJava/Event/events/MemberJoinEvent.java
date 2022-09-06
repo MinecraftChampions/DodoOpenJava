@@ -1,6 +1,6 @@
 package io.github.mcchampions.DodoOpenJava.Event.events;
 
-import com.alibaba.fastjson2.JSONObject;
+import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Event.Event;
 import io.github.mcchampions.DodoOpenJava.Event.HandlerList;
 
@@ -38,7 +38,7 @@ public class MemberJoinEvent extends Event {
     public MemberJoinEvent(JSONObject json) {
         this.jsonObject = json;
         this.jsonString = json.toString();
-        this.timestamp = json.getJSONObject("data").getInteger("timestamp");
+        this.timestamp = json.getJSONObject("data").getInt("timestamp");
         this.eventId = json.getJSONObject("data").getString("eventId");
         this.islandId = json.getJSONObject("data").getJSONObject("eventBody").getString("islandId");
         this.dodoId = json.getJSONObject("data").getJSONObject("eventBody").getString("dodoId");

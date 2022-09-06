@@ -1,7 +1,6 @@
 package io.github.mcchampions.DodoOpenJava.Command;
 
-import com.alibaba.fastjson2.JSONObject;
-import io.github.mcchampions.DodoOpenJava.Event.Event;
+import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Event.EventHandler;
 import io.github.mcchampions.DodoOpenJava.Event.Listener;
 import io.github.mcchampions.DodoOpenJava.Event.events.MessageEvent;
@@ -14,8 +13,8 @@ import java.util.List;
 public class CommandTrigger implements Listener {
     @EventHandler
     public void event(MessageEvent e) {
-        JSONObject jsontext = JSONObject.parseObject(e.jsonString);
-        if (jsontext.getJSONObject("eventBody").getIntValue("messageType") != 1) return;
+        JSONObject jsontext = new JSONObject(e.jsonString);
+        if (jsontext.getJSONObject("eventBody").getInt("messageType") != 1) return;
         if (jsontext.getJSONObject("eventBody").getJSONObject("messageBody").getString("content").indexOf("/") != 0) return;
         String command = jsontext.getJSONObject("eventBody").getJSONObject("messageBody").getString("content").replaceFirst("/","");
         CommandSender sender = new CommandSender();

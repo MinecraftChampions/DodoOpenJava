@@ -43,7 +43,7 @@ public class Yaml {
             String DodoId = getGroupFile().getConfigurationSection("Users").getKeys(false).stream().toList().get(i);
             List<String> perms = getGroupFile().getStringList("Users." + DodoId + ".perms");
             String group = getGroupFile().getString("Users." + DodoId + ".Group");
-            PermissionsGroup Group = new PermissionsGroup();;
+            PermissionsGroup Group = new PermissionsGroup();
             for (int I = 0; I < PermissionsGroup.getGroups().size();I++) {
                 if (Objects.equals(PermissionsGroup.getGroups().get(I).getName(), group)) {
                     Group = PermissionsGroup.getGroups().get(I);

@@ -1,6 +1,6 @@
 package io.github.mcchampions.DodoOpenJava.Card;
 
-import com.alibaba.fastjson2.JSONObject;
+import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Card.Enums.Rows;
 
 /**
@@ -50,7 +50,7 @@ public class Form {
      */
     public Boolean initCard() {
         if (JsonForm.isEmpty()) {
-            JsonForm = JSONObject.parseObject("""
+            JsonForm = new JSONObject("""
                     {
                         "title": "表单标题",
                         "elements": []
@@ -66,7 +66,7 @@ public class Form {
      */
     public Boolean editContent(String title) {
         if (JsonForm.isEmpty()) initCard();
-        JsonForm.replace("title", title);
+        JsonForm.put("title", title);
         return true;
     }
 
@@ -111,7 +111,7 @@ public class Form {
         json.put("rows", Row);
         json.put("minChar", minChar);
         json.put("maxChar", maxChar);
-        JsonForm.getJSONArray("elements").add(json);
+        JsonForm.getJSONArray("elements").put(json);
         return true;
     }
 
@@ -147,7 +147,7 @@ public class Form {
         json.put("minChar", minChar);
         json.put("maxChar", maxChar);
         json.put("placeholder", placeholder);
-        JsonForm.getJSONArray("elements").add(json);
+        JsonForm.getJSONArray("elements").put(json);
         return true;
     }
 }

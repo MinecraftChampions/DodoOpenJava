@@ -1,6 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.permissions.Data;
 
-import com.alibaba.fastjson2.JSONObject;
+import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
+import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Utils.ConfigUtil;
 import io.github.mcchampions.DodoOpenJava.Utils.XmlUtil;
 import io.github.mcchampions.DodoOpenJava.permissions.PermissionsGroup;
@@ -20,7 +21,7 @@ public class Xml {
 
     /**
      * 初始化
-     * @throws IOException
+     * @throws IOException 失败后抛出
      */
     public static void init() throws IOException {
         File Config = new File(ConfigUtil.getJarPath() + "permissions/");
@@ -41,16 +42,16 @@ public class Xml {
         List<PermissionsGroup> groups = new ArrayList<>();
         for (int i = 0;i<getGroupFile().getJSONObject("Groups").keySet().size();i++) {
             String name = getGroupFile().getJSONObject("Groups").keySet().stream().toList().get(i);
-            List<String> perms = getGroupFile().getJSONObject("Groups").getJSONObject(name).getJSONArray("perms").toList(String.class);
+            List<String> perms = BaseUtil.toStringList(getGroupFile().getJSONObject("Groups").getJSONObject(name).getJSONArray("perms").toList());
             Boolean isDefault = getGroupFile().getJSONObject("Groups").getJSONObject(name).getBoolean("isDefault");
             groups.add(new PermissionsGroup(perms,isDefault,name));
         }
         PermissionsGroup.addGroups(groups);
 
-        for (int i = 0 ; i < getUserFile().getJSONObject("Users").getJSONArray("User").size(); i++) {
+        for (int i = 0 ; i < getUserFile().getJSONObject("Users").getJSONArray("User").toList().size(); i++) {
             JSONObject json = getGroupFile().getJSONObject("Users").getJSONArray("User").getJSONObject(i);
             String DodoId = json.getString("DodoId");
-            List<String> perms = json.getJSONArray("perm").toList(String.class);
+            List<String> perms = BaseUtil.toStringList(json.getJSONArray("perm").toList());
             String group = json.getString("Group");
             PermissionsGroup Group = new PermissionsGroup();
             for (int I = 0; I < PermissionsGroup.getGroups().size();I++) {

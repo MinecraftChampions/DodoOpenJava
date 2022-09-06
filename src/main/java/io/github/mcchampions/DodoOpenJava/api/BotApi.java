@@ -1,6 +1,6 @@
 package io.github.mcchampions.DodoOpenJava.api;
 
-import com.alibaba.fastjson2.JSONObject;
+import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
 import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
 
@@ -34,10 +34,10 @@ public class BotApi {
         parm = "{}";
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            String clientId = JSONObject.parseObject(Parm).getJSONObject("data").getString("clientId");
-            String dodoId = JSONObject.parseObject(Parm).getJSONObject("data").getString("dodoId");
-            String nickName = JSONObject.parseObject(Parm).getJSONObject("data").getString("nickName");
-            String avatarUrl = JSONObject.parseObject(Parm).getJSONObject("data").getString("avatarUrl");
+            String clientId = new JSONObject(Parm).getJSONObject("data").getString("clientId");
+            String dodoId = new JSONObject(Parm).getJSONObject("data").getString("dodoId");
+            String nickName = new JSONObject(Parm).getJSONObject("data").getString("nickName");
+            String avatarUrl = new JSONObject(Parm).getJSONObject("data").getString("avatarUrl");
             Parm = "机器人唯一标识: \"" + clientId + "\"\n" +
                     "机器人DoDo号: \"" + dodoId + "\"\n" +
                     "机器人昵称: \"" + nickName	 + "\"\n" +

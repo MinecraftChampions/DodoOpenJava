@@ -1,6 +1,6 @@
 package io.github.mcchampions.DodoOpenJava.api;
 
-import com.alibaba.fastjson2.JSONObject;
+import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
 import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
 
@@ -20,9 +20,9 @@ public class ResourceApi {
         url = "https://botopen.imdodo.com/api/v1/resource/picture/upload";
         String Parm = NetUtil.uploadFile(Authorization, path, url);
         if (!returnJSONText) {
-            String URL = JSONObject.parseObject(Parm).getJSONObject("data").getString("url");
-            int width = JSONObject.parseObject(Parm).getJSONObject("data").getIntValue("width");
-            int height = JSONObject.parseObject(Parm).getJSONObject("data").getIntValue("height");
+            String URL = new JSONObject(Parm).getJSONObject("data").getString("url");
+            int width = new JSONObject(Parm).getJSONObject("data").getInt("width");
+            int height = new JSONObject(Parm).getJSONObject("data").getInt("height");
             Parm = "图片URL地址: \"" + URL + "\"\n" +
                    "图片宽度: \"" + width + "\"\n" +
                    "图片高度: \"" + height + "\"";

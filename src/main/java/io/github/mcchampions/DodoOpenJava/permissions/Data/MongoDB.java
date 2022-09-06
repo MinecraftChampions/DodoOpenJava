@@ -1,6 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.permissions.Data;
 
-import com.alibaba.fastjson2.JSONObject;
+import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
+import org.json.JSONObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
@@ -36,26 +37,25 @@ public class MongoDB {
         permUser = mongo.getDatabase("permUser");
         List<String> listGroupsCollectionNames = (List<String>) permGroup.listCollectionNames();
         List<PermissionsGroup> groups = new ArrayList<>();
-        for (int i = 0;i<listGroupsCollectionNames.size();i++) {
+        for (String listGroupsCollectionName : listGroupsCollectionNames) {
             boolean Default = false;
-            MongoCollection<Document> collection = permGroup.getCollection(listGroupsCollectionNames.get(i));
+            MongoCollection<Document> collection = permGroup.getCollection(listGroupsCollectionName);
             FindIterable<Document> find = collection.find();
             Document document = (Document) find;
-            JSONObject json = JSONObject.parseObject(document.toJson());
+            JSONObject json = new JSONObject(document.toJson());
             if (json.getBoolean("isDefault")) {
                 Default = true;
             }
-            String name = listGroupsCollectionNames.get(i);
-            List<String> perms = getGroupPermissions(listGroupsCollectionNames.get(i));
+            List<String> perms = getGroupPermissions(listGroupsCollectionName);
             Boolean isDefault = Default;
-            groups.add(new PermissionsGroup(perms,isDefault,name));
+            groups.add(new PermissionsGroup(perms, isDefault, listGroupsCollectionName));
         }
         PermissionsGroup.addGroups(groups);
 
         List<String> listUserCollectionNames = (List<String>) permUser.listCollectionNames();
         for (String listCollectionName : listUserCollectionNames) {
             User.addPerm(listCollectionName, getUserPermissions(listCollectionName));
-            PermissionsGroup Group = new PermissionsGroup();;
+            PermissionsGroup Group = new PermissionsGroup();
             for (int I = 0; I < PermissionsGroup.getGroups().size();I++) {
                 if (Objects.equals(PermissionsGroup.getGroups().get(I).getName(), getUserGroup(listCollectionName))) {
                     Group = PermissionsGroup.getGroups().get(I);
@@ -84,16 +84,16 @@ public class MongoDB {
         MongoCollection<Document> collection = permUser.getCollection(DodoId);
         FindIterable<Document> find = collection.find();
         Document document = (Document) find;
-        JSONObject json = JSONObject.parseObject(document.toJson());
+        JSONObject json = new JSONObject(document.toJson());
         if (json.getJSONArray("perms") == null) {
             Document doc = new Document();
             doc.put("perms", null);
             collection.insertOne(doc);
         }
 
-        for (int i = 0; i < json.getJSONArray("perms").size(); i++) {
+        for (int i = 0; i < json.getJSONArray("perms").toList().size(); i++) {
             if (Objects.equals(perm, json.getJSONArray("perms").get(i))) {
-                i = json.getJSONArray("perms").size();
+                i = json.getJSONArray("perms").toList().size();
                 hasPerm = true;
             }
         }
@@ -101,7 +101,7 @@ public class MongoDB {
         if (!hasPerm) {
             Bson eq = Filters.eq("Group", User.getUserGroup(DodoId).getName());
             Document doc = new Document();
-            List<String> perms = json.getJSONArray("perms").toJavaList(String.class);
+            List<String> perms = BaseUtil.toStringList(json.getJSONArray("perms").toList());
             perms.add(perm);
             doc.put("$set",new Document("perms", perms));
             collection.updateOne(eq, doc);
@@ -127,16 +127,16 @@ public class MongoDB {
         MongoCollection<Document> collection = permUser.getCollection(DodoId);
         FindIterable<Document> find = collection.find();
         Document document = (Document) find;
-        JSONObject json = JSONObject.parseObject(document.toJson());
+        JSONObject json = new JSONObject(document.toJson());
         if (json.getJSONArray("perms") == null) {
             Document doc = new Document();
             doc.put("perms", null);
             collection.insertOne(doc);
         }
 
-        for (int i = 0; i < json.getJSONArray("perms").size(); i++) {
+        for (int i = 0; i < json.getJSONArray("perms").toList().size(); i++) {
             if (Objects.equals(perm, json.getJSONArray("perms").get(i))) {
-                i = json.getJSONArray("perms").size();
+                i = json.getJSONArray("perms").toList().size();
                 hasPerm = true;
             }
         }
@@ -144,7 +144,7 @@ public class MongoDB {
         if (hasPerm) {
             Bson eq = Filters.eq("Group", User.getUserGroup(DodoId).getName());
             Document doc = new Document();
-            List<String> perms = json.getJSONArray("perms").toJavaList(String.class);
+            List<String> perms = BaseUtil.toStringList(json.getJSONArray("perms").toList());
             perms.remove(perm);
             doc.put("$set",new Document("perms", perms));
             collection.updateOne(eq, doc);
@@ -205,10 +205,10 @@ public class MongoDB {
         MongoCollection<Document> collection = permGroup.getCollection(Group);
         FindIterable<Document> find = collection.find();
         Document document = (Document) find;
-        JSONObject json = JSONObject.parseObject(document.toJson());
-        for (int i = 0; i < json.getJSONArray("perms").size(); i++) {
+        JSONObject json = new JSONObject(document.toJson());
+        for (int i = 0; i < json.getJSONArray("perms").toList().size(); i++) {
             if (Objects.equals(perm, json.getJSONArray("perms").get(i))) {
-                i = json.getJSONArray("perms").size();
+                i = json.getJSONArray("perms").toList().size();
                 hasPerm = true;
             }
         }
@@ -216,7 +216,7 @@ public class MongoDB {
         if (!hasPerm) {
             Bson eq = Filters.eq("isDefault", json.getBoolean("isDefault"));
             Document doc = new Document();
-            List<String> perms = json.getJSONArray("perms").toJavaList(String.class);
+            List<String> perms = BaseUtil.toStringList(json.getJSONArray("perms").toList());
             perms.add(perm);
             doc.put("$set",new Document("perms", perms));
             collection.updateOne(eq, doc);
@@ -240,10 +240,10 @@ public class MongoDB {
         MongoCollection<Document> collection = permGroup.getCollection(Group);
         FindIterable<Document> find = collection.find();
         Document document = (Document) find;
-        JSONObject json = JSONObject.parseObject(document.toJson());
-        for (int i = 0; i < json.getJSONArray("perms").size(); i++) {
+        JSONObject json = new JSONObject(document.toJson());
+        for (int i = 0; i < json.getJSONArray("perms").toList().size(); i++) {
             if (!Objects.equals(perm, json.getJSONArray("perms").get(i))) {
-                i = json.getJSONArray("perms").size();
+                i = json.getJSONArray("perms").toList().size();
                 hasPerm = false;
             }
         }
@@ -251,7 +251,7 @@ public class MongoDB {
         if (hasPerm) {
             Bson eq = Filters.eq("isDefault", json.getBoolean("isDefault"));
             Document doc = new Document();
-            List<String> perms = json.getJSONArray("perms").toJavaList(String.class);
+            List<String> perms = BaseUtil.toStringList(json.getJSONArray("perms").toList());
             perms.remove(perm);
             doc.put("$set",new Document("perms", perms));
             collection.updateOne(eq, doc);
@@ -300,7 +300,7 @@ public class MongoDB {
         MongoCollection<Document> collection = permUser.getCollection(DodoId);
         FindIterable<Document> find = collection.find();
         Document document = (Document) find;
-        JSONObject json = JSONObject.parseObject(document.toJson());
+        JSONObject json = new JSONObject(document.toJson());
         Group = json.getString("Group");
         return Group;
     }
@@ -312,7 +312,7 @@ public class MongoDB {
      * @return false代表成功，true代表失败
      */
     public Boolean modifyUserGroup(String DodoId, String Group) {
-        Boolean originalGroup = false;
+        boolean originalGroup = false;
         List<String> listCollectionNames = (List<String>) permUser.listCollectionNames();
         List<String> listGroupNames = (List<String>) permUser.listCollectionNames();
         if (!listCollectionNames.contains(DodoId)) {
@@ -327,7 +327,7 @@ public class MongoDB {
         MongoCollection<Document> collection = permUser.getCollection(DodoId);
         FindIterable<Document> find = collection.find();
         Document document = (Document) find;
-        JSONObject json = JSONObject.parseObject(document.toJson());
+        JSONObject json = new JSONObject(document.toJson());
         if (json.getJSONArray("perms") == null) {
             Document doc = new Document();
             doc.put("perms", null);
@@ -357,14 +357,14 @@ public class MongoDB {
         MongoCollection<Document> collection = permGroup.getCollection(Group);
         FindIterable<Document> find = collection.find();
         Document document = (Document) find;
-        JSONObject json = JSONObject.parseObject(document.toJson());
+        JSONObject json = new JSONObject(document.toJson());
         if (json.getJSONArray("perms") == null) {
             Document doc = new Document();
             doc.put("perms", null);
             collection.insertOne(doc);
         }
 
-        return json.getJSONArray("perms").toJavaList(String.class);
+        return BaseUtil.toStringList(json.getJSONArray("perms").toList());
     }
 
     /**
@@ -383,13 +383,13 @@ public class MongoDB {
         MongoCollection<Document> collection = permUser.getCollection(DodoId);
         FindIterable<Document> find = collection.find();
         Document document = (Document) find;
-        JSONObject json = JSONObject.parseObject(document.toJson());
+        JSONObject json = new JSONObject(document.toJson());
         if (json.getJSONArray("perms") == null) {
             Document doc = new Document();
             doc.put("perms", null);
             collection.insertOne(doc);
         }
 
-        return json.getJSONArray("perms").toJavaList(String.class);
+        return BaseUtil.toStringList(json.getJSONArray("perms").toList());
     }
 }

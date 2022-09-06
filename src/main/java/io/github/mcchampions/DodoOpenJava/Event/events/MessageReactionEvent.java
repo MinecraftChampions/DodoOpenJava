@@ -1,6 +1,6 @@
 package io.github.mcchampions.DodoOpenJava.Event.events;
 
-import com.alibaba.fastjson2.JSONObject;
+import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Event.Event;
 import io.github.mcchampions.DodoOpenJava.Event.HandlerList;
 
@@ -62,7 +62,7 @@ public class MessageReactionEvent extends Event {
     public MessageReactionEvent(JSONObject json) {
         this.jsonObject = json;
         this.jsonString = json.toString();
-        this.timestamp = json.getJSONObject("data").getInteger("timestamp");
+        this.timestamp = json.getJSONObject("data").getInt("timestamp");
         this.eventId = json.getJSONObject("data").getString("eventId");
         this.islandId = json.getJSONObject("data").getJSONObject("eventBody").getString("islandId");
         this.channelId = json.getJSONObject("data").getJSONObject("eventBody").getString("channelId");
@@ -71,14 +71,14 @@ public class MessageReactionEvent extends Event {
         this.personal = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal");
         this.senderNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("nickName");
         this.senderAvatarUrl = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("avatarUrl");
-        this.senderSex = IntSexToSex(json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInteger("sex"));
-        this.senderIntSex = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInteger("sex");
+        this.senderSex = IntSexToSex(json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex"));
+        this.senderIntSex = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex");
         this.member = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member");
         this.memberJoinTime = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("joinTime");
         this.memberNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("nickName");
         this.reactionEmoji = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reactionEmoji");
         this.reactionEmojiId = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reactionEmoji").getString("id");
-        this.reactionType = IntReactionTypeToReactionType(json.getJSONObject("data").getJSONObject("eventBody").getInteger("reactionType"));
+        this.reactionType = IntReactionTypeToReactionType(json.getJSONObject("data").getJSONObject("eventBody").getInt("reactionType"));
     }
 
     /**

@@ -1,6 +1,6 @@
 package io.github.mcchampions.DodoOpenJava.Command;
 
-import com.alibaba.fastjson2.JSONObject;
+import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.api.ChannelTextApi;
 import io.github.mcchampions.DodoOpenJava.api.MemberApi;
 import io.github.mcchampions.DodoOpenJava.api.PersonalApi;

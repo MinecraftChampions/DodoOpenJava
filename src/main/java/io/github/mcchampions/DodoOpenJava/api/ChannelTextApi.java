@@ -1,6 +1,6 @@
 package io.github.mcchampions.DodoOpenJava.api;
 
-import com.alibaba.fastjson2.JSONObject;
+import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Card.Card;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
 import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
@@ -45,7 +45,7 @@ public class ChannelTextApi {
                 "}";
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
+            Parm = new JSONObject(Parm).getJSONObject("data").getString("messageId");
         }
         return Parm;
     }
@@ -85,7 +85,7 @@ public class ChannelTextApi {
                 "}";
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
+            Parm = new JSONObject(Parm).getJSONObject("data").getString("messageId");
         }
         return Parm;
     }
@@ -137,7 +137,7 @@ public class ChannelTextApi {
                 "}";
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
+            Parm = new JSONObject(Parm).getJSONObject("data").getString("messageId");
         }
         return Parm;
     }
@@ -180,7 +180,7 @@ public class ChannelTextApi {
                 "}";
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
+            Parm = new JSONObject(Parm).getJSONObject("data").getString("messageId");
         }
         return Parm;
     }
@@ -217,7 +217,7 @@ public class ChannelTextApi {
                 "}";
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
+            Parm = new JSONObject(Parm).getJSONObject("data").getString("messageId");
         }
         return Parm;
     }
@@ -263,7 +263,7 @@ public class ChannelTextApi {
                 "}";
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
+            Parm = new JSONObject(Parm).getJSONObject("data").getString("messageId");
         }
         return Parm;
     }
@@ -300,7 +300,7 @@ public class ChannelTextApi {
                 "}";
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
+            Parm = new JSONObject(Parm).getJSONObject("data").getString("messageId");
         }
         return Parm;
     }
@@ -343,7 +343,7 @@ public class ChannelTextApi {
                 "}";
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
+            Parm = new JSONObject(Parm).getJSONObject("data").getString("messageId");
         }
         return Parm;
     }
@@ -594,7 +594,7 @@ public class ChannelTextApi {
                 "}";
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("messageId");
+            Parm = new JSONObject(Parm).getJSONObject("data").getString("messageId");
         }
         return Parm;
     }

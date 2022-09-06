@@ -1,6 +1,6 @@
 package io.github.mcchampions.DodoOpenJava.Event;
 
-import com.alibaba.fastjson2.JSONObject;
+import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Event.events.*;
 import okhttp3.*;
 import okio.ByteString;
@@ -39,7 +39,7 @@ public class EventTrigger {
 
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                wssLo= JSONObject.parseObject(Objects.requireNonNull(response.body()).string()).getJSONObject("data").getString("endpoint");
+                wssLo= new JSONObject(Objects.requireNonNull(response.body()).string()).getJSONObject("data").getString("endpoint");
                 //TODO 建立wss链接
                 //getLogger().info(wssLo);
                 response.close();
@@ -58,7 +58,7 @@ public class EventTrigger {
 
         @Override
         public void onMessage(@NotNull WebSocket webSocket, ByteString bytes) {
-            JSONObject jsontext = JSONObject.parseObject(bytes.utf8());
+            JSONObject jsontext = new JSONObject(bytes.utf8());
             switch (jsontext.getJSONObject("data").getString("eventType")) {
                 case "1001":
                     try {

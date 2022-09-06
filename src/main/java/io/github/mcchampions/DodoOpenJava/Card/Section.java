@@ -1,6 +1,6 @@
 package io.github.mcchampions.DodoOpenJava.Card;
 
-import com.alibaba.fastjson2.JSONObject;
+import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Card.Enums.Cols;
 import io.github.mcchampions.DodoOpenJava.Card.Enums.SectionType;
 import io.github.mcchampions.DodoOpenJava.Card.Enums.TextType;
@@ -51,7 +51,7 @@ public class Section {
                     case "Markdown" -> "dodo-md";
                     default -> "plain-text";
                 };
-                JsonText = JSONObject.parseObject("{\n" +
+                JsonText = new JSONObject("{\n" +
                         "                        \"type\": \"section\",\n" +
                         "                        \"text\": {\n" +
                         "                                \"type\": \"" + Type + "\",\n" +
@@ -61,7 +61,7 @@ public class Section {
                 isParagraph = false;
             } else {
                 isParagraph = true;
-                JsonText = JSONObject.parseObject("{\n" +
+                JsonText = new JSONObject("{\n" +
                         "                            \"type\": \"section\",\n" +
                         "                             \"text\": {\n" +
                         "                                 \"type\": \"paragraph\",\n" +
@@ -100,7 +100,7 @@ public class Section {
      */
     public Boolean editContent(String content) {
         if (JsonText.isEmpty()) initText(SectionType.Markdown);
-        JsonText.getJSONObject("text").replace("content", content);
+        JsonText.getJSONObject("text").put("content", content);
         return true;
     }
 
@@ -113,7 +113,7 @@ public class Section {
         if (JsonText.isEmpty()) initText(SectionType.Markdown);
         String Type;
         if (Objects.equals(type.toString(), "Markdown")) Type = "dodo-md"; else Type = "plain-text";
-        JsonText.getJSONObject("text").replace("type", Type);
+        JsonText.getJSONObject("text").put("type", Type);
         return true;
     }
 
@@ -125,7 +125,7 @@ public class Section {
      */
     public Boolean editParagraphContent(String content,int count) {
         if (JsonText.isEmpty()) initText(SectionType.Paragraph);
-        JsonText.getJSONObject("text").getJSONArray("fields").getJSONObject(count - 1).replace("content", content);
+        JsonText.getJSONObject("text").getJSONArray("fields").getJSONObject(count - 1).put("content", content);
         return true;
     }
 
@@ -139,7 +139,7 @@ public class Section {
         if (JsonText.isEmpty()) initText(SectionType.Paragraph);
         String Type;
         if (Objects.equals(type.toString(), "Markdown")) Type = "dodo-md"; else Type = "plain-text";
-        JsonText.getJSONObject("text").getJSONArray("fields").getJSONObject(count - 1).replace("type", Type);
+        JsonText.getJSONObject("text").getJSONArray("fields").getJSONObject(count - 1).put("type", Type);
         return true;
     }
 
@@ -157,7 +157,7 @@ public class Section {
             case "five" -> 5;
             default -> 6;
         };
-        JsonText.getJSONObject("text").replace("cols", Col);
+        JsonText.getJSONObject("text").put("cols", Col);
         return true;
     }
 

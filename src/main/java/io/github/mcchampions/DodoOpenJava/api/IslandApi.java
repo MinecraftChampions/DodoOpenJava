@@ -1,7 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.api;
 
-import com.alibaba.fastjson2.JSONArray;
-import com.alibaba.fastjson2.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
 import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
 import org.apache.commons.lang3.StringUtils;
@@ -40,12 +40,12 @@ public class IslandApi {
                 "}";
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            JSONObject JSONText = JSONObject.parseObject(Parm).getJSONObject("data");
+            JSONObject JSONText = new JSONObject(Parm).getJSONObject("data");
             String islandID = JSONText.getString("islandID");
             String islandName = JSONText.getString("islandName");
             String coverUrl = JSONText.getString("coverUrl");
-            String memberCount = String.valueOf(JSONText.getIntValue("memberCount"));
-            String onlineMemberCount = String.valueOf(JSONText.getIntValue("onlineMemberCount"));
+            String memberCount = String.valueOf(JSONText.getInt("memberCount"));
+            String onlineMemberCount = String.valueOf(JSONText.getInt("onlineMemberCount"));
             String description = JSONText.getString("description");
             String defaultChannelId	 = JSONText.getString("defaultChannelId");
             String systemChannelId	 = JSONText.getString("systemChannelId");
@@ -84,20 +84,20 @@ public class IslandApi {
         String island;
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            JSONArray JSONList = JSONObject.parseObject(Parm).getJSONArray("data");
-            int JSONListSize = JSONList.size();
+            JSONArray JSONList = new JSONObject(Parm).getJSONArray("data");
+            int JSONListSize = JSONList.toList().size();
             String[] List = new String[0];
             for (int i = 0;i < JSONListSize;i++) {
                 Object object = JSONList.get(i);
                 String JSONText = object.toString();
                 String islandCount = String.valueOf(i + 1);
-                String islandId = JSONObject.parseObject(JSONText).getString("islandID");
-                String islandName = JSONObject.parseObject(JSONText).getString("islandName");
-                String coverUrl = JSONObject.parseObject(JSONText).getString("coverUrl");
-                String memberCount = String.valueOf(JSONObject.parseObject(JSONText).getIntValue("memberCount"));
-                String onlineMemberCount = String.valueOf(JSONObject.parseObject(JSONText).getIntValue("onlineMemberCount"));
-                String defaultChannelId	 = JSONObject.parseObject(JSONText).getString("defaultChannelId");
-                String systemChannelId	 = JSONObject.parseObject(JSONText).getString("systemChannelId");
+                String islandId = new JSONObject(JSONText).getString("islandID");
+                String islandName = new JSONObject(JSONText).getString("islandName");
+                String coverUrl = new JSONObject(JSONText).getString("coverUrl");
+                String memberCount = String.valueOf(new JSONObject(JSONText).getInt("memberCount"));
+                String onlineMemberCount = String.valueOf(new JSONObject(JSONText).getInt("onlineMemberCount"));
+                String defaultChannelId	 = new JSONObject(JSONText).getString("defaultChannelId");
+                String systemChannelId	 = new JSONObject(JSONText).getString("systemChannelId");
                 island = "  群" + islandCount + ": \n" +
                         "    群号: \"" + islandId + "\"\n" +
                         "    群名称: \"" + islandName + "\"\n" +
@@ -147,17 +147,17 @@ public class IslandApi {
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         String PARM;
         if (!returnJSONText) {
-            JSONArray JSONList = JSONObject.parseObject(Parm).getJSONArray("data");
-            int JSONListSize = JSONList.size();
+            JSONArray JSONList = new JSONObject(Parm).getJSONArray("data");
+            int JSONListSize = JSONList.toList().size();
             String[] List = new String[0];
             for (int i = 0;i < JSONListSize;i++) {
                 Object object = JSONList.get(i);
                 String JSONText = object.toString();
                 String Rank = String.valueOf(i + 1);
-                String dodoId = JSONObject.parseObject(JSONText).getString("dodoId");
-                String nickName = JSONObject.parseObject(JSONText).getString("nickName");
-                String level = String.valueOf(JSONObject.parseObject(JSONText).getIntValue("level"));
-                String rank = "第" + JSONObject.parseObject(JSONText).getIntValue("rank");
+                String dodoId = new JSONObject(JSONText).getString("dodoId");
+                String nickName = new JSONObject(JSONText).getString("nickName");
+                String level = String.valueOf(new JSONObject(JSONText).getInt("level"));
+                String rank = "第" + new JSONObject(JSONText).getInt("rank");
                 PARM = "  第" + Rank + ": \n" +
                         "    Dodo号: \"" + dodoId + "\"\n" +
                         "    群昵称: \"" + nickName + "\"\n" +
@@ -197,13 +197,13 @@ public class IslandApi {
                 "}";
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if(!returnJSONText) {
-            JSONArray JSONList = JSONObject.parseObject(Parm).getJSONObject("data").getJSONArray("list");
-            int JSONListSize = JSONList.size();
+            JSONArray JSONList = new JSONObject(Parm).getJSONObject("data").getJSONArray("list");
+            int JSONListSize = JSONList.toList().size();
             String[] List = new String[0];
             for (int i = 0;i < JSONListSize;i++) {
                 Object object = JSONList.get(i);
                 String JSONText = object.toString();
-                String DodoId = JSONObject.parseObject(JSONText).getString("dodoID");
+                String DodoId = new JSONObject(JSONText).getString("dodoID");
                 String mute = "  Dodo号" + DodoId + ": \n";
 
                 List[i] = mute;
@@ -240,13 +240,13 @@ public class IslandApi {
                 "}";
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if(!returnJSONText) {
-            JSONArray JSONList = JSONObject.parseObject(Parm).getJSONObject("data").getJSONArray("list");
-            int JSONListSize = JSONList.size();
+            JSONArray JSONList = new JSONObject(Parm).getJSONObject("data").getJSONArray("list");
+            int JSONListSize = JSONList.toList().size();
             String[] List = new String[0];
             for (int i = 0;i < JSONListSize;i++) {
                 Object object = JSONList.get(i);
                 String JSONText = object.toString();
-                String DodoId = JSONObject.parseObject(JSONText).getString("dodoID");
+                String DodoId = new JSONObject(JSONText).getString("dodoID");
                 String ban = "  Dodo号" + DodoId + ": \n";
 
                 List[i] = ban;

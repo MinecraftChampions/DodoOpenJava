@@ -1,6 +1,5 @@
 package io.github.mcchampions.DodoOpenJava.permissions;
 
-import com.sun.source.tree.MemberReferenceTree;
 import io.github.mcchampions.DodoOpenJava.Event.EventHandler;
 import io.github.mcchampions.DodoOpenJava.Event.EventManage;
 import io.github.mcchampions.DodoOpenJava.Event.Listener;

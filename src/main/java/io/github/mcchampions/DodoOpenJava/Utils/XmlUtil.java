@@ -1,6 +1,6 @@
 package io.github.mcchampions.DodoOpenJava.Utils;
 
-import com.alibaba.fastjson2.JSONObject;
+import org.json.JSONObject;
 import org.json.XML;
 
 /**
@@ -22,6 +22,6 @@ public class XmlUtil {
      * @return JSONObject
      */
     public static JSONObject toJSONObject(String xml) {
-        return JSONObject.parseObject(XML.toJSONObject(xml).toString());
+        return new JSONObject(XML.toJSONObject(xml));
     }
 }

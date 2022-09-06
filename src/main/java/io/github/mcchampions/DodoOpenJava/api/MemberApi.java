@@ -1,7 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.api;
 
-import com.alibaba.fastjson2.JSONArray;
-import com.alibaba.fastjson2.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
 import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
 import org.apache.commons.lang3.StringUtils;
@@ -47,24 +47,24 @@ public class MemberApi {
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         String PARM;
         if (!returnJSONText) {
-            JSONArray JSONList = JSONObject.parseObject(Parm).getJSONObject("data").getJSONArray("list");
-            int JSONListSize = JSONList.size();
+            JSONArray JSONList = new JSONObject(Parm).getJSONObject("data").getJSONArray("list");
+            int JSONListSize = JSONList.toList().size();
             String[] List = new String[0];
             for (int i = 0;i < JSONListSize;i++) {
                 Object object = JSONList.get(i);
                 String JSONText = object.toString();
                 String Member = String.valueOf(i + 1);
-                String dodoId = JSONObject.parseObject(JSONText).getString("dodoId");
-                String nickName = JSONObject.parseObject(JSONText).getString("nickName");
-                String personalNickName = JSONObject.parseObject(JSONText).getString("personalNickName");
-                String avatarUrl = JSONObject.parseObject(JSONText).getString("avatarUrl");
-                String joinTime = JSONObject.parseObject(JSONText).getString("joinTime");
+                String dodoId = new JSONObject(JSONText).getString("dodoId");
+                String nickName = new JSONObject(JSONText).getString("nickName");
+                String personalNickName = new JSONObject(JSONText).getString("personalNickName");
+                String avatarUrl = new JSONObject(JSONText).getString("avatarUrl");
+                String joinTime = new JSONObject(JSONText).getString("joinTime");
                 String SexType,ISBOT,OnlineDevice,OnlineStatus;
-                int sex = JSONObject.parseObject(JSONText).getIntValue("sex");
-                int level = JSONObject.parseObject(JSONText).getIntValue("level");
-                int isBot = JSONObject.parseObject(JSONText).getIntValue("isBot");
-                int onlineDevice = JSONObject.parseObject(JSONText).getIntValue("onlineDevice");
-                int onlineStatus = JSONObject.parseObject(JSONText).getIntValue("onlineStatus");
+                int sex = new JSONObject(JSONText).getInt("sex");
+                int level = new JSONObject(JSONText).getInt("level");
+                int isBot = new JSONObject(JSONText).getInt("isBot");
+                int onlineDevice = new JSONObject(JSONText).getInt("onlineDevice");
+                int onlineStatus = new JSONObject(JSONText).getInt("onlineStatus");
 
                 if (sex == 0) {
                     SexType = "女";
@@ -154,18 +154,18 @@ public class MemberApi {
                 "}";
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            JSONObject JSONText = JSONObject.parseObject(Parm).getJSONObject("data");
+            JSONObject JSONText = new JSONObject(Parm).getJSONObject("data");
             String dodoId = JSONText.getString("dodoId");
             String nickName = JSONText.getString("nickName");
             String personalNickName = JSONText.getString("personalNickName");
             String avatarUrl = JSONText.getString("avatarUrl");
             String joinTime = JSONText.getString("joinTime");
             String SexType,ISBOT,OnlineDevice,OnlineStatus;
-            int sex = JSONText.getIntValue("sex");
-            int level = JSONText.getIntValue("level");
-            int isBot = JSONText.getIntValue("isBot");
-            int onlineDevice = JSONText.getIntValue("onlineDevice");
-            int onlineStatus = JSONText.getIntValue("onlineStatus");
+            int sex = JSONText.getInt("sex");
+            int level = JSONText.getInt("level");
+            int isBot = JSONText.getInt("isBot");
+            int onlineDevice = JSONText.getInt("onlineDevice");
+            int onlineStatus = JSONText.getInt("onlineStatus");
 
             if (sex == 0) {
                 SexType = "女";
@@ -252,18 +252,18 @@ public class MemberApi {
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         String role;
         if (!returnJSONText) {
-            JSONArray JSONList = JSONObject.parseObject(Parm).getJSONArray("data");
-            int JSONListSize = JSONList.size();
+            JSONArray JSONList = new JSONObject(Parm).getJSONArray("data");
+            int JSONListSize = JSONList.toList().size();
             String[] List = new String[0];
             for (int i = 0; i < JSONListSize; i++) {
                 Object object = JSONList.get(i);
                 String JSONText = object.toString();
                 String roleCount = String.valueOf(i + 1);
-                String roleId = JSONObject.parseObject(JSONText).getString("roleId");
-                String roleName = JSONObject.parseObject(JSONText).getString("roleName");
-                String roleColor = JSONObject.parseObject(JSONText).getString("roleColor");
-                String position = String.valueOf(JSONObject.parseObject(JSONText).getIntValue("position"));
-                String permission = JSONObject.parseObject(JSONText).getString("permission");
+                String roleId = new JSONObject(JSONText).getString("roleId");
+                String roleName = new JSONObject(JSONText).getString("roleName");
+                String roleColor = new JSONObject(JSONText).getString("roleColor");
+                String position = String.valueOf(new JSONObject(JSONText).getInt("position"));
+                String permission = new JSONObject(JSONText).getString("permission");
                 role = "  身份组" + roleCount + ": \n" +
                         "    身份组ID: \"" + roleId + "\"\n" +
                         "    身份组名称: \"" + roleName + "\"\n" +
@@ -307,9 +307,9 @@ public class MemberApi {
                 "}";
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            String DoDoId = JSONObject.parseObject(Parm).getJSONObject("data").getString("dodoId");
-            String nickName = JSONObject.parseObject(Parm).getJSONObject("data").getString("nickName");
-            int invitationCount = JSONObject.parseObject(Parm).getJSONObject("data").getIntValue("invitationCount");
+            String DoDoId = new JSONObject(Parm).getJSONObject("data").getString("dodoId");
+            String nickName = new JSONObject(Parm).getJSONObject("data").getString("nickName");
+            int invitationCount = new JSONObject(Parm).getJSONObject("data").getInt("invitationCount");
             Parm =  "DoDo号: \"" + DoDoId + "\"\n" +
                     "群昵称: \"" + nickName + "\"\n" +
                     "邀请人数: \"" + invitationCount + "\"\n";

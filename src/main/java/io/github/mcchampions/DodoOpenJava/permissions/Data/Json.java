@@ -1,6 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.permissions.Data;
 
-import com.alibaba.fastjson2.JSONObject;
+import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
+import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Utils.ConfigUtil;
 import io.github.mcchampions.DodoOpenJava.permissions.PermissionsGroup;
 
@@ -19,7 +20,7 @@ public class Json {
 
     /**
      * 初始化
-     * @throws IOException
+     * @throws IOException 失败时抛出
      */
     public static void init() throws IOException {
         File Config = new File(ConfigUtil.getJarPath() + "permissions/");
@@ -40,7 +41,7 @@ public class Json {
         List<PermissionsGroup> groups = new ArrayList<>();
         for (int i = 0;i<getGroupFile().getJSONObject("Groups").keySet().size();i++) {
             String name = getGroupFile().getJSONObject("Groups").keySet().stream().toList().get(i);
-            List<String> perms = getGroupFile().getJSONObject("Groups").getJSONObject(name).getJSONArray("perms").toList(String.class);
+            List<String> perms = BaseUtil.toStringList(getGroupFile().getJSONObject("Groups").getJSONObject(name).getJSONArray("perms").toList());
             Boolean isDefault = getGroupFile().getJSONObject("Groups").getJSONObject(name).getBoolean("isDefault");
             groups.add(new PermissionsGroup(perms,isDefault,name));
         }
@@ -48,7 +49,7 @@ public class Json {
 
         for (int i = 0 ; i < getUserFile().getJSONObject("Users").keySet().size(); i++) {
             String DodoId = getGroupFile().getJSONObject("Users").keySet().stream().toList().get(i);
-            List<String> perms = getGroupFile().getJSONObject("Users").getJSONObject(DodoId).getJSONArray("perms").toList(String.class);
+            List<String> perms = BaseUtil.toStringList(getGroupFile().getJSONObject("Users").getJSONObject(DodoId).getJSONArray("perms").toList());
             String group = getGroupFile().getJSONObject("Groups").getJSONObject(DodoId).getString("Group");
             PermissionsGroup Group = new PermissionsGroup();
             for (int I = 0; I < PermissionsGroup.getGroups().size();I++) {
@@ -67,7 +68,7 @@ public class Json {
      * @return JSON对象
      */
     public static JSONObject getGroupFile() {
-        return JSONObject.parseObject(ConfigUtil.readJsonFile(Group));
+        return new JSONObject(Objects.requireNonNull(ConfigUtil.readJsonFile(Group)));
     }
 
     /**
@@ -75,6 +76,6 @@ public class Json {
      * @return JSON对象
      */
     public static JSONObject getUserFile() {
-        return JSONObject.parseObject(ConfigUtil.readJsonFile(User));
+        return new JSONObject(Objects.requireNonNull(ConfigUtil.readJsonFile(User)));
     }
 }

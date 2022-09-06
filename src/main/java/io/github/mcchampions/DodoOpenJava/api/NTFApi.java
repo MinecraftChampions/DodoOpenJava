@@ -1,6 +1,6 @@
 package io.github.mcchampions.DodoOpenJava.api;
 
-import com.alibaba.fastjson2.JSONObject;
+import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
 import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
 
@@ -45,9 +45,9 @@ public class NTFApi {
                 "}";
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if(!returnJSONText) {
-            int isBandPlatformType = JSONObject.parseObject(Parm).getJSONObject("data").getIntValue("isBandPlatform");
-            int isHaveIssuerType = JSONObject.parseObject(Parm).getJSONObject("data").getIntValue("isHaveIssuer");
-            int isHaveSeriesType = JSONObject.parseObject(Parm).getJSONObject("data").getIntValue("isHaveSeries");
+            int isBandPlatformType = new JSONObject(Parm).getJSONObject("data").getInt("isBandPlatform");
+            int isHaveIssuerType = new JSONObject(Parm).getJSONObject("data").getInt("isHaveIssuer");
+            int isHaveSeriesType = new JSONObject(Parm).getJSONObject("data").getInt("isHaveSeries");
             String isHaveSeries, isHaveIssuer, isBandPlatform;
 
             if (isBandPlatformType == 0) {
@@ -109,9 +109,9 @@ public class NTFApi {
                 "}";
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if(!returnJSONText) {
-            int isBandPlatformType = JSONObject.parseObject(Parm).getJSONObject("data").getIntValue("isBandPlatform");
-            int isHaveIssuerType = JSONObject.parseObject(Parm).getJSONObject("data").getIntValue("isHaveIssuer");
-            int isHaveSeriesType = JSONObject.parseObject(Parm).getJSONObject("data").getIntValue("isHaveSeries");
+            int isBandPlatformType = new JSONObject(Parm).getJSONObject("data").getInt("isBandPlatform");
+            int isHaveIssuerType = new JSONObject(Parm).getJSONObject("data").getInt("isHaveIssuer");
+            int isHaveSeriesType = new JSONObject(Parm).getJSONObject("data").getInt("isHaveSeries");
             String isHaveSeries, isHaveIssuer, isBandPlatform;
 
             if (isBandPlatformType == 0) {

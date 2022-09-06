@@ -1,7 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.Card;
 
-import com.alibaba.fastjson2.JSONArray;
-import com.alibaba.fastjson2.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Card.Enums.*;
 import io.github.mcchampions.DodoOpenJava.Utils.MapUtil;
 import io.github.mcchampions.DodoOpenJava.Utils.StrUtil;
@@ -57,7 +57,7 @@ public class Card {
      */
     public Boolean initCard() {
         if (JsonCard.isEmpty()) {
-            JsonCard = JSONObject.parseObject("""
+            JsonCard = new JSONObject("""
                     {
                       "content": "这是一段卡片外的文字消息，可以附带Markdown语法、@用户、#频道等菱形语法功能，在卡片编辑器中不会实时预览。",
                       "card": {
@@ -78,7 +78,7 @@ public class Card {
      */
     public Boolean editTheme(Theme theme) {
         if (JsonCard.isEmpty()) initCard();
-        JsonCard.getJSONObject("card").replace("theme", StrUtil.toLowerCase(theme.toString()));
+        JsonCard.getJSONObject("card").put("theme", StrUtil.toLowerCase(theme.toString()));
         return true;
     }
 
@@ -89,7 +89,7 @@ public class Card {
      */
     public Boolean editTitle(String title) {
         if (JsonCard.isEmpty()) initCard();
-        JsonCard.getJSONObject("card").replace("title", title);
+        JsonCard.getJSONObject("card").put("title", title);
         return true;
     }
 
@@ -100,7 +100,7 @@ public class Card {
      */
     public Boolean editContent(String content) {
         if (JsonCard.isEmpty()) initCard();
-        JsonCard.replace("content", content);
+        JsonCard.put("content", content);
         return true;
     }
 
@@ -110,7 +110,7 @@ public class Card {
      */
     public Boolean removeContent() {
         if (JsonCard.isEmpty()) initCard();
-        if (!JsonCard.containsKey("content")) return false;
+        if (!JsonCard.keySet().contains("content")) return false;
         JsonCard.remove("content");
         return true;
     }
@@ -125,7 +125,7 @@ public class Card {
         if (JsonCard.isEmpty()) initCard();
         String Type;
         if (Objects.equals(type.toString(), "Markdown")) Type = "dodo-md"; else Type = "plain-text";
-        JsonCard.getJSONObject("card").getJSONArray("components").add(JSONObject.parseObject("{\"type\": \"header\",\"text\": { \"type\": \"" + Type + "\", \"content\": \"" + title + "\"}}"));
+        JsonCard.getJSONObject("card").getJSONArray("components").put(new JSONObject("{\"type\": \"header\",\"text\": { \"type\": \"" + Type + "\", \"content\": \"" + title + "\"}}"));
         return true;
     }
 
@@ -136,7 +136,7 @@ public class Card {
      */
     public Boolean addSectionComponent(Section section) {
         if (JsonCard.isEmpty()) initCard();
-        JsonCard.getJSONObject("card").getJSONArray("components").add(section.toJSONObject());
+        JsonCard.getJSONObject("card").getJSONArray("components").put(section.toJSONObject());
         return true;
     }
 
@@ -149,15 +149,15 @@ public class Card {
     public Boolean addTextRemarkComponent(Map<RemarkType,String> text) {
         if (JsonCard.isEmpty()) initCard();
 
-        JsonCard.getJSONObject("card").getJSONArray("components").add(JSONObject.parseObject("{\"type\": \"remark\",\"elements\": []}"));
+        JsonCard.getJSONObject("card").getJSONArray("components").put(new JSONObject("{\"type\": \"remark\",\"elements\": []}"));
         for(int i = 0; i < MapUtil.ergodicMaps(text).size();i++) {
             String Type;
             String type = MapUtil.ergodicMaps(text).get(i).get(0).toString();
             if (Objects.equals(type, "Markdown")) Type = "dodo-md"; else if(Objects.equals(type, "PlainText")) Type = "plain-text"; else Type = "image";
             if (Type.equals("image")) {
-                JsonCard.getJSONObject("card").getJSONArray("components").getJSONObject(JsonCard.getJSONObject("card").getJSONArray("components").size() - 1).getJSONArray("elements").add(JSONObject.parseObject("{\"text\": { \"type\": \"" + Type + "\", \"src\": \"" + MapUtil.ergodicMaps(text).get(i).get(1) + "\"}}"));
+                JsonCard.getJSONObject("card").getJSONArray("components").getJSONObject(JsonCard.getJSONObject("card").getJSONArray("components").toList().size() - 1).getJSONArray("elements").put(new JSONObject("{\"text\": { \"type\": \"" + Type + "\", \"src\": \"" + MapUtil.ergodicMaps(text).get(i).get(1) + "\"}}"));
             } else {
-                JsonCard.getJSONObject("card").getJSONArray("components").getJSONObject(JsonCard.getJSONObject("card").getJSONArray("components").size() - 1).getJSONArray("elements").add(JSONObject.parseObject("{\"text\": { \"type\": \"" + Type + "\", \"content\": \"" + MapUtil.ergodicMaps(text).get(i).get(1) + "\"}}"));
+                JsonCard.getJSONObject("card").getJSONArray("components").getJSONObject(JsonCard.getJSONObject("card").getJSONArray("components").toList().size() - 1).getJSONArray("elements").put(new JSONObject("{\"text\": { \"type\": \"" + Type + "\", \"content\": \"" + MapUtil.ergodicMaps(text).get(i).get(1) + "\"}}"));
             }
         }
         return true;
@@ -170,7 +170,7 @@ public class Card {
      */
     public Boolean addImageComponent(String url) {
         if (JsonCard.isEmpty()) initCard();
-        JsonCard.getJSONObject("card").getJSONArray("components").add(JSONObject.parseObject("{\"type\": \"image\", \"src\": \"" + url + "\"}"));
+        JsonCard.getJSONObject("card").getJSONArray("components").put(new JSONObject("{\"type\": \"image\", \"src\": \"" + url + "\"}"));
         return true;
     }
 
@@ -182,10 +182,10 @@ public class Card {
     public Boolean addImageGroupComponent(List<String> urls) {
         if (JsonCard.isEmpty()) initCard();
 
-        JsonCard.getJSONObject("card").getJSONArray("components").add(JSONObject.parseObject("{\"type\": \"image-group\", \"elements\": []}"));
+        JsonCard.getJSONObject("card").getJSONArray("components").put(new JSONObject("{\"type\": \"image-group\", \"elements\": []}"));
         if (urls.size() > 9) return false;
         for (int i = 0; i < urls.size();i ++) {
-            JsonCard.getJSONObject("card").getJSONArray("components").getJSONObject(JsonCard.getJSONObject("card").getJSONArray("components").size() - 1).getJSONArray("elements").add(JSONObject.parseObject("{\"type\": \"image\", \"src\": \"" + urls.get(1) + "\"}"));
+            JsonCard.getJSONObject("card").getJSONArray("components").getJSONObject(JsonCard.getJSONObject("card").getJSONArray("components").toList().size() - 1).getJSONArray("elements").put(new JSONObject("{\"type\": \"image\", \"src\": \"" + urls.get(1) + "\"}"));
         }
         return true;
     }
@@ -199,7 +199,7 @@ public class Card {
      */
     public Boolean addVideoComponent(String videoUrl, String coverUrl, String title) {
         if (JsonCard.isEmpty()) initCard();
-        JsonCard.getJSONObject("card").getJSONArray("components").add(JSONObject.parseObject("{\"type\": \"video\", \"src\": \"" + videoUrl + "\", \"cover\": \"" + coverUrl + "\",\"title\": \"" + title + "\"}"));
+        JsonCard.getJSONObject("card").getJSONArray("components").put(new JSONObject("{\"type\": \"video\", \"src\": \"" + videoUrl + "\", \"cover\": \"" + coverUrl + "\",\"title\": \"" + title + "\"}"));
         return true;
     }
 
@@ -211,7 +211,7 @@ public class Card {
      */
     public Boolean addVideoComponent(String videoUrl, String coverUrl) {
         if (JsonCard.isEmpty()) initCard();
-        JsonCard.getJSONObject("card").getJSONArray("components").add(JSONObject.parseObject("{\"type\": \"video\", \"src\": \"" + videoUrl + "\", \"cover\": \"" + coverUrl + "\"}"));
+        JsonCard.getJSONObject("card").getJSONArray("components").put(new JSONObject("{\"type\": \"video\", \"src\": \"" + videoUrl + "\", \"cover\": \"" + coverUrl + "\"}"));
         return true;
     }
 
@@ -224,7 +224,7 @@ public class Card {
      */
     public Boolean addCountdownComponent(Style style, Long endTime, String title) {
         if (JsonCard.isEmpty()) initCard();
-        JsonCard.getJSONObject("card").getJSONArray("components").add(JSONObject.parseObject("{\"type\": \"countdown\", \"endTime\": " + endTime + ", \"style\": \"" + style.toString() + "\",\"title\": \"" + title + "\"}"));
+        JsonCard.getJSONObject("card").getJSONArray("components").put(new JSONObject("{\"type\": \"countdown\", \"endTime\": " + endTime + ", \"style\": \"" + style.toString() + "\",\"title\": \"" + title + "\"}"));
         return true;
     }
     /**
@@ -235,7 +235,7 @@ public class Card {
      */
     public Boolean addCountdownComponent(Style style, Long endTime) {
         if (JsonCard.isEmpty()) initCard();
-        JsonCard.getJSONObject("card").getJSONArray("components").add(JSONObject.parseObject("{\"type\": \"countdown\", \"endTime\": " + endTime + ", \"style\": \"" + style.toString() + "\"}"));
+        JsonCard.getJSONObject("card").getJSONArray("components").put(new JSONObject("{\"type\": \"countdown\", \"endTime\": " + endTime + ", \"style\": \"" + style.toString() + "\"}"));
         return true;
     }
 
@@ -245,7 +245,7 @@ public class Card {
      */
     public Boolean addDividerComponent() {
         if (JsonCard.isEmpty()) initCard();
-        JsonCard.getJSONObject("card").getJSONArray("components").add(JSONObject.parseObject("{\"type\": \"divider\"}"));
+        JsonCard.getJSONObject("card").getJSONArray("components").put(new JSONObject("{\"type\": \"divider\"}"));
         return true;
     }
 
@@ -266,7 +266,7 @@ public class Card {
      * @return 成功
      */
     public Boolean addButton(Button button) {
-        JsonCard.getJSONObject("card").getJSONArray("components").add(button.toJSONObject());
+        JsonCard.getJSONObject("card").getJSONArray("components").put(button.toJSONObject());
         return true;
     }
 
@@ -299,10 +299,10 @@ public class Card {
             json2.put("name", MapUtil.ergodicMaps(element).get(i).get(0));
             json2.put("desc", MapUtil.ergodicMaps(element).get(i).get(1));
 
-            json1.getJSONArray("elements").add(json2);
+            json1.getJSONArray("elements").put(json2);
         }
 
-        JsonCard.getJSONObject("card").getJSONArray("components").add(json1);
+        JsonCard.getJSONObject("card").getJSONArray("components").put(json1);
         return true;
     }
 
@@ -314,7 +314,7 @@ public class Card {
         json1.put("text", section);
         json1.put("align", align.toString());
         json1.put("accessory", button.toJSONObject());
-        JsonCard.getJSONObject("card").getJSONArray("components").add(json1);
+        JsonCard.getJSONObject("card").getJSONArray("components").put(json1);
         return true;
     }
 }

@@ -1,6 +1,6 @@
 package io.github.mcchampions.DodoOpenJava.Event.events;
 
-import com.alibaba.fastjson2.JSONObject;
+import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Event.Event;
 import io.github.mcchampions.DodoOpenJava.Event.HandlerList;
 
@@ -55,17 +55,17 @@ public class MemberLeaveEvent extends Event {
         this.personal = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal");
         this.userNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("nickName");
         this.userAvatarUrl = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("avatarUrl");
-        this.userSex = IntSexToSex(json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInteger("sex"));
-        this.userIntSex = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInteger("sex");
+        this.userSex = IntSexToSex(json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex"));
+        this.userIntSex = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex");
         this.jsonObject = json;
         this.jsonString = json.toString();
-        this.timestamp = json.getJSONObject("data").getInteger("timestamp");
+        this.timestamp = json.getJSONObject("data").getInt("timestamp");
         this.eventId = json.getJSONObject("data").getString("eventId");
         this.islandId = json.getJSONObject("data").getJSONObject("eventBody").getString("islandId");
         this.dodoId = json.getJSONObject("data").getJSONObject("eventBody").getString("dodoId");
         this.modifyTime = json.getJSONObject("data").getJSONObject("eventBody").getString("modifyTime");
-        this.leaveType = IntLeaveTypeToLeaveType(json.getJSONObject("data").getJSONObject("eventBody").getInteger("leaveType"));
-        this.leaveIntType = json.getJSONObject("data").getJSONObject("eventBody").getInteger("leaveType");
+        this.leaveType = IntLeaveTypeToLeaveType(json.getJSONObject("data").getJSONObject("eventBody").getInt("leaveType"));
+        this.leaveIntType = json.getJSONObject("data").getJSONObject("eventBody").getInt("leaveType");
         this.operateDoDoId = json.getJSONObject("data").getJSONObject("eventBody").getString("operateDoDoId");
     }
 

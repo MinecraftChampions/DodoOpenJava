@@ -1,7 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.api;
 
-import com.alibaba.fastjson2.JSONArray;
-import com.alibaba.fastjson2.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
 import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
 import org.apache.commons.lang3.StringUtils;
@@ -40,16 +40,16 @@ public class ChannelApi {
         String channel;
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            JSONArray JSONList = JSONObject.parseObject(Parm).getJSONArray("data");
-            int JSONListSize = JSONList.size();
+            JSONArray JSONList = new JSONObject(Parm).getJSONArray("data");
+            int JSONListSize = JSONList.toList().size();
             String[] List = new String[0];
             for (int i = 0;i < JSONListSize;i++) {
                 Object object = JSONList.get(i);
                 String JSONText = object.toString();
                 String channelCount = String.valueOf(i + 1);
-                String channelId = JSONObject.parseObject(JSONText).getString("channelId");
-                String channelName = JSONObject.parseObject(JSONText).getString("channelName");
-                int channelTypeInt = JSONObject.parseObject(JSONText).getIntValue("channelType");
+                String channelId = new JSONObject(JSONText).getString("channelId");
+                String channelName = new JSONObject(JSONText).getString("channelName");
+                int channelTypeInt = new JSONObject(JSONText).getInt("channelType");
                 String channelType = switch (channelTypeInt) {
                     case 1 -> "文字频道";
                     case 2 -> "语音频道";
@@ -58,15 +58,15 @@ public class ChannelApi {
                     case 6 -> "资料频道";
                     default -> null;
                 };
-                int defaultFlagInt = JSONObject.parseObject(JSONText).getIntValue("defaultFlag");
+                int defaultFlagInt = new JSONObject(JSONText).getInt("defaultFlag");
                 String defaultFlag;
                 if (defaultFlagInt == 0) {
                     defaultFlag = "否";
                 } else {
                     defaultFlag = "是";
                 }
-                String groupId = JSONObject.parseObject(JSONText).getString("groupId");
-                String groupName = JSONObject.parseObject(JSONText).getString("defaultChannelId");
+                String groupId = new JSONObject(JSONText).getString("groupId");
+                String groupName = new JSONObject(JSONText).getString("defaultChannelId");
                 channel = "  频道" + channelCount + ": \n" +
                           "    频道ID: \"" + channelId + "\"\n" +
                           "    频道名称: \"" + channelName + "\"\n" +
@@ -108,10 +108,10 @@ public class ChannelApi {
                 "}";
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            JSONObject JSONText = JSONObject.parseObject(Parm).getJSONObject("data");
+            JSONObject JSONText = new JSONObject(Parm).getJSONObject("data");
             String ChannelId = JSONText.getString("channelId");
             String channelName = JSONText.getString("channelName");
-            int channelTypeInt = JSONText.getIntValue("channelType");
+            int channelTypeInt = JSONText.getInt("channelType");
             String channelType = switch (channelTypeInt) {
                 case 1 -> "文字频道";
                 case 2 -> "语音频道";
@@ -120,7 +120,7 @@ public class ChannelApi {
                 case 6 -> "资料频道";
                 default -> null;
             };
-            int defaultFlagInt = JSONText.getIntValue("defaultFlag");
+            int defaultFlagInt = JSONText.getInt("defaultFlag");
             String defaultFlag;
             if (defaultFlagInt == 0) {
                 defaultFlag = "否";
@@ -171,7 +171,7 @@ public class ChannelApi {
                 "}";
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         if (!returnJSONText) {
-            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("channelId");
+            Parm = new JSONObject(Parm).getJSONObject("data").getString("channelId");
         }
         return Parm;
     }

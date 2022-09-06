@@ -1,6 +1,6 @@
 package io.github.mcchampions.DodoOpenJava.Event.events;
 
-import com.alibaba.fastjson2.JSONObject;
+import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Event.Event;
 import io.github.mcchampions.DodoOpenJava.Event.HandlerList;
 
@@ -52,16 +52,16 @@ public class PersonalMessageEvent extends Event {
     public PersonalMessageEvent(JSONObject json) {
         this.jsonObject = json;
         this.jsonString = json.toString();
-        this.timestamp = json.getJSONObject("data").getInteger("timestamp");
+        this.timestamp = json.getJSONObject("data").getInt("timestamp");
         this.eventId = json.getJSONObject("data").getString("eventId");
         this.dodoId = json.getJSONObject("data").getJSONObject("eventBody").getString("dodoId");
         this.messageId = json.getJSONObject("data").getJSONObject("eventBody").getString("messageId");
         this.personal = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal");
         this.senderNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("nickName");
         this.senderAvatarUrl = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("avatarUrl");
-        this.senderSex = IntSexToSex(json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInteger("sex"));
-        this.senderIntSex = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInteger("sex");this.messageType = IntMessageTypeToMessageType(json.getJSONObject("data").getJSONObject("eventBody").getInteger("messageType"));
-        this.messageIntType = json.getJSONObject("data").getJSONObject("eventBody").getInteger("messageType");
+        this.senderSex = IntSexToSex(json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex"));
+        this.senderIntSex = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex");this.messageType = IntMessageTypeToMessageType(json.getJSONObject("data").getJSONObject("eventBody").getInt("messageType"));
+        this.messageIntType = json.getJSONObject("data").getJSONObject("eventBody").getInt("messageType");
         this.messageBody = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("messageBody");
     }
 

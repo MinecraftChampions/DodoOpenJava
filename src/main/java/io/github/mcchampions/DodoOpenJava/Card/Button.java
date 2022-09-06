@@ -1,6 +1,6 @@
 package io.github.mcchampions.DodoOpenJava.Card;
 
-import com.alibaba.fastjson2.JSONObject;
+import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Card.Enums.ButtonAction;
 import io.github.mcchampions.DodoOpenJava.Card.Enums.Color;
 import io.github.mcchampions.DodoOpenJava.Utils.StrUtil;

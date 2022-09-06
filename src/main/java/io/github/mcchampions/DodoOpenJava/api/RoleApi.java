@@ -1,7 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.api;
 
-import com.alibaba.fastjson2.JSONArray;
-import com.alibaba.fastjson2.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
 import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
 import org.apache.commons.lang3.StringUtils;
@@ -41,18 +41,18 @@ public class RoleApi {
         String Parm = NetUtil.sendRequest(parm, url, Authorization);
         String island;
         if (!returnJSONText) {
-            JSONArray JSONList = JSONObject.parseObject(Parm).getJSONArray("data");
-            int JSONListSize = JSONList.size();
+            JSONArray JSONList = new JSONObject(Parm).getJSONArray("data");
+            int JSONListSize = JSONList.toList().size();
             String[] List = new String[0];
             for (int i = 0; i < JSONListSize; i++) {
                 Object object = JSONList.get(i);
                 String JSONText = object.toString();
                 String roleCount = String.valueOf(i + 1);
-                String roleId = JSONObject.parseObject(JSONText).getString("roleId");
-                String roleName = JSONObject.parseObject(JSONText).getString("roleName");
-                String roleColor = JSONObject.parseObject(JSONText).getString("roleColor");
-                String position = String.valueOf(JSONObject.parseObject(JSONText).getIntValue("position"));
-                String permission = JSONObject.parseObject(JSONText).getString("permission");
+                String roleId = new JSONObject(JSONText).getString("roleId");
+                String roleName = new JSONObject(JSONText).getString("roleName");
+                String roleColor = new JSONObject(JSONText).getString("roleColor");
+                String position = String.valueOf(new JSONObject(JSONText).getInt("position"));
+                String permission = new JSONObject(JSONText).getString("permission");
                 island = "  身份组" + roleCount + ": \n" +
                         "    身份组ID: \"" + roleId + "\"\n" +
                         "    身份组名称: \"" + roleName + "\"\n" +
@@ -170,7 +170,7 @@ public class RoleApi {
      */
     public static String addRole(String Authorization, String islandId, String roleName, String roleColor,int position, String permission, Boolean returnJSONText) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/role/add";
-        JSONObject param = JSONObject.parseObject("{" +
+        JSONObject param = new JSONObject("{" +
                 "\n  \"islandId\": \"" + islandId + "\"}");
         if (roleName != null) {
             param.put("roleName", roleName);
@@ -190,7 +190,7 @@ public class RoleApi {
 
         String Parm = NetUtil.sendRequest(param.toString(), url, Authorization);
         if (!returnJSONText) {
-            Parm = JSONObject.parseObject(Parm).getJSONObject("data").getString("roleId");
+            Parm = new JSONObject(Parm).getJSONObject("data").getString("roleId");
         }
         return Parm;
     }
@@ -226,7 +226,7 @@ public class RoleApi {
      */
     public static String editRole(String Authorization, String islandId, String roleId, String roleName, String roleColor,int position, String permission, Boolean returnJSONText) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/role/edit";
-        JSONObject param = JSONObject.parseObject("{" +
+        JSONObject param = new JSONObject("{" +
                 "\n  \"islandId\": \"" + islandId + "\"," +
                 "\n  \"roleId\": \"" + roleId + "\"}");
         if (roleName != null) {
