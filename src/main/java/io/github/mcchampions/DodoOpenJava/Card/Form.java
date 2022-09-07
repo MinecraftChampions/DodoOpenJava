@@ -150,4 +150,12 @@ public class Form {
         JsonForm.getJSONArray("elements").put(json);
         return true;
     }
+
+    /**
+     * 转换为String（重写了Object的toString方法）
+     * @return 字符串
+     */
+    public String toString() {
+        return JsonForm.toString();
+    }
 }

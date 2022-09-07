@@ -294,4 +294,18 @@ public class MessageEvent extends Event {
     public JSONObject getMessageBody() {
         return this.messageBody;
     }
+
+    /**
+     * 获取卡片消息JSON字符串
+     */
+    public String getJsonString() {
+        return this.jsonString;
+    }
+
+    /**
+     * 获取卡片消息JSON对象
+     */
+    public JSONObject getJsonObject() {
+        return this.jsonObject;
+    }
 }

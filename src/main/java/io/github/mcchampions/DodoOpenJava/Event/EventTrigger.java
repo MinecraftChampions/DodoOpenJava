@@ -116,6 +116,36 @@ public class EventTrigger {
                         throw new RuntimeException(e);
                     }
                     break;
+                case "5001":
+                    try {
+                        new EventManage().fireEvent(new ChannelVoiceMemberJoinEvent(jsontext));
+                    } catch (EventException e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                case "5002":
+                    try {
+                        new EventManage().fireEvent(new ChannelVoiceMemberLeaveEvent(jsontext));
+                    } catch (EventException e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                case "6001":
+                    try {
+                        new EventManage().fireEvent(new ChannelArticleEvent(jsontext));
+                    } catch (EventException e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                case "6002":
+                    try {
+                        new EventManage().fireEvent(new ChannelArticleCommentEvent(jsontext));
+                    } catch (EventException e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                default:
+                    System.out.println("未知的事件！");
             }
         }
 

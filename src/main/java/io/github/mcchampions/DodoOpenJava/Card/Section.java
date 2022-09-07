@@ -171,4 +171,12 @@ public class Section {
         JsonText.getJSONObject("text").getJSONArray("fields").remove(count - 1);
         return true;
     }
+
+    /**
+     * 转换为String（重写了Object的toString方法）
+     * @return 字符串
+     */
+    public String toString() {
+        return JsonText.toString();
+    }
 }

@@ -306,6 +306,13 @@ public class Card {
         return true;
     }
 
+    /**
+     * 增加 文字与模块 交互组件
+     * @param align 对齐方式，left：左对齐，right：右对齐
+     * @param section 文字
+     * @param button 按钮
+     * @return
+     */
     public Boolean addSection(Align align,Section section,Button button) {
         if (JsonCard.isEmpty()) initCard();
 
@@ -316,5 +323,13 @@ public class Card {
         json1.put("accessory", button.toJSONObject());
         JsonCard.getJSONObject("card").getJSONArray("components").put(json1);
         return true;
+    }
+
+    /**
+     * 转换为String（重写了Object的toString方法）
+     * @return 字符串
+     */
+    public String toString() {
+        return JsonCard.toString();
     }
 }
