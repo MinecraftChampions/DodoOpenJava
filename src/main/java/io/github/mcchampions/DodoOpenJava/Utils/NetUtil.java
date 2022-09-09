@@ -315,7 +315,7 @@ public class NetUtil {
                 while (addresses.hasMoreElements()) {
                     ip = addresses.nextElement();
                     if (!ip.isSiteLocalAddress() && !ip.isLoopbackAddress() && !ip.getHostAddress().contains(":")) {
-                        if (ip != null && ip instanceof Inet4Address) {
+                        if (ip instanceof Inet4Address) {
                             return ip;
                         }
                     }

@@ -8,6 +8,9 @@ import org.json.JSONObject;
 import javax.annotation.Nonnull;
 import java.util.List;
 
+/**
+ * 帖子发布事件
+ */
 public class ChannelArticleEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
 

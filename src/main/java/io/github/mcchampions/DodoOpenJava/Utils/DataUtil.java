@@ -21,11 +21,6 @@ public class DataUtil {
     public final static String YYYY = "yyyy-MM-dd";
 
     /**
-     * 完整格式
-     */
-    public final static String YYYY_HH = "yyyy-MM-dd HH:mm:ss";
-
-    /**
      * 字符串转date
      *
      * @param str    字符串

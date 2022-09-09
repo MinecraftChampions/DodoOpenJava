@@ -2,7 +2,7 @@ package io.github.mcchampions.DodoOpenJava.Command;
 
 import io.github.mcchampions.DodoOpenJava.Event.EventManage;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
-import io.github.mcchampions.DodoOpenJava.permissions.User;
+import io.github.mcchampions.DodoOpenJava.Permissions.User;
 
 import java.util.List;
 import java.util.Objects;

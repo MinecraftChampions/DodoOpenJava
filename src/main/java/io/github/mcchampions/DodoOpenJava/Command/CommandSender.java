@@ -1,10 +1,10 @@
 package io.github.mcchampions.DodoOpenJava.Command;
 
 import org.json.JSONObject;
-import io.github.mcchampions.DodoOpenJava.api.ChannelTextApi;
-import io.github.mcchampions.DodoOpenJava.api.MemberApi;
-import io.github.mcchampions.DodoOpenJava.api.PersonalApi;
-import io.github.mcchampions.DodoOpenJava.api.RoleApi;
+import io.github.mcchampions.DodoOpenJava.Api.ChannelTextApi;
+import io.github.mcchampions.DodoOpenJava.Api.MemberApi;
+import io.github.mcchampions.DodoOpenJava.Api.PersonalApi;
+import io.github.mcchampions.DodoOpenJava.Api.RoleApi;
 
 import java.io.IOException;
 

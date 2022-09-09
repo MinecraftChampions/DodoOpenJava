@@ -1,7 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.Utils;
 
-import io.github.mcchampions.DodoOpenJava.configuration.file.FileConfiguration;
-import io.github.mcchampions.DodoOpenJava.configuration.file.YamlConfiguration;
+import io.github.mcchampions.DodoOpenJava.Configuration.file.FileConfiguration;
+import io.github.mcchampions.DodoOpenJava.Configuration.file.YamlConfiguration;
 
 import java.io.*;
 import java.nio.channels.FileChannel;

@@ -8,6 +8,9 @@ import org.json.JSONObject;
 import javax.annotation.Nonnull;
 import java.util.List;
 
+/**
+ * 帖子评论回复事件
+ */
 public class ChannelArticleCommentEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
 
