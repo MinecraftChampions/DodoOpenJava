@@ -6,11 +6,13 @@ import io.github.mcchampions.DodoOpenJava.Event.Listener;
 import io.github.mcchampions.DodoOpenJava.Event.events.MessageEvent;
 
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * 命令触发
  */
 public class CommandTrigger implements Listener {
+    public static io.github.mcchampions.DodoOpenJava.Command.Command c = new Command();
     @EventHandler
     public void event(MessageEvent e) {
         JSONObject jsontext = new JSONObject(e.jsonString);
@@ -23,7 +25,19 @@ public class CommandTrigger implements Listener {
         String MainCommand = Command.get(0);
         Command.remove(0);
         String[] args = Command.toArray(new String[0]);
-        io.github.mcchampions.DodoOpenJava.Command.Command c = new Command();
         c.Trigger(sender, MainCommand, args);
+    }
+
+    public static void listenerConsole() {
+        ConsoleListener cs = new ConsoleListener(new Scanner(System.in), new ConsoleListener.Action() {
+
+            public void act(String msg) {
+                List<String> Command = new java.util.ArrayList<>(List.of(msg.split(" ")));
+                String MainCommand = Command.get(0);
+                Command.remove(0);
+                String[] args = Command.toArray(new String[0]);
+                c.Trigger(new ConsoleSender(), MainCommand, args);
+            }
+        });
     }
 }
