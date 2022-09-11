@@ -9,6 +9,7 @@ import io.github.mcchampions.DodoOpenJava.Utils.ConfigUtil;
 
 import java.io.IOException;
 import java.nio.file.*;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -21,12 +22,82 @@ public class Permissions implements Listener {
 
     public static DataType type;
 
-    public static String Authorization;
+    public static List<String> Authorizations;
 
     /**
      * 初始化（使用MongoDB数据库）
      * @param ip IP地址
      * @param port 端口
+     * @param Authorization 所有机器人的Authorization
+     * @return true成功，false失败
+     * @throws IOException 初始化出现问题抛出
+     */
+    public static Boolean initMongoDB(String ip, int port, List<String> Authorization) throws IOException {
+        if (Objects.equals(type.toString(), "MongoDB")) {
+            MongoDBData mongoDB = new MongoDBData();
+            mongoDB.initPermissions(ip,port);
+        }
+        for (String an : Authorization) {
+            EM.registerEvents(new Permissions(),an);
+        }
+        Permissions.type = DataType.MongoDB;
+        Permissions.Authorizations = Authorization;
+        listener();
+        return true;
+    }
+
+    /**
+     * 初始化（使用MongoDB数据库）
+     * @param ip IP地址
+     * @param Authorization 所有机器人的Authorization
+     * @return true成功，false失败
+     * @throws IOException 初始化出现问题抛出
+     */
+    public static Boolean initMongoDB(String ip, List<String> Authorization) throws IOException {
+        if (Objects.equals(type.toString(), "MongoDB")) {
+            MongoDBData mongoDB = new MongoDBData();
+            mongoDB.initPermissions(ip,25575);
+        }
+        for (String an : Authorization) {
+            EM.registerEvents(new Permissions(),an);
+        }
+        Permissions.type = DataType.MongoDB;
+        Permissions.Authorizations = Authorization;
+        listener();
+        return true;
+    }
+
+    /**
+     * 初始化
+     * @param type 存储类型
+     * @param Authorization 所有机器人的Authorization
+     * @return true成功，false失败
+     * @throws IOException 初始化出现问题抛出
+     */
+    public static Boolean init(DataType type, List<String> Authorization) throws IOException {
+        switch (type.toString()) {
+            case "YAML" -> YamlData.init();
+            case "JSON" -> JsonData.init();
+            case "Xml" -> XmlData.init();
+            case "Toml" -> TomlData.init();
+            default -> {
+                return false;
+            }
+        }
+        for (String an : Authorization) {
+            EM.registerEvents(new Permissions(),an);
+        }
+        Permissions.type = type;
+        Permissions.Authorizations = Authorization;
+        listener();
+        return true;
+    }
+
+    /**
+     * 初始化（使用MongoDB数据库）
+     * @param ip IP地址
+     * @param port 端口
+     * @param Authorization Authorization
      * @return true成功，false失败
      * @throws IOException 初始化出现问题抛出
      */
@@ -37,7 +108,7 @@ public class Permissions implements Listener {
         }
         EM.registerEvents(new Permissions(),Authorization);
         Permissions.type = DataType.MongoDB;
-        Permissions.Authorization = Authorization;
+        Permissions.Authorizations = List.of(Authorization);
         listener();
         return true;
     }
@@ -45,6 +116,7 @@ public class Permissions implements Listener {
     /**
      * 初始化（使用MongoDB数据库）
      * @param ip IP地址
+     * @param Authorization Authorization
      * @return true成功，false失败
      * @throws IOException 初始化出现问题抛出
      */
@@ -55,7 +127,7 @@ public class Permissions implements Listener {
         }
         EM.registerEvents(new Permissions(),Authorization);
         Permissions.type = DataType.MongoDB;
-        Permissions.Authorization = Authorization;
+        Permissions.Authorizations = List.of(Authorization);
         listener();
         return true;
     }
@@ -63,6 +135,7 @@ public class Permissions implements Listener {
     /**
      * 初始化
      * @param type 存储类型
+     * @param Authorization Authorization
      * @return true成功，false失败
      * @throws IOException 初始化出现问题抛出
      */
@@ -78,7 +151,7 @@ public class Permissions implements Listener {
         }
         EM.registerEvents(new Permissions(),Authorization);
         Permissions.type = type;
-        Permissions.Authorization = Authorization;
+        Permissions.Authorizations = List.of(Authorization);
         listener();
         return true;
     }
@@ -199,7 +272,7 @@ public class Permissions implements Listener {
      */
     public static void listener() throws IOException {
         if (initFileListener) return;
-        if (Objects.equals(type.toString(), "MongoDBData")) return;
+        if (Objects.equals(type.toString(), "MongoDB")) return;
         initFileListener = true;
         Path path = Paths.get(ConfigUtil.getJarPath() + "permissions/");
         WatchService watcher = FileSystems.getDefault().newWatchService();
@@ -211,7 +284,7 @@ public class Permissions implements Listener {
                     if (event.kind() == StandardWatchEventKinds.OVERFLOW) {
                         continue;
                     }
-                    init(type,Authorization);
+                    init(type,Authorizations);
                 }
                 if (!key.reset()) {
                     break;
