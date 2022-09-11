@@ -27,6 +27,7 @@ public class Command {
         commands.add(Class);
         e.registerEvents(new CommandTrigger(), BaseUtil.Authorization(clientId,token));
         SenderAuthorization = BaseUtil.Authorization(clientId,token);
+        CommandTrigger.listenerConsole();
     }
 
     /**
@@ -39,6 +40,7 @@ public class Command {
         this.commands = List.of(Class);
         e.registerEvents(new CommandTrigger(), BaseUtil.Authorization(clientId,token));
         SenderAuthorization = BaseUtil.Authorization(clientId,token);
+        CommandTrigger.listenerConsole();
     }
 
     /**
@@ -50,6 +52,7 @@ public class Command {
         commands.add(Class);
         e.registerEvents(new CommandTrigger(), Authorization);
         SenderAuthorization = Authorization;
+        CommandTrigger.listenerConsole();
     }
 
     /**
@@ -61,6 +64,7 @@ public class Command {
         this.commands = List.of(Class);
         e.registerEvents(new CommandTrigger(), Authorization);
         SenderAuthorization = Authorization;
+        CommandTrigger.listenerConsole();
     }
 
     /**

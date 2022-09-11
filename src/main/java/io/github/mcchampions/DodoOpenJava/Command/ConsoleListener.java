@@ -56,7 +56,7 @@ public class ConsoleListener {
         }
     }
 
-    public static interface Action {
-        public void act(String msg);
+    public interface Action {
+        void act(String msg);
     }
 }

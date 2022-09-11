@@ -39,5 +39,14 @@ public class CommandTrigger implements Listener {
                 c.Trigger(new ConsoleSender(), MainCommand, args);
             }
         });
+        cs.listenInNewThread();
+
+        while (true) {
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
