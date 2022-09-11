@@ -35,8 +35,8 @@ public class Command {
      * @param clientId 机器人唯一标示
      * @param token 机器人Token
      */
-    public void initCommand(List<CommandExecutor> Class, String clientId, String token) {
-        this.commands = Class;
+    public void initCommand(String clientId, String token, CommandExecutor... Class) {
+        this.commands = List.of(Class);
         e.registerEvents(new CommandTrigger(), BaseUtil.Authorization(clientId,token));
         SenderAuthorization = BaseUtil.Authorization(clientId,token);
     }
@@ -57,8 +57,8 @@ public class Command {
      * @param Class 命令处理所在的类
      * @param Authorization Authorization
      */
-    public void initCommand(List<CommandExecutor> Class, String Authorization) {
-        this.commands = Class;
+    public void initCommand(String Authorization, CommandExecutor... Class) {
+        this.commands = List.of(Class);
         e.registerEvents(new CommandTrigger(), Authorization);
         SenderAuthorization = Authorization;
     }
