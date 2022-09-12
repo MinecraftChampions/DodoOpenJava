@@ -1,18 +1,20 @@
 package io.github.mcchampions.DodoOpenJava.Command;
 
-import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Event.EventHandler;
 import io.github.mcchampions.DodoOpenJava.Event.Listener;
 import io.github.mcchampions.DodoOpenJava.Event.events.MessageEvent;
+import org.json.JSONObject;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
+
+import static io.github.mcchampions.DodoOpenJava.Command.Command.commands;
 
 /**
  * 命令触发
  */
 public class CommandTrigger implements Listener {
-    public static io.github.mcchampions.DodoOpenJava.Command.Command c = new Command();
     @EventHandler
     public void event(MessageEvent e) {
         JSONObject jsontext = new JSONObject(e.jsonString);
@@ -25,7 +27,7 @@ public class CommandTrigger implements Listener {
         String MainCommand = Command.get(0);
         Command.remove(0);
         String[] args = Command.toArray(new String[0]);
-        c.Trigger(sender, MainCommand, args);
+        io.github.mcchampions.DodoOpenJava.Command.Command.Trigger(sender, MainCommand, args);
     }
 
     public static void listenerConsole() {
@@ -36,7 +38,13 @@ public class CommandTrigger implements Listener {
                 String MainCommand = Command.get(0);
                 Command.remove(0);
                 String[] args = Command.toArray(new String[0]);
-                c.Trigger(new ConsoleSender(), MainCommand, args);
+                for (int i = 0; i < commands.size(); i++) {
+                    CommandExecutor command = commands.get(i);
+                    if (Objects.equals(command.MainCommand(), Command)) {
+                            i = commands.size();
+                            command.onCommand(new ConsoleSender(), args);
+                    }
+                }
             }
         });
         cs.listenInNewThread();
