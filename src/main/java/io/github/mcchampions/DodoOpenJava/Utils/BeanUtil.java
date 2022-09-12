@@ -22,6 +22,7 @@ public class BeanUtil {
         if (obj == null) {
             return null;
         }
+
         Map<String, Object> map = new HashMap<>();
         try {
             BeanInfo beanInfo = Introspector.getBeanInfo(obj.getClass());

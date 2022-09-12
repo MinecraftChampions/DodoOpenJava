@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.ejlchina:okhttps:3.5.3">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/ejlchina/okhttps/3.5.3/okhttps-3.5.3.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/ejlchina/okhttps/3.5.3/okhttps-3.5.3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/ejlchina/okhttps/3.5.3/okhttps-3.5.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

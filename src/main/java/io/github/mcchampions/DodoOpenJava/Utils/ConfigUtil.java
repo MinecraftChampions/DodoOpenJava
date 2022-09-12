@@ -2,6 +2,7 @@ package io.github.mcchampions.DodoOpenJava.Utils;
 
 import io.github.mcchampions.DodoOpenJava.Configuration.file.FileConfiguration;
 import io.github.mcchampions.DodoOpenJava.Configuration.file.YamlConfiguration;
+import org.apache.commons.io.FileUtils;
 
 import java.io.*;
 import java.nio.channels.FileChannel;
@@ -43,6 +44,7 @@ public class ConfigUtil {
      * @return 全部文件
      */
     public static Map<String, FileConfiguration> loadDirectory(String directoryStr) {
+
         Map<String, FileConfiguration> map = new HashMap<>();
         File directory = new File(directoryStr);
         // 获取全部配置
@@ -161,13 +163,14 @@ public class ConfigUtil {
             OutPath.mkdirs();
         }
 
+        File file = new File(outPath);
+
         if (new File(inPath).exists()) {
             return false;
         }
-        FileOutputStream outputStream = new FileOutputStream(outPath);
-        try (InputStream inputStream = ConfigUtil.class.getResourceAsStream(inPath)) {
+        try (InputStream inputStream = ConfigUtil.class.getClassLoader().getResourceAsStream(inPath)) {
             if (inputStream != null) {
-                inputStream.transferTo(outputStream);
+                FileUtils.copyToFile(inputStream, file);
             }
         }
         return true;

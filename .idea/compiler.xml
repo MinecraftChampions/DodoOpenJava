@@ -9,5 +9,8 @@
         <module name="DodoOpenJava" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="DodoOpenJava" target="18" />
+    </bytecodeTargetLevel>
   </component>
 </project>
