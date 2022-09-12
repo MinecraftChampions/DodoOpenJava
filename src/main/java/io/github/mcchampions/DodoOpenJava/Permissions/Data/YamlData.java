@@ -40,9 +40,9 @@ public class YamlData {
         PermissionsGroup.addGroups(groups);
 
         for (int i = 0 ; i < getUserFile().getConfigurationSection("Users").getKeys(false).size(); i++) {
-            String DodoId = getGroupFile().getConfigurationSection("Users").getKeys(false).stream().toList().get(i);
-            List<String> perms = getGroupFile().getStringList("Users." + DodoId + ".perms");
-            String group = getGroupFile().getString("Users." + DodoId + ".Group");
+            String DodoId = getUserFile().getConfigurationSection("Users").getKeys(false).stream().toList().get(i);
+            List<String> perms = getUserFile().getStringList("Users." + DodoId + ".perms");
+            String group = getUserFile().getString("Users." + DodoId + ".Group");
             PermissionsGroup Group = new PermissionsGroup();
             for (int I = 0; I < PermissionsGroup.getGroups().size();I++) {
                 if (Objects.equals(PermissionsGroup.getGroups().get(I).getName(), group)) {

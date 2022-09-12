@@ -48,9 +48,9 @@ public class JsonData {
         PermissionsGroup.addGroups(groups);
 
         for (int i = 0 ; i < getUserFile().getJSONObject("Users").keySet().size(); i++) {
-            String DodoId = getGroupFile().getJSONObject("Users").keySet().stream().toList().get(i);
-            List<String> perms = BaseUtil.toStringList(getGroupFile().getJSONObject("Users").getJSONObject(DodoId).getJSONArray("perms").toList());
-            String group = getGroupFile().getJSONObject("Groups").getJSONObject(DodoId).getString("Group");
+            String DodoId = getUserFile().getJSONObject("Users").keySet().stream().toList().get(i);
+            List<String> perms = BaseUtil.toStringList(getUserFile().getJSONObject("Users").getJSONObject(DodoId).getJSONArray("perms").toList());
+            String group = getUserFile().getJSONObject("Groups").getJSONObject(DodoId).getString("Group");
             PermissionsGroup Group = new PermissionsGroup();
             for (int I = 0; I < PermissionsGroup.getGroups().size();I++) {
                 if (Objects.equals(PermissionsGroup.getGroups().get(I).getName(), group)) {

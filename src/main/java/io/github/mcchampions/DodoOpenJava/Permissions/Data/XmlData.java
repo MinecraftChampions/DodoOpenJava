@@ -49,7 +49,7 @@ public class XmlData {
         PermissionsGroup.addGroups(groups);
 
         for (int i = 0 ; i < getUserFile().getJSONObject("Users").getJSONArray("User").toList().size(); i++) {
-            JSONObject json = getGroupFile().getJSONObject("Users").getJSONArray("User").getJSONObject(i);
+            JSONObject json = getUserFile().getJSONObject("Users").getJSONArray("User").getJSONObject(i);
             String DodoId = json.getString("DodoId");
             List<String> perms = BaseUtil.toStringList(json.getJSONArray("perm").toList());
             String group = json.getString("Group");
