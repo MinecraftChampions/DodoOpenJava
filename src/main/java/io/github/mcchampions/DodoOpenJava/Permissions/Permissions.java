@@ -9,6 +9,7 @@ import io.github.mcchampions.DodoOpenJava.Utils.ConfigUtil;
 
 import java.io.IOException;
 import java.nio.file.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,7 +23,7 @@ public class Permissions implements Listener {
 
     public static DataType type;
 
-    public static List<String> Authorizations;
+    public static List<String> Authorizations = new ArrayList<>();
 
     /**
      * 初始化（使用MongoDB数据库）

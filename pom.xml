@@ -6,7 +6,7 @@
 
     <groupId>io.github.mcchampions.DodoOpenJava</groupId>
     <artifactId>DodoOpenJava</artifactId>
-    <version>v9.8</version>
+    <version>v9.9</version>
 
     <properties>
         <java.version>18</java.version>

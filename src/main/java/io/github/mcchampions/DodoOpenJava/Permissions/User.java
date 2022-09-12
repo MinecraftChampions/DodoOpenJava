@@ -8,9 +8,9 @@ import java.util.*;
  * 用户
  */
 public class User {
-    public static Map<String,PermissionsGroup> UserGroup;
+    public static Map<String,PermissionsGroup> UserGroup = new HashMap<>();
 
-    public static Map<String,List<String>> UserPerms;
+    public static Map<String,List<String>> UserPerms = new HashMap<>();
 
     /**
      * 获取用户的权限组

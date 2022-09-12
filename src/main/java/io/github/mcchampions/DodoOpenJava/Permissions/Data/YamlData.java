@@ -20,14 +20,14 @@ public class YamlData {
             Config.mkdir();
         }
 
-       Group = new File(ConfigUtil.getJarPath() + "permissions/permGroup.yml");
+        Group = new File(ConfigUtil.getJarPath() + "permissions/permGroup.yml");
         if (!Group.exists()) {
             ConfigUtil.copyResourcesToFile("permissions/permGroup.yml",Group.getPath());
         }
 
-       User = new File(ConfigUtil.getJarPath() + "permissions/permUser.yml");
+        User = new File(ConfigUtil.getJarPath() + "permissions/permUser.yml");
         if (!User.exists()) {
-            ConfigUtil.copyResourcesToFile("permissions/permUser.yml",Group.getPath());
+            ConfigUtil.copyResourcesToFile("permissions/permUser.yml",User.getPath());
         }
 
         List<PermissionsGroup> groups = new ArrayList<>();

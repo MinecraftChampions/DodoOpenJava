@@ -37,7 +37,7 @@ public class TomlData {
 
         User = new File(ConfigUtil.getJarPath() + "permissions/permUser.toml");
         if (!User.exists()) {
-            ConfigUtil.copyResourcesToFile("permissions/permUser.toml", Group.getPath());
+            ConfigUtil.copyResourcesToFile("permissions/permUser.toml", User.getPath());
         }
 
         List<PermissionsGroup> groups = new ArrayList<>();

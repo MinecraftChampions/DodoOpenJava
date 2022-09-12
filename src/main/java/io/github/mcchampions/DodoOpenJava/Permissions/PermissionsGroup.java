@@ -8,9 +8,9 @@ import java.util.Objects;
  * 权限组
  */
 public class PermissionsGroup {
-    public static List<PermissionsGroup> groups;
+    public static List<PermissionsGroup> groups = new ArrayList<>();
 
-    public List<String> perms;
+    public List<String> perms = new ArrayList<>();
 
     public Boolean isDefault;
 

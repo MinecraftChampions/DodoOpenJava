@@ -35,7 +35,7 @@ public class JsonData {
 
         User = new File(ConfigUtil.getJarPath() + "permissions/permUser.json");
         if (!User.exists()) {
-            ConfigUtil.copyResourcesToFile("permissions/permUser.json", Group.getPath());
+            ConfigUtil.copyResourcesToFile("permissions/permUser.json", User.getPath());
         }
 
         List<PermissionsGroup> groups = new ArrayList<>();

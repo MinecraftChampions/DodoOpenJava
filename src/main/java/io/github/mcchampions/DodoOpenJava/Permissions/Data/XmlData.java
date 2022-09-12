@@ -36,7 +36,7 @@ public class XmlData {
 
         User = new File(ConfigUtil.getJarPath() + "permissions/permUser.xml");
         if (!User.exists()) {
-            ConfigUtil.copyResourcesToFile("permissions/permUser.xml", Group.getPath());
+            ConfigUtil.copyResourcesToFile("permissions/permUser.xml", User.getPath());
         }
 
         List<PermissionsGroup> groups = new ArrayList<>();
