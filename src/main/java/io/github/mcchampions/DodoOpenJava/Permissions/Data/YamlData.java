@@ -60,6 +60,6 @@ public class YamlData {
     }
 
     public static FileConfiguration getUserFile() {
-        return ConfigUtil.load(Group);
+        return ConfigUtil.load(User);
     }
 }
