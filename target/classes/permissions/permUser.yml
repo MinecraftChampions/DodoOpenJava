@@ -1,0 +1,8 @@
+Users:
+  DodoId:
+    Group: Default
+    perms:
+      - "perm.seven"
+  66666:
+    Group: Owner
+    perms: []

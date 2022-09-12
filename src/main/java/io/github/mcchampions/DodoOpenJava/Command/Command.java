@@ -4,6 +4,7 @@ import io.github.mcchampions.DodoOpenJava.Event.EventManage;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
 import io.github.mcchampions.DodoOpenJava.Permissions.User;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,7 +12,7 @@ import java.util.Objects;
  * 命令系统的相关方法
  */
 public class Command {
-    static List<CommandExecutor> commands = null;
+    static List<CommandExecutor> commands = new ArrayList<>();
 
     static EventManage e = new EventManage();
 
@@ -37,7 +38,7 @@ public class Command {
      * @param token 机器人Token
      */
     public static void initCommand(String clientId, String token, CommandExecutor... Class) {
-        commands = List.of(Class);
+        commands.addAll(List.of(Class));
         e.registerEvents(new CommandTrigger(), BaseUtil.Authorization(clientId,token));
         SenderAuthorization = BaseUtil.Authorization(clientId,token);
         CommandTrigger.listenerConsole();
@@ -61,7 +62,7 @@ public class Command {
      * @param Authorization Authorization
      */
     public static void initCommand(String Authorization, CommandExecutor... Class) {
-        commands = List.of(Class);
+        commands.addAll(List.of(Class));
         e.registerEvents(new CommandTrigger(), Authorization);
         SenderAuthorization = Authorization;
         CommandTrigger.listenerConsole();
@@ -70,18 +71,17 @@ public class Command {
     /**
      * 触发命令
      * @param sender 发送者
-     * @param Command 命令名
+     * @param MainCommand 命令名
      * @param args 命令参数
      */
-    public static Boolean Trigger(CommandSender sender, String Command, String[] args) {
-        Boolean hasCommand = false;
-        for (int i = 0; i < commands.size(); i++) {
-            CommandExecutor command = commands.get(i);
-            if (Objects.equals(command.MainCommand(), Command)) {
+    public static Boolean Trigger(CommandSender sender, String MainCommand, String[] args) {
+        boolean hasCommand = false;
+        for (CommandExecutor command :commands) {
+            if (Objects.equals(command.MainCommand(), MainCommand)) {
                 if (User.hasPerm(sender.getSenderDodoId(), command.Permissions())) {
-                    i = commands.size();
-                    hasCommand = true;
                     command.onCommand(sender, args);
+                    hasCommand = true;
+                    break;
                 }
             }
         }

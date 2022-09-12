@@ -26,7 +26,7 @@ public class CommandTrigger implements Listener {
         List<String> Command = new java.util.ArrayList<>(List.of(command.split(" ")));
         String MainCommand = Command.get(0);
         Command.remove(0);
-        String[] args = Command.toArray(new String[0]);
+        String[] args = Command.toArray(new String[Command.size()]);
         io.github.mcchampions.DodoOpenJava.Command.Command.Trigger(sender, MainCommand, args);
     }
 
@@ -37,12 +37,11 @@ public class CommandTrigger implements Listener {
                 List<String> Command = new java.util.ArrayList<>(List.of(msg.split(" ")));
                 String MainCommand = Command.get(0);
                 Command.remove(0);
-                String[] args = Command.toArray(new String[0]);
-                for (int i = 0; i < commands.size(); i++) {
-                    CommandExecutor command = commands.get(i);
-                    if (Objects.equals(command.MainCommand(), Command)) {
-                            i = commands.size();
-                            command.onCommand(new ConsoleSender(), args);
+                String[] args = Command.toArray(new String[Command.size()]);
+                for (CommandExecutor command :commands) {
+                    if (Objects.equals(command.MainCommand(), MainCommand)) {
+                        command.onCommand(new ConsoleSender(), args);
+                        break;
                     }
                 }
             }
