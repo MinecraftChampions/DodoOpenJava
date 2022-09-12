@@ -71,7 +71,7 @@ public class User {
             }
         }
         if (!hasUser) UserPerms.put(DodoId,new ArrayList<>());
-        if (!hasPerm) return false;
+        if (hasPerm) return false;
         perms.add(perm);
         UserPerms.replace(DodoId,perms);
         return true;
@@ -130,7 +130,7 @@ public class User {
             UserPerms.put(DodoId,new ArrayList<>());
             return false;
         }
-        if (hasPerm) return false;
+        if (!hasPerm) return false;
         perms.remove(perm);
         UserPerms.replace(DodoId,perms);
         return true;

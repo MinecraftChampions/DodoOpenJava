@@ -17,8 +17,7 @@ public class MapUtil {
      * @return 返回集合（集合中内置了一个集合，索引0是key，1是Value）
      */
     public static List<List<Object>> ergodicMaps(Map<?, ?> map) {
-        if (map == null) return new ArrayList<>();
-        if (map.equals(new HashMap<>())) return new ArrayList<>();
+        if (map.isEmpty()) return new ArrayList<>();
         Iterator<? extends Map.Entry<?, ?>> iter = map.entrySet().iterator();
         List<List<Object>> list = new ArrayList<>();
         while (iter.hasNext()) {
