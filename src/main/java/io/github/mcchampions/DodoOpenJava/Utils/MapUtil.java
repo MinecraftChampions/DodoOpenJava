@@ -5,10 +5,7 @@ import org.json.JSONObject;
 import java.beans.BeanInfo;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 一些有关于 Map 的实用方法
@@ -20,6 +17,8 @@ public class MapUtil {
      * @return 返回集合（集合中内置了一个集合，索引0是key，1是Value）
      */
     public static List<List<Object>> ergodicMaps(Map<?, ?> map) {
+        if (map == null) return new ArrayList<>();
+        if (map.equals(new HashMap<>())) return new ArrayList<>();
         Iterator<? extends Map.Entry<?, ?>> iter = map.entrySet().iterator();
         List<List<Object>> list = new ArrayList<>();
         while (iter.hasNext()) {
