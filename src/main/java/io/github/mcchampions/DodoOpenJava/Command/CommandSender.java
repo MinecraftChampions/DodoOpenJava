@@ -1,17 +1,20 @@
 package io.github.mcchampions.DodoOpenJava.Command;
 
-import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Api.ChannelTextApi;
 import io.github.mcchampions.DodoOpenJava.Api.MemberApi;
 import io.github.mcchampions.DodoOpenJava.Api.PersonalApi;
 import io.github.mcchampions.DodoOpenJava.Api.RoleApi;
+import io.github.mcchampions.DodoOpenJava.Permissions.User;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
 /**
  * 命令发送者
  */
-public class CommandSender {
+public class CommandSender{
+    public String SenderAuthorization;
+    
     public String SenderDodoId;
 
     public String ChannelId;
@@ -33,14 +36,14 @@ public class CommandSender {
      * @return DodoID
      */
     public String getSenderDodoId() {
-        return SenderDodoId;
+        return this.SenderDodoId;
     }
     /**
      * 获取频道ID
      * @return 频道ID
      */
     public String getChannelId() {
-        return ChannelId;
+        return this.ChannelId;
     }
 
     /**
@@ -48,7 +51,7 @@ public class CommandSender {
      * @return 群号
      */
     public String getIslandId() {
-        return IslandId;
+        return this.IslandId;
     }
 
     /**
@@ -56,7 +59,7 @@ public class CommandSender {
      * @return 头像URL
      */
     public String getAvatarUrl() {
-        return AvatarUrl;
+        return this.AvatarUrl;
     }
 
     /**
@@ -64,7 +67,7 @@ public class CommandSender {
      * @return 群昵称
      */
     public String getSenderNickName() {
-        return SenderNickName;
+        return this.SenderNickName;
     }
 
     /**
@@ -72,7 +75,7 @@ public class CommandSender {
      * @return 原名
      */
     public String getSenderName() {
-        return SenderName;
+        return this.SenderName;
     }
 
     /**
@@ -80,22 +83,24 @@ public class CommandSender {
      * @return 加入时间
      */
     public String getJoinTime() {
-        return JoinTime;
+        return this.JoinTime;
     }
 
     /**
      * 初始化发送者这个类型
      * @param jsontext JSONText
+     * @param SenderAuthorization 发送者所在的群机器人Authorization
      */
-    public void InitSender(JSONObject jsontext) {
-        SenderNickName = jsontext.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("nickName");
-        SenderName = jsontext.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("nickName");
-        JoinTime = jsontext.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("joinTime");
-        AvatarUrl = jsontext.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("avatarUrl");
-        SenderDodoId = jsontext.getJSONObject("data").getJSONObject("eventBody").getString("dodoId");
-        ChannelId = jsontext.getJSONObject("data").getJSONObject("eventBody").getString("channelId");
-        IslandId = jsontext.getJSONObject("data").getJSONObject("eventBody").getString("islandId");
-        MessageId = jsontext.getJSONObject("data").getJSONObject("eventBody").getString("messageId");
+    public void InitSender(JSONObject jsontext,String SenderAuthorization) {
+        this.SenderAuthorization = this.SenderAuthorization;
+        this.SenderNickName = jsontext.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("nickName");
+        this.SenderName = jsontext.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("nickName");
+        this.JoinTime = jsontext.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("joinTime");
+        this.AvatarUrl = jsontext.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("avatarUrl");
+        this.SenderDodoId = jsontext.getJSONObject("data").getJSONObject("eventBody").getString("dodoId");
+        this.ChannelId = jsontext.getJSONObject("data").getJSONObject("eventBody").getString("channelId");
+        this.IslandId = jsontext.getJSONObject("data").getJSONObject("eventBody").getString("islandId");
+        this.MessageId = jsontext.getJSONObject("data").getJSONObject("eventBody").getString("messageId");
     }
 
     /**
@@ -104,7 +109,7 @@ public class CommandSender {
      * @throws IOException 发送失败时抛出
      */
     public void referencedMessage(String Message) throws IOException {
-        ChannelTextApi.referencedMessage(Command.SenderAuthorization, ChannelId, Message, MessageId);
+        ChannelTextApi.referencedMessage(this.SenderAuthorization, ChannelId, Message, MessageId);
     }
 
     /**
@@ -113,7 +118,7 @@ public class CommandSender {
      * @throws IOException 编辑失败后抛出
      */
     public void editSenderNickName(String NickName) throws IOException {
-        MemberApi.editMemberNickName(Command.SenderAuthorization,IslandId,SenderDodoId,NickName);
+        MemberApi.editMemberNickName(this.SenderAuthorization,IslandId,SenderDodoId,NickName);
     }
 
     /**
@@ -122,7 +127,7 @@ public class CommandSender {
      * @throws IOException 失败后抛出
      */
     public void muteSender(int Time) throws IOException {
-        MemberApi.addMemberMute(Command.SenderAuthorization, IslandId, SenderDodoId,Time);
+        MemberApi.addMemberMute(this.SenderAuthorization, IslandId, SenderDodoId,Time);
     }
 
     /**
@@ -132,7 +137,7 @@ public class CommandSender {
      * @throws IOException 失败后抛出
      */
     public void muteSender(int Time, String reason) throws IOException {
-        MemberApi.addMemberReasonrMute(Command.SenderAuthorization, IslandId, SenderDodoId,Time,reason);
+        MemberApi.addMemberReasonrMute(this.SenderAuthorization, IslandId, SenderDodoId,Time,reason);
     }
 
     /**
@@ -140,7 +145,7 @@ public class CommandSender {
      * @throws IOException 失败后抛出
      */
     public void removeMuteSender() throws IOException {
-        MemberApi.removeMemberMute(Command.SenderAuthorization,IslandId,SenderDodoId);
+        MemberApi.removeMemberMute(this.SenderAuthorization,IslandId,SenderDodoId);
     }
 
     /**
@@ -149,7 +154,7 @@ public class CommandSender {
      * @throws IOException 失败后抛出
      */
     public void banSender(String reason) throws IOException {
-        MemberApi.addMemberReasonBan(Command.SenderAuthorization, IslandId, SenderDodoId,reason);
+        MemberApi.addMemberReasonBan(this.SenderAuthorization, IslandId, SenderDodoId,reason);
     }
 
     /**
@@ -157,7 +162,7 @@ public class CommandSender {
      * @throws IOException 失败后抛出
      */
     public void banSender() throws IOException {
-        MemberApi.addMemberBan(Command.SenderAuthorization, IslandId, SenderDodoId);
+        MemberApi.addMemberBan(this.SenderAuthorization, IslandId, SenderDodoId);
     }
 
     /**
@@ -165,7 +170,7 @@ public class CommandSender {
      * @throws IOException 失败后抛出
      */
     public void removeBanSender() throws IOException {
-        MemberApi.removeMemberBan(Command.SenderAuthorization,IslandId,SenderDodoId);
+        MemberApi.removeMemberBan(this.SenderAuthorization,IslandId,SenderDodoId);
     }
 
     /**
@@ -174,7 +179,7 @@ public class CommandSender {
      * @throws IOException 失败后抛出
      */
     public void sendPrivateMessage(String Message) throws IOException {
-        PersonalApi.sendPersonalMessage(Command.SenderAuthorization,SenderDodoId,MessageId);
+        PersonalApi.sendPersonalMessage(this.SenderAuthorization,SenderDodoId,MessageId);
     }
 
     /**
@@ -183,7 +188,7 @@ public class CommandSender {
      * @throws IOException 失败后抛出
      */
     public void giveRole(String RoleId) throws IOException {
-        RoleApi.addRoleMember(Command.SenderAuthorization,IslandId,SenderDodoId,RoleId);
+        RoleApi.addRoleMember(this.SenderAuthorization,IslandId,SenderDodoId,RoleId);
     }
 
     /**
@@ -192,6 +197,15 @@ public class CommandSender {
      * @throws IOException 失败后抛出
      */
     public void removeRole(String RoleId) throws IOException {
-        RoleApi.removeRoleMember(Command.SenderAuthorization,IslandId,SenderDodoId,RoleId);
+        RoleApi.removeRoleMember(this.SenderAuthorization,IslandId,SenderDodoId,RoleId);
+    }
+
+    /**
+     * 是否拥有权限
+     * @param permission 权限
+     * @return true有，false失败
+     */
+    public Boolean hasPermission(String permission) {
+        return User.hasPerm(getSenderDodoId(), permission);
     }
 }

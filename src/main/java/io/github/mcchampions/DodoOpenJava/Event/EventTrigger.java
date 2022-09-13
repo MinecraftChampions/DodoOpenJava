@@ -14,17 +14,20 @@ import java.util.concurrent.TimeUnit;
  * 事件触发
  */
 public class EventTrigger {
-    static EventTrigger p;
-    static String wssLo="";
-    static OkHttpClient okHttpClient = new OkHttpClient();
-    static OkHttpClient wss=new OkHttpClient.Builder()
+    EventTrigger p;
+    String wssLo="";
+    OkHttpClient okHttpClient = new OkHttpClient();
+    OkHttpClient wss=new OkHttpClient.Builder()
             .pingInterval(30, TimeUnit.SECONDS) //保活心跳
             .build();
-    static WebSocket mWebSocket;
+    WebSocket mWebSocket;
 
-    static Boolean enable = false;
-    public static void main(String Authorization) {
+    String Authorization;
+
+    Boolean enable = false;
+    public void main(String Authorization) {
         if (enable = true) return;
+        this.Authorization = Authorization;
         Request requestc = new Request.Builder().url("https://botopen.imdodo.com/api/v1/websocket/connection").addHeader("Content-Type", "application/json").addHeader("Authorization", Authorization)
                 .post(RequestBody.create(MediaType.parse("application/json"), "{}"))
                 .build();
@@ -50,7 +53,7 @@ public class EventTrigger {
         });
     }
 
-    private static class WsListenerC extends WebSocketListener {
+    private class WsListenerC extends WebSocketListener {
         EventTrigger p;
         public WsListenerC(EventTrigger dodo) {
             p=dodo;
@@ -59,6 +62,7 @@ public class EventTrigger {
         @Override
         public void onMessage(@NotNull WebSocket webSocket, ByteString bytes) {
             JSONObject jsontext = new JSONObject(bytes.utf8());
+            jsontext.put("Authorization",Authorization);
             switch (jsontext.getJSONObject("data").getString("eventType")) {
                 case "1001":
                     try {

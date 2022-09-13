@@ -14,7 +14,7 @@ public interface CommandExecutor {
      * 需要的权限
      * @return 权限
      */
-    String Permissions();
+    String Permission();
 
     /**
      * 命令处理
