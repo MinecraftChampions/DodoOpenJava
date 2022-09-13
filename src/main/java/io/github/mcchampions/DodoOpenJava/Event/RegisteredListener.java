@@ -23,7 +23,7 @@ public class RegisteredListener {
         this.priority = priority;
         this.executor = executor;
         this.ad = ad;
-        EventTrigger.main(this.ad);
+        new EventTrigger().main(this.ad);
 
     }
 
