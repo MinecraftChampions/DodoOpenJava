@@ -22,8 +22,9 @@ public class MapUtil {
         List<List<Object>> list = new ArrayList<>();
         while (iter.hasNext()) {
             List<Object> List = new ArrayList<>();
-            List.add(iter.next().getKey());
-            List.add(iter.next().getValue());
+            Map.Entry<?, ?> entry =  iter.next();
+            List.add(entry.getKey());
+            List.add(entry.getValue());
             list.add(List);
         }
         return list;
