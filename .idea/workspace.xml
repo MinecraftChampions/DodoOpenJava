@@ -9,15 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Permissions/Data/JsonData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Permissions/Data/JsonData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Permissions/Data/TomlData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Permissions/Data/TomlData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Permissions/Data/XmlData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Permissions/Data/XmlData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Permissions/Data/YamlData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Permissions/Data/YamlData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Permissions/Permissions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Permissions/Permissions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Permissions/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Permissions/User.java" afterDir="false" />
-    </list>
+    <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -207,7 +199,7 @@
       <workItem from="1663070340613" duration="243000" />
       <workItem from="1663074083639" duration="708000" />
       <workItem from="1663076118517" duration="411000" />
-      <workItem from="1663129878828" duration="1758000" />
+      <workItem from="1663129878828" duration="2086000" />
     </task>
     <servers />
   </component>
