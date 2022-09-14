@@ -22,7 +22,7 @@ Dodo开放平台：https://open.imdodo.com/
   <dependency>
     <groupId>com.github.minecraftchampions</groupId>
     <artifactId>DodoOpenJava</artifactId>
-    <version>v10.6</version>
+    <version>v10.7</version>
   </dependency>
 ```
 #### Gradle
@@ -35,6 +35,6 @@ Dodo开放平台：https://open.imdodo.com/
 	}
 
 	dependencies {
-	        implementation 'com.github.minecraftchampions:DodoOpenJava:v10.6'
+	        implementation 'com.github.minecraftchampions:DodoOpenJava:v10.7'
 	}
 ```

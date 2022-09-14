@@ -21,9 +21,8 @@ public class XmlData {
 
     /**
      * 初始化
-     * @throws IOException 失败后抛出
      */
-    public static void init() throws IOException {
+    public static void init() {
         File Config = new File(ConfigUtil.getJarPath() + "permissions/");
         if (!Config.exists()) {
             Config.mkdir();
@@ -31,12 +30,20 @@ public class XmlData {
 
         Group = new File(ConfigUtil.getJarPath() + "permissions/permGroup.xml");
         if (!Group.exists()) {
-            ConfigUtil.copyResourcesToFile("permissions/permGroup.xml", Group.getPath());
+            try {
+                ConfigUtil.copyResourcesToFile("permissions/permGroup.xml", Group.getPath());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         User = new File(ConfigUtil.getJarPath() + "permissions/permUser.xml");
         if (!User.exists()) {
-            ConfigUtil.copyResourcesToFile("permissions/permUser.xml", User.getPath());
+            try {
+                ConfigUtil.copyResourcesToFile("permissions/permUser.xml", User.getPath());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         List<PermissionsGroup> groups = new ArrayList<>();

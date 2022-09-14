@@ -11,9 +11,12 @@
   <component name="ChangeListManager">
     <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Utils/MapUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Utils/MapUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Permissions/Data/JsonData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Permissions/Data/JsonData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Permissions/Data/TomlData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Permissions/Data/TomlData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Permissions/Data/XmlData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Permissions/Data/XmlData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Permissions/Data/YamlData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Permissions/Data/YamlData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Permissions/Permissions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Permissions/Permissions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Permissions/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Permissions/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +74,7 @@
       <command value="mvn install" />
     </option>
   </component>
-  <component name="RunManager" selected="应用程序.MapUtil">
+  <component name="RunManager" selected="应用程序.User">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="io.github.mcchampions.DodoOpenJava.Main" />
       <module name="DodoOpenJava" />
@@ -91,6 +94,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="io.github.mcchampions.DodoOpenJava.Utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="User" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="io.github.mcchampions.DodoOpenJava.Permissions.User" />
+      <module name="DodoOpenJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.github.mcchampions.DodoOpenJava.Permissions.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -126,6 +142,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.User" />
         <item itemvalue="应用程序.MapUtil" />
         <item itemvalue="应用程序.Main" />
         <item itemvalue="应用程序.main" />
@@ -189,10 +206,32 @@
       <workItem from="1663066243670" duration="2637000" />
       <workItem from="1663070340613" duration="243000" />
       <workItem from="1663074083639" duration="708000" />
+      <workItem from="1663076118517" duration="411000" />
+      <workItem from="1663129878828" duration="1758000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints-dialog>
+        <breakpoints-dialog>
+          <selected-grouping-rules>
+            <grouping-rule id="by-file" />
+          </selected-grouping-rules>
+        </breakpoints-dialog>
+      </breakpoints-dialog>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="java-exception" />
+        <breakpoint enabled="true" type="javascript-exception" />
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/DodoOpenJava$User.ic" NAME="User 覆盖结果" MODIFIED="1663131660092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>io.github.mcchampions.DodoOpenJava.Permissions.*</FILTER>
+    </SUITE>
   </component>
 </project>

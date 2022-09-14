@@ -20,9 +20,8 @@ public class JsonData {
 
     /**
      * 初始化
-     * @throws IOException 失败时抛出
      */
-    public static void init() throws IOException {
+    public static void init() {
         File Config = new File(ConfigUtil.getJarPath() + "permissions/");
         if (!Config.exists()) {
             Config.mkdir();
@@ -30,12 +29,20 @@ public class JsonData {
 
         Group = new File(ConfigUtil.getJarPath() + "permissions/permGroup.json");
         if (!Group.exists()) {
-            ConfigUtil.copyResourcesToFile("permissions/permGroup.json", Group.getPath());
+            try {
+                ConfigUtil.copyResourcesToFile("permissions/permGroup.json", Group.getPath());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         User = new File(ConfigUtil.getJarPath() + "permissions/permUser.json");
         if (!User.exists()) {
-            ConfigUtil.copyResourcesToFile("permissions/permUser.json", User.getPath());
+            try {
+                ConfigUtil.copyResourcesToFile("permissions/permUser.json", User.getPath());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         List<PermissionsGroup> groups = new ArrayList<>();

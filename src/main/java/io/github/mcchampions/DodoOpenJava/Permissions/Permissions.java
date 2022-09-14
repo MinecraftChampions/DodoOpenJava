@@ -5,10 +5,7 @@ import io.github.mcchampions.DodoOpenJava.Event.EventManage;
 import io.github.mcchampions.DodoOpenJava.Event.Listener;
 import io.github.mcchampions.DodoOpenJava.Event.events.*;
 import io.github.mcchampions.DodoOpenJava.Permissions.Data.*;
-import io.github.mcchampions.DodoOpenJava.Utils.ConfigUtil;
 
-import java.io.IOException;
-import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -31,9 +28,8 @@ public class Permissions implements Listener {
      * @param port 端口
      * @param Authorization 所有机器人的Authorization
      * @return true成功，false失败
-     * @throws IOException 初始化出现问题抛出
      */
-    public static Boolean initMongoDB(String ip, int port, List<String> Authorization) throws IOException {
+    public static Boolean initMongoDB(String ip, int port, List<String> Authorization) {
         if (Objects.equals(type.toString(), "MongoDB")) {
             MongoDBData mongoDB = new MongoDBData();
             mongoDB.initPermissions(ip,port);
@@ -42,8 +38,7 @@ public class Permissions implements Listener {
             EM.registerEvents(new Permissions(),an);
         }
         Permissions.type = DataType.MongoDB;
-        Permissions.Authorizations = Authorization;
-        listener();
+        Permissions.Authorizations = Authorization; 
         return true;
     }
 
@@ -52,9 +47,8 @@ public class Permissions implements Listener {
      * @param ip IP地址
      * @param Authorization 所有机器人的Authorization
      * @return true成功，false失败
-     * @throws IOException 初始化出现问题抛出
      */
-    public static Boolean initMongoDB(String ip, List<String> Authorization) throws IOException {
+    public static Boolean initMongoDB(String ip, List<String> Authorization) {
         if (Objects.equals(type.toString(), "MongoDB")) {
             MongoDBData mongoDB = new MongoDBData();
             mongoDB.initPermissions(ip,25575);
@@ -63,8 +57,7 @@ public class Permissions implements Listener {
             EM.registerEvents(new Permissions(),an);
         }
         Permissions.type = DataType.MongoDB;
-        Permissions.Authorizations = Authorization;
-        listener();
+        Permissions.Authorizations = Authorization; 
         return true;
     }
 
@@ -73,24 +66,22 @@ public class Permissions implements Listener {
      * @param type 存储类型
      * @param Authorization 所有机器人的Authorization
      * @return true成功，false失败
-     * @throws IOException 初始化出现问题抛出
      */
-    public static Boolean init(DataType type, List<String> Authorization) throws IOException {
+    public static Boolean init(DataType type, List<String> Authorization) {
         switch (type.toString()) {
-            case "YAML" -> YamlData.init();
+            case "YAML" -> {
+                YamlData.init();
+                System.out.println("a");
+            }
             case "JSON" -> JsonData.init();
             case "Xml" -> XmlData.init();
             case "Toml" -> TomlData.init();
-            default -> {
-                return false;
-            }
         }
         for (String an : Authorization) {
             EM.registerEvents(new Permissions(),an);
         }
         Permissions.type = type;
         Permissions.Authorizations = Authorization;
-        listener();
         return true;
     }
 
@@ -100,17 +91,15 @@ public class Permissions implements Listener {
      * @param port 端口
      * @param Authorization Authorization
      * @return true成功，false失败
-     * @throws IOException 初始化出现问题抛出
      */
-    public static Boolean initMongoDB(String ip, int port, String Authorization) throws IOException {
+    public static Boolean initMongoDB(String ip, int port, String Authorization) {
         if (Objects.equals(type.toString(), "MongoDB")) {
             MongoDBData mongoDB = new MongoDBData();
             mongoDB.initPermissions(ip,port);
         }
         EM.registerEvents(new Permissions(),Authorization);
         Permissions.type = DataType.MongoDB;
-        Permissions.Authorizations = List.of(Authorization);
-        listener();
+        Permissions.Authorizations = List.of(Authorization); 
         return true;
     }
 
@@ -119,9 +108,8 @@ public class Permissions implements Listener {
      * @param ip IP地址
      * @param Authorization Authorization
      * @return true成功，false失败
-     * @throws IOException 初始化出现问题抛出
      */
-    public static Boolean initMongoDB(String ip, String Authorization) throws IOException {
+    public static Boolean initMongoDB(String ip, String Authorization) {
         if (Objects.equals(type.toString(), "MongoDB")) {
             MongoDBData mongoDB = new MongoDBData();
             mongoDB.initPermissions(ip,25575);
@@ -129,7 +117,6 @@ public class Permissions implements Listener {
         EM.registerEvents(new Permissions(),Authorization);
         Permissions.type = DataType.MongoDB;
         Permissions.Authorizations = List.of(Authorization);
-        listener();
         return true;
     }
 
@@ -138,9 +125,8 @@ public class Permissions implements Listener {
      * @param type 存储类型
      * @param Authorization Authorization
      * @return true成功，false失败
-     * @throws IOException 初始化出现问题抛出
      */
-    public static Boolean init(DataType type, String Authorization) throws IOException {
+    public static Boolean init(DataType type, String Authorization) {
         switch (type.toString()) {
             case "YAML" -> YamlData.init();
             case "JSON" -> JsonData.init();
@@ -150,10 +136,13 @@ public class Permissions implements Listener {
                 return false;
             }
         }
+        System.out.println("d");
         EM.registerEvents(new Permissions(),Authorization);
+        System.out.println("d");
         Permissions.type = type;
         Permissions.Authorizations = List.of(Authorization);
-        listener();
+        System.out.println("d"); 
+        System.out.println("d");
         return true;
     }
 
@@ -265,34 +254,5 @@ public class Permissions implements Listener {
     public void onChannelVoiceMemberLeaveEvent(ChannelVoiceMemberLeaveEvent e) {
         User.editUserGroup(e.getDodoId(),User.getUserGroup(e.getDodoId()));
         User.addPerm(e.getDodoId(), "");
-    }
-
-    /**
-     * 监听文件更改
-     * @throws IOException 处理异常时抛出
-     */
-    public static void listener() throws IOException {
-        if (initFileListener) return;
-        if (Objects.equals(type.toString(), "MongoDB")) return;
-        initFileListener = true;
-        Path path = Paths.get(ConfigUtil.getJarPath() + "permissions/");
-        WatchService watcher = FileSystems.getDefault().newWatchService();
-        path.register(watcher, StandardWatchEventKinds.ENTRY_MODIFY);
-        try {
-            while (true) {
-                WatchKey key = watcher.take();
-                for (WatchEvent<?> event : key.pollEvents()) {
-                    if (event.kind() == StandardWatchEventKinds.OVERFLOW) {
-                        continue;
-                    }
-                    init(type,Authorizations);
-                }
-                if (!key.reset()) {
-                    break;
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }

@@ -22,9 +22,8 @@ public class TomlData {
 
     /**
      * 初始化
-     * @throws IOException 失败时抛出
      */
-    public static void init() throws IOException {
+    public static void init() {
         File Config = new File(ConfigUtil.getJarPath() + "permissions/");
         if (!Config.exists()) {
             Config.mkdir();
@@ -32,12 +31,20 @@ public class TomlData {
 
         Group = new File(ConfigUtil.getJarPath() + "permissions/permGroup.toml");
         if (!Group.exists()) {
-            ConfigUtil.copyResourcesToFile("permissions/permGroup.toml", Group.getPath());
+            try {
+                ConfigUtil.copyResourcesToFile("permissions/permGroup.toml", Group.getPath());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         User = new File(ConfigUtil.getJarPath() + "permissions/permUser.toml");
         if (!User.exists()) {
-            ConfigUtil.copyResourcesToFile("permissions/permUser.toml", User.getPath());
+            try {
+                ConfigUtil.copyResourcesToFile("permissions/permUser.toml", User.getPath());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         List<PermissionsGroup> groups = new ArrayList<>();
@@ -69,15 +76,23 @@ public class TomlData {
      * 获取权限组文件
      * @return json对象
      */
-    public static JSONObject getGroupFile() throws IOException {
-        return new JSONObject(Toml.parse(Paths.get(Group.getPath())));
+    public static JSONObject getGroupFile() {
+        try {
+            return new JSONObject(Toml.parse(Paths.get(Group.getPath())));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
      * 获取用户文件
      * @return json对象
      */
-    public static JSONObject getUserFile() throws IOException {
-        return new JSONObject(Toml.parse(Paths.get(User.getPath())));
+    public static JSONObject getUserFile() {
+        try {
+            return new JSONObject(Toml.parse(Paths.get(User.getPath())));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

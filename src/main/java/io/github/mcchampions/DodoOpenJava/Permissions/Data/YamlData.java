@@ -14,7 +14,10 @@ public class YamlData {
     public static File User;
     public static File Group;
 
-    public static void init() throws IOException {
+    /**
+     * 初始化
+     */
+    public static void init() {
         File Config = new File(ConfigUtil.getJarPath() + "permissions/");
         if (!Config.exists()) {
             Config.mkdir();
@@ -22,12 +25,20 @@ public class YamlData {
 
         Group = new File(ConfigUtil.getJarPath() + "permissions/permGroup.yml");
         if (!Group.exists()) {
-            ConfigUtil.copyResourcesToFile("permissions/permGroup.yml",Group.getPath());
+            try {
+                ConfigUtil.copyResourcesToFile("permissions/permGroup.yml",Group.getPath());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         User = new File(ConfigUtil.getJarPath() + "permissions/permUser.yml");
         if (!User.exists()) {
-            ConfigUtil.copyResourcesToFile("permissions/permUser.yml",User.getPath());
+            try {
+                ConfigUtil.copyResourcesToFile("permissions/permUser.yml",User.getPath());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         List<PermissionsGroup> groups = new ArrayList<>();
@@ -53,6 +64,7 @@ public class YamlData {
             io.github.mcchampions.DodoOpenJava.Permissions.User.editUserGroup(DodoId,Group);
             io.github.mcchampions.DodoOpenJava.Permissions.User.addPerm(DodoId,perms);
         }
+        System.out.println("aaa");
     }
 
     public static FileConfiguration getGroupFile() {
