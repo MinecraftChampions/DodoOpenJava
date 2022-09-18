@@ -1,12 +1,14 @@
 package io.github.mcchampions.DodoOpenJava.Event;
 
-import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Event.events.*;
 import okhttp3.*;
 import okio.ByteString;
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
@@ -14,25 +16,20 @@ import java.util.concurrent.TimeUnit;
  * 事件触发
  */
 public class EventTrigger {
-    EventTrigger p;
-    String wssLo="";
-    OkHttpClient okHttpClient = new OkHttpClient();
-    OkHttpClient wss=new OkHttpClient.Builder()
+    EventTrigger p = this;
+
+    public static List<String> Authorization = new ArrayList<>();
+    static String wssLo="";
+    static OkHttpClient okHttpClient = new OkHttpClient();
+    static OkHttpClient wss=new OkHttpClient.Builder()
             .pingInterval(30, TimeUnit.SECONDS) //保活心跳
             .build();
-    WebSocket mWebSocket;
-
-    String Authorization;
-
-    Boolean enable = false;
-    public void main(String Authorization) {
-        if (enable = true) return;
-        this.Authorization = Authorization;
-        Request requestc = new Request.Builder().url("https://botopen.imdodo.com/api/v1/websocket/connection").addHeader("Content-Type", "application/json").addHeader("Authorization", Authorization)
+    static WebSocket mWebSocket;
+    public void main(String Ad) {
+        Authorization.add(Ad);
+        Request requestc = new Request.Builder().url("https://botopen.imdodo.com/api/v1/websocket/connection").addHeader("Content-Type", "application/json").addHeader("Authorization", Ad)
                 .post(RequestBody.create(MediaType.parse("application/json"), "{}"))
                 .build();
-
-        enable = true;
 
         okHttpClient.newCall(requestc).enqueue(new Callback() {
             @Override
@@ -48,21 +45,24 @@ public class EventTrigger {
                 response.close();
                 Request request = new Request.Builder()
                         .url(wssLo).build();
-                mWebSocket = wss.newWebSocket(request, new WsListenerC(p));//TODO 这里是处理wss发来的数据
+                mWebSocket = wss.newWebSocket(request, new WsListenerC(p,Ad));//TODO 这里是处理wss发来的数据
             }
         });
     }
 
     private class WsListenerC extends WebSocketListener {
+        String Ad;
         EventTrigger p;
-        public WsListenerC(EventTrigger dodo) {
-            p=dodo;
+        public WsListenerC(EventTrigger dodo,String ad) {
+            this.p=dodo;
+            this.Ad = ad;
         }
 
         @Override
         public void onMessage(@NotNull WebSocket webSocket, ByteString bytes) {
             JSONObject jsontext = new JSONObject(bytes.utf8());
-            jsontext.put("Authorization",Authorization);
+            jsontext.put("Authorization",this.Ad);
+            System.out.println(jsontext);
             switch (jsontext.getJSONObject("data").getString("eventType")) {
                 case "1001":
                     try {
@@ -150,12 +150,12 @@ public class EventTrigger {
                     break;
                 default:
                     System.out.println("未知的事件！");
+                    break;
             }
         }
 
         @Override
-        public void onClosed(@NotNull WebSocket webSocket, int code, @NotNull String reason) {
-            mWebSocket.close(1000,"正常关闭");
-        }
+        public void onClosed(@NotNull WebSocket webSocket, int code, @NotNull String reason) {}
     }
+
 }

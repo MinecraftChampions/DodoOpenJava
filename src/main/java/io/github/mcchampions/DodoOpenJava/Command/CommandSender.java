@@ -92,7 +92,7 @@ public class CommandSender{
      * @param SenderAuthorization 发送者所在的群机器人Authorization
      */
     public void InitSender(JSONObject jsontext,String SenderAuthorization) {
-        this.SenderAuthorization = this.SenderAuthorization;
+        this.SenderAuthorization = SenderAuthorization;
         this.SenderNickName = jsontext.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("nickName");
         this.SenderName = jsontext.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("nickName");
         this.JoinTime = jsontext.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("joinTime");

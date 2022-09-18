@@ -25,7 +25,7 @@ public class Command {
      */
     public void initCommand(CommandExecutor Class, String clientId, String token) {
         this.commands.add(Class);
-        this.e.registerEvents(new CommandTrigger(), BaseUtil.Authorization(clientId,token));
+        e.registerEvents(new CommandTrigger(), BaseUtil.Authorization(clientId,token));
         this.SenderAuthorization = BaseUtil.Authorization(clientId,token);
         CommandManage.addCommand(SenderAuthorization,this);
     }
@@ -38,7 +38,7 @@ public class Command {
      */
     public void initCommand(String clientId, String token, CommandExecutor... Class) {
         this.commands.addAll(List.of(Class));
-        this.e.registerEvents(new CommandTrigger(), BaseUtil.Authorization(clientId,token));
+        e.registerEvents(new CommandTrigger(), BaseUtil.Authorization(clientId,token));
         this.SenderAuthorization = BaseUtil.Authorization(clientId,token);
         CommandManage.addCommand(SenderAuthorization,this);
     }
@@ -50,7 +50,7 @@ public class Command {
      */
     public void initCommand(CommandExecutor Class, String Authorization) {
         this.commands.add(Class);
-        this.e.registerEvents(new CommandTrigger(), Authorization);
+        e.registerEvents(new CommandTrigger(), Authorization);
         this.SenderAuthorization = Authorization;
         CommandManage.addCommand(SenderAuthorization,this);
     }
@@ -62,7 +62,7 @@ public class Command {
      */
     public void initCommand(String Authorization, CommandExecutor... Class) {
         this.commands.addAll(List.of(Class));
-        this.e.registerEvents(new CommandTrigger(), Authorization);
+        e.registerEvents(new CommandTrigger(), Authorization);
         this.SenderAuthorization = Authorization;
         CommandManage.addCommand(SenderAuthorization,this);
     }

@@ -12,13 +12,14 @@ import java.util.Scanner;
 /**
  * 命令触发
  */
-public class CommandTrigger implements Listener {
+public class CommandTrigger implements Listener,CommandExecutor {
     /**
      * 监听消息事件
      * @param e 事件
      */
     @EventHandler
     public void event(MessageEvent e) {
+        System.out.println("a");
         JSONObject jsontext = new JSONObject(e.jsonString);
         if (jsontext.getJSONObject("eventBody").getInt("messageType") != 1) return;
         if (jsontext.getJSONObject("eventBody").getJSONObject("messageBody").getString("content").indexOf("/") != 0) return;
@@ -31,6 +32,29 @@ public class CommandTrigger implements Listener {
         String[] args = Command.toArray(new String[Command.size()]);
         CommandManage.TriggerAllCommand(e.getJsonObject().getString("Authorization"),sender, MainCommand, args);
     }
+
+    public static void main(String... args) {
+         new Command().initCommand(new CommandTrigger(),"47657182","NDc2NTcxODI.77-9L--_ve-_vQ.ibg-kbMvvZ96BlEsQFi_Cf38OY7BwQ1Uxqr_UCyXD50");
+         CommandManage.initConsoleCommand();
+    }
+
+    @Override
+    public String MainCommand() {
+        return "test";
+    }
+
+    @Override
+    public String Permission() {
+        return null;
+    }
+
+    @Override
+    public void onCommand(CommandSender sender, String[] args) {
+        System.out.println("a");
+    }
+
+
+
 
     /**
      * 监听控制台输入
@@ -48,13 +72,5 @@ public class CommandTrigger implements Listener {
             }
         });
         cs.listenInNewThread();
-
-        while (true) {
-            try {
-                Thread.sleep(1);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
     }
 }

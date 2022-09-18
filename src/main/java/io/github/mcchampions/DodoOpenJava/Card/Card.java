@@ -311,7 +311,7 @@ public class Card {
      * @param align 对齐方式，left：左对齐，right：右对齐
      * @param section 文字
      * @param button 按钮
-     * @return
+     * @return 成功与否
      */
     public Boolean addSection(Align align,Section section,Button button) {
         if (JsonCard.isEmpty()) initCard();

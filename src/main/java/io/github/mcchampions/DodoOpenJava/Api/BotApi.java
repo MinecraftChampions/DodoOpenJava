@@ -1,8 +1,8 @@
 package io.github.mcchampions.DodoOpenJava.Api;
 
-import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
 import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
+import org.json.JSONObject;
 
 import java.io.IOException;
 

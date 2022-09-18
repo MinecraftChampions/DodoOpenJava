@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  * 一些 字符串 的实用方法
  */
 public class StrUtil {
-    public final static Pattern DEL_PATTERN = Pattern.compile("[%]");
+    public final static Pattern DEL_PATTERN = Pattern.compile("%");
     public final static Pattern HUMP_PATTERN = Pattern.compile("[A-Z]");
     public final static Pattern LINE_PATTERN = Pattern.compile("_(\\w)");
 

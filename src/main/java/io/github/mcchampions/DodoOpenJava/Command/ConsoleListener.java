@@ -7,7 +7,7 @@ import java.util.Scanner;
  * 控制台输入监听
  */
 public class ConsoleListener {
-    HashMap<String, Action> answers = new HashMap<String, ConsoleListener.Action>();
+    HashMap<String, Action> answers = new HashMap<>();
     Scanner scanner;
     Action defaultAction;
 
@@ -56,11 +56,7 @@ public class ConsoleListener {
      * 监听（创建新的线程）
      */
     public void listenInNewThread() {
-        Thread t = new Thread() {
-            public void run() {
-                listen();
-            }
-        };
+        Thread t = new Thread(this::listen);
         t.start();
     }
 
@@ -70,7 +66,7 @@ public class ConsoleListener {
     public void listen() {
         while (true) {
             String line = scanner.nextLine();
-            String msg = line.replaceAll("[\\s]+", " ");
+            String msg = line.replaceAll("\s+", " ");
             msg = msg.trim().toLowerCase();
             Action action = answers.get(msg);
             if (action == null) {

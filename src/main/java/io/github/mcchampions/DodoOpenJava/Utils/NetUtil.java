@@ -36,7 +36,7 @@ public class NetUtil {
      * @param url 链接地址
      */
     public static String sendPostRequest(String url) throws IOException {
-        return sendPostRequest(url, null, "");
+        return sendPostRequest(url, new HashMap<>(), "");
     }
 
     /**

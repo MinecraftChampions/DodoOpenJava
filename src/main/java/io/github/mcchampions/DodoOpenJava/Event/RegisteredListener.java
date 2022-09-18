@@ -10,8 +10,6 @@ public class RegisteredListener {
     private final EventPriority priority;
     private final EventExecutor executor;
 
-    private final String ad;
-
     /**
      * 注册监听器
      * @param listener 监听器
@@ -22,8 +20,8 @@ public class RegisteredListener {
         this.listener = listener;
         this.priority = priority;
         this.executor = executor;
-        this.ad = ad;
-        new EventTrigger().main(this.ad);
+        System.out.println(ad);
+        new EventTrigger().main(ad);
 
     }
 

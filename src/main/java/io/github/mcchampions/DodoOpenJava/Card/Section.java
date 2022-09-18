@@ -61,33 +61,34 @@ public class Section {
                 isParagraph = false;
             } else {
                 isParagraph = true;
-                JsonText = new JSONObject("{\n" +
-                        "                            \"type\": \"section\",\n" +
-                        "                             \"text\": {\n" +
-                        "                                 \"type\": \"paragraph\",\n" +
-                        "                                 \"cols\": 6,\n" +
-                        "                                 \"fields\": [{\n" +
-                        "                                         \"type\": \"dodo-md\",\n" +
-                        "                                         \"content\": \"第一栏\\n内容\"\n" +
-                        "                                     }, {\n" +
-                        "                                         \"type\": \"dodo-md\",\n" +
-                        "                                         \"content\": \"第二栏\\n内容\"\n" +
-                        "                                     }, {\n" +
-                        "                                         \"type\": \"dodo-md\",\n" +
-                        "                                         \"content\": \"第三栏\\n内容\"\n" +
-                        "                                     }, {\n" +
-                        "                                         \"type\": \"dodo-md\",\n" +
-                        "                                         \"content\": \"第四栏\\n内容\"\n" +
-                        "                                     }, {\n" +
-                        "                                         \"type\": \"dodo-md\",\n" +
-                        "                                         \"content\": \"第五栏\\n内容\"\n" +
-                        "                                     }, {\n" +
-                        "                                         \"type\": \"dodo-md\",\n" +
-                        "                                         \"content\": \"第六栏\\n内容\"\n" +
-                        "                                     }\n" +
-                        "                                 ]\n" +
-                        "                             }\n" +
-                        "                        }");
+                JsonText = new JSONObject("""
+                        {
+                                                    "type": "section",
+                                                     "text": {
+                                                         "type": "paragraph",
+                                                         "cols": 6,
+                                                         "fields": [{
+                                                                 "type": "dodo-md",
+                                                                 "content": "第一栏\\n内容"
+                                                             }, {
+                                                                 "type": "dodo-md",
+                                                                 "content": "第二栏\\n内容"
+                                                             }, {
+                                                                 "type": "dodo-md",
+                                                                 "content": "第三栏\\n内容"
+                                                             }, {
+                                                                 "type": "dodo-md",
+                                                                 "content": "第四栏\\n内容"
+                                                             }, {
+                                                                 "type": "dodo-md",
+                                                                 "content": "第五栏\\n内容"
+                                                             }, {
+                                                                 "type": "dodo-md",
+                                                                 "content": "第六栏\\n内容"
+                                                             }
+                                                         ]
+                                                     }
+                                                }""");
             }
             return true;
         } else return false;

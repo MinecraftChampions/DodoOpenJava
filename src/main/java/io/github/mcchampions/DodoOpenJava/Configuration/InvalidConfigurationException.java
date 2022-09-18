@@ -3,7 +3,6 @@ package io.github.mcchampions.DodoOpenJava.Configuration;
 /**
  * 尝试加载无效配置时引发异常
  */
-@SuppressWarnings("serial")
 public class InvalidConfigurationException extends Exception {
 
     /**

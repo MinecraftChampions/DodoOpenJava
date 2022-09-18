@@ -71,7 +71,7 @@ public class EventManage {
 
     public void registerEvents(@NotNull Listener listener,String ad) {
         for (Map.Entry<Class<? extends Event>, Set<RegisteredListener>> entry : createRegisteredListeners(listener,ad).entrySet()) {
-            getEventListeners(getRegistrationClass(entry.getKey())).registerAll(entry.getValue(),ad);
+            getEventListeners(getRegistrationClass(entry.getKey())).registerAll(entry.getValue(), ad);
         }
     }
 

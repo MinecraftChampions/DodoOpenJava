@@ -37,7 +37,6 @@ public class ChannelApi {
         param = "{" +
                 "    \"islandId\": \"" + islandId + "\"" +
                 "}";
-        String channel;
         return  new JSONObject(NetUtil.sendRequest(param, url, Authorization));
     }
 
