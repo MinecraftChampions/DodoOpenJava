@@ -2,6 +2,7 @@ package io.github.mcchampions.DodoOpenJava.Event;
 
 import org.apache.commons.lang3.Validate;
 import org.jetbrains.annotations.NotNull;
+import org.w3c.dom.events.EventException;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -13,7 +14,7 @@ import java.util.*;
 public class EventManage {
 
     @NotNull
-    public Map<Class<? extends Event>, Set<RegisteredListener>> createRegisteredListeners(@NotNull Listener listener,String ad) {
+    public static Map<Class<? extends Event>, Set<RegisteredListener>> createRegisteredListeners(@NotNull Listener listener) {
         Validate.notNull(listener, "Listener can not be null");
 
         Map<Class<? extends Event>, Set<RegisteredListener>> ret = new HashMap<>();
@@ -58,21 +59,25 @@ public class EventManage {
                     // Spigot start
                     method.invoke(listener1, event);
                     // Spigot end
-                } catch (InvocationTargetException ex) {
-                    throw new EventException(ex.getCause());
-                } catch (Throwable t) {
-                    throw new EventException(t);
+                } catch (InvocationTargetException | IllegalAccessException e) {
+                    throw new RuntimeException(e);
                 }
             };
-            eventSet.add(new RegisteredListener(listener, executor, eh.priority(),ad));
+            eventSet.add(new RegisteredListener(listener, executor, eh.priority()));
         }
         return ret;
     }
 
-    public void registerEvents(@NotNull Listener listener,String ad) {
-        for (Map.Entry<Class<? extends Event>, Set<RegisteredListener>> entry : createRegisteredListeners(listener,ad).entrySet()) {
-            getEventListeners(getRegistrationClass(entry.getKey())).registerAll(entry.getValue(), ad);
+    /**
+     * 注册事件
+     * @param listener 监听器
+     * @param ad Authorization
+     */
+    public static void registerEvents(@NotNull Listener listener,String ad) {
+        for (Map.Entry<Class<? extends Event>, Set<RegisteredListener>> entry : createRegisteredListeners(listener).entrySet()) {
+            getEventListeners(getRegistrationClass(entry.getKey())).registerAll(entry.getValue());
         }
+        EventTrigger.main(ad);
     }
 
     /**
@@ -85,17 +90,18 @@ public class EventManage {
      * @param priority 要注册的事件的优先级
      * @param executor 要注册的EventExecutor=
      */
-    public void registerEvent(@NotNull Class<? extends Event> event, @NotNull Listener listener, @NotNull EventPriority priority, @NotNull EventExecutor executor,String ad) {
+    public static void registerEvent(@NotNull Class<? extends Event> event, @NotNull Listener listener, @NotNull EventPriority priority, @NotNull EventExecutor executor,String ad) {
         Validate.notNull(listener, "Listener cannot be null");
         Validate.notNull(priority, "Priority cannot be null");
         Validate.notNull(executor, "Executor cannot be null");
         Validate.notNull(executor, "Authorization cannot be null");
 
-        getEventListeners(event).register(new RegisteredListener(listener, executor, priority,ad));
+        getEventListeners(event).register(new RegisteredListener(listener, executor, priority));
+        EventTrigger.main(ad);
     }
 
     @NotNull
-    private HandlerList getEventListeners(@NotNull Class<? extends Event> type) {
+    private static HandlerList getEventListeners(@NotNull Class<? extends Event> type) {
         try {
             Method method = getRegistrationClass(type).getDeclaredMethod("getHandlerList");
             method.setAccessible(true);
@@ -106,7 +112,7 @@ public class EventManage {
     }
 
     @NotNull
-    private Class<? extends Event> getRegistrationClass(@NotNull Class<? extends Event> clazz) {
+    private static Class<? extends Event> getRegistrationClass(@NotNull Class<? extends Event> clazz) {
         try {
             clazz.getDeclaredMethod("getHandlerList");
             return clazz;
@@ -120,7 +126,7 @@ public class EventManage {
         }
     }
 
-    public void fireEvent(@NotNull Event event) throws EventException {
+    public static void fireEvent(@NotNull Event event) throws EventException {
         HandlerList handlers = event.getHandlers();
         RegisteredListener[] listeners = handlers.getRegisteredListeners();
 

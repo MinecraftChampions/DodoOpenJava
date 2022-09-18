@@ -314,6 +314,7 @@ public class PermissionsGroup {
      * @return true代表有，false代表失败
      */
     public Boolean hasPerm(String perm) {
+        if (perm == null) return true;
         boolean hasPerm = false;
         if (!this.perms.contains(perm)) {
             for (String s : this.perms) {

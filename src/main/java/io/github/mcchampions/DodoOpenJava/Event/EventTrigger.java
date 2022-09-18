@@ -4,11 +4,11 @@ import io.github.mcchampions.DodoOpenJava.Event.events.*;
 import okhttp3.*;
 import okio.ByteString;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
+import org.w3c.dom.events.EventException;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
@@ -16,18 +16,18 @@ import java.util.concurrent.TimeUnit;
  * 事件触发
  */
 public class EventTrigger {
-    EventTrigger p = this;
-
-    public static List<String> Authorization = new ArrayList<>();
+    static EventTrigger p;
     static String wssLo="";
     static OkHttpClient okHttpClient = new OkHttpClient();
     static OkHttpClient wss=new OkHttpClient.Builder()
             .pingInterval(30, TimeUnit.SECONDS) //保活心跳
             .build();
-    static WebSocket mWebSocket;
-    public void main(String Ad) {
-        Authorization.add(Ad);
-        Request requestc = new Request.Builder().url("https://botopen.imdodo.com/api/v1/websocket/connection").addHeader("Content-Type", "application/json").addHeader("Authorization", Ad)
+    static  WebSocket mWebSocket;
+
+    static String ad;
+    public static void main(String Authorization) {
+        ad = Authorization;
+        Request requestc = new Request.Builder().url("https://botopen.imdodo.com/api/v1/websocket/connection").addHeader("Content-Type", "application/json").addHeader("Authorization", ad)
                 .post(RequestBody.create(MediaType.parse("application/json"), "{}"))
                 .build();
 
@@ -43,119 +43,121 @@ public class EventTrigger {
                 //TODO 建立wss链接
                 //getLogger().info(wssLo);
                 response.close();
+                System.out.println(wssLo);
                 Request request = new Request.Builder()
                         .url(wssLo).build();
-                mWebSocket = wss.newWebSocket(request, new WsListenerC(p,Ad));//TODO 这里是处理wss发来的数据
+                mWebSocket = wss.newWebSocket(request, new WsListenerC(p));//TODO 这里是处理wss发来的数据
             }
         });
     }
 
-    private class WsListenerC extends WebSocketListener {
-        String Ad;
+    private static class WsListenerC extends WebSocketListener {
         EventTrigger p;
-        public WsListenerC(EventTrigger dodo,String ad) {
-            this.p=dodo;
-            this.Ad = ad;
+        public WsListenerC(EventTrigger dodo) {
+            p=dodo;
         }
-
         @Override
-        public void onMessage(@NotNull WebSocket webSocket, ByteString bytes) {
+        public void onMessage(@NotNull WebSocket webSocket, @NotNull ByteString bytes) {
             JSONObject jsontext = new JSONObject(bytes.utf8());
-            jsontext.put("Authorization",this.Ad);
-            System.out.println(jsontext);
             switch (jsontext.getJSONObject("data").getString("eventType")) {
                 case "1001":
                     try {
-                        new EventManage().fireEvent(new PersonalMessageEvent(jsontext));
+                        EventManage.fireEvent(new PersonalMessageEvent(jsontext));
                     } catch (EventException e) {
                         throw new RuntimeException(e);
                     }
                     break;
                 case "2001":
                     try {
-                        new EventManage().fireEvent(new MessageEvent(jsontext));
+                        EventManage.fireEvent(new MessageEvent(jsontext));
                     } catch (EventException e) {
                         throw new RuntimeException(e);
                     }
                     break;
                 case "3001":
                     try {
-                        new EventManage().fireEvent(new MessageReactionEvent(jsontext));
+                        EventManage.fireEvent(new MessageReactionEvent(jsontext));
                     } catch (EventException e) {
                         throw new RuntimeException(e);
                     }
                     break;
                 case "3002":
                     try {
-                        new EventManage().fireEvent(new CardMessageButtonClickEvent(jsontext));
+                        EventManage.fireEvent(new CardMessageButtonClickEvent(jsontext));
                     } catch (EventException e) {
                         throw new RuntimeException(e);
                     }
                     break;
                 case "3003":
                     try {
-                        new EventManage().fireEvent(new CardMessageFormSubmitEvent(jsontext));
+                        EventManage.fireEvent(new CardMessageFormSubmitEvent(jsontext));
                     } catch (EventException e) {
                         throw new RuntimeException(e);
                     }
                     break;
                 case "3004":
                     try {
-                        new EventManage().fireEvent(new CardMessageListSubmitEvent(jsontext));
+                        EventManage.fireEvent(new CardMessageListSubmitEvent(jsontext));
                     } catch (EventException e) {
                         throw new RuntimeException(e);
                     }
                     break;
                 case "4001":
                     try {
-                        new EventManage().fireEvent(new MemberJoinEvent(jsontext));
+                        EventManage.fireEvent(new MemberJoinEvent(jsontext));
                     } catch (EventException e) {
                         throw new RuntimeException(e);
                     }
                     break;
                 case "4002":
                     try {
-                        new EventManage().fireEvent(new MemberLeaveEvent(jsontext));
+                        EventManage.fireEvent(new MemberLeaveEvent(jsontext));
                     } catch (EventException e) {
                         throw new RuntimeException(e);
                     }
                     break;
                 case "5001":
                     try {
-                        new EventManage().fireEvent(new ChannelVoiceMemberJoinEvent(jsontext));
+                        EventManage.fireEvent(new ChannelVoiceMemberJoinEvent(jsontext));
                     } catch (EventException e) {
                         throw new RuntimeException(e);
                     }
                     break;
                 case "5002":
                     try {
-                        new EventManage().fireEvent(new ChannelVoiceMemberLeaveEvent(jsontext));
+                        EventManage.fireEvent(new ChannelVoiceMemberLeaveEvent(jsontext));
                     } catch (EventException e) {
                         throw new RuntimeException(e);
                     }
                     break;
                 case "6001":
                     try {
-                        new EventManage().fireEvent(new ChannelArticleEvent(jsontext));
+                        EventManage.fireEvent(new ChannelArticleEvent(jsontext));
                     } catch (EventException e) {
                         throw new RuntimeException(e);
                     }
                     break;
                 case "6002":
                     try {
-                        new EventManage().fireEvent(new ChannelArticleCommentEvent(jsontext));
+                        EventManage.fireEvent(new ChannelArticleCommentEvent(jsontext));
                     } catch (EventException e) {
                         throw new RuntimeException(e);
                     }
                     break;
                 default:
                     System.out.println("未知的事件！");
-                    break;
             }
         }
 
         @Override
-        public void onClosed(@NotNull WebSocket webSocket, int code, @NotNull String reason) {}
-    }
+        public void onFailure(@NotNull WebSocket webSocket, @NotNull Throwable t, @Nullable Response response) {
+            System.out.println("Error");
+            t.printStackTrace();
+        }
 
+        @Override
+        public void onClosed(@NotNull WebSocket webSocket, int code, @NotNull String reason) {
+            mWebSocket.close(1000,"正常关闭");
+        }
+    }
 }

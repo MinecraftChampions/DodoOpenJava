@@ -1,0 +1,10 @@
+<Users>
+    <User DodoId="dodoId">
+        <Group>Default</Group>
+        <perm>perm.seven</perm>>
+    </User>
+    <User DodoId="666666">
+        <Group>Owner</Group>
+        <perm>perm.seven</perm>>
+    </User>
+</Users>

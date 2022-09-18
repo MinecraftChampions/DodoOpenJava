@@ -1,6 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.Event;
 
 import org.jetbrains.annotations.NotNull;
+import org.w3c.dom.events.EventException;
 
 /**
  * 监听器相关
@@ -14,15 +15,11 @@ public class RegisteredListener {
      * 注册监听器
      * @param listener 监听器
      * @param priority 优先级
-     * @param ad Ad
      */
-    public RegisteredListener(@NotNull final Listener listener, @NotNull final EventExecutor executor, @NotNull final EventPriority priority, String ad) {
+    public RegisteredListener(@NotNull final Listener listener, @NotNull final EventExecutor executor, @NotNull final EventPriority priority) {
         this.listener = listener;
         this.priority = priority;
         this.executor = executor;
-        System.out.println(ad);
-        new EventTrigger().main(ad);
-
     }
 
     /**

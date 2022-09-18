@@ -6,5 +6,5 @@ import org.jetbrains.annotations.NotNull;
  * 异常
  */
 public interface EventExecutor {
-    void execute(@NotNull Listener listener, @NotNull Event event) throws EventException;
+    void execute(@NotNull Listener listener, @NotNull Event event) ;
 }

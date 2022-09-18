@@ -64,7 +64,7 @@ public class HandlerList {
      *
      * @param listeners 要注册的监听器
      */
-    public void registerAll(@NotNull Collection<RegisteredListener> listeners,String ad) {
+    public void registerAll(@NotNull Collection<RegisteredListener> listeners) {
         for (RegisteredListener listener : listeners) {
             register(listener);
         }

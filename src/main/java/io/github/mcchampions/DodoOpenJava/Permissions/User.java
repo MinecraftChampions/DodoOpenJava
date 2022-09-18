@@ -174,6 +174,7 @@ public class User {
      * @return 是否拥有
      */
     public static Boolean hasPerm(String DodoId,String perm) {
+        if (perm == null) return true;
         List<List<Object>> list= MapUtil.ergodicMaps(UserPerms);
         List<String> perms = new ArrayList<>();
         boolean hasUser = false;
