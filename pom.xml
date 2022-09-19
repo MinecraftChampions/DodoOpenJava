@@ -6,7 +6,7 @@
 
     <groupId>io.github.mcchampions.DodoOpenJava</groupId>
     <artifactId>DodoOpenJava</artifactId>
-    <version>v10.9</version>
+    <version>v11.0</version>
 
     <properties>
         <java.version>18</java.version>
@@ -168,6 +168,11 @@
             <artifactId>tomlj</artifactId>
             <version>1.0.0</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.8.1</version>
         </dependency>
     </dependencies>
 </project>

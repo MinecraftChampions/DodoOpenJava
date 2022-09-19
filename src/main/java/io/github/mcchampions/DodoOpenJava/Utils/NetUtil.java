@@ -2,6 +2,7 @@ package io.github.mcchampions.DodoOpenJava.Utils;
 
 import okhttp3.*;
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -22,7 +23,7 @@ public class NetUtil {
      * @param url 链接地址
      * @param Authorization Authorization
      */
-     public static String sendRequest(String url, String parm,String Authorization) throws IOException {
+     public static String sendRequest(String parm, String url, String Authorization) throws IOException {
          Map<String, String> Header = new HashMap<>();
          Header.put("Content-Type", "application/json");
          Header.put("Authorization", Authorization);
@@ -65,18 +66,18 @@ public class NetUtil {
      * @param param 参数
      */
     public static String sendPostRequest(String url, Map<String, String> Header, String param) throws IOException {
-        Request request = new Request.Builder()
-                .url(url)
-                .post(RequestBody.create(MediaType.parse("application/json"),param))
-                .build();
-        for (int i = 0; i < MapUtil.ergodicMaps(Header).size(); i++) {
-            request.newBuilder().addHeader(MapUtil.ergodicMaps(Header).get(i).get(0).toString(), MapUtil.ergodicMaps(Header).get(i).get(1).toString());
+        Request.Builder builder = new Request.Builder();
+        builder.url(url).post(RequestBody.create(MediaType.parse("application/json"), param));
+        JSONObject json = new JSONObject(Header);
+        System.out.println(json);
+        for (int i = 0;i<json.keySet().size();i++) {
+            System.out.println(Header.keySet().stream().toList().get(i) + ": " + Header.values().stream().toList().get(i));
+            builder.addHeader(Header.keySet().stream().toList().get(i), Header.values().stream().toList().get(i));
         }
-        Response response = client.newCall(request).execute();
-
+        Response response = client.newCall(builder.build()).execute();
         String a = Objects.requireNonNull(response.body()).string();
         response.close();
-        return  a;
+        return a;
     }
 
     /**
