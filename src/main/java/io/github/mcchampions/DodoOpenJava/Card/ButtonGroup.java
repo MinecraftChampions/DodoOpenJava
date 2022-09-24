@@ -1,5 +1,6 @@
 package io.github.mcchampions.DodoOpenJava.Card;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Card.Enums.ButtonAction;
 import io.github.mcchampions.DodoOpenJava.Card.Enums.Color;
@@ -8,10 +9,10 @@ import io.github.mcchampions.DodoOpenJava.Utils.StrUtil;
 import java.util.Objects;
 
 /**
- * 按钮这个对象
+ * 按钮组这个对象
  */
-public class Button {
-    public JSONObject JsonButton;
+public class ButtonGroup {
+    public JSONObject JsonButton = new JSONObject();
 
     /**
      * 是否不存在
@@ -28,8 +29,9 @@ public class Button {
     public JSONObject toJSONObject() {
         return JsonButton;
     }
+
     /**
-     * 初始化交互按钮组件
+     * 增加交互按钮组件
      * @param ButtonColor 按钮颜色
      * @param ButtonName 按钮名称
      * @param interactCustomId 自定义按钮ID
@@ -72,15 +74,15 @@ public class Button {
         json1.put("click", json2);
 
         if (isForm) {
-            json1.put("form", form);
+            json1.put("form", form.JsonForm);
         }
 
-        JsonButton = json1;
+        JsonButton.getJSONArray("elements").put(json1);
         return true;
     }
 
     /**
-     * 初始化交互按钮组件
+     * 增加交互按钮组件
      * @param ButtonColor 按钮颜色
      * @param ButtonName 按钮名称
      * @param action 按钮点击动作类型
@@ -121,11 +123,19 @@ public class Button {
         json1.put("click", json2);
 
         if (isForm) {
-            json1.put("form", form);
+            json1.put("form", form.JsonForm);
         }
 
-        JsonButton = json1;
+        JsonButton.getJSONArray("elements").put(json1);
         return true;
+    }
+
+    /**
+     * 初始化按钮组
+     */
+    public void initButtonGroup() {
+        JsonButton.put("type","button-group");
+        JsonButton.put("elements",new JSONArray());
     }
 
     /**

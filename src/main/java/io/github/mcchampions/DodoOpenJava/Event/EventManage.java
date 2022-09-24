@@ -1,5 +1,6 @@
 package io.github.mcchampions.DodoOpenJava.Event;
 
+import io.github.mcchampions.DodoOpenJava.Command.CommandTrigger;
 import org.apache.commons.lang3.Validate;
 import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.events.EventException;
@@ -68,6 +69,7 @@ public class EventManage {
         return ret;
     }
 
+    private static boolean isInit = false;
     /**
      * 注册事件
      * @param listener 监听器
@@ -77,7 +79,11 @@ public class EventManage {
         for (Map.Entry<Class<? extends Event>, Set<RegisteredListener>> entry : createRegisteredListeners(listener).entrySet()) {
             getEventListeners(getRegistrationClass(entry.getKey())).registerAll(entry.getValue());
         }
-        EventTrigger.main(ad);
+        if (!isInit) {
+            isInit = true;
+            CommandTrigger.listenerConsole();
+            EventTrigger.main(ad);
+        }
     }
 
     /**
@@ -94,10 +100,14 @@ public class EventManage {
         Validate.notNull(listener, "Listener cannot be null");
         Validate.notNull(priority, "Priority cannot be null");
         Validate.notNull(executor, "Executor cannot be null");
-        Validate.notNull(executor, "Authorization cannot be null");
+        Validate.notNull(ad, "Authorization cannot be null");
 
         getEventListeners(event).register(new RegisteredListener(listener, executor, priority));
-        EventTrigger.main(ad);
+        if (!isInit) {
+            isInit = true;
+            CommandTrigger.listenerConsole();
+            EventTrigger.main(ad);
+        }
     }
 
     @NotNull

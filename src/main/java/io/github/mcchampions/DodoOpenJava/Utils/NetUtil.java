@@ -69,9 +69,7 @@ public class NetUtil {
         Request.Builder builder = new Request.Builder();
         builder.url(url).post(RequestBody.create(MediaType.parse("application/json"), param));
         JSONObject json = new JSONObject(Header);
-        System.out.println(json);
         for (int i = 0;i<json.keySet().size();i++) {
-            System.out.println(Header.keySet().stream().toList().get(i) + ": " + Header.values().stream().toList().get(i));
             builder.addHeader(Header.keySet().stream().toList().get(i), Header.values().stream().toList().get(i));
         }
         Response response = client.newCall(builder.build()).execute();

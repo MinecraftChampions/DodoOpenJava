@@ -7,7 +7,7 @@ import io.github.mcchampions.DodoOpenJava.Card.Enums.Rows;
  * 回传表单
  */
 public class Form {
-    public JSONObject JsonForm;
+    public JSONObject JsonForm = new JSONObject();
 
     /**
      * 是否不存在
@@ -39,7 +39,7 @@ public class Form {
      * @param Form JSON
      * @return true
      */
-    public Boolean initCard(JSONObject Form) {
+    public Boolean initForm(JSONObject Form) {
         JsonForm = Form;
         return true;
     }
@@ -48,7 +48,7 @@ public class Form {
      * 初始化回传表单
      * @return true/false
      */
-    public Boolean initCard() {
+    public Boolean initForm() {
         if (JsonForm.isEmpty()) {
             JsonForm = new JSONObject("""
                     {
@@ -65,7 +65,7 @@ public class Form {
      * @return 成功
      */
     public Boolean editContent(String title) {
-        if (JsonForm.isEmpty()) initCard();
+        if (JsonForm.isEmpty()) initForm();
         JsonForm.put("title", title);
         return true;
     }
@@ -76,7 +76,7 @@ public class Form {
      * @return 成功
      */
     public Boolean removeElement(int count) {
-        if (JsonForm.isEmpty()) initCard();
+        if (JsonForm.isEmpty()) initForm();
         JsonForm.getJSONArray("elements").remove(count + 1);
         return true;
     }
@@ -95,8 +95,8 @@ public class Form {
         if (minChar < 0) return false;
         if (minChar > 4000) return false;
         if (maxChar > 4000) return false;
-        if (maxChar > minChar) return false;
-        if (maxChar > 1) return false;
+        if (minChar > maxChar) return false;
+        if (maxChar < 1) return false;
 
         int Row = switch (rows.toString()) {
             case "one" -> 1;
@@ -130,8 +130,8 @@ public class Form {
         if (minChar < 0) return false;
         if (minChar > 4000) return false;
         if (maxChar > 4000) return false;
-        if (maxChar > minChar) return false;
-        if (maxChar > 1) return false;
+        if (minChar > maxChar) return false;
+        if (maxChar < 1) return false;
 
         int Row = switch (rows.toString()) {
             case "one" -> 1;

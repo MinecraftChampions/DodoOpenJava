@@ -3,12 +3,12 @@ package io.github.mcchampions.DodoOpenJava.Configuration.file;
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 
+import io.github.mcchampions.DodoOpenJava.Utils.ConfigUtil;
 import org.apache.commons.lang3.Validate;
 import io.github.mcchampions.DodoOpenJava.Configuration.InvalidConfigurationException;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -133,9 +133,7 @@ public abstract class FileConfiguration extends MemoryConfiguration {
     public void load(File file) throws FileNotFoundException, IOException, InvalidConfigurationException {
         Validate.notNull(file, "文件不能为空");
 
-        final FileInputStream stream = new FileInputStream(file);
-
-        load(new InputStreamReader(stream, UTF8_OVERRIDE && !UTF_BIG ? Charsets.UTF_8 : Charset.defaultCharset()));
+        loadFromString(ConfigUtil.readFile(file));
     }
 
     /**

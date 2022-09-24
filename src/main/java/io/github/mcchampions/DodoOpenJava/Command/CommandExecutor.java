@@ -1,5 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.Command;
 
+import okio.ByteString;
+
 /**
  * 命令的接口
  */
@@ -8,7 +10,7 @@ public interface CommandExecutor {
      * 命令名（不带斜杆）
      * @return 主命令
      */
-    String MainCommand();
+    ByteString MainCommand();
 
     /**
      * 需要的权限

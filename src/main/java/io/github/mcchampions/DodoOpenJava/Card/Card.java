@@ -14,7 +14,7 @@ import java.util.Objects;
  * 卡片消息
  */
 public class Card {
-    public JSONObject JsonCard;
+    public JSONObject JsonCard = new JSONObject();
 
     /**
      * 是否不存在
@@ -262,11 +262,11 @@ public class Card {
 
     /**
      * 增加一个交互按钮组件
-     * @param button 按钮颜色
+     * @param buttonGroup 按钮颜色
      * @return 成功
      */
-    public Boolean addButton(Button button) {
-        JsonCard.getJSONObject("card").getJSONArray("components").put(button.toJSONObject());
+    public Boolean addButton(ButtonGroup buttonGroup) {
+        JsonCard.getJSONObject("card").getJSONArray("components").put(buttonGroup.toJSONObject());
         return true;
     }
 
@@ -310,17 +310,17 @@ public class Card {
      * 增加 文字与模块 交互组件
      * @param align 对齐方式，left：左对齐，right：右对齐
      * @param section 文字
-     * @param button 按钮
+     * @param buttonGroup 按钮
      * @return 成功与否
      */
-    public Boolean addSection(Align align,Section section,Button button) {
+    public Boolean addSection(Align align, Section section, ButtonGroup buttonGroup) {
         if (JsonCard.isEmpty()) initCard();
 
         JSONObject json1 = new JSONObject();
         json1.put("type", "section");
         json1.put("text", section);
         json1.put("align", align.toString());
-        json1.put("accessory", button.toJSONObject());
+        json1.put("accessory", buttonGroup.toJSONObject());
         JsonCard.getJSONObject("card").getJSONArray("components").put(json1);
         return true;
     }

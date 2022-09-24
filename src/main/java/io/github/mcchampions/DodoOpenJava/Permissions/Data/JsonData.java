@@ -75,7 +75,7 @@ public class JsonData {
      * @return JSON对象
      */
     public static JSONObject getGroupFile() {
-        return new JSONObject(Objects.requireNonNull(ConfigUtil.readJsonFile(Group)));
+        return new JSONObject(Objects.requireNonNull(ConfigUtil.readFile(Group)));
     }
 
     /**
@@ -83,6 +83,6 @@ public class JsonData {
      * @return JSON对象
      */
     public static JSONObject getUserFile() {
-        return new JSONObject(Objects.requireNonNull(ConfigUtil.readJsonFile(User)));
+        return new JSONObject(Objects.requireNonNull(ConfigUtil.readFile(User)));
     }
 }

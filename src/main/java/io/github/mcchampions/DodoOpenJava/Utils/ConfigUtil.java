@@ -189,10 +189,10 @@ public class ConfigUtil {
     /**
      * 读取文件
      *
-     * @param fileName json文件
+     * @param fileName 文件
      * @return 返回字符串
      */
-    public static String readJsonFile(File fileName) {
+    public static String readFile(File fileName) {
         try {
             FileReader fileReader = new FileReader(fileName);
             Reader reader = new InputStreamReader(new FileInputStream(fileName), StandardCharsets.UTF_8);

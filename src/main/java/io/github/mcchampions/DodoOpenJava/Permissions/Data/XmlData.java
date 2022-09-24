@@ -77,7 +77,7 @@ public class XmlData {
      * @return JSON对象
      */
     public static JSONObject getGroupFile() {
-        return XmlUtil.toJSONObject(ConfigUtil.readJsonFile(Group));
+        return XmlUtil.toJSONObject(ConfigUtil.readFile(Group));
     }
 
     /**
@@ -85,6 +85,6 @@ public class XmlData {
      * @return JSON对象
      */
     public static JSONObject getUserFile() {
-        return XmlUtil.toJSONObject(ConfigUtil.readJsonFile(User));
+        return XmlUtil.toJSONObject(ConfigUtil.readFile(User));
     }
 }

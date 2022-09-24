@@ -27,11 +27,11 @@ public class EventTrigger {
     static String ad;
     public static void main(String Authorization) {
         ad = Authorization;
-        Request requestc = new Request.Builder().url("https://botopen.imdodo.com/api/v1/websocket/connection").addHeader("Content-Type", "application/json").addHeader("Authorization", ad)
+        Request request = new Request.Builder().url("https://botopen.imdodo.com/api/v1/websocket/connection").addHeader("Content-Type", "application/json").addHeader("Authorization", ad)
                 .post(RequestBody.create(MediaType.parse("application/json"), "{}"))
                 .build();
 
-        okHttpClient.newCall(requestc).enqueue(new Callback() {
+        okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
 
@@ -43,7 +43,6 @@ public class EventTrigger {
                 //TODO 建立wss链接
                 //getLogger().info(wssLo);
                 response.close();
-                System.out.println(wssLo);
                 Request request = new Request.Builder()
                         .url(wssLo).build();
                 mWebSocket = wss.newWebSocket(request, new WsListenerC(p));//TODO 这里是处理wss发来的数据
@@ -151,7 +150,6 @@ public class EventTrigger {
 
         @Override
         public void onFailure(@NotNull WebSocket webSocket, @NotNull Throwable t, @Nullable Response response) {
-            System.out.println("Error");
             t.printStackTrace();
         }
 

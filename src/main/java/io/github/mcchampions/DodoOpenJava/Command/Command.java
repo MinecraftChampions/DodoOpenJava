@@ -2,8 +2,10 @@ package io.github.mcchampions.DodoOpenJava.Command;
 
 import io.github.mcchampions.DodoOpenJava.Event.EventManage;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
+import okio.ByteString;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -25,7 +27,6 @@ public class Command {
         commands.add(Class);
         EventManage.registerEvents(new CommandTrigger(), BaseUtil.Authorization(clientId,token));
         SenderAuthorization = BaseUtil.Authorization(clientId,token);
-        CommandTrigger.listenerConsole();
     }
 
     /**
@@ -38,7 +39,6 @@ public class Command {
         commands.addAll(List.of(Class));
         EventManage.registerEvents(new CommandTrigger(), BaseUtil.Authorization(clientId,token));
         SenderAuthorization = BaseUtil.Authorization(clientId,token);
-        CommandTrigger.listenerConsole();
     }
 
     /**
@@ -50,7 +50,6 @@ public class Command {
         commands.add(Class);
         EventManage.registerEvents(new CommandTrigger(), Authorization);
         SenderAuthorization = Authorization;
-        CommandTrigger.listenerConsole();
     }
 
     /**
@@ -62,7 +61,6 @@ public class Command {
         commands.addAll(List.of(Class));
         EventManage.registerEvents(new CommandTrigger(), Authorization);
         SenderAuthorization = Authorization;
-        CommandTrigger.listenerConsole();
     }
 
     /**
@@ -74,7 +72,7 @@ public class Command {
     public static Boolean Trigger(CommandSender sender, String MainCommand, String[] args) {
         boolean hasCommand = false;
         for (CommandExecutor command :commands) {
-            if (Objects.equals(command.MainCommand(), MainCommand)) {
+            if (Objects.equals(command.MainCommand().utf8(), ByteString.encodeUtf8((MainCommand)).utf8())) {
                 if (sender.hasPermission(command.Permission())) {
                     command.onCommand(sender, args);
                     hasCommand = true;

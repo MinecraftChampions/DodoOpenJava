@@ -7,6 +7,8 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import okio.ByteString;
 import org.apache.commons.lang3.Validate;
 
 /**
@@ -272,12 +274,12 @@ public class MemorySection implements ConfigurationSection {
     // Primitives
     public String getString(String path) {
         Object def = getDefault(path);
-        return getString(path, def != null ? def.toString() : null);
+        return getString(path, def != null ? ByteString.encodeUtf8(def.toString()).utf8() : null);
     }
 
     public String getString(String path, String def) {
         Object val = get(path, def);
-        return (val != null) ? val.toString() : def;
+        return (val != null) ? ByteString.encodeUtf8(val.toString()).utf8() : def;
     }
 
     public boolean isString(String path) {
