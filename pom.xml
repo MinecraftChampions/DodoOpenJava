@@ -6,7 +6,7 @@
 
     <groupId>io.github.mcchampions.DodoOpenJava</groupId>
     <artifactId>DodoOpenJava</artifactId>
-    <version>v11.1</version>
+    <version>v11.2</version>
 
     <properties>
         <java.version>18</java.version>
@@ -124,7 +124,7 @@
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
-            <version>1.30</version>
+            <version>1.32</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -168,11 +168,6 @@
             <artifactId>tomlj</artifactId>
             <version>1.0.0</version>
             <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.8.1</version>
         </dependency>
     </dependencies>
 </project>
