@@ -1,5 +1,6 @@
 ﻿# DodoOpenJava
 Dodo开放平台的JavaSDK
+码云地址：https://gitee.com/qscbm187531/DodoOpenJava
 
 尚在开发中，我们目前已经支持全部的接口和事件
 
