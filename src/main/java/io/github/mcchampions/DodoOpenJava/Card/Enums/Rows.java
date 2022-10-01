@@ -2,22 +2,40 @@ package io.github.mcchampions.DodoOpenJava.Card.Enums;
 
 /**
  * 输入框高度
+ * @author qscbm187531
  */
 public enum Rows {
     /**
      * 1
      */
-    one,
+    one(1),
     /**
      * 2
      */
-    two,
+    two(2),
     /**
      * 3
      */
-    three,
+    three(3),
     /**
      * 4
      */
-    four
+    four(4);
+
+    Rows(int row) {
+        this.row = row;
+    }
+
+    /**
+     * 行数
+     */
+    private final int row;
+
+    /**
+     * 获取行数
+     * @return 行数
+     */
+    public int getRow() {
+        return row;
+    }
 }

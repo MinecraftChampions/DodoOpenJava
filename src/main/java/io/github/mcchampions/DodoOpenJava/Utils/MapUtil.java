@@ -9,6 +9,7 @@ import java.util.*;
 
 /**
  * 一些有关于 Map 的实用方法
+ * @author qscbm187531
  */
 public class MapUtil {
     /**

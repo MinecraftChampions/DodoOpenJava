@@ -9,6 +9,7 @@ import javax.annotation.Nonnull;
 
 /**
  * 卡片消息表单回传事件
+ * @author qscbm187531
  */
 public class CardMessageFormSubmitEvent extends Event {
     private static final HandlerList handlers = new HandlerList();

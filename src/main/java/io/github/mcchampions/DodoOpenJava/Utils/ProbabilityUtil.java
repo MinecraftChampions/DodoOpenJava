@@ -8,6 +8,7 @@ import java.util.Random;
 
 /**
  * 关于 概率 的一些实用方法
+ * @author qscbm187531
  */
 public class ProbabilityUtil {
     private final Random random = new Random();

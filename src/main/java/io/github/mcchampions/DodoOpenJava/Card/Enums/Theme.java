@@ -2,46 +2,64 @@ package io.github.mcchampions.DodoOpenJava.Card.Enums;
 
 /**
  * 卡片风格
+ * @author qscbm187531
  */
 public enum Theme {
     /**
      * 灰色
      */
-    Grey,
+    Grey("grey"),
     /**
      * 红色
      */
-    Red,
+    Red("red"),
     /**
      * 橙色
      */
-    Orange,
+    Orange("orange"),
     /**
      * 黄色
      */
-    Yellow,
+    Yellow("yellow"),
     /**
      * 绿色
      */
-    Green,
+    Green("green"),
     /**
      * 淡蓝色
      */
-    Indigo,
+    Indigo("indigo"),
     /**
      * 蓝色
      */
-    Blue,
+    Blue("blue"),
     /**
      * 紫色
      */
-    Purple,
+    Purple("purple"),
     /**
      * 黑色
      */
-    Black,
+    Black("black"),
     /**
      * 默认
      */
-    Default
+    Default("default");
+
+    Theme(String type) {
+        this.type = type;
+    }
+
+    /**
+     * 行数
+     */
+    private final String type;
+
+    /**
+     * 获取类型
+     * @return 类型
+     */
+    public String getType() {
+        return type;
+    }
 }

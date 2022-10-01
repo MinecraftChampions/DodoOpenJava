@@ -9,6 +9,7 @@ import java.io.IOException;
 
 /**
  * 文字频道API
+ * @author qscbm187531
  */
 public class ChannelTextApi {
     public static String url,parm;

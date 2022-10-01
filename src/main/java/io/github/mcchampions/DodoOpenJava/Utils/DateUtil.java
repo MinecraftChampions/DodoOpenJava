@@ -13,8 +13,9 @@ import java.util.Locale;
 
 /**
  * 关于 时间 的一些实用方法
+ * @author qscbm187531
  */
-public class DataUtil {
+public class DateUtil {
     /**
      * 简化格式
      */

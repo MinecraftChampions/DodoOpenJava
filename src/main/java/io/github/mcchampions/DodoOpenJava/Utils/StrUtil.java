@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 
 /**
  * 一些 字符串 的实用方法
+ * @author qscbm187531
  */
 public class StrUtil {
     public final static Pattern DEL_PATTERN = Pattern.compile("%");

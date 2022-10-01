@@ -2,14 +2,32 @@ package io.github.mcchampions.DodoOpenJava.Card.Enums;
 
 /**
  * 文本类型
+ * @author qscbm187531
  */
 public enum TextType {
     /**
-     * md文本
+     * MD文本
      */
-    Markdown,
+    Markdown("dodo-md"),
     /**
      * 普通文本
      */
-    PlainText
+    PlainText("plain-text");
+
+    TextType(String type) {
+        this.type = type;
+    }
+
+    /**
+     * 行数
+     */
+    private final String type;
+
+    /**
+     * 获取类型
+     * @return 类型
+     */
+    public String getType() {
+        return type;
+    }
 }

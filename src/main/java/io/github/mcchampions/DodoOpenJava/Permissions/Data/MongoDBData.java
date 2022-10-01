@@ -18,6 +18,7 @@ import java.util.Objects;
 
 /**
  * mongo数据库存储
+ * @author qscbm187531
  */
 public class MongoDBData {
     MongoClient mongo = new MongoClient();

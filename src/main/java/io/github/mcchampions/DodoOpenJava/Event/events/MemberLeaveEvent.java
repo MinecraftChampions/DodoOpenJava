@@ -8,6 +8,7 @@ import javax.annotation.Nonnull;
 
 /**
  * 成员离开事件
+ * @author qscbm187531
  */
 public class MemberLeaveEvent extends Event {
     private static final HandlerList handlers = new HandlerList();

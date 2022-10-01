@@ -2,14 +2,32 @@ package io.github.mcchampions.DodoOpenJava.Card.Enums;
 
 /**
  * 对齐方式
+ * @author qscbm187531
  */
 public enum Align {
     /**
      * 左对齐
      */
-    left,
+    Left("left"),
     /**
      * 右对齐
      */
-    right
+    Right("right");
+
+    Align(String type) {
+        this.type = type;
+    }
+
+    /**
+     * 行数
+     */
+    private final String type;
+
+    /**
+     * 获取类型
+     * @return 类型
+     */
+    public String getType() {
+        return type;
+    }
 }

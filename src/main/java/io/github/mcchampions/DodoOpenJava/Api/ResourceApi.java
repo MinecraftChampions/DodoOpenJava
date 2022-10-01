@@ -8,6 +8,7 @@ import java.io.IOException;
 
 /**
  * 资源API
+ * @author qscbm187531
  */
 public class ResourceApi {
     public static String url;
@@ -26,13 +27,13 @@ public class ResourceApi {
 
     /**
      * 上传资源
-     * @param Authorization Authorization
+     * @param authorization authorization
      * @param path 路径
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject uploadResource(String Authorization, String path) throws IOException {
+    public static JSONObject uploadResource(String authorization, String path) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/resource/picture/upload";
-        return new JSONObject(NetUtil.uploadFile(Authorization, path, url));
+        return new JSONObject(NetUtil.uploadFile(authorization, path, url));
     }
 }

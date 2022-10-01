@@ -1,15 +1,10 @@
 package io.github.mcchampions.DodoOpenJava.Configuration;
 
 import io.github.mcchampions.DodoOpenJava.Utils.NumberUtil;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import okio.ByteString;
 import org.apache.commons.lang3.Validate;
+
+import java.util.*;
 
 /**
  * ConfigurationSection 的实现类
@@ -22,14 +17,7 @@ public class MemorySection implements ConfigurationSection {
     private final String fullPath;
 
     /**
-     * Creates an empty MemorySection for use as a root {@link Configuration}
-     * section.
-     * <p>
-     * Note that calling this without being yourself a {@link Configuration}
-     * will throw an exception!
-     *
-     * @throws IllegalStateException Thrown if this is not a {@link
-     *     Configuration} root.
+     * 类的默认构造函数（不常用）
      */
     protected MemorySection() {
         if (!(this instanceof Configuration)) {
@@ -43,13 +31,11 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * Creates an empty MemorySection with the specified parent and path.
+     * 构造函数
      *
-     * @param parent Parent section that contains this own section.
-     * @param path Path that you may access this section from via the root
-     *     {@link Configuration}.
-     * @throws IllegalArgumentException Thrown is parent or path is null, or
-     *     if parent contains no root Configuration.
+     * @param parent 参数1
+     * @param path 路径
+     * @throws IllegalArgumentException 异常时抛出
      */
     protected MemorySection(ConfigurationSection parent, String path) {
         Validate.notNull(parent, "Parent cannot be null");
@@ -271,98 +257,198 @@ public class MemorySection implements ConfigurationSection {
         return section;
     }
 
-    // Primitives
+    /**
+     * 获取String值
+     * @param path 路径
+     * @return String值
+     */
     public String getString(String path) {
         Object def = getDefault(path);
         return getString(path, def != null ? ByteString.encodeUtf8(def.toString()).utf8() : null);
     }
 
+    /**
+     * 获取String值
+     * @param path 路径
+     * @param def 默认值
+     * @return String值
+     */
     public String getString(String path, String def) {
         Object val = get(path, def);
         return (val != null) ? ByteString.encodeUtf8(val.toString()).utf8() : def;
     }
 
+    /**
+     * 判断指定路径是否为String类型
+     * @param path 路径
+     * @return true/false
+     */
     public boolean isString(String path) {
         Object val = get(path);
         return val instanceof String;
     }
 
+    /**
+     * 获取Int值
+     * @param path 路径
+     * @return Int值
+     */
     public int getInt(String path) {
         Object def = getDefault(path);
         return getInt(path, (def instanceof Number) ? NumberUtil.toInt(def) : 0);
     }
 
+    /**
+     * 获取Int值
+     * @param path 路径
+     * @param def 默认值
+     * @return String值
+     */
     public int getInt(String path, int def) {
         Object val = get(path, def);
         return (val instanceof Number) ? NumberUtil.toInt(val) : def;
     }
 
+    /**
+     * 判断路径是否为Int值
+     * @param path 路径
+     * @return true或者false
+     */
     public boolean isInt(String path) {
         Object val = get(path);
         return val instanceof Integer;
     }
 
+    /**
+     * 获取布尔值
+     * @param path 路径
+     * @return 布尔值
+     */
     public boolean getBoolean(String path) {
         Object def = getDefault(path);
         return getBoolean(path, (def instanceof Boolean) ? (Boolean) def : false);
     }
 
+    /**
+     * 获取布尔值
+     * @param path 路径
+     * @param def 默认值
+     * @return 布尔值
+     */
     public boolean getBoolean(String path, boolean def) {
         Object val = get(path, def);
         return (val instanceof Boolean) ? (Boolean) val : def;
     }
 
+    /**
+     * 判断指定路径的值是否为布尔值
+     * @param path 路径
+     * @return true或者是false
+     */
     public boolean isBoolean(String path) {
         Object val = get(path);
         return val instanceof Boolean;
     }
 
+    /**
+     * 获取Double值
+     * @param path 路径
+     * @return Double值
+     */
     public double getDouble(String path) {
         Object def = getDefault(path);
         return getDouble(path, (def instanceof Number) ? NumberUtil.toDouble(def) : 0);
     }
 
+    /**
+     * 获取Double值
+     * @param path 路径
+     * @param def 默认值
+     * @return Double值
+     */
     public double getDouble(String path, double def) {
         Object val = get(path, def);
         return (val instanceof Number) ? NumberUtil.toDouble(val) : def;
     }
 
+    /**
+     * 判断指定路径的值是否为Double值
+     * @param path 路径
+     * @return true或者是false
+     */
     public boolean isDouble(String path) {
         Object val = get(path);
         return val instanceof Double;
     }
 
+    /**
+     * 获取Long值
+     * @param path 路径
+     * @return long值
+     */
     public long getLong(String path) {
         Object def = getDefault(path);
         return getLong(path, (def instanceof Number) ? NumberUtil.toLong(def) : 0);
     }
 
+    /**
+     * 获取Long值
+     * @param path 路径
+     * @param def 默认值
+     * @return long值
+     */
     public long getLong(String path, long def) {
         Object val = get(path, def);
         return (val instanceof Number) ? NumberUtil.toLong(val) : def;
     }
 
+    /**
+     * 判断是否为Long值
+     * @param path 路径
+     * @return true/false
+     */
     public boolean isLong(String path) {
         Object val = get(path);
         return val instanceof Long;
     }
 
-    // Java
+    /**
+     * 获取集合
+     * @param path 路径
+     * @return 集合
+     */
     public List<?> getList(String path) {
         Object def = getDefault(path);
         return getList(path, (def instanceof List) ? (List<?>) def : null);
     }
+
+    /**
+     * 获取集合
+     * @param path 路径
+     * @param def 默认值
+     * @return 集合
+     */
 
     public List<?> getList(String path, List<?> def) {
         Object val = get(path, def);
         return (List<?>) ((val instanceof List) ? val : def);
     }
 
+    /**
+     * 判断指定路径的值是否为集合
+     * @param path 路径
+     * @return true或者false
+     */
     public boolean isList(String path) {
         Object val = get(path);
         return val instanceof List;
     }
 
+    /**
+     * 获取String集合
+     * @param path 路径
+     * @return 集合
+     */
     public List<String> getStringList(String path) {
         List<?> list = getList(path);
 
@@ -381,6 +467,11 @@ public class MemorySection implements ConfigurationSection {
         return result;
     }
 
+    /**
+     * 获取Integer集合
+     * @param path 路径
+     * @return 集合
+     */
     public List<Integer> getIntegerList(String path) {
         List<?> list = getList(path);
 
@@ -408,6 +499,11 @@ public class MemorySection implements ConfigurationSection {
         return result;
     }
 
+    /**
+     * 获取Boolean集合
+     * @param path 路径
+     * @return 集合
+     */
     public List<Boolean> getBooleanList(String path) {
         List<?> list = getList(path);
 
@@ -432,6 +528,11 @@ public class MemorySection implements ConfigurationSection {
         return result;
     }
 
+    /**
+     * 获取Double集合
+     * @param path 路径
+     * @return 集合
+     */
     public List<Double> getDoubleList(String path) {
         List<?> list = getList(path);
 
@@ -459,6 +560,11 @@ public class MemorySection implements ConfigurationSection {
         return result;
     }
 
+    /**
+     * 获取Float集合
+     * @param path 路径
+     * @return 集合
+     */
     public List<Float> getFloatList(String path) {
         List<?> list = getList(path);
 
@@ -486,6 +592,11 @@ public class MemorySection implements ConfigurationSection {
         return result;
     }
 
+    /**
+     * 获取Long集合
+     * @param path 路径
+     * @return 集合
+     */
     public List<Long> getLongList(String path) {
         List<?> list = getList(path);
 
@@ -513,6 +624,11 @@ public class MemorySection implements ConfigurationSection {
         return result;
     }
 
+    /**
+     * 获取Byte集合
+     * @param path 路径
+     * @return 集合
+     */
     public List<Byte> getByteList(String path) {
         List<?> list = getList(path);
 
@@ -540,6 +656,11 @@ public class MemorySection implements ConfigurationSection {
         return result;
     }
 
+    /**
+     * 获取Character集合
+     * @param path 路径
+     * @return 集合
+     */
     public List<Character> getCharacterList(String path) {
         List<?> list = getList(path);
 
@@ -565,6 +686,11 @@ public class MemorySection implements ConfigurationSection {
         return result;
     }
 
+    /**
+     * 获取Short集合
+     * @param path 路径
+     * @return 集合
+     */
     public List<Short> getShortList(String path) {
         List<?> list = getList(path);
 
@@ -680,31 +806,14 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * Creates a full path to the given {@link ConfigurationSection} from its
-     * root {@link Configuration}.
-     * <p>
-     * You may use this method for any given {@link ConfigurationSection}, not
-     * only {@link MemorySection}.
-     *
-     * @param section Section to create a path for.
-     * @param key Name of the specified section.
-     * @return Full path of the section from its root.
+     * 创建一个路径
      */
     public static String createPath(ConfigurationSection section, String key) {
         return createPath(section, key, (section == null) ? null : section.getRoot());
     }
 
     /**
-     * Creates a relative path to the given {@link ConfigurationSection} from
-     * the given relative section.
-     * <p>
-     * You may use this method for any given {@link ConfigurationSection}, not
-     * only {@link MemorySection}.
-     *
-     * @param section Section to create a path for.
-     * @param key Name of the specified section.
-     * @param relativeTo Section to create the path relative to.
-     * @return Full path of the section from its root.
+     * 创建一个路径
      */
     public static String createPath(ConfigurationSection section, String key, ConfigurationSection relativeTo) {
         Validate.notNull(section, "Cannot create path without a section");

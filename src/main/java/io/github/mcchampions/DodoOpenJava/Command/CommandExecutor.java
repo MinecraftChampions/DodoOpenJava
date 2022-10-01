@@ -4,6 +4,7 @@ import okio.ByteString;
 
 /**
  * 命令的接口
+ * @author qscbm187531
  */
 public interface CommandExecutor {
     /**

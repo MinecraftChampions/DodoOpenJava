@@ -8,6 +8,7 @@ import javax.annotation.Nonnull;
 
 /**
  * 私信事件
+ * @author qscbm187531
  */
 public class PersonalMessageEvent extends Event {
     private static final HandlerList handlers = new HandlerList();

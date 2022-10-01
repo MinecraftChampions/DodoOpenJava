@@ -9,6 +9,7 @@ import java.util.Objects;
 
 /**
  * 关于文字这一类
+ * @author qscbm187531
  */
 public class Section {
     public JSONObject JsonText;
@@ -46,11 +47,8 @@ public class Section {
      */
     public Boolean initText(SectionType type) {
         if (JsonText.isEmpty()) {
-            if (!Objects.equals(type.toString(), "Paragraph")) {
-                String Type = switch (type.toString()) {
-                    case "Markdown" -> "dodo-md";
-                    default -> "plain-text";
-                };
+            if (!Objects.equals(type.getType(), "Paragraph")) {
+                String Type = type.getType();
                 JsonText = new JSONObject("{\n" +
                         "                        \"type\": \"section\",\n" +
                         "                        \"text\": {\n" +
@@ -151,13 +149,7 @@ public class Section {
      */
     public Boolean editParagraphContentCols(Cols col) {
         if (JsonText.isEmpty()) initText(SectionType.Paragraph);
-        int Col = switch (col.toString()) {
-            case "two" -> 2;
-            case "three" -> 3;
-            case "four" -> 4;
-            case "five" -> 5;
-            default -> 6;
-        };
+        int Col = col.getRow();
         JsonText.getJSONObject("text").put("cols", Col);
         return true;
     }

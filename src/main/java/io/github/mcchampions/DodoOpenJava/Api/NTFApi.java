@@ -8,6 +8,7 @@ import java.io.IOException;
 
 /**
  * 数字藏品API
+ * @author qscbm187531
  */
 
 public class NTFApi {
@@ -31,21 +32,21 @@ public class NTFApi {
     /**
      * 获取成员数字藏品判断
      *
-     * @param Authorization Authorization
+     * @param authorization authorization
      * @param islandId 群号
      * @param dodoId DodoId
      * @param platform 数藏平台
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject getMemberNftStatus(String Authorization, String islandId, String dodoId, String platform) throws IOException {
+    public static JSONObject getMemberNftStatus(String authorization, String islandId, String dodoId, String platform) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/member/nft/status";
         param = "{" +
                 "    \"islandId\": \"" + islandId + "\"," +
                 "    \"dodoId\": \"" + dodoId + "\"," +
                 "    \"platform\": \"" + platform + "\"" +
                 "}";
-        return  new JSONObject(NetUtil.sendRequest(param, url, Authorization));
+        return  new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -66,12 +67,12 @@ public class NTFApi {
     /**
      * 获取成员数字藏品判断
      *
-     * @param Authorization Authorization
+     * @param authorization authorization
      * @param islandId 群号
      * @param dodoId DodoId
      * @param platform 数藏平台
      */
-    public static JSONObject getMemberNftStatus(String Authorization, String islandId, String dodoId, String platform, String issuer, String series) throws IOException {
+    public static JSONObject getMemberNftStatus(String authorization, String islandId, String dodoId, String platform, String issuer, String series) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/member/nft/status";
         param = "{" +
                 "    \"islandId\": \"" + islandId + "\"," +
@@ -80,6 +81,6 @@ public class NTFApi {
                 "    \"issuer\": \"" + issuer + "\"," +
                 "    \"series\": \"" + series + "\"" +
                 "}";
-        return  new JSONObject(NetUtil.sendRequest(param, url, Authorization));
+        return  new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 }

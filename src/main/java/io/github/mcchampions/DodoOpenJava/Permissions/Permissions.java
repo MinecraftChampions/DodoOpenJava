@@ -1,17 +1,14 @@
 package io.github.mcchampions.DodoOpenJava.Permissions;
 
-import io.github.mcchampions.DodoOpenJava.Event.EventManage;
 import io.github.mcchampions.DodoOpenJava.Permissions.Data.*;
 
 import java.util.Objects;
 
 /**
  * 权限系统核心
+ * @author qscbm187531
  */
 public class Permissions {
-
-    public static EventManage EM = new EventManage();
-
     public static DataType type;
 
     public static String Authorization;

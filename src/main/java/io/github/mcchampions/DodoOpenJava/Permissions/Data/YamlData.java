@@ -10,6 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Yaml文件存储格式
+ * @author qscbm187531
+ */
 public class YamlData {
     public static File User;
     public static File Group;

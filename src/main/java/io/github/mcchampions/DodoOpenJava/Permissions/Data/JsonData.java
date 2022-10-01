@@ -13,6 +13,7 @@ import java.util.Objects;
 
 /**
  * Json文件存储
+ * @author qscbm187531
  */
 public class JsonData {
     public static File User;

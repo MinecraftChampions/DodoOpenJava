@@ -13,6 +13,7 @@ import java.util.Map;
 
 /**
  * 关于 配置文件 的一些方法
+ * @author qscbm187531
  */
 public class ConfigUtil {
 

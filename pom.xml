@@ -6,7 +6,7 @@
 
     <groupId>io.github.mcchampions.DodoOpenJava</groupId>
     <artifactId>DodoOpenJava</artifactId>
-    <version>v11.2</version>
+    <version>1.0.0</version>
 
     <properties>
         <java.version>18</java.version>
@@ -61,6 +61,20 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.0.1</version>
+                <configuration>
+                    <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
+                    <additionalJOptions>
+                        <additionalJOption>-Xdoclint:none</additionalJOption>
+                    </additionalJOptions>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>

@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * 一些常用的方法
+ * @author qscbm187531
  */
 public class BaseUtil {
     /**

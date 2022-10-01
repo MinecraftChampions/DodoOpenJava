@@ -6,8 +6,12 @@ import java.util.regex.Pattern;
 
 /**
  * 关于 数字 的一些实用方法
+ * @author qscbm187531
  */
 public class NumberUtil {
+    /**
+     * 数字正则
+     */
     public final static Pattern NUMERIC = Pattern.compile("^-?\\d+(\\.\\d+)?$");
 
     private NumberUtil() {

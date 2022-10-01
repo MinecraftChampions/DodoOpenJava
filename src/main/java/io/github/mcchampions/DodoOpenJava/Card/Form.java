@@ -5,6 +5,7 @@ import io.github.mcchampions.DodoOpenJava.Card.Enums.Rows;
 
 /**
  * 回传表单
+ * @author qscbm187531
  */
 public class Form {
     public JSONObject JsonForm = new JSONObject();
@@ -98,12 +99,7 @@ public class Form {
         if (minChar > maxChar) return false;
         if (maxChar < 1) return false;
 
-        int Row = switch (rows.toString()) {
-            case "one" -> 1;
-            case "two" -> 2;
-            case "three" -> 3;
-            default -> 4;
-        };
+        int Row = rows.getRow();
 
         json.put("type", "input");
         json.put("key", key);
@@ -133,12 +129,7 @@ public class Form {
         if (minChar > maxChar) return false;
         if (maxChar < 1) return false;
 
-        int Row = switch (rows.toString()) {
-            case "one" -> 1;
-            case "two" -> 2;
-            case "three" -> 3;
-            default -> 4;
-        };
+        int Row = rows.getRow();
 
         json.put("type", "input");
         json.put("key", key);

@@ -8,6 +8,7 @@ import javax.annotation.Nonnull;
 
 /**
  * 成员加入语音频道事件
+ * @author qscbm187531
  */
 public class ChannelVoiceMemberJoinEvent extends Event {
     private static final HandlerList handlers = new HandlerList();

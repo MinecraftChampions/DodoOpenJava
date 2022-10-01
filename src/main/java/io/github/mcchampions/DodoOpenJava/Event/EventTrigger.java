@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 事件触发
+ * @author qscbm187531
  */
 public class EventTrigger {
     static EventTrigger p;

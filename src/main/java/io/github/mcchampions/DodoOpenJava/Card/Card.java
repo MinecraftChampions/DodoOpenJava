@@ -1,17 +1,16 @@
 package io.github.mcchampions.DodoOpenJava.Card;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Card.Enums.*;
 import io.github.mcchampions.DodoOpenJava.Utils.MapUtil;
-import io.github.mcchampions.DodoOpenJava.Utils.StrUtil;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * 卡片消息
+ * @author qscbm187531
  */
 public class Card {
     public JSONObject JsonCard = new JSONObject();
@@ -78,7 +77,7 @@ public class Card {
      */
     public Boolean editTheme(Theme theme) {
         if (JsonCard.isEmpty()) initCard();
-        JsonCard.getJSONObject("card").put("theme", StrUtil.toLowerCase(theme.toString()));
+        JsonCard.getJSONObject("card").put("theme", theme.getType());
         return true;
     }
 
@@ -123,8 +122,7 @@ public class Card {
      */
     public Boolean addHeaderComponent(TextType type, String title) {
         if (JsonCard.isEmpty()) initCard();
-        String Type;
-        if (Objects.equals(type.toString(), "Markdown")) Type = "dodo-md"; else Type = "plain-text";
+        String Type = type.getType();
         JsonCard.getJSONObject("card").getJSONArray("components").put(new JSONObject("{\"type\": \"header\",\"text\": { \"type\": \"" + Type + "\", \"content\": \"" + title + "\"}}"));
         return true;
     }
@@ -151,9 +149,7 @@ public class Card {
 
         JsonCard.getJSONObject("card").getJSONArray("components").put(new JSONObject("{\"type\": \"remark\",\"elements\": []}"));
         for(int i = 0; i < MapUtil.ergodicMaps(text).size();i++) {
-            String Type;
-            String type = MapUtil.ergodicMaps(text).get(i).get(0).toString();
-            if (Objects.equals(type, "Markdown")) Type = "dodo-md"; else if(Objects.equals(type, "PlainText")) Type = "plain-text"; else Type = "image";
+            String Type = ((RemarkType)MapUtil.ergodicMaps(text).get(i).get(0)).getType();
             if (Type.equals("image")) {
                 JsonCard.getJSONObject("card").getJSONArray("components").getJSONObject(JsonCard.getJSONObject("card").getJSONArray("components").toList().size() - 1).getJSONArray("elements").put(new JSONObject("{\"text\": { \"type\": \"" + Type + "\", \"src\": \"" + MapUtil.ergodicMaps(text).get(i).get(1) + "\"}}"));
             } else {
@@ -266,7 +262,7 @@ public class Card {
      * @return 成功
      */
     public Boolean addButton(ButtonGroup buttonGroup) {
-        JsonCard.getJSONObject("card").getJSONArray("components").put(buttonGroup.toJSONObject());
+        JsonCard.getJSONObject("card").getJSONArray("components").put(buttonGroup.toJsonObject());
         return true;
     }
 
@@ -319,8 +315,8 @@ public class Card {
         JSONObject json1 = new JSONObject();
         json1.put("type", "section");
         json1.put("text", section);
-        json1.put("align", align.toString());
-        json1.put("accessory", buttonGroup.toJSONObject());
+        json1.put("align", align.getType());
+        json1.put("accessory", buttonGroup.toJsonObject());
         JsonCard.getJSONObject("card").getJSONArray("components").put(json1);
         return true;
     }

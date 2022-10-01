@@ -9,6 +9,7 @@ import java.util.Map;
 
 /**
  * 关于 Bean 的一些实用方法
+ * @author qscbm187531
  */
 public class BeanUtil {
     private final static String CLASS = "class";

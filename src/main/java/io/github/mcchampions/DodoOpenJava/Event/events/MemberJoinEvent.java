@@ -8,6 +8,7 @@ import javax.annotation.Nonnull;
 
 /**
  * 成员加入事件
+ * @author qscbm187531
  */
 public class MemberJoinEvent extends Event {
     private static final HandlerList handlers = new HandlerList();

@@ -2,15 +2,16 @@ package io.github.mcchampions.DodoOpenJava.Command;
 
 /**
  * 控制台发送者
+ * @author qscbm187531
  */
 public class ConsoleSender extends CommandSender{
     /**
      * 回复发送者发送的消息
-     * @param Message 消息
+     * @param message 消息
      */
     @Override
-    public void referencedMessage(String Message) {
-        System.out.println(Message);
+    public void referencedMessage(String message) {
+        System.out.println(message);
     }
 
     /**

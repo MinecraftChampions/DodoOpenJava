@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 /**
  * 控制台输入监听
+ * @author qscbm187531
  */
 public class ConsoleListener {
     HashMap<String, Action> answers = new HashMap<>();

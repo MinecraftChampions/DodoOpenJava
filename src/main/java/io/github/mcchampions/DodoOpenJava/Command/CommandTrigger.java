@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 /**
  * 命令触发
+ * @author qscbm187531
  */
 public class CommandTrigger implements Listener {
     /**
@@ -29,7 +30,7 @@ public class CommandTrigger implements Listener {
         String MainCommand = Command.get(0);
         Command.remove(0);
         String[] args = Command.toArray(new String[Command.size()]);
-        io.github.mcchampions.DodoOpenJava.Command.Command.Trigger(sender, MainCommand, args);
+        io.github.mcchampions.DodoOpenJava.Command.Command.trigger(sender, MainCommand, args);
     }
 
     /**
@@ -41,7 +42,7 @@ public class CommandTrigger implements Listener {
             String MainCommand = Command.get(0);
             Command.remove(0);
             String[] args = Command.toArray(new String[Command.size()]);
-            io.github.mcchampions.DodoOpenJava.Command.Command.Trigger(new ConsoleSender(),MainCommand,args);
+            io.github.mcchampions.DodoOpenJava.Command.Command.trigger(new ConsoleSender(),MainCommand,args);
         });
         cs.listenInNewThread();
     }

@@ -2,6 +2,7 @@ package io.github.mcchampions.DodoOpenJava.Permissions;
 
 /**
  * 数据存储类型
+ * @author qscbm187531
  */
 public enum DataType {
     /**

@@ -6,6 +6,7 @@ import java.util.*;
 
 /**
  * 用户
+ * @author qscbm187531
  */
 public class User {
     public static Map<String,PermissionsGroup> UserGroup = new HashMap<>();
@@ -193,7 +194,7 @@ public class User {
 
         if (!perms.contains(perm)) {
             for (String s : perms) {
-                if ((s.lastIndexOf("*") == s.length()-1)) {
+                if ((s.lastIndexOf('*') == s.length()-1)) {
                     if (s.equals("*")) {
                         hasPerm = true;
                     } else {

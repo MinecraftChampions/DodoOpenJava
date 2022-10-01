@@ -6,6 +6,7 @@ import java.util.Objects;
 
 /**
  * 权限组
+ * @author qscbm187531
  */
 public class PermissionsGroup {
     public static List<PermissionsGroup> groups = new ArrayList<>();
@@ -318,7 +319,7 @@ public class PermissionsGroup {
         boolean hasPerm = false;
         if (!this.perms.contains(perm)) {
             for (String s : this.perms) {
-                if ((s.lastIndexOf("*") == s.length()-1)) {
+                if ((s.lastIndexOf('*') == s.length()-1)) {
                     if (s.equals("*")) {
                         hasPerm = true;
                     } else {
