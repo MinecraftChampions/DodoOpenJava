@@ -39,7 +39,7 @@ public class IslandApi {
         param = "{" +
                 "    \"islandId\": \"" + islandId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
     }
 
     /**
@@ -64,7 +64,7 @@ public class IslandApi {
     public static JSONObject getIslandList(String authorization) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/island/list";
         param = "{}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
     }
 
     /**
@@ -99,7 +99,7 @@ public class IslandApi {
                 "    \"pageSize\": \"" + pageSize + "\"," +
                 "    \"maxId\": \"" + maxId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
     }
 
     /**
@@ -128,7 +128,7 @@ public class IslandApi {
         param = "{" +
                 "    \"islandID\": \"" + islandId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
     }
 
     /**
@@ -157,6 +157,6 @@ public class IslandApi {
         param = "{" +
                 "    \"islandId\": \"" + islandId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
     }
 }

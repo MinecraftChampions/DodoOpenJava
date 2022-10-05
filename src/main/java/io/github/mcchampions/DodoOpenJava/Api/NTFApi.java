@@ -46,7 +46,7 @@ public class NTFApi {
                 "    \"dodoId\": \"" + dodoId + "\"," +
                 "    \"platform\": \"" + platform + "\"" +
                 "}";
-        return  new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return  new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
     }
 
     /**
@@ -81,6 +81,6 @@ public class NTFApi {
                 "    \"issuer\": \"" + issuer + "\"," +
                 "    \"series\": \"" + series + "\"" +
                 "}";
-        return  new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return  new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
     }
 }

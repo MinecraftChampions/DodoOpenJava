@@ -39,7 +39,7 @@ public class RoleApi {
         param = "{" +
                 "    \"islandId\": \"" + islandId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
     }
 
     /**
@@ -74,7 +74,7 @@ public class RoleApi {
                 "    \"dodoId\": \"" + dodoId + "\"," +
                 "    \"roleId\": \"" + roleId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
     }
 
     /**
@@ -109,7 +109,7 @@ public class RoleApi {
                 "    \"dodoId\": \"" + dodoId + "\"," +
                 "    \"roleId\": \"" + roleId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
     }
 
     /**
@@ -161,7 +161,7 @@ public class RoleApi {
             param.put("permission", permission);
         }
 
-        return new JSONObject(NetUtil.sendRequest(param.toString(), url, authorization)) ;
+        return new JSONObject(NetUtil.simulationBrowserRequest(param.toString(), url, authorization)) ;
     }
 
     /**
@@ -215,7 +215,7 @@ public class RoleApi {
         if (roleColor != null) {
             param.put("permission", permission);
         }
-        return new JSONObject(NetUtil.sendRequest(param.toString(), url, authorization)) ;
+        return new JSONObject(NetUtil.simulationBrowserRequest(param.toString(), url, authorization)) ;
     }
 
     /**
@@ -247,6 +247,6 @@ public class RoleApi {
                 "    \"islandId\": \"" + islandId + "\"," +
                 "    \"roleId\": \"" + roleId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
     }
 }

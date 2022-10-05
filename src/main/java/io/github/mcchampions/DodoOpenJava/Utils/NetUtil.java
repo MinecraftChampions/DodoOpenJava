@@ -18,27 +18,26 @@ public class NetUtil {
     static OkHttpClient client = new OkHttpClient();
 
     /**
-     * 发送POST请求
+     * 发送请求（Dodo开放平台专用）
      *
      * @param parm 发送附带参数
      * @param url 链接地址
      * @param Authorization Authorization
      */
-     public static String sendRequest(String parm, String url, String Authorization) throws IOException {
+     public static String simulationBrowserRequest(String parm, String url, String Authorization) throws IOException {
          Map<String, String> Header = new HashMap<>();
          Header.put("Content-Type", "application/json");
          Header.put("Authorization", Authorization);
-         return sendPostRequest(url,Header,parm);
+         return sendPostJsonRequest(url,Header,parm);
      }
 
     /**
      * 发送普通POST请求
-     * 
      *
      * @param url 链接地址
      */
-    public static String sendPostRequest(String url) throws IOException {
-        return sendPostRequest(url, new HashMap<>(), "");
+    public static String sendPostJsonRequest(String url) throws IOException {
+        return sendPostJsonRequest(url, new HashMap<>(), "");
     }
 
     /**
@@ -46,8 +45,8 @@ public class NetUtil {
      *
      * @param url 链接地址
      */
-    public static String sendPostRequest(String url, Map<String, String> Header) throws IOException {
-        return sendPostRequest(url, Header, "");
+    public static String sendPostJsonRequest(String url, Map<String, String> Header) throws IOException {
+        return sendPostJsonRequest(url, Header, "");
     }
 
     /**
@@ -55,8 +54,8 @@ public class NetUtil {
      *
      * @param url 链接地址
      */
-    public static String sendPostRequest(String url, String param) throws IOException {
-        return sendPostRequest(url, null, param);
+    public static String sendPostJsonRequest(String url, String param) throws IOException {
+        return sendPostJsonRequest(url, null, param);
     }
 
     /**
@@ -66,7 +65,7 @@ public class NetUtil {
      * @param Header Header
      * @param param 参数
      */
-    public static String sendPostRequest(String url, Map<String, String> Header, String param) throws IOException {
+    public static String sendPostJsonRequest(String url, Map<String, String> Header, String param) throws IOException {
         Request.Builder builder = new Request.Builder();
         builder.url(url).post(RequestBody.create(MediaType.parse("application/json"), param));
         JSONObject json = new JSONObject(Header);
@@ -110,7 +109,7 @@ public class NetUtil {
      * 模拟浏览器发送请求
      * @param url 链接地址
      */
-     public static String sendRequest(String url) throws IOException {
+     public static String simulationBrowserRequest(String url) throws IOException {
          Map<String, String> Header = new HashMap<>();
          Header.put("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36");
          return sendGetRequest(url, Header);

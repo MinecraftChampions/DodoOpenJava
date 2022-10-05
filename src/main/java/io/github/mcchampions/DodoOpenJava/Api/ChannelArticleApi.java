@@ -46,7 +46,7 @@ public class ChannelArticleApi {
                 "    \"content\": \""+ content + "\"," +
                 "    \"imageUrl\": \""+ imageUrl + "\"" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
     }
 
 
@@ -80,7 +80,7 @@ public class ChannelArticleApi {
                 "    \"type\": "+ type + "," +
                 "    \"channelId\": \""+ channelId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
     }
 
 }

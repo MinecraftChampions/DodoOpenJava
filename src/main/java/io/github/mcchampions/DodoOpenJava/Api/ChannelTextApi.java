@@ -46,7 +46,7 @@ public class ChannelTextApi {
                 "        \"content\": \"" + Message + "\"" +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(parm, url, Authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(parm, url, Authorization));
     }
 
     /**
@@ -84,7 +84,7 @@ public class ChannelTextApi {
                 "        \"referencedMessageId\": \"" + referencedMessageId + "\"" +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(parm, url, Authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(parm, url, Authorization));
     }
 
     /**
@@ -134,7 +134,7 @@ public class ChannelTextApi {
                 "        \"isOriginal\": " + Original + "" +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(parm, url, Authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(parm, url, Authorization));
     }
 
     /**
@@ -175,7 +175,7 @@ public class ChannelTextApi {
                 "        \"height\": " + height + "" +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(parm, url, Authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(parm, url, Authorization));
     }
 
     /**
@@ -210,7 +210,7 @@ public class ChannelTextApi {
                 "        \"url\": \"" + Url + "\"" +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(parm, url, Authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(parm, url, Authorization));
     }
 
     /**
@@ -254,7 +254,7 @@ public class ChannelTextApi {
                 "        \"size\": " + size + "" +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(parm, url, Authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(parm, url, Authorization));
     }
 
     /**
@@ -289,7 +289,7 @@ public class ChannelTextApi {
                 "        \"jumpUrl\": \"" + jumpUrl + "\"" +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(parm, url, Authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(parm, url, Authorization));
     }
 
     /**
@@ -330,7 +330,7 @@ public class ChannelTextApi {
                 "        \"size\": " + size + "" +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(parm, url, Authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(parm, url, Authorization));
     }
 
     /**
@@ -365,7 +365,7 @@ public class ChannelTextApi {
                 "        \"content\": \"" + content + "\"" +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(parm, url, Authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(parm, url, Authorization));
     }
 
     /**
@@ -394,7 +394,7 @@ public class ChannelTextApi {
         parm = "{" +
                 "    \"messageId\": \"" + messageId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(parm, url, Authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(parm, url, Authorization));
     }
 
     /**
@@ -426,7 +426,7 @@ public class ChannelTextApi {
                 "    \"messageId\": \"" + messageId + "\"," +
                 "    \"reason\": \"" + reason + "\"" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(parm, url, Authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(parm, url, Authorization));
     }
 
     /**
@@ -461,7 +461,7 @@ public class ChannelTextApi {
                 "        \"id\": \"" + id + "\"" +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(parm, url, Authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(parm, url, Authorization));
     }
 
     /**
@@ -499,7 +499,7 @@ public class ChannelTextApi {
                 "    }," +
                 "    \"dodoId\": \"" + dodoId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(parm, url, Authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(parm, url, Authorization));
     }
 
     /**
@@ -534,7 +534,7 @@ public class ChannelTextApi {
                 "        \"id\": \"" + id + "\"," +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(parm, url, Authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(parm, url, Authorization));
     }
 
     /**
@@ -567,7 +567,7 @@ public class ChannelTextApi {
                 "    \"messageType\": 6," +
                 "    \"messageBody\": " + messageBody.toJSONObject().toString() +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(parm, url, Authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(parm, url, Authorization));
     }
 
     /**
@@ -600,7 +600,7 @@ public class ChannelTextApi {
                 "    \"messageType\": 1," +
                 "    \"messageBody\": " + messageBody.toJSONObject().toString() +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(parm, url, Authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(parm, url, Authorization));
     }
 
 }

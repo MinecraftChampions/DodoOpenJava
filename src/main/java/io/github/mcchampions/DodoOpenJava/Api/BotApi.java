@@ -35,7 +35,7 @@ public class BotApi {
     public static JSONObject getBotInfo(String authorization) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/bot/info";
         param = "{}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
     }
 
     /**
@@ -64,7 +64,7 @@ public class BotApi {
         param = "{" +
                 "    \"islandId\": \"" + islandId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
     }
 
     /**
@@ -82,7 +82,7 @@ public class BotApi {
                 "    \"pageSize\":" + pageSize + "," +
                 "    \"maxId\":" + maxId + "" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
     }
 
     /**
@@ -98,7 +98,7 @@ public class BotApi {
         param = "{" +
                 "    \"dodoId\": \"" + dodoId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
     }
 
     /**
@@ -114,6 +114,6 @@ public class BotApi {
         param = "{" +
                 "    \"dodoId\": \"" + dodoId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
     }
 }

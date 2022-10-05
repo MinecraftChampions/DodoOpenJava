@@ -28,7 +28,7 @@ public class BaseUtil {
      * @return 意思
      */
     public static String getStatus(String stat) throws IOException {
-        return new JSONObject(NetUtil.sendRequest("https://raw.githubusercontent.com/mcchampions/mcchampions.github.io/main/status.json")).getString(stat);
+        return new JSONObject(NetUtil.simulationBrowserRequest("https://mcchampions.github.io/status.json")).getString(stat);
     }
 
     /**
@@ -42,5 +42,22 @@ public class BaseUtil {
             returnList.add(o.toString());
         }
         return returnList;
+    }
+
+    /**
+     * 判断一个文本中是否含有敏感词（词库URL：<a href="https://mcchampions.github.io/database.json">词库地址</a>)
+     * @param text 文本
+     * @return true代表是
+     */
+    public static boolean hasSensitiveWord(String text) throws IOException {
+        List<String> list = toStringList((new JSONObject(NetUtil.simulationBrowserRequest("https://mcchampions.github.io/database.json"))).getJSONArray("words").toList());
+        boolean isSensitiveWord = false;
+        for (String word : list) {
+            if (text.contains(word)) {
+                isSensitiveWord = true;
+                break;
+            }
+        }
+        return isSensitiveWord;
     }
 }

@@ -14,6 +14,7 @@ public class StrUtil {
     public final static Pattern DEL_PATTERN = Pattern.compile("%");
     public final static Pattern HUMP_PATTERN = Pattern.compile("[A-Z]");
     public final static Pattern LINE_PATTERN = Pattern.compile("_(\\w)");
+    public final static Pattern CHINESE = Pattern.compile("[^u4E00-u9FA5]+", Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
 
     /**
      * 是否为空
@@ -22,7 +23,7 @@ public class StrUtil {
      * @return true/是
      */
     public static boolean isEmpty(CharSequence str) {
-        return str == null || str.length() == 0;
+        return str == null || str.length() == 0 || str.isEmpty();
     }
 
     /**
@@ -33,6 +34,53 @@ public class StrUtil {
      */
     public static boolean isNotEmpty(CharSequence str) {
         return !isEmpty(str);
+    }
+
+    /**
+     * 一段字符串是否为中文
+     *
+     * @param value 字符串
+     * @return true代表室，false代表不是
+     */
+    public static boolean isChinese(String value) {
+        boolean result = false;
+        Matcher matcher = CHINESE.matcher(value);
+        if (matcher.find()) {
+            result = true;
+        }
+
+        return result;
+    }
+
+    /**
+     * 将一段字节集合转为字符串（UTF-8)
+     *
+     * @param data 字节
+     * @return 字符串
+     */
+    public static String toString(byte[] data){
+        try{
+            return toString(data, "UTF-8");
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * 将一段字节集合转为字符串
+     *
+     * @param data 字节
+     * @param charset 编码
+     * @return 字符串
+     */
+    public static String toString(byte[] data, String charset){
+        try{
+            return new String(data, charset);
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**
