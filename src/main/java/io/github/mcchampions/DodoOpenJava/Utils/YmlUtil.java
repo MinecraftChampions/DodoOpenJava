@@ -12,22 +12,12 @@ import java.util.Map;
  */
 public class YmlUtil {
     /**
-     * bean转化为yml
-     *
-     * @param obj      bean
-     * @param fileName 文件名
-     */
-    public static void beanToYml(Object obj, String fileName) throws IOException {
-        new Yaml().dump(obj, new FileWriter(setYml(fileName)));
-    }
-
-    /**
      * yml转化为bean
      *
      * @param fileName 文件名
      * @return bean
      */
-    public static <T> T ymlToBean(String fileName) throws IOException {
+    public static <T> T toBean(String fileName) throws IOException {
         return new Yaml().load(Files.newInputStream(new File(setYml(fileName)).toPath()));
     }
 
@@ -37,7 +27,7 @@ public class YmlUtil {
      * @param fileName 文件名
      * @return map
      */
-    public static Map<String, Object> ymlToMap(String fileName) throws FileNotFoundException {
+    public static Map<String, Object> toMap(String fileName) throws FileNotFoundException {
         return new Yaml().load(new BufferedReader(new FileReader(setYml(fileName))));
     }
 
@@ -47,7 +37,7 @@ public class YmlUtil {
      * @param fileName 文件名
      * @return 文件名
      */
-    private static String setYml(String fileName) {
+    public static String setYml(String fileName) {
         if (!fileName.contains(".yml")) {
             fileName += ".yml";
         }

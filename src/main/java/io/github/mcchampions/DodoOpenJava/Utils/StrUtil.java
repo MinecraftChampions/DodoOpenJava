@@ -15,7 +15,7 @@ public class StrUtil {
     public final static Pattern HUMP_PATTERN = Pattern.compile("[A-Z]");
     public final static Pattern LINE_PATTERN = Pattern.compile("_(\\w)");
     public final static Pattern CHINESE = Pattern.compile("[^u4E00-u9FA5]+", Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
-
+    public static final Pattern BRACKET_NUMBER = Pattern.compile("\\[(\\d+)\\]");
     /**
      * 是否为空
      *
@@ -82,6 +82,35 @@ public class StrUtil {
             return null;
         }
     }
+
+    /**
+     * 根据分隔符获取自定义名称
+     * 例如：[123]测试123 获取到 测试123
+     *
+     * @param str       字符串
+     * @param separator 分隔符
+     * @return 字符串
+     */
+    public static String getSeparatorCustomName(String str, String separator) {
+        return str.substring(str.indexOf(separator) + 1);
+    }
+
+    /**
+     * 获取[]内的数字
+     * 例如：[123]测试123 获取到 123
+     *
+     * @param str 字符串
+     * @return 数字
+     * @since 1.1.6
+     */
+    public static int getSeparatorCustomNameNumber(String str) {
+        Matcher matcher = BRACKET_NUMBER.matcher(str);
+        if (matcher.find()) {
+            return Integer.parseInt(matcher.group(1));
+        }
+        return -1;
+    }
+
 
     /**
      * 转换小写

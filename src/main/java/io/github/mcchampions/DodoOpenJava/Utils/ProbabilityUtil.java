@@ -14,17 +14,6 @@ public class ProbabilityUtil {
     private final Random random = new Random();
     private final List<Integer> probabilityNumList = new ArrayList<>();
 
-    private ProbabilityUtil() {
-    }
-
-    private static class SingletonHolder {
-        private static final ProbabilityUtil INSTANCE = new ProbabilityUtil();
-    }
-
-    public static ProbabilityUtil getInstance() {
-        return ProbabilityUtil.SingletonHolder.INSTANCE;
-    }
-
     /**
      * 不加锁进行概率抽取
      *
@@ -76,12 +65,13 @@ public class ProbabilityUtil {
     }
 
     /**
-     * 进行二分查询
+     * 进行随机的二分查询
      *
      * @param nums 数组
      * @return 返回0为匹配到了数组第一个数
      */
     private int randomIndex(int[] nums) {
+        // 1 5 7 9 11 12
         probabilityNumList.clear();
         int tot = 0;
         for (int num : nums) {

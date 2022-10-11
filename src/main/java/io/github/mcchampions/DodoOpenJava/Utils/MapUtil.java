@@ -38,7 +38,7 @@ public class MapUtil {
      * @param map  map
      * @return bean
      */
-    public static <T> T mapToBean(Class<T> type, Map<?, ?> map) {
+    public static <T> T toBean(Class<T> type, Map<?, ?> map) {
         T obj = null;
         try {
             BeanInfo beanInfo = Introspector.getBeanInfo(type);
@@ -63,7 +63,7 @@ public class MapUtil {
      * @param map  map
      * @return bean
      */
-    public static JSONObject mapToJson(Map<?, ?> map) {
+    public static JSONObject toJson(Map<?, ?> map) {
         return new JSONObject(map);
     }
 }
