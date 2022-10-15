@@ -45,7 +45,7 @@ public class MemberApi {
                 "    \"pageSize\": \"" + pageSize + "\"," +
                 "    \"maxId\": \"" + maxId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -77,7 +77,7 @@ public class MemberApi {
                 "    \"islandId\": \"" + islandId + "\"," +
                 "    \"dodoId\": \"" + dodoId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -109,7 +109,7 @@ public class MemberApi {
                 "    \"islandId\": \"" + islandId + "\"," +
                 "    \"dodoID\": \"" + dodoId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -141,7 +141,7 @@ public class MemberApi {
                 "    \"islandId\": \"" + islandId + "\"," +
                 "    \"dodoId\": \"" + dodoId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -176,7 +176,7 @@ public class MemberApi {
                 "    \"dodoId\": \"" + dodoId + "\"," +
                 "    \"nickName\": \"" + nickName + "\"" +
                 "}";
-        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -211,7 +211,7 @@ public class MemberApi {
                 "    \"dodoId\": \"" + dodoId + "\"," +
                 "    \"duration\": " + duration + "" +
                 "}";
-        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -249,7 +249,7 @@ public class MemberApi {
                 "    \"duration\": " + duration + "," +
                 "    \"reason\": \"" + reason + "\"" +
                 "}";
-        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -281,7 +281,7 @@ public class MemberApi {
                 "    \"islandId\": \"" + islandId + "\"," +
                 "    \"dodoId\": \"" + dodoId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -313,7 +313,7 @@ public class MemberApi {
                 "    \"islandId\": \"" + islandId + "\"," +
                 "    \"dodoId\": \"" + dodoId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -348,7 +348,7 @@ public class MemberApi {
                 "    \"dodoId\": \"" + dodoId + "\"," +
                 "    \"reason\": \"" + reason + "\"" +
                 "}";
-        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -383,7 +383,7 @@ public class MemberApi {
                 "    \"dodoId\": \"" + dodoId + "\"," +
                 "    \"noticeChannelId\": \"" + noticeChannelId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -421,7 +421,7 @@ public class MemberApi {
                 "    \"noticeChannelId\": \"" + noticeChannelId + "\"," +
                 "    \"reason\": \"" + reason + "\"" +
                 "}";
-        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -453,6 +453,6 @@ public class MemberApi {
                 "    \"islandId\": \"" + islandId + "\"," +
                 "    \"dodoId\": \"" + dodoId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 }

@@ -45,7 +45,7 @@ public class PersonalApi {
                 "        \"content\": \"" + message + "\"" +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.simulationBrowserRequest(param, URL, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, URL, authorization));
     }
 
     /**
@@ -95,7 +95,7 @@ public class PersonalApi {
                 "        \"isOriginal\": " + original + "" +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.simulationBrowserRequest(param, URL, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, URL, authorization));
     }
 
     /**
@@ -136,7 +136,7 @@ public class PersonalApi {
                 "        \"height\": " + height + "" +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.simulationBrowserRequest(param, URL, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, URL, authorization));
     }
 
     /**
@@ -171,7 +171,7 @@ public class PersonalApi {
                 "        \"url\": \"" + url + "\"" +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.simulationBrowserRequest(param, URL, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, URL, authorization));
     }
 
     /**
@@ -215,6 +215,6 @@ public class PersonalApi {
                 "        \"size\": " + size + "" +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.simulationBrowserRequest(param, URL, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, URL, authorization));
     }
 }

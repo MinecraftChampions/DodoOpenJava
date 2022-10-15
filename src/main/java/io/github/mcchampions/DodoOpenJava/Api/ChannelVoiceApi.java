@@ -40,7 +40,7 @@ public class ChannelVoiceApi {
                 "    \"islandId\": \""+ islandId +"\"," +
                 "    \"dodoId\": \""+ dodoId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
 
@@ -74,7 +74,7 @@ public class ChannelVoiceApi {
                 "    \"dodoId\": \""+ dodoId + "\"," +
                 "    \"channelId\": \""+ channelId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -107,6 +107,6 @@ public class ChannelVoiceApi {
                 "    \"dodoId\": \""+ dodoId + "\"," +
                 "    \"channelId\": \""+ channelId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 }

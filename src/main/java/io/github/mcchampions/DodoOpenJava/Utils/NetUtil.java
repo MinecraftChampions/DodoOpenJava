@@ -24,7 +24,7 @@ public class NetUtil {
      * @param url 链接地址
      * @param Authorization Authorization
      */
-     public static String simulationBrowserRequest(String parm, String url, String Authorization) throws IOException {
+     public static String sendRequest(String parm, String url, String Authorization) throws IOException {
          Map<String, String> Header = new HashMap<>();
          Header.put("Content-Type", "application/json");
          Header.put("Authorization", Authorization);
@@ -79,6 +79,25 @@ public class NetUtil {
     }
 
     /**
+     * 发送普通的Get请求（带Header）
+     * @param url 链接地址
+     */
+    public static String sendGetRequest(String url, Map<String, String> Header) throws IOException {
+        Request.Builder builder = new Request.Builder()
+                .url(url)
+                .get();
+        for (int i = 0; i < MapUtil.ergodicMaps(Header).size(); i++) {
+            builder.addHeader(MapUtil.ergodicMaps(Header).get(i).get(0).toString(), MapUtil.ergodicMaps(Header).get(i).get(1).toString());
+        }
+
+        Response response = client.newCall(builder.build()).execute();
+
+        String a = Objects.requireNonNull(response.body()).string();
+        response.close();
+        return  a;
+    }
+
+    /**
      * 上传资源图片
      *
      * @param path 文件路径
@@ -124,26 +143,6 @@ public class NetUtil {
                 .url(url)
                 .get()
                 .build();
-        Response response = client.newCall(request).execute();
-
-        String a = Objects.requireNonNull(response.body()).string();
-        response.close();
-        return  a;
-    }
-
-    /**
-     * 发送普通的Get请求（带Header）
-     * @param url 链接地址
-     */
-    public static String sendGetRequest(String url, Map<String, String> Header) throws IOException {
-        Request request = new Request.Builder()
-                .url(url)
-                .get()
-                .build();
-        for (int i = 0; i < MapUtil.ergodicMaps(Header).size(); i++) {
-            request.newBuilder().addHeader(MapUtil.ergodicMaps(Header).get(i).get(0).toString(), MapUtil.ergodicMaps(Header).get(i).get(1).toString());
-        }
-
         Response response = client.newCall(request).execute();
 
         String a = Objects.requireNonNull(response.body()).string();

@@ -38,7 +38,7 @@ public class ChannelApi {
         param = "{" +
                 "    \"islandId\": \"" + islandId + "\"" +
                 "}";
-        return  new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
+        return  new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -67,7 +67,7 @@ public class ChannelApi {
         param = "{" +
                 "    \"channelId\": \"" + channelId + "\"" +
                 "}";
-        return  new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
+        return  new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -102,7 +102,7 @@ public class ChannelApi {
                 "    \"channelName\": \"" + channelName + "\"," +
                 "    \"channelType\": " + channelType + "" +
                 "}";
-        return  new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
+        return  new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
     
     /**
@@ -137,7 +137,7 @@ public class ChannelApi {
                 "    \"channelId\": \"" + channelId + "\"," +
                 "    \"channelName\": \"" + channelName + "\"" +
                 "}";
-        return  new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
+        return  new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
     
     /**
@@ -169,6 +169,6 @@ public class ChannelApi {
                 "    \"islandId\": \"" + islandId + "\"," +
                 "    \"channelId\": \"" + channelId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.simulationBrowserRequest(param, url, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 }
