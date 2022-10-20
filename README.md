@@ -25,7 +25,7 @@ Dodo开放平台：https://open.imdodo.com/
   <dependency>
     <groupId>com.github.minecraftchampions</groupId>
     <artifactId>DodoOpenJava</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
   </dependency>
 </dependencies>
 ```
@@ -38,9 +38,11 @@ Dodo开放平台：https://open.imdodo.com/
 	}
 
 	dependencies {
-	        implementation 'com.github.minecraftchampions:DodoOpenJava:1.0.5'
+	        implementation 'com.github.minecraftchampions:DodoOpenJava:1.0.6'
 	}
 ```
 
 ### 其他
 别问我以前版本号为什么那么大，问就是非正式版(你就说信不信吧)
+### 教程(编写中)
+[直达链接](https://www.showdoc.com.cn/DodoOpenJava/)

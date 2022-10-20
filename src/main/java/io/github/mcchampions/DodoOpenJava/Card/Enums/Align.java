@@ -19,7 +19,7 @@ public enum Align {
     }
 
     /**
-     * 行数
+     * 对齐方式
      */
     private final String type;
 

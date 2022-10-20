@@ -19,7 +19,7 @@
     <orderEntry type="library" name="Maven: com.squareup.okio:okio:1.17.5" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.12.0" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.11.0" level="project" />
-    <orderEntry type="library" name="Maven: org.yaml:snakeyaml:1.32" level="project" />
+    <orderEntry type="library" name="Maven: org.yaml:snakeyaml:1.33" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:31.1-jre" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:failureaccess:1.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava" level="project" />
@@ -32,7 +32,7 @@
     <orderEntry type="library" name="Maven: org.mongodb:mongodb-driver-core:4.7.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.mongodb:bson-record-codec:4.7.1" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:23.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.json:json:20220320" level="project" />
+    <orderEntry type="library" name="Maven: org.json:json:20220924" level="project" />
     <orderEntry type="library" name="Maven: org.tomlj:tomlj:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.antlr:antlr4-runtime:4.7.2" level="project" />
   </component>

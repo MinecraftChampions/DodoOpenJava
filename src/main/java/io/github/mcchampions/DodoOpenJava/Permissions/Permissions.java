@@ -21,7 +21,7 @@ public class Permissions {
      * @return true成功，false失败
      */
     public static Boolean initMongoDB(String ip, int port, String Authorization) {
-        if (Objects.equals(type.toString(), "MongoDB")) {
+        if (!Objects.equals(type.getType(), "MongoDB")) {
             MongoDBData mongoDB = new MongoDBData();
             mongoDB.initPermissions(ip,port);
         }
@@ -37,7 +37,7 @@ public class Permissions {
      * @return true成功，false失败
      */
     public static Boolean initMongoDB(String ip, String Authorization) {
-        if (Objects.equals(type.toString(), "MongoDB")) {
+        if (!Objects.equals(type.getType(), "MongoDB")) {
             MongoDBData mongoDB = new MongoDBData();
             mongoDB.initPermissions(ip,25575);
         }
@@ -53,7 +53,7 @@ public class Permissions {
      * @return true成功，false失败
      */
     public static Boolean init(DataType type, String Authorization) {
-        switch (type.toString()) {
+        switch (type.getType()) {
             case "YAML" -> YamlData.init();
             case "JSON" -> JsonData.init();
             case "Xml" -> XmlData.init();

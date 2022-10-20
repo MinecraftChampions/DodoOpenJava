@@ -24,8 +24,8 @@ public class ChannelTextApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject setChannelMessageSend(String clientId, String token, String channelId, String Message) throws IOException {
-        return setChannelMessageSend(BaseUtil.Authorization(clientId,token), channelId, Message);
+    public static JSONObject sendTextMessage(String clientId, String token, String channelId, String Message) throws IOException {
+        return sendTextMessage(BaseUtil.Authorization(clientId,token), channelId, Message);
     }
 
     /**
@@ -37,7 +37,7 @@ public class ChannelTextApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject setChannelMessageSend(String Authorization, String channelId, String Message) throws IOException {
+    public static JSONObject sendTextMessage(String Authorization, String channelId, String Message) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/channel/message/send";
         parm = "{" +
                 "    \"channelId\": \"" + channelId + "\"," +

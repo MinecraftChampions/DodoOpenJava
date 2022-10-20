@@ -8,21 +8,38 @@ public enum DataType {
     /**
      * YAML文件
      */
-    YAML,
+    YAML("YAML"),
     /**
      * JSON文件
      */
-    JSON,
+    JSON("JSON"),
     /**
      * MongoDB数据库
      */
-    MongoDB,
+    MongoDB("MongoDB"),
     /**
      * Xml文件
      */
-    Xml,
+    Xml("Xml"),
     /**
      * Toml文件
      */
-    Toml
+    Toml("Toml");
+
+    DataType(String type) {
+        this.type = type;
+    }
+
+    /**
+     * 数据存储方式
+     */
+    private final String type;
+
+    /**
+     * 获取类型
+     * @return 类型
+     */
+    public String getType() {
+        return type;
+    }
 }
