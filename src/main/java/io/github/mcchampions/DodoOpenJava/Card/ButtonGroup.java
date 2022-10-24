@@ -42,6 +42,7 @@ public class ButtonGroup {
     public Boolean addButton(Color buttonColor, String buttonName, String interactCustomId, ButtonAction action, Object object) {
         Form form = new Form();
         String value = "";
+        Object o = null;
         boolean isForm = false;
 
         if (!Objects.equals(action.getType(), "form")) {

@@ -1,4 +1,4 @@
-package io.github.mcchampions.DodoOpenJava.Api;
+package io.github.mcchampions.DodoOpenJava.Api.V1;
 
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
 import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
