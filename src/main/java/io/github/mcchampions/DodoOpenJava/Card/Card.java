@@ -261,7 +261,7 @@ public class Card {
      * @param buttonGroup 按钮颜色
      * @return 成功
      */
-    public Boolean addButton(ButtonGroup buttonGroup) {
+    public Boolean addButtonGroup(ButtonGroup buttonGroup) {
         JsonCard.getJSONObject("card").getJSONArray("components").put(buttonGroup.toJsonObject());
         return true;
     }

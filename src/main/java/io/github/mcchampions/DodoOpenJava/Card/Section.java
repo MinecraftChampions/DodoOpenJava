@@ -12,7 +12,7 @@ import java.util.Objects;
  * @author qscbm187531
  */
 public class Section {
-    public JSONObject JsonText;
+    public JSONObject JsonText = new JSONObject();
 
     public Boolean isParagraph;
 
