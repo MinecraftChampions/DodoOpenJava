@@ -9,7 +9,7 @@ JavaDoc：https://mcchampions.github.io/
 
 Dodo开放平台：https://open.imdodo.com/
 
-### 添加依赖 [![](https://jitpack.io/v/MinecraftChampions/DodoOpenJava.svg)](https://jitpack.io/#MinecraftChampions/DodoOpenJava)
+### 添加依赖
 #### Maven：
 ```xml
 <repositories>
