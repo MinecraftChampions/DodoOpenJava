@@ -106,7 +106,7 @@ public class CommandSender{
      * @throws IOException 发送失败时抛出
      */
     public void referencedMessage(String Message) throws IOException {
-        ChannelTextApi.referencedMessage(Command.senderAuthorization, ChannelId, Message, MessageId);
+        ChannelTextApi.referencedMessage(Command.Authorization, ChannelId, Message, MessageId);
     }
 
     /**
@@ -115,7 +115,7 @@ public class CommandSender{
      * @throws IOException 编辑失败后抛出
      */
     public void editSenderNickName(String NickName) throws IOException {
-        MemberApi.editMemberNickName(Command.senderAuthorization,IslandId,SenderDodoId,NickName);
+        MemberApi.editMemberNickName(Command.Authorization,IslandId,SenderDodoId,NickName);
     }
 
     /**
@@ -124,7 +124,7 @@ public class CommandSender{
      * @throws IOException 失败后抛出
      */
     public void muteSender(int Time) throws IOException {
-        MemberApi.addMemberMute(Command.senderAuthorization, IslandId, SenderDodoId,Time);
+        MemberApi.addMemberMute(Command.Authorization, IslandId, SenderDodoId,Time);
     }
 
     /**
@@ -134,7 +134,7 @@ public class CommandSender{
      * @throws IOException 失败后抛出
      */
     public void muteSender(int Time, String reason) throws IOException {
-        MemberApi.addMemberReasonrMute(Command.senderAuthorization, IslandId, SenderDodoId,Time,reason);
+        MemberApi.addMemberReasonrMute(Command.Authorization, IslandId, SenderDodoId,Time,reason);
     }
 
     /**
@@ -142,7 +142,7 @@ public class CommandSender{
      * @throws IOException 失败后抛出
      */
     public void removeMuteSender() throws IOException {
-        MemberApi.removeMemberMute(Command.senderAuthorization,IslandId,SenderDodoId);
+        MemberApi.removeMemberMute(Command.Authorization,IslandId,SenderDodoId);
     }
 
     /**
@@ -151,7 +151,7 @@ public class CommandSender{
      * @throws IOException 失败后抛出
      */
     public void banSender(String reason) throws IOException {
-        MemberApi.addMemberReasonBan(Command.senderAuthorization, IslandId, SenderDodoId,reason);
+        MemberApi.addMemberReasonBan(Command.Authorization, IslandId, SenderDodoId,reason);
     }
 
     /**
@@ -159,7 +159,7 @@ public class CommandSender{
      * @throws IOException 失败后抛出
      */
     public void banSender() throws IOException {
-        MemberApi.addMemberBan(Command.senderAuthorization, IslandId, SenderDodoId);
+        MemberApi.addMemberBan(Command.Authorization, IslandId, SenderDodoId);
     }
 
     /**
@@ -167,7 +167,7 @@ public class CommandSender{
      * @throws IOException 失败后抛出
      */
     public void removeBanSender() throws IOException {
-        MemberApi.removeMemberBan(Command.senderAuthorization,IslandId,SenderDodoId);
+        MemberApi.removeMemberBan(Command.Authorization,IslandId,SenderDodoId);
     }
 
     /**
@@ -176,7 +176,7 @@ public class CommandSender{
      * @throws IOException 失败后抛出
      */
     public void sendPrivateMessage(String Message) throws IOException {
-        PersonalApi.sendPersonalMessage(Command.senderAuthorization,SenderDodoId,MessageId);
+        PersonalApi.sendPersonalMessage(Command.Authorization,SenderDodoId,MessageId);
     }
 
     /**
@@ -185,7 +185,7 @@ public class CommandSender{
      * @throws IOException 失败后抛出
      */
     public void giveRole(String RoleId) throws IOException {
-        RoleApi.addRoleMember(Command.senderAuthorization,IslandId,SenderDodoId,RoleId);
+        RoleApi.addRoleMember(Command.Authorization,IslandId,SenderDodoId,RoleId);
     }
 
     /**
@@ -194,7 +194,7 @@ public class CommandSender{
      * @throws IOException 失败后抛出
      */
     public void removeRole(String RoleId) throws IOException {
-        RoleApi.removeRoleMember(Command.senderAuthorization,IslandId,SenderDodoId,RoleId);
+        RoleApi.removeRoleMember(Command.Authorization,IslandId,SenderDodoId,RoleId);
     }
 
     /**
