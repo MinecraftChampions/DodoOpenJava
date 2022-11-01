@@ -1,24 +1,20 @@
-package io.github.mcchampions.DodoOpenJava.Card.Enums;
+package io.github.mcchampions.DodoOpenJava.Card.enums;
 
 /**
  * 文本类型
  * @author qscbm187531
  */
-public enum SectionType {
+public enum TextType {
     /**
-     * md文本
+     * MD文本
      */
     Markdown("dodo-md"),
     /**
      * 普通文本
      */
-    PlainText("plain-text"),
-    /**
-     * 多栏文本
-     */
-    Paragraph("Paragraph");
+    PlainText("plain-text");
 
-    SectionType(String type) {
+    TextType(String type) {
         this.type = type;
     }
 

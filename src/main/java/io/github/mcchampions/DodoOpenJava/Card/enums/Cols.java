@@ -1,4 +1,4 @@
-package io.github.mcchampions.DodoOpenJava.Card.Enums;
+package io.github.mcchampions.DodoOpenJava.Card.enums;
 
 /**
  * 行数（2-6）
@@ -27,19 +27,19 @@ public enum Cols {
     six(6);
 
     Cols(int row) {
-        this.row = row;
+        this.col = row;
     }
 
     /**
      * 行数
      */
-    private final int row;
+    private final int col;
 
     /**
      * 获取行数
      * @return 行数
      */
-    public int getRow() {
-        return row;
+    public int getCol() {
+        return col;
     }
 }

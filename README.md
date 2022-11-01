@@ -1,4 +1,4 @@
-﻿# DodoOpenJava
+﻿# DodoOpenJava <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white" alt="Java">
 Dodo开放平台的JavaSDK
 
 尚在开发中，我们目前已经支持全部的接口和事件
@@ -9,7 +9,7 @@ JavaDoc：https://mcchampions.github.io/
 
 Dodo开放平台：https://open.imdodo.com/
 
-### 添加依赖
+### 添加依赖 [![](https://jitpack.io/v/MinecraftChampions/DodoOpenJava.svg)](https://jitpack.io/#MinecraftChampions/DodoOpenJava)
 #### Maven：
 ```xml
 <repositories>
@@ -25,7 +25,7 @@ Dodo开放平台：https://open.imdodo.com/
   <dependency>
     <groupId>com.github.minecraftchampions</groupId>
     <artifactId>DodoOpenJava</artifactId>
-    <version>1.0.8</version>
+    <version>1.0.9</version>
   </dependency>
 </dependencies>
 ```
@@ -38,7 +38,7 @@ Dodo开放平台：https://open.imdodo.com/
 	}
 
 	dependencies {
-	        implementation 'com.github.minecraftchampions:DodoOpenJava:1.0.8'
+	        implementation 'com.github.minecraftchampions:DodoOpenJava:1.0.9'
 	}
 ```
 

@@ -1,4 +1,4 @@
-package io.github.mcchampions.DodoOpenJava.Card.Enums;
+package io.github.mcchampions.DodoOpenJava.Card.enums;
 
 /**
  * 按钮的相关枚举

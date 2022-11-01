@@ -7,7 +7,7 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
-import io.github.mcchampions.DodoOpenJava.Permissions.PermissionsGroup;
+import io.github.mcchampions.DodoOpenJava.Permissions.Group;
 import io.github.mcchampions.DodoOpenJava.Permissions.User;
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -37,7 +37,7 @@ public class MongoDBData {
         permGroup = mongo.getDatabase("permGroup");
         permUser = mongo.getDatabase("permUser");
         List<String> listGroupsCollectionNames = (List<String>) permGroup.listCollectionNames();
-        List<PermissionsGroup> groups = new ArrayList<>();
+        List<Group> groups = new ArrayList<>();
         for (String listGroupsCollectionName : listGroupsCollectionNames) {
             boolean Default = false;
             MongoCollection<Document> collection = permGroup.getCollection(listGroupsCollectionName);
@@ -49,17 +49,17 @@ public class MongoDBData {
             }
             List<String> perms = getGroupPermissions(listGroupsCollectionName);
             Boolean isDefault = Default;
-            groups.add(new PermissionsGroup(perms, isDefault, listGroupsCollectionName));
+            groups.add(new Group(perms, isDefault, listGroupsCollectionName));
         }
-        PermissionsGroup.addGroups(groups);
+        Group.addGroups(groups);
 
         List<String> listUserCollectionNames = (List<String>) permUser.listCollectionNames();
         for (String listCollectionName : listUserCollectionNames) {
             User.addPerm(listCollectionName, getUserPermissions(listCollectionName));
-            PermissionsGroup Group = new PermissionsGroup();
-            for (int I = 0; I < PermissionsGroup.getGroups().size();I++) {
-                if (Objects.equals(PermissionsGroup.getGroups().get(I).getName(), getUserGroup(listCollectionName))) {
-                    Group = PermissionsGroup.getGroups().get(I);
+            Group Group = new Group();
+            for (int I = 0; I < io.github.mcchampions.DodoOpenJava.Permissions.Group.getGroups().size(); I++) {
+                if (Objects.equals(io.github.mcchampions.DodoOpenJava.Permissions.Group.getGroups().get(I).getName(), getUserGroup(listCollectionName))) {
+                    Group = io.github.mcchampions.DodoOpenJava.Permissions.Group.getGroups().get(I);
                     break;
                 }
             }
@@ -79,7 +79,7 @@ public class MongoDBData {
         if (!listCollectionNames.contains(DodoId)) {
             MongoCollection<Document> collection = permUser.getCollection(DodoId);
             Document doc = new Document();
-            doc.put("Group", PermissionsGroup.getDefaultGroup().getName());
+            doc.put("Group", Group.getDefaultGroup().getName());
             collection.insertOne(doc);
         }
         MongoCollection<Document> collection = permUser.getCollection(DodoId);
@@ -122,7 +122,7 @@ public class MongoDBData {
         if (!listCollectionNames.contains(DodoId)) {
             MongoCollection<Document> collection = permUser.getCollection(DodoId);
             Document doc = new Document();
-            doc.put("Group", PermissionsGroup.getDefaultGroup().getName());
+            doc.put("Group", Group.getDefaultGroup().getName());
             collection.insertOne(doc);
         }
         MongoCollection<Document> collection = permUser.getCollection(DodoId);
@@ -272,10 +272,10 @@ public class MongoDBData {
             addPermGroup(Group);
         }
 
-        if (Objects.equals(PermissionsGroup.getDefaultGroup().getName(), Group)) {
+        if (Objects.equals(io.github.mcchampions.DodoOpenJava.Permissions.Group.getDefaultGroup().getName(), Group)) {
             isDefault = true;
         } else {
-            MongoCollection<Document> collection = permGroup.getCollection(PermissionsGroup.getDefaultGroup().getName());
+            MongoCollection<Document> collection = permGroup.getCollection(io.github.mcchampions.DodoOpenJava.Permissions.Group.getDefaultGroup().getName());
             Bson eq = Filters.eq("isDefault", true);
             Document doc = new Document();
             doc.put("$set",new Document("isDefault", false));
@@ -378,7 +378,7 @@ public class MongoDBData {
         if (!listCollectionNames.contains(DodoId)) {
             MongoCollection<Document> collection = permUser.getCollection(DodoId);
             Document doc = new Document();
-            doc.put("Group", PermissionsGroup.getDefaultGroup().getName());
+            doc.put("Group", Group.getDefaultGroup().getName());
             collection.insertOne(doc);
         }
         MongoCollection<Document> collection = permUser.getCollection(DodoId);

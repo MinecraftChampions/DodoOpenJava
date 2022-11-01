@@ -1,10 +1,10 @@
-package io.github.mcchampions.DodoOpenJava.Card.Enums;
+package io.github.mcchampions.DodoOpenJava.Card.enums;
 
 /**
- * 按钮颜色
+ * 卡片风格
  * @author qscbm187531
  */
-public enum Color {
+public enum Theme {
     /**
      * 灰色
      */
@@ -18,9 +18,17 @@ public enum Color {
      */
     Orange("orange"),
     /**
+     * 黄色
+     */
+    Yellow("yellow"),
+    /**
      * 绿色
      */
     Green("green"),
+    /**
+     * 淡蓝色
+     */
+    Indigo("indigo"),
     /**
      * 蓝色
      */
@@ -30,11 +38,15 @@ public enum Color {
      */
     Purple("purple"),
     /**
+     * 黑色
+     */
+    Black("black"),
+    /**
      * 默认
      */
     Default("default");
 
-    Color(String type) {
+    Theme(String type) {
         this.type = type;
     }
 

@@ -1,6 +1,6 @@
 package io.github.mcchampions.DodoOpenJava.Card;
 
-import io.github.mcchampions.DodoOpenJava.Card.Enums.*;
+import io.github.mcchampions.DodoOpenJava.Card.enums.*;
 import io.github.mcchampions.DodoOpenJava.Utils.MapUtil;
 import org.json.JSONArray;
 import org.json.JSONObject;

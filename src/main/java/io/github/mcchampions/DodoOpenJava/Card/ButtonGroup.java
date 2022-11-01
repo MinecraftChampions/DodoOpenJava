@@ -1,7 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.Card;
 
-import io.github.mcchampions.DodoOpenJava.Card.Enums.ButtonAction;
-import io.github.mcchampions.DodoOpenJava.Card.Enums.Color;
+import io.github.mcchampions.DodoOpenJava.Card.enums.ButtonAction;
+import io.github.mcchampions.DodoOpenJava.Card.enums.Color;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

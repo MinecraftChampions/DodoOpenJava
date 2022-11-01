@@ -3,7 +3,7 @@ package io.github.mcchampions.DodoOpenJava.Permissions.Data;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
 import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Utils.ConfigUtil;
-import io.github.mcchampions.DodoOpenJava.Permissions.PermissionsGroup;
+import io.github.mcchampions.DodoOpenJava.Permissions.Group;
 
 import java.io.File;
 import java.io.IOException;
@@ -46,23 +46,23 @@ public class JsonData {
             }
         }
 
-        List<PermissionsGroup> groups = new ArrayList<>();
+        List<io.github.mcchampions.DodoOpenJava.Permissions.Group> groups = new ArrayList<>();
         for (int i = 0;i<getGroupFile().getJSONObject("Groups").keySet().size();i++) {
             String name = getGroupFile().getJSONObject("Groups").keySet().stream().toList().get(i);
             List<String> perms = BaseUtil.toStringList(getGroupFile().getJSONObject("Groups").getJSONObject(name).getJSONArray("perms").toList());
             Boolean isDefault = getGroupFile().getJSONObject("Groups").getJSONObject(name).getBoolean("isDefault");
-            groups.add(new PermissionsGroup(perms,isDefault,name));
+            groups.add(new Group(perms,isDefault,name));
         }
-        PermissionsGroup.addGroups(groups);
+        io.github.mcchampions.DodoOpenJava.Permissions.Group.addGroups(groups);
 
         for (int i = 0 ; i < getUserFile().getJSONObject("Users").keySet().size(); i++) {
             String DodoId = getUserFile().getJSONObject("Users").keySet().stream().toList().get(i);
             List<String> perms = BaseUtil.toStringList(getUserFile().getJSONObject("Users").getJSONObject(DodoId).getJSONArray("perms").toList());
             String group = getUserFile().getJSONObject("Groups").getJSONObject(DodoId).getString("Group");
-            PermissionsGroup Group = new PermissionsGroup();
-            for (int I = 0; I < PermissionsGroup.getGroups().size();I++) {
-                if (Objects.equals(PermissionsGroup.getGroups().get(I).getName(), group)) {
-                    Group = PermissionsGroup.getGroups().get(I);
+            io.github.mcchampions.DodoOpenJava.Permissions.Group Group = new Group();
+            for (int I = 0; I < io.github.mcchampions.DodoOpenJava.Permissions.Group.getGroups().size(); I++) {
+                if (Objects.equals(io.github.mcchampions.DodoOpenJava.Permissions.Group.getGroups().get(I).getName(), group)) {
+                    Group = io.github.mcchampions.DodoOpenJava.Permissions.Group.getGroups().get(I);
                     break;
                 }
             }

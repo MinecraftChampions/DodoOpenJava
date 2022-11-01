@@ -1,7 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.Card;
 
 import org.json.JSONObject;
-import io.github.mcchampions.DodoOpenJava.Card.Enums.Rows;
+import io.github.mcchampions.DodoOpenJava.Card.enums.Rows;
 
 /**
  * 回传表单

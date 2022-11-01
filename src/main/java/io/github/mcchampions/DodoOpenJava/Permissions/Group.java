@@ -8,8 +8,8 @@ import java.util.Objects;
  * 权限组
  * @author qscbm187531
  */
-public class PermissionsGroup {
-    public static List<PermissionsGroup> groups = new ArrayList<>();
+public class Group {
+    public static List<Group> groups = new ArrayList<>();
 
     public List<String> perms = new ArrayList<>();
 
@@ -23,7 +23,7 @@ public class PermissionsGroup {
      * @param isDefault 是否默认
      * @param name 名字
      */
-    public PermissionsGroup(List<String> perms,Boolean isDefault,String name) {
+    public Group(List<String> perms, Boolean isDefault, String name) {
         this.perms = perms;
         this.isDefault = isDefault;
         this.name = name;
@@ -34,7 +34,7 @@ public class PermissionsGroup {
      * @param perms 权限
      * @param name 名字
      */
-    public PermissionsGroup(List<String> perms,String name) {
+    public Group(List<String> perms, String name) {
         this.perms = perms;
         this.isDefault = false;
         this.name = name;
@@ -45,7 +45,7 @@ public class PermissionsGroup {
      * @param isDefault 是否默认
      * @param name 名字
      */
-    public PermissionsGroup(Boolean isDefault,String name) {
+    public Group(Boolean isDefault, String name) {
         this.perms = new ArrayList<>();
         this.isDefault = isDefault;
         this.name = name;
@@ -55,20 +55,20 @@ public class PermissionsGroup {
      * 构造函数
      * @param name 名字
      */
-    public PermissionsGroup(String name) {
+    public Group(String name) {
         this.perms = new ArrayList<>();
         this.isDefault = false;
         this.name = name;
     }
 
-    public PermissionsGroup() {
+    public Group() {
     }
 
     /**
      * 获取所有权限组
      * @return 权限组集合
      */
-    public static List<PermissionsGroup> getGroups() {
+    public static List<Group> getGroups() {
         return groups;
     }
 
@@ -77,7 +77,7 @@ public class PermissionsGroup {
      * @param group 权限组
      * @return true 是，false 不是
      */
-    public static Boolean isDefault(PermissionsGroup group) {
+    public static Boolean isDefault(Group group) {
         return group.isDefault;
     }
     
@@ -86,7 +86,7 @@ public class PermissionsGroup {
      * @param group 权限组
      * @return 名字
      */
-    public static String getName(PermissionsGroup group) {
+    public static String getName(Group group) {
         return group.name;
     }
 
@@ -95,7 +95,7 @@ public class PermissionsGroup {
      * @param group 权限组
      * @return 权限集合
      */
-    public static List<String> getPerms(PermissionsGroup group) {
+    public static List<String> getPerms(Group group) {
         return group.perms;
     }
 
@@ -104,7 +104,7 @@ public class PermissionsGroup {
      * @param group 权限组
      * @return 名字
      */
-    public static PermissionsGroup editName(String name,PermissionsGroup group) {
+    public static Group editName(String name, Group group) {
         group.name = name;
         return group;
     }
@@ -136,7 +136,7 @@ public class PermissionsGroup {
      * 增加一个权限组
      * @param group 权限组
      */
-    public static PermissionsGroup addGroup(PermissionsGroup group) {
+    public static Group addGroup(Group group) {
         groups.add(group);
         return group;
     }
@@ -145,15 +145,15 @@ public class PermissionsGroup {
      * 增加一堆权限组
      * @param groups 权限组
      */
-    public static void addGroups(List<PermissionsGroup> groups) {
-        PermissionsGroup.groups.addAll(groups);
+    public static void addGroups(List<Group> groups) {
+        Group.groups.addAll(groups);
     }
 
     /**
      * 移除一个权限组
      * @param group 权限组
      */
-    public static PermissionsGroup removeGroup(PermissionsGroup group) {
+    public static Group removeGroup(Group group) {
         groups.remove(group);
         return group;
     }
@@ -162,16 +162,16 @@ public class PermissionsGroup {
      * 增加一堆权限组
      * @param groups 权限组
      */
-    public static void removeGroups(List<PermissionsGroup> groups) {
-        PermissionsGroup.groups.removeAll(groups);
+    public static void removeGroups(List<Group> groups) {
+        Group.groups.removeAll(groups);
     }
 
     /**
      * 设置权限组
      * @param groups 权限组
      */
-    public static void setGroups(List<PermissionsGroup> groups) {
-        PermissionsGroup.groups = groups;
+    public static void setGroups(List<Group> groups) {
+        Group.groups = groups;
     }
 
     /**
@@ -219,7 +219,7 @@ public class PermissionsGroup {
      * @param perm 权限
      * @param group 权限组
      */
-    public static PermissionsGroup addPerm(String perm, PermissionsGroup group) {
+    public static Group addPerm(String perm, Group group) {
         group.perms.add(perm);
         return group;
     }
@@ -229,7 +229,7 @@ public class PermissionsGroup {
      * @param perms 权限
      * @param group 权限组
      */
-    public static PermissionsGroup addPerms(List<String> perms, PermissionsGroup group) {
+    public static Group addPerms(List<String> perms, Group group) {
         group.perms.addAll(perms);
         return group;
     }
@@ -239,7 +239,7 @@ public class PermissionsGroup {
      * @param perms 权限
      * @param group 权限组
      */
-    public static PermissionsGroup setPerms(List<String> perms, PermissionsGroup group) {
+    public static Group setPerms(List<String> perms, Group group) {
         group.perms = perms;
         return group;
     }
@@ -249,7 +249,7 @@ public class PermissionsGroup {
      * @param perms 权限
      * @param group 权限组
      */
-    public static PermissionsGroup removePerms(List<String> perms, PermissionsGroup group) {
+    public static Group removePerms(List<String> perms, Group group) {
         group.perms.removeAll(perms);
         return group;
     }
@@ -259,7 +259,7 @@ public class PermissionsGroup {
      * @param perm 权限
      * @param group 权限组
      */
-    public static PermissionsGroup removePerm(String perm, PermissionsGroup group) {
+    public static Group removePerm(String perm, Group group) {
         group.perms.remove(perm);
         return group;
     }
@@ -269,7 +269,7 @@ public class PermissionsGroup {
      * @param group 权限组
      * @return true代表成功，false代表失败
      */
-    public static Boolean modifyDefaultGroup(PermissionsGroup group) {
+    public static Boolean modifyDefaultGroup(Group group) {
         if (!groups.contains(group)) return false;
         if (isDefault(group)) return false;
         groups.get(groups.indexOf(getDefaultGroup())).isDefault = false;
@@ -281,8 +281,8 @@ public class PermissionsGroup {
      * 获取默认权限组
      * @return 权限组
      */
-    public static PermissionsGroup getDefaultGroup() {
-        PermissionsGroup group = new PermissionsGroup();
+    public static Group getDefaultGroup() {
+        Group group = new Group();
         for (int i = 0; i < groups.size();i++) {
             if (isDefault(groups.get(i))) {
                 group = groups.get(i);
@@ -297,7 +297,7 @@ public class PermissionsGroup {
      * @param group 权限组
      * @return 权限
      */
-    public static List<String> getGroupPerms(PermissionsGroup group) {
+    public static List<String> getGroupPerms(Group group) {
         return group.getGroupPerms();
     }
 
@@ -347,7 +347,7 @@ public class PermissionsGroup {
      * @param group 权限组
      * @return true代表有，false代表失败
      */
-    public static Boolean hasPerm(String perm, PermissionsGroup group) {
+    public static Boolean hasPerm(String perm, Group group) {
         return group.hasPerm(perm);
     }
 }

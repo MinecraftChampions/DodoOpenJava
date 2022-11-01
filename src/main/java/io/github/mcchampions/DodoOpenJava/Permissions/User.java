@@ -9,7 +9,7 @@ import java.util.*;
  * @author qscbm187531
  */
 public class User {
-    public static Map<String,PermissionsGroup> UserGroup = new HashMap<>();
+    public static Map<String, Group> UserGroup = new HashMap<>();
 
     public static Map<String,List<String>> UserPerms = new HashMap<>();
 
@@ -18,12 +18,12 @@ public class User {
      * @param DodoId DodoID
      * @return 权限组
      */
-    public static PermissionsGroup getUserGroup(String DodoId) {
+    public static Group getUserGroup(String DodoId) {
         List<List<Object>> list= MapUtil.ergodicMaps(UserGroup);
-        PermissionsGroup group = PermissionsGroup.getDefaultGroup();
+        Group group = Group.getDefaultGroup();
         for (List<Object> objects : list) {
             if (objects.get(0) == DodoId) {
-                group = (PermissionsGroup) objects.get(1);
+                group = (Group) objects.get(1);
             }
         }
         return group;
@@ -35,8 +35,8 @@ public class User {
      * @param group 权限组
      * @return false代表失败，true代表成功
      */
-    public static Boolean editUserGroup(String DodoId,PermissionsGroup group) {
-        if (PermissionsGroup.getGroups().contains(group)) return false;
+    public static Boolean editUserGroup(String DodoId, Group group) {
+        if (Group.getGroups().contains(group)) return false;
         List<List<Object>> list= MapUtil.ergodicMaps(UserGroup);
         boolean hasUser = false;
         for (List<Object> objects : list) {
@@ -45,7 +45,7 @@ public class User {
                 break;
             }
         }
-        if (!hasUser) UserGroup.put(DodoId,PermissionsGroup.getDefaultGroup());
+        if (!hasUser) UserGroup.put(DodoId, Group.getDefaultGroup());
         UserGroup.replace(DodoId,group);
         return true;
     }

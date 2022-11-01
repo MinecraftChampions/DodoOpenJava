@@ -1,9 +1,9 @@
 package io.github.mcchampions.DodoOpenJava.Card;
 
 import org.json.JSONObject;
-import io.github.mcchampions.DodoOpenJava.Card.Enums.Cols;
-import io.github.mcchampions.DodoOpenJava.Card.Enums.SectionType;
-import io.github.mcchampions.DodoOpenJava.Card.Enums.TextType;
+import io.github.mcchampions.DodoOpenJava.Card.enums.Cols;
+import io.github.mcchampions.DodoOpenJava.Card.enums.SectionType;
+import io.github.mcchampions.DodoOpenJava.Card.enums.TextType;
 
 import java.util.Objects;
 
@@ -149,7 +149,7 @@ public class Section {
      */
     public Boolean editParagraphContentCols(Cols col) {
         if (JsonText.isEmpty()) initText(SectionType.Paragraph);
-        int Col = col.getRow();
+        int Col = col.getCol();
         JsonText.getJSONObject("text").put("cols", Col);
         return true;
     }
