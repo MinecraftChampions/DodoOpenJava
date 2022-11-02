@@ -1,6 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.Event;
 
 import io.github.mcchampions.DodoOpenJava.Command.CommandTrigger;
+import io.github.mcchampions.DodoOpenJava.Api.Version;
 import org.apache.commons.lang3.Validate;
 import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.events.EventException;
@@ -34,8 +35,6 @@ public class EventManage {
         for (final Method method : methods) {
             final EventHandler eh = method.getAnnotation(EventHandler.class);
             if (eh == null) continue;
-            // Do not register bridge or synthetic methods to avoid event duplication
-            // Fixes SPIGOT-893
             if (method.isBridge() || method.isSynthetic()) {
                 continue;
             }
@@ -48,7 +47,6 @@ public class EventManage {
             Set<RegisteredListener> eventSet = ret.computeIfAbsent(eventClass, k -> new HashSet<>());
 
             for (Class<?> clazz = eventClass; Event.class.isAssignableFrom(clazz); clazz = clazz.getSuperclass()) {
-                // This loop checks for extending deprecated events
                 if (clazz.getAnnotation(Deprecated.class) != null) {
                     break;
                 }
@@ -58,9 +56,7 @@ public class EventManage {
                     if (!eventClass.isAssignableFrom(event.getClass())) {
                         return;
                     }
-                    // Spigot start
                     method.invoke(listener1, event);
-                    // Spigot end
                 } catch (InvocationTargetException | IllegalAccessException e) {
                     throw new RuntimeException(e);
                 }
@@ -76,14 +72,14 @@ public class EventManage {
      * @param listener 监听器
      * @param ad Authorization
      */
-    public static void registerEvents(@NotNull Listener listener,String ad) {
+    public static void registerEvents(@NotNull Listener listener,@NotNull String ad,@NotNull Version version) {
         for (Map.Entry<Class<? extends Event>, Set<RegisteredListener>> entry : createRegisteredListeners(listener).entrySet()) {
             getEventListeners(getRegistrationClass(entry.getKey())).registerAll(entry.getValue());
         }
         if (!isInit) {
             isInit = true;
             CommandTrigger.listenerConsole();
-            EventTrigger.main(ad);
+            EventTrigger.main(ad,version);
         }
     }
 
@@ -97,17 +93,18 @@ public class EventManage {
      * @param priority 要注册的事件的优先级
      * @param executor 要注册的EventExecutor=
      */
-    public static void registerEvent(@NotNull Class<? extends Event> event, @NotNull Listener listener, @NotNull EventPriority priority, @NotNull EventExecutor executor,String ad) {
+    public static void registerEvent(@NotNull Class<? extends Event> event, @NotNull Listener listener, @NotNull EventPriority priority, @NotNull EventExecutor executor,@NotNull String ad,@NotNull Version version) {
         Validate.notNull(listener, "Listener cannot be null");
         Validate.notNull(priority, "Priority cannot be null");
         Validate.notNull(executor, "Executor cannot be null");
         Validate.notNull(ad, "Authorization cannot be null");
+        Validate.notNull(version, "Version cannot be null");
 
         getEventListeners(event).register(new RegisteredListener(listener, executor, priority));
         if (!isInit) {
             isInit = true;
             CommandTrigger.listenerConsole();
-            EventTrigger.main(ad);
+            EventTrigger.main(ad,version);
         }
     }
 

@@ -1,4 +1,4 @@
-package io.github.mcchampions.DodoOpenJava.Event.events;
+package io.github.mcchampions.DodoOpenJava.Event.events.V2;
 
 import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Event.Event;
@@ -26,9 +26,9 @@ public class MemberLeaveEvent extends Event {
 
     public String eventId;
 
-    public String islandId;
+    public String islandSourceId;
 
-    public String dodoId;
+    public String dodoSourceId;
 
     public JSONObject personal;
 
@@ -62,8 +62,8 @@ public class MemberLeaveEvent extends Event {
         this.jsonString = json.toString();
         this.timestamp = json.getJSONObject("data").getInt("timestamp");
         this.eventId = json.getJSONObject("data").getString("eventId");
-        this.islandId = json.getJSONObject("data").getJSONObject("eventBody").getString("islandId");
-        this.dodoId = json.getJSONObject("data").getJSONObject("eventBody").getString("dodoId");
+        this.islandSourceId = json.getJSONObject("data").getJSONObject("eventBody").getString("islandSourceId");
+        this.dodoSourceId = json.getJSONObject("data").getJSONObject("eventBody").getString("dodoSourceId");
         this.modifyTime = json.getJSONObject("data").getJSONObject("eventBody").getString("modifyTime");
         this.leaveType = IntLeaveTypeToLeaveType(json.getJSONObject("data").getJSONObject("eventBody").getInt("leaveType"));
         this.leaveIntType = json.getJSONObject("data").getJSONObject("eventBody").getInt("leaveType");
@@ -116,16 +116,16 @@ public class MemberLeaveEvent extends Event {
      * 获取群号
      * @return 群号
      */
-    public String getIslandId() {
-        return this.islandId;
+    public String getIslandSourceId() {
+        return this.islandSourceId;
     }
 
     /**
-     * 获取DodoId
-     * @return DodoId
+     * 获取DodoSourceId
+     * @return DodoSourceId
      */
-    public String getDodoId() {
-        return this.dodoId;
+    public String getDodoSourceId() {
+        return this.dodoSourceId;
     }
 
     /**

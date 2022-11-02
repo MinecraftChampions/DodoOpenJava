@@ -43,26 +43,26 @@ public class BotApi {
      *
      * @param clientId 机器人唯一标识
      * @param token 机器人鉴权Token
-     * @param islandId 群号
+     * @param islandSourceId 群号
      * @return 返回JSON对象
      * @throws IOException 发送请求失败后抛出
      */
-    public static JSONObject setBotIslandLeave(String clientId, String token, String islandId) throws IOException {
-        return setBotIslandLeave(BaseUtil.Authorization(clientId, token), islandId);
+    public static JSONObject setBotIslandLeave(String clientId, String token, String islandSourceId) throws IOException {
+        return setBotIslandLeave(BaseUtil.Authorization(clientId, token), islandSourceId);
     }
 
     /**
      * 机器人退群
      *
      * @param authorization authorization
-     * @param islandId 群号
+     * @param islandSourceId 群号
      * @return 返回JSON对象
      * @throws IOException 发送请求失败后抛出
      */
-    public static JSONObject setBotIslandLeave(String authorization, String islandId) throws IOException {
+    public static JSONObject setBotIslandLeave(String authorization, String islandSourceId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/bot/island/leave";
         param = "{" +
-                "    \"islandId\": \"" + islandId + "\"" +
+                "    \"islandSourceId\": \"" + islandSourceId + "\"" +
                 "}";
         return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
@@ -89,14 +89,14 @@ public class BotApi {
      * 添加成员到机器人邀请列表
      *
      * @param authorization authorization
-     * @param dodoId dodoId
+     * @param dodoSourceId dodoSourceId
      * @return 返回JSON对象
      * @throws IOException 发送请求失败后抛出
      */
-    public static JSONObject addBotInvite(String authorization,String dodoId) throws IOException {
+    public static JSONObject addBotInvite(String authorization,String dodoSourceId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/bot/invite/add";
         param = "{" +
-                "    \"dodoId\": \"" + dodoId + "\"" +
+                "    \"dodoSourceId\": \"" + dodoSourceId + "\"" +
                 "}";
         return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
@@ -105,14 +105,14 @@ public class BotApi {
      * 移除成员出机器人邀请列表
      *
      * @param authorization authorization
-     * @param dodoId dodoId
+     * @param dodoSourceId dodoSourceId
      * @return 返回JSON对象
      * @throws IOException 发送请求失败后抛出
      */
-    public static JSONObject removeBotInvite(String authorization,String dodoId) throws IOException {
+    public static JSONObject removeBotInvite(String authorization,String dodoSourceId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/bot/invite/remove";
         param = "{" +
-                "    \"dodoId\": \"" + dodoId + "\"" +
+                "    \"dodoSourceId\": \"" + dodoSourceId + "\"" +
                 "}";
         return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }

@@ -1,4 +1,4 @@
-package io.github.mcchampions.DodoOpenJava.Event.events;
+package io.github.mcchampions.DodoOpenJava.Event.events.V2;
 
 import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Event.Event;
@@ -7,10 +7,12 @@ import io.github.mcchampions.DodoOpenJava.Event.HandlerList;
 import javax.annotation.Nonnull;
 
 /**
- * 表情反应事件
+ * 私信事件（勿用）
  * @author qscbm187531
+ * @deprecated 因为Dodo开放平台还没完善这类
  */
-public class MessageReactionEvent extends Event {
+@Deprecated
+public class PersonalMessageEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
 
     @Override
@@ -26,15 +28,13 @@ public class MessageReactionEvent extends Event {
 
     public String eventId;
 
-    public String islandId;
-
-    public String channelId;
-
-    public String dodoId;
+    public String dodoSourceId;
 
     public String messageId;
 
-    public String reactionType;
+    public Integer messageIntType;
+
+    public String messageType;
 
     public JSONObject personal;
 
@@ -46,40 +46,26 @@ public class MessageReactionEvent extends Event {
 
     public String senderSex;
 
-    public JSONObject member;
-
-    public String memberNickName;
-
-    public String memberJoinTime;
-
-    public JSONObject reactionEmoji;
-
-    public String reactionEmojiId;
+    public JSONObject messageBody;
 
     public JSONObject jsonObject;
 
     public String jsonString;
 
-    public MessageReactionEvent(JSONObject json) {
+    public PersonalMessageEvent(JSONObject json) {
         this.jsonObject = json;
         this.jsonString = json.toString();
         this.timestamp = json.getJSONObject("data").getInt("timestamp");
         this.eventId = json.getJSONObject("data").getString("eventId");
-        this.islandId = json.getJSONObject("data").getJSONObject("eventBody").getString("islandId");
-        this.channelId = json.getJSONObject("data").getJSONObject("eventBody").getString("channelId");
-        this.dodoId = json.getJSONObject("data").getJSONObject("eventBody").getString("dodoId");
+        this.dodoSourceId = json.getJSONObject("data").getJSONObject("eventBody").getString("dodoSourceId");
         this.messageId = json.getJSONObject("data").getJSONObject("eventBody").getString("messageId");
         this.personal = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal");
         this.senderNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("nickName");
         this.senderAvatarUrl = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("avatarUrl");
         this.senderSex = IntSexToSex(json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex"));
-        this.senderIntSex = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex");
-        this.member = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member");
-        this.memberJoinTime = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("joinTime");
-        this.memberNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("nickName");
-        this.reactionEmoji = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reactionEmoji");
-        this.reactionEmojiId = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reactionEmoji").getString("id");
-        this.reactionType = IntReactionTypeToReactionType(json.getJSONObject("data").getJSONObject("eventBody").getInt("reactionType"));
+        this.senderIntSex = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex");this.messageType = IntMessageTypeToMessageType(json.getJSONObject("data").getJSONObject("eventBody").getInt("messageType"));
+        this.messageIntType = json.getJSONObject("data").getJSONObject("eventBody").getInt("messageType");
+        this.messageBody = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("messageBody");
     }
 
     /**
@@ -100,14 +86,11 @@ public class MessageReactionEvent extends Event {
      * @param type 消息类型
      * @return 消息类型
      */
-    public String IntReactionTypeToReactionType(Integer type) {
+    public String IntMessageTypeToMessageType(Integer type) {
         return switch (type) {
             case 1 -> "文字消息";
             case 2 -> "图片消息";
             case 3 -> "视频消息";
-            case 4 -> "分享消息";
-            case 5 -> "文件消息";
-            case 6 -> "卡片消息";
             default -> "未知消息";
         };
     }
@@ -129,27 +112,11 @@ public class MessageReactionEvent extends Event {
     }
 
     /**
-     * 获取群号
-     * @return 群号
+     * 获取DodoSourceId
+     * @return DodoSourceId
      */
-    public String getIslandId() {
-        return this.islandId;
-    }
-
-    /**
-     * 获取频道ID
-     * @return 频道ID
-     */
-    public String getChannelId() {
-        return this.channelId;
-    }
-
-    /**
-     * 获取DodoId
-     * @return DodoId
-     */
-    public String getDodoId() {
-        return this.dodoId;
+    public String getDodoSourceId() {
+        return this.dodoSourceId;
     }
 
     /**
@@ -159,6 +126,23 @@ public class MessageReactionEvent extends Event {
     public String getMessageId() {
         return this.messageId;
     }
+
+    /**
+     * 获取消息类别（Int类型）
+     * @return 消息类别
+     */
+    public Integer getMessageIntType() {
+        return this.messageIntType;
+    }
+
+    /**
+     * 获取消息类别（String类型）
+     * @return 消息类别
+     */
+    public String getMessageType() {
+        return this.messageType;
+    }
+
 
     /**
      * 获取成员Object
@@ -201,44 +185,11 @@ public class MessageReactionEvent extends Event {
         return this.senderSex;
     }
 
-
     /**
-     * 获取成员Object
-     * @return 成员 JsonObject
+     * 获取消息 Object
+     * @return 对象
      */
-    public JSONObject getMember() {
-        return this.member;
-    }
-
-    /**
-     * 获取成员显示名
-     * @return 名字
-     */
-    public String getMemberNickName() {
-        return this.memberNickName;
-    }
-
-    /**
-     * 获取成员加入时间
-     * @return 加入时间
-     */
-    public String getMemberJoinTime() {
-        return this.memberJoinTime;
-    }
-
-    /**
-     * 获取表情 Object
-     * @return 表情的 JSONObject
-     */
-    public JSONObject getReactionEmoji() {
-        return this.reactionEmoji;
-    }
-
-    /**
-     * 获取表情的EmojiId
-     * @return ID
-     */
-    public String getReactionEmojiId() {
-        return this.reactionEmojiId;
+    public JSONObject getMessageBody() {
+        return this.messageBody;
     }
 }

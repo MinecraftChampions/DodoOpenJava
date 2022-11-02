@@ -471,12 +471,12 @@ public class ChannelTextApi {
      * @param token 机器人鉴权Token
      * @param messageId 消息ID
      * @param id 表情ID
-     * @param dodoId 用户DodoID
+     * @param dodoSourceId 用户dodoSourceId
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject removeChannelMessageReaction(String clientId, String token, String messageId, String id, String dodoId) throws IOException {
-        return removeChannelMessageReaction(BaseUtil.Authorization(clientId,token), messageId, id, dodoId);
+    public static JSONObject removeChannelMessageReaction(String clientId, String token, String messageId, String id, String dodoSourceId) throws IOException {
+        return removeChannelMessageReaction(BaseUtil.Authorization(clientId,token), messageId, id, dodoSourceId);
     }
 
     /**
@@ -485,11 +485,11 @@ public class ChannelTextApi {
      * @param Authorization Authorization
      * @param messageId 消息ID
      * @param id 表情ID
-     * @param dodoId 用户DodoID
+     * @param dodoSourceId 用户dodoSourceId
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject removeChannelMessageReaction(String Authorization, String messageId, String id, String dodoId) throws IOException {
+    public static JSONObject removeChannelMessageReaction(String Authorization, String messageId, String id, String dodoSourceId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/message/reaction/remove";
         parm = "{" +
                 "    \"messageId\": \"" + messageId + "\"," +
@@ -497,7 +497,7 @@ public class ChannelTextApi {
                 "        \"type\": 1," +
                 "        \"id\": \"" + id + "\"," +
                 "    }," +
-                "    \"dodoId\": \"" + dodoId + "\"" +
+                "    \"dodoSourceId\": \"" + dodoSourceId + "\"" +
                 "}";
         return new JSONObject(NetUtil.sendRequest(parm, url, Authorization));
     }

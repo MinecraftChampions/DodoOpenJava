@@ -2,7 +2,7 @@ package io.github.mcchampions.DodoOpenJava.Command;
 
 import io.github.mcchampions.DodoOpenJava.Event.EventHandler;
 import io.github.mcchampions.DodoOpenJava.Event.Listener;
-import io.github.mcchampions.DodoOpenJava.Event.events.MessageEvent;
+import io.github.mcchampions.DodoOpenJava.Event.events.V2.MessageEvent;
 import org.json.JSONObject;
 
 import java.util.List;
@@ -20,12 +20,11 @@ public class CommandTrigger implements Listener {
      */
     @EventHandler
     public void event(MessageEvent e) {
-        JSONObject jsontext = new JSONObject(e.jsonString);
-        if (!Objects.equals(jsontext.getJSONObject("data").getJSONObject("eventBody").getInt("messageType"), 1)) return;
-        if (jsontext.getJSONObject("data").getJSONObject("eventBody").getJSONObject("messageBody").getString("content").indexOf("/") != 0) return;
-        String command = jsontext.getJSONObject("data").getJSONObject("eventBody").getJSONObject("messageBody").getString("content").replaceFirst("/","");
+        if (!Objects.equals(e.getMessageIntType(), 1)) return;
+        if (e.getMessageBody().getString("content").indexOf("/") != 0) return;
+        String command = e.getMessageBody().getString("content").replaceFirst("/","");
         CommandSender sender = new CommandSender();
-        sender.InitSender(jsontext);
+        sender.InitSender(new JSONObject(e.jsonString));
         List<String> Command = new java.util.ArrayList<>(List.of(command.split(" ")));
         String MainCommand = Command.get(0);
         Command.remove(0);

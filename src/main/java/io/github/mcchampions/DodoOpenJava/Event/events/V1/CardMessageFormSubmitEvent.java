@@ -1,5 +1,6 @@
-package io.github.mcchampions.DodoOpenJava.Event.events;
+package io.github.mcchampions.DodoOpenJava.Event.events.V1;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Event.Event;
 import io.github.mcchampions.DodoOpenJava.Event.HandlerList;
@@ -7,10 +8,10 @@ import io.github.mcchampions.DodoOpenJava.Event.HandlerList;
 import javax.annotation.Nonnull;
 
 /**
- * 卡片消息按钮事件
+ * 卡片消息表单回传事件
  * @author qscbm187531
  */
-public class CardMessageButtonClickEvent extends Event {
+public class CardMessageFormSubmitEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
 
     @Override
@@ -56,9 +57,9 @@ public class CardMessageButtonClickEvent extends Event {
 
     public String interactCustomId;
 
-    public String value;
+    public JSONArray form;
 
-    public CardMessageButtonClickEvent(JSONObject json) {
+    public CardMessageFormSubmitEvent(JSONObject json) {
         this.jsonObject = json;
         this.jsonString = json.toString();
         this.timestamp = json.getJSONObject("data").getInt("timestamp");
@@ -75,6 +76,7 @@ public class CardMessageButtonClickEvent extends Event {
         this.member = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member");
         this.memberJoinTime = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("joinTime");
         this.memberNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("nickName");
+        this.form = json.getJSONObject("data").getJSONObject("eventBody").getJSONArray("formData");
         this.interactCustomId = json.getJSONObject("data").getJSONObject("eventBody").getString("interactCustomId");
     }
 
@@ -223,11 +225,11 @@ public class CardMessageButtonClickEvent extends Event {
     }
 
     /**
-     * 获取返回的值
-     * @return 值
+     * 获取返回的表单
+     * @return 表单
      */
-    public String getValue() {
-        return this.value;
+    public JSONArray getForm() {
+        return this.form;
     }
 
     /**

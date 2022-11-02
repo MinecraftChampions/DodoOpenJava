@@ -12,7 +12,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="更新" />
+    <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="更新">
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Api/Version.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/V1/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/V2/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Api/V2/BotApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Api/V2/BotApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Api/V2/ChannelApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Api/V2/ChannelApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Api/V2/ChannelTextApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Api/V2/ChannelTextApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Api/V2/ChannelVoiceApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Api/V2/ChannelVoiceApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Api/V2/IslandApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Api/V2/IslandApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Api/V2/MemberApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Api/V2/MemberApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Api/V2/NTFApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Api/V2/NTFApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Api/V2/PersonalApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Api/V2/PersonalApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Api/V2/RoleApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Api/V2/RoleApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Api/V2/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Api/V2/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Command/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Command/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Command/CommandSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Command/CommandSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Command/CommandTrigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Command/CommandTrigger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/EventManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/EventManage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/EventTrigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/EventTrigger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/CardMessageButtonClickEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/V1/CardMessageButtonClickEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/CardMessageFormSubmitEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/V1/CardMessageFormSubmitEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/CardMessageListSubmitEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/V1/CardMessageListSubmitEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/ChannelArticleCommentEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/V1/ChannelArticleCommentEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/ChannelArticleEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/V1/ChannelArticleEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/ChannelVoiceMemberJoinEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/V1/ChannelVoiceMemberJoinEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/ChannelVoiceMemberLeaveEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/V1/ChannelVoiceMemberLeaveEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/MemberJoinEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/V1/MemberJoinEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/MemberLeaveEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/V1/MemberLeaveEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/MessageEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/V1/MessageEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/MessageReactionEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/V1/MessageReactionEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/PersonalMessageEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/V1/PersonalMessageEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Event/events/package-info.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,6 +61,7 @@
       <list>
         <option value="Empty Mind Map" />
         <option value="Class" />
+        <option value="Enum" />
         <option value="package-info" />
       </list>
     </option>
@@ -274,7 +310,8 @@
       <workItem from="1667026361403" duration="571000" />
       <workItem from="1667125906814" duration="570000" />
       <workItem from="1667213345089" duration="339000" />
-      <workItem from="1667299306329" duration="4026000" />
+      <workItem from="1667299306329" duration="4612000" />
+      <workItem from="1667393271156" duration="3208000" />
     </task>
     <servers />
   </component>

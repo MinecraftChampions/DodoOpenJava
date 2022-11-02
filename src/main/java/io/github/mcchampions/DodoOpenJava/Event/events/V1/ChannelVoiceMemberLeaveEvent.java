@@ -1,4 +1,4 @@
-package io.github.mcchampions.DodoOpenJava.Event.events;
+package io.github.mcchampions.DodoOpenJava.Event.events.V1;
 
 import io.github.mcchampions.DodoOpenJava.Event.Event;
 import io.github.mcchampions.DodoOpenJava.Event.HandlerList;

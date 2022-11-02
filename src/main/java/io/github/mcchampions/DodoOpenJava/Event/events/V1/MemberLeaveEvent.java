@@ -1,16 +1,16 @@
-package io.github.mcchampions.DodoOpenJava.Event.events;
+package io.github.mcchampions.DodoOpenJava.Event.events.V1;
 
+import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Event.Event;
 import io.github.mcchampions.DodoOpenJava.Event.HandlerList;
-import org.json.JSONObject;
 
 import javax.annotation.Nonnull;
 
 /**
- * 成员加入语音频道事件
+ * 成员离开事件
  * @author qscbm187531
  */
-public class ChannelVoiceMemberJoinEvent extends Event {
+public class MemberLeaveEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
 
     @Override
@@ -30,14 +30,6 @@ public class ChannelVoiceMemberJoinEvent extends Event {
 
     public String dodoId;
 
-    public String channelId;
-
-    public String modifyTime;
-
-    public JSONObject jsonObject;
-
-    public String jsonString;
-
     public JSONObject personal;
 
     public String userNickName;
@@ -48,29 +40,34 @@ public class ChannelVoiceMemberJoinEvent extends Event {
 
     public String userSex;
 
-    public JSONObject member;
+    public String modifyTime;
 
-    public String memberNickName;
+    public JSONObject jsonObject;
 
-    public String memberJoinTime;
+    public String jsonString;
 
-    public ChannelVoiceMemberJoinEvent(JSONObject json) {
-        this.jsonObject = json;
-        this.channelId = json.getJSONObject("data").getJSONObject("eventBody").getString("channelId");
-        this.jsonString = json.toString();
-        this.timestamp = json.getJSONObject("data").getInt("timestamp");
-        this.eventId = json.getJSONObject("data").getString("eventId");
-        this.islandId = json.getJSONObject("data").getJSONObject("eventBody").getString("islandId");
-        this.dodoId = json.getJSONObject("data").getJSONObject("eventBody").getString("dodoId");
-        this.member = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member");
-        this.memberJoinTime = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("joinTime");
-        this.memberNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("nickName");
+    public String leaveType;
+
+    public Integer leaveIntType;
+
+    public String operateDoDoId;
+
+    public MemberLeaveEvent(JSONObject json) {
         this.personal = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal");
         this.userNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("nickName");
         this.userAvatarUrl = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("avatarUrl");
         this.userSex = IntSexToSex(json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex"));
         this.userIntSex = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex");
+        this.jsonObject = json;
+        this.jsonString = json.toString();
+        this.timestamp = json.getJSONObject("data").getInt("timestamp");
+        this.eventId = json.getJSONObject("data").getString("eventId");
+        this.islandId = json.getJSONObject("data").getJSONObject("eventBody").getString("islandId");
+        this.dodoId = json.getJSONObject("data").getJSONObject("eventBody").getString("dodoId");
         this.modifyTime = json.getJSONObject("data").getJSONObject("eventBody").getString("modifyTime");
+        this.leaveType = IntLeaveTypeToLeaveType(json.getJSONObject("data").getJSONObject("eventBody").getInt("leaveType"));
+        this.leaveIntType = json.getJSONObject("data").getJSONObject("eventBody").getInt("leaveType");
+        this.operateDoDoId = json.getJSONObject("data").getJSONObject("eventBody").getString("operateDoDoId");
     }
 
     /**
@@ -87,8 +84,21 @@ public class ChannelVoiceMemberJoinEvent extends Event {
     }
 
     /**
+     * 转换 为Int数据类型的 退出类型关键字 为 String 类型
+     * @param Type 类型
+     * @return 类型
+     */
+    public String IntLeaveTypeToLeaveType(Integer Type) {
+        return switch (Type) {
+            case 1 -> "主动";
+            case 2 -> "被踢";
+            default -> "未知";
+        };
+    }
+
+    /**
      * 获取时间戳
-     * @return 时间戳
+     * @return 返回时间戳
      */
     public Integer getTimestamp() {
         return this.timestamp;
@@ -111,14 +121,6 @@ public class ChannelVoiceMemberJoinEvent extends Event {
     }
 
     /**
-     * 获取频道ID
-     * @return 频道ID
-     */
-    public String getChannelId() {
-        return this.channelId;
-    }
-
-    /**
      * 获取DodoId
      * @return DodoId
      */
@@ -126,6 +128,29 @@ public class ChannelVoiceMemberJoinEvent extends Event {
         return this.dodoId;
     }
 
+    /**
+     * 获取变动时间
+     * @return 变动时间
+     */
+    public String getModifyTime() {
+        return this.modifyTime;
+    }
+
+    /**
+     * 获取JSONObject
+     * @return JSONObject
+     */
+    public JSONObject getJsonObject() {
+        return this.jsonObject;
+    }
+
+    /**
+     * 获取JsonString
+     * @return String
+     */
+    public String getJsonString() {
+        return this.jsonString;
+    }
 
     /**
      * 获取成员Object
@@ -168,42 +193,27 @@ public class ChannelVoiceMemberJoinEvent extends Event {
         return this.userSex;
     }
 
-
     /**
-     * 获取成员Object
-     * @return 成员 JsonObject
+     * 获取离开类型（String）
+     * @return 离开类型
      */
-    public JSONObject getMember() {
-        return this.member;
+    public String getLeaveType() {
+        return this.leaveType;
     }
 
     /**
-     * 获取成员显示名
-     * @return 名字
+     * 获取离开类型（Int）
+     * @return 离开类型
      */
-    public String getMemberNickName() {
-        return this.memberNickName;
+    public Integer getLeaveIntType() {
+        return this.leaveIntType;
     }
 
     /**
-     * 获取成员加入时间
-     * @return 加入时间
+     * 获取操作者Dodo号
+     * @return Dodo号
      */
-    public String getMemberJoinTime() {
-        return this.memberJoinTime;
-    }
-
-    /**
-     * 获取卡片消息JSON字符串
-     */
-    public String getJsonString() {
-        return this.jsonString;
-    }
-
-    /**
-     * 获取卡片消息JSON对象
-     */
-    public JSONObject getJsonObject() {
-        return this.jsonObject;
+    public String getOperateDoDoId() {
+        return this.operateDoDoId;
     }
 }

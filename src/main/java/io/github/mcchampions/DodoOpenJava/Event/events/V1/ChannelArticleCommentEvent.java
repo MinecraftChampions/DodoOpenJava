@@ -1,4 +1,4 @@
-package io.github.mcchampions.DodoOpenJava.Event.events;
+package io.github.mcchampions.DodoOpenJava.Event.events.V1;
 
 import io.github.mcchampions.DodoOpenJava.Event.Event;
 import io.github.mcchampions.DodoOpenJava.Event.HandlerList;
@@ -9,10 +9,10 @@ import javax.annotation.Nonnull;
 import java.util.List;
 
 /**
- * 帖子发布事件
+ * 帖子评论回复事件
  * @author qscbm187531
  */
-public class ChannelArticleEvent extends Event {
+public class ChannelArticleCommentEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
 
     @Override
@@ -56,15 +56,18 @@ public class ChannelArticleEvent extends Event {
 
     public String articleId;
 
-    public String title;
-
     public String content;
 
     public List<String> imageList;
 
-    public ChannelArticleEvent(JSONObject json) {
+    public String commentId;
+
+    public String replyId;
+
+    public ChannelArticleCommentEvent(JSONObject json) {
+        this.replyId = json.getJSONObject("data").getJSONObject("eventBody").getString("replyId");
+        this.commentId = json.getJSONObject("data").getJSONObject("eventBody").getString("commentId");
         this.articleId = json.getJSONObject("data").getJSONObject("eventBody").getString("articleId");
-        this.title = json.getJSONObject("data").getJSONObject("eventBody").getString("title");
         this.content = json.getJSONObject("data").getJSONObject("eventBody").getString("content");
         this.imageList = BaseUtil.toStringList(json.getJSONObject("data").getJSONObject("eventBody").getJSONArray("content").toList());
         this.jsonObject = json;
@@ -219,14 +222,6 @@ public class ChannelArticleEvent extends Event {
     }
 
     /**
-     * 获取标题
-     * @return 标题
-     */
-    public String getTitle() {
-        return this.title;
-    }
-
-    /**
      * 获取内容
      * @return 内容
      */
@@ -243,7 +238,6 @@ public class ChannelArticleEvent extends Event {
         return this.imageList;
     }
 
-
     /**
      * 获取帖子ID
      * @return ID
@@ -251,5 +245,20 @@ public class ChannelArticleEvent extends Event {
     public String getArticleId() {
         return this.articleId;
     }
-}
 
+    /**
+     * 获取评论iD
+     * @return ID
+     */
+    public String getCommentId() {
+        return this.commentId;
+    }
+
+    /**
+     * 帖子评论的回复ID，为空时：为评论事件，不为空时：为评论回复事件，可以自己做个判断
+     * @return ID
+     */
+    public String getReplyId() {
+        return this.replyId;
+    }
+}

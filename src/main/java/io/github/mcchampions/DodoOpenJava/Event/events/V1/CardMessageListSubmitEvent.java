@@ -1,4 +1,4 @@
-package io.github.mcchampions.DodoOpenJava.Event.events;
+package io.github.mcchampions.DodoOpenJava.Event.events.V1;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -8,10 +8,10 @@ import io.github.mcchampions.DodoOpenJava.Event.HandlerList;
 import javax.annotation.Nonnull;
 
 /**
- * 卡片消息表单回传事件
+ * 卡片消息列表回传事件
  * @author qscbm187531
  */
-public class CardMessageFormSubmitEvent extends Event {
+public class CardMessageListSubmitEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
 
     @Override
@@ -57,9 +57,9 @@ public class CardMessageFormSubmitEvent extends Event {
 
     public String interactCustomId;
 
-    public JSONArray form;
+    public JSONArray list;
 
-    public CardMessageFormSubmitEvent(JSONObject json) {
+    public CardMessageListSubmitEvent(JSONObject json) {
         this.jsonObject = json;
         this.jsonString = json.toString();
         this.timestamp = json.getJSONObject("data").getInt("timestamp");
@@ -76,7 +76,7 @@ public class CardMessageFormSubmitEvent extends Event {
         this.member = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member");
         this.memberJoinTime = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("joinTime");
         this.memberNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("nickName");
-        this.form = json.getJSONObject("data").getJSONObject("eventBody").getJSONArray("formData");
+        this.list = json.getJSONObject("data").getJSONObject("eventBody").getJSONArray("listData");
         this.interactCustomId = json.getJSONObject("data").getJSONObject("eventBody").getString("interactCustomId");
     }
 
@@ -225,11 +225,11 @@ public class CardMessageFormSubmitEvent extends Event {
     }
 
     /**
-     * 获取返回的表单
+     * 获取返回的数据列表
      * @return 表单
      */
-    public JSONArray getForm() {
-        return this.form;
+    public JSONArray getList() {
+        return this.list;
     }
 
     /**
