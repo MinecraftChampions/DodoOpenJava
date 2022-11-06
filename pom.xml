@@ -6,7 +6,7 @@
 
     <groupId>io.github.mcchampions.DodoOpenJava</groupId>
     <artifactId>DodoOpenJava</artifactId>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
 
     <properties>
         <java.version>16</java.version>
@@ -61,10 +61,13 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.0.1</version>
-                <configuration>
+                <configuration><!-- 解决控制台乱码 -->
+                    <charset>GBK</charset>
+                    <encoding>GBK</encoding>
+                    <docencoding>GBK</docencoding>
                     <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
                     <additionalJOptions>
-                        <additionalJOption>-Dfile.encoding=GBK</additionalJOption>
+                        <additionalJOption>-Xdoclint:none</additionalJOption>
                     </additionalJOptions>
                 </configuration>
                 <executions>

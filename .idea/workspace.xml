@@ -13,6 +13,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="更新">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
@@ -289,7 +290,7 @@
       <workItem from="1667621821833" duration="739000" />
       <workItem from="1667651481586" duration="553000" />
       <workItem from="1667653367690" duration="256000" />
-      <workItem from="1667709801764" duration="5878000" />
+      <workItem from="1667709801764" duration="7187000" />
     </task>
     <servers />
   </component>
