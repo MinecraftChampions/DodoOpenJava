@@ -64,7 +64,7 @@
                 <configuration>
                     <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
                     <additionalJOptions>
-                        <additionalJOption>-Xdoclint:none</additionalJOption>
+                        <additionalJOption>-Dfile.encoding=GBK</additionalJOption>
                     </additionalJOptions>
                 </configuration>
                 <executions>
