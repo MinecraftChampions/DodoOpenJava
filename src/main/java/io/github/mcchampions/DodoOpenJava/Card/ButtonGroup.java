@@ -8,14 +8,14 @@ import org.json.JSONObject;
 import java.util.Objects;
 
 /**
- * æŒ‰é’®ç»„è¿™ä¸ªå¯¹è±¡
+ * °´Å¥×éÕâ¸ö¶ÔÏó
  * @author qscbm187531
  */
 public class ButtonGroup {
     JSONObject jsonButton = new JSONObject();
 
     /**
-     * æ˜¯å¦ä¸å­˜åœ¨
+     * ÊÇ·ñ²»´æÔÚ
      * @return true/false
      */
     public Boolean isEmpty() {
@@ -23,7 +23,7 @@ public class ButtonGroup {
     }
 
     /**
-     * è½¬æ¢ä¸ºJSONå¯¹è±¡
+     * ×ª»»ÎªJSON¶ÔÏó
      * @return true
      */
     public JSONObject toJsonObject() {
@@ -31,12 +31,12 @@ public class ButtonGroup {
     }
 
     /**
-     * å¢åŠ äº¤äº’æŒ‰é’®ç»„ä»¶
-     * @param buttonColor æŒ‰é’®é¢œè‰²
-     * @param buttonName æŒ‰é’®åç§°
-     * @param interactCustomId è‡ªå®šä¹‰æŒ‰é’®ID
-     * @param action æŒ‰é’®ç‚¹å‡»åŠ¨ä½œç±»å‹
-     * @param object æŒ‰é’®ç‚¹å‡»åŠ¨ä½œçš„å€¼ï¼Œä¸æ˜¯è¡¨å•å°±æ˜¯Stringç±»å‹ï¼Œæ˜¯è¡¨å•å°±ä¼ å…¥Form
+     * Ôö¼Ó½»»¥°´Å¥×é¼ş
+     * @param buttonColor °´Å¥ÑÕÉ«
+     * @param buttonName °´Å¥Ãû³Æ
+     * @param interactCustomId ×Ô¶¨Òå°´Å¥ID
+     * @param action °´Å¥µã»÷¶¯×÷ÀàĞÍ
+     * @param object °´Å¥µã»÷¶¯×÷µÄÖµ£¬²»ÊÇ±íµ¥¾ÍÊÇStringÀàĞÍ£¬ÊÇ±íµ¥¾Í´«ÈëForm
      * @return true/false
      */
     public Boolean addButton(Color buttonColor, String buttonName, String interactCustomId, ButtonAction action, Object object) {
@@ -83,11 +83,11 @@ public class ButtonGroup {
     }
 
     /**
-     * å¢åŠ äº¤äº’æŒ‰é’®ç»„ä»¶
-     * @param ButtonColor æŒ‰é’®é¢œè‰²
-     * @param ButtonName æŒ‰é’®åç§°
-     * @param action æŒ‰é’®ç‚¹å‡»åŠ¨ä½œç±»å‹
-     * @param object æŒ‰é’®ç‚¹å‡»åŠ¨ä½œçš„å€¼ï¼Œä¸æ˜¯è¡¨å•å°±æ˜¯Stringç±»å‹ï¼Œæ˜¯è¡¨å•å°±ä¼ å…¥Form
+     * Ôö¼Ó½»»¥°´Å¥×é¼ş
+     * @param ButtonColor °´Å¥ÑÕÉ«
+     * @param ButtonName °´Å¥Ãû³Æ
+     * @param action °´Å¥µã»÷¶¯×÷ÀàĞÍ
+     * @param object °´Å¥µã»÷¶¯×÷µÄÖµ£¬²»ÊÇ±íµ¥¾ÍÊÇStringÀàĞÍ£¬ÊÇ±íµ¥¾Í´«ÈëForm
      * @return true/false
      */
     public Boolean addButton(Color ButtonColor, String ButtonName, ButtonAction action,Object object) {
@@ -132,7 +132,7 @@ public class ButtonGroup {
     }
 
     /**
-     * åˆå§‹åŒ–æŒ‰é’®ç»„
+     * ³õÊ¼»¯°´Å¥×é
      */
     public void initButtonGroup() {
         jsonButton.put("type","button-group");
@@ -140,8 +140,8 @@ public class ButtonGroup {
     }
 
     /**
-     * è½¬æ¢ä¸ºStringï¼ˆé‡å†™äº†Objectçš„toStringæ–¹æ³•ï¼‰
-     * @return å­—ç¬¦ä¸²
+     * ×ª»»ÎªString£¨ÖØĞ´ÁËObjectµÄtoString·½·¨£©
+     * @return ×Ö·û´®
      */
     public String toString() {
         return jsonButton.toString();

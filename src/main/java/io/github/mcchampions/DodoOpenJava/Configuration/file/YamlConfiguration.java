@@ -16,7 +16,7 @@ import java.io.Reader;
 import java.util.Map;
 
 /**
- * å°†æ‰€æœ‰æ–‡ä»¶ä¿å­˜åœ¨Yamlä¸­çš„é…ç½®å®ç°ã€‚è¯·æ³¨æ„ï¼Œæ­¤å®ç°ä¸åŒæ­¥ã€‚
+ * ½«ËùÓĞÎÄ¼ş±£´æÔÚYamlÖĞµÄÅäÖÃÊµÏÖ¡£Çë×¢Òâ£¬´ËÊµÏÖ²»Í¬²½¡£
  */
 public class YamlConfiguration extends FileConfiguration {
     protected static final String COMMENT_PREFIX = "# ";
@@ -154,20 +154,20 @@ public class YamlConfiguration extends FileConfiguration {
     }
 
     /**
-     * ä»ç»™å®šæ–‡ä»¶åŠ è½½ï¼Œåˆ›å»ºæ–°çš„YamlConfigurationã€‚
+     * ´Ó¸ø¶¨ÎÄ¼ş¼ÓÔØ£¬´´½¨ĞÂµÄYamlConfiguration¡£
      *
-     * åŠ è½½é…ç½®æ—¶çš„ä»»ä½•é”™è¯¯éƒ½å°†è¢«è®°å½•ï¼Œç„¶åè¢«å¿½ç•¥ã€‚å¦‚æœæŒ‡å®šçš„è¾“å…¥ä¸æ˜¯æœ‰æ•ˆçš„é…ç½®ï¼Œå°†è¿”å›ç©ºç™½é…ç½®ã€‚
+     * ¼ÓÔØÅäÖÃÊ±µÄÈÎºÎ´íÎó¶¼½«±»¼ÇÂ¼£¬È»ºó±»ºöÂÔ¡£Èç¹ûÖ¸¶¨µÄÊäÈë²»ÊÇÓĞĞ§µÄÅäÖÃ£¬½«·µ»Ø¿Õ°×ÅäÖÃ¡£
      *
      *
      *
-     * æ‰€ä½¿ç”¨çš„ç¼–ç å¯èƒ½éµå¾ªç³»ç»Ÿç›¸å…³é»˜è®¤å€¼ã€‚
+     * ËùÊ¹ÓÃµÄ±àÂë¿ÉÄÜ×ñÑ­ÏµÍ³Ïà¹ØÄ¬ÈÏÖµ¡£
      *
-     * @param file æ–‡ä»¶
-     * @return é…ç½®
-     * @throws IllegalArgumentException æ–‡ä»¶ä¸ºnullæ—¶æŠ›å‡º
+     * @param file ÎÄ¼ş
+     * @return ÅäÖÃ
+     * @throws IllegalArgumentException ÎÄ¼şÎªnullÊ±Å×³ö
      */
     public static YamlConfiguration loadConfiguration(File file) {
-        Validate.notNull(file, "æ–‡ä»¶ä¸èƒ½ä¸ºç©º");
+        Validate.notNull(file, "ÎÄ¼ş²»ÄÜÎª¿Õ");
 
         YamlConfiguration config = new YamlConfiguration();
 
@@ -181,7 +181,7 @@ public class YamlConfiguration extends FileConfiguration {
 
     @Deprecated
     public static YamlConfiguration loadConfiguration(InputStream stream) {
-        Validate.notNull(stream, "Streamä¸èƒ½ä¸ºç©º");
+        Validate.notNull(stream, "Stream²»ÄÜÎª¿Õ");
 
         YamlConfiguration config = new YamlConfiguration();
 
@@ -195,16 +195,16 @@ public class YamlConfiguration extends FileConfiguration {
 
 
     /**
-     * ä»ç»™å®š Reader åŠ è½½ï¼Œåˆ›å»ºæ–°çš„YamlConfigurationã€‚
+     * ´Ó¸ø¶¨ Reader ¼ÓÔØ£¬´´½¨ĞÂµÄYamlConfiguration¡£
      *
-     * åŠ è½½é…ç½®æ—¶çš„ä»»ä½•é”™è¯¯éƒ½å°†è¢«è®°å½•ï¼Œç„¶åè¢«å¿½ç•¥ã€‚å¦‚æœæŒ‡å®šçš„è¾“å…¥ä¸æ˜¯æœ‰æ•ˆçš„é…ç½®ï¼Œå°†è¿”å›ç©ºç™½é…ç½®ã€‚
+     * ¼ÓÔØÅäÖÃÊ±µÄÈÎºÎ´íÎó¶¼½«±»¼ÇÂ¼£¬È»ºó±»ºöÂÔ¡£Èç¹ûÖ¸¶¨µÄÊäÈë²»ÊÇÓĞĞ§µÄÅäÖÃ£¬½«·µ»Ø¿Õ°×ÅäÖÃ¡£
      *
      * @param reader Reader
-     * @return é…ç½®
-     * @throws IllegalArgumentException Readerä¸ºç©ºæ—¶æŠ›å‡º
+     * @return ÅäÖÃ
+     * @throws IllegalArgumentException ReaderÎª¿ÕÊ±Å×³ö
      */
     public static YamlConfiguration loadConfiguration(Reader reader) {
-        Validate.notNull(reader, "Stream cannotä¸èƒ½ä¸ºç©º");
+        Validate.notNull(reader, "Stream cannot²»ÄÜÎª¿Õ");
 
         YamlConfiguration config = new YamlConfiguration();
 

@@ -3,7 +3,7 @@ package io.github.mcchampions.DodoOpenJava.Configuration.file;
 import io.github.mcchampions.DodoOpenJava.Configuration.*;
 
 /**
- * ç”¨äºæ§åˆ¶æ–‡ä»¶é…ç½®çš„è¾“å…¥å’Œè¾“å‡ºçš„å„ç§è®¾ç½®
+ * ÓÃÓÚ¿ØÖÆÎÄ¼şÅäÖÃµÄÊäÈëºÍÊä³öµÄ¸÷ÖÖÉèÖÃ
  */
 public class FileConfigurationOptions extends MemoryConfigurationOptions {
     private String header = null;

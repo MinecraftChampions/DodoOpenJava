@@ -5,22 +5,22 @@ import java.util.Map;
 import org.apache.commons.lang3.Validate;
 
 /**
- * è¿™æ˜¯ä¸€ä¸ªé…ç½®å®ç°ï¼Œä¸ä¿å­˜æˆ–ä»ä»»ä½•æºåŠ è½½ï¼Œåªå°†æ‰€æœ‰å€¼å­˜å‚¨åœ¨å†…å­˜ä¸­ã€‚è¿™å¯¹äºæä¾›ç¼ºçœå€¼çš„ä¸´æ—¶é…ç½®éå¸¸æœ‰ç”¨ã€‚
+ * ÕâÊÇÒ»¸öÅäÖÃÊµÏÖ£¬²»±£´æ»ò´ÓÈÎºÎÔ´¼ÓÔØ£¬Ö»½«ËùÓĞÖµ´æ´¢ÔÚÄÚ´æÖĞ¡£Õâ¶ÔÓÚÌá¹©È±Ê¡ÖµµÄÁÙÊ±ÅäÖÃ·Ç³£ÓĞÓÃ¡£
  */
 public class MemoryConfiguration extends MemorySection implements Configuration {
     protected Configuration defaults;
     protected MemoryConfigurationOptions options;
 
     /**
-     * åˆ›å»ºæ²¡æœ‰ç¼ºçœå€¼çš„ç©º MemoryConfiguration
+     * ´´½¨Ã»ÓĞÈ±Ê¡ÖµµÄ¿Õ MemoryConfiguration
      */
     public MemoryConfiguration() {}
 
     /**
-     * ä½¿ç”¨æŒ‡å®šçš„é…ç½®ä½œä¸ºæ‰€æœ‰ç¼ºçœå€¼çš„æºåˆ›å»ºç©º MemoryConfiguration
+     * Ê¹ÓÃÖ¸¶¨µÄÅäÖÃ×÷ÎªËùÓĞÈ±Ê¡ÖµµÄÔ´´´½¨¿Õ MemoryConfiguration
      *
-     * @param defaults ç¼ºçœå€¼
-     * @throws IllegalArgumentException ç¼ºçœå€¼ä¸ºnull
+     * @param defaults È±Ê¡Öµ
+     * @throws IllegalArgumentException È±Ê¡ÖµÎªnull
      */
     public MemoryConfiguration(Configuration defaults) {
         this.defaults = defaults;
@@ -28,7 +28,7 @@ public class MemoryConfiguration extends MemorySection implements Configuration 
 
     @Override
     public void addDefault(String path, Object value) {
-        Validate.notNull(path, "è·¯å¾„ä¸èƒ½ä¸ºnull!");
+        Validate.notNull(path, "Â·¾¶²»ÄÜÎªnull!");
 
         if (defaults == null) {
             defaults = new MemoryConfiguration();
@@ -38,7 +38,7 @@ public class MemoryConfiguration extends MemorySection implements Configuration 
     }
 
     public void addDefaults(Map<String, Object> defaults) {
-        Validate.notNull(defaults, "ç¼ºçœå€¼ä¸èƒ½ä¸ºnull!");
+        Validate.notNull(defaults, "È±Ê¡Öµ²»ÄÜÎªnull!");
 
         for (Map.Entry<String, Object> entry : defaults.entrySet()) {
             addDefault(entry.getKey(), entry.getValue());
@@ -46,13 +46,13 @@ public class MemoryConfiguration extends MemorySection implements Configuration 
     }
 
     public void addDefaults(Configuration defaults) {
-        Validate.notNull(defaults, "ç¼ºçœå€¼ä¸èƒ½ä¸ºnull!");
+        Validate.notNull(defaults, "È±Ê¡Öµ²»ÄÜÎªnull!");
 
         addDefaults(defaults.getValues(true));
     }
 
     public void setDefaults(Configuration defaults) {
-        Validate.notNull(defaults, "ç¼ºçœå€¼ä¸èƒ½ä¸ºnull!");
+        Validate.notNull(defaults, "È±Ê¡Öµ²»ÄÜÎªnull!");
 
         this.defaults = defaults;
     }

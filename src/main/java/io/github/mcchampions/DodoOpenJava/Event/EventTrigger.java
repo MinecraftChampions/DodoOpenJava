@@ -13,7 +13,7 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 浜嬩欢瑙﹀彂
+ * 事件触发
  * @author qscbm187531
  */
 public class EventTrigger {
@@ -21,7 +21,7 @@ public class EventTrigger {
     public static String wssLo="";
     public static OkHttpClient okHttpClient = new OkHttpClient();
     public static OkHttpClient wss=new OkHttpClient.Builder()
-            .pingInterval(30, TimeUnit.SECONDS) //淇濇椿蹇冭烦
+            .pingInterval(30, TimeUnit.SECONDS) //保活心跳
             .build();
     public static  WebSocket mWebSocket;
 
@@ -48,8 +48,6 @@ public class EventTrigger {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 wssLo= new JSONObject(Objects.requireNonNull(response.body()).string()).getJSONObject("data").getString("endpoint");
-                //TODO 寤虹珛wss閾炬帴
-                //getLogger().info(wssLo);
                 response.close();
                 Request request = new Request.Builder()
                         .url(wssLo).build();
@@ -73,8 +71,6 @@ public class EventTrigger {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 wssLo= new JSONObject(Objects.requireNonNull(response.body()).string()).getJSONObject("data").getString("endpoint");
-                //TODO 寤虹珛wss閾炬帴
-                //getLogger().info(wssLo);
                 response.close();
                 Request request = new Request.Builder()
                         .url(wssLo).build();
@@ -177,7 +173,7 @@ public class EventTrigger {
                     }
                     break;
                 default:
-                    System.out.println("鏈煡鐨勪簨浠讹紒");
+                    System.out.println("未知的事件！");
             }
         }
 
@@ -188,7 +184,7 @@ public class EventTrigger {
 
         @Override
         public void onClosed(@NotNull WebSocket webSocket, int code, @NotNull String reason) {
-            mWebSocket.close(1000,"姝ｅ父鍏抽棴");
+            mWebSocket.close(1000,"正常关闭");
         }
     }
 
@@ -287,7 +283,7 @@ public class EventTrigger {
                     }
                     break;
                 default:
-                    System.out.println("鏈煡鐨勪簨浠讹紒");
+                    System.out.println("未知的事件！");
             }
         }
 
@@ -298,7 +294,7 @@ public class EventTrigger {
 
         @Override
         public void onClosed(@NotNull WebSocket webSocket, int code, @NotNull String reason) {
-            mWebSocket.close(1000,"姝ｅ父鍏抽棴");
+            mWebSocket.close(1000,"正常关闭");
         }
     }
 }

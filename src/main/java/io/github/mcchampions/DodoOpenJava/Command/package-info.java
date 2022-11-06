@@ -1,5 +1,5 @@
 /**
- * å‘½ä»¤ç³»ç»Ÿ
+ * ÃüÁîÏµÍ³
  * @author qscbm187531
  */
 package io.github.mcchampions.DodoOpenJava.Command;

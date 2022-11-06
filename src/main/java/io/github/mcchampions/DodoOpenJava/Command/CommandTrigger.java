@@ -10,13 +10,13 @@ import java.util.Objects;
 import java.util.Scanner;
 
 /**
- * å‘½ä»¤è§¦å‘
+ * ÃüÁî´¥·¢
  * @author qscbm187531
  */
 public class CommandTrigger implements Listener {
     /**
-     * ç›‘å¬æ¶ˆæ¯äº‹ä»¶
-     * @param e äº‹ä»¶
+     * ¼àÌýÏûÏ¢ÊÂ¼þ
+     * @param e ÊÂ¼þ
      */
     @EventHandler
     public void event(MessageEvent e) {
@@ -33,7 +33,7 @@ public class CommandTrigger implements Listener {
     }
 
     /**
-     * ç›‘å¬æŽ§åˆ¶å°è¾“å…¥å‘½ä»¤
+     * ¼àÌý¿ØÖÆÌ¨ÊäÈëÃüÁî
      */
     public static void listenerConsole() {
         ConsoleListener cs = new ConsoleListener(new Scanner(System.in), msg -> {

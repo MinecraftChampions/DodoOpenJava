@@ -1,15 +1,15 @@
 package io.github.mcchampions.DodoOpenJava.Api;
 
 /**
- * Dodo寮�鏀惧钩鍙扮殑鐗堟湰
+ * Dodo开放平台的版本
  */
 public enum Version {
     /**
-     * V1鐗堟湰
+     * V1版本
      */
     V1("v1"),
     /**
-     * V2鐗堟湰
+     * V2版本
      */
     V2("v2");
 

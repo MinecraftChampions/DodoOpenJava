@@ -1,16 +1,16 @@
 package io.github.mcchampions.DodoOpenJava.Card.enums;
 
 /**
- * æ–‡æœ¬ç±»å‹
+ * ÎÄ±¾ÀàĞÍ
  * @author qscbm187531
  */
 public enum TextType {
     /**
-     * MDæ–‡æœ¬
+     * MDÎÄ±¾
      */
     Markdown("dodo-md"),
     /**
-     * æ™®é€šæ–‡æœ¬
+     * ÆÕÍ¨ÎÄ±¾
      */
     PlainText("plain-text");
 
@@ -19,13 +19,13 @@ public enum TextType {
     }
 
     /**
-     * è¡Œæ•°
+     * ĞĞÊı
      */
     private final String type;
 
     /**
-     * è·å–ç±»å‹
-     * @return ç±»å‹
+     * »ñÈ¡ÀàĞÍ
+     * @return ÀàĞÍ
      */
     public String getType() {
         return type;

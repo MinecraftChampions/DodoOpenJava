@@ -7,7 +7,7 @@ import io.github.mcchampions.DodoOpenJava.Event.HandlerList;
 import javax.annotation.Nonnull;
 
 /**
- * æˆå‘˜ç¦»å¼€äº‹ä»¶
+ * ³ÉÔ±Àë¿ªÊÂ¼ş
  * @author qscbm187531
  */
 public class MemberLeaveEvent extends Event {
@@ -71,57 +71,57 @@ public class MemberLeaveEvent extends Event {
     }
 
     /**
-     * è½¬æ¢ ä¸ºIntæ•°æ®ç±»å‹çš„ æ€§åˆ«å…³é”®å­— ä¸º String ç±»å‹
-     * @param IntSex æ€§åˆ«
-     * @return æ€§åˆ«
+     * ×ª»» ÎªIntÊı¾İÀàĞÍµÄ ĞÔ±ğ¹Ø¼ü×Ö Îª String ÀàĞÍ
+     * @param IntSex ĞÔ±ğ
+     * @return ĞÔ±ğ
      */
     public String IntSexToSex(Integer IntSex) {
         return switch (IntSex) {
-            case 0 -> "å¥³";
-            case 1 -> "ç”·";
-            default -> "ä¿å¯†";
+            case 0 -> "Å®";
+            case 1 -> "ÄĞ";
+            default -> "±£ÃÜ";
         };
     }
 
     /**
-     * è½¬æ¢ ä¸ºIntæ•°æ®ç±»å‹çš„ é€€å‡ºç±»å‹å…³é”®å­— ä¸º String ç±»å‹
-     * @param Type ç±»å‹
-     * @return ç±»å‹
+     * ×ª»» ÎªIntÊı¾İÀàĞÍµÄ ÍË³öÀàĞÍ¹Ø¼ü×Ö Îª String ÀàĞÍ
+     * @param Type ÀàĞÍ
+     * @return ÀàĞÍ
      */
     public String IntLeaveTypeToLeaveType(Integer Type) {
         return switch (Type) {
-            case 1 -> "ä¸»åŠ¨";
-            case 2 -> "è¢«è¸¢";
-            default -> "æœªçŸ¥";
+            case 1 -> "Ö÷¶¯";
+            case 2 -> "±»Ìß";
+            default -> "Î´Öª";
         };
     }
 
     /**
-     * è·å–æ—¶é—´æˆ³
-     * @return è¿”å›æ—¶é—´æˆ³
+     * »ñÈ¡Ê±¼ä´Á
+     * @return ·µ»ØÊ±¼ä´Á
      */
     public Integer getTimestamp() {
         return this.timestamp;
     }
 
     /**
-     * è·å–äº‹ä»¶ID
-     * @return äº‹ä»¶ID
+     * »ñÈ¡ÊÂ¼şID
+     * @return ÊÂ¼şID
      */
     public String getEventId() {
         return this.eventId;
     }
 
     /**
-     * è·å–ç¾¤å·
-     * @return ç¾¤å·
+     * »ñÈ¡ÈººÅ
+     * @return ÈººÅ
      */
     public String getIslandId() {
         return this.islandId;
     }
 
     /**
-     * è·å–DodoId
+     * »ñÈ¡DodoId
      * @return DodoId
      */
     public String getDodoId() {
@@ -129,15 +129,15 @@ public class MemberLeaveEvent extends Event {
     }
 
     /**
-     * è·å–å˜åŠ¨æ—¶é—´
-     * @return å˜åŠ¨æ—¶é—´
+     * »ñÈ¡±ä¶¯Ê±¼ä
+     * @return ±ä¶¯Ê±¼ä
      */
     public String getModifyTime() {
         return this.modifyTime;
     }
 
     /**
-     * è·å–JSONObject
+     * »ñÈ¡JSONObject
      * @return JSONObject
      */
     public JSONObject getJsonObject() {
@@ -145,7 +145,7 @@ public class MemberLeaveEvent extends Event {
     }
 
     /**
-     * è·å–JsonString
+     * »ñÈ¡JsonString
      * @return String
      */
     public String getJsonString() {
@@ -153,8 +153,8 @@ public class MemberLeaveEvent extends Event {
     }
 
     /**
-     * è·å–æˆå‘˜Object
-     * @return è·å–æˆå‘˜çš„ JsonObject
+     * »ñÈ¡³ÉÔ±Object
+     * @return »ñÈ¡³ÉÔ±µÄ JsonObject
      */
     public JSONObject getPersonal() {
         return this.personal;
@@ -162,56 +162,56 @@ public class MemberLeaveEvent extends Event {
 
 
     /**
-     * è·å–å‘é€è€…åå­—
-     * @return åå­—
+     * »ñÈ¡·¢ËÍÕßÃû×Ö
+     * @return Ãû×Ö
      */
     public String getUserNickName() {
         return this.userNickName;
     }
 
     /**
-     * è·å–å‘é€è€…å¤´åƒURL
-     * @return å¤´åƒurl
+     * »ñÈ¡·¢ËÍÕßÍ·ÏñURL
+     * @return Í·Ïñurl
      */
     public String getUserAvatarUrl() {
         return this.userAvatarUrl;
     }
 
     /**
-     * è·å–æ€§åˆ«ï¼ˆIntç±»å‹ï¼‰
-     * @return æ€§åˆ«
+     * »ñÈ¡ĞÔ±ğ£¨IntÀàĞÍ£©
+     * @return ĞÔ±ğ
      */
     public Integer getUserIntSex() {
         return this.userIntSex;
     }
 
     /**
-     * è·å–æ€§åˆ«ï¼ˆStringç±»å‹ï¼‰
-     * @return æ€§åˆ«
+     * »ñÈ¡ĞÔ±ğ£¨StringÀàĞÍ£©
+     * @return ĞÔ±ğ
      */
     public String getUserSex() {
         return this.userSex;
     }
 
     /**
-     * è·å–ç¦»å¼€ç±»å‹ï¼ˆStringï¼‰
-     * @return ç¦»å¼€ç±»å‹
+     * »ñÈ¡Àë¿ªÀàĞÍ£¨String£©
+     * @return Àë¿ªÀàĞÍ
      */
     public String getLeaveType() {
         return this.leaveType;
     }
 
     /**
-     * è·å–ç¦»å¼€ç±»å‹ï¼ˆIntï¼‰
-     * @return ç¦»å¼€ç±»å‹
+     * »ñÈ¡Àë¿ªÀàĞÍ£¨Int£©
+     * @return Àë¿ªÀàĞÍ
      */
     public Integer getLeaveIntType() {
         return this.leaveIntType;
     }
 
     /**
-     * è·å–æ“ä½œè€…Dodoå·
-     * @return Dodoå·
+     * »ñÈ¡²Ù×÷ÕßDodoºÅ
+     * @return DodoºÅ
      */
     public String getOperateDoDoId() {
         return this.operateDoDoId;

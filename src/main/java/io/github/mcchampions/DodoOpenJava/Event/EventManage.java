@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 /**
- * äº‹ä»¶çš„ç›¸å…³æ–¹æ³•ï¼ˆåŒ…å«ç›‘å¬å™¨æ³¨å†Œç­‰ï¼‰
+ * ÊÂ¼şµÄÏà¹Ø·½·¨£¨°üº¬¼àÌıÆ÷×¢²áµÈ£©
  * @author qscbm187531
  */
 public class EventManage {
@@ -68,8 +68,8 @@ public class EventManage {
 
     private static boolean isInit = false;
     /**
-     * æ³¨å†Œäº‹ä»¶
-     * @param listener ç›‘å¬å™¨
+     * ×¢²áÊÂ¼ş
+     * @param listener ¼àÌıÆ÷
      * @param ad Authorization
      */
     public static void registerEvents(@NotNull Listener listener,@NotNull String ad,@NotNull Version version) {
@@ -84,14 +84,14 @@ public class EventManage {
     }
 
     /**
-     * å°†æŒ‡å®šçš„æ‰§è¡Œå™¨æ³¨å†Œè‡³æŒ‡å®šçš„äº‹ä»¶ç±».
+     * ½«Ö¸¶¨µÄÖ´ĞĞÆ÷×¢²áÖÁÖ¸¶¨µÄÊÂ¼şÀà.
      * <p>
-     * åŸæ–‡:Registers the specified executor to the given event class
+     * Ô­ÎÄ:Registers the specified executor to the given event class
      *
-     * @param event è¦æ³¨å†Œçš„äº‹ä»¶ç±»å‹
-     * @param listener è¦æ³¨å†Œçš„ç›‘å¬å™¨
-     * @param priority è¦æ³¨å†Œçš„äº‹ä»¶çš„ä¼˜å…ˆçº§
-     * @param executor è¦æ³¨å†Œçš„EventExecutor=
+     * @param event Òª×¢²áµÄÊÂ¼şÀàĞÍ
+     * @param listener Òª×¢²áµÄ¼àÌıÆ÷
+     * @param priority Òª×¢²áµÄÊÂ¼şµÄÓÅÏÈ¼¶
+     * @param executor Òª×¢²áµÄEventExecutor=
      */
     public static void registerEvent(@NotNull Class<? extends Event> event, @NotNull Listener listener, @NotNull EventPriority priority, @NotNull EventExecutor executor,@NotNull String ad,@NotNull Version version) {
         Validate.notNull(listener, "Listener cannot be null");

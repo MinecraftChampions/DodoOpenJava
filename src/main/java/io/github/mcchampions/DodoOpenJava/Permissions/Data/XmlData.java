@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * XMLæ–‡ä»¶å­˜å‚¨
+ * XMLÎÄ¼ş´æ´¢
  * @author qscbm187531
  */
 public class XmlData {
@@ -21,7 +21,7 @@ public class XmlData {
     public static File Group;
 
     /**
-     * åˆå§‹åŒ–
+     * ³õÊ¼»¯
      */
     public static void init() {
         File Config = new File(ConfigUtil.getJarPath() + "permissions/");
@@ -74,16 +74,16 @@ public class XmlData {
     }
     
     /**
-     * è·å–æƒé™ç»„æ–‡ä»¶
-     * @return JSONå¯¹è±¡
+     * »ñÈ¡È¨ÏŞ×éÎÄ¼ş
+     * @return JSON¶ÔÏó
      */
     public static JSONObject getGroupFile() {
         return XmlUtil.toJSONObject(ConfigUtil.readFile(Group));
     }
 
     /**
-     * è·å–ç”¨æˆ·æ–‡ä»¶
-     * @return JSONå¯¹è±¡
+     * »ñÈ¡ÓÃ»§ÎÄ¼ş
+     * @return JSON¶ÔÏó
      */
     public static JSONObject getUserFile() {
         return XmlUtil.toJSONObject(ConfigUtil.readFile(User));

@@ -7,9 +7,9 @@ import io.github.mcchampions.DodoOpenJava.Event.HandlerList;
 import javax.annotation.Nonnull;
 
 /**
- * ç§ä¿¡äº‹ä»¶ï¼ˆå‹¿ç”¨ï¼‰
+ * Ë½ĞÅÊÂ¼ş£¨ÎğÓÃ£©
  * @author qscbm187531
- * @deprecated å› ä¸ºDodoå¼€æ”¾å¹³å°è¿˜æ²¡å®Œå–„è¿™ç±»
+ * @deprecated ÒòÎªDodo¿ª·ÅÆ½Ì¨»¹Ã»ÍêÉÆÕâÀà
  */
 @Deprecated
 public class PersonalMessageEvent extends Event {
@@ -69,50 +69,50 @@ public class PersonalMessageEvent extends Event {
     }
 
     /**
-     * è½¬æ¢ ä¸ºIntæ•°æ®ç±»å‹çš„ æ€§åˆ«å…³é”®å­— ä¸º String ç±»å‹
-     * @param IntSex æ€§åˆ«
-     * @return æ€§åˆ«
+     * ×ª»» ÎªIntÊı¾İÀàĞÍµÄ ĞÔ±ğ¹Ø¼ü×Ö Îª String ÀàĞÍ
+     * @param IntSex ĞÔ±ğ
+     * @return ĞÔ±ğ
      */
     public String IntSexToSex(Integer IntSex) {
         return switch (IntSex) {
-            case 0 -> "å¥³";
-            case 1 -> "ç”·";
-            default -> "ä¿å¯†";
+            case 0 -> "Å®";
+            case 1 -> "ÄĞ";
+            default -> "±£ÃÜ";
         };
     }
 
     /**
-     * è½¬æ¢ ä¸ºIntæ•°æ®ç±»å‹çš„ æ¶ˆæ¯ç±»å‹å…³é”®å­— ä¸º String ç±»å‹
-     * @param type æ¶ˆæ¯ç±»å‹
-     * @return æ¶ˆæ¯ç±»å‹
+     * ×ª»» ÎªIntÊı¾İÀàĞÍµÄ ÏûÏ¢ÀàĞÍ¹Ø¼ü×Ö Îª String ÀàĞÍ
+     * @param type ÏûÏ¢ÀàĞÍ
+     * @return ÏûÏ¢ÀàĞÍ
      */
     public String IntMessageTypeToMessageType(Integer type) {
         return switch (type) {
-            case 1 -> "æ–‡å­—æ¶ˆæ¯";
-            case 2 -> "å›¾ç‰‡æ¶ˆæ¯";
-            case 3 -> "è§†é¢‘æ¶ˆæ¯";
-            default -> "æœªçŸ¥æ¶ˆæ¯";
+            case 1 -> "ÎÄ×ÖÏûÏ¢";
+            case 2 -> "Í¼Æ¬ÏûÏ¢";
+            case 3 -> "ÊÓÆµÏûÏ¢";
+            default -> "Î´ÖªÏûÏ¢";
         };
     }
 
     /**
-     * è·å–æ—¶é—´æˆ³
-     * @return æ—¶é—´æˆ³
+     * »ñÈ¡Ê±¼ä´Á
+     * @return Ê±¼ä´Á
      */
     public Integer getTimestamp() {
         return this.timestamp;
     }
 
     /**
-     * è·å–äº‹ä»¶ID
-     * @return äº‹ä»¶ID
+     * »ñÈ¡ÊÂ¼şID
+     * @return ÊÂ¼şID
      */
     public String getEventId() {
         return this.eventId;
     }
 
     /**
-     * è·å–DodoSourceId
+     * »ñÈ¡DodoSourceId
      * @return DodoSourceId
      */
     public String getDodoSourceId() {
@@ -120,24 +120,24 @@ public class PersonalMessageEvent extends Event {
     }
 
     /**
-     * è·å–æ¶ˆæ¯ID
-     * @return æ¶ˆæ¯ID
+     * »ñÈ¡ÏûÏ¢ID
+     * @return ÏûÏ¢ID
      */
     public String getMessageId() {
         return this.messageId;
     }
 
     /**
-     * è·å–æ¶ˆæ¯ç±»åˆ«ï¼ˆIntç±»å‹ï¼‰
-     * @return æ¶ˆæ¯ç±»åˆ«
+     * »ñÈ¡ÏûÏ¢Àà±ğ£¨IntÀàĞÍ£©
+     * @return ÏûÏ¢Àà±ğ
      */
     public Integer getMessageIntType() {
         return this.messageIntType;
     }
 
     /**
-     * è·å–æ¶ˆæ¯ç±»åˆ«ï¼ˆStringç±»å‹ï¼‰
-     * @return æ¶ˆæ¯ç±»åˆ«
+     * »ñÈ¡ÏûÏ¢Àà±ğ£¨StringÀàĞÍ£©
+     * @return ÏûÏ¢Àà±ğ
      */
     public String getMessageType() {
         return this.messageType;
@@ -145,8 +145,8 @@ public class PersonalMessageEvent extends Event {
 
 
     /**
-     * è·å–æˆå‘˜Object
-     * @return è·å–æˆå‘˜çš„ JsonObject
+     * »ñÈ¡³ÉÔ±Object
+     * @return »ñÈ¡³ÉÔ±µÄ JsonObject
      */
     public JSONObject getPersonal() {
         return this.personal;
@@ -154,40 +154,40 @@ public class PersonalMessageEvent extends Event {
 
 
     /**
-     * è·å–å‘é€è€…åå­—
-     * @return åå­—
+     * »ñÈ¡·¢ËÍÕßÃû×Ö
+     * @return Ãû×Ö
      */
     public String getSenderNickName() {
         return this.senderNickName;
     }
 
     /**
-     * è·å–å‘é€è€…å¤´åƒURL
-     * @return å¤´åƒurl
+     * »ñÈ¡·¢ËÍÕßÍ·ÏñURL
+     * @return Í·Ïñurl
      */
     public String getSenderAvatarUrl() {
         return this.senderAvatarUrl;
     }
 
     /**
-     * è·å–æ€§åˆ«ï¼ˆIntç±»å‹ï¼‰
-     * @return æ€§åˆ«
+     * »ñÈ¡ĞÔ±ğ£¨IntÀàĞÍ£©
+     * @return ĞÔ±ğ
      */
     public Integer getSenderIntSex() {
         return this.senderIntSex;
     }
 
     /**
-     * è·å–æ€§åˆ«ï¼ˆStringç±»å‹ï¼‰
-     * @return æ€§åˆ«
+     * »ñÈ¡ĞÔ±ğ£¨StringÀàĞÍ£©
+     * @return ĞÔ±ğ
      */
     public String getSenderSex() {
         return this.senderSex;
     }
 
     /**
-     * è·å–æ¶ˆæ¯ Object
-     * @return å¯¹è±¡
+     * »ñÈ¡ÏûÏ¢ Object
+     * @return ¶ÔÏó
      */
     public JSONObject getMessageBody() {
         return this.messageBody;

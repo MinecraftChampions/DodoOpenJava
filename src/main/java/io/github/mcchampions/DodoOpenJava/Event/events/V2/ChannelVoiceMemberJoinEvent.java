@@ -7,7 +7,7 @@ import org.json.JSONObject;
 import javax.annotation.Nonnull;
 
 /**
- * æˆå‘˜åŠ å…¥è¯­éŸ³é¢‘é“äº‹ä»¶
+ * ³ÉÔ±¼ÓÈëÓïÒôÆµµÀÊÂ¼ş
  * @author qscbm187531
  */
 public class ChannelVoiceMemberJoinEvent extends Event {
@@ -74,52 +74,52 @@ public class ChannelVoiceMemberJoinEvent extends Event {
     }
 
     /**
-     * è½¬æ¢ ä¸ºIntæ•°æ®ç±»å‹çš„ æ€§åˆ«å…³é”®å­— ä¸º String ç±»å‹
-     * @param IntSex æ€§åˆ«
-     * @return æ€§åˆ«
+     * ×ª»» ÎªIntÊı¾İÀàĞÍµÄ ĞÔ±ğ¹Ø¼ü×Ö Îª String ÀàĞÍ
+     * @param IntSex ĞÔ±ğ
+     * @return ĞÔ±ğ
      */
     public String IntSexToSex(Integer IntSex) {
         return switch (IntSex) {
-            case 0 -> "å¥³";
-            case 1 -> "ç”·";
-            default -> "ä¿å¯†";
+            case 0 -> "Å®";
+            case 1 -> "ÄĞ";
+            default -> "±£ÃÜ";
         };
     }
 
     /**
-     * è·å–æ—¶é—´æˆ³
-     * @return æ—¶é—´æˆ³
+     * »ñÈ¡Ê±¼ä´Á
+     * @return Ê±¼ä´Á
      */
     public Integer getTimestamp() {
         return this.timestamp;
     }
 
     /**
-     * è·å–äº‹ä»¶ID
-     * @return äº‹ä»¶ID
+     * »ñÈ¡ÊÂ¼şID
+     * @return ÊÂ¼şID
      */
     public String getEventId() {
         return this.eventId;
     }
 
     /**
-     * è·å–ç¾¤å·
-     * @return ç¾¤å·
+     * »ñÈ¡ÈººÅ
+     * @return ÈººÅ
      */
     public String getIslandSourceId() {
         return this.islandSourceId;
     }
 
     /**
-     * è·å–é¢‘é“ID
-     * @return é¢‘é“ID
+     * »ñÈ¡ÆµµÀID
+     * @return ÆµµÀID
      */
     public String getChannelId() {
         return this.channelId;
     }
 
     /**
-     * è·å–DodoSourceId
+     * »ñÈ¡DodoSourceId
      * @return DodoSourceId
      */
     public String getDodoSourceId() {
@@ -128,8 +128,8 @@ public class ChannelVoiceMemberJoinEvent extends Event {
 
 
     /**
-     * è·å–æˆå‘˜Object
-     * @return è·å–æˆå‘˜çš„ JsonObject
+     * »ñÈ¡³ÉÔ±Object
+     * @return »ñÈ¡³ÉÔ±µÄ JsonObject
      */
     public JSONObject getPersonal() {
         return this.personal;
@@ -137,32 +137,32 @@ public class ChannelVoiceMemberJoinEvent extends Event {
 
 
     /**
-     * è·å–å‘é€è€…åå­—
-     * @return åå­—
+     * »ñÈ¡·¢ËÍÕßÃû×Ö
+     * @return Ãû×Ö
      */
     public String getUserNickName() {
         return this.userNickName;
     }
 
     /**
-     * è·å–å‘é€è€…å¤´åƒURL
-     * @return å¤´åƒurl
+     * »ñÈ¡·¢ËÍÕßÍ·ÏñURL
+     * @return Í·Ïñurl
      */
     public String getUserAvatarUrl() {
         return this.userAvatarUrl;
     }
 
     /**
-     * è·å–æ€§åˆ«ï¼ˆIntç±»å‹ï¼‰
-     * @return æ€§åˆ«
+     * »ñÈ¡ĞÔ±ğ£¨IntÀàĞÍ£©
+     * @return ĞÔ±ğ
      */
     public Integer getUserIntSex() {
         return this.userIntSex;
     }
 
     /**
-     * è·å–æ€§åˆ«ï¼ˆStringç±»å‹ï¼‰
-     * @return æ€§åˆ«
+     * »ñÈ¡ĞÔ±ğ£¨StringÀàĞÍ£©
+     * @return ĞÔ±ğ
      */
     public String getUserSex() {
         return this.userSex;
@@ -170,38 +170,38 @@ public class ChannelVoiceMemberJoinEvent extends Event {
 
 
     /**
-     * è·å–æˆå‘˜Object
-     * @return æˆå‘˜ JsonObject
+     * »ñÈ¡³ÉÔ±Object
+     * @return ³ÉÔ± JsonObject
      */
     public JSONObject getMember() {
         return this.member;
     }
 
     /**
-     * è·å–æˆå‘˜æ˜¾ç¤ºå
-     * @return åå­—
+     * »ñÈ¡³ÉÔ±ÏÔÊ¾Ãû
+     * @return Ãû×Ö
      */
     public String getMemberNickName() {
         return this.memberNickName;
     }
 
     /**
-     * è·å–æˆå‘˜åŠ å…¥æ—¶é—´
-     * @return åŠ å…¥æ—¶é—´
+     * »ñÈ¡³ÉÔ±¼ÓÈëÊ±¼ä
+     * @return ¼ÓÈëÊ±¼ä
      */
     public String getMemberJoinTime() {
         return this.memberJoinTime;
     }
 
     /**
-     * è·å–å¡ç‰‡æ¶ˆæ¯JSONå­—ç¬¦ä¸²
+     * »ñÈ¡¿¨Æ¬ÏûÏ¢JSON×Ö·û´®
      */
     public String getJsonString() {
         return this.jsonString;
     }
 
     /**
-     * è·å–å¡ç‰‡æ¶ˆæ¯JSONå¯¹è±¡
+     * »ñÈ¡¿¨Æ¬ÏûÏ¢JSON¶ÔÏó
      */
     public JSONObject getJsonObject() {
         return this.jsonObject;

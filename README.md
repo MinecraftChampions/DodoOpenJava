@@ -38,7 +38,7 @@ Dodo开放平台：https://open.imdodo.com/
 	}
 
 	dependencies {
-	        implementation 'com.github.minecraftchampions:DodoOpenJava:1.1.0'
+	        implementation 'com.github.minecraftchampions:DodoOpenJava:1.1.1'
 	}
 ```
 

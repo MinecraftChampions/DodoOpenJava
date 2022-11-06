@@ -1,20 +1,20 @@
 package io.github.mcchampions.DodoOpenJava.Card.enums;
 
 /**
- * æ–‡æœ¬ç±»å‹
+ * ÎÄ±¾ÀàĞÍ
  * @author qscbm187531
  */
 public enum SectionType {
     /**
-     * mdæ–‡æœ¬
+     * mdÎÄ±¾
      */
     Markdown("dodo-md"),
     /**
-     * æ™®é€šæ–‡æœ¬
+     * ÆÕÍ¨ÎÄ±¾
      */
     PlainText("plain-text"),
     /**
-     * å¤šæ æ–‡æœ¬
+     * ¶àÀ¸ÎÄ±¾
      */
     Paragraph("Paragraph");
 
@@ -23,13 +23,13 @@ public enum SectionType {
     }
 
     /**
-     * è¡Œæ•°
+     * ĞĞÊı
      */
     private final String type;
 
     /**
-     * è·å–ç±»å‹
-     * @return ç±»å‹
+     * »ñÈ¡ÀàĞÍ
+     * @return ÀàĞÍ
      */
     public String getType() {
         return type;

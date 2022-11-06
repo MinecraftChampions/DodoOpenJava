@@ -1,5 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.Configuration.serialization;
 
+import org.apache.commons.lang3.Validate;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -9,10 +11,8 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.apache.commons.lang3.Validate;
-
 /**
- * ç”¨äºå­˜å‚¨å’Œæ£€ç´¢ Configuration çš„å®ç”¨ç¨‹åºç±»ã€‚
+ * ÓÃÓÚ´æ´¢ºÍ¼ìË÷ Configuration µÄÊµÓÃ³ÌĞòÀà¡£
  */
 public class ConfigurationSerialization {
     public static final String SERIALIZED_TYPE_KEY = "==";

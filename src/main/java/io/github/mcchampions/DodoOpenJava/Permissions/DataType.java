@@ -1,28 +1,28 @@
 package io.github.mcchampions.DodoOpenJava.Permissions;
 
 /**
- * æ•°æ®å­˜å‚¨ç±»å‹
+ * Êı¾İ´æ´¢ÀàĞÍ
  * @author qscbm187531
  */
 public enum DataType {
     /**
-     * YAMLæ–‡ä»¶
+     * YAMLÎÄ¼ş
      */
     YAML("YAML"),
     /**
-     * JSONæ–‡ä»¶
+     * JSONÎÄ¼ş
      */
     JSON("JSON"),
     /**
-     * MongoDBæ•°æ®åº“
+     * MongoDBÊı¾İ¿â
      */
     MongoDB("MongoDB"),
     /**
-     * Xmlæ–‡ä»¶
+     * XmlÎÄ¼ş
      */
     Xml("Xml"),
     /**
-     * Tomlæ–‡ä»¶
+     * TomlÎÄ¼ş
      */
     Toml("Toml");
 
@@ -31,13 +31,13 @@ public enum DataType {
     }
 
     /**
-     * æ•°æ®å­˜å‚¨æ–¹å¼
+     * Êı¾İ´æ´¢·½Ê½
      */
     private final String type;
 
     /**
-     * è·å–ç±»å‹
-     * @return ç±»å‹
+     * »ñÈ¡ÀàĞÍ
+     * @return ÀàĞÍ
      */
     public String getType() {
         return type;

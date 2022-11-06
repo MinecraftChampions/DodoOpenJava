@@ -4,14 +4,14 @@ import org.json.JSONObject;
 import io.github.mcchampions.DodoOpenJava.Card.enums.Rows;
 
 /**
- * å›ä¼ è¡¨å•
+ * »Ø´«±íµ¥
  * @author qscbm187531
  */
 public class Form {
     public JSONObject JsonForm = new JSONObject();
 
     /**
-     * æ˜¯å¦ä¸å­˜åœ¨
+     * ÊÇ·ñ²»´æÔÚ
      * @return true/false
      */
     public Boolean isEmpty() {
@@ -19,7 +19,7 @@ public class Form {
     }
 
     /**
-     * æ˜¯å¦ä¸å­˜åœ¨
+     * ÊÇ·ñ²»´æÔÚ
      * @param card Card
      * @return true/false
      */
@@ -28,7 +28,7 @@ public class Form {
     }
 
     /**
-     * è½¬æ¢ä¸ºJSONå¯¹è±¡
+     * ×ª»»ÎªJSON¶ÔÏó
      * @return true
      */
     public JSONObject toJSONObject() {
@@ -36,7 +36,7 @@ public class Form {
     }
 
     /**
-     * åˆå§‹åŒ–å›ä¼ è¡¨å•
+     * ³õÊ¼»¯»Ø´«±íµ¥
      * @param Form JSON
      * @return true
      */
@@ -46,14 +46,14 @@ public class Form {
     }
 
     /**
-     * åˆå§‹åŒ–å›ä¼ è¡¨å•
+     * ³õÊ¼»¯»Ø´«±íµ¥
      * @return true/false
      */
     public Boolean initForm() {
         if (JsonForm.isEmpty()) {
             JsonForm = new JSONObject("""
                     {
-                        "title": "è¡¨å•æ ‡é¢˜",
+                        "title": "±íµ¥±êÌâ",
                         "elements": []
                     }""");
             return true;
@@ -61,9 +61,9 @@ public class Form {
     }
 
     /**
-     * ç¼–è¾‘æ ‡é¢˜
-     * @param title æ ‡é¢˜
-     * @return æˆåŠŸ
+     * ±à¼­±êÌâ
+     * @param title ±êÌâ
+     * @return ³É¹¦
      */
     public Boolean editContent(String title) {
         if (JsonForm.isEmpty()) initForm();
@@ -72,9 +72,9 @@ public class Form {
     }
 
     /**
-     * åˆ é™¤ä¸€ä¸ªæ•°æ®
-     * @param count ç¬¬å‡ ä¸ªæ•°æ®ï¼ˆä»1å¼€å§‹ï¼‰
-     * @return æˆåŠŸ
+     * É¾³ıÒ»¸öÊı¾İ
+     * @param count µÚ¼¸¸öÊı¾İ£¨´Ó1¿ªÊ¼£©
+     * @return ³É¹¦
      */
     public Boolean removeElement(int count) {
         if (JsonForm.isEmpty()) initForm();
@@ -83,12 +83,12 @@ public class Form {
     }
 
     /**
-     * å¢åŠ ä¸€ä¸ªæ•°æ®
-     * @param key é€‰é¡¹è‡ªå®šä¹‰ID
-     * @param title åç§°
-     * @param rows è¾“å…¥æ¡†é«˜åº¦ï¼Œå¡« one è¡¨ç¤ºå•è¡Œï¼Œæœ€å¤š4è¡Œ
-     * @param minChar æœ€å°å­—ç¬¦æ•°ï¼Œä»‹äº0~4000
-     * @param maxChar æœ€å¤§å­—ç¬¦æ•°ï¼Œä»‹äº1~4000ï¼Œä¸”æœ€å¤§å­—ç¬¦æ•°ä¸å¾—å°äºæœ€å°å­—ç¬¦æ•°
+     * Ôö¼ÓÒ»¸öÊı¾İ
+     * @param key Ñ¡Ïî×Ô¶¨ÒåID
+     * @param title Ãû³Æ
+     * @param rows ÊäÈë¿ò¸ß¶È£¬Ìî one ±íÊ¾µ¥ĞĞ£¬×î¶à4ĞĞ
+     * @param minChar ×îĞ¡×Ö·ûÊı£¬½éÓÚ0~4000
+     * @param maxChar ×î´ó×Ö·ûÊı£¬½éÓÚ1~4000£¬ÇÒ×î´ó×Ö·ûÊı²»µÃĞ¡ÓÚ×îĞ¡×Ö·ûÊı
      * @return true/false
      */
     public Boolean addElement(String key, String title, Rows rows, int minChar, int maxChar) {
@@ -112,13 +112,13 @@ public class Form {
     }
 
     /**
-     * å¢åŠ ä¸€ä¸ªæ•°æ®
-     * @param key é€‰é¡¹è‡ªå®šä¹‰ID
-     * @param placeholder è¾“å…¥æ¡†æç¤º
-     * @param title åç§°
-     * @param rows è¾“å…¥æ¡†é«˜åº¦ï¼Œå¡« one è¡¨ç¤ºå•è¡Œï¼Œæœ€å¤š4è¡Œ
-     * @param minChar æœ€å°å­—ç¬¦æ•°ï¼Œä»‹äº0~4000
-     * @param maxChar æœ€å¤§å­—ç¬¦æ•°ï¼Œä»‹äº1~4000ï¼Œä¸”æœ€å¤§å­—ç¬¦æ•°ä¸å¾—å°äºæœ€å°å­—ç¬¦æ•°
+     * Ôö¼ÓÒ»¸öÊı¾İ
+     * @param key Ñ¡Ïî×Ô¶¨ÒåID
+     * @param placeholder ÊäÈë¿òÌáÊ¾
+     * @param title Ãû³Æ
+     * @param rows ÊäÈë¿ò¸ß¶È£¬Ìî one ±íÊ¾µ¥ĞĞ£¬×î¶à4ĞĞ
+     * @param minChar ×îĞ¡×Ö·ûÊı£¬½éÓÚ0~4000
+     * @param maxChar ×î´ó×Ö·ûÊı£¬½éÓÚ1~4000£¬ÇÒ×î´ó×Ö·ûÊı²»µÃĞ¡ÓÚ×îĞ¡×Ö·ûÊı
      * @return true/false
      */
     public Boolean addElement(String key, String placeholder, String title, Rows rows, int minChar, int maxChar) {
@@ -143,8 +143,8 @@ public class Form {
     }
 
     /**
-     * è½¬æ¢ä¸ºStringï¼ˆé‡å†™äº†Objectçš„toStringæ–¹æ³•ï¼‰
-     * @return å­—ç¬¦ä¸²
+     * ×ª»»ÎªString£¨ÖØĞ´ÁËObjectµÄtoString·½·¨£©
+     * @return ×Ö·û´®
      */
     public String toString() {
         return JsonForm.toString();

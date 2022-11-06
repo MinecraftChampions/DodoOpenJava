@@ -1,7 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.Configuration;
 
 /**
- * Configuration çš„é…ç½®ç±».
+ * Configuration µÄÅäÖÃÀà.
  */
 public class ConfigurationOptions {
     private char pathSeparator = '.';
@@ -13,27 +13,27 @@ public class ConfigurationOptions {
     }
 
     /**
-     * è¿”å›å…³è”è¿™ä¸ªé…ç½®çš„ Configuration.
+     * ·µ»Ø¹ØÁªÕâ¸öÅäÖÃµÄ Configuration.
      */
     public Configuration configuration() {
         return configuration;
     }
 
     /**
-     * è·å–ç”¨äºåˆ†ç¦» ConfigurationSection ä¸­è·¯å¾„çš„ char.
-     * è¿™ä¸ªcharå¹¶ä¸ä¼šå½±å“æ•°æ®çš„å‚¨å­˜, å®ƒåªæ˜¯è·¯å¾„çš„åˆ†éš”ç¬¦. åªä¼šå½±å“ä½ åœ¨ç¨‹åºä¸­æ€æ ·è¯»å–æ•°æ®.é»˜è®¤ä¸º '.'.
+     * »ñÈ¡ÓÃÓÚ·ÖÀë ConfigurationSection ÖĞÂ·¾¶µÄ char.
+     * Õâ¸öchar²¢²»»áÓ°ÏìÊı¾İµÄ´¢´æ, ËüÖ»ÊÇÂ·¾¶µÄ·Ö¸ô·û. Ö»»áÓ°ÏìÄãÔÚ³ÌĞòÖĞÔõÑù¶ÁÈ¡Êı¾İ.Ä¬ÈÏÎª '.'.
      *
-     * @return è·¯å¾„åˆ†å‰²ç¬¦
+     * @return Â·¾¶·Ö¸î·û
      */
     public char pathSeparator() {
         return pathSeparator;
     }
 
     /**
-     * è®¾ç½®ç”¨äºåˆ†ç¦» ConfigurationSection ä¸­è·¯å¾„çš„ char.
-     * è¿™ä¸ª char å¹¶ä¸ä¼šå½±å“æ•°æ®çš„å‚¨å­˜, å®ƒåªæ˜¯è·¯å¾„çš„åˆ†éš”ç¬¦. åªä¼šå½±å“ä½ åœ¨ç¨‹åºä¸­æ€æ ·è¯»å–æ•°æ®.é»˜è®¤ä¸º '.'.
-     * @param value Path è·¯å¾„åˆ†å‰²ç¬¦.
-     * @return è¿”å› this .
+     * ÉèÖÃÓÃÓÚ·ÖÀë ConfigurationSection ÖĞÂ·¾¶µÄ char.
+     * Õâ¸ö char ²¢²»»áÓ°ÏìÊı¾İµÄ´¢´æ, ËüÖ»ÊÇÂ·¾¶µÄ·Ö¸ô·û. Ö»»áÓ°ÏìÄãÔÚ³ÌĞòÖĞÔõÑù¶ÁÈ¡Êı¾İ.Ä¬ÈÏÎª '.'.
+     * @param value Path Â·¾¶·Ö¸î·û.
+     * @return ·µ»Ø this .
      */
     public ConfigurationOptions pathSeparator(char value) {
         this.pathSeparator = value;
@@ -41,24 +41,24 @@ public class ConfigurationOptions {
     }
 
     /**
-     * æ£€æŸ¥è¿™ä¸ªConfiguration æ˜¯ä¸æ˜¯ç›´æ¥ä»ç¼ºçœå€¼ Configuration é‚£é‡Œå¤åˆ¶è¿‡æ¥çš„.
-     * å¦‚æœä¸ºçœŸ, è¡¨æ˜è¿™ä¸ªåˆ—è¡¨ä¸­çš„å€¼éƒ½æ˜¯ä»ç¼ºçœå€¼ Configuration ä¸­å¤åˆ¶è¿‡æ¥çš„.
+     * ¼ì²éÕâ¸öConfiguration ÊÇ²»ÊÇÖ±½Ó´ÓÈ±Ê¡Öµ Configuration ÄÇÀï¸´ÖÆ¹ıÀ´µÄ.
+     * Èç¹ûÎªÕæ, ±íÃ÷Õâ¸öÁĞ±íÖĞµÄÖµ¶¼ÊÇ´ÓÈ±Ê¡Öµ Configuration ÖĞ¸´ÖÆ¹ıÀ´µÄ.
      *
-     * è¿™ä¸ªåˆ—è¡¨å°†è¢«é”å®š. å¹¶å§‹ç»ˆè¿”å›ç¼ºçœå€¼åˆ—è¡¨ä¸­çš„å€¼. å¯ä»¥çœ‹ä½œæ˜¯åªè¯»çš„ç¼ºçœå€¼åˆ—è¡¨.
+     * Õâ¸öÁĞ±í½«±»Ëø¶¨. ²¢Ê¼ÖÕ·µ»ØÈ±Ê¡ÖµÁĞ±íÖĞµÄÖµ. ¿ÉÒÔ¿´×÷ÊÇÖ»¶ÁµÄÈ±Ê¡ÖµÁĞ±í.
      *
-     * é»˜è®¤å€¼æ˜¯false.
+     * Ä¬ÈÏÖµÊÇfalse.
      */
     public boolean copyDefaults() {
         return copyDefaults;
     }
 
     /**
-     * å¦‚æœè¿™ä¸ªConfigurationä» å®ƒçš„é»˜è®¤Configurationé‚£é‡Œç›´æ¥ å¤åˆ¶å€¼, å°±è®¾ä¸ºtrue.
-     * å¦‚æœå€¼ä¸º true, å°†ç›´æ¥ä»é»˜è®¤æºä¸­å¤åˆ¶æ‰€æœ‰çš„å€¼.
+     * Èç¹ûÕâ¸öConfiguration´Ó ËüµÄÄ¬ÈÏConfigurationÄÇÀïÖ±½Ó ¸´ÖÆÖµ, ¾ÍÉèÎªtrue.
+     * Èç¹ûÖµÎª true, ½«Ö±½Ó´ÓÄ¬ÈÏÔ´ÖĞ¸´ÖÆËùÓĞµÄÖµ.
      *
-     * æœºå™¨ç¿»è¯‘(ä½¿å¾—ä¸å¯èƒ½åˆ†åˆ«è®¾ç½®ï¼Œé»˜è®¤æƒ…å†µä¸‹æ‰€æä¾›çš„å€¼çš„å€¼å’ŒåŒºåˆ†ã€‚?). å…¶ç»“æœConfigurationSection.contains(java.lang.String), å°†å§‹ç»ˆè¿”å›ç›¸åŒçš„å€¼ConfigurationSection.isSet(java.lang.String).
+     * »úÆ÷·­Òë(Ê¹µÃ²»¿ÉÄÜ·Ö±ğÉèÖÃ£¬Ä¬ÈÏÇé¿öÏÂËùÌá¹©µÄÖµµÄÖµºÍÇø·Ö¡£?). Æä½á¹ûConfigurationSection.contains(java.lang.String), ½«Ê¼ÖÕ·µ»ØÏàÍ¬µÄÖµConfigurationSection.isSet(java.lang.String).
      *
-     * é»˜è®¤å€¼æ˜¯false
+     * Ä¬ÈÏÖµÊÇfalse
      */
     public ConfigurationOptions copyDefaults(boolean value) {
         this.copyDefaults = value;

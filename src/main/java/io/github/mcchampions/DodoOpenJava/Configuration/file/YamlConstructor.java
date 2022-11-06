@@ -1,14 +1,13 @@
 package io.github.mcchampions.DodoOpenJava.Configuration.file;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-import org.yaml.snakeyaml.nodes.Node;
+import io.github.mcchampions.DodoOpenJava.Configuration.serialization.ConfigurationSerialization;
 import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.error.YAMLException;
+import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.Tag;
 
-import io.github.mcchampions.DodoOpenJava.Configuration.serialization.ConfigurationSerialization;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class YamlConstructor extends SafeConstructor {
 
@@ -20,7 +19,7 @@ public class YamlConstructor extends SafeConstructor {
         @Override
         public Object construct(Node node) {
             if (node.isTwoStepsConstruction()) {
-                throw new YAMLException("æ„å¤–çš„ç»“æ„. èŠ‚ç‚¹: " + node);
+                throw new YAMLException("ÒâÍâµÄ½á¹¹. ½Úµã: " + node);
             }
 
             Map<?, ?> raw = (Map<?, ?>) super.construct(node);
@@ -34,7 +33,7 @@ public class YamlConstructor extends SafeConstructor {
                 try {
                     return ConfigurationSerialization.deserializeObject(typed);
                 } catch (IllegalArgumentException ex) {
-                    throw new YAMLException("æ— æ³•ååºåˆ—åŒ–å¯¹è±¡", ex);
+                    throw new YAMLException("ÎŞ·¨·´ĞòÁĞ»¯¶ÔÏó", ex);
                 }
             }
 
@@ -43,7 +42,7 @@ public class YamlConstructor extends SafeConstructor {
 
         @Override
         public void construct2ndStep(Node node, Object object) {
-            throw new YAMLException("æ„å¤–çš„ç»“æ„.  èŠ‚ç‚¹: " + node);
+            throw new YAMLException("ÒâÍâµÄ½á¹¹.  ½Úµã: " + node);
         }
     }
 }

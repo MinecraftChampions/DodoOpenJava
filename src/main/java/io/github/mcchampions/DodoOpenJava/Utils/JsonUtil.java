@@ -7,14 +7,14 @@ import org.bson.conversions.Bson;
 import java.util.Map;
 
 /**
- * æœ‰å…³äº JSON çš„ç›¸å…³å®ç”¨æ€§æ–¹æ³•
+ * ÓĞ¹ØÓÚ JSON µÄÏà¹ØÊµÓÃĞÔ·½·¨
  * @author qscbm187531
  */
 public class JsonUtil {
     /**
-     * è½¬åŒ–å­—ç¬¦ä¸²ä¸ºjson
+     * ×ª»¯×Ö·û´®Îªjson
      *
-     * @param string å­—ç¬¦ä¸²
+     * @param string ×Ö·û´®
      * @return JSONObject
      */
     public static JSONObject parseJson(String string) {
@@ -24,7 +24,7 @@ public class JsonUtil {
 
 
     /**
-     * è½¬åŒ–Bsonä¸ºjson
+     * ×ª»¯BsonÎªjson
      *
      * @param bson Bson
      * @return JSONObject
@@ -34,7 +34,7 @@ public class JsonUtil {
     }
 
     /**
-     * è½¬åŒ–Documentä¸ºjson
+     * ×ª»¯DocumentÎªjson
      *
      * @param document Document
      * @return JSONObject
@@ -44,7 +44,7 @@ public class JsonUtil {
     }
 
     /**
-     * jsonè½¬åŒ–ä¸ºå­—ç¬¦ä¸²
+     * json×ª»¯Îª×Ö·û´®
      *
      * @param obj obj
      * @return json
@@ -54,7 +54,7 @@ public class JsonUtil {
     }
 
     /**
-     * å°†jsonè£…æ¢ä¸ºmap
+     * ½«json×°»»Îªmap
      * @param jsonObject json
      * @return map
      */

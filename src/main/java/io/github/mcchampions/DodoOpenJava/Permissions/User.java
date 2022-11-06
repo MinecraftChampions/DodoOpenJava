@@ -5,7 +5,7 @@ import io.github.mcchampions.DodoOpenJava.Utils.MapUtil;
 import java.util.*;
 
 /**
- * ç”¨æˆ·
+ * ÓÃ»§
  * @author qscbm187531
  */
 public class User {
@@ -14,9 +14,9 @@ public class User {
     public static Map<String,List<String>> UserPerms = new HashMap<>();
 
     /**
-     * è·å–ç”¨æˆ·çš„æƒé™ç»„
+     * »ñÈ¡ÓÃ»§µÄÈ¨ÏŞ×é
      * @param DodoId DodoID
-     * @return æƒé™ç»„
+     * @return È¨ÏŞ×é
      */
     public static Group getUserGroup(String DodoId) {
         List<List<Object>> list= MapUtil.ergodicMaps(UserGroup);
@@ -30,10 +30,10 @@ public class User {
     }
 
     /**
-     * ç¼–è¾‘ç”¨æˆ·æƒé™ç»„
+     * ±à¼­ÓÃ»§È¨ÏŞ×é
      * @param DodoId DodoID
-     * @param group æƒé™ç»„
-     * @return falseä»£è¡¨å¤±è´¥ï¼Œtrueä»£è¡¨æˆåŠŸ
+     * @param group È¨ÏŞ×é
+     * @return false´ú±íÊ§°Ü£¬true´ú±í³É¹¦
      */
     public static Boolean editUserGroup(String DodoId, Group group) {
         if (Group.getGroups().contains(group)) return false;
@@ -51,10 +51,10 @@ public class User {
     }
 
     /**
-     * å¢åŠ æƒé™
+     * Ôö¼ÓÈ¨ÏŞ
      * @param DodoId DodoID
-     * @param perm æƒé™
-     * @return falseä»£è¡¨åŸæœ¬å·²ç»æœ‰è¿™ä¸ªæƒé™äº†ï¼Œtrueå°±æ˜¯æˆåŠŸ
+     * @param perm È¨ÏŞ
+     * @return false´ú±íÔ­±¾ÒÑ¾­ÓĞÕâ¸öÈ¨ÏŞÁË£¬true¾ÍÊÇ³É¹¦
      */
     public static Boolean addPerm(String DodoId, String perm) {
         List<List<Object>> list= MapUtil.ergodicMaps(UserPerms);
@@ -79,10 +79,10 @@ public class User {
     }
 
     /**
-     * å¢åŠ æƒé™
+     * Ôö¼ÓÈ¨ÏŞ
      * @param DodoId DodoID
-     * @param Perms æƒé™
-     * @return falseä»£è¡¨åŸæœ¬å·²ç»æœ‰è¿™äº›æƒé™äº†ï¼Œtrueå°±æ˜¯æˆåŠŸ
+     * @param Perms È¨ÏŞ
+     * @return false´ú±íÔ­±¾ÒÑ¾­ÓĞÕâĞ©È¨ÏŞÁË£¬true¾ÍÊÇ³É¹¦
      */
     public static Boolean addPerm(String DodoId, List<String> Perms) {
         List<List<Object>> list= MapUtil.ergodicMaps(UserPerms);
@@ -107,10 +107,10 @@ public class User {
     }
 
     /**
-     * ç§»é™¤æƒé™
+     * ÒÆ³ıÈ¨ÏŞ
      * @param DodoId DodoID
-     * @param perm æƒé™
-     * @return falseä»£è¡¨åŸæœ¬æ²¡æœ‰è¿™ä¸ªæƒé™äº†ï¼Œtrueå°±æ˜¯æˆåŠŸ
+     * @param perm È¨ÏŞ
+     * @return false´ú±íÔ­±¾Ã»ÓĞÕâ¸öÈ¨ÏŞÁË£¬true¾ÍÊÇ³É¹¦
      */
     public static Boolean removePerm(String DodoId, String perm) {
         List<List<Object>> list= MapUtil.ergodicMaps(UserPerms);
@@ -138,10 +138,10 @@ public class User {
     }
 
     /**
-     * ç§»é™¤æƒé™
+     * ÒÆ³ıÈ¨ÏŞ
      * @param DodoId DodoID
-     * @param Perms æƒé™
-     * @return falseä»£è¡¨åŸæœ¬æ²¡æœ‰è¿™äº›æƒé™äº†ï¼Œtrueå°±æ˜¯æˆåŠŸ
+     * @param Perms È¨ÏŞ
+     * @return false´ú±íÔ­±¾Ã»ÓĞÕâĞ©È¨ÏŞÁË£¬true¾ÍÊÇ³É¹¦
      */
     public static Boolean removePerm(String DodoId, List<String> Perms) {
         List<List<Object>> list= MapUtil.ergodicMaps(UserPerms);
@@ -169,10 +169,10 @@ public class User {
     }
 
     /**
-     * åˆ¤æ–­ç”¨æˆ·æ˜¯å¦æœ‰è¿™ä¸ªæƒé™
+     * ÅĞ¶ÏÓÃ»§ÊÇ·ñÓĞÕâ¸öÈ¨ÏŞ
      * @param DodoId DodoId
-     * @param perm æƒé™
-     * @return æ˜¯å¦æ‹¥æœ‰
+     * @param perm È¨ÏŞ
+     * @return ÊÇ·ñÓµÓĞ
      */
     public static Boolean hasPerm(String DodoId,String perm) {
         if (perm == null) return true;

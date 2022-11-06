@@ -7,34 +7,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ä¸€äº›å¸¸ç”¨çš„æ–¹æ³•
+ * Ò»Ğ©³£ÓÃµÄ·½·¨
  * @author qscbm187531
  */
 public class BaseUtil {
     /**
-     * æ‹¼æ¥ Authorization
+     * Æ´½Ó Authorization
      *
-     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡ç¤º
-     * @param token    æœºå™¨äººé‰´æƒToken
-     * @return è¿”å›æ‹¼æ¥åçš„æ–‡æœ¬
+     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¾
+     * @param token »úÆ÷ÈË¼øÈ¨Token
+     * @return ·µ»ØÆ´½ÓºóµÄÎÄ±¾
      */
     public static String Authorization(String clientId, String token) {
         return "Bot " + clientId + "." + token;
     }
 
     /**
-     * åˆ¤æ–­è¿”å›ç çš„æ„ä¹‰
-     * @param stat è¿”å›ç 
-     * @return æ„æ€
+     * ÅĞ¶Ï·µ»ØÂëµÄÒâÒå
+     * @param status ·µ»ØÂë
+     * @return ÒâË¼
      */
-    public static String getStatus(String stat) throws IOException {
-        return new JSONObject(NetUtil.simulationBrowserRequest("https://mcchampions.github.io/status.json")).getString(stat);
+    public static String getStatus(int status) throws IOException {
+        return new JSONObject(NetUtil.simulationBrowserRequest("https://mcchampions.github.io/status.json")).getString(String.valueOf(status));
     }
 
     /**
-     * Objecté›†åˆè½¬Stringé›†åˆ
-     * @param list Objecté›†åˆ
-     * @return Stringé›†åˆ
+     * Object¼¯ºÏ×ªString¼¯ºÏ
+     * @param list Object¼¯ºÏ
+     * @return String¼¯ºÏ
      */
     public static List<String> toStringList(List<Object> list) {
         List<String> returnList = new ArrayList<>();
@@ -45,9 +45,9 @@ public class BaseUtil {
     }
 
     /**
-     * åˆ¤æ–­ä¸€ä¸ªæ–‡æœ¬ä¸­æ˜¯å¦å«æœ‰æ•æ„Ÿè¯ï¼ˆè¯åº“URLï¼š<a href="https://mcchampions.github.io/database.json">è¯åº“åœ°å€</a>)
-     * @param text æ–‡æœ¬
-     * @return trueä»£è¡¨æ˜¯
+     * ÅĞ¶ÏÒ»¸öÎÄ±¾ÖĞÊÇ·ñº¬ÓĞÃô¸Ğ´Ê£¨´Ê¿âURL£º<a href="https://mcchampions.github.io/database.json">´Ê¿âµØÖ·</a>)
+     * @param text ÎÄ±¾
+     * @return true´ú±íÊÇ
      */
     public static boolean hasSensitiveWord(String text) throws IOException {
         List<String> list = toStringList((new JSONObject(NetUtil.simulationBrowserRequest("https://mcchampions.github.io/database.json"))).getJSONArray("words").toList());

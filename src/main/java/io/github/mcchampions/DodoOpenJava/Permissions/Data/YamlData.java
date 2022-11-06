@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Yamlæ–‡ä»¶å­˜å‚¨æ ¼å¼
+ * YamlÎÄ¼ş´æ´¢¸ñÊ½
  * @author qscbm187531
  */
 public class YamlData {
@@ -19,7 +19,7 @@ public class YamlData {
     public static File Group;
 
     /**
-     * åˆå§‹åŒ–
+     * ³õÊ¼»¯
      */
     public static void init() {
         File Config = new File(ConfigUtil.getJarPath() + "permissions/");

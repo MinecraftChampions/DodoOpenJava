@@ -8,14 +8,14 @@ import java.beans.PropertyDescriptor;
 import java.util.*;
 
 /**
- * ä¸€äº›æœ‰å…³äº Map çš„å®ç”¨æ–¹æ³•
+ * Ò»Ğ©ÓĞ¹ØÓÚ Map µÄÊµÓÃ·½·¨
  * @author qscbm187531
  */
 public class MapUtil {
     /**
-     * éå† Map
-     * @param map æŒ‡å®šMap
-     * @return è¿”å›é›†åˆï¼ˆé›†åˆä¸­å†…ç½®äº†ä¸€ä¸ªé›†åˆï¼Œç´¢å¼•0æ˜¯keyï¼Œ1æ˜¯Valueï¼‰
+     * ±éÀú Map
+     * @param map Ö¸¶¨Map
+     * @return ·µ»Ø¼¯ºÏ£¨¼¯ºÏÖĞÄÚÖÃÁËÒ»¸ö¼¯ºÏ£¬Ë÷Òı0ÊÇkey£¬1ÊÇValue£©
      */
     public static List<List<Object>> ergodicMaps(Map<?, ?> map) {
         if (map.isEmpty()) return new ArrayList<>();
@@ -32,33 +32,33 @@ public class MapUtil {
     }
 
     /**
-     * mapè½¬bean
+     * map×ªbean
      *
      * @param type beanType
      * @param map  map
      * @return bean
      */
     public static <T> T toBean(Class<T> type, Map<?, ?> map) {
-        T obj = null;
+        T object = null;
         try {
-            BeanInfo beanInfo = Introspector.getBeanInfo(type);
-            obj = type.newInstance();
-            PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
+            BeanInfo info = Introspector.getBeanInfo(type);
+            object = type.newInstance();
+            PropertyDescriptor[] propertyDescriptors = info.getPropertyDescriptors();
             for (PropertyDescriptor descriptor : propertyDescriptors) {
                 String propertyName = descriptor.getName();
                 if (map.containsKey(propertyName)) {
                     Object value = map.get(propertyName);
-                    descriptor.getWriteMethod().invoke(obj, value);
+                    descriptor.getWriteMethod().invoke(object, value);
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return obj;
+        return object;
     }
 
     /**
-     * mapè½¬json
+     * map×ªjson
      *
      * @param map  map
      * @return bean

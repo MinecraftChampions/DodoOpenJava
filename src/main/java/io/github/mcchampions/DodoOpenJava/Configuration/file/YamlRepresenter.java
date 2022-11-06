@@ -1,14 +1,13 @@
 package io.github.mcchampions.DodoOpenJava.Configuration.file;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 import io.github.mcchampions.DodoOpenJava.Configuration.ConfigurationSection;
 import io.github.mcchampions.DodoOpenJava.Configuration.serialization.ConfigurationSerializable;
 import io.github.mcchampions.DodoOpenJava.Configuration.serialization.ConfigurationSerialization;
-
 import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.representer.Representer;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class YamlRepresenter extends Representer {
 

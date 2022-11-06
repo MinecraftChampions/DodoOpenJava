@@ -1,4 +1,4 @@
 /**
- * è‡´åŠ›äºç®€åŒ–é…ç½®çš„è¯»å–å’Œä¿å­˜æ“ä½œçš„ç±».
+ * ÖÂÁ¦ÓÚ¼ò»¯ÅäÖÃµÄ¶ÁÈ¡ºÍ±£´æ²Ù×÷µÄÀà.
  */
 package io.github.mcchampions.DodoOpenJava.Configuration.file;

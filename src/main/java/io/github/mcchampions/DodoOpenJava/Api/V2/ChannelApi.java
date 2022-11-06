@@ -7,31 +7,31 @@ import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
 import java.io.IOException;
 
 /**
- * é¢‘é“API
+ * ÆµµÀAPI
  * @author qscbm187531
  */
 public class ChannelApi {
     public static String url, param;
     /**
-     * è·å–é¢‘é“åˆ—è¡¨
+     * »ñÈ¡ÆµµÀÁĞ±í
      *
-     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
-     * @param token æœºå™¨äººé‰´æƒToken
-     * @param islandSourceId ç¾¤å·
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
+     * @param token »úÆ÷ÈË¼øÈ¨Token
+     * @param islandSourceId ÈººÅ
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject getChannelList(String clientId, String token, String islandSourceId) throws IOException {
         return getChannelList(BaseUtil.Authorization(clientId,token), islandSourceId);
     }
 
     /**
-     * è·å–é¢‘é“åˆ—è¡¨
+     * »ñÈ¡ÆµµÀÁĞ±í
      *
      * @param authorization authorization
-     * @param islandSourceId ç¾¤å·
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param islandSourceId ÈººÅ
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject getChannelList(String authorization, String islandSourceId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/list";
@@ -42,25 +42,25 @@ public class ChannelApi {
     }
 
     /**
-     * è·å–é¢‘é“ä¿¡æ¯
+     * »ñÈ¡ÆµµÀĞÅÏ¢
      *
-     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
-     * @param token æœºå™¨äººé‰´æƒToken
-     * @param channelId é¢‘é“å·
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
+     * @param token »úÆ÷ÈË¼øÈ¨Token
+     * @param channelId ÆµµÀºÅ
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject getChannelInfo(String clientId, String token, String channelId) throws IOException {
         return getChannelInfo(BaseUtil.Authorization(clientId, token), channelId);
     }
 
     /**
-     * è·å–é¢‘é“ä¿¡æ¯
+     * »ñÈ¡ÆµµÀĞÅÏ¢
      *
      * @param authorization authorization
-     * @param channelId é¢‘é“å·
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param channelId ÆµµÀºÅ
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject getChannelInfo(String authorization, String channelId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/info";
@@ -71,29 +71,29 @@ public class ChannelApi {
     }
 
     /**
-     * åˆ›å»ºé¢‘é“
+     * ´´½¨ÆµµÀ
      *
-     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
-     * @param token æœºå™¨äººé‰´æƒToken
-     * @param islandSourceId ç¾¤å·
-     * @param channelName é¢‘é“å
-     * @param channelType é¢‘é“ç±»å‹
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
+     * @param token »úÆ÷ÈË¼øÈ¨Token
+     * @param islandSourceId ÈººÅ
+     * @param channelName ÆµµÀÃû
+     * @param channelType ÆµµÀÀàĞÍ
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject addChannel(String clientId, String token, String islandSourceId, String channelName, int channelType) throws IOException {
         return addChannel(BaseUtil.Authorization(clientId, token), islandSourceId, channelName, channelType);
     }
 
     /**
-     * åˆ›å»ºé¢‘é“
+     * ´´½¨ÆµµÀ
      *
      * @param authorization authorization
-     * @param islandSourceId ç¾¤å·
-     * @param channelName é¢‘é“å
-     * @param channelType é¢‘é“ç±»å‹
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param islandSourceId ÈººÅ
+     * @param channelName ÆµµÀÃû
+     * @param channelType ÆµµÀÀàĞÍ
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject addChannel(String authorization, String islandSourceId, String channelName, int channelType) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/add";
@@ -106,29 +106,29 @@ public class ChannelApi {
     }
     
     /**
-     * ç¼–è¾‘é¢‘é“
+     * ±à¼­ÆµµÀ
      *
-     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
-     * @param token æœºå™¨äººé‰´æƒToken
-     * @param islandSourceId ç¾¤å·
-     * @param channelName é¢‘é“å
-     * @param channelId é¢‘é“å·
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
+     * @param token »úÆ÷ÈË¼øÈ¨Token
+     * @param islandSourceId ÈººÅ
+     * @param channelName ÆµµÀÃû
+     * @param channelId ÆµµÀºÅ
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject editChannel(String clientId, String token, String islandSourceId, String channelName, String channelId) throws IOException {
         return editChannel(BaseUtil.Authorization(clientId, token), islandSourceId, channelName, channelId);
     }
 
     /**
-     * ç¼–è¾‘é¢‘é“
+     * ±à¼­ÆµµÀ
      *
      * @param authorization authorization
-     * @param islandSourceId ç¾¤å·
-     * @param channelName é¢‘é“å
-     * @param channelId é¢‘é“å·
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param islandSourceId ÈººÅ
+     * @param channelName ÆµµÀÃû
+     * @param channelId ÆµµÀºÅ
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject editChannel(String authorization, String islandSourceId, String channelName, String channelId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/edit";
@@ -141,27 +141,27 @@ public class ChannelApi {
     }
     
     /**
-     * åˆ é™¤é¢‘é“
+     * É¾³ıÆµµÀ
      *
-     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
-     * @param token æœºå™¨äººé‰´æƒToken
-     * @param islandSourceId ç¾¤å·
-     * @param channelId é¢‘é“å·
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
+     * @param token »úÆ÷ÈË¼øÈ¨Token
+     * @param islandSourceId ÈººÅ
+     * @param channelId ÆµµÀºÅ
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject deleteChannel(String clientId, String token, String islandSourceId, String channelId) throws IOException {
         return deleteChannel(BaseUtil.Authorization(clientId, token), islandSourceId, channelId);
     }
 
     /**
-     * åˆ é™¤é¢‘é“
+     * É¾³ıÆµµÀ
      *
      * @param authorization authorization
-     * @param islandSourceId ç¾¤å·
-     * @param channelId é¢‘é“å·
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param islandSourceId ÈººÅ
+     * @param channelId ÆµµÀºÅ
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject deleteChannel(String authorization, String islandSourceId, String channelId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/remove";

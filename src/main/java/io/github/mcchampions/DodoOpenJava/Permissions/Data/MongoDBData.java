@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * mongoæ•°æ®åº“å­˜å‚¨
+ * mongoÊı¾İ¿â´æ´¢
  * @author qscbm187531
  */
 public class MongoDBData {
@@ -28,9 +28,9 @@ public class MongoDBData {
     MongoDatabase permUser;
 
     /**
-     * åˆå§‹åŒ–æƒé™ç³»ç»Ÿ
-     * @param host åœ°å€
-     * @param port ç«¯å£
+     * ³õÊ¼»¯È¨ÏŞÏµÍ³
+     * @param host µØÖ·
+     * @param port ¶Ë¿Ú
      */
     public void initPermissions(String host, int port) {
         mongo = new MongoClient(host,port);
@@ -68,10 +68,10 @@ public class MongoDBData {
     }
 
     /**
-     * å¢åŠ ç”¨æˆ·æƒé™
-     * @param perm æƒé™
+     * Ôö¼ÓÓÃ»§È¨ÏŞ
+     * @param perm È¨ÏŞ
      * @param DodoId DodoId
-     * @return è¿”å›falseä»£è¡¨æ·»åŠ æˆåŠŸï¼ˆåŸæœ¬æ²¡æœ‰è¿™ä¸ªæƒé™ï¼‰ï¼Œè¿”å›trueä»£è¡¨å·²ç»æœ‰äº†è¿™ä¸ªæƒé™
+     * @return ·µ»Øfalse´ú±íÌí¼Ó³É¹¦£¨Ô­±¾Ã»ÓĞÕâ¸öÈ¨ÏŞ£©£¬·µ»Øtrue´ú±íÒÑ¾­ÓĞÁËÕâ¸öÈ¨ÏŞ
      */
     public Boolean addUserPermission(String perm, String DodoId) {
         boolean hasPerm = false;
@@ -111,10 +111,10 @@ public class MongoDBData {
     }
 
     /**
-     * ç§»é™¤ç”¨æˆ·æƒé™
-     * @param perm æƒé™
+     * ÒÆ³ıÓÃ»§È¨ÏŞ
+     * @param perm È¨ÏŞ
      * @param DodoId DodoID
-     * @return è¿”å›falseä»£è¡¨ç§»é™¤æˆåŠŸï¼ˆåŸæœ¬æœ‰è¿™ä¸ªæƒé™ï¼‰ï¼Œè¿”å›trueä»£è¡¨åŸæœ¬æ²¡æœ‰è¿™ä¸ªæƒé™
+     * @return ·µ»Øfalse´ú±íÒÆ³ı³É¹¦£¨Ô­±¾ÓĞÕâ¸öÈ¨ÏŞ£©£¬·µ»Øtrue´ú±íÔ­±¾Ã»ÓĞÕâ¸öÈ¨ÏŞ
      */
     public Boolean removeUserPermission(String perm, String DodoId) {
         boolean hasPerm = false;
@@ -154,9 +154,9 @@ public class MongoDBData {
     }
 
     /**
-     * æ–°å¢ä¸€ä¸ªæƒé™ç»„
-     * @param Group æƒé™ç»„
-     * @return trueä»£è¡¨åˆ›å»ºæˆåŠŸï¼Œfalseä»£è¡¨åŸæ¥å°±æœ‰è¿™ä¸ªç»„
+     * ĞÂÔöÒ»¸öÈ¨ÏŞ×é
+     * @param Group È¨ÏŞ×é
+     * @return true´ú±í´´½¨³É¹¦£¬false´ú±íÔ­À´¾ÍÓĞÕâ¸ö×é
      */
     public Boolean addPermGroup(String Group) {
         boolean a = true;
@@ -174,9 +174,9 @@ public class MongoDBData {
     }
 
     /**
-     * åˆ é™¤æƒé™ç»„
-     * @param Group æƒé™ç»„
-     * @return è¿”å›trueä»£è¡¨æˆåŠŸï¼Œfalseä»£è¡¨åŸæœ¬å°±æ²¡æœ‰è¿™ä¸ªæƒé™ç»„
+     * É¾³ıÈ¨ÏŞ×é
+     * @param Group È¨ÏŞ×é
+     * @return ·µ»Øtrue´ú±í³É¹¦£¬false´ú±íÔ­±¾¾ÍÃ»ÓĞÕâ¸öÈ¨ÏŞ×é
      */
     public Boolean deletePermGroup(String Group) {
         boolean a = true;
@@ -191,10 +191,10 @@ public class MongoDBData {
     }
 
     /**
-     * å¢åŠ æƒé™ç»„çš„æƒé™
-     * @param Group æƒé™ç»„
-     * @param perm æƒé™
-     * @return è¿”å›falseä»£è¡¨åŸæœ¬æ²¡æœ‰è¿™ä¸ªæƒé™ï¼ˆä¹Ÿå°±æ˜¯æˆåŠŸï¼‰ï¼Œè¿”å›trueä»£è¡¨åŸæœ¬æœ‰è¿™ä¸ªæƒé™ï¼ˆä¹Ÿå°±æ˜¯å¤±è´¥ï¼‰
+     * Ôö¼ÓÈ¨ÏŞ×éµÄÈ¨ÏŞ
+     * @param Group È¨ÏŞ×é
+     * @param perm È¨ÏŞ
+     * @return ·µ»Øfalse´ú±íÔ­±¾Ã»ÓĞÕâ¸öÈ¨ÏŞ£¨Ò²¾ÍÊÇ³É¹¦£©£¬·µ»Øtrue´ú±íÔ­±¾ÓĞÕâ¸öÈ¨ÏŞ£¨Ò²¾ÍÊÇÊ§°Ü£©
      */
     public Boolean addGroupPerm(String Group, String perm) {
         boolean hasPerm = false;
@@ -226,10 +226,10 @@ public class MongoDBData {
     }
 
     /**
-     * åˆ é™¤æƒé™ç»„æƒé™
-     * @param Group æƒé™ç»„
-     * @param perm æƒé™
-     * @return è¿”å›falseä»£è¡¨åŸæœ¬æ²¡æœ‰è¿™ä¸ªæƒé™ï¼ˆä¹Ÿå°±æ˜¯å¤±è´¥ï¼‰ï¼Œè¿”å›trueä»£è¡¨åŸæœ¬æœ‰è¿™ä¸ªæƒé™ï¼ˆä¹Ÿå°±æ˜¯æˆåŠŸï¼‰
+     * É¾³ıÈ¨ÏŞ×éÈ¨ÏŞ
+     * @param Group È¨ÏŞ×é
+     * @param perm È¨ÏŞ
+     * @return ·µ»Øfalse´ú±íÔ­±¾Ã»ÓĞÕâ¸öÈ¨ÏŞ£¨Ò²¾ÍÊÇÊ§°Ü£©£¬·µ»Øtrue´ú±íÔ­±¾ÓĞÕâ¸öÈ¨ÏŞ£¨Ò²¾ÍÊÇ³É¹¦£©
      */
     public Boolean deleteGroupPerm(String Group, String perm) {
         boolean hasPerm = true;
@@ -261,9 +261,9 @@ public class MongoDBData {
     }
 
     /**
-     * ä¿®æ”¹é»˜è®¤æƒé™ç»„
-     * @param Group æƒé™ç»„
-     * @return è¿”å›falseä»£è¡¨ä¿®æ”¹æˆåŠŸï¼ˆä¹Ÿå°±æ˜¯åŸæœ¬æ²¡æœ‰è¿™ä¸ªæƒé™ç»„ä¸æ˜¯é»˜è®¤çš„ï¼‰ï¼Œè¿”å›trueä»£è¡¨ä¿®æ”¹å¤±è´¥ï¼ˆä»£è¡¨åŸæœ¬è¿™ä¸ªæƒé™ç»„å°±æ˜¯é»˜è®¤çš„ï¼‰
+     * ĞŞ¸ÄÄ¬ÈÏÈ¨ÏŞ×é
+     * @param Group È¨ÏŞ×é
+     * @return ·µ»Øfalse´ú±íĞŞ¸Ä³É¹¦£¨Ò²¾ÍÊÇÔ­±¾Ã»ÓĞÕâ¸öÈ¨ÏŞ×é²»ÊÇÄ¬ÈÏµÄ£©£¬·µ»Øtrue´ú±íĞŞ¸ÄÊ§°Ü£¨´ú±íÔ­±¾Õâ¸öÈ¨ÏŞ×é¾ÍÊÇÄ¬ÈÏµÄ£©
      */
     public Boolean modifyDefaultPermGroup(String Group) {
         boolean isDefault = false;
@@ -292,9 +292,9 @@ public class MongoDBData {
     }
 
     /**
-     * è·å–ç”¨æˆ·çš„æƒé™ç»„
+     * »ñÈ¡ÓÃ»§µÄÈ¨ÏŞ×é
      * @param DodoId DodoID
-     * @return è¿”å›æƒé™ç»„
+     * @return ·µ»ØÈ¨ÏŞ×é
      */
     public String getUserGroup(String DodoId) {
         String Group;
@@ -307,10 +307,10 @@ public class MongoDBData {
     }
 
     /**
-     * ä¿®æ”¹ç”¨æˆ·æƒé™ç»„
+     * ĞŞ¸ÄÓÃ»§È¨ÏŞ×é
      * @param DodoId DodoID
-     * @param Group æƒé™ç»„
-     * @return falseä»£è¡¨æˆåŠŸï¼Œtrueä»£è¡¨å¤±è´¥
+     * @param Group È¨ÏŞ×é
+     * @return false´ú±í³É¹¦£¬true´ú±íÊ§°Ü
      */
     public Boolean modifyUserGroup(String DodoId, String Group) {
         boolean originalGroup = false;
@@ -346,9 +346,9 @@ public class MongoDBData {
     }
 
     /**
-     * è·å–è¿™ä¸ªæƒé™ç»„çš„æƒé™åˆ—è¡¨
-     * @param Group æƒé™ç»„
-     * @return æƒé™åˆ—è¡¨
+     * »ñÈ¡Õâ¸öÈ¨ÏŞ×éµÄÈ¨ÏŞÁĞ±í
+     * @param Group È¨ÏŞ×é
+     * @return È¨ÏŞÁĞ±í
      */
     public List<String> getGroupPermissions(String Group) {
         List<String> listCollectionNames = (List<String>) permGroup.listCollectionNames();
@@ -369,9 +369,9 @@ public class MongoDBData {
     }
 
     /**
-     * è·å–ç”¨æˆ·çš„æƒé™ï¼ˆä»…åŒ…æ‹¬ç”¨æˆ·è‡ªèº«çš„æƒé™ï¼Œä¸åŒ…æ‹¬ç”¨æˆ·æ‰€åœ¨ç»„çš„æƒé™ï¼‰
+     * »ñÈ¡ÓÃ»§µÄÈ¨ÏŞ£¨½ö°üÀ¨ÓÃ»§×ÔÉíµÄÈ¨ÏŞ£¬²»°üÀ¨ÓÃ»§ËùÔÚ×éµÄÈ¨ÏŞ£©
      * @param DodoId DodoId
-     * @return è¿”å›æƒé™åˆ—è¡¨
+     * @return ·µ»ØÈ¨ÏŞÁĞ±í
      */
     public List<String> getUserPermissions(String DodoId) {
         List<String> listCollectionNames = (List<String>) permUser.listCollectionNames();

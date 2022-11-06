@@ -7,32 +7,32 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 /**
- * ç¾¤API
+ * ÈºAPI
  * @author qscbm187531
  */
 public class IslandApi {
     public static String url, param;
 
     /**
-     * è·å–ç¾¤ä¿¡æ¯
+     * »ñÈ¡ÈºĞÅÏ¢
      *
-     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
-     * @param token æœºå™¨äººé‰´æƒToken
-     * @param islandId ç¾¤å·
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
+     * @param token »úÆ÷ÈË¼øÈ¨Token
+     * @param islandId ÈººÅ
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject getIslandInfo(String clientId, String token, String islandId) throws IOException {
         return getIslandInfo(BaseUtil.Authorization(clientId, token), islandId);
     }
 
     /**
-     * è·å–ç¾¤ä¿¡æ¯
+     * »ñÈ¡ÈºĞÅÏ¢
      *
      * @param authorization authorization
-     * @param islandId ç¾¤å·
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param islandId ÈººÅ
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject getIslandInfo(String authorization, String islandId) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/island/info";
@@ -43,23 +43,23 @@ public class IslandApi {
     }
 
     /**
-     * è·å–æœºå™¨äººç¾¤åˆ—è¡¨
+     * »ñÈ¡»úÆ÷ÈËÈºÁĞ±í
      *
-     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
-     * @param token æœºå™¨äººé‰´æƒToken
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
+     * @param token »úÆ÷ÈË¼øÈ¨Token
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject getIslandList(String clientId, String token) throws IOException {
         return getIslandList(BaseUtil.Authorization(clientId,token));
     }
 
     /**
-     * è·å–æœºå™¨äººç¾¤åˆ—è¡¨
+     * »ñÈ¡»úÆ÷ÈËÈºÁĞ±í
      *
      * @param authorization authorization
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject getIslandList(String authorization) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/island/list";
@@ -68,29 +68,29 @@ public class IslandApi {
     }
 
     /**
-     * è·å–ç¾¤ç­‰çº§æ’è¡Œæ¦œ
+     * »ñÈ¡ÈºµÈ¼¶ÅÅĞĞ°ñ
      *
-     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
-     * @param token æœºå™¨äººé‰´æƒToken
-     * @param islandId ç¾¤å·
-     * @param pageSize é¡µå¤§å°ï¼Œæœ€å¤§100
-     * @param maxId ä¸Šä¸€é¡µæœ€å¤§IDå€¼ï¼Œä¸ºæå‡åˆ†é¡µæŸ¥è¯¢æ€§èƒ½ï¼Œéœ€è¦ä¼ å…¥ä¸Šä¸€é¡µæŸ¥è¯¢è®°å½•ä¸­çš„æœ€å¤§IDå€¼ï¼Œé¦–é¡µè¯·ä¼ 0
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
+     * @param token »úÆ÷ÈË¼øÈ¨Token
+     * @param islandId ÈººÅ
+     * @param pageSize Ò³´óĞ¡£¬×î´ó100
+     * @param maxId ÉÏÒ»Ò³×î´óIDÖµ£¬ÎªÌáÉı·ÖÒ³²éÑ¯ĞÔÄÜ£¬ĞèÒª´«ÈëÉÏÒ»Ò³²éÑ¯¼ÇÂ¼ÖĞµÄ×î´óIDÖµ£¬Ê×Ò³Çë´«0
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject getIslandLevelRankList(String clientId, String token, String islandId, int pageSize, long maxId) throws IOException {
         return getIslandLevelRankList(BaseUtil.Authorization(clientId, token), islandId, pageSize, maxId);
     }
 
     /**
-     * è·å–ç¾¤ç­‰çº§æ’è¡Œæ¦œ
+     * »ñÈ¡ÈºµÈ¼¶ÅÅĞĞ°ñ
      *
      * @param authorization authorization
-     * @param islandId ç¾¤å·
-     * @param pageSize é¡µå¤§å°ï¼Œæœ€å¤§100
-     * @param maxId ä¸Šä¸€é¡µæœ€å¤§IDå€¼ï¼Œä¸ºæå‡åˆ†é¡µæŸ¥è¯¢æ€§èƒ½ï¼Œéœ€è¦ä¼ å…¥ä¸Šä¸€é¡µæŸ¥è¯¢è®°å½•ä¸­çš„æœ€å¤§IDå€¼ï¼Œé¦–é¡µè¯·ä¼ 0
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param islandId ÈººÅ
+     * @param pageSize Ò³´óĞ¡£¬×î´ó100
+     * @param maxId ÉÏÒ»Ò³×î´óIDÖµ£¬ÎªÌáÉı·ÖÒ³²éÑ¯ĞÔÄÜ£¬ĞèÒª´«ÈëÉÏÒ»Ò³²éÑ¯¼ÇÂ¼ÖĞµÄ×î´óIDÖµ£¬Ê×Ò³Çë´«0
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject getIslandLevelRankList(String authorization, String islandId, int pageSize, long maxId) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/island/info";
@@ -103,25 +103,25 @@ public class IslandApi {
     }
 
     /**
-     * è·å–ç¦è¨€åˆ—è¡¨
+     * »ñÈ¡½ûÑÔÁĞ±í
      *
-     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
-     * @param token æœºå™¨äººé‰´æƒToken
-     * @param islandId ç¾¤å·
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
+     * @param token »úÆ÷ÈË¼øÈ¨Token
+     * @param islandId ÈººÅ
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject getIslandMuteList(String clientId, String token, String islandId) throws IOException {
         return getIslandMuteList(BaseUtil.Authorization(clientId, token), islandId);
     }
 
     /**
-     * è·å–ç¦è¨€åˆ—è¡¨
+     * »ñÈ¡½ûÑÔÁĞ±í
      *
      * @param authorization authorization
-     * @param islandId ç¾¤å·
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param islandId ÈººÅ
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject getIslandMuteList(String authorization, String islandId) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/island/mute/list";
@@ -132,25 +132,25 @@ public class IslandApi {
     }
 
     /**
-     * è·å–å°ç¦åˆ—è¡¨
+     * »ñÈ¡·â½ûÁĞ±í
      *
-     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
-     * @param token æœºå™¨äººé‰´æƒToken
-     * @param islandId ç¾¤å·
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
+     * @param token »úÆ÷ÈË¼øÈ¨Token
+     * @param islandId ÈººÅ
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject getIslandBanList(String clientId, String token, String islandId) throws IOException {
         return getIslandBanList(BaseUtil.Authorization(clientId, token), islandId);
     }
 
     /**
-     * è·å–å°ç¦åˆ—è¡¨
+     * »ñÈ¡·â½ûÁĞ±í
      *
      * @param authorization authorization
-     * @param islandId ç¾¤å·
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param islandId ÈººÅ
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject getIslandBanList(String authorization, String islandId) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/island/ban/list";

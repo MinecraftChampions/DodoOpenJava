@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Tomlæ–‡ä»¶å­˜å‚¨æ–¹å¼
+ * TomlÎÄ¼ş´æ´¢·½Ê½
  * @author qscbm187531
  */
 public class TomlData {
@@ -22,7 +22,7 @@ public class TomlData {
     public static File Group;
 
     /**
-     * åˆå§‹åŒ–
+     * ³õÊ¼»¯
      */
     public static void init() {
         File Config = new File(ConfigUtil.getJarPath() + "permissions/");
@@ -74,8 +74,8 @@ public class TomlData {
     }
 
     /**
-     * è·å–æƒé™ç»„æ–‡ä»¶
-     * @return jsonå¯¹è±¡
+     * »ñÈ¡È¨ÏŞ×éÎÄ¼ş
+     * @return json¶ÔÏó
      */
     public static JSONObject getGroupFile() {
         try {
@@ -86,8 +86,8 @@ public class TomlData {
     }
 
     /**
-     * è·å–ç”¨æˆ·æ–‡ä»¶
-     * @return jsonå¯¹è±¡
+     * »ñÈ¡ÓÃ»§ÎÄ¼ş
+     * @return json¶ÔÏó
      */
     public static JSONObject getUserFile() {
         try {

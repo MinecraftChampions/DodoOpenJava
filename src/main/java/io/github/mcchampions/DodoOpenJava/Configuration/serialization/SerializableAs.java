@@ -6,11 +6,11 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * è¡¨ç¤ºConfigurationSerializableå¯å­˜å‚¨ä¸ºçš„â€œåˆ«åâ€ã€‚å¦‚æœConfigurationSerializableç±»ä¸Šä¸å­˜åœ¨æ­¤é¡¹ï¼Œåˆ™å®ƒå°†ä½¿ç”¨è¯¥ç±»çš„å®Œå…¨é™å®šåã€‚
+ * ±íÊ¾ConfigurationSerializable¿É´æ´¢ÎªµÄ¡°±ğÃû¡±¡£Èç¹ûConfigurationSerializableÀàÉÏ²»´æÔÚ´ËÏî£¬ÔòËü½«Ê¹ÓÃ¸ÃÀàµÄÍêÈ«ÏŞ¶¨Ãû¡£
  *
- * æ­¤å€¼å°†å­˜å‚¨åœ¨é…ç½®ä¸­ï¼Œä»¥ä¾¿é…ç½®ååºåˆ—åŒ–å¯ä»¥ç¡®å®šå…¶ç±»å‹ã€‚
+ * ´ËÖµ½«´æ´¢ÔÚÅäÖÃÖĞ£¬ÒÔ±ãÅäÖÃ·´ĞòÁĞ»¯¿ÉÒÔÈ·¶¨ÆäÀàĞÍ¡£
  *
- * åœ¨ConfigurationSerializableä»¥å¤–çš„ä»»ä½•å…¶ä»–ç±»ä¸Šä½¿ç”¨æ­¤æ³¨é‡Šå°†æ— æ•ˆã€‚
+ * ÔÚConfigurationSerializableÒÔÍâµÄÈÎºÎÆäËûÀàÉÏÊ¹ÓÃ´Ë×¢ÊÍ½«ÎŞĞ§¡£
  *
  * @see ConfigurationSerialization#registerClass(Class, String)
  */

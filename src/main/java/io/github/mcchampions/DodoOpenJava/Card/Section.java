@@ -8,7 +8,7 @@ import io.github.mcchampions.DodoOpenJava.Card.enums.TextType;
 import java.util.Objects;
 
 /**
- * å…³äºæ–‡å­—è¿™ä¸€ç±»
+ * ¹ØÓÚÎÄ×ÖÕâÒ»Àà
  * @author qscbm187531
  */
 public class Section {
@@ -17,7 +17,7 @@ public class Section {
     public Boolean isParagraph;
 
     /**
-     * æ˜¯å¦ä¸å­˜åœ¨
+     * ÊÇ·ñ²»´æÔÚ
      * @return true/false
      */
     public Boolean isEmpty() {
@@ -25,7 +25,7 @@ public class Section {
     }
 
     /**
-     * æ˜¯å¦ä¸å­˜åœ¨
+     * ÊÇ·ñ²»´æÔÚ
      * @param text Text
      * @return true/false
      */
@@ -34,7 +34,7 @@ public class Section {
     }
 
     /**
-     * è½¬æ¢ä¸ºJSONå¯¹è±¡
+     * ×ª»»ÎªJSON¶ÔÏó
      * @return true
      */
     public JSONObject toJSONObject() {
@@ -42,7 +42,7 @@ public class Section {
     }
 
     /**
-     * åˆå§‹åŒ–Section
+     * ³õÊ¼»¯Section
      * @return true/false
      */
     public Boolean initText(SectionType type) {
@@ -53,7 +53,7 @@ public class Section {
                         "                        \"type\": \"section\",\n" +
                         "                        \"text\": {\n" +
                         "                                \"type\": \"" + Type + "\",\n" +
-                        "                                \"content\": \"ä¸€é•¿æ®µæ–‡æœ¬å­—å·çš„æ–‡æœ¬å†…å®¹ï¼Œæ”¯æŒMarkdownï¼Œæœ€å¤§æ”¯æŒå­—ç¬¦æ•°2000ã€‚\"\n" +
+                        "                                \"content\": \"Ò»³¤¶ÎÎÄ±¾×ÖºÅµÄÎÄ±¾ÄÚÈİ£¬Ö§³ÖMarkdown£¬×î´óÖ§³Ö×Ö·ûÊı2000¡£\"\n" +
                         "                        }\n" +
                         "                    }");
                 isParagraph = false;
@@ -67,22 +67,22 @@ public class Section {
                                                          "cols": 6,
                                                          "fields": [{
                                                                  "type": "dodo-md",
-                                                                 "content": "ç¬¬ä¸€æ \\nå†…å®¹"
+                                                                 "content": "µÚÒ»À¸\\nÄÚÈİ"
                                                              }, {
                                                                  "type": "dodo-md",
-                                                                 "content": "ç¬¬äºŒæ \\nå†…å®¹"
+                                                                 "content": "µÚ¶şÀ¸\\nÄÚÈİ"
                                                              }, {
                                                                  "type": "dodo-md",
-                                                                 "content": "ç¬¬ä¸‰æ \\nå†…å®¹"
+                                                                 "content": "µÚÈıÀ¸\\nÄÚÈİ"
                                                              }, {
                                                                  "type": "dodo-md",
-                                                                 "content": "ç¬¬å››æ \\nå†…å®¹"
+                                                                 "content": "µÚËÄÀ¸\\nÄÚÈİ"
                                                              }, {
                                                                  "type": "dodo-md",
-                                                                 "content": "ç¬¬äº”æ \\nå†…å®¹"
+                                                                 "content": "µÚÎåÀ¸\\nÄÚÈİ"
                                                              }, {
                                                                  "type": "dodo-md",
-                                                                 "content": "ç¬¬å…­æ \\nå†…å®¹"
+                                                                 "content": "µÚÁùÀ¸\\nÄÚÈİ"
                                                              }
                                                          ]
                                                      }
@@ -93,9 +93,9 @@ public class Section {
     }
 
     /**
-     * ç¼–è¾‘æ–‡æœ¬ï¼ˆéå¤šæ ï¼‰
-     * @param content æ–‡æœ¬
-     * @return æˆåŠŸ
+     * ±à¼­ÎÄ±¾£¨·Ç¶àÀ¸£©
+     * @param content ÎÄ±¾
+     * @return ³É¹¦
      */
     public Boolean editContent(String content) {
         if (JsonText.isEmpty()) initText(SectionType.Markdown);
@@ -104,9 +104,9 @@ public class Section {
     }
 
     /**
-     * ç¼–è¾‘æ–‡æœ¬ç±»åˆ«
-     * @param type ç±»åˆ«
-     * @return æˆåŠŸ
+     * ±à¼­ÎÄ±¾Àà±ğ
+     * @param type Àà±ğ
+     * @return ³É¹¦
      */
     public Boolean editContentType(TextType type) {
         if (JsonText.isEmpty()) initText(SectionType.Markdown);
@@ -117,10 +117,10 @@ public class Section {
     }
 
     /**
-     * ç¼–è¾‘æ–‡æœ¬ï¼ˆå¤šæ ï¼‰
-     * @param content æ–‡æœ¬
-     * @param count ç¬¬å‡ ä¸ªï¼ˆä»1å¼€å§‹ï¼‰
-     * @return æˆåŠŸ
+     * ±à¼­ÎÄ±¾£¨¶àÀ¸£©
+     * @param content ÎÄ±¾
+     * @param count µÚ¼¸¸ö£¨´Ó1¿ªÊ¼£©
+     * @return ³É¹¦
      */
     public Boolean editParagraphContent(String content,int count) {
         if (JsonText.isEmpty()) initText(SectionType.Paragraph);
@@ -129,10 +129,10 @@ public class Section {
     }
 
     /**
-     * ç¼–è¾‘æ–‡æœ¬ç±»åˆ«ï¼ˆå¤šæ ï¼‰
-     * @param type ç±»åˆ«
-     * @param count ç¬¬å‡ ä¸ªï¼ˆä»1å¼€å§‹ï¼‰
-     * @return æˆåŠŸ
+     * ±à¼­ÎÄ±¾Àà±ğ£¨¶àÀ¸£©
+     * @param type Àà±ğ
+     * @param count µÚ¼¸¸ö£¨´Ó1¿ªÊ¼£©
+     * @return ³É¹¦
      */
     public Boolean editParagraphContentType(TextType type, int count) {
         if (JsonText.isEmpty()) initText(SectionType.Paragraph);
@@ -143,9 +143,9 @@ public class Section {
     }
 
     /**
-     * ç¼–è¾‘å¤šæ æ–‡æœ¬æ æ•°
-     * @param col æ æ•°
-     * @return æˆåŠŸ
+     * ±à¼­¶àÀ¸ÎÄ±¾À¸Êı
+     * @param col À¸Êı
+     * @return ³É¹¦
      */
     public Boolean editParagraphContentCols(Cols col) {
         if (JsonText.isEmpty()) initText(SectionType.Paragraph);
@@ -155,9 +155,9 @@ public class Section {
     }
 
     /**
-     * ç§»é™¤å¤šæ æ–‡æœ¬çš„ä¸€ç«¯æ–‡æœ¬
-     * @param count ç¬¬å‡ ä¸ªï¼ˆä»1å¼€å§‹ï¼‰
-     * @return æˆåŠŸ
+     * ÒÆ³ı¶àÀ¸ÎÄ±¾µÄÒ»¶ËÎÄ±¾
+     * @param count µÚ¼¸¸ö£¨´Ó1¿ªÊ¼£©
+     * @return ³É¹¦
      */
     public Boolean editParagraphContentType(int count) {
         if (JsonText.isEmpty()) initText(SectionType.Paragraph);
@@ -166,8 +166,8 @@ public class Section {
     }
 
     /**
-     * è½¬æ¢ä¸ºStringï¼ˆé‡å†™äº†Objectçš„toStringæ–¹æ³•ï¼‰
-     * @return å­—ç¬¦ä¸²
+     * ×ª»»ÎªString£¨ÖØĞ´ÁËObjectµÄtoString·½·¨£©
+     * @return ×Ö·û´®
      */
     public String toString() {
         return JsonText.toString();

@@ -1,16 +1,16 @@
 package io.github.mcchampions.DodoOpenJava.Card.enums;
 
 /**
- * å¯¹é½æ–¹å¼
+ * ¶ÔÆë·½Ê½
  * @author qscbm187531
  */
 public enum Align {
     /**
-     * å·¦å¯¹é½
+     * ×ó¶ÔÆë
      */
     Left("left"),
     /**
-     * å³å¯¹é½
+     * ÓÒ¶ÔÆë
      */
     Right("right");
 
@@ -19,13 +19,13 @@ public enum Align {
     }
 
     /**
-     * å¯¹é½æ–¹å¼
+     * ¶ÔÆë·½Ê½
      */
     private final String type;
 
     /**
-     * è·å–ç±»å‹
-     * @return ç±»å‹
+     * »ñÈ¡ÀàĞÍ
+     * @return ÀàĞÍ
      */
     public String getType() {
         return type;

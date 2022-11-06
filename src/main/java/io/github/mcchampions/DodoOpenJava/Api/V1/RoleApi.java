@@ -7,32 +7,32 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 /**
- * èº«ä»½ç»„API
+ * Éí·İ×éAPI
  * @author qscbm187531
  */
 public class RoleApi {
     public static String url, param;
 
     /**
-     * è·å–èº«ä»½ç»„åˆ—è¡¨
+     * »ñÈ¡Éí·İ×éÁĞ±í
      *
-     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
-     * @param token æœºå™¨äººé‰´æƒToken
-     * @param islandId ç¾¤å·
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
+     * @param token »úÆ÷ÈË¼øÈ¨Token
+     * @param islandId ÈººÅ
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject getRoleList(String clientId, String token, String islandId) throws IOException {
         return getRoleList(BaseUtil.Authorization(clientId, token), islandId);
     }
 
     /**
-     * è·å–èº«ä»½ç»„åˆ—è¡¨
+     * »ñÈ¡Éí·İ×éÁĞ±í
      *
      * @param authorization authorization
-     * @param islandId ç¾¤å·
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param islandId ÈººÅ
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject getRoleList(String authorization, String islandId) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/role/list";
@@ -43,29 +43,29 @@ public class RoleApi {
     }
 
     /**
-     * èµ‹äºˆæˆå‘˜èº«ä»½ç»„
+     * ¸³Óè³ÉÔ±Éí·İ×é
      *
-     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
-     * @param token æœºå™¨äººé‰´æƒToken
-     * @param islandId ç¾¤å·
-     * @param dodoId Dodoå·
-     * @param roleId èº«ä»½ç»„ID
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
+     * @param token »úÆ÷ÈË¼øÈ¨Token
+     * @param islandId ÈººÅ
+     * @param dodoId DodoºÅ
+     * @param roleId Éí·İ×éID
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject addRoleMember(String clientId, String token, String islandId, String dodoId, String roleId) throws IOException {
         return addRoleMember(BaseUtil.Authorization(clientId, token), islandId, dodoId, roleId);
     }
 
     /**
-     * èµ‹äºˆæˆå‘˜èº«ä»½ç»„
+     * ¸³Óè³ÉÔ±Éí·İ×é
      *
      * @param authorization authorization
-     * @param islandId ç¾¤å·
-     * @param dodoId Dodoå·
-     * @param roleId èº«ä»½ç»„ID
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param islandId ÈººÅ
+     * @param dodoId DodoºÅ
+     * @param roleId Éí·İ×éID
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject addRoleMember(String authorization, String islandId, String dodoId, String roleId) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/role/member/add";
@@ -78,29 +78,29 @@ public class RoleApi {
     }
 
     /**
-     * å–æ¶ˆæˆå‘˜èº«ä»½ç»„
+     * È¡Ïû³ÉÔ±Éí·İ×é
      *
-     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
-     * @param token æœºå™¨äººé‰´æƒToken
-     * @param islandId ç¾¤å·
-     * @param dodoId Dodoå·
-     * @param roleId èº«ä»½ç»„ID
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
+     * @param token »úÆ÷ÈË¼øÈ¨Token
+     * @param islandId ÈººÅ
+     * @param dodoId DodoºÅ
+     * @param roleId Éí·İ×éID
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject removeRoleMember(String clientId, String token, String islandId, String dodoId, String roleId) throws IOException {
         return removeRoleMember(BaseUtil.Authorization(clientId, token), islandId, dodoId, roleId);
     }
 
     /**
-     * å–æ¶ˆæˆå‘˜èº«ä»½ç»„
+     * È¡Ïû³ÉÔ±Éí·İ×é
      *
      * @param authorization authorization
-     * @param islandId ç¾¤å·
-     * @param dodoId Dodoå·
-     * @param roleId èº«ä»½ç»„ID
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param islandId ÈººÅ
+     * @param dodoId DodoºÅ
+     * @param roleId Éí·İ×éID
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject removeRoleMember(String authorization, String islandId, String dodoId, String roleId) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/role/member/remove";
@@ -113,33 +113,33 @@ public class RoleApi {
     }
 
     /**
-     * åˆ›å»ºèº«ä»½ç»„
+     * ´´½¨Éí·İ×é
      *
-     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
-     * @param token æœºå™¨äººé‰´æƒToken
-     * @param islandId ç¾¤å·
-     * @param roleName èº«ä»½ç»„åç§°ï¼Œè®¾ç½®ä¸ºnullæ—¶é»˜è®¤ä¸ºï¼šâ€œä¸ºæ–°çš„èº«ä»½ç»„â€ï¼Œä¸èƒ½å¤§äº32ä¸ªå­—ç¬¦æˆ–16ä¸ªæ±‰å­—
-     * @param roleColor èº«ä»½ç»„é¢œè‰²ï¼Œè®¾ç½®ä¸ºnullæ—¶é»˜è®¤ä¸ºï¼šâ€œ#333333â€ï¼Œ16è¿›åˆ¶HEXæ ¼å¼é¢œè‰²ç 
-     * @param position èº«ä»½ç»„æ’åºä½ç½®ï¼Œè®¾ç½®ä¸º1æ—¶é»˜è®¤ä¸ºï¼šâ€œ1â€ï¼ˆåºŸè¯ï¼‰ï¼Œä¸å¯ä¼ æ¯”æœºå™¨äººèº«ä»½ç»„å¤§çš„æ’åºå€¼
-     * @param permission èº«ä»½ç»„æƒé™å€¼ï¼ˆ16è¿›åˆ¶ï¼‰ï¼Œè®¾ç½®ä¸ºnullæ—¶é»˜è®¤ä¸ºï¼šâ€œ0â€
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
+     * @param token »úÆ÷ÈË¼øÈ¨Token
+     * @param islandId ÈººÅ
+     * @param roleName Éí·İ×éÃû³Æ£¬ÉèÖÃÎªnullÊ±Ä¬ÈÏÎª£º¡°ÎªĞÂµÄÉí·İ×é¡±£¬²»ÄÜ´óÓÚ32¸ö×Ö·û»ò16¸öºº×Ö
+     * @param roleColor Éí·İ×éÑÕÉ«£¬ÉèÖÃÎªnullÊ±Ä¬ÈÏÎª£º¡°#333333¡±£¬16½øÖÆHEX¸ñÊ½ÑÕÉ«Âë
+     * @param position Éí·İ×éÅÅĞòÎ»ÖÃ£¬ÉèÖÃÎª1Ê±Ä¬ÈÏÎª£º¡°1¡±£¨·Ï»°£©£¬²»¿É´«±È»úÆ÷ÈËÉí·İ×é´óµÄÅÅĞòÖµ
+     * @param permission Éí·İ×éÈ¨ÏŞÖµ£¨16½øÖÆ£©£¬ÉèÖÃÎªnullÊ±Ä¬ÈÏÎª£º¡°0¡±
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject addRole(String clientId, String token, String islandId, String roleName, String roleColor,int position, String permission) throws IOException {
         return addRole(BaseUtil.Authorization(clientId, token), islandId, roleName, roleColor, position, permission);
     }
 
     /**
-     * åˆ›å»ºèº«ä»½ç»„
+     * ´´½¨Éí·İ×é
      *
      * @param authorization authorization
-     * @param islandId ç¾¤å·
-     * @param roleName èº«ä»½ç»„åç§°ï¼Œè®¾ç½®ä¸ºnullæ—¶é»˜è®¤ä¸ºï¼šâ€œä¸ºæ–°çš„èº«ä»½ç»„â€ï¼Œä¸èƒ½å¤§äº32ä¸ªå­—ç¬¦æˆ–16ä¸ªæ±‰å­—
-     * @param roleColor èº«ä»½ç»„é¢œè‰²ï¼Œè®¾ç½®ä¸ºnullæ—¶é»˜è®¤ä¸ºï¼šâ€œ#333333â€ï¼Œ16è¿›åˆ¶HEXæ ¼å¼é¢œè‰²ç 
-     * @param position èº«ä»½ç»„æ’åºä½ç½®ï¼Œè®¾ç½®ä¸º1æ—¶é»˜è®¤ä¸ºï¼šâ€œ1â€ï¼ˆåºŸè¯ï¼‰ï¼Œä¸å¯ä¼ æ¯”æœºå™¨äººèº«ä»½ç»„å¤§çš„æ’åºå€¼
-     * @param permission èº«ä»½ç»„æƒé™å€¼ï¼ˆ16è¿›åˆ¶ï¼‰ï¼Œè®¾ç½®ä¸ºnullæ—¶é»˜è®¤ä¸ºï¼šâ€œ0â€
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param islandId ÈººÅ
+     * @param roleName Éí·İ×éÃû³Æ£¬ÉèÖÃÎªnullÊ±Ä¬ÈÏÎª£º¡°ÎªĞÂµÄÉí·İ×é¡±£¬²»ÄÜ´óÓÚ32¸ö×Ö·û»ò16¸öºº×Ö
+     * @param roleColor Éí·İ×éÑÕÉ«£¬ÉèÖÃÎªnullÊ±Ä¬ÈÏÎª£º¡°#333333¡±£¬16½øÖÆHEX¸ñÊ½ÑÕÉ«Âë
+     * @param position Éí·İ×éÅÅĞòÎ»ÖÃ£¬ÉèÖÃÎª1Ê±Ä¬ÈÏÎª£º¡°1¡±£¨·Ï»°£©£¬²»¿É´«±È»úÆ÷ÈËÉí·İ×é´óµÄÅÅĞòÖµ
+     * @param permission Éí·İ×éÈ¨ÏŞÖµ£¨16½øÖÆ£©£¬ÉèÖÃÎªnullÊ±Ä¬ÈÏÎª£º¡°0¡±
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject addRole(String authorization, String islandId, String roleName, String roleColor,int position, String permission) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/role/add";
@@ -165,35 +165,35 @@ public class RoleApi {
     }
 
     /**
-     * ç¼–è¾‘èº«ä»½ç»„
+     * ±à¼­Éí·İ×é
      *
-     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
-     * @param token æœºå™¨äººé‰´æƒToken
-     * @param islandId ç¾¤å·
-     * @param roleId èº«ä»½ç»„ID
-     * @param roleName èº«ä»½ç»„åç§°ï¼Œè®¾ç½®ä¸ºnullæ—¶é»˜è®¤ä¸ºï¼šâ€œä¸ºæ–°çš„èº«ä»½ç»„â€ï¼Œä¸èƒ½å¤§äº32ä¸ªå­—ç¬¦æˆ–16ä¸ªæ±‰å­—
-     * @param roleColor èº«ä»½ç»„é¢œè‰²ï¼Œè®¾ç½®ä¸ºnullæ—¶é»˜è®¤ä¸ºï¼šâ€œ#333333â€ï¼Œ16è¿›åˆ¶HEXæ ¼å¼é¢œè‰²ç 
-     * @param position èº«ä»½ç»„æ’åºä½ç½®ï¼Œè®¾ç½®ä¸º1æ—¶é»˜è®¤ä¸ºï¼šâ€œ1â€ï¼ˆåºŸè¯ï¼‰ï¼Œä¸å¯ä¼ æ¯”æœºå™¨äººèº«ä»½ç»„å¤§çš„æ’åºå€¼
-     * @param permission èº«ä»½ç»„æƒé™å€¼ï¼ˆ16è¿›åˆ¶ï¼‰ï¼Œè®¾ç½®ä¸ºnullæ—¶é»˜è®¤ä¸ºï¼šâ€œ0â€
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
+     * @param token »úÆ÷ÈË¼øÈ¨Token
+     * @param islandId ÈººÅ
+     * @param roleId Éí·İ×éID
+     * @param roleName Éí·İ×éÃû³Æ£¬ÉèÖÃÎªnullÊ±Ä¬ÈÏÎª£º¡°ÎªĞÂµÄÉí·İ×é¡±£¬²»ÄÜ´óÓÚ32¸ö×Ö·û»ò16¸öºº×Ö
+     * @param roleColor Éí·İ×éÑÕÉ«£¬ÉèÖÃÎªnullÊ±Ä¬ÈÏÎª£º¡°#333333¡±£¬16½øÖÆHEX¸ñÊ½ÑÕÉ«Âë
+     * @param position Éí·İ×éÅÅĞòÎ»ÖÃ£¬ÉèÖÃÎª1Ê±Ä¬ÈÏÎª£º¡°1¡±£¨·Ï»°£©£¬²»¿É´«±È»úÆ÷ÈËÉí·İ×é´óµÄÅÅĞòÖµ
+     * @param permission Éí·İ×éÈ¨ÏŞÖµ£¨16½øÖÆ£©£¬ÉèÖÃÎªnullÊ±Ä¬ÈÏÎª£º¡°0¡±
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject editRole(String clientId, String token, String islandId, String roleId, String roleName, String roleColor,int position, String permission) throws IOException {
         return editRole(BaseUtil.Authorization(clientId, token), islandId, roleId, roleName, roleColor, position, permission);
     }
 
     /**
-     * ç¼–è¾‘èº«ä»½ç»„
+     * ±à¼­Éí·İ×é
      *
      * @param authorization authorization
-     * @param islandId ç¾¤å·
-     * @param roleId èº«ä»½ç»„ID
-     * @param roleName èº«ä»½ç»„åç§°ï¼Œè®¾ç½®ä¸ºnullæ—¶é»˜è®¤ä¸ºï¼šâ€œä¸ºæ–°çš„èº«ä»½ç»„â€ï¼Œä¸èƒ½å¤§äº32ä¸ªå­—ç¬¦æˆ–16ä¸ªæ±‰å­—
-     * @param roleColor èº«ä»½ç»„é¢œè‰²ï¼Œè®¾ç½®ä¸ºnullæ—¶é»˜è®¤ä¸ºï¼šâ€œ#333333â€ï¼Œ16è¿›åˆ¶HEXæ ¼å¼é¢œè‰²ç 
-     * @param position èº«ä»½ç»„æ’åºä½ç½®ï¼Œè®¾ç½®ä¸º1æ—¶é»˜è®¤ä¸ºï¼šâ€œ1â€ï¼ˆåºŸè¯ï¼‰ï¼Œä¸å¯ä¼ æ¯”æœºå™¨äººèº«ä»½ç»„å¤§çš„æ’åºå€¼
-     * @param permission èº«ä»½ç»„æƒé™å€¼ï¼ˆ16è¿›åˆ¶ï¼‰ï¼Œè®¾ç½®ä¸ºnullæ—¶é»˜è®¤ä¸ºï¼šâ€œ0â€
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param islandId ÈººÅ
+     * @param roleId Éí·İ×éID
+     * @param roleName Éí·İ×éÃû³Æ£¬ÉèÖÃÎªnullÊ±Ä¬ÈÏÎª£º¡°ÎªĞÂµÄÉí·İ×é¡±£¬²»ÄÜ´óÓÚ32¸ö×Ö·û»ò16¸öºº×Ö
+     * @param roleColor Éí·İ×éÑÕÉ«£¬ÉèÖÃÎªnullÊ±Ä¬ÈÏÎª£º¡°#333333¡±£¬16½øÖÆHEX¸ñÊ½ÑÕÉ«Âë
+     * @param position Éí·İ×éÅÅĞòÎ»ÖÃ£¬ÉèÖÃÎª1Ê±Ä¬ÈÏÎª£º¡°1¡±£¨·Ï»°£©£¬²»¿É´«±È»úÆ÷ÈËÉí·İ×é´óµÄÅÅĞòÖµ
+     * @param permission Éí·İ×éÈ¨ÏŞÖµ£¨16½øÖÆ£©£¬ÉèÖÃÎªnullÊ±Ä¬ÈÏÎª£º¡°0¡±
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject editRole(String authorization, String islandId, String roleId, String roleName, String roleColor,int position, String permission) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/role/edit";
@@ -219,27 +219,27 @@ public class RoleApi {
     }
 
     /**
-     * åˆ é™¤èº«ä»½ç»„
+     * É¾³ıÉí·İ×é
      *
-     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
-     * @param token æœºå™¨äººé‰´æƒToken
-     * @param islandId ç¾¤å·
-     * @param roleId èº«ä»½ç»„ID
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
+     * @param token »úÆ÷ÈË¼øÈ¨Token
+     * @param islandId ÈººÅ
+     * @param roleId Éí·İ×éID
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject deleteRole(String clientId, String token, String islandId, String roleId) throws IOException {
         return deleteRole(BaseUtil.Authorization(clientId, token), islandId, roleId);
     }
 
     /**
-     * åˆ é™¤èº«ä»½ç»„
+     * É¾³ıÉí·İ×é
      *
      * @param authorization authorization
-     * @param islandId ç¾¤å·
-     * @param roleId èº«ä»½ç»„ID
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param islandId ÈººÅ
+     * @param roleId Éí·İ×éID
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject deleteRole(String authorization, String islandId, String roleId) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/role/remove";

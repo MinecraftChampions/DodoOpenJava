@@ -5,7 +5,7 @@ import io.github.mcchampions.DodoOpenJava.Permissions.Data.*;
 import java.util.Objects;
 
 /**
- * æƒé™ç³»ç»Ÿæ ¸å¿ƒ
+ * È¨ÏŞÏµÍ³ºËĞÄ
  * @author qscbm187531
  */
 public class Permissions {
@@ -14,11 +14,11 @@ public class Permissions {
     public static String Authorization;
 
     /**
-     * åˆå§‹åŒ–ï¼ˆä½¿ç”¨MongoDBæ•°æ®åº“ï¼‰
-     * @param ip IPåœ°å€
-     * @param port ç«¯å£
+     * ³õÊ¼»¯£¨Ê¹ÓÃMongoDBÊı¾İ¿â£©
+     * @param ip IPµØÖ·
+     * @param port ¶Ë¿Ú
      * @param Authorization Authorization
-     * @return trueæˆåŠŸï¼Œfalseå¤±è´¥
+     * @return true³É¹¦£¬falseÊ§°Ü
      */
     public static Boolean initMongoDB(String ip, int port, String Authorization) {
         if (!Objects.equals(type.getType(), "MongoDB")) {
@@ -31,10 +31,10 @@ public class Permissions {
     }
 
     /**
-     * åˆå§‹åŒ–ï¼ˆä½¿ç”¨MongoDBæ•°æ®åº“ï¼‰
-     * @param ip IPåœ°å€
+     * ³õÊ¼»¯£¨Ê¹ÓÃMongoDBÊı¾İ¿â£©
+     * @param ip IPµØÖ·
      * @param Authorization Authorization
-     * @return trueæˆåŠŸï¼Œfalseå¤±è´¥
+     * @return true³É¹¦£¬falseÊ§°Ü
      */
     public static Boolean initMongoDB(String ip, String Authorization) {
         if (!Objects.equals(type.getType(), "MongoDB")) {
@@ -47,10 +47,10 @@ public class Permissions {
     }
 
     /**
-     * åˆå§‹åŒ–
-     * @param type å­˜å‚¨ç±»å‹
+     * ³õÊ¼»¯
+     * @param type ´æ´¢ÀàĞÍ
      * @param Authorization Authorization
-     * @return trueæˆåŠŸï¼Œfalseå¤±è´¥
+     * @return true³É¹¦£¬falseÊ§°Ü
      */
     public static Boolean init(DataType type, String Authorization) {
         switch (type.getType()) {

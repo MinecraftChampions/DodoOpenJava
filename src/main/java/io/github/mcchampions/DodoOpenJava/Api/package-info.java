@@ -1,5 +1,5 @@
 /**
- * Dodo寮�鏀惧钩鍙板悇涓増鏈殑鎺ュ彛
+ * Dodo开放平台各个版本的接口
  * @author qscbm187531
  */
 package io.github.mcchampions.DodoOpenJava.Api;

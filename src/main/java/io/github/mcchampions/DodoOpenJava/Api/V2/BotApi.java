@@ -7,30 +7,30 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 /**
- * æœºå™¨äººAPI
+ * »úÆ÷ÈËAPI
  * @author qscbm187531
  */
 public class BotApi {
     public static String url, param;
 
     /**
-     * è·å–æœºå™¨äººä¿¡æ¯
+     * »ñÈ¡»úÆ÷ÈËĞÅÏ¢
      *
-     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
-     * @param token æœºå™¨äººé‰´æƒToken
-     * @return è¿”å›JSONå¯¹è±¡
-     * @throws IOException å‘é€è¯·æ±‚å¤±è´¥åæŠ›å‡º
+     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
+     * @param token »úÆ÷ÈË¼øÈ¨Token
+     * @return ·µ»ØJSON¶ÔÏó
+     * @throws IOException ·¢ËÍÇëÇóÊ§°ÜºóÅ×³ö
      */
     public static JSONObject getBotInfo(String clientId, String token) throws IOException {
         return getBotInfo(BaseUtil.Authorization(clientId,token));
     }
 
     /**
-     * è·å–æœºå™¨äººä¿¡æ¯
+     * »ñÈ¡»úÆ÷ÈËĞÅÏ¢
      *
      * @param authorization authorization
-     * @return è¿”å›JSONå¯¹è±¡
-     * @throws IOException å‘é€è¯·æ±‚å¤±è´¥åæŠ›å‡º
+     * @return ·µ»ØJSON¶ÔÏó
+     * @throws IOException ·¢ËÍÇëÇóÊ§°ÜºóÅ×³ö
      */
     public static JSONObject getBotInfo(String authorization) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/bot/info";
@@ -39,25 +39,25 @@ public class BotApi {
     }
 
     /**
-     * æœºå™¨äººé€€ç¾¤
+     * »úÆ÷ÈËÍËÈº
      *
-     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
-     * @param token æœºå™¨äººé‰´æƒToken
-     * @param islandSourceId ç¾¤å·
-     * @return è¿”å›JSONå¯¹è±¡
-     * @throws IOException å‘é€è¯·æ±‚å¤±è´¥åæŠ›å‡º
+     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
+     * @param token »úÆ÷ÈË¼øÈ¨Token
+     * @param islandSourceId ÈººÅ
+     * @return ·µ»ØJSON¶ÔÏó
+     * @throws IOException ·¢ËÍÇëÇóÊ§°ÜºóÅ×³ö
      */
     public static JSONObject setBotIslandLeave(String clientId, String token, String islandSourceId) throws IOException {
         return setBotIslandLeave(BaseUtil.Authorization(clientId, token), islandSourceId);
     }
 
     /**
-     * æœºå™¨äººé€€ç¾¤
+     * »úÆ÷ÈËÍËÈº
      *
      * @param authorization authorization
-     * @param islandSourceId ç¾¤å·
-     * @return è¿”å›JSONå¯¹è±¡
-     * @throws IOException å‘é€è¯·æ±‚å¤±è´¥åæŠ›å‡º
+     * @param islandSourceId ÈººÅ
+     * @return ·µ»ØJSON¶ÔÏó
+     * @throws IOException ·¢ËÍÇëÇóÊ§°ÜºóÅ×³ö
      */
     public static JSONObject setBotIslandLeave(String authorization, String islandSourceId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/bot/island/leave";
@@ -68,13 +68,13 @@ public class BotApi {
     }
 
     /**
-     * è·å–æœºå™¨äººé‚€è¯·åˆ—è¡¨
+     * »ñÈ¡»úÆ÷ÈËÑûÇëÁĞ±í
      *
      * @param authorization authorization
-     * @param pageSize é¡µå¤§å°ï¼Œæœ€å¤§100
-     * @param maxId ä¸Šä¸€é¡µæœ€å¤§IDå€¼ï¼Œä¸ºæå‡åˆ†é¡µæŸ¥è¯¢æ€§èƒ½ï¼Œéœ€è¦ä¼ å…¥ä¸Šä¸€é¡µæŸ¥è¯¢è®°å½•ä¸­çš„æœ€å¤§IDå€¼ï¼Œé¦–é¡µè¯·ä¼ 0
-     * @return è¿”å›JSONå¯¹è±¡
-     * @throws IOException å‘é€è¯·æ±‚å¤±è´¥åæŠ›å‡º
+     * @param pageSize Ò³´óĞ¡£¬×î´ó100
+     * @param maxId ÉÏÒ»Ò³×î´óIDÖµ£¬ÎªÌáÉı·ÖÒ³²éÑ¯ĞÔÄÜ£¬ĞèÒª´«ÈëÉÏÒ»Ò³²éÑ¯¼ÇÂ¼ÖĞµÄ×î´óIDÖµ£¬Ê×Ò³Çë´«0
+     * @return ·µ»ØJSON¶ÔÏó
+     * @throws IOException ·¢ËÍÇëÇóÊ§°ÜºóÅ×³ö
      */
     public static JSONObject getBotInviteList(String authorization,int pageSize,long maxId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/bot/invite/list";
@@ -86,12 +86,12 @@ public class BotApi {
     }
 
     /**
-     * æ·»åŠ æˆå‘˜åˆ°æœºå™¨äººé‚€è¯·åˆ—è¡¨
+     * Ìí¼Ó³ÉÔ±µ½»úÆ÷ÈËÑûÇëÁĞ±í
      *
      * @param authorization authorization
      * @param dodoSourceId dodoSourceId
-     * @return è¿”å›JSONå¯¹è±¡
-     * @throws IOException å‘é€è¯·æ±‚å¤±è´¥åæŠ›å‡º
+     * @return ·µ»ØJSON¶ÔÏó
+     * @throws IOException ·¢ËÍÇëÇóÊ§°ÜºóÅ×³ö
      */
     public static JSONObject addBotInvite(String authorization,String dodoSourceId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/bot/invite/add";
@@ -102,12 +102,12 @@ public class BotApi {
     }
 
     /**
-     * ç§»é™¤æˆå‘˜å‡ºæœºå™¨äººé‚€è¯·åˆ—è¡¨
+     * ÒÆ³ı³ÉÔ±³ö»úÆ÷ÈËÑûÇëÁĞ±í
      *
      * @param authorization authorization
      * @param dodoSourceId dodoSourceId
-     * @return è¿”å›JSONå¯¹è±¡
-     * @throws IOException å‘é€è¯·æ±‚å¤±è´¥åæŠ›å‡º
+     * @return ·µ»ØJSON¶ÔÏó
+     * @throws IOException ·¢ËÍÇëÇóÊ§°ÜºóÅ×³ö
      */
     public static JSONObject removeBotInvite(String authorization,String dodoSourceId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/bot/invite/remove";

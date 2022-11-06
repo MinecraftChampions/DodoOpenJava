@@ -3,7 +3,7 @@ package io.github.mcchampions.DodoOpenJava.Configuration.file;
 import org.apache.commons.lang3.Validate;
 
 /**
- * ç”¨äºæ§åˆ¶YamlConfigurationçš„è¾“å…¥å’Œè¾“å‡ºçš„å„ç§è®¾ç½®
+ * ÓÃÓÚ¿ØÖÆYamlConfigurationµÄÊäÈëºÍÊä³öµÄ¸÷ÖÖÉèÖÃ
  */
 public class YamlConfigurationOptions extends FileConfigurationOptions {
     private int indent = 2;
@@ -42,27 +42,27 @@ public class YamlConfigurationOptions extends FileConfigurationOptions {
     }
 
     /**
-     * è·å–åº”ä½¿ç”¨å¤šå°‘ç©ºæ ¼æ¥ç¼©è¿›æ¯è¡Œã€‚
+     * »ñÈ¡Ó¦Ê¹ÓÃ¶àÉÙ¿Õ¸ñÀ´Ëõ½øÃ¿ĞĞ¡£
      *
-     * æœ€å°å€¼ä¸º2ï¼Œæœ€å¤§å€¼ä¸º9ã€‚
+     * ×îĞ¡ÖµÎª2£¬×î´óÖµÎª9¡£
      *
-     * @return ç¼©è¿›å¤šå°‘
+     * @return Ëõ½ø¶àÉÙ
      */
     public int indent() {
         return indent;
     }
 
     /**
-     *è®¾ç½®æ¯è¡Œç¼©è¿›åº”ä½¿ç”¨å¤šå°‘ç©ºæ ¼ã€‚
+     *ÉèÖÃÃ¿ĞĞËõ½øÓ¦Ê¹ÓÃ¶àÉÙ¿Õ¸ñ¡£
      *
-     * æœ€å°å€¼ä¸º2ï¼Œæœ€å¤§å€¼ä¸º9
+     * ×îĞ¡ÖµÎª2£¬×î´óÖµÎª9
      *
-     * @param value ç¼©è¿›ç©ºæ ¼æ•°é‡
-     * @return è¿”å› this
+     * @param value Ëõ½ø¿Õ¸ñÊıÁ¿
+     * @return ·µ»Ø this
      */
     public YamlConfigurationOptions indent(int value) {
-        Validate.isTrue(value >= 2, "ç¼©è¿›æœ€å°‘è¦2ä¸ªç©ºæ ¼");
-        Validate.isTrue(value <= 9, "ç¼©è¿›æœ€å¤šåªèƒ½æœ‰9ä¸ªç©ºæ ¼");
+        Validate.isTrue(value >= 2, "Ëõ½ø×îÉÙÒª2¸ö¿Õ¸ñ");
+        Validate.isTrue(value <= 9, "Ëõ½ø×î¶àÖ»ÄÜÓĞ9¸ö¿Õ¸ñ");
 
         this.indent = value;
         return this;

@@ -10,7 +10,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 /**
- * å‘½ä»¤å‘é€è€…
+ * ÃüÁî·¢ËÍÕß
  * @author qscbm187531
  */
 public class CommandSender{
@@ -31,62 +31,62 @@ public class CommandSender{
     public String MessageId;
 
     /**
-     * è·å–DodoID
+     * »ñÈ¡DodoID
      * @return DodoID
      */
     public String getSenderDodoSourceId() {
         return this.SenderDodoSourceId;
     }
     /**
-     * è·å–é¢‘é“ID
-     * @return é¢‘é“ID
+     * »ñÈ¡ÆµµÀID
+     * @return ÆµµÀID
      */
     public String getChannelId() {
         return this.ChannelId;
     }
 
     /**
-     * è·å–ç¾¤å·
-     * @return ç¾¤å·
+     * »ñÈ¡ÈººÅ
+     * @return ÈººÅ
      */
     public String getIslandSourceId() {
         return this.IslandSourceId;
     }
 
     /**
-     * è·å–å¤´åƒURL
-     * @return å¤´åƒURL
+     * »ñÈ¡Í·ÏñURL
+     * @return Í·ÏñURL
      */
     public String getAvatarUrl() {
         return this.AvatarUrl;
     }
 
     /**
-     * è·å–å‘é€è€…ç¾¤æ˜µç§°
-     * @return ç¾¤æ˜µç§°
+     * »ñÈ¡·¢ËÍÕßÈºêÇ³Æ
+     * @return ÈºêÇ³Æ
      */
     public String getSenderNickName() {
         return this.SenderNickName;
     }
 
     /**
-     * è·å–å‘é€è€…åŸæœ¬åç§°
-     * @return åŸå
+     * »ñÈ¡·¢ËÍÕßÔ­±¾Ãû³Æ
+     * @return Ô­Ãû
      */
     public String getSenderName() {
         return this.SenderName;
     }
 
     /**
-     * è·å–åŠ å…¥æ—¶é—´
-     * @return åŠ å…¥æ—¶é—´
+     * »ñÈ¡¼ÓÈëÊ±¼ä
+     * @return ¼ÓÈëÊ±¼ä
      */
     public String getJoinTime() {
         return this.JoinTime;
     }
 
     /**
-     * åˆå§‹åŒ–å‘é€è€…è¿™ä¸ªç±»å‹
+     * ³õÊ¼»¯·¢ËÍÕßÕâ¸öÀàĞÍ
      * @param jsontext JSONText
      */
     public void InitSender(JSONObject jsontext) {
@@ -101,106 +101,106 @@ public class CommandSender{
     }
 
     /**
-     * å›å¤å‘é€è€…å‘é€çš„æ¶ˆæ¯
-     * @param Message æ¶ˆæ¯
-     * @throws IOException å‘é€å¤±è´¥æ—¶æŠ›å‡º
+     * »Ø¸´·¢ËÍÕß·¢ËÍµÄÏûÏ¢
+     * @param Message ÏûÏ¢
+     * @throws IOException ·¢ËÍÊ§°ÜÊ±Å×³ö
      */
     public void referencedMessage(String Message) throws IOException {
         ChannelTextApi.referencedMessage(Command.Authorization, ChannelId, Message, MessageId);
     }
 
     /**
-     * ç¼–è¾‘æˆå‘˜ç¾¤æ˜µç§°
-     * @param NickName ç¾¤æ˜µç§°
-     * @throws IOException ç¼–è¾‘å¤±è´¥åæŠ›å‡º
+     * ±à¼­³ÉÔ±ÈºêÇ³Æ
+     * @param NickName ÈºêÇ³Æ
+     * @throws IOException ±à¼­Ê§°ÜºóÅ×³ö
      */
     public void editSenderNickName(String NickName) throws IOException {
         MemberApi.editMemberNickName(Command.Authorization,IslandSourceId,SenderDodoSourceId,NickName);
     }
 
     /**
-     * ç¦è¨€æˆå‘˜
-     * @param Time æ—¶é—´ï¼ˆç§’ä¸ºå•ä½ï¼‰
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * ½ûÑÔ³ÉÔ±
+     * @param Time Ê±¼ä£¨ÃëÎªµ¥Î»£©
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public void muteSender(int Time) throws IOException {
         MemberApi.addMemberMute(Command.Authorization, IslandSourceId, SenderDodoSourceId,Time);
     }
 
     /**
-     * ç¦è¨€æˆå‘˜
-     * @param Time æ—¶é—´ï¼ˆç§’ä¸ºå•ä½ï¼‰
-     * @param reason ç¦è¨€ç†ç”±
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * ½ûÑÔ³ÉÔ±
+     * @param Time Ê±¼ä£¨ÃëÎªµ¥Î»£©
+     * @param reason ½ûÑÔÀíÓÉ
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public void muteSender(int Time, String reason) throws IOException {
         MemberApi.addMemberReasonrMute(Command.Authorization, IslandSourceId, SenderDodoSourceId,Time,reason);
     }
 
     /**
-     * å–æ¶ˆç¦è¨€æˆå‘˜
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * È¡Ïû½ûÑÔ³ÉÔ±
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public void removeMuteSender() throws IOException {
         MemberApi.removeMemberMute(Command.Authorization,IslandSourceId,SenderDodoSourceId);
     }
 
     /**
-     * å°ç¦æˆå‘˜
-     * @param reason å°ç¦ç†ç”±
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * ·â½û³ÉÔ±
+     * @param reason ·â½ûÀíÓÉ
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public void banSender(String reason) throws IOException {
         MemberApi.addMemberReasonBan(Command.Authorization, IslandSourceId, SenderDodoSourceId,reason);
     }
 
     /**
-     * å°ç¦æˆå‘˜
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * ·â½û³ÉÔ±
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public void banSender() throws IOException {
         MemberApi.addMemberBan(Command.Authorization, IslandSourceId, SenderDodoSourceId);
     }
 
     /**
-     * å–æ¶ˆå°ç¦æˆå‘˜
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * È¡Ïû·â½û³ÉÔ±
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public void removeBanSender() throws IOException {
         MemberApi.removeMemberBan(Command.Authorization,IslandSourceId,SenderDodoSourceId);
     }
 
     /**
-     * å‘é€ç§ä¿¡
-     * @param Message ç§ä¿¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * ·¢ËÍË½ĞÅ
+     * @param Message Ë½ĞÅ
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public void sendPrivateMessage(String Message) throws IOException {
         PersonalApi.sendPersonalMessage(Command.Authorization,SenderDodoSourceId,MessageId);
     }
 
     /**
-     * èµ‹äºˆæˆå‘˜èº«ä»½ç»„
-     * @param RoleId æƒé™ç»„ID
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * ¸³Óè³ÉÔ±Éí·İ×é
+     * @param RoleId È¨ÏŞ×éID
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public void giveRole(String RoleId) throws IOException {
         RoleApi.addRoleMember(Command.Authorization,IslandSourceId,SenderDodoSourceId,RoleId);
     }
 
     /**
-     * å–æ¶ˆæˆå‘˜èº«ä»½ç»„
-     * @param RoleId æƒé™ç»„ID
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * È¡Ïû³ÉÔ±Éí·İ×é
+     * @param RoleId È¨ÏŞ×éID
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public void removeRole(String RoleId) throws IOException {
         RoleApi.removeRoleMember(Command.Authorization,IslandSourceId,SenderDodoSourceId,RoleId);
     }
 
     /**
-     * æ˜¯å¦æ‹¥æœ‰æƒé™
-     * @param permission æƒé™
-     * @return trueæœ‰ï¼Œfalseå¤±è´¥
+     * ÊÇ·ñÓµÓĞÈ¨ÏŞ
+     * @param permission È¨ÏŞ
+     * @return trueÓĞ£¬falseÊ§°Ü
      */
     public Boolean hasPermission(String permission) {
         return User.hasPerm(getSenderDodoSourceId(), permission);

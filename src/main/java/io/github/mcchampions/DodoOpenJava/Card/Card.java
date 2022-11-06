@@ -9,14 +9,14 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * å¡ç‰‡æ¶ˆæ¯
+ * ¿¨Æ¬ÏûÏ¢
  * @author qscbm187531
  */
 public class Card {
     public JSONObject JsonCard = new JSONObject();
 
     /**
-     * æ˜¯å¦ä¸å­˜åœ¨
+     * ÊÇ·ñ²»´æÔÚ
      * @return true/false
      */
     public Boolean isEmpty() {
@@ -24,7 +24,7 @@ public class Card {
     }
 
     /**
-     * æ˜¯å¦ä¸å­˜åœ¨
+     * ÊÇ·ñ²»´æÔÚ
      * @param card Card
      * @return true/false
      */
@@ -33,7 +33,7 @@ public class Card {
     }
 
     /**
-     * è½¬æ¢ä¸ºJSONå¯¹è±¡
+     * ×ª»»ÎªJSON¶ÔÏó
      * @return true
      */
     public JSONObject toJSONObject() {
@@ -41,7 +41,7 @@ public class Card {
     }
 
     /**
-     * åˆå§‹åŒ–å¡ç‰‡
+     * ³õÊ¼»¯¿¨Æ¬
      * @param card JSON
      * @return true
      */
@@ -51,19 +51,19 @@ public class Card {
     }
 
     /**
-     * åˆå§‹åŒ–å¡ç‰‡
+     * ³õÊ¼»¯¿¨Æ¬
      * @return true/false
      */
     public Boolean initCard() {
         if (JsonCard.isEmpty()) {
             JsonCard = new JSONObject("""
                     {
-                      "content": "è¿™æ˜¯ä¸€æ®µå¡ç‰‡å¤–çš„æ–‡å­—æ¶ˆæ¯ï¼Œå¯ä»¥é™„å¸¦Markdownè¯­æ³•ã€@ç”¨æˆ·ã€#é¢‘é“ç­‰è±å½¢è¯­æ³•åŠŸèƒ½ï¼Œåœ¨å¡ç‰‡ç¼–è¾‘å™¨ä¸­ä¸ä¼šå®æ—¶é¢„è§ˆã€‚",
+                      "content": "ÕâÊÇÒ»¶Î¿¨Æ¬ÍâµÄÎÄ×ÖÏûÏ¢£¬¿ÉÒÔ¸½´øMarkdownÓï·¨¡¢@ÓÃ»§¡¢#ÆµµÀµÈÁâĞÎÓï·¨¹¦ÄÜ£¬ÔÚ¿¨Æ¬±à¼­Æ÷ÖĞ²»»áÊµÊ±Ô¤ÀÀ¡£",
                       "card": {
                         "type": "card",
                         "components": [],
                         "theme": "default",
-                        "title": "è¿™æ˜¯ä¸€ä¸ªå¡ç‰‡æ ‡é¢˜"
+                        "title": "ÕâÊÇÒ»¸ö¿¨Æ¬±êÌâ"
                       }
                     }""");
             return true;
@@ -71,8 +71,8 @@ public class Card {
     }
 
     /**
-     * ç¼–è¾‘é£æ ¼
-     * @param theme åˆ†å‰²
+     * ±à¼­·ç¸ñ
+     * @param theme ·Ö¸î
      * @return true
      */
     public Boolean editTheme(Theme theme) {
@@ -82,9 +82,9 @@ public class Card {
     }
 
     /**
-     * ç¼–è¾‘æ ‡é¢˜
-     * @param title æ ‡é¢˜
-     * @return æˆåŠŸ
+     * ±à¼­±êÌâ
+     * @param title ±êÌâ
+     * @return ³É¹¦
      */
     public Boolean editTitle(String title) {
         if (JsonCard.isEmpty()) initCard();
@@ -93,9 +93,9 @@ public class Card {
     }
 
     /**
-     * ç¼–è¾‘æ–‡æœ¬
-     * @param content æ–‡æœ¬
-     * @return æˆåŠŸ
+     * ±à¼­ÎÄ±¾
+     * @param content ÎÄ±¾
+     * @return ³É¹¦
      */
     public Boolean editContent(String content) {
         if (JsonCard.isEmpty()) initCard();
@@ -104,7 +104,7 @@ public class Card {
     }
 
     /**
-     * ç§»é™¤æ–‡æœ¬
+     * ÒÆ³ıÎÄ±¾
      * @return true/false
      */
     public Boolean removeContent() {
@@ -115,10 +115,10 @@ public class Card {
     }
 
     /**
-     * å¢åŠ æ ‡é¢˜ç»„ä»¶
-     * @param type æ–‡æœ¬ç±»å‹
-     * @param title æ ‡é¢˜
-     * @return æˆåŠŸ
+     * Ôö¼Ó±êÌâ×é¼ş
+     * @param type ÎÄ±¾ÀàĞÍ
+     * @param title ±êÌâ
+     * @return ³É¹¦
      */
     public Boolean addHeaderComponent(TextType type, String title) {
         if (JsonCard.isEmpty()) initCard();
@@ -128,9 +128,9 @@ public class Card {
     }
 
     /**
-     * å¢åŠ æ–‡å­—ç»„ä»¶
-     * @param section ç»„ä»¶å¯¹è±¡
-     * @return æˆåŠŸ
+     * Ôö¼ÓÎÄ×Ö×é¼ş
+     * @param section ×é¼ş¶ÔÏó
+     * @return ³É¹¦
      */
     public Boolean addSectionComponent(Section section) {
         if (JsonCard.isEmpty()) initCard();
@@ -140,9 +140,9 @@ public class Card {
 
 
     /**
-     * å¢åŠ å¤‡æ³¨ç»„ä»¶
-     * @param text ç»„ä»¶ï¼Œä¸ºäº†æ–¹ä¾¿è¯»å–ç”¨Mapå­˜å‚¨ï¼Œå‰ä¸€ä¸ªä»£è¡¨ç»„ä»¶ç±»å‹ç±»å‹ï¼Œåé¢ä»£è¡¨å€¼ï¼ˆå¦‚æœä¸ºå›¾ç‰‡å°±æ˜¯è¿æ¥ï¼Œä¸ºæ–‡æœ¬å°±æ˜¯å†…å®¹ï¼‰ï¼ˆå‚æ•°åå–è¿™ä¸ªæ˜¯å› ä¸ºä¸æƒ³æ”¹äº†ã€‚ã€‚ã€‚ï¼‰
-     * @return æˆåŠŸ
+     * Ôö¼Ó±¸×¢×é¼ş
+     * @param text ×é¼ş£¬ÎªÁË·½±ã¶ÁÈ¡ÓÃMap´æ´¢£¬Ç°Ò»¸ö´ú±í×é¼şÀàĞÍÀàĞÍ£¬ºóÃæ´ú±íÖµ£¨Èç¹ûÎªÍ¼Æ¬¾ÍÊÇÁ¬½Ó£¬ÎªÎÄ±¾¾ÍÊÇÄÚÈİ£©£¨²ÎÊıÃûÈ¡Õâ¸öÊÇÒòÎª²»Ïë¸ÄÁË¡£¡£¡££©
+     * @return ³É¹¦
      */
     public Boolean addTextRemarkComponent(Map<RemarkType,String> text) {
         if (JsonCard.isEmpty()) initCard();
@@ -160,9 +160,9 @@ public class Card {
     }
 
     /**
-     * å¢åŠ å›¾ç‰‡ç»„ä»¶
-     * @param url è¿æ¥
-     * @return æˆåŠŸ
+     * Ôö¼ÓÍ¼Æ¬×é¼ş
+     * @param url Á¬½Ó
+     * @return ³É¹¦
      */
     public Boolean addImageComponent(String url) {
         if (JsonCard.isEmpty()) initCard();
@@ -171,9 +171,9 @@ public class Card {
     }
 
     /**
-     * å¢åŠ å¤šå›¾ç»„ä»¶
-     * @param urls å›¾ç‰‡çš„è¿æ¥
-     * @return æˆåŠŸ
+     * Ôö¼Ó¶àÍ¼×é¼ş
+     * @param urls Í¼Æ¬µÄÁ¬½Ó
+     * @return ³É¹¦
      */
     public Boolean addImageGroupComponent(List<String> urls) {
         if (JsonCard.isEmpty()) initCard();
@@ -187,11 +187,11 @@ public class Card {
     }
 
     /**
-     * å¢åŠ è§†é¢‘ç»„ä»¶
-     * @param videoUrl è§†é¢‘è¿æ¥
-     * @param coverUrl å°é¢è¿æ¥
-     * @param title æ ‡é¢˜
-     * @return æˆåŠŸ
+     * Ôö¼ÓÊÓÆµ×é¼ş
+     * @param videoUrl ÊÓÆµÁ¬½Ó
+     * @param coverUrl ·âÃæÁ¬½Ó
+     * @param title ±êÌâ
+     * @return ³É¹¦
      */
     public Boolean addVideoComponent(String videoUrl, String coverUrl, String title) {
         if (JsonCard.isEmpty()) initCard();
@@ -200,10 +200,10 @@ public class Card {
     }
 
     /**
-     * å¢åŠ è§†é¢‘ç»„ä»¶
-     * @param videoUrl è§†é¢‘è¿æ¥
-     * @param coverUrl å°é¢è¿æ¥
-     * @return æˆåŠŸ
+     * Ôö¼ÓÊÓÆµ×é¼ş
+     * @param videoUrl ÊÓÆµÁ¬½Ó
+     * @param coverUrl ·âÃæÁ¬½Ó
+     * @return ³É¹¦
      */
     public Boolean addVideoComponent(String videoUrl, String coverUrl) {
         if (JsonCard.isEmpty()) initCard();
@@ -212,11 +212,11 @@ public class Card {
     }
 
     /**
-     * å¢åŠ å€’è®¡æ—¶ç»„ä»¶
-     * @param style æ˜¾ç¤ºæ ·å¼
-     * @param endTime ç»“æŸæ—¶é—´æˆ³
-     * @param title æ ‡é¢˜
-     * @return æˆåŠŸ
+     * Ôö¼Óµ¹¼ÆÊ±×é¼ş
+     * @param style ÏÔÊ¾ÑùÊ½
+     * @param endTime ½áÊøÊ±¼ä´Á
+     * @param title ±êÌâ
+     * @return ³É¹¦
      */
     public Boolean addCountdownComponent(Style style, Long endTime, String title) {
         if (JsonCard.isEmpty()) initCard();
@@ -224,10 +224,10 @@ public class Card {
         return true;
     }
     /**
-     * å¢åŠ å€’è®¡æ—¶ç»„ä»¶
-     * @param style æ˜¾ç¤ºæ ·å¼
-     * @param endTime ç»“æŸæ—¶é—´æˆ³
-     * @return æˆåŠŸ
+     * Ôö¼Óµ¹¼ÆÊ±×é¼ş
+     * @param style ÏÔÊ¾ÑùÊ½
+     * @param endTime ½áÊøÊ±¼ä´Á
+     * @return ³É¹¦
      */
     public Boolean addCountdownComponent(Style style, Long endTime) {
         if (JsonCard.isEmpty()) initCard();
@@ -236,8 +236,8 @@ public class Card {
     }
 
     /**
-     * æ·»åŠ åˆ†å‰²çº¿
-     * @return æˆåŠŸ
+     * Ìí¼Ó·Ö¸îÏß
+     * @return ³É¹¦
      */
     public Boolean addDividerComponent() {
         if (JsonCard.isEmpty()) initCard();
@@ -246,9 +246,9 @@ public class Card {
     }
 
     /**
-     * åˆ é™¤ä¸€ä¸ªç»„ä»¶
-     * @param count ç¬¬å‡ ä¸ªç»„ä»¶ï¼ˆä»1å¼€å§‹ï¼‰
-     * @return æˆåŠŸ
+     * É¾³ıÒ»¸ö×é¼ş
+     * @param count µÚ¼¸¸ö×é¼ş£¨´Ó1¿ªÊ¼£©
+     * @return ³É¹¦
      */
     public Boolean removeComponent(int count) {
         if (JsonCard.isEmpty()) initCard();
@@ -257,9 +257,9 @@ public class Card {
     }
 
     /**
-     * å¢åŠ ä¸€ä¸ªäº¤äº’æŒ‰é’®ç»„ä»¶
-     * @param buttonGroup æŒ‰é’®é¢œè‰²
-     * @return æˆåŠŸ
+     * Ôö¼ÓÒ»¸ö½»»¥°´Å¥×é¼ş
+     * @param buttonGroup °´Å¥ÑÕÉ«
+     * @return ³É¹¦
      */
     public Boolean addButtonGroup(ButtonGroup buttonGroup) {
         JsonCard.getJSONObject("card").getJSONArray("components").put(buttonGroup.toJsonObject());
@@ -267,15 +267,15 @@ public class Card {
     }
 
     /**
-     * å¢åŠ åˆ—è¡¨é€‰æ‹©å™¨ç»„ä»¶
+     * Ôö¼ÓÁĞ±íÑ¡ÔñÆ÷×é¼ş
      * <p>
-     * ä¸éœ€è¦å‚æ•°çš„è¯·å¡«å†™null
-     * @param interactCustomId è‡ªå®šä¹‰äº¤äº’id
-     * @param placeholder è¾“å…¥æ¡†æç¤º
-     * @param min æœ€å°‘é€‰ä¸­ä¸ªæ•°
-     * @param max æœ€å¤šé€‰ä¸­ä¸ªæ•°
-     * @param element æ•°æ®ï¼Œä¸ºäº†æ–¹ä¾¿ç”¨Mapå­˜å‚¨ï¼Œå‰é¢ä¸ºé€‰é¡¹åã€‚åé¢ä¸ºé€‰é¡¹æè¿°ï¼Œä¸éœ€è¦è¯·å¡«å†™null
-     * @return æˆåŠŸ
+     * ²»ĞèÒª²ÎÊıµÄÇëÌîĞ´null
+     * @param interactCustomId ×Ô¶¨Òå½»»¥id
+     * @param placeholder ÊäÈë¿òÌáÊ¾
+     * @param min ×îÉÙÑ¡ÖĞ¸öÊı
+     * @param max ×î¶àÑ¡ÖĞ¸öÊı
+     * @param element Êı¾İ£¬ÎªÁË·½±ãÓÃMap´æ´¢£¬Ç°ÃæÎªÑ¡ÏîÃû¡£ºóÃæÎªÑ¡ÏîÃèÊö£¬²»ĞèÒªÇëÌîĞ´null
+     * @return ³É¹¦
      */
     public Boolean addListSelector(String interactCustomId, String placeholder, int min, int max, Map<String,String> element) {
         if (JsonCard.isEmpty()) initCard();
@@ -303,11 +303,11 @@ public class Card {
     }
 
     /**
-     * å¢åŠ  æ–‡å­—ä¸æ¨¡å— äº¤äº’ç»„ä»¶
-     * @param align å¯¹é½æ–¹å¼ï¼Œleftï¼šå·¦å¯¹é½ï¼Œrightï¼šå³å¯¹é½
-     * @param section æ–‡å­—
-     * @param buttonGroup æŒ‰é’®
-     * @return æˆåŠŸä¸å¦
+     * Ôö¼Ó ÎÄ×ÖÓëÄ£¿é ½»»¥×é¼ş
+     * @param align ¶ÔÆë·½Ê½£¬left£º×ó¶ÔÆë£¬right£ºÓÒ¶ÔÆë
+     * @param section ÎÄ×Ö
+     * @param buttonGroup °´Å¥
+     * @return ³É¹¦Óë·ñ
      */
     public Boolean addSection(Align align, Section section, ButtonGroup buttonGroup) {
         if (JsonCard.isEmpty()) initCard();
@@ -322,8 +322,8 @@ public class Card {
     }
 
     /**
-     * è½¬æ¢ä¸ºStringï¼ˆé‡å†™äº†Objectçš„toStringæ–¹æ³•ï¼‰
-     * @return å­—ç¬¦ä¸²
+     * ×ª»»ÎªString£¨ÖØĞ´ÁËObjectµÄtoString·½·¨£©
+     * @return ×Ö·û´®
      */
     public String toString() {
         return JsonCard.toString();

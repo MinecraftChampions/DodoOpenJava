@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * æƒé™ç»„
+ * È¨ÏŞ×é
  * @author qscbm187531
  */
 public class Group {
@@ -18,10 +18,10 @@ public class Group {
     public String name;
 
     /**
-     * æ„é€ å‡½æ•°
-     * @param perms æƒé™
-     * @param isDefault æ˜¯å¦é»˜è®¤
-     * @param name åå­—
+     * ¹¹Ôìº¯Êı
+     * @param perms È¨ÏŞ
+     * @param isDefault ÊÇ·ñÄ¬ÈÏ
+     * @param name Ãû×Ö
      */
     public Group(List<String> perms, Boolean isDefault, String name) {
         this.perms = perms;
@@ -30,9 +30,9 @@ public class Group {
     }
 
     /**
-     * æ„é€ å‡½æ•°
-     * @param perms æƒé™
-     * @param name åå­—
+     * ¹¹Ôìº¯Êı
+     * @param perms È¨ÏŞ
+     * @param name Ãû×Ö
      */
     public Group(List<String> perms, String name) {
         this.perms = perms;
@@ -41,9 +41,9 @@ public class Group {
     }
 
     /**
-     * æ„é€ å‡½æ•°
-     * @param isDefault æ˜¯å¦é»˜è®¤
-     * @param name åå­—
+     * ¹¹Ôìº¯Êı
+     * @param isDefault ÊÇ·ñÄ¬ÈÏ
+     * @param name Ãû×Ö
      */
     public Group(Boolean isDefault, String name) {
         this.perms = new ArrayList<>();
@@ -52,8 +52,8 @@ public class Group {
     }
 
     /**
-     * æ„é€ å‡½æ•°
-     * @param name åå­—
+     * ¹¹Ôìº¯Êı
+     * @param name Ãû×Ö
      */
     public Group(String name) {
         this.perms = new ArrayList<>();
@@ -65,44 +65,44 @@ public class Group {
     }
 
     /**
-     * è·å–æ‰€æœ‰æƒé™ç»„
-     * @return æƒé™ç»„é›†åˆ
+     * »ñÈ¡ËùÓĞÈ¨ÏŞ×é
+     * @return È¨ÏŞ×é¼¯ºÏ
      */
     public static List<Group> getGroups() {
         return groups;
     }
 
     /**
-     * åˆ¤æ–­æƒé™ç»„æ˜¯å¦ä¸ºé»˜è®¤æƒé™ç»„
-     * @param group æƒé™ç»„
-     * @return true æ˜¯ï¼Œfalse ä¸æ˜¯
+     * ÅĞ¶ÏÈ¨ÏŞ×éÊÇ·ñÎªÄ¬ÈÏÈ¨ÏŞ×é
+     * @param group È¨ÏŞ×é
+     * @return true ÊÇ£¬false ²»ÊÇ
      */
     public static Boolean isDefault(Group group) {
         return group.isDefault;
     }
     
     /**
-     * è·å–æƒé™ç»„åå­—
-     * @param group æƒé™ç»„
-     * @return åå­—
+     * »ñÈ¡È¨ÏŞ×éÃû×Ö
+     * @param group È¨ÏŞ×é
+     * @return Ãû×Ö
      */
     public static String getName(Group group) {
         return group.name;
     }
 
     /**
-     * è·å–æƒé™ç»„æƒé™
-     * @param group æƒé™ç»„
-     * @return æƒé™é›†åˆ
+     * »ñÈ¡È¨ÏŞ×éÈ¨ÏŞ
+     * @param group È¨ÏŞ×é
+     * @return È¨ÏŞ¼¯ºÏ
      */
     public static List<String> getPerms(Group group) {
         return group.perms;
     }
 
     /**
-     * ç¼–è¾‘æƒé™ç»„åå­—
-     * @param group æƒé™ç»„
-     * @return åå­—
+     * ±à¼­È¨ÏŞ×éÃû×Ö
+     * @param group È¨ÏŞ×é
+     * @return Ãû×Ö
      */
     public static Group editName(String name, Group group) {
         group.name = name;
@@ -110,31 +110,31 @@ public class Group {
     }
 
     /**
-     * ç¼–è¾‘æƒé™ç»„åå­—
+     * ±à¼­È¨ÏŞ×éÃû×Ö
      */
     public void editName(String name) {
         this.name = name;
     }
 
     /**
-     * åˆ¤æ–­æƒé™ç»„æ˜¯å¦ä¸ºé»˜è®¤æƒé™ç»„
-     * @return trueå°±æ˜¯ï¼Œfalseå°±ä¸æ˜¯
+     * ÅĞ¶ÏÈ¨ÏŞ×éÊÇ·ñÎªÄ¬ÈÏÈ¨ÏŞ×é
+     * @return true¾ÍÊÇ£¬false¾Í²»ÊÇ
      */
     public Boolean isDefault() {
         return this.isDefault;
     }
 
     /**
-     * è·å–æƒé™ç»„åå­—
-     * @return åå­—
+     * »ñÈ¡È¨ÏŞ×éÃû×Ö
+     * @return Ãû×Ö
      */
     public String getName() {
         return this.name;
     }
 
     /**
-     * å¢åŠ ä¸€ä¸ªæƒé™ç»„
-     * @param group æƒé™ç»„
+     * Ôö¼ÓÒ»¸öÈ¨ÏŞ×é
+     * @param group È¨ÏŞ×é
      */
     public static Group addGroup(Group group) {
         groups.add(group);
@@ -142,16 +142,16 @@ public class Group {
     }
 
     /**
-     * å¢åŠ ä¸€å †æƒé™ç»„
-     * @param groups æƒé™ç»„
+     * Ôö¼ÓÒ»¶ÑÈ¨ÏŞ×é
+     * @param groups È¨ÏŞ×é
      */
     public static void addGroups(List<Group> groups) {
         Group.groups.addAll(groups);
     }
 
     /**
-     * ç§»é™¤ä¸€ä¸ªæƒé™ç»„
-     * @param group æƒé™ç»„
+     * ÒÆ³ıÒ»¸öÈ¨ÏŞ×é
+     * @param group È¨ÏŞ×é
      */
     public static Group removeGroup(Group group) {
         groups.remove(group);
@@ -159,65 +159,65 @@ public class Group {
     }
 
     /**
-     * å¢åŠ ä¸€å †æƒé™ç»„
-     * @param groups æƒé™ç»„
+     * Ôö¼ÓÒ»¶ÑÈ¨ÏŞ×é
+     * @param groups È¨ÏŞ×é
      */
     public static void removeGroups(List<Group> groups) {
         Group.groups.removeAll(groups);
     }
 
     /**
-     * è®¾ç½®æƒé™ç»„
-     * @param groups æƒé™ç»„
+     * ÉèÖÃÈ¨ÏŞ×é
+     * @param groups È¨ÏŞ×é
      */
     public static void setGroups(List<Group> groups) {
         Group.groups = groups;
     }
 
     /**
-     * å¢åŠ æƒé™
-     * @param perm æƒé™
+     * Ôö¼ÓÈ¨ÏŞ
+     * @param perm È¨ÏŞ
      */
     public void addPerm(String perm) {
         this.perms.add(perm);
     }
 
     /**
-     * å¢åŠ æƒé™
-     * @param perms æƒé™
+     * Ôö¼ÓÈ¨ÏŞ
+     * @param perms È¨ÏŞ
      */
     public void addPerms(List<String> perms) {
         this.perms.addAll(perms);
     }
 
     /**
-     * è®¾ç½®æƒé™
-     * @param perms æƒé™
+     * ÉèÖÃÈ¨ÏŞ
+     * @param perms È¨ÏŞ
      */
     public void setPerms(List<String> perms) {
         this.perms = perms;
     }
 
     /**
-     * ç§»é™¤æƒé™
-     * @param perms æƒé™
+     * ÒÆ³ıÈ¨ÏŞ
+     * @param perms È¨ÏŞ
      */
     public void removePerms(List<String> perms) {
         this.perms.removeAll(perms);
     }
 
     /**
-     * ç§»é™¤æƒé™
-     * @param perm æƒé™
+     * ÒÆ³ıÈ¨ÏŞ
+     * @param perm È¨ÏŞ
      */
     public void removePerm(String perm) {
         this.perms.remove(perm);
     }
 
     /**
-     * å¢åŠ æƒé™
-     * @param perm æƒé™
-     * @param group æƒé™ç»„
+     * Ôö¼ÓÈ¨ÏŞ
+     * @param perm È¨ÏŞ
+     * @param group È¨ÏŞ×é
      */
     public static Group addPerm(String perm, Group group) {
         group.perms.add(perm);
@@ -225,9 +225,9 @@ public class Group {
     }
 
     /**
-     * å¢åŠ æƒé™
-     * @param perms æƒé™
-     * @param group æƒé™ç»„
+     * Ôö¼ÓÈ¨ÏŞ
+     * @param perms È¨ÏŞ
+     * @param group È¨ÏŞ×é
      */
     public static Group addPerms(List<String> perms, Group group) {
         group.perms.addAll(perms);
@@ -235,9 +235,9 @@ public class Group {
     }
 
     /**
-     * è®¾ç½®æƒé™
-     * @param perms æƒé™
-     * @param group æƒé™ç»„
+     * ÉèÖÃÈ¨ÏŞ
+     * @param perms È¨ÏŞ
+     * @param group È¨ÏŞ×é
      */
     public static Group setPerms(List<String> perms, Group group) {
         group.perms = perms;
@@ -245,9 +245,9 @@ public class Group {
     }
 
     /**
-     * ç§»é™¤æƒé™
-     * @param perms æƒé™
-     * @param group æƒé™ç»„
+     * ÒÆ³ıÈ¨ÏŞ
+     * @param perms È¨ÏŞ
+     * @param group È¨ÏŞ×é
      */
     public static Group removePerms(List<String> perms, Group group) {
         group.perms.removeAll(perms);
@@ -255,9 +255,9 @@ public class Group {
     }
 
     /**
-     * ç§»é™¤æƒé™
-     * @param perm æƒé™
-     * @param group æƒé™ç»„
+     * ÒÆ³ıÈ¨ÏŞ
+     * @param perm È¨ÏŞ
+     * @param group È¨ÏŞ×é
      */
     public static Group removePerm(String perm, Group group) {
         group.perms.remove(perm);
@@ -265,9 +265,9 @@ public class Group {
     }
 
     /**
-     * ä¿®æ”¹é»˜è®¤æƒé™ç»„
-     * @param group æƒé™ç»„
-     * @return trueä»£è¡¨æˆåŠŸï¼Œfalseä»£è¡¨å¤±è´¥
+     * ĞŞ¸ÄÄ¬ÈÏÈ¨ÏŞ×é
+     * @param group È¨ÏŞ×é
+     * @return true´ú±í³É¹¦£¬false´ú±íÊ§°Ü
      */
     public static Boolean modifyDefaultGroup(Group group) {
         if (!groups.contains(group)) return false;
@@ -278,8 +278,8 @@ public class Group {
     }
 
     /**
-     * è·å–é»˜è®¤æƒé™ç»„
-     * @return æƒé™ç»„
+     * »ñÈ¡Ä¬ÈÏÈ¨ÏŞ×é
+     * @return È¨ÏŞ×é
      */
     public static Group getDefaultGroup() {
         Group group = new Group();
@@ -293,26 +293,26 @@ public class Group {
     }
 
     /**
-     * è·å–æƒé™ç»„çš„æƒé™
-     * @param group æƒé™ç»„
-     * @return æƒé™
+     * »ñÈ¡È¨ÏŞ×éµÄÈ¨ÏŞ
+     * @param group È¨ÏŞ×é
+     * @return È¨ÏŞ
      */
     public static List<String> getGroupPerms(Group group) {
         return group.getGroupPerms();
     }
 
     /**
-     * è·å–æƒé™ç»„çš„æƒé™
-     * @return æƒé™
+     * »ñÈ¡È¨ÏŞ×éµÄÈ¨ÏŞ
+     * @return È¨ÏŞ
      */
     public List<String> getGroupPerms() {
         return this.perms;
     }
 
     /**
-     * æƒé™ç»„æ˜¯å¦æ‹¥æœ‰æƒé™
-     * @param perm æƒé™
-     * @return trueä»£è¡¨æœ‰ï¼Œfalseä»£è¡¨å¤±è´¥
+     * È¨ÏŞ×éÊÇ·ñÓµÓĞÈ¨ÏŞ
+     * @param perm È¨ÏŞ
+     * @return true´ú±íÓĞ£¬false´ú±íÊ§°Ü
      */
     public Boolean hasPerm(String perm) {
         if (perm == null) return true;
@@ -342,10 +342,10 @@ public class Group {
     }
 
     /**
-     * æƒé™ç»„æ˜¯å¦æ‹¥æœ‰æƒé™
-     * @param perm æƒé™
-     * @param group æƒé™ç»„
-     * @return trueä»£è¡¨æœ‰ï¼Œfalseä»£è¡¨å¤±è´¥
+     * È¨ÏŞ×éÊÇ·ñÓµÓĞÈ¨ÏŞ
+     * @param perm È¨ÏŞ
+     * @param group È¨ÏŞ×é
+     * @return true´ú±íÓĞ£¬false´ú±íÊ§°Ü
      */
     public static Boolean hasPerm(String perm, Group group) {
         return group.hasPerm(perm);

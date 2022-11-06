@@ -1,48 +1,48 @@
 package io.github.mcchampions.DodoOpenJava.Card.enums;
 
 /**
- * å¡ç‰‡é£æ ¼
+ * ¿¨Æ¬·ç¸ñ
  * @author qscbm187531
  */
 public enum Theme {
     /**
-     * ç°è‰²
+     * »ÒÉ«
      */
     Grey("grey"),
     /**
-     * çº¢è‰²
+     * ºìÉ«
      */
     Red("red"),
     /**
-     * æ©™è‰²
+     * ³ÈÉ«
      */
     Orange("orange"),
     /**
-     * é»„è‰²
+     * »ÆÉ«
      */
     Yellow("yellow"),
     /**
-     * ç»¿è‰²
+     * ÂÌÉ«
      */
     Green("green"),
     /**
-     * æ·¡è“è‰²
+     * µ­À¶É«
      */
     Indigo("indigo"),
     /**
-     * è“è‰²
+     * À¶É«
      */
     Blue("blue"),
     /**
-     * ç´«è‰²
+     * ×ÏÉ«
      */
     Purple("purple"),
     /**
-     * é»‘è‰²
+     * ºÚÉ«
      */
     Black("black"),
     /**
-     * é»˜è®¤
+     * Ä¬ÈÏ
      */
     Default("default");
 
@@ -51,13 +51,13 @@ public enum Theme {
     }
 
     /**
-     * è¡Œæ•°
+     * ĞĞÊı
      */
     private final String type;
 
     /**
-     * è·å–ç±»å‹
-     * @return ç±»å‹
+     * »ñÈ¡ÀàĞÍ
+     * @return ÀàĞÍ
      */
     public String getType() {
         return type;

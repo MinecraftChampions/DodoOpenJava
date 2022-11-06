@@ -1,7 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.Card.enums;
 
 /**
- * è¡Œæ•°ï¼ˆ2-6ï¼‰
+ * ĞĞÊı£¨2-6£©
  * @author qscbm187531
  */
 public enum Cols {
@@ -31,13 +31,13 @@ public enum Cols {
     }
 
     /**
-     * è¡Œæ•°
+     * ĞĞÊı
      */
     private final int col;
 
     /**
-     * è·å–è¡Œæ•°
-     * @return è¡Œæ•°
+     * »ñÈ¡ĞĞÊı
+     * @return ĞĞÊı
      */
     public int getCol() {
         return col;

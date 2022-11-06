@@ -3,12 +3,14 @@ package io.github.mcchampions.DodoOpenJava.Command;
 import io.github.mcchampions.DodoOpenJava.Api.Version;
 import io.github.mcchampions.DodoOpenJava.Event.EventManage;
 import io.github.mcchampions.DodoOpenJava.Utils.BaseUtil;
+import okio.ByteString;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
- * å‘½ä»¤ç³»ç»Ÿçš„ç›¸å…³æ–¹æ³•
+ * ÃüÁîÏµÍ³µÄÏà¹Ø·½·¨
  * @author qscbm187531
  */
 public class Command {
@@ -17,32 +19,35 @@ public class Command {
     public static String Authorization;
 
     /**
-     * åˆå§‹åŒ–å‘½ä»¤ç³»ç»Ÿ(é»˜è®¤V2,ä¸è€ƒè™‘ä½¿ç”¨V1)
-     * @param Class å‘½ä»¤å¤„ç†æ‰€åœ¨çš„ç±»
-     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡ç¤º
-     * @param token æœºå™¨äººToken
+     * ³õÊ¼»¯ÃüÁîÏµÍ³(Ä¬ÈÏV2,²»¿¼ÂÇÊ¹ÓÃV1)
+     *
+     * @param Class    ÃüÁî´¦ÀíËùÔÚµÄÀà
+     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¾
+     * @param token    »úÆ÷ÈËToken
      */
     public static void regsiterCommand(CommandExecutor Class, String clientId, String token) {
         commands.add(Class);
-        EventManage.registerEvents(new CommandTrigger(), BaseUtil.Authorization(clientId,token), Version.V2);
-        Authorization = BaseUtil.Authorization(clientId,token);
+        EventManage.registerEvents(new CommandTrigger(), BaseUtil.Authorization(clientId, token), Version.V2);
+        Authorization = BaseUtil.Authorization(clientId, token);
     }
 
     /**
-     * åˆå§‹åŒ–å‘½ä»¤ç³»ç»Ÿ(é»˜è®¤V2,ä¸è€ƒè™‘ä½¿ç”¨V1)
-     * @param Class å‘½ä»¤å¤„ç†æ‰€åœ¨çš„ç±»
-     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡ç¤º
-     * @param token æœºå™¨äººToken
+     * ³õÊ¼»¯ÃüÁîÏµÍ³(Ä¬ÈÏV2,²»¿¼ÂÇÊ¹ÓÃV1)
+     *
+     * @param Class    ÃüÁî´¦ÀíËùÔÚµÄÀà
+     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¾
+     * @param token    »úÆ÷ÈËToken
      */
     public static void regsiterCommand(String clientId, String token, CommandExecutor... Class) {
         commands.addAll(List.of(Class));
-        EventManage.registerEvents(new CommandTrigger(), BaseUtil.Authorization(clientId,token), Version.V2);
-        Authorization = BaseUtil.Authorization(clientId,token);
+        EventManage.registerEvents(new CommandTrigger(), BaseUtil.Authorization(clientId, token), Version.V2);
+        Authorization = BaseUtil.Authorization(clientId, token);
     }
 
     /**
-     * åˆå§‹åŒ–å‘½ä»¤ç³»ç»Ÿ(é»˜è®¤V2,ä¸è€ƒè™‘ä½¿ç”¨V1)
-     * @param Class å‘½ä»¤å¤„ç†æ‰€åœ¨çš„ç±»
+     * ³õÊ¼»¯ÃüÁîÏµÍ³(Ä¬ÈÏV2,²»¿¼ÂÇÊ¹ÓÃV1)
+     *
+     * @param Class         ÃüÁî´¦ÀíËùÔÚµÄÀà
      * @param authorization authorization
      */
     public static void regsiterCommand(CommandExecutor Class, String authorization) {
@@ -52,13 +57,35 @@ public class Command {
     }
 
     /**
-     * åˆå§‹åŒ–å‘½ä»¤ç³»ç»Ÿ(é»˜è®¤V2,ä¸è€ƒè™‘ä½¿ç”¨V1)
-     * @param Class å‘½ä»¤å¤„ç†æ‰€åœ¨çš„ç±»
+     * ³õÊ¼»¯ÃüÁîÏµÍ³(Ä¬ÈÏV2,²»¿¼ÂÇÊ¹ÓÃV1)
+     *
+     * @param Class         ÃüÁî´¦ÀíËùÔÚµÄÀà
      * @param authorization authorization
      */
     public static void regsiterCommand(String authorization, CommandExecutor... Class) {
         commands.addAll(List.of(Class));
         EventManage.registerEvents(new CommandTrigger(), authorization, Version.V2);
         Authorization = authorization;
+    }
+
+    /**
+     * ´¥·¢ÃüÁî
+     *
+     * @param sender ·¢ËÍÕß
+     * @param mainCommandName ÃüÁîÃû
+     * @param args ÃüÁî²ÎÊı
+     */
+    public static Boolean trigger(CommandSender sender, String mainCommandName, String[] args) {
+        boolean hasCommand = false;
+        for (CommandExecutor command : commands) {
+            if (Objects.equals(command.MainCommand().utf8(), ByteString.encodeUtf8((mainCommandName)).utf8())) {
+                if (sender.hasPermission(command.Permission())) {
+                    command.onCommand(sender, args);
+                    hasCommand = true;
+                    break;
+                }
+            }
+        }
+        return hasCommand;
     }
 }

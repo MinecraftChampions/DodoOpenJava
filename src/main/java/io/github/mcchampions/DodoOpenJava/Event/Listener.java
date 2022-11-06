@@ -3,7 +3,7 @@ package io.github.mcchampions.DodoOpenJava.Event;
 import java.util.EventListener;
 
 /**
- * äº‹ä»¶å¤„ç†çš„æ¥å£
+ * ÊÂ¼ş´¦ÀíµÄ½Ó¿Ú
  */
 public interface Listener extends EventListener {
 }

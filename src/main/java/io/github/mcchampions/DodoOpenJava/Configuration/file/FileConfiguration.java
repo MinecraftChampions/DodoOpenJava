@@ -14,25 +14,25 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 /**
- * è¿™æ˜¯ä¸€ä¸ªå®ç°äº† Configuration çš„é…ç½®æ–‡ä»¶çš„åŸºç±»
+ * ÕâÊÇÒ»¸öÊµÏÖÁË Configuration µÄÅäÖÃÎÄ¼şµÄ»ùÀà
  */
 public abstract class FileConfiguration extends MemoryConfiguration {
     /**
-     * è¯¥å€¼æŒ‡å®šåº”å®Œå…¨å¿½ç•¥ç³»ç»Ÿé»˜è®¤ç¼–ç ï¼Œå› ä¸ºå®ƒæ— æ³•å¤„ç†ASCIIå­—ç¬¦é›†ï¼Œæˆ–è€…å®ƒå·²ç»æ˜¯UTF8çš„ä¸¥æ ¼å­é›†ï¼ˆçº¯ASCIIï¼‰ã€‚
+     * ¸ÃÖµÖ¸¶¨Ó¦ÍêÈ«ºöÂÔÏµÍ³Ä¬ÈÏ±àÂë£¬ÒòÎªËüÎŞ·¨´¦ÀíASCII×Ö·û¼¯£¬»òÕßËüÒÑ¾­ÊÇUTF8µÄÑÏ¸ñ×Ó¼¯£¨´¿ASCII£©¡£
      *
      * @deprecated temporary compatibility measure
      */
     @Deprecated
     public static final boolean UTF8_OVERRIDE;
     /**
-     * æ­¤å€¼æŒ‡å®šç³»ç»Ÿé»˜è®¤ç¼–ç æ˜¯å¦ä¸ºunicodeï¼Œä½†æ— æ³•åˆ†ææ ‡å‡†ASCI
+     * ´ËÖµÖ¸¶¨ÏµÍ³Ä¬ÈÏ±àÂëÊÇ·ñÎªunicode£¬µ«ÎŞ·¨·ÖÎö±ê×¼ASCI
      *
      * @deprecated temporary compatibility measure
      */
     @Deprecated
     public static final boolean UTF_BIG;
     /**
-     * æ­¤å€¼æŒ‡å®šç³»ç»Ÿæ˜¯å¦æ”¯æŒunicodeã€‚
+     * ´ËÖµÖ¸¶¨ÏµÍ³ÊÇ·ñÖ§³Öunicode¡£
      *
      * @deprecated temporary compatibility measure
      */
@@ -50,33 +50,33 @@ public abstract class FileConfiguration extends MemoryConfiguration {
     }
 
     /**
-     * åˆ›å»ºä¸€ä¸ªç©ºçš„ï¼Œæ²¡æœ‰å€¼é»˜è®¤å€¼çš„ FileConfiguration.
+     * ´´½¨Ò»¸ö¿ÕµÄ£¬Ã»ÓĞÖµÄ¬ÈÏÖµµÄ FileConfiguration.
      */
     public FileConfiguration() {
         super();
     }
 
     /**
-     * åˆ›å»ºä¸€ä¸ªç©ºçš„ FileConfiguration å¹¶ä¸”ä½¿ç”¨ Configuration å†…çš„æ‰€æœ‰é»˜è®¤å€¼åˆ›å»ºå®ƒ.
+     * ´´½¨Ò»¸ö¿ÕµÄ FileConfiguration ²¢ÇÒÊ¹ÓÃ Configuration ÄÚµÄËùÓĞÄ¬ÈÏÖµ´´½¨Ëü.
      *
-     * @param defaults ä¸ºå…¶åˆ›å»ºæä¾›ç¼ºçœå€¼çš„Configuration.
+     * @param defaults ÎªÆä´´½¨Ìá¹©È±Ê¡ÖµµÄConfiguration.
      */
     public FileConfiguration(Configuration defaults) {
         super(defaults);
     }
 
     /**
-     * ä»¥ä¸€ä¸ª FileConfiguration è°ƒç”¨è¯¥æ–¹æ³•ï¼Œå°†æ–‡ä»¶å‚¨å­˜åˆ°æŒ‡å®šä½ç½®.
-     * å¦‚æœä½ æŒ‡å®šå‚¨å­˜çš„è¿™ä¸ªæ–‡ä»¶ä¸å­˜åœ¨,è¿™ä¸ªæ–¹æ³•ä¼šå¸®ä½ è‡ªåŠ¨åˆ›å»ºä¸€ä¸ª. å¦‚æœè¿™ä¸ªæ–‡ä»¶å­˜åœ¨,é‚£ä¹ˆè¯¥æ–¹æ³•ä¼šæŠŠæ‰€æœ‰æœªä¿å­˜çš„æ›´æ”¹ç›´æ¥å†™å…¥æ–‡ä»¶ å¹¶ä¸”ç›´æ¥è¦†ç›–åŸæ–‡ä»¶. å¦‚æœå‚¨å­˜æˆ–è€…åˆ›å»ºå¤±è´¥,å°†ä¼šæŠ›å‡ºä¸€ä¸ªå¼‚å¸¸
+     * ÒÔÒ»¸ö FileConfiguration µ÷ÓÃ¸Ã·½·¨£¬½«ÎÄ¼ş´¢´æµ½Ö¸¶¨Î»ÖÃ.
+     * Èç¹ûÄãÖ¸¶¨´¢´æµÄÕâ¸öÎÄ¼ş²»´æÔÚ,Õâ¸ö·½·¨»á°ïÄã×Ô¶¯´´½¨Ò»¸ö. Èç¹ûÕâ¸öÎÄ¼ş´æÔÚ,ÄÇÃ´¸Ã·½·¨»á°ÑËùÓĞÎ´±£´æµÄ¸ü¸ÄÖ±½ÓĞ´ÈëÎÄ¼ş ²¢ÇÒÖ±½Ó¸²¸ÇÔ­ÎÄ¼ş. Èç¹û´¢´æ»òÕß´´½¨Ê§°Ü,½«»áÅ×³öÒ»¸öÒì³£
      *
-     * æœ¬æ–¹æ³•ä¼šç”¨ç³»ç»Ÿé»˜è®¤çš„ç¼–ç å‚¨å­˜,ä¸è¿‡ä¹Ÿæœ‰å¯èƒ½ç”¨UTF-8å‡ºå‚¨å­˜
+     * ±¾·½·¨»áÓÃÏµÍ³Ä¬ÈÏµÄ±àÂë´¢´æ,²»¹ıÒ²ÓĞ¿ÉÄÜÓÃUTF-8³ö´¢´æ
      *
-     * @param file è¦å‚¨å­˜çš„æ–‡ä»¶
-     * @throws IOException ç„¶åä¼šç»™å‡ºæ— æ³•åˆ›å»ºæˆ–è€…ä¿å­˜çš„åŸå› .
-     * @throws IllegalArgumentException  å¦‚æœæ–‡ä»¶ä¸ºç©ºï¼ŒæŠ›å‡ºè¯¥å¼‚å¸¸
+     * @param file Òª´¢´æµÄÎÄ¼ş
+     * @throws IOException È»ºó»á¸ø³öÎŞ·¨´´½¨»òÕß±£´æµÄÔ­Òò.
+     * @throws IllegalArgumentException  Èç¹ûÎÄ¼şÎª¿Õ£¬Å×³ö¸ÃÒì³£
      */
     public void save(File file) throws IOException {
-        Validate.notNull(file, "æ–‡ä»¶ä¸èƒ½ä¸ºç©º");
+        Validate.notNull(file, "ÎÄ¼ş²»ÄÜÎª¿Õ");
 
         Files.createParentDirs(file);
 
@@ -88,47 +88,47 @@ public abstract class FileConfiguration extends MemoryConfiguration {
     }
 
     /**
-     * ä»¥ä¸€ä¸ª FileConfiguration è°ƒç”¨è¯¥æ–¹æ³•ï¼Œå°†æ–‡ä»¶å‚¨å­˜åˆ°æŒ‡å®šä½ç½®.
-     * å¦‚æœä½ æŒ‡å®šå‚¨å­˜çš„è¿™ä¸ªæ–‡ä»¶ä¸å­˜åœ¨,è¿™ä¸ªæ–¹æ³•ä¼šå¸®ä½ è‡ªåŠ¨åˆ›å»ºä¸€ä¸ª. å¦‚æœè¿™ä¸ªæ–‡ä»¶å­˜åœ¨,é‚£ä¹ˆè¯¥æ–¹æ³•ä¼šæŠŠæ‰€æœ‰æœªä¿å­˜çš„æ›´æ”¹ç›´æ¥å†™å…¥æ–‡ä»¶ å¹¶ä¸”ç›´æ¥è¦†ç›–åŸæ–‡ä»¶. å¦‚æœå‚¨å­˜æˆ–è€…åˆ›å»ºå¤±è´¥,å°†ä¼šæŠ›å‡ºä¸€ä¸ªå¼‚å¸¸
+     * ÒÔÒ»¸ö FileConfiguration µ÷ÓÃ¸Ã·½·¨£¬½«ÎÄ¼ş´¢´æµ½Ö¸¶¨Î»ÖÃ.
+     * Èç¹ûÄãÖ¸¶¨´¢´æµÄÕâ¸öÎÄ¼ş²»´æÔÚ,Õâ¸ö·½·¨»á°ïÄã×Ô¶¯´´½¨Ò»¸ö. Èç¹ûÕâ¸öÎÄ¼ş´æÔÚ,ÄÇÃ´¸Ã·½·¨»á°ÑËùÓĞÎ´±£´æµÄ¸ü¸ÄÖ±½ÓĞ´ÈëÎÄ¼ş ²¢ÇÒÖ±½Ó¸²¸ÇÔ­ÎÄ¼ş. Èç¹û´¢´æ»òÕß´´½¨Ê§°Ü,½«»áÅ×³öÒ»¸öÒì³£
      *
-     * æœ¬æ–¹æ³•ä¼šç”¨ç³»ç»Ÿé»˜è®¤çš„ç¼–ç å‚¨å­˜,ä¸è¿‡ä¹Ÿæœ‰å¯èƒ½ç”¨UTF-8å‡ºå‚¨å­˜
+     * ±¾·½·¨»áÓÃÏµÍ³Ä¬ÈÏµÄ±àÂë´¢´æ,²»¹ıÒ²ÓĞ¿ÉÄÜÓÃUTF-8³ö´¢´æ
      *
-     * @param file è¦å‚¨å­˜çš„æ–‡ä»¶
-     * @throws IOException ç„¶åä¼šç»™å‡ºæ— æ³•åˆ›å»ºæˆ–è€…ä¿å­˜çš„åŸå› .
-     * @throws IllegalArgumentException å¦‚æœæ–‡ä»¶ä¸ºç©ºï¼ŒæŠ›å‡ºè¯¥å¼‚å¸¸
+     * @param file Òª´¢´æµÄÎÄ¼ş
+     * @throws IOException È»ºó»á¸ø³öÎŞ·¨´´½¨»òÕß±£´æµÄÔ­Òò.
+     * @throws IllegalArgumentException Èç¹ûÎÄ¼şÎª¿Õ£¬Å×³ö¸ÃÒì³£
      */
     public void save(String file) throws IOException {
-        Validate.notNull(file, "æ–‡ä»¶ä¸èƒ½ä¸ºç©º");
+        Validate.notNull(file, "ÎÄ¼ş²»ÄÜÎª¿Õ");
 
         save(new File(file));
     }
 
     /**
-     * å°†è¿™ä¸ª FileConfiguration è½¬åŒ–ä¸ºStringå¯¹è±¡å¹¶ä¸”è¿”å›t.
+     * ½«Õâ¸ö FileConfiguration ×ª»¯ÎªString¶ÔÏó²¢ÇÒ·µ»Øt.
      *
-     * @return è¿™ä¸ªFileConfigurationåŒ…å«çš„æ‰€æœ‰String
+     * @return Õâ¸öFileConfiguration°üº¬µÄËùÓĞString
      */
     public abstract String saveToString();
 
     /**
-     * ä»æŒ‡å®šä½ç½®åŠ è½½ FileConfiguration
+     * ´ÓÖ¸¶¨Î»ÖÃ¼ÓÔØ FileConfiguration
      *
-     * @param file æ–‡ä»¶
-     * @throws FileNotFoundException æ— æ³•æ‰“å¼€ç»™å®šæ–‡ä»¶æ—¶æŠ›å‡º
-     * @throws IOException æ— æ³•è¯»å–ç»™å®šæ–‡ä»¶æ—¶æŠ›å‡º
-     * @throws InvalidConfigurationException å½“ç»™å®šæ–‡ä»¶ä¸æ˜¯ Configuration æ—¶æŠ›å‡º
-     * @throws IllegalArgumentException æ–‡ä»¶ä¸ºç©ºæ—¶æŠ›å‡º
+     * @param file ÎÄ¼ş
+     * @throws FileNotFoundException ÎŞ·¨´ò¿ª¸ø¶¨ÎÄ¼şÊ±Å×³ö
+     * @throws IOException ÎŞ·¨¶ÁÈ¡¸ø¶¨ÎÄ¼şÊ±Å×³ö
+     * @throws InvalidConfigurationException µ±¸ø¶¨ÎÄ¼ş²»ÊÇ Configuration Ê±Å×³ö
+     * @throws IllegalArgumentException ÎÄ¼şÎª¿ÕÊ±Å×³ö
      */
     public void load(File file) throws FileNotFoundException, IOException, InvalidConfigurationException {
-        Validate.notNull(file, "æ–‡ä»¶ä¸èƒ½ä¸ºç©º");
+        Validate.notNull(file, "ÎÄ¼ş²»ÄÜÎª¿Õ");
 
         loadFromString(ConfigUtil.readFile(file));
     }
 
     /**
-     * ä»æŒ‡å®šçš„è¯»å–å™¨åŠ è½½æ­¤æ–‡ä»¶é…ç½®ã€‚
+     * ´ÓÖ¸¶¨µÄ¶ÁÈ¡Æ÷¼ÓÔØ´ËÎÄ¼şÅäÖÃ¡£
      *
-     * å°†åˆ é™¤æ­¤é…ç½®ä¸­åŒ…å«çš„æ‰€æœ‰å€¼ï¼Œåªä¿ç•™è®¾ç½®å’Œé»˜è®¤å€¼ï¼Œå¹¶ä¸”å°†ä»ç»™å®šæµåŠ è½½æ–°å€¼ã€‚
+     * ½«É¾³ı´ËÅäÖÃÖĞ°üº¬µÄËùÓĞÖµ£¬Ö»±£ÁôÉèÖÃºÍÄ¬ÈÏÖµ£¬²¢ÇÒ½«´Ó¸ø¶¨Á÷¼ÓÔØĞÂÖµ¡£
      */
     @Deprecated
     public void load(InputStream stream) throws IOException, InvalidConfigurationException {
@@ -138,14 +138,14 @@ public abstract class FileConfiguration extends MemoryConfiguration {
     }
 
     /**
-     * ä»æŒ‡å®šçš„ReaderåŠ è½½æ­¤æ–‡ä»¶é…ç½®ã€‚
+     * ´ÓÖ¸¶¨µÄReader¼ÓÔØ´ËÎÄ¼şÅäÖÃ¡£
      *
-     * å°†åˆ é™¤æ­¤é…ç½®ä¸­åŒ…å«çš„æ‰€æœ‰å€¼ï¼Œåªä¿ç•™è®¾ç½®å’Œé»˜è®¤å€¼ï¼Œå¹¶ä¸”å°†ä»ç»™å®šæµåŠ è½½æ–°å€¼ã€‚
+     * ½«É¾³ı´ËÅäÖÃÖĞ°üº¬µÄËùÓĞÖµ£¬Ö»±£ÁôÉèÖÃºÍÄ¬ÈÏÖµ£¬²¢ÇÒ½«´Ó¸ø¶¨Á÷¼ÓÔØĞÂÖµ¡£
      *
      * @param reader Reader
-     * @throws IOException å½“Readerå¼•å‘IOExceptionæ—¶å¼•å‘
-     * @throws InvalidConfigurationException å½“Readerä¸æ˜¯ Configuration æ—¶å¼•å‘
-     * @throws IllegalArgumentException Readerä¸ºç©ºæ—¶å¼•å‘
+     * @throws IOException µ±ReaderÒı·¢IOExceptionÊ±Òı·¢
+     * @throws InvalidConfigurationException µ±Reader²»ÊÇ Configuration Ê±Òı·¢
+     * @throws IllegalArgumentException ReaderÎª¿ÕÊ±Òı·¢
      */
     public void load(Reader reader) throws IOException, InvalidConfigurationException {
         BufferedReader input = reader instanceof BufferedReader ? (BufferedReader) reader : new BufferedReader(reader);
@@ -167,18 +167,18 @@ public abstract class FileConfiguration extends MemoryConfiguration {
     }
 
     /**
-     * ä»æŒ‡å®šä½ç½®åŠ è½½æ­¤æ–‡ä»¶é…ç½®ã€‚
+     * ´ÓÖ¸¶¨Î»ÖÃ¼ÓÔØ´ËÎÄ¼şÅäÖÃ¡£
      *
-     * å°†åˆ é™¤æ­¤é…ç½®ä¸­åŒ…å«çš„æ‰€æœ‰å€¼ï¼Œåªä¿ç•™è®¾ç½®å’Œé»˜è®¤å€¼ï¼Œå¹¶ä¸”å°†ä»ç»™å®šæ–‡ä»¶åŠ è½½æ–°å€¼ã€‚
+     * ½«É¾³ı´ËÅäÖÃÖĞ°üº¬µÄËùÓĞÖµ£¬Ö»±£ÁôÉèÖÃºÍÄ¬ÈÏÖµ£¬²¢ÇÒ½«´Ó¸ø¶¨ÎÄ¼ş¼ÓÔØĞÂÖµ¡£
      *
      *
      *
-     * å¦‚æœç”±äºä»»ä½•åŸå› æ— æ³•åŠ è½½æ–‡ä»¶ï¼Œå°†å¼•å‘å¼‚å¸¸ã€‚
+     * Èç¹ûÓÉÓÚÈÎºÎÔ­ÒòÎŞ·¨¼ÓÔØÎÄ¼ş£¬½«Òı·¢Òì³£¡£
      *
-     * @param file è¦ä»ä¸­åŠ è½½çš„æ–‡ä»¶ã€‚
-     * @throws FileNotFoundException æ— æ³•æ‰“å¼€ç»™å®šæ–‡ä»¶æ—¶å¼•å‘ã€‚
-     * @throws IOException æ— æ³•è¯»å–ç»™å®šæ–‡ä»¶æ—¶å¼•å‘ã€‚
-     * @throws InvalidConfigurationException å½“ç»™å®šæ–‡ä»¶ä¸æ˜¯ Configuration æ—¶å¼•å‘
+     * @param file Òª´ÓÖĞ¼ÓÔØµÄÎÄ¼ş¡£
+     * @throws FileNotFoundException ÎŞ·¨´ò¿ª¸ø¶¨ÎÄ¼şÊ±Òı·¢¡£
+     * @throws IOException ÎŞ·¨¶ÁÈ¡¸ø¶¨ÎÄ¼şÊ±Òı·¢¡£
+     * @throws InvalidConfigurationException µ±¸ø¶¨ÎÄ¼ş²»ÊÇ Configuration Ê±Òı·¢
      * @throws IllegalArgumentException Thrown when file is null.
      */
     public void load(String file) throws FileNotFoundException, IOException, InvalidConfigurationException {
@@ -188,20 +188,20 @@ public abstract class FileConfiguration extends MemoryConfiguration {
     }
 
     /**
-     * ä»æŒ‡å®šçš„å­—ç¬¦ä¸²åŠ è½½æ­¤æ–‡ä»¶é…ç½®ï¼Œè€Œä¸æ˜¯ä»æ–‡ä»¶åŠ è½½ã€‚
+     * ´ÓÖ¸¶¨µÄ×Ö·û´®¼ÓÔØ´ËÎÄ¼şÅäÖÃ£¬¶ø²»ÊÇ´ÓÎÄ¼ş¼ÓÔØ¡£
      *
-     * å°†åˆ é™¤æ­¤é…ç½®ä¸­åŒ…å«çš„æ‰€æœ‰å€¼ï¼Œåªä¿ç•™è®¾ç½®å’Œé»˜è®¤å€¼ï¼Œå¹¶ä¸”å°†ä»ç»™å®šå­—ç¬¦ä¸²åŠ è½½æ–°å€¼ã€‚
+     * ½«É¾³ı´ËÅäÖÃÖĞ°üº¬µÄËùÓĞÖµ£¬Ö»±£ÁôÉèÖÃºÍÄ¬ÈÏÖµ£¬²¢ÇÒ½«´Ó¸ø¶¨×Ö·û´®¼ÓÔØĞÂÖµ¡£
      *
-     * å¦‚æœå­—ç¬¦ä¸²ä»¥ä»»ä½•æ–¹å¼æ— æ•ˆï¼Œå°†å¼•å‘å¼‚å¸¸ã€‚
+     * Èç¹û×Ö·û´®ÒÔÈÎºÎ·½Ê½ÎŞĞ§£¬½«Òı·¢Òì³£¡£
      *
-     * @param contents å­—ç¬¦ä¸²
-     * @throws InvalidConfigurationException å¦‚æœæŒ‡å®šçš„å­—ç¬¦ä¸²æ— æ•ˆï¼Œåˆ™æŠ›å‡º
-     * @throws IllegalArgumentException å­—ç¬¦ä¸²ä¸ºnullæ—¶æŠ›å‡º
+     * @param contents ×Ö·û´®
+     * @throws InvalidConfigurationException Èç¹ûÖ¸¶¨µÄ×Ö·û´®ÎŞĞ§£¬ÔòÅ×³ö
+     * @throws IllegalArgumentException ×Ö·û´®ÎªnullÊ±Å×³ö
      */
     public abstract void loadFromString(String contents) throws InvalidConfigurationException;
 
     /**
-     * ç¼–è¯‘æ­¤ FileConfiguration çš„ header å¹¶è¿”å›ç»“æœ
+     * ±àÒë´Ë FileConfiguration µÄ header ²¢·µ»Ø½á¹û
      * @return Compiled header
      */
     protected abstract String buildHeader();

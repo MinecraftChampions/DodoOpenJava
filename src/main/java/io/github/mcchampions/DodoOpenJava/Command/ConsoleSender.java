@@ -1,13 +1,13 @@
 package io.github.mcchampions.DodoOpenJava.Command;
 
 /**
- * æ§åˆ¶å°å‘é€è€…
+ * ¿ØÖÆÌ¨·¢ËÍÕß
  * @author qscbm187531
  */
 public class ConsoleSender extends CommandSender{
     /**
-     * å›å¤å‘é€è€…å‘é€çš„æ¶ˆæ¯
-     * @param message æ¶ˆæ¯
+     * »Ø¸´·¢ËÍÕß·¢ËÍµÄÏûÏ¢
+     * @param message ÏûÏ¢
      */
     @Override
     public void referencedMessage(String message) {
@@ -15,9 +15,9 @@ public class ConsoleSender extends CommandSender{
     }
 
     /**
-     * åˆ¤æ–­æ˜¯å¦æœ‰æƒé™
-     * @param permission æƒé™
-     * @return trueæˆåŠŸï¼Œfalseå¤±è´¥
+     * ÅĞ¶ÏÊÇ·ñÓĞÈ¨ÏŞ
+     * @param permission È¨ÏŞ
+     * @return true³É¹¦£¬falseÊ§°Ü
      */
     @Override
     public Boolean hasPermission(String permission) {

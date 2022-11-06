@@ -1,7 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.Card.enums;
 
 /**
- * è¾“å…¥æ¡†é«˜åº¦
+ * ÊäÈë¿ò¸ß¶È
  * @author qscbm187531
  */
 public enum Rows {
@@ -27,13 +27,13 @@ public enum Rows {
     }
 
     /**
-     * è¡Œæ•°
+     * ĞĞÊı
      */
     private final int row;
 
     /**
-     * è·å–è¡Œæ•°
-     * @return è¡Œæ•°
+     * »ñÈ¡ĞĞÊı
+     * @return ĞĞÊı
      */
     public int getRow() {
         return row;

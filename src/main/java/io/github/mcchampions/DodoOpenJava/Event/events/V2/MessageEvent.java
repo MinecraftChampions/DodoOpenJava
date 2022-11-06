@@ -7,7 +7,7 @@ import io.github.mcchampions.DodoOpenJava.Event.HandlerList;
 import javax.annotation.Nonnull;
 
 /**
- * æ¶ˆæ¯äº‹ä»¶
+ * ÏûÏ¢ÊÂ¼ş
  * @author qscbm187531
  */
 public class MessageEvent extends Event {
@@ -96,69 +96,69 @@ public class MessageEvent extends Event {
     }
 
     /**
-     * è½¬æ¢ ä¸ºIntæ•°æ®ç±»å‹çš„ æ€§åˆ«å…³é”®å­— ä¸º String ç±»å‹
-     * @param IntSex æ€§åˆ«
-     * @return æ€§åˆ«
+     * ×ª»» ÎªIntÊı¾İÀàĞÍµÄ ĞÔ±ğ¹Ø¼ü×Ö Îª String ÀàĞÍ
+     * @param IntSex ĞÔ±ğ
+     * @return ĞÔ±ğ
      */
     public String IntSexToSex(Integer IntSex) {
         return switch (IntSex) {
-            case 0 -> "å¥³";
-            case 1 -> "ç”·";
-            default -> "ä¿å¯†";
+            case 0 -> "Å®";
+            case 1 -> "ÄĞ";
+            default -> "±£ÃÜ";
         };
     }
 
     /**
-     * è½¬æ¢ ä¸ºIntæ•°æ®ç±»å‹çš„ æ¶ˆæ¯ç±»å‹å…³é”®å­— ä¸º String ç±»å‹
-     * @param type æ¶ˆæ¯ç±»å‹
-     * @return æ¶ˆæ¯ç±»å‹
+     * ×ª»» ÎªIntÊı¾İÀàĞÍµÄ ÏûÏ¢ÀàĞÍ¹Ø¼ü×Ö Îª String ÀàĞÍ
+     * @param type ÏûÏ¢ÀàĞÍ
+     * @return ÏûÏ¢ÀàĞÍ
      */
     public String IntMessageTypeToMessageType(Integer type) {
         return switch (type) {
-            case 1 -> "æ–‡å­—æ¶ˆæ¯";
-            case 2 -> "å›¾ç‰‡æ¶ˆæ¯";
-            case 3 -> "è§†é¢‘æ¶ˆæ¯";
-            case 4 -> "åˆ†äº«æ¶ˆæ¯";
-            case 5 -> "æ–‡ä»¶æ¶ˆæ¯";
-            case 6 -> "å¡ç‰‡æ¶ˆæ¯";
-            default -> "æœªçŸ¥æ¶ˆæ¯";
+            case 1 -> "ÎÄ×ÖÏûÏ¢";
+            case 2 -> "Í¼Æ¬ÏûÏ¢";
+            case 3 -> "ÊÓÆµÏûÏ¢";
+            case 4 -> "·ÖÏíÏûÏ¢";
+            case 5 -> "ÎÄ¼şÏûÏ¢";
+            case 6 -> "¿¨Æ¬ÏûÏ¢";
+            default -> "Î´ÖªÏûÏ¢";
         };
     }
 
     /**
-     * è·å–æ—¶é—´æˆ³
-     * @return æ—¶é—´æˆ³
+     * »ñÈ¡Ê±¼ä´Á
+     * @return Ê±¼ä´Á
      */
     public Integer getTimestamp() {
         return this.timestamp;
     }
 
     /**
-     * è·å–äº‹ä»¶ID
-     * @return äº‹ä»¶ID
+     * »ñÈ¡ÊÂ¼şID
+     * @return ÊÂ¼şID
      */
     public String getEventId() {
         return this.eventId;
     }
 
     /**
-     * è·å–ç¾¤å·
-     * @return ç¾¤å·
+     * »ñÈ¡ÈººÅ
+     * @return ÈººÅ
      */
     public String getIslandSourceId() {
         return this.islandSourceId;
     }
 
     /**
-     * è·å–é¢‘é“ID
-     * @return é¢‘é“ID
+     * »ñÈ¡ÆµµÀID
+     * @return ÆµµÀID
      */
     public String getChannelId() {
         return this.channelId;
     }
 
     /**
-     * è·å–DodoSourceId
+     * »ñÈ¡DodoSourceId
      * @return DodoSourceId
      */
     public String getDodoSourceId() {
@@ -166,24 +166,24 @@ public class MessageEvent extends Event {
     }
 
     /**
-     * è·å–æ¶ˆæ¯ID
-     * @return æ¶ˆæ¯ID
+     * »ñÈ¡ÏûÏ¢ID
+     * @return ÏûÏ¢ID
      */
     public String getMessageId() {
         return this.messageId;
     }
 
     /**
-     * è·å–æ¶ˆæ¯ç±»åˆ«ï¼ˆIntç±»å‹ï¼‰
-     * @return æ¶ˆæ¯ç±»åˆ«
+     * »ñÈ¡ÏûÏ¢Àà±ğ£¨IntÀàĞÍ£©
+     * @return ÏûÏ¢Àà±ğ
      */
     public Integer getMessageIntType() {
         return this.messageIntType;
     }
 
     /**
-     * è·å–æ¶ˆæ¯ç±»åˆ«ï¼ˆStringç±»å‹ï¼‰
-     * @return æ¶ˆæ¯ç±»åˆ«
+     * »ñÈ¡ÏûÏ¢Àà±ğ£¨StringÀàĞÍ£©
+     * @return ÏûÏ¢Àà±ğ
      */
     public String getMessageType() {
         return this.messageType;
@@ -191,8 +191,8 @@ public class MessageEvent extends Event {
 
 
     /**
-     * è·å–æˆå‘˜Object
-     * @return è·å–æˆå‘˜çš„ JsonObject
+     * »ñÈ¡³ÉÔ±Object
+     * @return »ñÈ¡³ÉÔ±µÄ JsonObject
      */
     public JSONObject getPersonal() {
         return this.personal;
@@ -200,32 +200,32 @@ public class MessageEvent extends Event {
 
 
     /**
-     * è·å–å‘é€è€…åå­—
-     * @return åå­—
+     * »ñÈ¡·¢ËÍÕßÃû×Ö
+     * @return Ãû×Ö
      */
     public String getSenderNickName() {
         return this.senderNickName;
     }
 
     /**
-     * è·å–å‘é€è€…å¤´åƒURL
-     * @return å¤´åƒurl
+     * »ñÈ¡·¢ËÍÕßÍ·ÏñURL
+     * @return Í·Ïñurl
      */
     public String getSenderAvatarUrl() {
         return this.senderAvatarUrl;
     }
 
     /**
-     * è·å–æ€§åˆ«ï¼ˆIntç±»å‹ï¼‰
-     * @return æ€§åˆ«
+     * »ñÈ¡ĞÔ±ğ£¨IntÀàĞÍ£©
+     * @return ĞÔ±ğ
      */
     public Integer getSenderIntSex() {
         return this.senderIntSex;
     }
 
     /**
-     * è·å–æ€§åˆ«ï¼ˆStringç±»å‹ï¼‰
-     * @return æ€§åˆ«
+     * »ñÈ¡ĞÔ±ğ£¨StringÀàĞÍ£©
+     * @return ĞÔ±ğ
      */
     public String getSenderSex() {
         return this.senderSex;
@@ -233,47 +233,47 @@ public class MessageEvent extends Event {
 
 
     /**
-     * è·å–æˆå‘˜Object
-     * @return æˆå‘˜ JsonObject
+     * »ñÈ¡³ÉÔ±Object
+     * @return ³ÉÔ± JsonObject
      */
     public JSONObject getMember() {
         return this.member;
     }
 
     /**
-     * è·å–æˆå‘˜æ˜¾ç¤ºå
-     * @return åå­—
+     * »ñÈ¡³ÉÔ±ÏÔÊ¾Ãû
+     * @return Ãû×Ö
      */
     public String getMemberNickName() {
         return this.memberNickName;
     }
 
     /**
-     * è·å–æˆå‘˜åŠ å…¥æ—¶é—´
-     * @return åŠ å…¥æ—¶é—´
+     * »ñÈ¡³ÉÔ±¼ÓÈëÊ±¼ä
+     * @return ¼ÓÈëÊ±¼ä
      */
     public String getMemberJoinTime() {
         return this.memberJoinTime;
     }
 
     /**
-     * è·å–å›å¤ Objectï¼Œæ²¡æœ‰å°±null
-     * @return å›å¤çš„ JSONObject
+     * »ñÈ¡»Ø¸´ Object£¬Ã»ÓĞ¾Ínull
+     * @return »Ø¸´µÄ JSONObject
      */
     public JSONObject getReference() {
         return this.reference;
     }
 
     /**
-     * è·å–å›å¤çš„æ¶ˆæ¯IDï¼Œæ²¡æœ‰å°±null
-     * @return æ¶ˆæ¯ID
+     * »ñÈ¡»Ø¸´µÄÏûÏ¢ID£¬Ã»ÓĞ¾Ínull
+     * @return ÏûÏ¢ID
      */
     public String getReferenceMessageId() {
         return this.referenceMessageId;
     }
 
     /**
-     * è·å–å›å¤çš„DodoSourceIdï¼Œæ²¡æœ‰å°±null
+     * »ñÈ¡»Ø¸´µÄDodoSourceId£¬Ã»ÓĞ¾Ínull
      * @return DodoSourceId
      */
     public String getReferenceDodoSourceId() {
@@ -281,8 +281,8 @@ public class MessageEvent extends Event {
     }
 
     /**
-     * è·å–å›å¤çš„æ¶ˆæ¯åå­—ï¼Œæ²¡æœ‰å°±null
-     * @return åå­—
+     * »ñÈ¡»Ø¸´µÄÏûÏ¢Ãû×Ö£¬Ã»ÓĞ¾Ínull
+     * @return Ãû×Ö
      */
     public String getReferenceNickName() {
         return this.referenceNickName;
@@ -290,22 +290,22 @@ public class MessageEvent extends Event {
 
 
     /**
-     * è·å–æ¶ˆæ¯ Object
-     * @return å¯¹è±¡
+     * »ñÈ¡ÏûÏ¢ Object
+     * @return ¶ÔÏó
      */
     public JSONObject getMessageBody() {
         return this.messageBody;
     }
 
     /**
-     * è·å–å¡ç‰‡æ¶ˆæ¯JSONå­—ç¬¦ä¸²
+     * »ñÈ¡¿¨Æ¬ÏûÏ¢JSON×Ö·û´®
      */
     public String getJsonString() {
         return this.jsonString;
     }
 
     /**
-     * è·å–å¡ç‰‡æ¶ˆæ¯JSONå¯¹è±¡
+     * »ñÈ¡¿¨Æ¬ÏûÏ¢JSON¶ÔÏó
      */
     public JSONObject getJsonObject() {
         return this.jsonObject;

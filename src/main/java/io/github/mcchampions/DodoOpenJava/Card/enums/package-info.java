@@ -1,5 +1,5 @@
 /**
- * å…³äºå¡ç‰‡æ¶ˆæ¯çš„ä¸€äº›æšä¸¾
+ * ¹ØÓÚ¿¨Æ¬ÏûÏ¢µÄÒ»Ğ©Ã¶¾Ù
  * @author qscbm187531
  */
 package io.github.mcchampions.DodoOpenJava.Card.enums;

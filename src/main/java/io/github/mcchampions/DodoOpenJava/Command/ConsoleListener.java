@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 /**
- * æ§åˆ¶å°è¾“å…¥ç›‘å¬
+ * ¿ØÖÆÌ¨ÊäÈë¼àÌı
  * @author qscbm187531
  */
 public class ConsoleListener {
@@ -13,18 +13,18 @@ public class ConsoleListener {
     Action defaultAction;
 
     /**
-     * å¢åŠ åŠ¨ä½œï¼ˆè¾“å…¥æŒ‡å®šæ¶ˆæ¯ï¼‰
-     * @param message æ¶ˆæ¯
-     * @param action åŠ¨ä½œ
+     * Ôö¼Ó¶¯×÷£¨ÊäÈëÖ¸¶¨ÏûÏ¢£©
+     * @param message ÏûÏ¢
+     * @param action ¶¯×÷
      */
     public void addAction(String message, Action action) {
         answers.put(message.toLowerCase(), action);
     }
 
     /**
-     * åˆå§‹åŒ–
-     * @param scanner é”®ç›˜
-     * @param defaultAction é»˜è®¤åŠ¨ä½œ
+     * ³õÊ¼»¯
+     * @param scanner ¼üÅÌ
+     * @param defaultAction Ä¬ÈÏ¶¯×÷
      */
     public ConsoleListener(Scanner scanner, Action defaultAction) {
         this.scanner = scanner;
@@ -36,25 +36,25 @@ public class ConsoleListener {
     }
 
     /**
-     * ç§»é™¤åŠ¨ä½œ
-     * @param message æ¶ˆæ¯
-     * @param action åŠ¨ä½œ
+     * ÒÆ³ı¶¯×÷
+     * @param message ÏûÏ¢
+     * @param action ¶¯×÷
      */
     public void removeAction(String message, Action action) {
         answers.remove(message, action);
     }
 
     /**
-     * æ›¿æ¢åŠ¨ä½œ
-     * @param message æ¶ˆæ¯
-     * @param action åŠ¨ä½œ
+     * Ìæ»»¶¯×÷
+     * @param message ÏûÏ¢
+     * @param action ¶¯×÷
      */
     public Action replaceAction(String message, Action action) {
         return answers.replace(message, action);
     }
 
     /**
-     * ç›‘å¬ï¼ˆåˆ›å»ºæ–°çš„çº¿ç¨‹ï¼‰
+     * ¼àÌı£¨´´½¨ĞÂµÄÏß³Ì£©
      */
     public void listenInNewThread() {
         Thread t = new Thread(this::listen);
@@ -62,7 +62,7 @@ public class ConsoleListener {
     }
 
     /**
-     * ç›‘å¬
+     * ¼àÌı
      */
     public void listen() {
         while (true) {
@@ -80,12 +80,12 @@ public class ConsoleListener {
     }
 
     /**
-     * æ”¶åˆ°ä¹‹ååšçš„å¤„ç†
+     * ÊÕµ½Ö®ºó×öµÄ´¦Àí
      */
     public interface Action {
         /**
-         * å¤„ç†
-         * @param msg ä¼ å…¥çš„æ§åˆ¶å°çš„è¾“å…¥
+         * ´¦Àí
+         * @param msg ´«ÈëµÄ¿ØÖÆÌ¨µÄÊäÈë
          */
         void act(String msg);
     }

@@ -1,38 +1,38 @@
 package io.github.mcchampions.DodoOpenJava.Configuration;
 
 /**
- * å°è¯•åŠ è½½æ— æ•ˆé…ç½®æ—¶å¼•å‘å¼‚å¸¸
+ * ³¢ÊÔ¼ÓÔØÎŞĞ§ÅäÖÃÊ±Òı·¢Òì³£
  */
 public class InvalidConfigurationException extends Exception {
 
     /**
-     * åˆ›å»ºInvalidConfigurationExceptionçš„æ–°å®ä¾‹ï¼Œä½†ä¸åŒ…å«æ¶ˆæ¯æˆ–åŸå› ã€‚
+     * ´´½¨InvalidConfigurationExceptionµÄĞÂÊµÀı£¬µ«²»°üº¬ÏûÏ¢»òÔ­Òò¡£
      */
     public InvalidConfigurationException() {}
 
     /**
-     * ä½¿ç”¨æŒ‡å®šçš„æ¶ˆæ¯æ„é€ InvalidConfigurationExceptionçš„å®ä¾‹ã€‚
+     * Ê¹ÓÃÖ¸¶¨µÄÏûÏ¢¹¹ÔìInvalidConfigurationExceptionµÄÊµÀı¡£
      *
-     * @param msg å¼‚å¸¸çš„è¯¦ç»†ä¿¡æ¯ã€‚
+     * @param msg Òì³£µÄÏêÏ¸ĞÅÏ¢¡£
      */
     public InvalidConfigurationException(String msg) {
         super(msg);
     }
 
     /**
-     * æ„é€ å…·æœ‰æŒ‡å®šåŸå› çš„InvalidConfigurationExceptionå®ä¾‹ã€‚
+     * ¹¹Ôì¾ßÓĞÖ¸¶¨Ô­ÒòµÄInvalidConfigurationExceptionÊµÀı¡£
      *
-     * @param cause å¼‚å¸¸çš„åŸå› ã€‚
+     * @param cause Òì³£µÄÔ­Òò¡£
      */
     public InvalidConfigurationException(Throwable cause) {
         super(cause);
     }
 
     /**
-     * ä½¿ç”¨æŒ‡å®šçš„æ¶ˆæ¯å’ŒåŸå› æ„é€ InvalidConfigurationExceptionçš„å®ä¾‹ã€‚
+     * Ê¹ÓÃÖ¸¶¨µÄÏûÏ¢ºÍÔ­Òò¹¹ÔìInvalidConfigurationExceptionµÄÊµÀı¡£
      *
-     * @param cause åŸå› 
-     * @param msg ä¿¡æ¯
+     * @param cause Ô­Òò
+     * @param msg ĞÅÏ¢
      */
     public InvalidConfigurationException(String msg, Throwable cause) {
         super(msg, cause);

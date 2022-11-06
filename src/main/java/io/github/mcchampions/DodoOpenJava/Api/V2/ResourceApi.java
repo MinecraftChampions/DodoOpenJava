@@ -7,30 +7,30 @@ import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
 import java.io.IOException;
 
 /**
- * èµ„æºAPI
+ * ×ÊÔ´API
  * @author qscbm187531
  */
 public class ResourceApi {
     public static String url;
 
     /**
-     * ä¸Šä¼ èµ„æº
-     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
-     * @param token æœºå™¨äººé‰´æƒToken
-     * @param path è·¯å¾„
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * ÉÏ´«×ÊÔ´
+     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
+     * @param token »úÆ÷ÈË¼øÈ¨Token
+     * @param path Â·¾¶
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject uploadResource(String clientId, String token, String path) throws IOException {
         return uploadResource(BaseUtil.Authorization(clientId,token), path);
     }
 
     /**
-     * ä¸Šä¼ èµ„æº
+     * ÉÏ´«×ÊÔ´
      * @param authorization authorization
-     * @param path è·¯å¾„
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param path Â·¾¶
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject uploadResource(String authorization, String path) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/resource/picture/upload";

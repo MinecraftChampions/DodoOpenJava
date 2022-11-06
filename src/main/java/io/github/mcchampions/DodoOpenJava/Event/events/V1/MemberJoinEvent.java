@@ -7,7 +7,7 @@ import io.github.mcchampions.DodoOpenJava.Event.HandlerList;
 import javax.annotation.Nonnull;
 
 /**
- * æˆå‘˜åŠ å…¥äº‹ä»¶
+ * ³ÉÔ±¼ÓÈëÊÂ¼ş
  * @author qscbm187531
  */
 public class MemberJoinEvent extends Event {
@@ -47,31 +47,31 @@ public class MemberJoinEvent extends Event {
     }
 
     /**
-     * è·å–æ—¶é—´æˆ³
-     * @return è¿”å›æ—¶é—´æˆ³
+     * »ñÈ¡Ê±¼ä´Á
+     * @return ·µ»ØÊ±¼ä´Á
      */
     public Integer getTimestamp() {
         return this.timestamp;
     }
 
     /**
-     * è·å–äº‹ä»¶ID
-     * @return äº‹ä»¶ID
+     * »ñÈ¡ÊÂ¼şID
+     * @return ÊÂ¼şID
      */
     public String getEventId() {
         return this.eventId;
     }
 
     /**
-     * è·å–ç¾¤å·
-     * @return ç¾¤å·
+     * »ñÈ¡ÈººÅ
+     * @return ÈººÅ
      */
     public String getIslandId() {
         return this.islandId;
     }
 
     /**
-     * è·å–DodoId
+     * »ñÈ¡DodoId
      * @return DodoId
      */
     public String getDodoId() {
@@ -79,15 +79,15 @@ public class MemberJoinEvent extends Event {
     }
 
     /**
-     * è·å–å˜åŠ¨æ—¶é—´
-     * @return å˜åŠ¨æ—¶é—´
+     * »ñÈ¡±ä¶¯Ê±¼ä
+     * @return ±ä¶¯Ê±¼ä
      */
     public String getModifyTime() {
         return this.modifyTime;
     }
 
     /**
-     * è·å–JSONObject
+     * »ñÈ¡JSONObject
      * @return JSONObject
      */
     public JSONObject getJsonObject() {
@@ -95,7 +95,7 @@ public class MemberJoinEvent extends Event {
     }
 
     /**
-     * è·å–JsonString
+     * »ñÈ¡JsonString
      * @return String
      */
     public String getJsonString() {

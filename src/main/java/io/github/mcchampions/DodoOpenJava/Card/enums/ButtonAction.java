@@ -1,25 +1,25 @@
 package io.github.mcchampions.DodoOpenJava.Card.enums;
 
 /**
- * æŒ‰é’®çš„ç›¸å…³æšä¸¾
+ * °´Å¥µÄÏà¹ØÃ¶¾Ù
  * @author Administrator
  */
 
 public enum ButtonAction {
     /**
-     * è·³è½¬URL
+     * Ìø×ªURL
      */
     link_url("link_url"),
     /**
-     * å›ä¼ å‚æ•°
+     * »Ø´«²ÎÊı
      */
     call_back("call_back"),
     /**
-     * å¤åˆ¶æ–‡æœ¬
+     * ¸´ÖÆÎÄ±¾
      */
     copy_content("copy_content"),
     /**
-     * å›ä¼ è¡¨å•
+     * »Ø´«±íµ¥
      */
     form("form");
     ButtonAction(String type) {
@@ -27,13 +27,13 @@ public enum ButtonAction {
     }
 
     /**
-     * è¡Œæ•°
+     * ĞĞÊı
      */
     private final String type;
 
     /**
-     * è·å–ç±»å‹
-     * @return ç±»å‹
+     * »ñÈ¡ÀàĞÍ
+     * @return ÀàĞÍ
      */
     public String getType() {
         return type;

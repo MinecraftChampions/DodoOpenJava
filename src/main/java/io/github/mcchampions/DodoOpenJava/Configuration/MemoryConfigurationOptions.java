@@ -1,7 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.Configuration;
 
 /**
- * ç”¨äºæ§åˆ¶ MemoryConfiguration é…ç½®çš„è¾“å…¥å’Œè¾“å‡ºçš„å„ç§è®¾ç½®
+ * ÓÃÓÚ¿ØÖÆ MemoryConfiguration ÅäÖÃµÄÊäÈëºÍÊä³öµÄ¸÷ÖÖÉèÖÃ
  */
 public class MemoryConfigurationOptions extends ConfigurationOptions {
     protected MemoryConfigurationOptions(MemoryConfiguration configuration) {

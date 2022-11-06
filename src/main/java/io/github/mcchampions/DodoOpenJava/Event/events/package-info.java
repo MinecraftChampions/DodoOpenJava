@@ -1,5 +1,5 @@
 /**
- * å„ç‰ˆæœ¬äº‹ä»¶åˆ—è¡¨
+ * ¸÷°æ±¾ÊÂ¼şÁĞ±í
  * @author qscbm187531
  */
 package io.github.mcchampions.DodoOpenJava.Event.events;

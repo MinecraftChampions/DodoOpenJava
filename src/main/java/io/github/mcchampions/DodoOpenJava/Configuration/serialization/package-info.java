@@ -1,4 +1,4 @@
 /**
- * Е╝·Г▌╟Д╫©И┘█Г╫╝Е▐╞Д╩╔Х╒╚Ф┴╖Х║▄Е╨▐Е┬≈Е▄√Г └Г╠╩О╪┬Д╦─Х┬╛Д╦█Г■╗Г°▀О╪┴
+ * й╣ожй╧еДжц©ирт╠╩ж╢пппРап╩╞╣дюЮё╗р╩╟Ц╡╩сц©╢ё╘
  */
 package io.github.mcchampions.DodoOpenJava.Configuration.serialization;

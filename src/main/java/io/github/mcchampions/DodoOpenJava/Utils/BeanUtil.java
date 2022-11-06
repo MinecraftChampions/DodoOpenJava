@@ -16,7 +16,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * å…³äº Bean çš„ä¸€äº›å®ç”¨æ–¹æ³•
+ * ¹ØÓÚ Bean µÄÒ»Ğ©ÊµÓÃ·½·¨
  * @author qscbm187531
  */
 public class BeanUtil {
@@ -25,14 +25,14 @@ public class BeanUtil {
     private final static String CLASS = "class";
 
     /**
-     * è·å–å¯¹è±¡çš„setteræ–¹æ³•ã€‚
+     * »ñÈ¡¶ÔÏóµÄsetter·½·¨¡£
      *
-     * @param obj å¯¹è±¡
-     * @return å¯¹è±¡çš„setteræ–¹æ³•åˆ—è¡¨
+     * @param object ¶ÔÏó
+     * @return ¶ÔÏóµÄsetter·½·¨ÁĞ±í
      */
-    public static List<Method> getSetterMethods(Object obj) {
+    public static List<Method> getSetterMethods(Object object) {
         List<Method> setterMethods = new ArrayList<>();
-        Method[] methods = obj.getClass().getMethods();
+        Method[] methods = object.getClass().getMethods();
         for (Method method : methods) {
             Matcher m = SET_PATTERN.matcher(method.getName());
             if (m.matches() && (method.getParameterTypes().length == 1)) {
@@ -43,14 +43,14 @@ public class BeanUtil {
     }
 
     /**
-     * è·å–å¯¹è±¡çš„getteræ–¹æ³•ã€‚
+     * »ñÈ¡¶ÔÏóµÄgetter·½·¨¡£
      *
-     * @param obj å¯¹è±¡
-     * @return å¯¹è±¡çš„getteræ–¹æ³•åˆ—è¡¨
+     * @param object ¶ÔÏó
+     * @return ¶ÔÏóµÄgetter·½·¨ÁĞ±í
      */
-    public static List<Method> getGetterMethods(Object obj) {
+    public static List<Method> getGetterMethods(Object object) {
         List<Method> getterMethods = new ArrayList<>();
-        Method[] methods = obj.getClass().getMethods();
+        Method[] methods = object.getClass().getMethods();
         for (Method method : methods) {
             Matcher m = GET_PATTERN.matcher(method.getName());
             if (m.matches() && (method.getParameterTypes().length == 0)) {
@@ -61,27 +61,24 @@ public class BeanUtil {
     }
 
     /**
-     * beanè½¬map
+     * bean×ªmap
      *
-     * @param obj å¯¹è±¡
+     * @param object ¶ÔÏó
      * @return map
      */
-    public static Map<String, Object> toMap(Object obj) {
-        if (obj == null) {
+    public static Map<String, Object> toMap(Object object) {
+        if (object == null) {
             return null;
         }
-
         Map<String, Object> map = new HashMap<>();
         try {
-            BeanInfo beanInfo = Introspector.getBeanInfo(obj.getClass());
+            BeanInfo beanInfo = Introspector.getBeanInfo(object.getClass());
             PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
             for (PropertyDescriptor property : propertyDescriptors) {
                 String key = property.getName();
-                // è¿‡æ»¤classå±æ€§
                 if (!CLASS.equals(key)) {
-                    // å¾—åˆ°propertyå¯¹åº”çš„getteræ–¹æ³•
                     Method getter = property.getReadMethod();
-                    Object value = getter.invoke(obj);
+                    Object value = getter.invoke(object);
                     map.put(key, value);
                 }
             }
@@ -93,10 +90,10 @@ public class BeanUtil {
 
 
     /**
-     * beanè½¬åŒ–ä¸ºyml
+     * bean×ª»¯Îªyml
      *
      * @param obj      bean
-     * @param fileName æ–‡ä»¶å
+     * @param fileName ÎÄ¼şÃû
      */
     public static void toYml(Object obj, String fileName) throws IOException {
         new Yaml().dump(obj, new FileWriter(YmlUtil.setYml(fileName)));

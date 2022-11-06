@@ -1,20 +1,20 @@
 package io.github.mcchampions.DodoOpenJava.Card.enums;
 
 /**
- * å¤‡æ³¨æ ‡ç­¾
+ * ±¸×¢±êÇ©
  * @author qscbm187531
  */
 public enum RemarkType {
     /**
-     * MDæ–‡æœ¬
+     * MDÎÄ±¾
      */
     Markdown("dodo-md"),
     /**
-     * æ™®é€šæ–‡æœ¬
+     * ÆÕÍ¨ÎÄ±¾
      */
     PlainText("plain-text"),
     /**
-     * å›¾ç‰‡
+     * Í¼Æ¬
      */
     Image("image");
 
@@ -23,13 +23,13 @@ public enum RemarkType {
     }
 
     /**
-     * è¡Œæ•°
+     * ĞĞÊı
      */
     private final String type;
 
     /**
-     * è·å–ç±»å‹
-     * @return ç±»å‹
+     * »ñÈ¡ÀàĞÍ
+     * @return ÀàĞÍ
      */
     public String getType() {
         return type;

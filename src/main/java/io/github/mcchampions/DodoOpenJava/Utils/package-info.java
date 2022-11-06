@@ -1,5 +1,5 @@
 /**
- * 一些实用方法
+ * һЩʵ�÷���
  * @author qscbm187531
  */
 package io.github.mcchampions.DodoOpenJava.Utils;

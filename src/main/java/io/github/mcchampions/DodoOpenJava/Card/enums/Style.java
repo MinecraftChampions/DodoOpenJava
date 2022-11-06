@@ -1,16 +1,16 @@
 package io.github.mcchampions.DodoOpenJava.Card.enums;
 
 /**
- * æ—¶é—´æ˜¾ç¤ºç§ç±»
+ * Ê±¼äÏÔÊ¾ÖÖÀà
  * @author qscbm187531
  */
 public enum Style {
     /**
-     * å¤©
+     * Ìì
      */
     day,
     /**
-     * å°æ—¶
+     * Ğ¡Ê±
      */
     hour
 }

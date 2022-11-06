@@ -7,36 +7,36 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 /**
- * å¸–å­é¢‘é“API
+ * Ìû×ÓÆµµÀAPI
  * @author qscbm187531
  */
 public class ChannelArticleApi {
     public static String url,param;
 
     /**
-     * å‘å¸ƒå¸–å­
-     * @param channelId	é¢‘é“ID
-     * @param title	æ ‡é¢˜
-     * @param content å†…å®¹ï¼Œ10000å­—ç¬¦é™åˆ¶ï¼Œæ”¯æŒè±å½¢è¯­æ³•ï¼Œå†…å®¹å’Œå›¾ç‰‡é“¾æ¥å¿…å¡«ä¸€ä¸ªï¼Œå‰©ä¸‹ä¸€ä¸ªå¡«null
-     * @param imageUrl å›¾ç‰‡é“¾æ¥ï¼Œå¿…é¡»æ˜¯å®˜æ–¹çš„é“¾æ¥ï¼Œé€šè¿‡ä¸Šä¼ èµ„æºå›¾ç‰‡æ¥å£å¯è·å¾—å›¾ç‰‡é“¾æ¥ï¼Œå†…å®¹å’Œå›¾ç‰‡é“¾æ¥å¿…å¡«ä¸€ä¸ªï¼Œå‰©ä¸‹ä¸€ä¸ªå¡«null
+     * ·¢²¼Ìû×Ó
+     * @param channelId	ÆµµÀID
+     * @param title	±êÌâ
+     * @param content ÄÚÈİ£¬10000×Ö·ûÏŞÖÆ£¬Ö§³ÖÁâĞÎÓï·¨£¬ÄÚÈİºÍÍ¼Æ¬Á´½Ó±ØÌîÒ»¸ö£¬Ê£ÏÂÒ»¸öÌînull
+     * @param imageUrl Í¼Æ¬Á´½Ó£¬±ØĞëÊÇ¹Ù·½µÄÁ´½Ó£¬Í¨¹ıÉÏ´«×ÊÔ´Í¼Æ¬½Ó¿Ú¿É»ñµÃÍ¼Æ¬Á´½Ó£¬ÄÚÈİºÍÍ¼Æ¬Á´½Ó±ØÌîÒ»¸ö£¬Ê£ÏÂÒ»¸öÌînull
      * @param clientId clientId
      * @param token token
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject addChannelArticle(String channelId, String title,String imageUrl, String content,String clientId, String token) throws IOException {
         return addChannelArticle(channelId, title, content ,imageUrl, BaseUtil.Authorization(clientId, token));
     }
 
     /**
-     * å‘å¸ƒå¸–å­
-     * @param channelId é¢‘é“ID
-     * @param title Dodoå¥½
-     * @param content å†…å®¹ï¼Œ10000å­—ç¬¦é™åˆ¶ï¼Œæ”¯æŒè±å½¢è¯­æ³•ï¼Œå†…å®¹å’Œå›¾ç‰‡é“¾æ¥å¿…å¡«ä¸€ä¸ªï¼Œå‰©ä¸‹ä¸€ä¸ªå¡«null
-     * @param imageUrl å›¾ç‰‡é“¾æ¥ï¼Œå¿…é¡»æ˜¯å®˜æ–¹çš„é“¾æ¥ï¼Œé€šè¿‡ä¸Šä¼ èµ„æºå›¾ç‰‡æ¥å£å¯è·å¾—å›¾ç‰‡é“¾æ¥ï¼Œå†…å®¹å’Œå›¾ç‰‡é“¾æ¥å¿…å¡«ä¸€ä¸ªï¼Œå‰©ä¸‹ä¸€ä¸ªå¡«null
+     * ·¢²¼Ìû×Ó
+     * @param channelId ÆµµÀID
+     * @param title DodoºÃ
+     * @param content ÄÚÈİ£¬10000×Ö·ûÏŞÖÆ£¬Ö§³ÖÁâĞÎÓï·¨£¬ÄÚÈİºÍÍ¼Æ¬Á´½Ó±ØÌîÒ»¸ö£¬Ê£ÏÂÒ»¸öÌînull
+     * @param imageUrl Í¼Æ¬Á´½Ó£¬±ØĞëÊÇ¹Ù·½µÄÁ´½Ó£¬Í¨¹ıÉÏ´«×ÊÔ´Í¼Æ¬½Ó¿Ú¿É»ñµÃÍ¼Æ¬Á´½Ó£¬ÄÚÈİºÍÍ¼Æ¬Á´½Ó±ØÌîÒ»¸ö£¬Ê£ÏÂÒ»¸öÌînull
      * @param authorization authorization
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject addChannelArticle(String channelId,String title,String content,String imageUrl,String authorization) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/channel/article/add";
@@ -51,27 +51,27 @@ public class ChannelArticleApi {
 
 
     /**
-     * åˆ é™¤å¸–å­è¯„è®ºå›å¤
-     * @param type ä¸šåŠ¡ç±»å‹ï¼Œ1ï¼šå¸–å­ï¼Œ2ï¼šå¸–å­è¯„è®ºï¼Œ3ï¼šå¸–å­è¯„è®ºå›å¤
-     * @param id ä¸šåŠ¡IDï¼Œä¸šåŠ¡ç±»å‹ä¸º1æ—¶ï¼Œä»£è¡¨å¸–å­IDï¼›ç±»å‹ä¸º2æ—¶ï¼Œä»£è¡¨å¸–å­è¯„è®ºIDï¼›ç±»å‹ä¸º3æ—¶ï¼Œä»£è¡¨å¸–å­è¯„è®ºå›å¤ID
-     * @param channelId é¢‘é“å·
+     * É¾³ıÌû×ÓÆÀÂÛ»Ø¸´
+     * @param type ÒµÎñÀàĞÍ£¬1£ºÌû×Ó£¬2£ºÌû×ÓÆÀÂÛ£¬3£ºÌû×ÓÆÀÂÛ»Ø¸´
+     * @param id ÒµÎñID£¬ÒµÎñÀàĞÍÎª1Ê±£¬´ú±íÌû×ÓID£»ÀàĞÍÎª2Ê±£¬´ú±íÌû×ÓÆÀÂÛID£»ÀàĞÍÎª3Ê±£¬´ú±íÌû×ÓÆÀÂÛ»Ø¸´ID
+     * @param channelId ÆµµÀºÅ
      * @param clientId clientId
      * @param token token
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject removeChannelArticle(int type,String id,String channelId,String clientId, String token) throws IOException {
         return removeChannelArticle(type, id, channelId, BaseUtil.Authorization(clientId, token));
     }
 
     /**
-     * åˆ é™¤å¸–å­è¯„è®ºå›å¤
-     * @param type ä¸šåŠ¡ç±»å‹ï¼Œ1ï¼šå¸–å­ï¼Œ2ï¼šå¸–å­è¯„è®ºï¼Œ3ï¼šå¸–å­è¯„è®ºå›å¤
-     * @param id ä¸šåŠ¡IDï¼Œä¸šåŠ¡ç±»å‹ä¸º1æ—¶ï¼Œä»£è¡¨å¸–å­IDï¼›ç±»å‹ä¸º2æ—¶ï¼Œä»£è¡¨å¸–å­è¯„è®ºIDï¼›ç±»å‹ä¸º3æ—¶ï¼Œä»£è¡¨å¸–å­è¯„è®ºå›å¤ID
-     * @param channelId é¢‘é“å·
+     * É¾³ıÌû×ÓÆÀÂÛ»Ø¸´
+     * @param type ÒµÎñÀàĞÍ£¬1£ºÌû×Ó£¬2£ºÌû×ÓÆÀÂÛ£¬3£ºÌû×ÓÆÀÂÛ»Ø¸´
+     * @param id ÒµÎñID£¬ÒµÎñÀàĞÍÎª1Ê±£¬´ú±íÌû×ÓID£»ÀàĞÍÎª2Ê±£¬´ú±íÌû×ÓÆÀÂÛID£»ÀàĞÍÎª3Ê±£¬´ú±íÌû×ÓÆÀÂÛ»Ø¸´ID
+     * @param channelId ÆµµÀºÅ
      * @param authorization authorization
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject removeChannelArticle(int type,String id,String channelId,String authorization) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/channel/article/remove";

@@ -7,7 +7,7 @@ import io.github.mcchampions.DodoOpenJava.Utils.NetUtil;
 import java.io.IOException;
 
 /**
- * æ•°å­—è—å“API
+ * Êı×Ö²ØÆ·API
  * @author qscbm187531
  */
 
@@ -15,29 +15,29 @@ public class NTFApi {
     public static String param,url;
 
     /**
-     * è·å–æˆå‘˜æ•°å­—è—å“åˆ¤æ–­
+     * »ñÈ¡³ÉÔ±Êı×Ö²ØÆ·ÅĞ¶Ï
      *
-     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
-     * @param token æœºå™¨äººé‰´æƒToken
-     * @param islandId ç¾¤å·
+     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
+     * @param token »úÆ÷ÈË¼øÈ¨Token
+     * @param islandId ÈººÅ
      * @param dodoId DodoId
-     * @param platform æ•°è—å¹³å°
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param platform Êı²ØÆ½Ì¨
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject getMemberNftStatus(String clientId, String token, String islandId, String dodoId, String platform) throws IOException {
         return getMemberNftStatus(BaseUtil.Authorization(clientId, token), islandId, dodoId, platform);
     }
 
     /**
-     * è·å–æˆå‘˜æ•°å­—è—å“åˆ¤æ–­
+     * »ñÈ¡³ÉÔ±Êı×Ö²ØÆ·ÅĞ¶Ï
      *
      * @param authorization authorization
-     * @param islandId ç¾¤å·
+     * @param islandId ÈººÅ
      * @param dodoId DodoId
-     * @param platform æ•°è—å¹³å°
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param platform Êı²ØÆ½Ì¨
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject getMemberNftStatus(String authorization, String islandId, String dodoId, String platform) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/member/nft/status";
@@ -50,27 +50,27 @@ public class NTFApi {
     }
 
     /**
-     * è·å–æˆå‘˜æ•°å­—è—å“åˆ¤æ–­
+     * »ñÈ¡³ÉÔ±Êı×Ö²ØÆ·ÅĞ¶Ï
      *
-     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
-     * @param token æœºå™¨äººé‰´æƒToken
-     * @param islandId ç¾¤å·
+     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
+     * @param token »úÆ÷ÈË¼øÈ¨Token
+     * @param islandId ÈººÅ
      * @param dodoId DodoId
-     * @param platform æ•°è—å¹³å°
-     * @return JSONå¯¹è±¡
-     * @throws IOException å¤±è´¥åæŠ›å‡º
+     * @param platform Êı²ØÆ½Ì¨
+     * @return JSON¶ÔÏó
+     * @throws IOException Ê§°ÜºóÅ×³ö
      */
     public static JSONObject getMemberNftStatus(String clientId, String token, String islandId, String dodoId, String platform, String issuer, String series) throws IOException {
         return getMemberNftStatus(BaseUtil.Authorization(clientId, token), islandId, dodoId, platform, issuer, series);
     }
 
     /**
-     * è·å–æˆå‘˜æ•°å­—è—å“åˆ¤æ–­
+     * »ñÈ¡³ÉÔ±Êı×Ö²ØÆ·ÅĞ¶Ï
      *
      * @param authorization authorization
-     * @param islandId ç¾¤å·
+     * @param islandId ÈººÅ
      * @param dodoId DodoId
-     * @param platform æ•°è—å¹³å°
+     * @param platform Êı²ØÆ½Ì¨
      */
     public static JSONObject getMemberNftStatus(String authorization, String islandId, String dodoId, String platform, String issuer, String series) throws IOException {
         url = "https://botopen.imdodo.com/api/v1/member/nft/status";

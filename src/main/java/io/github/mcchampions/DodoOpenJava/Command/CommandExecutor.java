@@ -3,26 +3,26 @@ package io.github.mcchampions.DodoOpenJava.Command;
 import okio.ByteString;
 
 /**
- * å‘½ä»¤çš„æ¥å£
+ * ÃüÁîµÄ½Ó¿Ú
  * @author qscbm187531
  */
 public interface CommandExecutor {
     /**
-     * å‘½ä»¤åï¼ˆä¸å¸¦æ–œæ†ï¼‰
-     * @return ä¸»å‘½ä»¤
+     * ÃüÁîÃû£¨²»´øĞ±¸Ë£©
+     * @return Ö÷ÃüÁî
      */
     ByteString MainCommand();
 
     /**
-     * éœ€è¦çš„æƒé™
-     * @return æƒé™
+     * ĞèÒªµÄÈ¨ÏŞ
+     * @return È¨ÏŞ
      */
     String Permission();
 
     /**
-     * å‘½ä»¤å¤„ç†
-     * @param sender å‘é€è€…
-     * @param args å‚æ•°
+     * ÃüÁî´¦Àí
+     * @param sender ·¢ËÍÕß
+     * @param args ²ÎÊı
      */
     void onCommand(CommandSender sender, String[] args);
 }
