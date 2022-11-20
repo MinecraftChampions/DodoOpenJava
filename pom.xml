@@ -6,11 +6,11 @@
 
     <groupId>io.github.mcchampions.DodoOpenJava</groupId>
     <artifactId>DodoOpenJava</artifactId>
-    <version>1.1.2</version>
+    <version>1.1.3</version>
 
     <properties>
         <java.version>16</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.sourceEncoding>GBK</project.build.sourceEncoding>
     </properties>
 
     <build>
@@ -61,7 +61,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.0.1</version>
-                <configuration><!-- 解决控制台乱码 -->
+                <configuration>
+                    <locale>zh_CN</locale>
                     <charset>GBK</charset>
                     <encoding>GBK</encoding>
                     <docencoding>GBK</docencoding>

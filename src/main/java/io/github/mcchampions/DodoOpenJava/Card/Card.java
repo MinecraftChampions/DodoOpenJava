@@ -6,7 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.List;
-import java.util.Map;
+import java.util.HashMap;
 
 /**
  * 卡片消息
@@ -141,19 +141,19 @@ public class Card {
 
     /**
      * 增加备注组件
-     * @param text 组件，为了方便读取用Map存储，前一个代表组件类型类型，后面代表值（如果为图片就是连接，为文本就是内容）（参数名取这个是因为不想改了。。。）
+     * @param text 组件，为了方便读取用HashMap存储，前一个代表组件类型类型，后面代表值（如果为图片就是连接，为文本就是内容）（参数名取这个是因为不想改了。。。）
      * @return 成功
      */
-    public Boolean addTextRemarkComponent(Map<RemarkType,String> text) {
+    public Boolean addTextRemarkComponent(HashMap<RemarkType,String> text) {
         if (JsonCard.isEmpty()) initCard();
 
         JsonCard.getJSONObject("card").getJSONArray("components").put(new JSONObject("{\"type\": \"remark\",\"elements\": []}"));
-        for(int i = 0; i < MapUtil.ergodicMaps(text).size();i++) {
-            String Type = ((RemarkType)MapUtil.ergodicMaps(text).get(i).get(0)).getType();
+        for(int i = 0; i < MapUtil.ergodicHashMaps(text).size();i++) {
+            String Type = ((RemarkType)MapUtil.ergodicHashMaps(text).get(i).get(0)).getType();
             if (Type.equals("image")) {
-                JsonCard.getJSONObject("card").getJSONArray("components").getJSONObject(JsonCard.getJSONObject("card").getJSONArray("components").toList().size() - 1).getJSONArray("elements").put(new JSONObject("{\"text\": { \"type\": \"" + Type + "\", \"src\": \"" + MapUtil.ergodicMaps(text).get(i).get(1) + "\"}}"));
+                JsonCard.getJSONObject("card").getJSONArray("components").getJSONObject(JsonCard.getJSONObject("card").getJSONArray("components").toList().size() - 1).getJSONArray("elements").put(new JSONObject("{\"text\": { \"type\": \"" + Type + "\", \"src\": \"" + MapUtil.ergodicHashMaps(text).get(i).get(1) + "\"}}"));
             } else {
-                JsonCard.getJSONObject("card").getJSONArray("components").getJSONObject(JsonCard.getJSONObject("card").getJSONArray("components").toList().size() - 1).getJSONArray("elements").put(new JSONObject("{\"text\": { \"type\": \"" + Type + "\", \"content\": \"" + MapUtil.ergodicMaps(text).get(i).get(1) + "\"}}"));
+                JsonCard.getJSONObject("card").getJSONArray("components").getJSONObject(JsonCard.getJSONObject("card").getJSONArray("components").toList().size() - 1).getJSONArray("elements").put(new JSONObject("{\"text\": { \"type\": \"" + Type + "\", \"content\": \"" + MapUtil.ergodicHashMaps(text).get(i).get(1) + "\"}}"));
             }
         }
         return true;
@@ -274,10 +274,10 @@ public class Card {
      * @param placeholder 输入框提示
      * @param min 最少选中个数
      * @param max 最多选中个数
-     * @param element 数据，为了方便用Map存储，前面为选项名。后面为选项描述，不需要请填写null
+     * @param element 数据，为了方便用HashMap存储，前面为选项名。后面为选项描述，不需要请填写null
      * @return 成功
      */
-    public Boolean addListSelector(String interactCustomId, String placeholder, int min, int max, Map<String,String> element) {
+    public Boolean addListSelector(String interactCustomId, String placeholder, int min, int max, HashMap<String,String> element) {
         if (JsonCard.isEmpty()) initCard();
 
         JSONObject json1 = new JSONObject();
@@ -289,11 +289,11 @@ public class Card {
         JSONArray arr = new JSONArray();
         json1.put("elements", arr);
 
-        for(int i = 0; i < MapUtil.ergodicMaps(element).size();i++) {
+        for(int i = 0; i < MapUtil.ergodicHashMaps(element).size();i++) {
             JSONObject json2 = new JSONObject();
 
-            json2.put("name", MapUtil.ergodicMaps(element).get(i).get(0));
-            json2.put("desc", MapUtil.ergodicMaps(element).get(i).get(1));
+            json2.put("name", MapUtil.ergodicHashMaps(element).get(i).get(0));
+            json2.put("desc", MapUtil.ergodicHashMaps(element).get(i).get(1));
 
             json1.getJSONArray("elements").put(json2);
         }

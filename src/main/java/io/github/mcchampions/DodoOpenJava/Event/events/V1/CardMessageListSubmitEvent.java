@@ -12,6 +12,14 @@ import javax.annotation.Nonnull;
  * @author qscbm187531
  */
 public class CardMessageListSubmitEvent extends Event {
+    public String getJsonString() {
+        return jsonString;
+    }
+
+    public JSONObject getJsonObject() {
+        return jsonObject;
+    }
+
     private static final HandlerList handlers = new HandlerList();
 
     @Override

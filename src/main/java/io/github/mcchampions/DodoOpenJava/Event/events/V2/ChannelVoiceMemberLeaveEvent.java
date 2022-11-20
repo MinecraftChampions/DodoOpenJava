@@ -194,6 +194,14 @@ public class ChannelVoiceMemberLeaveEvent extends Event {
     }
 
     /**
+     * 获取成员加入时间
+     * @return 加入时间
+     */
+    public String getModifyTime() {
+        return this.modifyTime;
+    }
+
+    /**
      * 获取卡片消息JSON字符串
      */
     public String getJsonString() {

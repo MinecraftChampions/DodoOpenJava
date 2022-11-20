@@ -25,7 +25,7 @@ public class NetUtil {
      * @param Authorization Authorization
      */
      public static String sendRequest(String parm, String url, String Authorization) throws IOException {
-         Map<String, String> Header = new HashMap<>();
+         HashMap<String, String> Header = new HashMap<>();
          Header.put("Content-Type", "application/json");
          Header.put("Authorization", Authorization);
          return sendPostJsonRequest(url,Header,parm);
@@ -45,7 +45,7 @@ public class NetUtil {
      *
      * @param url 链接地址
      */
-    public static String sendPostJsonRequest(String url, Map<String, String> Header) throws IOException {
+    public static String sendPostJsonRequest(String url, HashMap<String, String> Header) throws IOException {
         return sendPostJsonRequest(url, Header, "");
     }
 
@@ -65,7 +65,7 @@ public class NetUtil {
      * @param Header Header
      * @param param 参数
      */
-    public static String sendPostJsonRequest(String url, Map<String, String> Header, String param) throws IOException {
+    public static String sendPostJsonRequest(String url, HashMap<String, String> Header, String param) throws IOException {
         Request.Builder builder = new Request.Builder();
         builder.url(url).post(RequestBody.create(MediaType.parse("application/json"), param));
         JSONObject json = new JSONObject(Header);
@@ -82,12 +82,12 @@ public class NetUtil {
      * 发送普通的Get请求（带Header）
      * @param url 链接地址
      */
-    public static String sendGetRequest(String url, Map<String, String> Header) throws IOException {
+    public static String sendGetRequest(String url, HashMap<String, String> Header) throws IOException {
         Request.Builder builder = new Request.Builder()
                 .url(url)
                 .get();
-        for (int i = 0; i < MapUtil.ergodicMaps(Header).size(); i++) {
-            builder.addHeader(MapUtil.ergodicMaps(Header).get(i).get(0).toString(), MapUtil.ergodicMaps(Header).get(i).get(1).toString());
+        for (int i = 0; i < MapUtil.ergodicHashMaps(Header).size(); i++) {
+            builder.addHeader(MapUtil.ergodicHashMaps(Header).get(i).get(0).toString(), MapUtil.ergodicHashMaps(Header).get(i).get(1).toString());
         }
 
         Response response = client.newCall(builder.build()).execute();
@@ -129,7 +129,7 @@ public class NetUtil {
      * @param url 链接地址
      */
      public static String simulationBrowserRequest(String url) throws IOException {
-         Map<String, String> Header = new HashMap<>();
+         HashMap<String, String> Header = new HashMap<>();
          Header.put("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36");
          return sendGetRequest(url, Header);
      }

@@ -124,6 +124,14 @@ public class CardMessageButtonClickEvent extends Event {
         return this.eventId;
     }
 
+    public String getJsonString() {
+        return jsonString;
+    }
+
+    public JSONObject getJsonObject() {
+        return jsonObject;
+    }
+
     /**
      * 获取群号
      * @return 群号

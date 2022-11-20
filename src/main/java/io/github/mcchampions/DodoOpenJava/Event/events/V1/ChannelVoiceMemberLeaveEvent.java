@@ -206,4 +206,8 @@ public class ChannelVoiceMemberLeaveEvent extends Event {
     public JSONObject getJsonObject() {
         return this.jsonObject;
     }
+
+    public String getModifyTime() {
+        return modifyTime;
+    }
 }

@@ -200,6 +200,10 @@ public class ChannelVoiceMemberJoinEvent extends Event {
         return this.jsonString;
     }
 
+    public String getModifyTime() {
+        return modifyTime;
+    }
+
     /**
      * 获取卡片消息JSON对象
      */

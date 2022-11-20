@@ -192,4 +192,12 @@ public class PersonalMessageEvent extends Event {
     public JSONObject getMessageBody() {
         return this.messageBody;
     }
+
+    public String getJsonString() {
+        return jsonString;
+    }
+
+    public JSONObject getJsonObject() {
+        return jsonObject;
+    }
 }

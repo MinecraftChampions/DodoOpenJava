@@ -32,6 +32,25 @@ public class MapUtil {
     }
 
     /**
+     * 遍历 HashMap
+     * @param map 指定HashMap
+     * @return 返回集合（集合中内置了一个集合，索引0是key，1是Value）
+     */
+    public static List<List<Object>> ergodicHashMaps(HashMap<?, ?> map) {
+        if (map.isEmpty()) return new ArrayList<>();
+        Iterator<? extends HashMap.Entry<?, ?>> iter = map.entrySet().iterator();
+        List<List<Object>> list = new ArrayList<>();
+        while (iter.hasNext()) {
+            List<Object> List = new ArrayList<>();
+            HashMap.Entry<?, ?> entry =  iter.next();
+            List.add(entry.getKey());
+            List.add(entry.getValue());
+            list.add(List);
+        }
+        return list;
+    }
+
+    /**
      * map转bean
      *
      * @param type beanType

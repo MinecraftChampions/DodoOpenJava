@@ -241,4 +241,16 @@ public class MessageReactionEvent extends Event {
     public String getReactionEmojiId() {
         return this.reactionEmojiId;
     }
+
+    public String getReactionType() {
+        return reactionType;
+    }
+
+    public String getJsonString() {
+        return jsonString;
+    }
+
+    public JSONObject getJsonObject() {
+        return jsonObject;
+    }
 }

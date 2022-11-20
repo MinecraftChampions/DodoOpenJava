@@ -64,6 +64,7 @@ public class ConsoleListener {
     /**
      * ¼àÌý
      */
+    @SuppressWarnings("InfiniteLoopStatement")
     public void listen() {
         while (true) {
             String line = scanner.nextLine();

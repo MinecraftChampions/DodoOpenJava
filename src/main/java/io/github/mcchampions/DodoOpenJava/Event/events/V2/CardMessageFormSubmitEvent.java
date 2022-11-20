@@ -239,4 +239,12 @@ public class CardMessageFormSubmitEvent extends Event {
     public String getInteractCustomId() {
         return this.interactCustomId;
     }
+
+    public String getJsonString() {
+        return jsonString;
+    }
+
+    public JSONObject getJsonObject() {
+        return jsonObject;
+    }
 }

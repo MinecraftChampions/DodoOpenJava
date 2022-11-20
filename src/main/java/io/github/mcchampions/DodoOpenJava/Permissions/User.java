@@ -9,9 +9,9 @@ import java.util.*;
  * @author qscbm187531
  */
 public class User {
-    public static Map<String, Group> UserGroup = new HashMap<>();
+    public static HashMap<String, Group> UserGroup = new HashMap<>();
 
-    public static Map<String,List<String>> UserPerms = new HashMap<>();
+    public static HashMap<String,List<String>> UserPerms = new HashMap<>();
 
     /**
      * 获取用户的权限组
@@ -19,7 +19,7 @@ public class User {
      * @return 权限组
      */
     public static Group getUserGroup(String DodoId) {
-        List<List<Object>> list= MapUtil.ergodicMaps(UserGroup);
+        List<List<Object>> list= MapUtil.ergodicHashMaps(UserGroup);
         Group group = Group.getDefaultGroup();
         for (List<Object> objects : list) {
             if (objects.get(0) == DodoId) {
@@ -37,7 +37,7 @@ public class User {
      */
     public static Boolean editUserGroup(String DodoId, Group group) {
         if (Group.getGroups().contains(group)) return false;
-        List<List<Object>> list= MapUtil.ergodicMaps(UserGroup);
+        List<List<Object>> list= MapUtil.ergodicHashMaps(UserGroup);
         boolean hasUser = false;
         for (List<Object> objects : list) {
             if (objects.get(0) == DodoId) {
@@ -57,7 +57,7 @@ public class User {
      * @return false代表原本已经有这个权限了，true就是成功
      */
     public static Boolean addPerm(String DodoId, String perm) {
-        List<List<Object>> list= MapUtil.ergodicMaps(UserPerms);
+        List<List<Object>> list= MapUtil.ergodicHashMaps(UserPerms);
         List<String> perms = new ArrayList<>();
         boolean hasUser = false;
         boolean hasPerm = false;
@@ -85,7 +85,7 @@ public class User {
      * @return false代表原本已经有这些权限了，true就是成功
      */
     public static Boolean addPerm(String DodoId, List<String> Perms) {
-        List<List<Object>> list= MapUtil.ergodicMaps(UserPerms);
+        List<List<Object>> list= MapUtil.ergodicHashMaps(UserPerms);
         List<String> perms = new ArrayList<>();
         boolean hasUser = false;
         boolean hasPerm = false;
@@ -113,7 +113,7 @@ public class User {
      * @return false代表原本没有这个权限了，true就是成功
      */
     public static Boolean removePerm(String DodoId, String perm) {
-        List<List<Object>> list= MapUtil.ergodicMaps(UserPerms);
+        List<List<Object>> list= MapUtil.ergodicHashMaps(UserPerms);
         List<String> perms = new ArrayList<>();
         boolean hasUser = false;
         boolean hasPerm = false;
@@ -144,7 +144,7 @@ public class User {
      * @return false代表原本没有这些权限了，true就是成功
      */
     public static Boolean removePerm(String DodoId, List<String> Perms) {
-        List<List<Object>> list= MapUtil.ergodicMaps(UserPerms);
+        List<List<Object>> list= MapUtil.ergodicHashMaps(UserPerms);
         List<String> perms = new ArrayList<>();
         boolean hasUser = false;
         boolean hasPerm = false;
@@ -176,7 +176,7 @@ public class User {
      */
     public static Boolean hasPerm(String DodoId,String perm) {
         if (perm == null) return true;
-        List<List<Object>> list= MapUtil.ergodicMaps(UserPerms);
+        List<List<Object>> list= MapUtil.ergodicHashMaps(UserPerms);
         List<String> perms = new ArrayList<>();
         boolean hasUser = false;
         for (List<Object> objects : list) {

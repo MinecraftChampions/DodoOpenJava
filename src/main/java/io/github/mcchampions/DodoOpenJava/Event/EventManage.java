@@ -67,6 +67,7 @@ public class EventManage {
     }
 
     private static boolean isInit = false;
+
     /**
      * ×¢²áÊÂ¼ş
      * @param listener ¼àÌıÆ÷

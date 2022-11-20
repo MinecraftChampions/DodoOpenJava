@@ -1,6 +1,7 @@
 package io.github.mcchampions.DodoOpenJava.Event;
 
 import io.github.mcchampions.DodoOpenJava.Api.Version;
+import io.github.mcchampions.DodoOpenJava.Event.events.V2.GiftSendEvent;
 import okhttp3.*;
 import okio.ByteString;
 import org.jetbrains.annotations.NotNull;
@@ -197,14 +198,14 @@ public class EventTrigger {
         public void onMessage(@NotNull WebSocket webSocket, @NotNull ByteString bytes) {
             JSONObject jsontext = new JSONObject(bytes.utf8());
             switch (jsontext.getJSONObject("data").getString("eventType")) {
-                /*case "1001":
+                case "1001":
                     try {
                         EventManage.fireEvent(new io.github.mcchampions.DodoOpenJava.Event.events.V2.PersonalMessageEvent(jsontext));
                     } catch (EventException e) {
                         throw new RuntimeException(e);
                     }
                     break;
-                 */
+
                 case "2001":
                     try {
                         EventManage.fireEvent(new io.github.mcchampions.DodoOpenJava.Event.events.V2.MessageEvent(jsontext));
@@ -278,6 +279,13 @@ public class EventTrigger {
                 case "6002":
                     try {
                         EventManage.fireEvent(new io.github.mcchampions.DodoOpenJava.Event.events.V2.ChannelArticleCommentEvent(jsontext));
+                    } catch (EventException e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
+                case "7001":
+                    try {
+                        EventManage.fireEvent(new GiftSendEvent(jsontext));
                     } catch (EventException e) {
                         throw new RuntimeException(e);
                     }
