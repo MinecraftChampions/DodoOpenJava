@@ -13,10 +13,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="更新">
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Utils/Command/CommandUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Utils/Command/MainCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Utils/Command/SubCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Utils/Command/CommandUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/mcchampions/DodoOpenJava/Utils/Command/CommandUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,9 +28,9 @@
       <list>
         <option value="Empty Mind Map" />
         <option value="Enum" />
-        <option value="package-info" />
         <option value="AnnotationType" />
         <option value="Class" />
+        <option value="package-info" />
       </list>
     </option>
   </component>
@@ -299,7 +296,7 @@
       <workItem from="1668912838392" duration="5150000" />
       <workItem from="1668922572023" duration="597000" />
       <workItem from="1668934257281" duration="769000" />
-      <workItem from="1669373893456" duration="5136000" />
+      <workItem from="1669373893456" duration="5706000" />
     </task>
     <servers />
   </component>
