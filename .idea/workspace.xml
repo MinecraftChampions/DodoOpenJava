@@ -12,7 +12,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="更新" />
+    <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="更新">
+      <change afterPath="$PROJECT_DIR$/all-in-one/src/main/java/io/github/minecraftchampions/all_in_one/AllInOne.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,9 +29,9 @@
         <option value="Empty Mind Map" />
         <option value="Enum" />
         <option value="AnnotationType" />
-        <option value="Class" />
-        <option value="package-info" />
         <option value="module-info" />
+        <option value="package-info" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -292,7 +294,7 @@
       <workItem from="1682949690517" duration="2270000" />
       <workItem from="1682954586509" duration="3470000" />
       <workItem from="1682987953161" duration="6436000" />
-      <workItem from="1682994523179" duration="1736000" />
+      <workItem from="1682994523179" duration="2186000" />
     </task>
     <servers />
   </component>
