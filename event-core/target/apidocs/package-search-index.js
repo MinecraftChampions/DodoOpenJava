@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"io.github.minecraftchampions.dodoopenjava.event"},{"l":"io.github.minecraftchampions.dodoopenjava.event.events"},{"l":"io.github.minecraftchampions.dodoopenjava.event.events.v1"},{"l":"io.github.minecraftchampions.dodoopenjava.event.events.v2"},{"l":"所有程序包","u":"allpackages-index.html"}];updateSearchResults();

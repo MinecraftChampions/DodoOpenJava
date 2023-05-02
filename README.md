@@ -44,6 +44,7 @@ permissions: 3158KB
 
 非常地精简[doge]
 
+不算上外部库的话,本项目大小只有:2.85MB
 #### Maven：
 ```xml
 <repositories>

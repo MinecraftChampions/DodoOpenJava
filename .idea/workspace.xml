@@ -27,17 +27,7 @@
     </loaded-modules>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="更新">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/command/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/command/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configuration/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/RegisteredListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/RegisteredListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-webhook/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/event-webhook/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-websocket/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/event-websocket/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/permissions/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="更新" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -316,7 +306,7 @@
       <workItem from="1682949690517" duration="2270000" />
       <workItem from="1682954586509" duration="3470000" />
       <workItem from="1682987953161" duration="6436000" />
-      <workItem from="1682994523179" duration="7754000" />
+      <workItem from="1682994523179" duration="8071000" />
     </task>
     <servers />
   </component>
