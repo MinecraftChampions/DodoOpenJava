@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"io.github.minecraftchampions.dodoopenjava.configuration"},{"l":"io.github.minecraftchampions.dodoopenjava.configuration.file"},{"l":"io.github.minecraftchampions.dodoopenjava.configuration.serialization"},{"l":"io.github.minecraftchampions.dodoopenjava.configuration.util"},{"l":"所有程序包","u":"allpackages-index.html"}];updateSearchResults();

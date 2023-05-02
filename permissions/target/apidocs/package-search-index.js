@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"io.github.minecraftchampions.dodoopenjava.permissions"},{"l":"io.github.minecraftchampions.dodoopenjava.permissions.data"},{"l":"所有程序包","u":"allpackages-index.html"}];updateSearchResults();

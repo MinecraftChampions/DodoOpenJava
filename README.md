@@ -25,6 +25,25 @@ event-websocket: core & event-core
 
 permissions: core & configuration
 
+#### 各模块Jar包大小
+core: 1371KB
+
+command: 66KB
+
+configuration: 3824KB
+
+event-core: 186KB
+
+event-webhook: 9316KB
+
+event-websocket: 13KB
+
+permissions: 3158KB
+
+共计1371+66+3824+186+9316+13+3158 = 17934KB(约18MB)
+
+非常地精简[doge]
+
 #### Maven：
 ```xml
 <repositories>
@@ -40,37 +59,37 @@ permissions: core & configuration
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>core</artifactId>
-    <version>2.1.1</version>
+    <version>2.1.2</version>
   </dependency>
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>command</artifactId>
-    <version>2.1.1</version>
+    <version>2.1.2</version>
   </dependency>
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>configuration</artifactId>
-    <version>2.1.1</version>
+    <version>2.1.2</version>
   </dependency>
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>event-core</artifactId>
-    <version>2.1.1</version>
+    <version>2.1.2</version>
   </dependency>
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>event-websocket</artifactId>
-    <version>2.1.1</version>
+    <version>2.1.2</version>
   </dependency>
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>event-webhook</artifactId>
-    <version>2.1.1</version>
+    <version>2.1.2</version>
   </dependency>
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>permissions</artifactId>
-    <version>2.1.1</version>
+    <version>2.1.2</version>
   </dependency>
 </dependencies>
 ```
@@ -83,13 +102,13 @@ permissions: core & configuration
 	}
 
 	dependencies {
-	        implementation 'top.qscraft.dodoopenjava:core:2.1.1'
-	        implementation 'top.qscraft.dodoopenjava:command:2.1.1'
-	        implementation 'top.qscraft.dodoopenjava:configuration:2.1.1'
-	        implementation 'top.qscraft.dodoopenjava:event-core:2.1.1'
-	        implementation 'top.qscraft.dodoopenjava:event-websocket:2.1.1'
-	        implementation 'top.qscraft.dodoopenjava:event-webhook:2.1.1'
-	        implementation 'top.qscraft.dodoopenjava:permissions:2.1.1'
+	        implementation 'top.qscraft.dodoopenjava:core:2.1.2'
+	        implementation 'top.qscraft.dodoopenjava:command:2.1.2'
+	        implementation 'top.qscraft.dodoopenjava:configuration:2.1.2'
+	        implementation 'top.qscraft.dodoopenjava:event-core:2.1.2'
+	        implementation 'top.qscraft.dodoopenjava:event-websocket:2.1.2'
+	        implementation 'top.qscraft.dodoopenjava:event-webhook:2.1.2'
+	        implementation 'top.qscraft.dodoopenjava:permissions:2.1.2'
     }
 ```
 

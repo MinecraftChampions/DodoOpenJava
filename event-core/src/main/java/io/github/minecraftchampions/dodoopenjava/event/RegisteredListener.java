@@ -1,9 +1,5 @@
 package io.github.minecraftchampions.dodoopenjava.event;
 
-import io.github.minecraftchampions.dodoopenjava.event.EventExecutor;
-import io.github.minecraftchampions.dodoopenjava.event.Event;
-import io.github.minecraftchampions.dodoopenjava.event.EventPriority;
-import io.github.minecraftchampions.dodoopenjava.event.Listener;
 import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.events.EventException;
 
