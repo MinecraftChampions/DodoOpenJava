@@ -11,8 +11,6 @@ Dodo开放平台：https://open.imdodo.com/
 
 ### 添加依赖
 #### 依赖关系:
-all-in-one: 全合一，只需添加这个依赖项
-
 command: core & event-core & permissions
 
 configuration: core
@@ -74,12 +72,6 @@ permissions: core & configuration
     <artifactId>permissions</artifactId>
     <version>2.1.0</version>
   </dependency>
-  <!--也可以全部添加-->
-  <dependency>
-    <groupId>top.qscraft.dodoopenjava</groupId>
-    <artifactId>all-in-one</artifactId>
-    <version>2.1.0</version>
-  </dependency>
 </dependencies>
 ```
 #### Gradle
@@ -98,9 +90,7 @@ permissions: core & configuration
 	        implementation 'top.qscraft.dodoopenjava:event-websocket:2.1.0'
 	        implementation 'top.qscraft.dodoopenjava:event-webhook:2.1.0'
 	        implementation 'top.qscraft.dodoopenjava:permissions:2.1.0'
-	        //或者是全部添加
-            implementation 'top.qscraft.dodoopenjava:all-in-one:2.1.0'
-	}
+    }
 ```
 
 ### 其他
