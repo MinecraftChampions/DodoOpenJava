@@ -19,13 +19,42 @@ Dodo开放平台：https://open.imdodo.com/
   </repository>
 </repositories>
 ```
-
 ```xml
 <dependencies>
   <dependency>
-    <groupId>com.github.minecraftchampions</groupId>
-    <artifactId>DodoOpenJava</artifactId>
-    <version>1.1.4</version>
+    <groupId>top.qscraft.dodoopenjava</groupId>
+    <artifactId>core</artifactId>
+    <version>2.0.0</version>
+  </dependency>
+  <dependency>
+    <groupId>top.qscraft.dodoopenjava</groupId>
+    <artifactId>command</artifactId>
+    <version>2.0.0</version>
+  </dependency>
+  <dependency>
+    <groupId>top.qscraft.dodoopenjava</groupId>
+    <artifactId>configuration</artifactId>
+    <version>2.0.0</version>
+  </dependency>
+  <dependency>
+    <groupId>top.qscraft.dodoopenjava</groupId>
+    <artifactId>event-core</artifactId>
+    <version>2.0.0</version>
+  </dependency>
+  <dependency>
+    <groupId>top.qscraft.dodoopenjava</groupId>
+    <artifactId>event-websocket</artifactId>
+    <version>2.0.0</version>
+  </dependency>
+  <dependency>
+    <groupId>top.qscraft.dodoopenjava</groupId>
+    <artifactId>event-webhook</artifactId>
+    <version>2.0.0</version>
+  </dependency>
+  <dependency>
+    <groupId>top.qscraft.dodoopenjava</groupId>
+    <artifactId>permissions</artifactId>
+    <version>2.0.0</version>
   </dependency>
 </dependencies>
 ```
@@ -38,7 +67,13 @@ Dodo开放平台：https://open.imdodo.com/
 	}
 
 	dependencies {
-	        implementation 'com.github.minecraftchampions:DodoOpenJava:1.1.4'
+	        implementation 'top.qscraft.dodoopenjava:core:2.0.0'
+	        implementation 'top.qscraft.dodoopenjava:command:2.0.0'
+	        implementation 'top.qscraft.dodoopenjava:configuration:2.0.0'
+	        implementation 'top.qscraft.dodoopenjava:event-core:2.0.0'
+	        implementation 'top.qscraft.dodoopenjava:event-websocket:2.0.0'
+	        implementation 'top.qscraft.dodoopenjava:event-webhook:2.0.0'
+	        implementation 'top.qscraft.dodoopenjava:permissions:2.0.0'
 	}
 ```
 

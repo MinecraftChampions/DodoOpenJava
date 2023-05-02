@@ -3,6 +3,16 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DodoOpenJava.iml" filepath="$PROJECT_DIR$/DodoOpenJava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/command/command.iml" filepath="$PROJECT_DIR$/command/command.iml" />
+      <module fileurl="file://$PROJECT_DIR$/configuration/configuration.iml" filepath="$PROJECT_DIR$/configuration/configuration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/event-webhook/event (1).iml" filepath="$PROJECT_DIR$/event-webhook/event (1).iml" />
+      <module fileurl="file://$PROJECT_DIR$/event-websocket/event (2).iml" filepath="$PROJECT_DIR$/event-websocket/event (2).iml" />
+      <module fileurl="file://$PROJECT_DIR$/permissions/event (3).iml" filepath="$PROJECT_DIR$/permissions/event (3).iml" />
+      <module fileurl="file://$PROJECT_DIR$/event-core/event-core.iml" filepath="$PROJECT_DIR$/event-core/event-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/event-webhook/event-webhook.iml" filepath="$PROJECT_DIR$/event-webhook/event-webhook.iml" />
+      <module fileurl="file://$PROJECT_DIR$/event-websocket/event-websocket.iml" filepath="$PROJECT_DIR$/event-websocket/event-websocket.iml" />
+      <module fileurl="file://$PROJECT_DIR$/permissions/permissions.iml" filepath="$PROJECT_DIR$/permissions/permissions.iml" />
     </modules>
   </component>
 </project>
