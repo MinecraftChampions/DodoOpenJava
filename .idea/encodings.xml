@@ -2,7 +2,7 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/all-in-one/src/main/java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/all-in-one/src/main/java/io/github/minecraftchampions/all_in_one/AllInOne.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/all-in-one/src/main/java/io/github/minecraftchampions/all_in_one/AllInOne.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/all-in-one/src/main/resources" charset="GBK" />
     <file url="file://$PROJECT_DIR$/command/src/main/java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/command/src/main/java/io/github/minecraftchampions/dodoopenjava/command/Command.java" charset="GBK" />
