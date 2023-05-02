@@ -42,43 +42,43 @@ permissions: core & configuration
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>core</artifactId>
-    <version>2.0.1</version>
+    <version>2.1.0</version>
   </dependency>
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>command</artifactId>
-    <version>2.0.1</version>
+    <version>2.1.0</version>
   </dependency>
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>configuration</artifactId>
-    <version>2.0.1</version>
+    <version>2.1.0</version>
   </dependency>
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>event-core</artifactId>
-    <version>2.0.1</version>
+    <version>2.1.0</version>
   </dependency>
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>event-websocket</artifactId>
-    <version>2.0.1</version>
+    <version>2.1.0</version>
   </dependency>
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>event-webhook</artifactId>
-    <version>2.0.1</version>
+    <version>2.1.0</version>
   </dependency>
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>permissions</artifactId>
-    <version>2.0.1</version>
+    <version>2.1.0</version>
   </dependency>
   <!--也可以全部添加-->
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>all-in-one</artifactId>
-    <version>2.0.1</version>
+    <version>2.1.0</version>
   </dependency>
 </dependencies>
 ```
@@ -91,15 +91,15 @@ permissions: core & configuration
 	}
 
 	dependencies {
-	        implementation 'top.qscraft.dodoopenjava:core:2.0.1'
-	        implementation 'top.qscraft.dodoopenjava:command:2.0.1'
-	        implementation 'top.qscraft.dodoopenjava:configuration:2.0.1'
-	        implementation 'top.qscraft.dodoopenjava:event-core:2.0.1'
-	        implementation 'top.qscraft.dodoopenjava:event-websocket:2.0.1'
-	        implementation 'top.qscraft.dodoopenjava:event-webhook:2.0.1'
-	        implementation 'top.qscraft.dodoopenjava:permissions:2.0.1'
+	        implementation 'top.qscraft.dodoopenjava:core:2.1.0'
+	        implementation 'top.qscraft.dodoopenjava:command:2.1.0'
+	        implementation 'top.qscraft.dodoopenjava:configuration:2.1.0'
+	        implementation 'top.qscraft.dodoopenjava:event-core:2.1.0'
+	        implementation 'top.qscraft.dodoopenjava:event-websocket:2.1.0'
+	        implementation 'top.qscraft.dodoopenjava:event-webhook:2.1.0'
+	        implementation 'top.qscraft.dodoopenjava:permissions:2.1.0'
 	        //或者是全部添加
-            implementation 'top.qscraft.dodoopenjava:all-in-one:2.0.1'
+            implementation 'top.qscraft.dodoopenjava:all-in-one:2.1.0'
 	}
 ```
 
