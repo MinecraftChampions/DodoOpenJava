@@ -12,13 +12,21 @@ Dodo开放平台：https://open.imdodo.com/
 ### 添加依赖
 #### 依赖关系:
 all-in-one: 全合一，只需添加这个依赖项
+
 command: core & event-core & permissions
+
 configuration: core
+
 core: null
+
 event-core: core
+
 event-webhook: core & event-core
+
 event-websocket: core & event-core
+
 permissions: core & configuration
+
 #### Maven：
 ```xml
 <repositories>
