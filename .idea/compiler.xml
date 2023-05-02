@@ -6,8 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="core" />
         <module name="event-core" />
+        <module name="core" />
         <module name="configuration" />
         <module name="permissions" />
         <module name="event-websocket" />
@@ -17,10 +17,18 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="all-in-one" target="16" />
+      <module name="command" target="16" />
+      <module name="configuration" target="16" />
+      <module name="core" target="16" />
+      <module name="DodoOpenJava" target="16" />
       <module name="event (1)" target="16" />
       <module name="event (2)" target="16" />
       <module name="event (3)" target="16" />
+      <module name="event-core" target="16" />
       <module name="event-hook" target="16" />
+      <module name="event-webhook" target="16" />
+      <module name="event-websocket" target="16" />
+      <module name="permissions" target="16" />
     </bytecodeTargetLevel>
   </component>
 </project>
