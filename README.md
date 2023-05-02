@@ -92,6 +92,12 @@ permissions: 3158KB
     <artifactId>permissions</artifactId>
     <version>2.1.2</version>
   </dependency>
+  <!--又或者直接合成一个依赖项-->
+  <dependency>
+    <groupId>top.qscraft</groupId>
+    <artifactId>dodoopenjava</artifactId>
+    <version>2.1.2</version>
+  </dependency>
 </dependencies>
 ```
 #### Gradle
@@ -110,6 +116,8 @@ permissions: 3158KB
 	        implementation 'top.qscraft.dodoopenjava:event-websocket:2.1.2'
 	        implementation 'top.qscraft.dodoopenjava:event-webhook:2.1.2'
 	        implementation 'top.qscraft.dodoopenjava:permissions:2.1.2'
+		//又或者直接合成一个依赖项
+	        implementation 'top.qscraft:dodoopenjava:2.1.2'
     }
 ```
 
