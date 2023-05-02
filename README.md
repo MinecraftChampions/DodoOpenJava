@@ -40,37 +40,37 @@ permissions: core & configuration
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>core</artifactId>
-    <version>2.1.0</version>
+    <version>2.1.1</version>
   </dependency>
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>command</artifactId>
-    <version>2.1.0</version>
+    <version>2.1.1</version>
   </dependency>
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>configuration</artifactId>
-    <version>2.1.0</version>
+    <version>2.1.1</version>
   </dependency>
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>event-core</artifactId>
-    <version>2.1.0</version>
+    <version>2.1.1</version>
   </dependency>
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>event-websocket</artifactId>
-    <version>2.1.0</version>
+    <version>2.1.1</version>
   </dependency>
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>event-webhook</artifactId>
-    <version>2.1.0</version>
+    <version>2.1.1</version>
   </dependency>
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>permissions</artifactId>
-    <version>2.1.0</version>
+    <version>2.1.1</version>
   </dependency>
 </dependencies>
 ```
@@ -83,13 +83,13 @@ permissions: core & configuration
 	}
 
 	dependencies {
-	        implementation 'top.qscraft.dodoopenjava:core:2.1.0'
-	        implementation 'top.qscraft.dodoopenjava:command:2.1.0'
-	        implementation 'top.qscraft.dodoopenjava:configuration:2.1.0'
-	        implementation 'top.qscraft.dodoopenjava:event-core:2.1.0'
-	        implementation 'top.qscraft.dodoopenjava:event-websocket:2.1.0'
-	        implementation 'top.qscraft.dodoopenjava:event-webhook:2.1.0'
-	        implementation 'top.qscraft.dodoopenjava:permissions:2.1.0'
+	        implementation 'top.qscraft.dodoopenjava:core:2.1.1'
+	        implementation 'top.qscraft.dodoopenjava:command:2.1.1'
+	        implementation 'top.qscraft.dodoopenjava:configuration:2.1.1'
+	        implementation 'top.qscraft.dodoopenjava:event-core:2.1.1'
+	        implementation 'top.qscraft.dodoopenjava:event-websocket:2.1.1'
+	        implementation 'top.qscraft.dodoopenjava:event-webhook:2.1.1'
+	        implementation 'top.qscraft.dodoopenjava:permissions:2.1.1'
     }
 ```
 
