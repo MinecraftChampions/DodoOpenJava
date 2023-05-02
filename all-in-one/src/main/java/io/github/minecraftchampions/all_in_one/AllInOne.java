@@ -1,7 +1,7 @@
 package io.github.minecraftchampions.all_in_one;
 
 /**
- * åˆ«çœ‹äº†,æ²¡ä»€ä¹ˆç”¨
+ * ±ð¿´ÁË,Ã»Ê²Ã´ÓÃ
  */
 public class AllInOne {
 }
