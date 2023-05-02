@@ -1,9 +1,0 @@
-[Users.DodoId]
-Group = "Default"
-perms = [
-    "perm.seven"
-    ]
-
-[Users.666666]
-Group = "Owner"
-perms = [ ]
