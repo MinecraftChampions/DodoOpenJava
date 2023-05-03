@@ -10,17 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * Yaml文件存储格式
- * @author qscbm187531
- */
 public class YamlData {
     public static File User;
     public static File Group;
 
-    /**
-     * 初始化
-     */
     public static void init() {
         File Config = new File(ConfigUtil.getJarPath() + "permissions/");
         if (!Config.exists()) {
@@ -68,7 +61,6 @@ public class YamlData {
             io.github.minecraftchampions.dodoopenjava.permissions.User.editUserGroup(DodoId,Group);
             io.github.minecraftchampions.dodoopenjava.permissions.User.addPerm(DodoId,perms);
         }
-        System.out.println("aaa");
     }
 
     public static FileConfiguration getGroupFile() {
