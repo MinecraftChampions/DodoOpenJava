@@ -11,20 +11,7 @@ Dodo开放平台：https://open.imdodo.com/
 
 ### 添加依赖
 #### 依赖关系:
-command: core & event-core & permissions
-
-configuration: core
-
-core: null
-
-event-core: core
-
-event-webhook: core & event-core
-
-event-websocket: core & event-core
-
-permissions: core & configuration
-
+[![p9GokoF.png](https://s1.ax1x.com/2023/05/02/p9GokoF.png)](https://imgse.com/i/p9GokoF)
 #### 各模块Jar包大小
 core: 1371KB
 
