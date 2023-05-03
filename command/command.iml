@@ -23,10 +23,6 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.squareup.okhttp3:okhttp:3.14.9" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.squareup.okio:okio:1.17.5" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.json:json:20230227" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.mongodb:mongodb-driver:3.12.12" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.mongodb:bson:4.9.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.mongodb:mongodb-driver-core:4.9.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.mongodb:bson-record-codec:4.9.0" level="project" />
     <orderEntry type="module" module-name="permissions" scope="PROVIDED" />
   </component>
 </module>

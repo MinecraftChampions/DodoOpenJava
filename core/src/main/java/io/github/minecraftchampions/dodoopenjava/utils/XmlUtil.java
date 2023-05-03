@@ -25,4 +25,8 @@ public class XmlUtil {
     public static JSONObject toJSONObject(String xml) {
         return new JSONObject(XML.toJSONObject(xml));
     }
+
+    public static String jsonToXml(JSONObject jsonObject) {
+        return XML.toString(jsonObject);
+    }
 }

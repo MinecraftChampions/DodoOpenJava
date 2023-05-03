@@ -1,14 +1,20 @@
 package io.github.minecraftchampions.dodoopenjava.configuration.util;
 
+import com.google.common.base.Charsets;
+import com.google.common.io.Files;
 import io.github.minecraftchampions.dodoopenjava.configuration.file.FileConfiguration;
 import io.github.minecraftchampions.dodoopenjava.configuration.file.YamlConfiguration;
 import org.apache.commons.io.FileUtils;
 
 import java.io.*;
 import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
+
+import static io.github.minecraftchampions.dodoopenjava.configuration.file.FileConfiguration.UTF8_OVERRIDE;
+import static io.github.minecraftchampions.dodoopenjava.configuration.file.FileConfiguration.UTF_BIG;
 
 /**
  * 关于 配置文件 的一些方法
@@ -172,5 +178,17 @@ public class ConfigUtil {
             e.printStackTrace();
         }
         return null;
+    }
+
+    /**
+     * 保存字符串到文件
+     * @param file 文件
+     * @param data 数据
+     */
+    public static void saveToFile(String data,File file) throws IOException {
+        Files.createParentDirs(file);
+        try (Writer writer = new OutputStreamWriter(new FileOutputStream(file), UTF8_OVERRIDE && !UTF_BIG ? Charsets.UTF_8 : Charset.defaultCharset())) {
+            writer.write(data);
+        }
     }
 }

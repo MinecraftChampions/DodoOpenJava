@@ -30,7 +30,7 @@ core: 1371KB
 
 command: 66KB
 
-configuration: 3824KB
+configuration: 3825KB
 
 event-core: 186KB
 
@@ -38,9 +38,9 @@ event-webhook: 9316KB
 
 event-websocket: 13KB
 
-permissions: 3158KB
+permissions: 763KB
 
-共计1371+66+3824+186+9316+13+3158 = 17934KB(约18MB)
+共计1371+66+3825+186+9316+13+763 = 15540KB(约15MB)
 
 非常地精简[doge]
 

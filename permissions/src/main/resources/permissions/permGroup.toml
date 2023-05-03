@@ -1,4 +1,3 @@
-# Groups.XXXXX（后面的是名字）
 [Groups.name]
 isDefault = false
 perms = [
@@ -7,6 +6,9 @@ perms = [
     "perm.three.one",
     "perm.four.*"
     ]
+extend = [
+"Default"
+]
 
 [Groups.Default]
 isDefault = true
@@ -16,15 +18,24 @@ perms = [
     "perm.three.one",
     "perm.four.default"
 ]
+extend = [
+    "Default"
+]
 
 [Groups.Admin]
 isDefault = false
 perms = [
     "perm.*"
 ]
+extend = [
+    "Default"
+]
 
 [Groups.Owner]
 isDefault = false
 perms = [
     "*"
+]
+extend = [
+    "Default"
 ]

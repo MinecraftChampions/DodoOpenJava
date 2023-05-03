@@ -7,6 +7,9 @@
         "perm.two.two.six",
         "perm.three.one",
         "perm.four.*"
+      ],
+      "extend":[
+        "Default"
       ]
     },
     "Default": {
@@ -16,18 +19,25 @@
         "perm.two.two.six",
         "perm.three.one",
         "perm.four.default"
-      ]
+      ],
+      "extend":[]
     },
     "Admin": {
       "isDefault": false,
       "perms":[
         "perm.*"
+      ],
+      "extend":[
+        "Default"
       ]
     },
     "Owner": {
       "isDefault": false,
       "perms":[
         "*"
+      ],
+      "extend":[
+        "Admin"
       ]
     }
   }

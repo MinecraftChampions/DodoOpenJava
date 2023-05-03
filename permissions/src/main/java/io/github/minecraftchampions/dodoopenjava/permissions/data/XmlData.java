@@ -1,16 +1,18 @@
 package io.github.minecraftchampions.dodoopenjava.permissions.data;
 
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
-import io.github.minecraftchampions.dodoopenjava.permissions.Group;
 import io.github.minecraftchampions.dodoopenjava.configuration.util.ConfigUtil;
+import io.github.minecraftchampions.dodoopenjava.permissions.Group;
+import io.github.minecraftchampions.dodoopenjava.permissions.GroupManager;
+import io.github.minecraftchampions.dodoopenjava.permissions.User;
+import io.github.minecraftchampions.dodoopenjava.permissions.UserManager;
+import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.XmlUtil;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * XML文件存储
@@ -47,32 +49,101 @@ public class XmlData {
             }
         }
 
-        List<io.github.minecraftchampions.dodoopenjava.permissions.Group> groups = new ArrayList<>();
-        for (int i = 0;i<getGroupFile().getJSONObject("Groups").keySet().size();i++) {
-            String name = getGroupFile().getJSONObject("Groups").keySet().stream().toList().get(i);
-            List<String> perms = BaseUtil.toStringList(getGroupFile().getJSONObject("Groups").getJSONObject(name).getJSONArray("perms").toList());
-            Boolean isDefault = getGroupFile().getJSONObject("Groups").getJSONObject(name).getBoolean("isDefault");
-            groups.add(new Group(perms,isDefault,name));
-        }
-        io.github.minecraftchampions.dodoopenjava.permissions.Group.addGroups(groups);
+        GroupManager.setGroupsFile(Group);
+        UserManager.setUsersFile(User);
+        JSONObject groupJson = getGroupFile();
+        JSONObject userJson = getUserFile();
+        Set<String> groupSet = groupJson.getJSONObject("Groups").keySet();
+        List<Group> groups = new ArrayList<>();
+        io.github.minecraftchampions.dodoopenjava.permissions.Group defaultGroup = null;
+        for (String group : groupSet) {
+            io.github.minecraftchampions.dodoopenjava.permissions.Group g = new Group(group);
+            if (groupJson.getJSONObject("Groups").getJSONObject(g.getName()).get("perms") instanceof JSONArray array) {
+                List<String> perms = BaseUtil.toStringList(array.toList());
+                for (String perm : perms) {
+                    g.addPermission(perm);
+                }
+            } else {
+                g.addPermission(groupJson.getJSONObject("Groups").getJSONObject(g.getName()).getString("perms"));
+            }
 
-        for (int i = 0 ; i < getUserFile().getJSONObject("Users").getJSONArray("User").toList().size(); i++) {
-            JSONObject json = getUserFile().getJSONObject("Users").getJSONArray("User").getJSONObject(i);
-            String DodoId = json.getString("DodoId");
-            List<String> perms = BaseUtil.toStringList(json.getJSONArray("perm").toList());
-            String group = json.getString("Group");
-            io.github.minecraftchampions.dodoopenjava.permissions.Group Group = new Group();
-            for (int I = 0; I < io.github.minecraftchampions.dodoopenjava.permissions.Group.getGroups().size(); I++) {
-                if (Objects.equals(io.github.minecraftchampions.dodoopenjava.permissions.Group.getGroups().get(I).getName(), group)) {
-                    Group = io.github.minecraftchampions.dodoopenjava.permissions.Group.getGroups().get(I);
-                    break;
+            if (groupJson.getJSONObject("Groups").getJSONObject(group).getBoolean("isDefault")) {
+                if (defaultGroup != null) {
+                    System.out.println("两个重复的默认组");
+                } else {
+                    defaultGroup = g;
                 }
             }
-            io.github.minecraftchampions.dodoopenjava.permissions.User.editUserGroup(DodoId,Group);
-            io.github.minecraftchampions.dodoopenjava.permissions.User.addPerm(DodoId,perms);
+            groups.add(g);
+        }
+        for (io.github.minecraftchampions.dodoopenjava.permissions.Group group : groups) {
+            String name = group.getName();
+            if (groupJson.getJSONObject("Groups").getJSONObject(name).keySet().contains("extend")) {
+                if (groupJson.getJSONObject("Groups").getJSONObject(name).get("extend") instanceof JSONArray array) {
+                    for (String s : BaseUtil.toStringList(array.toList())) {
+                        List<Group> list = new ArrayList<>(groups);
+                        list.remove(group);
+                        for (io.github.minecraftchampions.dodoopenjava.permissions.Group g : list) {
+                            if (Objects.equals(g.getName(), s)) {
+                                group.addInherits(g);
+                                break;
+                            }
+                        }
+                    }
+                } else {
+                    group.addInherits(GroupManager.getGroup(groupJson.getJSONObject("Groups").getJSONObject(name).getString("extend")));
+                }
+            }
+            GroupManager.addGroup(group);
+        }
+        for (Object object : userJson.getJSONObject("Users").getJSONArray("User")) {
+            if (object instanceof JSONObject jsonObject) {
+                io.github.minecraftchampions.dodoopenjava.permissions.User user = new User(jsonObject.getString("DodoId"));
+                Group group = GroupManager.getGroup(jsonObject.getString("Group"));
+                if (jsonObject.get("perms") instanceof JSONArray array) {
+                    for (String perm : BaseUtil.toStringList(array.toList())) {
+                        user.addPermission(perm);
+                    }
+                } else {
+                    user.addPermission(jsonObject.getString("perms"));
+                }
+                user.setGroup(group);
+                UserManager.addUser(user);
+            }
         }
     }
-    
+
+    public static void saveToXml() throws IOException {
+        Map<String,Group> map = GroupManager.getGroups();
+        JSONObject group = new JSONObject();
+        group.put("Groups",new JSONObject());
+        map.forEach((key, value) -> {
+            String name = value.getName();
+            boolean isDefault = value.isDefault();
+            List<String> perms = value.getPermissions();
+            List<String> extendGroups = value.getInherits();
+            JSONObject data = new JSONObject();
+            data.put("isDefault", isDefault);
+            data.put("perms", perms);
+            data.put("extend", extendGroups);
+            group.getJSONObject("Groups").put(name, data);
+        });
+        ConfigUtil.saveToFile(XmlUtil.jsonToXml(group),Group);
+        Map<String,User> userMap = UserManager.getUsers();
+        JSONObject user = new JSONObject();
+        user.put("Users",new JSONObject());
+        userMap.forEach((key, value) -> {
+            String name = value.getLastName();
+            List<String> perms = value.getPermissions();
+            String userName = value.getGroupName();
+            JSONObject data = new JSONObject();
+            data.put("Group", userName);
+            data.put("perms", perms);
+            user.getJSONObject("Users").put(name, data);
+        });
+        ConfigUtil.saveToFile(XmlUtil.jsonToXml(user),User);
+    }
+
     /**
      * 获取权限组文件
      * @return JSON对象
