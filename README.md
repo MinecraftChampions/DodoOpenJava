@@ -108,8 +108,5 @@ permissions: 763KB
 	        implementation 'top.qscraft:dodoopenjava:2.1.2'
     }
 ```
-
-### 其他
-别问我以前版本号为什么那么大，问就是非正式版(你就说信不信吧)
-### 教程(编写中)
+### 教程(编写中，只差实战部分)
 [直达链接](https://www.showdoc.com.cn/DodoOpenJava/)
