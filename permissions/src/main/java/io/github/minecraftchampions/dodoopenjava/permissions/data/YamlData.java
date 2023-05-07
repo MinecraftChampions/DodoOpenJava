@@ -11,12 +11,13 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
-public class YamlData {
+public class YamlData extends PermData {
     public static File User;
     public static File Group;
 
-    public static void saveToYaml() throws IOException {
+    public static void saveToFile() throws IOException {
         FileConfiguration groupFile = getGroupFile();
         Map<String,Group> map = GroupManager.getGroups();
         map.forEach((key,value) -> {
@@ -65,6 +66,7 @@ public class YamlData {
 
         GroupManager.setGroupsFile(Group);
         UserManager.setUsersFile(User);
+        GroupManager.setGroups(new TreeMap<>());
         for (int i = 0;i<getGroupFile().getConfigurationSection("Groups").getKeys(false).size();i++) {
             String name = getGroupFile().getConfigurationSection("Groups").getKeys(false).stream().toList().get(i);
             List<String> perms = getGroupFile().getStringList("Groups." + name + ".perms");
@@ -83,6 +85,7 @@ public class YamlData {
             }
         }
 
+        UserManager.setUsers(new TreeMap<>());
         for (int i = 0 ; i < getUserFile().getConfigurationSection("Users").getKeys(false).size(); i++) {
             String DodoId = getUserFile().getConfigurationSection("Users").getKeys(false).stream().toList().get(i);
             List<String> perms = getUserFile().getStringList("Users." + DodoId + ".perms");

@@ -16,10 +16,7 @@ import java.util.*;
  * Json文件存储
  * @author qscbm187531
  */
-public class JsonData {
-    public static File User;
-    public static File Group;
-
+public class JsonData extends PermData {
     /**
      * 初始化
      */
@@ -71,6 +68,7 @@ public class JsonData {
             }
             groups.add(g);
         }
+        GroupManager.setGroups(new TreeMap<>());
         for (io.github.minecraftchampions.dodoopenjava.permissions.Group group : groups) {
             String name = group.getName();
             if (groupJson.getJSONObject("Groups").getJSONObject(name).keySet().contains("extend")) {
@@ -88,7 +86,9 @@ public class JsonData {
             }
             GroupManager.addGroup(group);
         }
+        GroupManager.setDefaultGroup(defaultGroup);
         Set<String> userSet = userJson.getJSONObject("Users").keySet();
+        UserManager.setUsers(new TreeMap<>());
         for (String s : userSet) {
             io.github.minecraftchampions.dodoopenjava.permissions.User user = new User(s);
             Group group = GroupManager.getGroup(userJson.getJSONObject("Users").getJSONObject(s).getString("Group"));
@@ -100,7 +100,7 @@ public class JsonData {
         }
     }
 
-    public static void saveToJson() throws IOException {
+    public static void saveToFile() throws IOException {
         Map<String,Group> map = GroupManager.getGroups();
         JSONObject group = new JSONObject();
         group.put("Groups",new JSONObject());

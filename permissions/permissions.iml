@@ -16,7 +16,7 @@
     <orderEntry type="library" name="Maven: org.tomlj:tomlj:1.1.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.antlr:antlr4-runtime:4.11.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.checkerframework:checker-qual:3.21.2" level="project" />
-    <orderEntry type="library" name="Maven: org.json:json:20230227" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.json:json:20230227" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:guava:31.1-jre" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:failureaccess:1.0.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava" level="project" />

@@ -18,7 +18,7 @@ import java.util.*;
  * XMLÎÄ¼þ´æ´¢
  * @author qscbm187531
  */
-public class XmlData {
+public class XmlData extends PermData {
     public static File User;
     public static File Group;
 
@@ -76,6 +76,7 @@ public class XmlData {
             }
             groups.add(g);
         }
+        GroupManager.setGroups(new TreeMap<>());
         for (io.github.minecraftchampions.dodoopenjava.permissions.Group group : groups) {
             String name = group.getName();
             if (groupJson.getJSONObject("Groups").getJSONObject(name).keySet().contains("extend")) {
@@ -96,6 +97,8 @@ public class XmlData {
             }
             GroupManager.addGroup(group);
         }
+        GroupManager.setDefaultGroup(defaultGroup);
+        UserManager.setUsers(new TreeMap<>());
         for (Object object : userJson.getJSONObject("Users").getJSONArray("User")) {
             if (object instanceof JSONObject jsonObject) {
                 io.github.minecraftchampions.dodoopenjava.permissions.User user = new User(jsonObject.getString("DodoId"));
@@ -113,7 +116,7 @@ public class XmlData {
         }
     }
 
-    public static void saveToXml() throws IOException {
+    public static void saveToFile() throws IOException {
         Map<String,Group> map = GroupManager.getGroups();
         JSONObject group = new JSONObject();
         group.put("Groups",new JSONObject());

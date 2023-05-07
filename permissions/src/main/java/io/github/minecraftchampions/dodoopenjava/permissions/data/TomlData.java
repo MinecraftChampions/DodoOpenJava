@@ -15,7 +15,7 @@ import java.util.*;
  * Toml文件存储方式
  * @author qscbm187531
  */
-public class TomlData {
+public class TomlData extends PermData {
     public static File User;
     public static File Group;
 
@@ -70,6 +70,7 @@ public class TomlData {
             }
             groups.add(g);
         }
+        GroupManager.setGroups(new TreeMap<>());
         for (io.github.minecraftchampions.dodoopenjava.permissions.Group group : groups) {
             String name = group.getName();
             if (groupJson.getJSONObject("Groups").getJSONObject(name).keySet().contains("extend")) {
@@ -87,7 +88,9 @@ public class TomlData {
             }
             GroupManager.addGroup(group);
         }
+        GroupManager.setDefaultGroup(defaultGroup);
         Set<String> userSet = userJson.getJSONObject("Users").keySet();
+        GroupManager.setGroups(new TreeMap<>());
         for (String s : userSet) {
             io.github.minecraftchampions.dodoopenjava.permissions.User user = new User(s);
             Group group = GroupManager.getGroup(userJson.getJSONObject("Users").getJSONObject(s).getString("Group"));
@@ -99,7 +102,7 @@ public class TomlData {
         }
     }
 
-    public static void saveToToml() throws IOException {
+    public static void saveToFile() throws IOException {
         Map<String,Group> map = GroupManager.getGroups();
         JSONObject group = new JSONObject();
         group.put("Groups",new JSONObject());
