@@ -4,9 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <properties>
+        <java.version>16</java.version>
+        <project.build.sourceEncoding>GBK</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>GBK</project.reporting.outputEncoding>
+        <maven.compiler.encoding>GBK</maven.compiler.encoding>
+        <revision>2.1.5</revision>
+    </properties>
+
     <groupId>io.github.minecraftchampions.dodoopenjava</groupId>
     <artifactId>DodoOpenJava</artifactId>
-    <version>2.1.4</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
     <name>page</name>
 
@@ -20,13 +28,39 @@
         <module>event-core</module>
     </modules>
 
-    <properties>
-        <java.version>16</java.version>
-        <project.build.sourceEncoding>GBK</project.build.sourceEncoding>
-    </properties>
-
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>1.2.7</version>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.3</version>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -243,6 +277,12 @@
                 <groupId>com.squareup.okhttp3</groupId>
                 <artifactId>mockwebserver</artifactId>
                 <version>5.0.0-alpha.11</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.openjdk.nashorn</groupId>
+                <artifactId>nashorn-core</artifactId>
+                <version>15.2</version>
                 <scope>compile</scope>
             </dependency>
         </dependencies>

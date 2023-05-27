@@ -6,9 +6,16 @@
     <parent>
         <groupId>io.github.minecraftchampions.dodoopenjava</groupId>
         <artifactId>DodoOpenJava</artifactId>
-        <version>2.1.4</version>
+        <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
+
+    <properties>
+        <java.version>16</java.version>
+        <project.build.sourceEncoding>GBK</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>GBK</project.reporting.outputEncoding>
+        <maven.compiler.encoding>GBK</maven.compiler.encoding>
+    </properties>
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>configuration</artifactId>
