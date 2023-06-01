@@ -9,7 +9,7 @@
         <project.build.sourceEncoding>GBK</project.build.sourceEncoding>
         <project.reporting.outputEncoding>GBK</project.reporting.outputEncoding>
         <maven.compiler.encoding>GBK</maven.compiler.encoding>
-        <revision>2.1.5</revision>
+        <revision>2.1.6</revision>
     </properties>
 
     <groupId>io.github.minecraftchampions.dodoopenjava</groupId>

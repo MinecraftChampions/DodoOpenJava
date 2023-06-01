@@ -21,12 +21,17 @@
       <module name="DodoOpenJava" />
       <module name="configuration" />
       <module name="core" />
-      <module name="script" />
     </loaded-modules>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="更新">
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/utils/MD5Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/src/main/java/io/github/minecraftchampions/dodoopenjava/configuration/util/ConfigUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/src/main/java/io/github/minecraftchampions/dodoopenjava/configuration/util/ConfigUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/utils/NumberUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/utils/NumberUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +124,7 @@
       <command value="mvn install" />
     </option>
   </component>
-  <component name="RunManager" selected="应用程序.CommentConfiguration">
+  <component name="RunManager" selected="应用程序.NumberUtil">
     <configuration name="CommentConfiguration" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="io.github.minecraftchampions.dodoopenjava.configuration.CommentConfiguration" />
       <module name="configuration" />
@@ -133,25 +138,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="io.github.minecraftchampions.dodoopenjava.script.Main" />
-      <module name="script" />
+    <configuration name="NumberUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="io.github.minecraftchampions.dodoopenjava.utils.NumberUtil" />
+      <module name="core" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="io.github.minecraftchampions.dodoopenjava.script.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TomlData" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="io.github.minecraftchampions.dodoopenjava.permissions.data.TomlData" />
-      <module name="permissions" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="io.github.minecraftchampions.dodoopenjava.permissions.data.*" />
+          <option name="PATTERN" value="io.github.minecraftchampions.dodoopenjava.utils.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -217,11 +209,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.NumberUtil" />
         <item itemvalue="应用程序.CommentConfiguration" />
-        <item itemvalue="应用程序.Main" />
         <item itemvalue="应用程序.XmlUtil" />
         <item itemvalue="应用程序.Util" />
-        <item itemvalue="应用程序.TomlData" />
       </list>
     </recent_temporary>
   </component>
@@ -389,6 +380,9 @@
       <workItem from="1685165768088" duration="912000" />
       <workItem from="1685166738911" duration="1663000" />
       <workItem from="1685188411012" duration="2208000" />
+      <workItem from="1685272102282" duration="366000" />
+      <workItem from="1685272497967" duration="2252000" />
+      <workItem from="1685529217967" duration="586000" />
     </task>
     <servers />
   </component>

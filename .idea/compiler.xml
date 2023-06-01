@@ -24,7 +24,6 @@
       <module name="event-webhook" target="16" />
       <module name="event-websocket" target="16" />
       <module name="permissions" target="16" />
-      <module name="script" target="16" />
     </bytecodeTargetLevel>
   </component>
 </project>

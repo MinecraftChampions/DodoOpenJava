@@ -3,6 +3,7 @@ package io.github.minecraftchampions.dodoopenjava.utils;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Objects;
+import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,6 +12,51 @@ import java.util.regex.Pattern;
  * @author qscbm187531
  */
 public class NumberUtil {
+    private final static TreeMap<Integer, String> map = new TreeMap<>();
+
+    static {
+        map.put(1000000, "m");
+        map.put(900000, "cm");
+        map.put(500000, "d");
+        map.put(100000, "c");
+        map.put(90000, "xc");
+        map.put(50000, "l");
+        map.put(10000, "x");
+        map.put(9000, "Mx");
+        map.put(5000, "v");
+        map.put(1000, "M");
+        map.put(900, "CM");
+        map.put(500, "D");
+        map.put(400, "CD");
+        map.put(100, "C");
+        map.put(90, "XC");
+        map.put(50, "L");
+        map.put(40, "XL");
+        map.put(10, "X");
+        map.put(9, "IX");
+        map.put(5, "V");
+        map.put(4, "IV");
+        map.put(1, "I");
+    }
+
+    /**
+     * 转换数字为罗马数字
+     * @param number 数字
+     * @return 罗马数字
+     */
+    public static String toRoman(int number) {
+        if (number > 0) {
+            int l =  map.floorKey(number);
+            if ( number == l ) {
+                return map.get(number);
+            }
+            return map.get(l) + toRoman(number-l);
+        }
+        else {
+            return String.valueOf(number);
+        }
+    }
+
     /**
      * 数字正则
      */

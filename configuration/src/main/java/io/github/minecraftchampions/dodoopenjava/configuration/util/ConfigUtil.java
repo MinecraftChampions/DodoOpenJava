@@ -21,6 +21,45 @@ import static io.github.minecraftchampions.dodoopenjava.configuration.file.FileC
  * @author qscbm187531
  */
 public class ConfigUtil {
+    /**
+     * 转换为byte数组
+     *
+     * @param filePath 文件路径
+     * @return 数组
+     */
+    public static byte[] inputStream2ByteArray(String filePath) {
+        return inputStream2ByteArray(new File(filePath));
+    }
+
+    /**
+     * 转换为byte数组
+     *
+     * @param file 文件
+     * @return 数组
+     */
+    public static byte[] inputStream2ByteArray(File file) {
+        try (InputStream in = new FileInputStream(file)) {
+            return toByteArray(in);
+        } catch (IOException e) {
+            return new byte[0];
+        }
+    }
+
+    /**
+     * 转换为byte数组
+     *
+     * @param in 输入流
+     * @return 数组
+     */
+    private static byte[] toByteArray(InputStream in) throws IOException {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        byte[] buffer = new byte[1024 * 4];
+        int n;
+        while ((n = in.read(buffer)) != -1) {
+            out.write(buffer, 0, n);
+        }
+        return out.toByteArray();
+    }
 
     /**
      * 加载文件
