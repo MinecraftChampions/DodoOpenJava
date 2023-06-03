@@ -14,10 +14,6 @@ public enum DataType {
      */
     JSON("JSON"),
     /**
-     * MongoDB数据库
-     */
-    MongoDB("MongoDB"),
-    /**
      * Xml文件
      */
     Xml("Xml"),

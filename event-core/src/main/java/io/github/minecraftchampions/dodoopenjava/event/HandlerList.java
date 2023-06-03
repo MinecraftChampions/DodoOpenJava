@@ -59,11 +59,8 @@ public class HandlerList {
         }
     }
 
-    /**
-     * 合并一个HashMap和ArrayLists到二维数组 - 如果不必要，什么也不会做.
-     */
     public synchronized void bake() {
-        if (handlers != null) return; // don't re-bake when still valid
+        if (handlers != null) return;
         List<RegisteredListener> entries = new ArrayList<>();
         for (Map.Entry<EventPriority, ArrayList<RegisteredListener>> entry : handlerslots.entrySet()) {
             entries.addAll(entry.getValue());
@@ -79,7 +76,7 @@ public class HandlerList {
     @NotNull
     public RegisteredListener[] getRegisteredListeners() {
         RegisteredListener[] handlers;
-        while ((handlers = this.handlers) == null) bake(); // This prevents fringe cases of returning null
+        while ((handlers = this.handlers) == null) bake();
         return handlers;
     }
 

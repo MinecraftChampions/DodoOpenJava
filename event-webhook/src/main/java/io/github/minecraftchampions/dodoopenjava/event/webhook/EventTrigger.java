@@ -19,14 +19,29 @@ import java.util.Objects;
  * 事件触发
  */
 public class EventTrigger {
+    public static MockWebServer server= null;
     /**
      * 启动监听
      */
     public static void main() {
-        MockWebServer server = new MockWebServer();
+        server = new MockWebServer();
         server.setDispatcher(dispatcher);
         try {
             server.start(BotManage.port);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 关闭服务器
+     */
+    public static void closeServer() {
+        if (server == null) {
+            return;
+        }
+        try {
+            server.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.event;
 
+import io.github.minecraftchampions.dodoopenjava.utils.ClassUtil;
 import org.apache.commons.lang3.Validate;
 import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.events.EventException;
@@ -66,7 +67,7 @@ public class EventManage {
     private static boolean isInit = false;
 
     /**
-     * 注册事件
+     * 注册事件监听器
      * @param listener 监听器
      * @param an Authorization
      */
@@ -85,28 +86,30 @@ public class EventManage {
      * @return 类
      */
     public static Class<?> getEventTriggerClass() {
-        boolean webhook = false;
-        boolean websocket = false;
-        Class<?> wh = null;
-        Class<?> ws = null;
-        try {
-            wh = Class.forName("io.github.minecraftchampions.dodoopenjava.event.webhook.EventTrigger");
-            webhook = true;
-        } catch (ClassNotFoundException ignored) {}
-        try {
-            ws = Class.forName("io.github.minecraftchampions.dodoopenjava.event.websocket.EventTrigger");
-            websocket = true;
-        } catch (ClassNotFoundException ignored) {}
-        if (webhook && websocket) {
-            System.out.println("检测到同时拥有 WebSocket 和 WebHook库，默认选择使用WebSocket库");
-            return wh;
-        } else if (webhook) {
-            return wh;
-        } else if (websocket) {
-            return ws;
-        } else {
-            throw new RuntimeException("没有使用 event-websocket or event-webhook 库");
+        String wh = "io.github.minecraftchampions.dodoopenjava.event.webhook.EventTrigger";
+        String ws = "io.github.minecraftchampions.dodoopenjava.event.websocket.EventTrigger";
+        boolean isWh = false;
+        boolean isWs = false;
+        if (ClassUtil.classExists(wh)) {
+            isWh = true;
         }
+        if (ClassUtil.classExists(ws)) {
+            isWs = true;
+        }
+        try {
+            if (isWh && isWs) {
+                System.out.println("检测到同时拥有 WebSocket 和 WebHook库，默认选择使用WebSocket库");
+            } else if (isWh) {
+                return Class.forName(wh);
+            } else if (isWs) {
+                return Class.forName(ws);
+            } else {
+                throw new RuntimeException("没有使用 event-websocket or event-webhook 库");
+            }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
     }
 
     /**
@@ -121,9 +124,7 @@ public class EventManage {
             } else {
                 getEventTriggerClass().getMethod("main").invoke(null);
             }
-        } catch (ClassNotFoundException | InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
-            throw new RuntimeException(e);
-        }
+        } catch (ClassNotFoundException | InvocationTargetException | IllegalAccessException | NoSuchMethodException ignored) {}
     }
 
     /**
@@ -134,7 +135,7 @@ public class EventManage {
      * @param event 要注册的事件类型
      * @param listener 要注册的监听器
      * @param priority 要注册的事件的优先级
-     * @param executor 要注册的EventExecutor
+     * @param executor 要注册的事件触发器
      * @param an Authorization
      */
     public static void registerEvent(@NotNull Class<? extends Event> event, @NotNull Listener listener, @NotNull EventPriority priority, @NotNull EventExecutor executor,@NotNull String an) {
