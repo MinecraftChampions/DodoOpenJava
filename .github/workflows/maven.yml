@@ -27,8 +27,8 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-    - run: rm -rf target
-    - run: rm -rf [!.]*/target/original*.jar
+    - run: rm -rf target/
+    - run: rm -f [!.]*/target/original*.jar
     - run: mkdir staging && cp [!.]*/target/*[[:digit:]].jar
     - uses: actions/upload-artifact@v2
       if: github.event_name != 'pull_request'
