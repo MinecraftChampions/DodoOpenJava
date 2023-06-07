@@ -24,7 +24,730 @@
     </loaded-modules>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="更新" />
+    <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="更新">
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/utils/ArrayUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_ejlchina_data_core_1_4_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_ejlchina_okhttps_3_5_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_3_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_errorprone_error_prone_annotations_2_11_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_failureaccess_1_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_31_1_jre.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_listenablefuture_9999_0_empty_to_avoid_conflict_with_guava.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_j2objc_j2objc_annotations_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okhttp3_mockwebserver3_5_0_0_alpha_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okhttp3_mockwebserver_5_0_0_alpha_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okhttp3_okhttp_3_14_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okhttp3_okhttp_jvm_5_0_0_alpha_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okio_okio_1_17_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okio_okio_jvm_3_2_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_15.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_11_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_13_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_antlr_antlr4_runtime_4_11_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_12_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_bouncycastle_bcprov_jdk15on_1_70.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_checkerframework_checker_qual_3_12_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_checkerframework_checker_qual_3_21_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_annotations_24_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_1_7_10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_common_1_7_10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_jdk7_1_7_10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_kotlin_kotlin_stdlib_jdk8_1_7_10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_json_json_20230227.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_tomlj_tomlj_1_1_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_2_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DodoOpenJava.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/command.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/allclasses-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/allpackages-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/copy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/element-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/help-doc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/index-all.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/Command.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/CommandExecutor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/CommandSender.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/CommandTrigger.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/ConsoleListener.Action.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/ConsoleListener.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/ConsoleSender.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/class-use/Command.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/class-use/CommandExecutor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/class-use/CommandSender.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/class-use/CommandTrigger.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/class-use/ConsoleListener.Action.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/class-use/ConsoleListener.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/class-use/ConsoleSender.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/util/CommandUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/util/MainCommand.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/util/SubCommand.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/util/class-use/CommandUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/util/class-use/MainCommand.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/util/class-use/SubCommand.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/util/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/util/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/io/github/minecraftchampions/dodoopenjava/command/util/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/jquery-ui.overrides.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/legal/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/legal/ASSEMBLY_EXCEPTION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/legal/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/legal/jquery.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/legal/jqueryUI.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/member-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/module-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/overview-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/overview-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/package-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/resources/glass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/resources/x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/script-dir/images/ui-bg_glass_55_fbf9ee_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/script-dir/images/ui-bg_glass_65_dadada_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/script-dir/images/ui-bg_glass_75_dadada_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/script-dir/images/ui-bg_glass_75_e6e6e6_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/script-dir/images/ui-bg_glass_95_fef1ec_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/script-dir/images/ui-bg_highlight-soft_75_cccccc_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/script-dir/images/ui-icons_222222_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/script-dir/images/ui-icons_2e83ff_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/script-dir/images/ui-icons_454545_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/script-dir/images/ui-icons_888888_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/script-dir/images/ui-icons_cd0a0a_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/script-dir/jquery-3.5.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/script-dir/jquery-ui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/script-dir/jquery-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/script-dir/jquery-ui.structure.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/tag-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/apidocs/type-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/javadoc-bundle-options/javadoc-options-javadoc-resources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/configuration.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/allclasses-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/allpackages-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/constant-values.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/copy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/deprecated-list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/element-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/help-doc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/index-all.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/CommentConfiguration.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/Configuration.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/ConfigurationOptions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/ConfigurationSection.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/InvalidConfigurationException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/MemoryConfiguration.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/MemoryConfigurationOptions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/MemorySection.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/class-use/CommentConfiguration.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/class-use/Configuration.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/class-use/ConfigurationOptions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/class-use/ConfigurationSection.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/class-use/InvalidConfigurationException.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/class-use/MemoryConfiguration.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/class-use/MemoryConfigurationOptions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/class-use/MemorySection.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/file/FileConfiguration.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/file/FileConfigurationOptions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/file/YamlConfiguration.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/file/YamlConfigurationOptions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/file/YamlConstructor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/file/YamlRepresenter.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/file/class-use/FileConfiguration.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/file/class-use/FileConfigurationOptions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/file/class-use/YamlConfiguration.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/file/class-use/YamlConfigurationOptions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/file/class-use/YamlConstructor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/file/class-use/YamlRepresenter.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/file/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/file/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/file/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/serialization/ConfigurationSerializable.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/serialization/ConfigurationSerialization.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/serialization/DelegateDeserialization.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/serialization/SerializableAs.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/serialization/class-use/ConfigurationSerializable.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/serialization/class-use/ConfigurationSerialization.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/serialization/class-use/DelegateDeserialization.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/serialization/class-use/SerializableAs.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/serialization/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/serialization/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/serialization/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/util/ConfigUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/util/YmlUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/util/class-use/ConfigUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/util/class-use/YmlUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/util/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/util/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/io/github/minecraftchampions/dodoopenjava/configuration/util/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/jquery-ui.overrides.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/legal/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/legal/ASSEMBLY_EXCEPTION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/legal/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/legal/jquery.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/legal/jqueryUI.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/member-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/module-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/overview-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/overview-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/package-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/resources/glass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/resources/x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/script-dir/images/ui-bg_glass_55_fbf9ee_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/script-dir/images/ui-bg_glass_65_dadada_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/script-dir/images/ui-bg_glass_75_dadada_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/script-dir/images/ui-bg_glass_75_e6e6e6_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/script-dir/images/ui-bg_glass_95_fef1ec_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/script-dir/images/ui-bg_highlight-soft_75_cccccc_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/script-dir/images/ui-icons_222222_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/script-dir/images/ui-icons_2e83ff_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/script-dir/images/ui-icons_454545_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/script-dir/images/ui-icons_888888_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/script-dir/images/ui-icons_cd0a0a_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/script-dir/jquery-3.5.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/script-dir/jquery-ui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/script-dir/jquery-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/script-dir/jquery-ui.structure.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/serialized-form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/tag-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/apidocs/type-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/javadoc-bundle-options/javadoc-options-javadoc-resources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/core.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/utils/BaseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/utils/BaseUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/utils/BeanUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/utils/BeanUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/utils/ClassUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/utils/ClassUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/utils/MapUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/utils/MapUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/allclasses-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/allpackages-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/constant-values.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/copy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/deprecated-list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/element-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/help-doc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/index-all.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/Version.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/class-use/Version.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v1/BotApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v1/ChannelApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v1/ChannelArticleApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v1/ChannelTextApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v1/ChannelVoiceApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v1/IslandApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v1/MemberApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v1/NTFApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v1/PersonalApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v1/ResourceApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v1/RoleApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v1/class-use/BotApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v1/class-use/ChannelApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v1/class-use/ChannelArticleApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v1/class-use/ChannelTextApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v1/class-use/ChannelVoiceApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v1/class-use/IslandApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v1/class-use/MemberApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v1/class-use/NTFApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v1/class-use/PersonalApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v1/class-use/ResourceApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v1/class-use/RoleApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v1/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v1/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v1/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/BotApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/ChannelApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/ChannelArticleApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/ChannelMessageApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/ChannelVoiceApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/GiftApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/IntegralApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/IslandApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/MemberApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/NTFApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/PersonalApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/ResourceApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/RoleApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/class-use/BotApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/class-use/ChannelApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/class-use/ChannelArticleApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/class-use/ChannelMessageApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/class-use/ChannelVoiceApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/class-use/GiftApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/class-use/IntegralApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/class-use/IslandApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/class-use/MemberApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/class-use/NTFApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/class-use/PersonalApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/class-use/ResourceApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/class-use/RoleApi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/api/v2/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/ButtonGroup.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/Card.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/Form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/Section.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/class-use/ButtonGroup.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/class-use/Card.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/class-use/Form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/class-use/Section.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/enums/Align.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/enums/ButtonAction.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/enums/Color.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/enums/Cols.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/enums/RemarkType.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/enums/Rows.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/enums/SectionType.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/enums/Style.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/enums/TextType.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/enums/Theme.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/enums/class-use/Align.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/enums/class-use/ButtonAction.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/enums/class-use/Color.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/enums/class-use/Cols.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/enums/class-use/RemarkType.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/enums/class-use/Rows.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/enums/class-use/SectionType.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/enums/class-use/Style.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/enums/class-use/TextType.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/enums/class-use/Theme.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/enums/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/enums/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/enums/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/card/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/BaseUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/BeanUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/ClassUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/DateUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/JsonUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/LockUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/MD5Util.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/MapUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/NetUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/NumberUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/ProbabilityUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/StringUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/XmlUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/class-use/BaseUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/class-use/BeanUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/class-use/ClassUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/class-use/DateUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/class-use/JsonUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/class-use/LockUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/class-use/MD5Util.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/class-use/MapUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/class-use/NetUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/class-use/NumberUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/class-use/ProbabilityUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/class-use/StringUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/class-use/XmlUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/io/github/minecraftchampions/dodoopenjava/utils/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/jquery-ui.overrides.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/legal/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/legal/ASSEMBLY_EXCEPTION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/legal/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/legal/jquery.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/legal/jqueryUI.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/member-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/module-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/overview-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/overview-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/package-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/resources/glass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/resources/x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/script-dir/images/ui-bg_glass_55_fbf9ee_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/script-dir/images/ui-bg_glass_65_dadada_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/script-dir/images/ui-bg_glass_75_dadada_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/script-dir/images/ui-bg_glass_75_e6e6e6_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/script-dir/images/ui-bg_glass_95_fef1ec_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/script-dir/images/ui-bg_highlight-soft_75_cccccc_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/script-dir/images/ui-icons_222222_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/script-dir/images/ui-icons_2e83ff_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/script-dir/images/ui-icons_454545_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/script-dir/images/ui-icons_888888_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/script-dir/images/ui-icons_cd0a0a_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/script-dir/jquery-3.5.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/script-dir/jquery-ui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/script-dir/jquery-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/script-dir/jquery-ui.structure.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/tag-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/apidocs/type-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/javadoc-bundle-options/javadoc-options-javadoc-resources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/event-core.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/allclasses-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/allpackages-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/copy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/deprecated-list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/element-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/help-doc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/index-all.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/Event.Result.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/Event.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/EventExecutor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/EventHandler.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/EventManage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/EventPriority.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/HandlerList.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/Listener.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/RegisteredListener.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/class-use/Event.Result.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/class-use/Event.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/class-use/EventExecutor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/class-use/EventHandler.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/class-use/EventManage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/class-use/EventPriority.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/class-use/HandlerList.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/class-use/Listener.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/class-use/RegisteredListener.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/CardMessageButtonClickEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/CardMessageFormSubmitEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/CardMessageListSubmitEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/ChannelArticleCommentEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/ChannelArticleEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/ChannelVoiceMemberJoinEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/ChannelVoiceMemberLeaveEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/MemberJoinEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/MemberLeaveEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/MessageEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/MessageReactionEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/PersonalMessageEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/class-use/CardMessageButtonClickEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/class-use/CardMessageFormSubmitEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/class-use/CardMessageListSubmitEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/class-use/ChannelArticleCommentEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/class-use/ChannelArticleEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/class-use/ChannelVoiceMemberJoinEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/class-use/ChannelVoiceMemberLeaveEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/class-use/MemberJoinEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/class-use/MemberLeaveEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/class-use/MessageEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/class-use/MessageReactionEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/class-use/PersonalMessageEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v1/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/CardMessageButtonClickEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/CardMessageFormSubmitEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/CardMessageListSubmitEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/ChannelArticleCommentEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/ChannelArticleEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/ChannelVoiceMemberJoinEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/ChannelVoiceMemberLeaveEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/GiftSendEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/GoodsPurchaseEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/IntegralChangeEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/MemberJoinEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/MemberLeaveEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/MessageEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/MessageReactionEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/PersonalMessageEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/class-use/CardMessageButtonClickEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/class-use/CardMessageFormSubmitEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/class-use/CardMessageListSubmitEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/class-use/ChannelArticleCommentEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/class-use/ChannelArticleEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/class-use/ChannelVoiceMemberJoinEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/class-use/ChannelVoiceMemberLeaveEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/class-use/GiftSendEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/class-use/GoodsPurchaseEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/class-use/IntegralChangeEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/class-use/MemberJoinEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/class-use/MemberLeaveEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/class-use/MessageEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/class-use/MessageReactionEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/class-use/PersonalMessageEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/events/v2/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/jquery-ui.overrides.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/legal/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/legal/ASSEMBLY_EXCEPTION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/legal/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/legal/jquery.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/legal/jqueryUI.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/member-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/module-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/overview-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/overview-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/package-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/resources/glass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/resources/x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/script-dir/images/ui-bg_glass_55_fbf9ee_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/script-dir/images/ui-bg_glass_65_dadada_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/script-dir/images/ui-bg_glass_75_dadada_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/script-dir/images/ui-bg_glass_75_e6e6e6_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/script-dir/images/ui-bg_glass_95_fef1ec_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/script-dir/images/ui-bg_highlight-soft_75_cccccc_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/script-dir/images/ui-icons_222222_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/script-dir/images/ui-icons_2e83ff_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/script-dir/images/ui-icons_454545_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/script-dir/images/ui-icons_888888_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/script-dir/images/ui-icons_cd0a0a_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/script-dir/jquery-3.5.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/script-dir/jquery-ui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/script-dir/jquery-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/script-dir/jquery-ui.structure.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/tag-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/apidocs/type-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/javadoc-bundle-options/javadoc-options-javadoc-resources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/event-webhook.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/allclasses-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/allpackages-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/copy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/element-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/help-doc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/index-all.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/webhook/BotManage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/webhook/EventTrigger.DisposeEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/webhook/EventTrigger.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/webhook/class-use/BotManage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/webhook/class-use/EventTrigger.DisposeEvent.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/webhook/class-use/EventTrigger.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/webhook/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/webhook/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/webhook/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/webhook/util/OpenSecretUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/webhook/util/class-use/OpenSecretUtil.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/webhook/util/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/webhook/util/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/webhook/util/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/jquery-ui.overrides.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/legal/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/legal/ASSEMBLY_EXCEPTION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/legal/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/legal/jquery.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/legal/jqueryUI.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/member-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/module-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/overview-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/overview-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/package-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/resources/glass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/resources/x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/script-dir/images/ui-bg_glass_55_fbf9ee_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/script-dir/images/ui-bg_glass_65_dadada_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/script-dir/images/ui-bg_glass_75_dadada_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/script-dir/images/ui-bg_glass_75_e6e6e6_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/script-dir/images/ui-bg_glass_95_fef1ec_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/script-dir/images/ui-bg_highlight-soft_75_cccccc_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/script-dir/images/ui-icons_222222_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/script-dir/images/ui-icons_2e83ff_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/script-dir/images/ui-icons_454545_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/script-dir/images/ui-icons_888888_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/script-dir/images/ui-icons_cd0a0a_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/script-dir/jquery-3.5.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/script-dir/jquery-ui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/script-dir/jquery-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/script-dir/jquery-ui.structure.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/tag-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/apidocs/type-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/javadoc-bundle-options/javadoc-options-javadoc-resources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/event-websocket.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/allclasses-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/allpackages-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/copy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/element-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/help-doc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/index-all.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/websocket/EventTrigger.WsListenerC1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/websocket/EventTrigger.WsListenerC2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/websocket/EventTrigger.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/websocket/class-use/EventTrigger.WsListenerC1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/websocket/class-use/EventTrigger.WsListenerC2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/websocket/class-use/EventTrigger.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/websocket/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/websocket/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/io/github/minecraftchampions/dodoopenjava/event/websocket/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/jquery-ui.overrides.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/legal/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/legal/ASSEMBLY_EXCEPTION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/legal/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/legal/jquery.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/legal/jqueryUI.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/member-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/module-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/overview-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/package-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/resources/glass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/resources/x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/script-dir/images/ui-bg_glass_55_fbf9ee_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/script-dir/images/ui-bg_glass_65_dadada_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/script-dir/images/ui-bg_glass_75_dadada_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/script-dir/images/ui-bg_glass_75_e6e6e6_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/script-dir/images/ui-bg_glass_95_fef1ec_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/script-dir/images/ui-bg_highlight-soft_75_cccccc_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/script-dir/images/ui-icons_222222_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/script-dir/images/ui-icons_2e83ff_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/script-dir/images/ui-icons_454545_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/script-dir/images/ui-icons_888888_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/script-dir/images/ui-icons_cd0a0a_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/script-dir/jquery-3.5.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/script-dir/jquery-ui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/script-dir/jquery-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/script-dir/jquery-ui.structure.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/tag-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/apidocs/type-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/javadoc-bundle-options/javadoc-options-javadoc-resources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/permissions.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/Permissions.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/Permissions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/data/JsonData.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/data/JsonData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/data/TomlData.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/data/TomlData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/data/XmlData.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/data/XmlData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/data/YamlData.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/data/YamlData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/allclasses-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/allpackages-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/copy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/element-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/help-doc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/index-all.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/DataType.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/DataUnit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/FileListener.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/FileMonitor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/Group.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/GroupManager.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/Permissions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/User.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/UserManager.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/Util.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/class-use/DataType.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/class-use/DataUnit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/class-use/FileListener.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/class-use/FileMonitor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/class-use/Group.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/class-use/GroupManager.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/class-use/Permissions.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/class-use/User.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/class-use/UserManager.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/class-use/Util.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/data/JsonData.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/data/PermData.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/data/TomlData.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/data/XmlData.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/data/YamlData.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/data/class-use/JsonData.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/data/class-use/PermData.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/data/class-use/TomlData.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/data/class-use/XmlData.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/data/class-use/YamlData.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/data/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/data/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/data/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/io/github/minecraftchampions/dodoopenjava/permissions/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/jquery-ui.overrides.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/legal/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/legal/ASSEMBLY_EXCEPTION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/legal/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/legal/jquery.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/legal/jqueryUI.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/member-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/module-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/overview-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/overview-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/package-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/resources/glass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/resources/x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/script-dir/images/ui-bg_glass_55_fbf9ee_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/script-dir/images/ui-bg_glass_65_dadada_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/script-dir/images/ui-bg_glass_75_dadada_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/script-dir/images/ui-bg_glass_75_e6e6e6_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/script-dir/images/ui-bg_glass_95_fef1ec_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/script-dir/images/ui-bg_highlight-soft_75_cccccc_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/script-dir/images/ui-icons_222222_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/script-dir/images/ui-icons_2e83ff_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/script-dir/images/ui-icons_454545_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/script-dir/images/ui-icons_888888_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/script-dir/images/ui-icons_cd0a0a_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/script-dir/jquery-3.5.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/script-dir/jquery-ui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/script-dir/jquery-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/script-dir/jquery-ui.structure.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/tag-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/apidocs/type-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/classes/permissions/permGroup.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/classes/permissions/permGroup.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/classes/permissions/permGroup.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/classes/permissions/permGroup.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/classes/permissions/permUser.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/classes/permissions/permUser.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/classes/permissions/permUser.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/classes/permissions/permUser.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/javadoc-bundle-options/javadoc-options-javadoc-resources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/DodoOpenJava-2.1.7-shaded.pom" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,6 +783,11 @@
         <option name="useMavenConfig" value="true" />
       </MavenGeneralSettings>
     </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -82,13 +810,13 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;corretto-16&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/projects/MoreMobs/DodoOpenJava/permissions&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/projects/MoreMobs/DodoOpenJava/script&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDK&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
@@ -117,7 +845,20 @@
       <command value="mvn -B package --file pom.xml" />
     </option>
   </component>
-  <component name="RunManager" selected="应用程序.NumberUtil">
+  <component name="RunManager" selected="应用程序.ArrayUtil">
+    <configuration name="ArrayUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="io.github.minecraftchampions.dodoopenjava.utils.ArrayUtil" />
+      <module name="core" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.github.minecraftchampions.dodoopenjava.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CommentConfiguration" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="io.github.minecraftchampions.dodoopenjava.configuration.CommentConfiguration" />
       <module name="configuration" />
@@ -202,6 +943,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.ArrayUtil" />
         <item itemvalue="应用程序.NumberUtil" />
         <item itemvalue="应用程序.CommentConfiguration" />
         <item itemvalue="应用程序.XmlUtil" />
@@ -380,6 +1122,9 @@
       <workItem from="1685796301914" duration="926000" />
       <workItem from="1685799519305" duration="2335000" />
       <workItem from="1685854207709" duration="336000" />
+      <workItem from="1685875763770" duration="3370000" />
+      <workItem from="1686047597737" duration="1821000" />
+      <workItem from="1686134940758" duration="1921000" />
     </task>
     <servers />
   </component>

@@ -26,6 +26,7 @@ public class XmlData extends PermData {
      * 初始化
      */
     public static void init() {
+        //类似JsonData的注释
         File Config = new File(ConfigUtil.getJarPath() + "permissions/");
         if (!Config.exists()) {
             Config.mkdir();

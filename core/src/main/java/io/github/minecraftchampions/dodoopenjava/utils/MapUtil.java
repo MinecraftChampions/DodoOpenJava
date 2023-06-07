@@ -61,7 +61,7 @@ public class MapUtil {
         T object = null;
         try {
             BeanInfo info = Introspector.getBeanInfo(type);
-            object = type.newInstance();
+            object = type.getDeclaredConstructor().newInstance();
             PropertyDescriptor[] propertyDescriptors = info.getPropertyDescriptors();
             for (PropertyDescriptor descriptor : propertyDescriptors) {
                 String propertyName = descriptor.getName();

@@ -9,10 +9,10 @@ public class ClassUtil {
     public static boolean classExists(String className) {
         try {
             ClassLoader classLoader = ClassUtil.class.getClassLoader();
-            Class.forName(className, false, classLoader);
+            Class.forName(className, false, classLoader);//不初始化加载class
             return true;
         } catch (ClassNotFoundException exception) {
-            return false;
+            return false;//不抛出异常返回false
         }
     }
 }

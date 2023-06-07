@@ -75,32 +75,46 @@ public class Util {
     public static Map<String,JSONObject> changeMapForEach(JSONObject jsonObject) {
         return changeMapForEach(jsonObject,null);
     }
+
+    /**
+     * 将jsonObject转换为以下map实例
+     * [path/path]: {}
+     * [path/p]: {}
+     * @param jsonObject jsonObject
+     * @param key 父键
+     * @return Map
+     */
     public static Map<String,JSONObject> changeMapForEach(JSONObject jsonObject, String key) {
         HashMap<String, JSONObject> map = new HashMap<>();
-        Set<String> keys = jsonObject.keySet();
+        Set<String> keys = jsonObject.keySet();//获取键的列表
         if (key == null) {
             map.put("\"", jsonObject);
         }
         for (String s : keys) {
             Object object = jsonObject.get(s);
+            //判断是否能转成JSONObject
             if (object instanceof JSONObject json) {
+                //如果没有父key的话
                 if (key != null) {
                     if (!Objects.equals(key, "\"")) {
                         map.put(key + "." + s, json);
-                        map.putAll(changeMapForEach(json, key + "." + s));
+                        map.putAll(changeMapForEach(json, key + "." + s));//继续遍历寻找
                     }
                 } else {
                     map.put(s, json);
-                    map.putAll(changeMapForEach(json, s));
+                    map.putAll(changeMapForEach(json, s));//继续遍历寻找
                 }
             }
         }
+        //如果没有父键
+        //判断各个jsonObject是否重复
         if (key == null) {
+            //克隆map循环
             ((HashMap<String, JSONObject>)map.clone()).forEach((k, value) -> {
-                Set<String> keySet = value.keySet();
+                Set<String> keySet = value.keySet();//获取的json列表
                 List<String> list = new ArrayList<>();
-                HashMap<String, JSONObject> m =  (HashMap<String, JSONObject>)map.clone();
-                m.remove(k);
+                HashMap<String, JSONObject> m =  (HashMap<String, JSONObject>)map.clone();//克隆
+                m.remove(k);//移除
                 String[] strings = k.split("\\.");
                 m.forEach((n, object) -> {
                     boolean contains;

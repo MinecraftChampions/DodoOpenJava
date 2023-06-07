@@ -46,16 +46,20 @@ public class JsonData extends PermData {
 
         GroupManager.setGroupsFile(Group);
         UserManager.setUsersFile(User);
+        //获取文件内容
         JSONObject groupJson = getGroupFile();
         JSONObject userJson = getUserFile();
+        //键数组
         Set<String> groupSet = groupJson.getJSONObject("Groups").keySet();
         List<Group> groups = new ArrayList<>();
-        io.github.minecraftchampions.dodoopenjava.permissions.Group defaultGroup = null;
+        io.github.minecraftchampions.dodoopenjava.permissions.Group defaultGroup = null; //保证重新加载
         for (String group : groupSet) {
+            //获取一个组的权限
             List<String> perms = BaseUtil.toStringList(groupJson.getJSONObject("Groups").
                                 getJSONObject(group).getJSONArray("perms").toList());
             io.github.minecraftchampions.dodoopenjava.permissions.Group g = new Group(group);
             for (String perm : perms) {
+                //增加权限
                 g.addPermission(perm);
             }
 
@@ -66,12 +70,14 @@ public class JsonData extends PermData {
                     defaultGroup = g;
                 }
             }
-            groups.add(g);
+            groups.add(g);//将组添加到集合
         }
+        //保证重新加载
         GroupManager.setGroups(new TreeMap<>());
         for (io.github.minecraftchampions.dodoopenjava.permissions.Group group : groups) {
             String name = group.getName();
             if (groupJson.getJSONObject("Groups").getJSONObject(name).keySet().contains("extend")) {
+                //添加继承组
                 for (String s : BaseUtil.toStringList(groupJson.getJSONObject("Groups")
                         .getJSONObject(name).getJSONArray("extend").toList())) {
                     List<Group> list = new ArrayList<>(groups);
@@ -84,9 +90,12 @@ public class JsonData extends PermData {
                     }
                 }
             }
+            //添加组
             GroupManager.addGroup(group);
         }
+        //保证数据重加载
         GroupManager.setDefaultGroup(defaultGroup);
+        //同上
         Set<String> userSet = userJson.getJSONObject("Users").keySet();
         UserManager.setUsers(new TreeMap<>());
         for (String s : userSet) {

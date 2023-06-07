@@ -15,15 +15,5 @@
         <module name="command" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="command" target="16" />
-      <module name="configuration" target="16" />
-      <module name="core" target="16" />
-      <module name="DodoOpenJava" target="16" />
-      <module name="event-core" target="16" />
-      <module name="event-webhook" target="16" />
-      <module name="event-websocket" target="16" />
-      <module name="permissions" target="16" />
-    </bytecodeTargetLevel>
   </component>
 </project>

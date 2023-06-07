@@ -16,7 +16,9 @@ import java.util.regex.Pattern;
  * @author qscbm187531
  */
 public class BeanUtil {
+    //getter方法的正则表达式
     private final static Pattern GET_PATTERN = Pattern.compile("get(\\p{javaUpperCase}\\w*)");
+    //setter方法的正则表达式
     private final static Pattern SET_PATTERN = Pattern.compile("set(\\p{javaUpperCase}\\w*)");
     private final static String CLASS = "class";
 
@@ -28,8 +30,9 @@ public class BeanUtil {
      */
     public static List<Method> getSetterMethods(Object object) {
         List<Method> setterMethods = new ArrayList<>();
-        Method[] methods = object.getClass().getMethods();
+        Method[] methods = object.getClass().getMethods(); // 获取方法列表
         for (Method method : methods) {
+            //匹配
             Matcher m = SET_PATTERN.matcher(method.getName());
             if (m.matches() && (method.getParameterTypes().length == 1)) {
                 setterMethods.add(method);

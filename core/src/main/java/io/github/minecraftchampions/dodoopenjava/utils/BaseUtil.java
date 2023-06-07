@@ -50,6 +50,7 @@ public class BaseUtil {
      * @return true代表是
      */
     public static boolean hasSensitiveWord(String text) throws IOException {
+        //获取词库内容
         List<String> list = toStringList((new JSONObject(NetUtil.simulationBrowserRequest("https://mcchampions.github.io/database.json"))).getJSONArray("words").toList());
         boolean isSensitiveWord = false;
         for (String word : list) {

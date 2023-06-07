@@ -41,6 +41,7 @@ public class YamlData extends PermData {
     }
 
     public static void init() {
+        //ÀàËÆJsonDataµÄ×¢ÊÍ
         File Config = new File(ConfigUtil.getJarPath() + "permissions/");
         if (!Config.exists()) {
             Config.mkdir();

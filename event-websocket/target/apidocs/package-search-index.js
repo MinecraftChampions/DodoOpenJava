@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"io.github.minecraftchampions.dodoopenjava.event.websocket"},{"l":"所有程序包","u":"allpackages-index.html"}];updateSearchResults();

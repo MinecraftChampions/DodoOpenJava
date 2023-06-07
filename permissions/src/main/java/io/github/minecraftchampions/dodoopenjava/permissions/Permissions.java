@@ -1,6 +1,9 @@
 package io.github.minecraftchampions.dodoopenjava.permissions;
 
-import io.github.minecraftchampions.dodoopenjava.permissions.data.*;
+import io.github.minecraftchampions.dodoopenjava.permissions.data.JsonData;
+import io.github.minecraftchampions.dodoopenjava.permissions.data.TomlData;
+import io.github.minecraftchampions.dodoopenjava.permissions.data.XmlData;
+import io.github.minecraftchampions.dodoopenjava.permissions.data.YamlData;
 
 import java.io.IOException;
 
@@ -64,20 +67,37 @@ public class Permissions {
      * 每隔10分钟保存一次
      */
     public static void autoSave() {
-        while(true) {
-            try {
-                Thread.sleep(10*60*60);
-                switch (Permissions.type.getType()) {
-                    case "YAML" -> YamlData.saveToFile();
-                    case "JSON" -> JsonData.saveToFile();
-                    case "Xml" -> XmlData.saveToFile();
-                    case "Toml" -> TomlData.saveToFile();
-                    default -> System.err.println("错误的存储种类");
+        Thread thread = new Thread(target);
+        thread.start();
+    }
+
+    private static Runnable target = new AutoSaveC();
+
+    private static class AutoSaveC implements Runnable {
+        private boolean init = false;
+        @Override
+        public void run() {
+            if (init) {
+                System.out.println("不要重复调用自动保存方法");
+                return;
+            } else {
+                init = true;
+            }
+            while(true) {
+                try {
+                    Thread.sleep(10*60*60);
+                    switch (Permissions.type.getType()) {
+                        case "YAML" -> YamlData.saveToFile();
+                        case "JSON" -> JsonData.saveToFile();
+                        case "Xml" -> XmlData.saveToFile();
+                        case "Toml" -> TomlData.saveToFile();
+                        default -> System.err.println("错误的存储种类");
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
                 }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
             }
         }
     }
