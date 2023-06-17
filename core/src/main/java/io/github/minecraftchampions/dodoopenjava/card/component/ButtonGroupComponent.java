@@ -1,4 +1,4 @@
-package io.github.minecraftchampions.dodoopenjava.card;
+package io.github.minecraftchampions.dodoopenjava.card.component;
 
 import io.github.minecraftchampions.dodoopenjava.card.enums.ButtonAction;
 import io.github.minecraftchampions.dodoopenjava.card.enums.Color;
@@ -8,26 +8,15 @@ import org.json.JSONObject;
 import java.util.Objects;
 
 /**
- * 按钮组这个对象
- * @author qscbm187531
+ * 按钮交互组件
  */
-public class ButtonGroup {
-    JSONObject jsonButton = new JSONObject();
-
+public class ButtonGroupComponent extends Component {
     /**
-     * 是否不存在
-     * @return true/false
+     * 初始化
      */
-    public Boolean isEmpty() {
-        return jsonButton.isEmpty();
-    }
-
-    /**
-     * 转换为JSON对象
-     * @return true
-     */
-    public JSONObject toJsonObject() {
-        return jsonButton;
+    public ButtonGroupComponent() {
+        jsonCard.put("type","button-group");
+        jsonCard.put("elements",new JSONArray());
     }
 
     /**
@@ -37,10 +26,9 @@ public class ButtonGroup {
      * @param interactCustomId 自定义按钮ID
      * @param action 按钮点击动作类型
      * @param object 按钮点击动作的值，不是表单就是String类型，是表单就传入Form
-     * @return true/false
      */
-    public Boolean addButton(Color buttonColor, String buttonName, String interactCustomId, ButtonAction action, Object object) {
-        Form form = new Form();
+    public void addButton(Color buttonColor, String buttonName, String interactCustomId, ButtonAction action, Object object) {
+        FormComponent formComponent = new FormComponent();
         String value = "";
         boolean isForm = false;
 
@@ -48,14 +36,14 @@ public class ButtonGroup {
             if (object instanceof String) {
                 value = (String) object;
             } else {
-                return false;
+                return;
             }
         } else {
-            if (object instanceof Form) {
-                form = (Form) object;
+            if (object instanceof FormComponent) {
+                formComponent = (FormComponent) object;
                 isForm = true;
             } else {
-                return false;
+                return;
             }
         }
 
@@ -74,11 +62,10 @@ public class ButtonGroup {
         json1.put("click", json2);
 
         if (isForm) {
-            json1.put("form", form.JsonForm);
+            json1.put("form", formComponent.getJsonCard());
         }
 
-        jsonButton.getJSONArray("elements").put(json1);
-        return true;
+        jsonCard.getJSONArray("elements").put(json1);
     }
 
     /**
@@ -87,10 +74,9 @@ public class ButtonGroup {
      * @param ButtonName 按钮名称
      * @param action 按钮点击动作类型
      * @param object 按钮点击动作的值，不是表单就是String类型，是表单就传入Form
-     * @return true/false
      */
-    public Boolean addButton(Color ButtonColor, String ButtonName, ButtonAction action,Object object) {
-        Form form = new Form();
+    public void addButton(Color ButtonColor, String ButtonName, ButtonAction action, Object object) {
+        FormComponent formComponent = new FormComponent();
         String value = "";
         boolean isForm = false;
 
@@ -98,14 +84,14 @@ public class ButtonGroup {
             if (object instanceof String) {
                 value = (String) object;
             } else {
-                return false;
+                return;
             }
         } else {
-            if (object instanceof Form) {
-                form = (Form) object;
+            if (object instanceof FormComponent) {
+                formComponent = (FormComponent) object;
                 isForm = true;
             } else {
-                return false;
+                return;
             }
         }
 
@@ -123,26 +109,10 @@ public class ButtonGroup {
         json1.put("click", json2);
 
         if (isForm) {
-            json1.put("form", form.JsonForm);
+            json1.put("form", formComponent.getJsonCard());
         }
 
-        jsonButton.getJSONArray("elements").put(json1);
-        return true;
+        jsonCard.getJSONArray("elements").put(json1);
     }
 
-    /**
-     * 初始化按钮组
-     */
-    public void initButtonGroup() {
-        jsonButton.put("type","button-group");
-        jsonButton.put("elements",new JSONArray());
-    }
-
-    /**
-     * 转换为String（重写了Object的toString方法）
-     * @return 字符串
-     */
-    public String toString() {
-        return jsonButton.toString();
-    }
 }
