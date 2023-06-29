@@ -17,25 +17,25 @@ import static io.github.minecraftchampions.dodoopenjava.configuration.file.FileC
 import static io.github.minecraftchampions.dodoopenjava.configuration.file.FileConfiguration.UTF_BIG;
 
 /**
- * ¹ØÓÚ ÅäÖÃÎÄ¼ş µÄÒ»Ğ©·½·¨
+ * å…³äº é…ç½®æ–‡ä»¶ çš„ä¸€äº›æ–¹æ³•
  * @author qscbm187531
  */
 public class ConfigUtil {
     /**
-     * ×ª»»ÎªbyteÊı×é
+     * è½¬æ¢ä¸ºbyteæ•°ç»„
      *
-     * @param filePath ÎÄ¼şÂ·¾¶
-     * @return Êı×é
+     * @param filePath æ–‡ä»¶è·¯å¾„
+     * @return æ•°ç»„
      */
     public static byte[] inputStream2ByteArray(String filePath) {
         return inputStream2ByteArray(new File(filePath));
     }
 
     /**
-     * ×ª»»ÎªbyteÊı×é
+     * è½¬æ¢ä¸ºbyteæ•°ç»„
      *
-     * @param file ÎÄ¼ş
-     * @return Êı×é
+     * @param file æ–‡ä»¶
+     * @return æ•°ç»„
      */
     public static byte[] inputStream2ByteArray(File file) {
         try (InputStream in = new FileInputStream(file)) {
@@ -46,10 +46,10 @@ public class ConfigUtil {
     }
 
     /**
-     * ×ª»»ÎªbyteÊı×é
+     * è½¬æ¢ä¸ºbyteæ•°ç»„
      *
-     * @param in ÊäÈëÁ÷
-     * @return Êı×é
+     * @param in è¾“å…¥æµ
+     * @return æ•°ç»„
      */
     private static byte[] toByteArray(InputStream in) throws IOException {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -62,30 +62,30 @@ public class ConfigUtil {
     }
 
     /**
-     * ¼ÓÔØÎÄ¼ş
+     * åŠ è½½æ–‡ä»¶
      *
-     * @param child ÎÄ¼şÂ·¾¶
-     * @return FileConfigurationÎÄ¼ş
+     * @param child æ–‡ä»¶è·¯å¾„
+     * @return FileConfigurationæ–‡ä»¶
      */
     public static FileConfiguration load(String child) {
         return YamlConfiguration.loadConfiguration(new File(child));
     }
 
     /**
-     * ¼ÓÔØÎÄ¼ş
+     * åŠ è½½æ–‡ä»¶
      *
-     * @param file ÎÄ¼ş
-     * @return FileConfigurationÎÄ¼ş
+     * @param file æ–‡ä»¶
+     * @return FileConfigurationæ–‡ä»¶
      */
     public static FileConfiguration load(File file) {
         return YamlConfiguration.loadConfiguration(file);
     }
 
     /**
-     * ¼ÓÔØÄ¿Â¼ÏÂÈ«²¿ÎÄ¼ş
+     * åŠ è½½ç›®å½•ä¸‹å…¨éƒ¨æ–‡ä»¶
      *
-     * @param directoryStr Ä¿Â¼
-     * @return È«²¿ÎÄ¼ş
+     * @param directoryStr ç›®å½•
+     * @return å…¨éƒ¨æ–‡ä»¶
      */
     public static Map<String, FileConfiguration> loadDirectory(String directoryStr) {
         Map<String, FileConfiguration> map = new HashMap<>();
@@ -101,12 +101,12 @@ public class ConfigUtil {
     }
 
     /**
-     * ÉèÖÃ½Úµã
+     * è®¾ç½®èŠ‚ç‚¹
      *
-     * @param fileConfiguration ÎÄ¼ş
-     * @param path yml½Úµã
-     * @param value ÄÚÈİ
-     * @param child ÎÄ¼şÂ·¾¶
+     * @param fileConfiguration æ–‡ä»¶
+     * @param path ymlèŠ‚ç‚¹
+     * @param value å†…å®¹
+     * @param child æ–‡ä»¶è·¯å¾„
      */
     public static void setPath(FileConfiguration fileConfiguration, String path, Object value, String child) {
         try {
@@ -119,12 +119,12 @@ public class ConfigUtil {
     }
 
     /**
-     * ÅĞ¶ÏÊÇ·ñ°üº¬ È»ºóÉèÖÃ½Úµã
+     * åˆ¤æ–­æ˜¯å¦åŒ…å« ç„¶åè®¾ç½®èŠ‚ç‚¹
      *
-     * @param fileConfiguration ÎÄ¼ş
-     * @param path              yml½Úµã
-     * @param value             ÄÚÈİ
-     * @param child             ÎÄ¼şÂ·¾¶
+     * @param fileConfiguration æ–‡ä»¶
+     * @param path              ymlèŠ‚ç‚¹
+     * @param value             å†…å®¹
+     * @param child             æ–‡ä»¶è·¯å¾„
      */
     public static Boolean setPathIsNotContains(FileConfiguration fileConfiguration, String path, Object value, String child) {
         if (fileConfiguration.contains(path)) {
@@ -135,11 +135,11 @@ public class ConfigUtil {
     }
 
     /**
-     * ¸´ÖÆÎÄ¼ş
+     * å¤åˆ¶æ–‡ä»¶
      *
-     * @param inFile Ô­±¾µÄÎÄ¼ş¶ÔÏó
-     * @param outFile ¸´ÖÆµ½µÄÎÄ¼ş¶ÔÏó
-     * @return true¾ÍÊÇ³É¹¦£¬false¾ÍÊÇÊ§°Ü
+     * @param inFile åŸæœ¬çš„æ–‡ä»¶å¯¹è±¡
+     * @param outFile å¤åˆ¶åˆ°çš„æ–‡ä»¶å¯¹è±¡
+     * @return trueå°±æ˜¯æˆåŠŸï¼Œfalseå°±æ˜¯å¤±è´¥
      */
     public static Boolean copy(File inFile, File outFile) {
         if (!inFile.exists()) {
@@ -159,10 +159,10 @@ public class ConfigUtil {
     }
 
     /**
-     * ¸´ÖÆJar°üÀïµÄÎÄ¼ş
-     * @param inPath ÎÄ¼şÎ»ÓÚjar°üÀïµÄÂ·¾¶£¨Ç°Ãæ²»´ø/£©£¨Èç¡°config.yml")
-     * @param outPath ¸´ÖÆµ½µÄÎÄ¼şÂ·¾¶£¨ÈçC:/config.yml)
-     * @return true ³É¹¦£¬false Ê§°Ü
+     * å¤åˆ¶JaråŒ…é‡Œçš„æ–‡ä»¶
+     * @param inPath æ–‡ä»¶ä½äºjaråŒ…é‡Œçš„è·¯å¾„ï¼ˆå‰é¢ä¸å¸¦/ï¼‰ï¼ˆå¦‚â€œconfig.yml")
+     * @param outPath å¤åˆ¶åˆ°çš„æ–‡ä»¶è·¯å¾„ï¼ˆå¦‚C:/config.yml)
+     * @return true æˆåŠŸï¼Œfalse å¤±è´¥
      */
     public static Boolean copyResourcesToFile(String inPath, String outPath) throws IOException {
         int firstIndex = outPath.lastIndexOf(System.getProperty("path.separator")) + 1;
@@ -186,8 +186,8 @@ public class ConfigUtil {
     }
 
     /**
-     * »ñÈ¡µ±Ç°jar°üµÄÂ·¾¶£¨²»°üº¬jar°ü±¾Éí£©
-     * @return Â·¾¶£¨Èç£º¡±C:/Test/¡°)
+     * è·å–å½“å‰jaråŒ…çš„è·¯å¾„ï¼ˆä¸åŒ…å«jaråŒ…æœ¬èº«ï¼‰
+     * @return è·¯å¾„ï¼ˆå¦‚ï¼šâ€C:/Test/â€œ)
      */
     public static String getJarPath() {
         String path = java.net.URLDecoder.decode(System.getProperty("java.class.path"));
@@ -196,10 +196,10 @@ public class ConfigUtil {
         return path.substring(firstIndex, lastIndex);
     }
     /**
-     * ¶ÁÈ¡ÎÄ¼ş
+     * è¯»å–æ–‡ä»¶
      *
-     * @param fileName ÎÄ¼ş
-     * @return ·µ»Ø×Ö·û´®
+     * @param fileName æ–‡ä»¶
+     * @return è¿”å›å­—ç¬¦ä¸²
      */
     public static String readFile(File fileName) {
         try {
@@ -220,9 +220,9 @@ public class ConfigUtil {
     }
 
     /**
-     * ±£´æ×Ö·û´®µ½ÎÄ¼ş
-     * @param file ÎÄ¼ş
-     * @param data Êı¾İ
+     * ä¿å­˜å­—ç¬¦ä¸²åˆ°æ–‡ä»¶
+     * @param file æ–‡ä»¶
+     * @param data æ•°æ®
      */
     public static void saveToFile(String data,File file) throws IOException {
         Files.createParentDirs(file);

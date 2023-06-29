@@ -7,35 +7,35 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 /**
- * ³ÉÔ±API
+ * æˆå‘˜API
  */
 public class MemberApi {
     public static String url, param;
 
     /**
-     * »ñÈ¡³ÉÔ±ÁĞ±í
+     * è·å–æˆå‘˜åˆ—è¡¨
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param islandSourceId ÈººÅ
-     * @param pageSize Ò³´óĞ¡£¬×î´ó100
-     * @param maxId ÉÏÒ»Ò³×î´óIDÖµ£¬ÎªÌáÉı·ÖÒ³²éÑ¯ĞÔÄÜ£¬ĞèÒª´«ÈëÉÏÒ»Ò³²éÑ¯¼ÇÂ¼ÖĞµÄ×î´óIDÖµ£¬Ê×Ò³Çë´«0
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param islandSourceId ç¾¤å·
+     * @param pageSize é¡µå¤§å°ï¼Œæœ€å¤§100
+     * @param maxId ä¸Šä¸€é¡µæœ€å¤§IDå€¼ï¼Œä¸ºæå‡åˆ†é¡µæŸ¥è¯¢æ€§èƒ½ï¼Œéœ€è¦ä¼ å…¥ä¸Šä¸€é¡µæŸ¥è¯¢è®°å½•ä¸­çš„æœ€å¤§IDå€¼ï¼Œé¦–é¡µè¯·ä¼ 0
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject getMemberList(String clientId, String token, String islandSourceId, int pageSize, long maxId) throws IOException {
         return getMemberList(BaseUtil.Authorization(clientId, token), islandSourceId, pageSize, maxId);
     }
 
     /**
-     * »ñÈ¡³ÉÔ±ÁĞ±í
+     * è·å–æˆå‘˜åˆ—è¡¨
      *
      * @param authorization authorization
-     * @param islandSourceId ÈººÅ
-     * @param pageSize Ò³´óĞ¡£¬×î´ó100
-     * @param maxId ÉÏÒ»Ò³×î´óIDÖµ£¬ÎªÌáÉı·ÖÒ³²éÑ¯ĞÔÄÜ£¬ĞèÒª´«ÈëÉÏÒ»Ò³²éÑ¯¼ÇÂ¼ÖĞµÄ×î´óIDÖµ£¬Ê×Ò³Çë´«0
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param islandSourceId ç¾¤å·
+     * @param pageSize é¡µå¤§å°ï¼Œæœ€å¤§100
+     * @param maxId ä¸Šä¸€é¡µæœ€å¤§IDå€¼ï¼Œä¸ºæå‡åˆ†é¡µæŸ¥è¯¢æ€§èƒ½ï¼Œéœ€è¦ä¼ å…¥ä¸Šä¸€é¡µæŸ¥è¯¢è®°å½•ä¸­çš„æœ€å¤§IDå€¼ï¼Œé¦–é¡µè¯·ä¼ 0
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject getMemberList(String authorization, String islandSourceId, int pageSize, long maxId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/member/list";
@@ -48,27 +48,27 @@ public class MemberApi {
     }
 
     /**
-     * »ñÈ¡³ÉÔ±ĞÅÏ¢
+     * è·å–æˆå‘˜ä¿¡æ¯
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId Íæ¼ÒDodoºÅ
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId ç©å®¶Dodoå·
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject getMemberInfo(String clientId, String token, String islandSourceId,String dodoSourceId) throws IOException {
         return getMemberInfo(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId);
     }
 
     /**
-     * »ñÈ¡³ÉÔ±ĞÅÏ¢
+     * è·å–æˆå‘˜ä¿¡æ¯
      *
      * @param authorization authorization
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId Íæ¼ÒDodoºÅ
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId ç©å®¶Dodoå·
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject getMemberInfo(String authorization, String islandSourceId, String dodoSourceId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/member/info";
@@ -80,27 +80,27 @@ public class MemberApi {
     }
 
     /**
-     * »ñÈ¡³ÉÔ±Éí·İ×éÁĞ±í
+     * è·å–æˆå‘˜èº«ä»½ç»„åˆ—è¡¨
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId DodoºÅ
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId Dodoå·
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject getMemberRoleList(String clientId, String token, String islandSourceId, String dodoSourceId) throws IOException {
         return getMemberRoleList(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId);
     }
 
     /**
-     * »ñÈ¡³ÉÔ±Éí·İ×éÁĞ±í
+     * è·å–æˆå‘˜èº«ä»½ç»„åˆ—è¡¨
      *
      * @param authorization authorization
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId DodoºÅ
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId Dodoå·
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject getMemberRoleList(String authorization, String islandSourceId, String dodoSourceId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/member/role/list";
@@ -112,27 +112,27 @@ public class MemberApi {
     }
 
     /**
-     * »ñÈ¡³ÉÔ±ÑûÇëĞÅÏ¢
+     * è·å–æˆå‘˜é‚€è¯·ä¿¡æ¯
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId DodoºÅ
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId Dodoå·
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject getMemberInvitationInfo(String clientId, String token, String islandSourceId, String dodoSourceId) throws IOException {
         return getMemberInvitationInfo(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId);
     }
 
     /**
-     * »ñÈ¡³ÉÔ±ÑûÇëĞÅÏ¢
+     * è·å–æˆå‘˜é‚€è¯·ä¿¡æ¯
      *
      * @param authorization authorization
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId DodoºÅ
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId Dodoå·
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject getMemberInvitationInfo(String authorization, String islandSourceId, String dodoSourceId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/member/role/list";
@@ -144,29 +144,29 @@ public class MemberApi {
     }
 
     /**
-     * ±à¼­³ÉÔ±ÈºêÇ³Æ
+     * ç¼–è¾‘æˆå‘˜ç¾¤æ˜µç§°
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId DodoºÅ
-     * @param nickName ÈºêÇ³Æ£¬êÇ³Æ²»ÄÜ´óÓÚ32¸ö×Ö·û»ò16¸öºº×Ö
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId Dodoå·
+     * @param nickName ç¾¤æ˜µç§°ï¼Œæ˜µç§°ä¸èƒ½å¤§äº32ä¸ªå­—ç¬¦æˆ–16ä¸ªæ±‰å­—
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject editMemberNickName(String clientId, String token, String islandSourceId, String dodoSourceId, String nickName) throws IOException {
         return editMemberNickName(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, nickName);
     }
 
     /**
-     * ±à¼­³ÉÔ±ÈºêÇ³Æ
+     * ç¼–è¾‘æˆå‘˜ç¾¤æ˜µç§°
      *
      * @param authorization authorization
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId DodoºÅ
-     * @param nickName ÈºêÇ³Æ£¬êÇ³Æ²»ÄÜ´óÓÚ32¸ö×Ö·û»ò16¸öºº×Ö
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId Dodoå·
+     * @param nickName ç¾¤æ˜µç§°ï¼Œæ˜µç§°ä¸èƒ½å¤§äº32ä¸ªå­—ç¬¦æˆ–16ä¸ªæ±‰å­—
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject editMemberNickName(String authorization, String islandSourceId, String dodoSourceId, String nickName) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/member/nick/set";
@@ -179,29 +179,29 @@ public class MemberApi {
     }
 
     /**
-     * ½ûÑÔ³ÉÔ±
+     * ç¦è¨€æˆå‘˜
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param islandSourceId ÈººÅ
-     * @param duration ½ûÑÔÊ±³¤(Ãë),×î³¤Îª7Ìì
-     * @param dodoSourceId DodoºÅ
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param islandSourceId ç¾¤å·
+     * @param duration ç¦è¨€æ—¶é•¿(ç§’),æœ€é•¿ä¸º7å¤©
+     * @param dodoSourceId Dodoå·
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject addMemberMute(String clientId, String token, String islandSourceId, String dodoSourceId, int duration) throws IOException {
         return addMemberMute(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, duration);
     }
 
     /**
-     * ½ûÑÔ³ÉÔ±
+     * ç¦è¨€æˆå‘˜
      *
      * @param authorization authorization
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId DodoºÅ
-     * @param duration ½ûÑÔÊ±³¤(Ãë),×î³¤Îª7Ìì
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId Dodoå·
+     * @param duration ç¦è¨€æ—¶é•¿(ç§’),æœ€é•¿ä¸º7å¤©
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject addMemberMute(String authorization, String islandSourceId, String dodoSourceId, int duration) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/member/ban/set";
@@ -214,31 +214,31 @@ public class MemberApi {
     }
 
     /**
-     * ½ûÑÔ³ÉÔ±
+     * ç¦è¨€æˆå‘˜
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param islandSourceId ÈººÅ
-     * @param duration ½ûÑÔÊ±³¤(Ãë),×î³¤Îª7Ìì
-     * @param dodoSourceId DodoºÅ
-     * @param reason ½ûÑÔÔ­Òò£¬Ô­Òò²»ÄÜ´óÓÚ64¸ö×Ö·û»ò32¸öºº×Ö
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param islandSourceId ç¾¤å·
+     * @param duration ç¦è¨€æ—¶é•¿(ç§’),æœ€é•¿ä¸º7å¤©
+     * @param dodoSourceId Dodoå·
+     * @param reason ç¦è¨€åŸå› ï¼ŒåŸå› ä¸èƒ½å¤§äº64ä¸ªå­—ç¬¦æˆ–32ä¸ªæ±‰å­—
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject addMemberReasonrMute(String clientId, String token, String islandSourceId, String dodoSourceId, int duration, String reason) throws IOException {
         return addMemberReasonrMute(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, duration, reason);
     }
 
     /**
-     * ½ûÑÔ³ÉÔ±
+     * ç¦è¨€æˆå‘˜
      *
      * @param authorization authorization
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId DodoºÅ
-     * @param duration ½ûÑÔÊ±³¤(Ãë),×î³¤Îª7Ìì
-     * @param reason ½ûÑÔÔ­Òò£¬Ô­Òò²»ÄÜ´óÓÚ64¸ö×Ö·û»ò32¸öºº×Ö
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId Dodoå·
+     * @param duration ç¦è¨€æ—¶é•¿(ç§’),æœ€é•¿ä¸º7å¤©
+     * @param reason ç¦è¨€åŸå› ï¼ŒåŸå› ä¸èƒ½å¤§äº64ä¸ªå­—ç¬¦æˆ–32ä¸ªæ±‰å­—
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject addMemberReasonrMute(String authorization, String islandSourceId, String dodoSourceId, int duration, String reason) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/member/ban/set";
@@ -252,27 +252,27 @@ public class MemberApi {
     }
 
     /**
-     * È¡Ïû³ÉÔ±½ûÑÔ
+     * å–æ¶ˆæˆå‘˜ç¦è¨€
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId DodoºÅ
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId Dodoå·
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject removeMemberMute(String clientId, String token, String islandSourceId, String dodoSourceId) throws IOException {
         return removeMemberMute(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId);
     }
 
     /**
-     * È¡Ïû³ÉÔ±½ûÑÔ
+     * å–æ¶ˆæˆå‘˜ç¦è¨€
      *
      * @param authorization authorization
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId DodoºÅ
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId Dodoå·
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject removeMemberMute(String authorization, String islandSourceId, String dodoSourceId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/member/mute/remove";
@@ -284,27 +284,27 @@ public class MemberApi {
     }
 
     /**
-     * ÓÀ¾Ã·â½û³ÉÔ±
+     * æ°¸ä¹…å°ç¦æˆå‘˜
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId DodoºÅ
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId Dodoå·
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject addMemberBan(String clientId, String token, String islandSourceId, String dodoSourceId) throws IOException {
         return addMemberBan(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId);
     }
 
     /**
-     * ÓÀ¾Ã·â½û³ÉÔ±
+     * æ°¸ä¹…å°ç¦æˆå‘˜
      *
      * @param authorization authorization
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId DodoºÅ
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId Dodoå·
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject addMemberBan(String authorization, String islandSourceId, String dodoSourceId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/member/ban/add";
@@ -316,29 +316,29 @@ public class MemberApi {
     }
 
     /**
-     * ÓÀ¾Ã·â½û³ÉÔ±
+     * æ°¸ä¹…å°ç¦æˆå‘˜
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId DodoºÅ
-     * @param reason ·â½ûÀíÓÉ
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId Dodoå·
+     * @param reason å°ç¦ç†ç”±
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject addMemberReasonBan(String clientId, String token, String islandSourceId, String dodoSourceId, String reason) throws IOException {
         return addMemberReasonBan(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, reason);
     }
 
     /**
-     * ÓÀ¾Ã·â½û³ÉÔ±
+     * æ°¸ä¹…å°ç¦æˆå‘˜
      *
      * @param authorization authorization
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId DodoºÅ
-     * @param reason ·â½ûÀíÓÉ
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId Dodoå·
+     * @param reason å°ç¦ç†ç”±
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject addMemberReasonBan(String authorization, String islandSourceId, String dodoSourceId, String reason) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/member/ban/add";
@@ -351,29 +351,29 @@ public class MemberApi {
     }
 
     /**
-     * ÓÀ¾Ã·â½û³ÉÔ±
+     * æ°¸ä¹…å°ç¦æˆå‘˜
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId DodoºÅ
-     * @param noticeChannelId Í¨ÖªÆµµÀID
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId Dodoå·
+     * @param noticeChannelId é€šçŸ¥é¢‘é“ID
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject addMemberChannelBan(String clientId, String token, String islandSourceId, String dodoSourceId, String noticeChannelId) throws IOException {
         return addMemberChannelBan(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, noticeChannelId);
     }
 
     /**
-     * ÓÀ¾Ã·â½û³ÉÔ±
+     * æ°¸ä¹…å°ç¦æˆå‘˜
      *
      * @param authorization authorization
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId DodoºÅ
-     * @param noticeChannelId Í¨ÖªÆµµÀID
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId Dodoå·
+     * @param noticeChannelId é€šçŸ¥é¢‘é“ID
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject addMemberChannelBan(String authorization, String islandSourceId, String dodoSourceId, String noticeChannelId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/member/ban/add";
@@ -386,31 +386,31 @@ public class MemberApi {
     }
 
     /**
-     * ÓÀ¾Ã·â½û³ÉÔ±
+     * æ°¸ä¹…å°ç¦æˆå‘˜
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId DodoºÅ
-     * @param noticeChannelId Í¨ÖªÆµµÀID
-     * @param reason ·â½ûÀíÓÉ£¬ÀíÓÉ²»ÄÜ´óÓÚ64¸ö×Ö·û»ò32¸öºº×Ö
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId Dodoå·
+     * @param noticeChannelId é€šçŸ¥é¢‘é“ID
+     * @param reason å°ç¦ç†ç”±ï¼Œç†ç”±ä¸èƒ½å¤§äº64ä¸ªå­—ç¬¦æˆ–32ä¸ªæ±‰å­—
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject addMemberBan(String clientId, String token, String islandSourceId, String dodoSourceId, String noticeChannelId, String reason) throws IOException {
         return addMemberBan(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, noticeChannelId, reason);
     }
 
     /**
-     * ÓÀ¾Ã·â½û³ÉÔ±
+     * æ°¸ä¹…å°ç¦æˆå‘˜
      *
      * @param authorization authorization
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId DodoºÅ
-     * @param noticeChannelId Í¨ÖªÆµµÀID
-     * @param reason ·â½ûÀíÓÉ£¬ÀíÓÉ²»ÄÜ´óÓÚ64¸ö×Ö·û»ò32¸öºº×Ö
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId Dodoå·
+     * @param noticeChannelId é€šçŸ¥é¢‘é“ID
+     * @param reason å°ç¦ç†ç”±ï¼Œç†ç”±ä¸èƒ½å¤§äº64ä¸ªå­—ç¬¦æˆ–32ä¸ªæ±‰å­—
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject addMemberBan(String authorization, String islandSourceId, String dodoSourceId, String noticeChannelId, String reason) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/member/ban/add";
@@ -424,27 +424,27 @@ public class MemberApi {
     }
 
     /**
-     * È¡Ïû³ÉÔ±ÓÀ¾Ã·â½û
+     * å–æ¶ˆæˆå‘˜æ°¸ä¹…å°ç¦
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId DodoºÅ
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId Dodoå·
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject removeMemberBan(String clientId, String token, String islandSourceId, String dodoSourceId) throws IOException {
         return removeMemberBan(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId);
     }
 
     /**
-     * È¡Ïû³ÉÔ±ÓÀ¾Ã·â½û
+     * å–æ¶ˆæˆå‘˜æ°¸ä¹…å°ç¦
      *
      * @param authorization authorization
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId DodoºÅ
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId Dodoå·
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject removeMemberBan(String authorization, String islandSourceId, String dodoSourceId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/member/ban/remove";

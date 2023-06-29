@@ -8,14 +8,14 @@ import java.beans.PropertyDescriptor;
 import java.util.*;
 
 /**
- * Ò»Ğ©ÓĞ¹ØÓÚ Map µÄÊµÓÃ·½·¨
+ * ä¸€äº›æœ‰å…³äº Map çš„å®ç”¨æ–¹æ³•
  * @author qscbm187531
  */
 public class MapUtil {
     /**
-     * ±éÀú Map
-     * @param map Ö¸¶¨Map
-     * @return ·µ»Ø¼¯ºÏ£¨¼¯ºÏÖĞÄÚÖÃÁËÒ»¸ö¼¯ºÏ£¬Ë÷Òı0ÊÇkey£¬1ÊÇValue£©
+     * éå† Map
+     * @param map æŒ‡å®šMap
+     * @return è¿”å›é›†åˆï¼ˆé›†åˆä¸­å†…ç½®äº†ä¸€ä¸ªé›†åˆï¼Œç´¢å¼•0æ˜¯keyï¼Œ1æ˜¯Valueï¼‰
      */
     public static List<List<Object>> ergodicMaps(Map<?, ?> map) {
         if (map.isEmpty()) return new ArrayList<>();
@@ -32,9 +32,9 @@ public class MapUtil {
     }
 
     /**
-     * ±éÀú HashMap
-     * @param map Ö¸¶¨HashMap
-     * @return ·µ»Ø¼¯ºÏ£¨¼¯ºÏÖĞÄÚÖÃÁËÒ»¸ö¼¯ºÏ£¬Ë÷Òı0ÊÇkey£¬1ÊÇValue£©
+     * éå† HashMap
+     * @param map æŒ‡å®šHashMap
+     * @return è¿”å›é›†åˆï¼ˆé›†åˆä¸­å†…ç½®äº†ä¸€ä¸ªé›†åˆï¼Œç´¢å¼•0æ˜¯keyï¼Œ1æ˜¯Valueï¼‰
      */
     public static List<List<Object>> ergodicHashMaps(HashMap<?, ?> map) {
         if (map.isEmpty()) return new ArrayList<>();
@@ -51,7 +51,7 @@ public class MapUtil {
     }
 
     /**
-     * map×ªbean
+     * mapè½¬bean
      *
      * @param type beanType
      * @param map  map
@@ -77,7 +77,7 @@ public class MapUtil {
     }
 
     /**
-     * map×ªjson
+     * mapè½¬json
      *
      * @param map  map
      * @return bean

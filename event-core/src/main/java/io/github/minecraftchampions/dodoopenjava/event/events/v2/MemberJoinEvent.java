@@ -7,7 +7,7 @@ import org.json.JSONObject;
 import javax.annotation.Nonnull;
 
 /**
- * ³ÉÔ±¼ÓÈëÊÂ¼ş
+ * æˆå‘˜åŠ å…¥äº‹ä»¶
  */
 public class MemberJoinEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
@@ -47,31 +47,31 @@ public class MemberJoinEvent extends Event {
     }
 
     /**
-     * »ñÈ¡Ê±¼ä´Á
-     * @return ·µ»ØÊ±¼ä´Á
+     * è·å–æ—¶é—´æˆ³
+     * @return è¿”å›æ—¶é—´æˆ³
      */
     public Integer getTimestamp() {
         return this.timestamp;
     }
 
     /**
-     * »ñÈ¡ÊÂ¼şID
-     * @return ÊÂ¼şID
+     * è·å–äº‹ä»¶ID
+     * @return äº‹ä»¶ID
      */
     public String getEventId() {
         return this.eventId;
     }
 
     /**
-     * »ñÈ¡ÈººÅ
-     * @return ÈººÅ
+     * è·å–ç¾¤å·
+     * @return ç¾¤å·
      */
     public String getIslandSourceId() {
         return this.islandSourceId;
     }
 
     /**
-     * »ñÈ¡DodoSourceId
+     * è·å–DodoSourceId
      * @return DodoSourceId
      */
     public String getDodoSourceId() {
@@ -79,15 +79,15 @@ public class MemberJoinEvent extends Event {
     }
 
     /**
-     * »ñÈ¡±ä¶¯Ê±¼ä
-     * @return ±ä¶¯Ê±¼ä
+     * è·å–å˜åŠ¨æ—¶é—´
+     * @return å˜åŠ¨æ—¶é—´
      */
     public String getModifyTime() {
         return this.modifyTime;
     }
 
     /**
-     * »ñÈ¡JSONObject
+     * è·å–JSONObject
      * @return JSONObject
      */
     public JSONObject getJsonObject() {
@@ -95,7 +95,7 @@ public class MemberJoinEvent extends Event {
     }
 
     /**
-     * »ñÈ¡JsonString
+     * è·å–JsonString
      * @return String
      */
     public String getJsonString() {

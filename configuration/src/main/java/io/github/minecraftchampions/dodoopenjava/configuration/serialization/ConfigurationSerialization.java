@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * ÓÃÓÚ´æ´¢ºÍ¼ìË÷ Configuration µÄÊµÓÃ³ÌĞòÀà¡£
+ * ç”¨äºå­˜å‚¨å’Œæ£€ç´¢ Configuration çš„å®ç”¨ç¨‹åºç±»ã€‚
  */
 public class ConfigurationSerialization {
     public static final String SERIALIZED_TYPE_KEY = "==";

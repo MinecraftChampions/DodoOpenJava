@@ -7,7 +7,7 @@ import org.apache.commons.lang3.Validate;
 import java.util.*;
 
 /**
- * ConfigurationSection µÄÊµÏÖÀà
+ * ConfigurationSection çš„å®ç°ç±»
  */
 public class MemorySection implements ConfigurationSection {
     protected final Map<String, Object> map = new LinkedHashMap<>();
@@ -17,7 +17,7 @@ public class MemorySection implements ConfigurationSection {
     private final String fullPath;
 
     /**
-     * ÀàµÄÄ¬ÈÏ¹¹Ôìº¯Êı£¨²»³£ÓÃ£©
+     * ç±»çš„é»˜è®¤æ„é€ å‡½æ•°ï¼ˆä¸å¸¸ç”¨ï¼‰
      */
     protected MemorySection() {
         if (!(this instanceof Configuration)) {
@@ -31,11 +31,11 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * ¹¹Ôìº¯Êı
+     * æ„é€ å‡½æ•°
      *
-     * @param parent ²ÎÊı1
-     * @param path Â·¾¶
-     * @throws IllegalArgumentException Òì³£Ê±Å×³ö
+     * @param parent å‚æ•°1
+     * @param path è·¯å¾„
+     * @throws IllegalArgumentException å¼‚å¸¸æ—¶æŠ›å‡º
      */
     protected MemorySection(ConfigurationSection parent, String path) {
         Validate.notNull(parent, "Parent cannot be null");
@@ -258,9 +258,9 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * »ñÈ¡StringÖµ
-     * @param path Â·¾¶
-     * @return StringÖµ
+     * è·å–Stringå€¼
+     * @param path è·¯å¾„
+     * @return Stringå€¼
      */
     public String getString(String path) {
         Object def = getDefault(path);
@@ -268,10 +268,10 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * »ñÈ¡StringÖµ
-     * @param path Â·¾¶
-     * @param def Ä¬ÈÏÖµ
-     * @return StringÖµ
+     * è·å–Stringå€¼
+     * @param path è·¯å¾„
+     * @param def é»˜è®¤å€¼
+     * @return Stringå€¼
      */
     public String getString(String path, String def) {
         Object val = get(path, def);
@@ -279,8 +279,8 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * ÅĞ¶ÏÖ¸¶¨Â·¾¶ÊÇ·ñÎªStringÀàĞÍ
-     * @param path Â·¾¶
+     * åˆ¤æ–­æŒ‡å®šè·¯å¾„æ˜¯å¦ä¸ºStringç±»å‹
+     * @param path è·¯å¾„
      * @return true/false
      */
     public boolean isString(String path) {
@@ -289,9 +289,9 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * »ñÈ¡IntÖµ
-     * @param path Â·¾¶
-     * @return IntÖµ
+     * è·å–Intå€¼
+     * @param path è·¯å¾„
+     * @return Intå€¼
      */
     public int getInt(String path) {
         Object def = getDefault(path);
@@ -299,10 +299,10 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * »ñÈ¡IntÖµ
-     * @param path Â·¾¶
-     * @param def Ä¬ÈÏÖµ
-     * @return StringÖµ
+     * è·å–Intå€¼
+     * @param path è·¯å¾„
+     * @param def é»˜è®¤å€¼
+     * @return Stringå€¼
      */
     public int getInt(String path, int def) {
         Object val = get(path, def);
@@ -310,9 +310,9 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * ÅĞ¶ÏÂ·¾¶ÊÇ·ñÎªIntÖµ
-     * @param path Â·¾¶
-     * @return true»òÕßfalse
+     * åˆ¤æ–­è·¯å¾„æ˜¯å¦ä¸ºIntå€¼
+     * @param path è·¯å¾„
+     * @return trueæˆ–è€…false
      */
     public boolean isInt(String path) {
         Object val = get(path);
@@ -320,9 +320,9 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * »ñÈ¡²¼¶ûÖµ
-     * @param path Â·¾¶
-     * @return ²¼¶ûÖµ
+     * è·å–å¸ƒå°”å€¼
+     * @param path è·¯å¾„
+     * @return å¸ƒå°”å€¼
      */
     public boolean getBoolean(String path) {
         Object def = getDefault(path);
@@ -330,10 +330,10 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * »ñÈ¡²¼¶ûÖµ
-     * @param path Â·¾¶
-     * @param def Ä¬ÈÏÖµ
-     * @return ²¼¶ûÖµ
+     * è·å–å¸ƒå°”å€¼
+     * @param path è·¯å¾„
+     * @param def é»˜è®¤å€¼
+     * @return å¸ƒå°”å€¼
      */
     public boolean getBoolean(String path, boolean def) {
         Object val = get(path, def);
@@ -341,9 +341,9 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * ÅĞ¶ÏÖ¸¶¨Â·¾¶µÄÖµÊÇ·ñÎª²¼¶ûÖµ
-     * @param path Â·¾¶
-     * @return true»òÕßÊÇfalse
+     * åˆ¤æ–­æŒ‡å®šè·¯å¾„çš„å€¼æ˜¯å¦ä¸ºå¸ƒå°”å€¼
+     * @param path è·¯å¾„
+     * @return trueæˆ–è€…æ˜¯false
      */
     public boolean isBoolean(String path) {
         Object val = get(path);
@@ -351,9 +351,9 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * »ñÈ¡DoubleÖµ
-     * @param path Â·¾¶
-     * @return DoubleÖµ
+     * è·å–Doubleå€¼
+     * @param path è·¯å¾„
+     * @return Doubleå€¼
      */
     public double getDouble(String path) {
         Object def = getDefault(path);
@@ -361,10 +361,10 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * »ñÈ¡DoubleÖµ
-     * @param path Â·¾¶
-     * @param def Ä¬ÈÏÖµ
-     * @return DoubleÖµ
+     * è·å–Doubleå€¼
+     * @param path è·¯å¾„
+     * @param def é»˜è®¤å€¼
+     * @return Doubleå€¼
      */
     public double getDouble(String path, double def) {
         Object val = get(path, def);
@@ -372,9 +372,9 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * ÅĞ¶ÏÖ¸¶¨Â·¾¶µÄÖµÊÇ·ñÎªDoubleÖµ
-     * @param path Â·¾¶
-     * @return true»òÕßÊÇfalse
+     * åˆ¤æ–­æŒ‡å®šè·¯å¾„çš„å€¼æ˜¯å¦ä¸ºDoubleå€¼
+     * @param path è·¯å¾„
+     * @return trueæˆ–è€…æ˜¯false
      */
     public boolean isDouble(String path) {
         Object val = get(path);
@@ -382,9 +382,9 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * »ñÈ¡LongÖµ
-     * @param path Â·¾¶
-     * @return longÖµ
+     * è·å–Longå€¼
+     * @param path è·¯å¾„
+     * @return longå€¼
      */
     public long getLong(String path) {
         Object def = getDefault(path);
@@ -392,10 +392,10 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * »ñÈ¡LongÖµ
-     * @param path Â·¾¶
-     * @param def Ä¬ÈÏÖµ
-     * @return longÖµ
+     * è·å–Longå€¼
+     * @param path è·¯å¾„
+     * @param def é»˜è®¤å€¼
+     * @return longå€¼
      */
     public long getLong(String path, long def) {
         Object val = get(path, def);
@@ -403,8 +403,8 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * ÅĞ¶ÏÊÇ·ñÎªLongÖµ
-     * @param path Â·¾¶
+     * åˆ¤æ–­æ˜¯å¦ä¸ºLongå€¼
+     * @param path è·¯å¾„
      * @return true/false
      */
     public boolean isLong(String path) {
@@ -413,9 +413,9 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * »ñÈ¡¼¯ºÏ
-     * @param path Â·¾¶
-     * @return ¼¯ºÏ
+     * è·å–é›†åˆ
+     * @param path è·¯å¾„
+     * @return é›†åˆ
      */
     public List<?> getList(String path) {
         Object def = getDefault(path);
@@ -423,10 +423,10 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * »ñÈ¡¼¯ºÏ
-     * @param path Â·¾¶
-     * @param def Ä¬ÈÏÖµ
-     * @return ¼¯ºÏ
+     * è·å–é›†åˆ
+     * @param path è·¯å¾„
+     * @param def é»˜è®¤å€¼
+     * @return é›†åˆ
      */
 
     public List<?> getList(String path, List<?> def) {
@@ -435,9 +435,9 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * ÅĞ¶ÏÖ¸¶¨Â·¾¶µÄÖµÊÇ·ñÎª¼¯ºÏ
-     * @param path Â·¾¶
-     * @return true»òÕßfalse
+     * åˆ¤æ–­æŒ‡å®šè·¯å¾„çš„å€¼æ˜¯å¦ä¸ºé›†åˆ
+     * @param path è·¯å¾„
+     * @return trueæˆ–è€…false
      */
     public boolean isList(String path) {
         Object val = get(path);
@@ -445,9 +445,9 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * »ñÈ¡String¼¯ºÏ
-     * @param path Â·¾¶
-     * @return ¼¯ºÏ
+     * è·å–Stringé›†åˆ
+     * @param path è·¯å¾„
+     * @return é›†åˆ
      */
     public List<String> getStringList(String path) {
         List<?> list = getList(path);
@@ -468,9 +468,9 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * »ñÈ¡Integer¼¯ºÏ
-     * @param path Â·¾¶
-     * @return ¼¯ºÏ
+     * è·å–Integeré›†åˆ
+     * @param path è·¯å¾„
+     * @return é›†åˆ
      */
     public List<Integer> getIntegerList(String path) {
         List<?> list = getList(path);
@@ -500,9 +500,9 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * »ñÈ¡Boolean¼¯ºÏ
-     * @param path Â·¾¶
-     * @return ¼¯ºÏ
+     * è·å–Booleané›†åˆ
+     * @param path è·¯å¾„
+     * @return é›†åˆ
      */
     public List<Boolean> getBooleanList(String path) {
         List<?> list = getList(path);
@@ -529,9 +529,9 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * »ñÈ¡Double¼¯ºÏ
-     * @param path Â·¾¶
-     * @return ¼¯ºÏ
+     * è·å–Doubleé›†åˆ
+     * @param path è·¯å¾„
+     * @return é›†åˆ
      */
     public List<Double> getDoubleList(String path) {
         List<?> list = getList(path);
@@ -561,9 +561,9 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * »ñÈ¡Float¼¯ºÏ
-     * @param path Â·¾¶
-     * @return ¼¯ºÏ
+     * è·å–Floaté›†åˆ
+     * @param path è·¯å¾„
+     * @return é›†åˆ
      */
     public List<Float> getFloatList(String path) {
         List<?> list = getList(path);
@@ -593,9 +593,9 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * »ñÈ¡Long¼¯ºÏ
-     * @param path Â·¾¶
-     * @return ¼¯ºÏ
+     * è·å–Longé›†åˆ
+     * @param path è·¯å¾„
+     * @return é›†åˆ
      */
     public List<Long> getLongList(String path) {
         List<?> list = getList(path);
@@ -625,9 +625,9 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * »ñÈ¡Byte¼¯ºÏ
-     * @param path Â·¾¶
-     * @return ¼¯ºÏ
+     * è·å–Byteé›†åˆ
+     * @param path è·¯å¾„
+     * @return é›†åˆ
      */
     public List<Byte> getByteList(String path) {
         List<?> list = getList(path);
@@ -657,9 +657,9 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * »ñÈ¡Character¼¯ºÏ
-     * @param path Â·¾¶
-     * @return ¼¯ºÏ
+     * è·å–Characteré›†åˆ
+     * @param path è·¯å¾„
+     * @return é›†åˆ
      */
     public List<Character> getCharacterList(String path) {
         List<?> list = getList(path);
@@ -687,9 +687,9 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * »ñÈ¡Short¼¯ºÏ
-     * @param path Â·¾¶
-     * @return ¼¯ºÏ
+     * è·å–Shorté›†åˆ
+     * @param path è·¯å¾„
+     * @return é›†åˆ
      */
     public List<Short> getShortList(String path) {
         List<?> list = getList(path);
@@ -806,14 +806,14 @@ public class MemorySection implements ConfigurationSection {
     }
 
     /**
-     * ´´½¨Ò»¸öÂ·¾¶
+     * åˆ›å»ºä¸€ä¸ªè·¯å¾„
      */
     public static String createPath(ConfigurationSection section, String key) {
         return createPath(section, key, (section == null) ? null : section.getRoot());
     }
 
     /**
-     * ´´½¨Ò»¸öÂ·¾¶
+     * åˆ›å»ºä¸€ä¸ªè·¯å¾„
      */
     public static String createPath(ConfigurationSection section, String key, ConfigurationSection relativeTo) {
         Validate.notNull(section, "Cannot create path without a section");

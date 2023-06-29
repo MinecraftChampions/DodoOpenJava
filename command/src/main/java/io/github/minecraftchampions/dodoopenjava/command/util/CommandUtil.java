@@ -15,12 +15,12 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * ¸ü¿ì½İµÄÃüÁî×¢²á(ÏĞ×ÅÃ»ÊÂĞ´µÄ)
+ * æ›´å¿«æ·çš„å‘½ä»¤æ³¨å†Œ(é—²ç€æ²¡äº‹å†™çš„)
  */
 public class CommandUtil {
     /**
-     * ×¢²áÖ÷ÃüÁî(»á×Ô¶¯½øĞĞ×ÓÃüÁîÆ¥Åä£¬²»ĞèÒª¶îÍâ¼ÓÈë×ÓÃüÁî´¥·¢)
-     * @param clazz ÃüÁî´¦ÀíµÄ·½·¨ËùÔÚÀà(ÃüÁî´¦ÀíÆ÷·½·¨Ğë·Ç¾²Ì¬)
+     * æ³¨å†Œä¸»å‘½ä»¤(ä¼šè‡ªåŠ¨è¿›è¡Œå­å‘½ä»¤åŒ¹é…ï¼Œä¸éœ€è¦é¢å¤–åŠ å…¥å­å‘½ä»¤è§¦å‘)
+     * @param clazz å‘½ä»¤å¤„ç†çš„æ–¹æ³•æ‰€åœ¨ç±»(å‘½ä»¤å¤„ç†å™¨æ–¹æ³•é¡»éé™æ€)
      */
     public static void registerMainCommand(Class<?> clazz, String authorization) {
         MainCommand mainCommand = null;
@@ -62,11 +62,11 @@ public class CommandUtil {
 
     public static Map<String[],Method> subCommandMethods = new HashMap<>();
 
-    /** Æ¥Åä×ÓÃüÁî
+    /** åŒ¹é…å­å‘½ä»¤
      *
-     * @param mainCommand Ö÷ÃüÁî
-     * @param sender ·¢ËÍÕß
-     * @param args ²ÎÊı
+     * @param mainCommand ä¸»å‘½ä»¤
+     * @param sender å‘é€è€…
+     * @param args å‚æ•°
      */
     public static void onSubCommand(String mainCommand,CommandSender sender,String[] args) {
         Method method = null;
@@ -92,8 +92,8 @@ public class CommandUtil {
     }
 
     /**
-     * ×¢²á×ÓÃüÁî
-     * @param clazz ÃüÁî´¦ÀíµÄ·½·¨ËùÔÚÀà(ÃüÁî´¦ÀíÆ÷·½·¨Ğë¾²Ì¬)
+     * æ³¨å†Œå­å‘½ä»¤
+     * @param clazz å‘½ä»¤å¤„ç†çš„æ–¹æ³•æ‰€åœ¨ç±»(å‘½ä»¤å¤„ç†å™¨æ–¹æ³•é¡»é™æ€)
      */
     public static void registerSubCommand(Class<?> clazz) {
         SubCommand subCommand = null;

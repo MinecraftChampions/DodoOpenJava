@@ -1,5 +1,5 @@
 /**
- * 关于卡片消息
+ * 鍏充簬鍗＄墖娑堟伅
  * @author qscbm187531
  */
 package io.github.minecraftchampions.dodoopenjava.card;

@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ±¸×¢×é¼ş
+ * å¤‡æ³¨ç»„ä»¶
  */
 public class RemarkComponent extends Component{
     /**
-     * ³õÊ¼»¯
+     * åˆå§‹åŒ–
      */
     public RemarkComponent() {
         jsonCard.put("type","remark");
@@ -19,8 +19,8 @@ public class RemarkComponent extends Component{
     }
 
     /**
-     * ³õÊ¼»¯
-     * @param object ×é¼ş
+     * åˆå§‹åŒ–
+     * @param object ç»„ä»¶
      */
     public RemarkComponent(ImageComponent object) {
         jsonCard.put("type","remark");
@@ -29,16 +29,16 @@ public class RemarkComponent extends Component{
     }
 
     /**
-     * Ôö¼Ó±¸×¢
-     * @param object Êı¾İ
+     * å¢åŠ å¤‡æ³¨
+     * @param object æ•°æ®
      */
     public void addElement(ImageComponent object) {
         jsonCard.getJSONArray("elements").put(object.getJsonCard());
     }
 
     /**
-     * ³õÊ¼»¯
-     * @param object ×é¼ş
+     * åˆå§‹åŒ–
+     * @param object ç»„ä»¶
      */
     public RemarkComponent(SectionComponent object) {
         jsonCard.put("type","remark");
@@ -48,19 +48,19 @@ public class RemarkComponent extends Component{
 
 
     /**
-     * Ôö¼Ó±¸×¢
-     * @param object Êı¾İ
+     * å¢åŠ å¤‡æ³¨
+     * @param object æ•°æ®
      */
     public void addElement(SectionComponent object) {
         if (object.isParagraph) {
-            System.out.println("´íÎóµÄ´«²Î(¶àÀ¸ÎÄ±¾)");
+            System.out.println("é”™è¯¯çš„ä¼ å‚(å¤šæ æ–‡æœ¬)");
         }
         jsonCard.getJSONArray("elements").put(object.getJsonCard());
     }
 
     /**
-     * ÒÆ³ı±¸×¢
-     * @param component ±¸×¢
+     * ç§»é™¤å¤‡æ³¨
+     * @param component å¤‡æ³¨
      */
     public void removeImage(Component component) {
         List<Object> list = jsonCard.getJSONArray("element").toList();
@@ -79,7 +79,7 @@ public class RemarkComponent extends Component{
     }
 
     /**
-     * É¾³ıÒ»¸ö±¸×¢
+     * åˆ é™¤ä¸€ä¸ªå¤‡æ³¨
      * @param index index
      */
     public void removeRemark(int index) {

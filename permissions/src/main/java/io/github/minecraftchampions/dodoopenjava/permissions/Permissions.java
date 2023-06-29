@@ -5,7 +5,7 @@ import io.github.minecraftchampions.dodoopenjava.permissions.data.*;
 import java.io.IOException;
 
 /**
- * È¨ÏŞÏµÍ³ºËĞÄ
+ * æƒé™ç³»ç»Ÿæ ¸å¿ƒ
  */
 public class Permissions {
     public static PermData permData = new PermData();
@@ -14,9 +14,9 @@ public class Permissions {
     public static boolean initialized;
 
     /**
-     * ³õÊ¼»¯
-     * @param type ´æ´¢ÀàĞÍ
-     * @return true³É¹¦£¬falseÊ§°Ü
+     * åˆå§‹åŒ–
+     * @param type å­˜å‚¨ç±»å‹
+     * @return trueæˆåŠŸï¼Œfalseå¤±è´¥
      */
     public static boolean init(DataType type) {
         if (initialized) {
@@ -64,8 +64,8 @@ public class Permissions {
     }
 
     /**
-     * ×Ô¶¯±£´æÎÄ¼ş
-     * Ã¿¸ô10·ÖÖÓ±£´æÒ»´Î
+     * è‡ªåŠ¨ä¿å­˜æ–‡ä»¶
+     * æ¯éš”10åˆ†é’Ÿä¿å­˜ä¸€æ¬¡
      */
     public static void autoSave() {
         Thread thread = new Thread(target);
@@ -79,7 +79,7 @@ public class Permissions {
         @Override
         public void run() {
             if (init) {
-                System.out.println("²»ÒªÖØ¸´µ÷ÓÃ×Ô¶¯±£´æ·½·¨");
+                System.out.println("ä¸è¦é‡å¤è°ƒç”¨è‡ªåŠ¨ä¿å­˜æ–¹æ³•");
                 return;
             } else {
                 init = true;
@@ -92,7 +92,7 @@ public class Permissions {
                         case "JSON" -> permData.saveToFile();
                         case "Xml" -> permData.saveToFile();
                         case "Toml" -> permData.saveToFile();
-                        default -> System.err.println("´íÎóµÄ´æ´¢ÖÖÀà");
+                        default -> System.err.println("é”™è¯¯çš„å­˜å‚¨ç§ç±»");
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();

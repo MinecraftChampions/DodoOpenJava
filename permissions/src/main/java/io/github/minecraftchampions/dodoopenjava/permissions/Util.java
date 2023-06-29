@@ -8,14 +8,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * ¹¤¾ßÀà
+ * å·¥å…·ç±»
  */
 public class Util {
 
     /**
-     * ÅĞ¶ÏÈ¨ÏŞÊÇ·ñ·ûºÏ
-     * @param userPerm ÓÃ»§µÄÈ¨ÏŞ
-     * @param perm ÅĞ¶ÏµÄÈ¨ÏŞ
+     * åˆ¤æ–­æƒé™æ˜¯å¦ç¬¦åˆ
+     * @param userPerm ç”¨æˆ·çš„æƒé™
+     * @param perm åˆ¤æ–­çš„æƒé™
      * @return ture/false
      */
     public static boolean comparePermissionString(String userPerm, String perm) {
@@ -35,9 +35,9 @@ public class Util {
     }
 
     /**
-     * json×ªToml
-     * ÒÔÏÂµÄ²»ÄÜ×ª»»ºÃ
-     * 1£º
+     * jsonè½¬Toml
+     * ä»¥ä¸‹çš„ä¸èƒ½è½¬æ¢å¥½
+     * 1ï¼š
      * {
      *   array: [
      *     {
@@ -45,12 +45,12 @@ public class Util {
      *     }
      *   ]
      * }
-     * Êı×éÀïÃæ±ğ·ÅJsonObject
-     * 2£º
+     * æ•°ç»„é‡Œé¢åˆ«æ”¾JsonObject
+     * 2ï¼š
      * {
      *   "\"": "a"
      * }
-     * ¼ü²»ÒªÓĞÌØÊâ×Ö·û
+     * é”®ä¸è¦æœ‰ç‰¹æ®Šå­—ç¬¦
      * @param s json
      * @return toml
      */
@@ -86,44 +86,44 @@ public class Util {
     }
 
     /**
-     * ½«jsonObject×ª»»ÎªÒÔÏÂmapÊµÀı
+     * å°†jsonObjectè½¬æ¢ä¸ºä»¥ä¸‹mapå®ä¾‹
      * [path/path]: {}
      * [path/p]: {}
      * @param jsonObject jsonObject
-     * @param key ¸¸¼ü
+     * @param key çˆ¶é”®
      * @return Map
      */
     public static Map<String,JSONObject> changeMapForEach(JSONObject jsonObject, String key) {
         HashMap<String, JSONObject> map = new HashMap<>();
-        Set<String> keys = jsonObject.keySet();//»ñÈ¡¼üµÄÁĞ±í
+        Set<String> keys = jsonObject.keySet();//è·å–é”®çš„åˆ—è¡¨
         if (key == null) {
             map.put("\"", jsonObject);
         }
         for (String s : keys) {
             Object object = jsonObject.get(s);
-            //ÅĞ¶ÏÊÇ·ñÄÜ×ª³ÉJSONObject
+            //åˆ¤æ–­æ˜¯å¦èƒ½è½¬æˆJSONObject
             if (object instanceof JSONObject json) {
-                //Èç¹ûÃ»ÓĞ¸¸keyµÄ»°
+                //å¦‚æœæ²¡æœ‰çˆ¶keyçš„è¯
                 if (key != null) {
                     if (!Objects.equals(key, "\"")) {
                         map.put(key + "." + s, json);
-                        map.putAll(changeMapForEach(json, key + "." + s));//¼ÌĞø±éÀúÑ°ÕÒ
+                        map.putAll(changeMapForEach(json, key + "." + s));//ç»§ç»­éå†å¯»æ‰¾
                     }
                 } else {
                     map.put(s, json);
-                    map.putAll(changeMapForEach(json, s));//¼ÌĞø±éÀúÑ°ÕÒ
+                    map.putAll(changeMapForEach(json, s));//ç»§ç»­éå†å¯»æ‰¾
                 }
             }
         }
-        //Èç¹ûÃ»ÓĞ¸¸¼ü
-        //ÅĞ¶Ï¸÷¸öjsonObjectÊÇ·ñÖØ¸´
+        //å¦‚æœæ²¡æœ‰çˆ¶é”®
+        //åˆ¤æ–­å„ä¸ªjsonObjectæ˜¯å¦é‡å¤
         if (key == null) {
-            //¿ËÂ¡mapÑ­»·
+            //å…‹éš†mapå¾ªç¯
             ((HashMap<String, JSONObject>)map.clone()).forEach((k, value) -> {
-                Set<String> keySet = value.keySet();//»ñÈ¡µÄjsonÁĞ±í
+                Set<String> keySet = value.keySet();//è·å–çš„jsonåˆ—è¡¨
                 List<String> list = new ArrayList<>();
-                HashMap<String, JSONObject> m =  (HashMap<String, JSONObject>)map.clone();//¿ËÂ¡
-                m.remove(k);//ÒÆ³ı
+                HashMap<String, JSONObject> m =  (HashMap<String, JSONObject>)map.clone();//å…‹éš†
+                m.remove(k);//ç§»é™¤
                 String[] strings = k.split("\\.");
                 m.forEach((n, object) -> {
                     boolean contains;

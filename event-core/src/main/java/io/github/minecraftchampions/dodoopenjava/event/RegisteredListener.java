@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.events.EventException;
 
 /**
- * ¼àÌıÆ÷Ïà¹Ø
+ * ç›‘å¬å™¨ç›¸å…³
  */
 public class RegisteredListener {
     private final Listener listener;
@@ -12,9 +12,9 @@ public class RegisteredListener {
     private final EventExecutor executor;
 
     /**
-     * ×¢²á¼àÌıÆ÷
-     * @param listener ¼àÌıÆ÷
-     * @param priority ÓÅÏÈ¼¶
+     * æ³¨å†Œç›‘å¬å™¨
+     * @param listener ç›‘å¬å™¨
+     * @param priority ä¼˜å…ˆçº§
      */
     public RegisteredListener(@NotNull final Listener listener, @NotNull final EventExecutor executor, @NotNull final EventPriority priority) {
         this.listener = listener;
@@ -23,9 +23,9 @@ public class RegisteredListener {
     }
 
     /**
-     * »ñÈ¡¼àÌıÆ÷
+     * è·å–ç›‘å¬å™¨
      *
-     * @return ¼àÌıÆ÷
+     * @return ç›‘å¬å™¨
      */
     @NotNull
     public Listener getListener() {
@@ -33,9 +33,9 @@ public class RegisteredListener {
     }
 
     /**
-     * »ñÈ¡ÓÅÏÈ¼¶
+     * è·å–ä¼˜å…ˆçº§
      *
-     * @return ÓÅÏÈ¼¶
+     * @return ä¼˜å…ˆçº§
      */
     @NotNull
     public EventPriority getPriority() {
@@ -43,10 +43,10 @@ public class RegisteredListener {
     }
 
     /**
-     * ´¥·¢ÊÂ¼ş
+     * è§¦å‘äº‹ä»¶
      *
-     * @param event ÊÂ¼ş
-     * @throws EventException ÊÂ¼şÒì³£Ê±Å×³öÒì³£
+     * @param event äº‹ä»¶
+     * @throws EventException äº‹ä»¶å¼‚å¸¸æ—¶æŠ›å‡ºå¼‚å¸¸
      */
     public void callEvent(@NotNull final Event event) throws EventException {
         executor.execute(listener, event);

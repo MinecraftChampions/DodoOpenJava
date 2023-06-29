@@ -1,13 +1,13 @@
 package io.github.minecraftchampions.dodoopenjava.card.component;
 
 /**
- * ÊÓÆµ×é¼ş
+ * è§†é¢‘ç»„ä»¶
  */
 public class VideoComponent extends Component {
     /**
-     * ³õÊ¼»¯
-     * @param url ÊÓÆµµØÖ·
-     * @param cover ·âÃæµØÖ·
+     * åˆå§‹åŒ–
+     * @param url è§†é¢‘åœ°å€
+     * @param cover å°é¢åœ°å€
      */
     public VideoComponent(String url,String cover) {
         jsonCard.put("type","video");
@@ -16,10 +16,10 @@ public class VideoComponent extends Component {
     }
 
     /**
-     * ³õÊ¼»¯
-     * @param url ÊÓÆµµØÖ·
-     * @param cover ·âÃæµØÖ·
-     * @param title ÊÓÆµ±êÌâ
+     * åˆå§‹åŒ–
+     * @param url è§†é¢‘åœ°å€
+     * @param cover å°é¢åœ°å€
+     * @param title è§†é¢‘æ ‡é¢˜
      */
     public VideoComponent(String url,String cover,String title) {
         jsonCard.put("type","video");
@@ -29,24 +29,24 @@ public class VideoComponent extends Component {
     }
 
     /**
-     * ±à¼­ÊÓÆµurl
-     * @param url µØÖ·
+     * ç¼–è¾‘è§†é¢‘url
+     * @param url åœ°å€
      */
     public void editUrl(String url) {
         jsonCard.put("src",url);
     }
 
     /**
-     * ±à¼­·âÃæurl
-     * @param url µØÖ·
+     * ç¼–è¾‘å°é¢url
+     * @param url åœ°å€
      */
     public void editCover(String url) {
         jsonCard.put("cover",url);
     }
 
     /**
-     * ±à¼­±êÌâ
-     * @param title ±êÌâ
+     * ç¼–è¾‘æ ‡é¢˜
+     * @param title æ ‡é¢˜
      */
     public void editTitle(String title) {
         jsonCard.put("title",title);

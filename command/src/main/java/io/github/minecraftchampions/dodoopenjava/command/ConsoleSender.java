@@ -1,12 +1,12 @@
 package io.github.minecraftchampions.dodoopenjava.command;
 
 /**
- * ¿ØÖÆÌ¨·¢ËÍÕß
+ * æ§åˆ¶å°å‘é€è€…
  */
 public class ConsoleSender extends CommandSender{
     /**
-     * »Ø¸´·¢ËÍÕß·¢ËÍµÄÏûÏ¢
-     * @param message ÏûÏ¢
+     * å›å¤å‘é€è€…å‘é€çš„æ¶ˆæ¯
+     * @param message æ¶ˆæ¯
      */
     @Override
     public void referencedMessage(String message) {
@@ -14,9 +14,9 @@ public class ConsoleSender extends CommandSender{
     }
 
     /**
-     * ÅĞ¶ÏÊÇ·ñÓĞÈ¨ÏŞ
-     * @param permission È¨ÏŞ
-     * @return true³É¹¦£¬falseÊ§°Ü
+     * åˆ¤æ–­æ˜¯å¦æœ‰æƒé™
+     * @param permission æƒé™
+     * @return trueæˆåŠŸï¼Œfalseå¤±è´¥
      */
     @Override
     public Boolean hasPermission(String permission) {

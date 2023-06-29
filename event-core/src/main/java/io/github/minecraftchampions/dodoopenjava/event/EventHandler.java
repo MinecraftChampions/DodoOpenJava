@@ -6,15 +6,15 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * ÓÃÀ´±ê¼ÇÒª´¦ÀíµÄÊÂ¼şµÄ×¢ÊÍ¡£
+ * ç”¨æ¥æ ‡è®°è¦å¤„ç†çš„äº‹ä»¶çš„æ³¨é‡Šã€‚
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface EventHandler {
     /**
-     * ¶¨ÒåÊÂ¼şµÄÓÅÏÈ¼¶¡£
+     * å®šä¹‰äº‹ä»¶çš„ä¼˜å…ˆçº§ã€‚
      * <p>
-     * ÊÂ¼ş±»Ö´ĞĞµÄË³Ğò£¨ÏÈºóÅÅÁĞ£©£º
+     * äº‹ä»¶è¢«æ‰§è¡Œçš„é¡ºåºï¼ˆå…ˆåæ’åˆ—ï¼‰ï¼š
      * <ol>
      * <li>LOWEST</li>
      * <li>LOW</li>
@@ -23,7 +23,7 @@ public @interface EventHandler {
      * <li>HIGHEST</li>
      * <li>MONITOR</li>
      * </ol>
-     * @return ÓÅÏÈ¼¶
+     * @return ä¼˜å…ˆçº§
      */
     EventPriority priority() default EventPriority.NORMAL;
 }

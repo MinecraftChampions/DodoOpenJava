@@ -6,15 +6,15 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Ó¦ÓÃÓÚ½«ËùÓĞ·´ĞòÁĞ»¯Î¯ÍĞ¸øÁíÒ»¸öConfigurationSerializableµÄConfigurationSerializable¡£
+ * åº”ç”¨äºå°†æ‰€æœ‰ååºåˆ—åŒ–å§”æ‰˜ç»™å¦ä¸€ä¸ªConfigurationSerializableçš„ConfigurationSerializableã€‚
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface DelegateDeserialization {
     /**
-     * ÄÄ¸öÀàÓ¦ÓÃ×÷´ËÀà·´ĞòÁĞ»¯µÄ´úÀí
+     * å“ªä¸ªç±»åº”ç”¨ä½œæ­¤ç±»ååºåˆ—åŒ–çš„ä»£ç†
      *
-     * @return ´úÀíÀà
+     * @return ä»£ç†ç±»
      */
-    public Class<? extends ConfigurationSerializable> value();
+    Class<? extends ConfigurationSerializable> value();
 }

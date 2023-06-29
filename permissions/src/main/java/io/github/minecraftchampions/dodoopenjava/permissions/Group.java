@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * È¨ÏŞ×é
+ * æƒé™ç»„
  */
 public class Group extends DataUnit implements Cloneable {
     private List<String> inherits = new LinkedList<>();

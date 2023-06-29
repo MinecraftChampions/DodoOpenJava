@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ¶àÍ¼×é¼ş
+ * å¤šå›¾ç»„ä»¶
  */
 public class ImageGroupComponent extends Component {
     /**
-     * ³õÊ¼»¯
+     * åˆå§‹åŒ–
      */
     public ImageGroupComponent() {
         jsonCard.put("type","image-group");
@@ -19,8 +19,8 @@ public class ImageGroupComponent extends Component {
     }
 
     /**
-     * ³õÊ¼»¯
-     * @param list Í¼Æ¬×é¼şÁĞ±í
+     * åˆå§‹åŒ–
+     * @param list å›¾ç‰‡ç»„ä»¶åˆ—è¡¨
      */
     public ImageGroupComponent(List<ImageComponent> list) {
         jsonCard.put("type","image-group");
@@ -29,16 +29,16 @@ public class ImageGroupComponent extends Component {
     }
 
     /**
-     * Ôö¼ÓÍ¼Æ¬×é¼ş
-     * @param image ×é¼ş
+     * å¢åŠ å›¾ç‰‡ç»„ä»¶
+     * @param image ç»„ä»¶
      */
     public void addImage(ImageComponent image) {
         jsonCard.getJSONArray("elements").put(image.getJsonCard());
     }
 
     /**
-     * ÒÆ³ıÍ¼Æ¬£¬Èç¹ûÓĞ¶à¸öÏàÍ¬µÄÔòÈ«²¿ÒÆ³ı
-     * @param component Í¼Æ¬
+     * ç§»é™¤å›¾ç‰‡ï¼Œå¦‚æœæœ‰å¤šä¸ªç›¸åŒçš„åˆ™å…¨éƒ¨ç§»é™¤
+     * @param component å›¾ç‰‡
      */
     public void removeImage(ImageComponent component) {
         List<Object> list = jsonCard.getJSONArray("element").toList();
@@ -57,7 +57,7 @@ public class ImageGroupComponent extends Component {
     }
 
     /**
-     * É¾³ıÒ»¸öÍ¼Æ¬
+     * åˆ é™¤ä¸€ä¸ªå›¾ç‰‡
      * @param index index
      */
     public void removeImage(int index) {

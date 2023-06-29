@@ -3,25 +3,25 @@ package io.github.minecraftchampions.dodoopenjava.command;
 import okio.ByteString;
 
 /**
- * ÃüÁîµÄ½Ó¿Ú
+ * å‘½ä»¤çš„æ¥å£
  */
 public interface CommandExecutor {
     /**
-     * ÃüÁîÃû£¨²»´øĞ±¸Ë£©
-     * @return Ö÷ÃüÁî
+     * å‘½ä»¤åï¼ˆä¸å¸¦æ–œæ†ï¼‰
+     * @return ä¸»å‘½ä»¤
      */
     ByteString MainCommand();
 
     /**
-     * ĞèÒªµÄÈ¨ÏŞ
-     * @return È¨ÏŞ
+     * éœ€è¦çš„æƒé™
+     * @return æƒé™
      */
     String Permission();
 
     /**
-     * ÃüÁî´¦Àí
-     * @param sender ·¢ËÍÕß
-     * @param args ²ÎÊı
+     * å‘½ä»¤å¤„ç†
+     * @param sender å‘é€è€…
+     * @param args å‚æ•°
      */
     void onCommand(CommandSender sender, String[] args);
 }

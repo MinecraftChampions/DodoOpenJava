@@ -1,4 +1,4 @@
 /**
- * ¹ØÓÚ¿¨Æ¬ÏûÏ¢µÄÒ»Ğ©Ã¶¾Ù
+ * å…³äºå¡ç‰‡æ¶ˆæ¯çš„ä¸€äº›æšä¸¾
  */
 package io.github.minecraftchampions.dodoopenjava.card.enums;

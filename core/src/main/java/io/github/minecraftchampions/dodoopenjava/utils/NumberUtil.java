@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * ¹ØÓÚ Êı×Ö µÄÒ»Ğ©ÊµÓÃ·½·¨
+ * å…³äº æ•°å­— çš„ä¸€äº›å®ç”¨æ–¹æ³•
  * @author qscbm187531
  */
 public class NumberUtil {
@@ -40,9 +40,9 @@ public class NumberUtil {
     }
 
     /**
-     * ×ª»»Êı×ÖÎªÂŞÂíÊı×Ö
-     * @param number Êı×Ö
-     * @return ÂŞÂíÊı×Ö
+     * è½¬æ¢æ•°å­—ä¸ºç½—é©¬æ•°å­—
+     * @param number æ•°å­—
+     * @return ç½—é©¬æ•°å­—
      */
     public static String toRoman(int number) {
         if (number > 0) {
@@ -58,15 +58,15 @@ public class NumberUtil {
     }
 
     /**
-     * Êı×ÖÕıÔò
+     * æ•°å­—æ­£åˆ™
      */
     public final static Pattern NUMERIC = Pattern.compile("^-?\\d+(\\.\\d+)?$");
 
     /**
-     * ×ª»»Êı¾İÀàĞÍÎªInt
+     * è½¬æ¢æ•°æ®ç±»å‹ä¸ºInt
      *
-     * @param object Öµ
-     * @return ×ª»»ºóµÄÖµ
+     * @param object å€¼
+     * @return è½¬æ¢åçš„å€¼
      */
     public static int toInt(Object object) {
         if (object instanceof Number) {
@@ -81,10 +81,10 @@ public class NumberUtil {
     }
 
     /**
-     * ×ª»»Êı¾İÀàĞÍÎªFloat
+     * è½¬æ¢æ•°æ®ç±»å‹ä¸ºFloat
      *
-     * @param object Öµ
-     * @return ×ª»»ºóµÄÖµ
+     * @param object å€¼
+     * @return è½¬æ¢åçš„å€¼
      */
     public static float toFloat(Object object) {
         if (object instanceof Number) {
@@ -99,10 +99,10 @@ public class NumberUtil {
     }
 
     /**
-     * ×ª»»Êı¾İÀàĞÍÎªDouble
+     * è½¬æ¢æ•°æ®ç±»å‹ä¸ºDouble
      *
-     * @param object Öµ
-     * @return ×ª»»ºóµÄÖµ
+     * @param object å€¼
+     * @return è½¬æ¢åçš„å€¼
      */
     public static double toDouble(Object object) {
         if (object instanceof Number) {
@@ -117,10 +117,10 @@ public class NumberUtil {
     }
 
     /**
-     * ×ª»»Êı¾İÀàĞÍÎªLong
+     * è½¬æ¢æ•°æ®ç±»å‹ä¸ºLong
      *
-     * @param object Öµ
-     * @return ×ª»»ºóµÄÖµ
+     * @param object å€¼
+     * @return è½¬æ¢åçš„å€¼
      */
     public static long toLong(Object object) {
         if (object instanceof Number) {
@@ -135,10 +135,10 @@ public class NumberUtil {
     }
 
     /**
-     * ×ª»»Êı¾İÀàĞÍÎªShort
+     * è½¬æ¢æ•°æ®ç±»å‹ä¸ºShort
      *
-     * @param object Öµ
-     * @return ×ª»»ºóµÄÖµ
+     * @param object å€¼
+     * @return è½¬æ¢åçš„å€¼
      */
     public static short toShort(Object object) {
         if (object instanceof Number) {
@@ -153,10 +153,10 @@ public class NumberUtil {
     }
 
     /**
-     * ×ª»»Êı¾İÀàĞÍÎªByte
+     * è½¬æ¢æ•°æ®ç±»å‹ä¸ºByte
      *
-     * @param object Öµ
-     * @return ×ª»»ºóµÄÖµ
+     * @param object å€¼
+     * @return è½¬æ¢åçš„å€¼
      */
     public static byte toByte(Object object) {
         if (object instanceof Number) {
@@ -171,30 +171,30 @@ public class NumberUtil {
     }
 
     /**
-     * ²âÊÔÊıÖµÊÇ·ñÎªÓĞÏŞÊı
+     * æµ‹è¯•æ•°å€¼æ˜¯å¦ä¸ºæœ‰é™æ•°
      *
-     * @param d Öµ
-     * @return true»òfalse
+     * @param d å€¼
+     * @return trueæˆ–false
      */
     public static boolean isFinite(double d) {
         return Math.abs(d) <= Double.MAX_VALUE;
     }
 
     /**
-     * ²âÊÔÊıÖµÊÇ·ñÎªÓĞÏŞÊı
+     * æµ‹è¯•æ•°å€¼æ˜¯å¦ä¸ºæœ‰é™æ•°
      *
-     * @param f Öµ
-     * @return true»òfalse
+     * @param f å€¼
+     * @return trueæˆ–false
      */
     public static boolean isFinite(float f) {
         return Math.abs(f) <= Float.MAX_VALUE;
     }
 
     /**
-     * ÀûÓÃÕıÔò±í´ïÊ½ÅĞ¶Ï×Ö·û´®ÊÇ·ñÊÇÊı×Ö
+     * åˆ©ç”¨æ­£åˆ™è¡¨è¾¾å¼åˆ¤æ–­å­—ç¬¦ä¸²æ˜¯å¦æ˜¯æ•°å­—
      *
-     * @param str ×Ö·û´®
-     * @return trueÊÇÊı×Ö
+     * @param str å­—ç¬¦ä¸²
+     * @return trueæ˜¯æ•°å­—
      */
     public static Integer isNumericToInt(String str) {
         try {
@@ -209,10 +209,10 @@ public class NumberUtil {
     }
 
     /**
-     * ÀûÓÃÕıÔò±í´ïÊ½ÅĞ¶Ï×Ö·û´®ÊÇ·ñÊÇÊı×Ö
+     * åˆ©ç”¨æ­£åˆ™è¡¨è¾¾å¼åˆ¤æ–­å­—ç¬¦ä¸²æ˜¯å¦æ˜¯æ•°å­—
      *
-     * @param str ×Ö·û´®
-     * @return trueÊÇÊı×Ö
+     * @param str å­—ç¬¦ä¸²
+     * @return trueæ˜¯æ•°å­—
      */
     public static Long isNumericToLong(String str) {
         try {
@@ -227,23 +227,23 @@ public class NumberUtil {
     }
 
     /**
-     * ½«ÕûÊı¸ñÊ½×ª»¯ÎªÊ®Áù½øÖÆÖµ
+     * å°†æ•´æ•°æ ¼å¼è½¬åŒ–ä¸ºåå…­è¿›åˆ¶å€¼
      *
-     * @param i ÊıÖµ
-     * @return Ê®Áù½øÖÆÊıÖµ
+     * @param i æ•°å€¼
+     * @return åå…­è¿›åˆ¶æ•°å€¼
      */
     public static String hex(int i) {
         return String.format("0x%02X", i);
     }
 
     /**
-     * ½øĞĞ¶ş·Ö²éÑ¯
+     * è¿›è¡ŒäºŒåˆ†æŸ¥è¯¢
      * <p>
-     * ÇëÒ»¶¨Òª°´´ÓĞ¡µ½´óµÄË³Ğò
+     * è¯·ä¸€å®šè¦æŒ‰ä»å°åˆ°å¤§çš„é¡ºåº
      *
-     * @param srcArray ±»Æ¥ÅäµÄÊı×é
-     * @param des ÒªÆ¥ÅäµÄÖµ
-     * @return ·µ»ØÆ¥ÅäµÄÊı×ÖµÄÔÚÊı×éµÄË÷Òı£¬-1ÎªÆ¥Åä²»µ½
+     * @param srcArray è¢«åŒ¹é…çš„æ•°ç»„
+     * @param des è¦åŒ¹é…çš„å€¼
+     * @return è¿”å›åŒ¹é…çš„æ•°å­—çš„åœ¨æ•°ç»„çš„ç´¢å¼•ï¼Œ-1ä¸ºåŒ¹é…ä¸åˆ°
      */
     public static int binarySearch(Integer[] srcArray, int des) {
         int start = 0;
@@ -264,11 +264,11 @@ public class NumberUtil {
     private static final int DEF_DIV_SCALE = 4;
 
     /**
-     * Ìá¹©¾«È·µÄ¼Ó·¨ÔËËã
+     * æä¾›ç²¾ç¡®çš„åŠ æ³•è¿ç®—
      *
-     * @param v1 ±»¼ÓÊı
-     * @param v2 ¼ÓÊı
-     * @return Á½¸ö²ÎÊıµÄºÍ
+     * @param v1 è¢«åŠ æ•°
+     * @param v2 åŠ æ•°
+     * @return ä¸¤ä¸ªå‚æ•°çš„å’Œ
      */
     public static Double add(Double v1, Double v2) {
         if (v1 == null || v2 == null) {
@@ -280,11 +280,11 @@ public class NumberUtil {
     }
 
     /**
-     * Ìá¹©¾«È·µÄ¼õ·¨ÔËËã
+     * æä¾›ç²¾ç¡®çš„å‡æ³•è¿ç®—
      *
-     * @param v1 ±»¼õÊı
-     * @param v2 ¼õÊı
-     * @return Á½¸ö²ÎÊıµÄ²î
+     * @param v1 è¢«å‡æ•°
+     * @param v2 å‡æ•°
+     * @return ä¸¤ä¸ªå‚æ•°çš„å·®
      */
     public static Double substract(Double v1, Double v2) {
         if (v1 == null || v2 == null) {
@@ -296,11 +296,11 @@ public class NumberUtil {
     }
 
     /**
-     * Ìá¹©¾«È·µÄ³Ë·¨ÔËËã
+     * æä¾›ç²¾ç¡®çš„ä¹˜æ³•è¿ç®—
      *
-     * @param v1 ±»³ËÊı
-     * @param v2 ³ËÊı
-     * @return Á½¸ö²ÎÊıµÄ»ı
+     * @param v1 è¢«ä¹˜æ•°
+     * @param v2 ä¹˜æ•°
+     * @return ä¸¤ä¸ªå‚æ•°çš„ç§¯
      */
     public static Double multiply(Double v1, Double v2) {
         if (v1 == null || v2 == null) {
@@ -312,25 +312,25 @@ public class NumberUtil {
     }
 
     /**
-     * Ìá¹©£¨Ïà¶Ô£©¾«È·µÄ³ı·¨ÔËËã,µ±·¢Éú³ı²»¾¡µÄÇé¿öÊ±,
-     * ¾«È·µ½Ğ¡ÊıµãÒÔºó10Î»,ÒÔºóµÄÊı×ÖËÄÉáÎåÈë.
+     * æä¾›ï¼ˆç›¸å¯¹ï¼‰ç²¾ç¡®çš„é™¤æ³•è¿ç®—,å½“å‘ç”Ÿé™¤ä¸å°½çš„æƒ…å†µæ—¶,
+     * ç²¾ç¡®åˆ°å°æ•°ç‚¹ä»¥å10ä½,ä»¥åçš„æ•°å­—å››èˆäº”å…¥.
      *
-     * @param v1 ±»³ıÊı
-     * @param v2 ³ıÊı
-     * @return Á½¸ö²ÎÊıµÄÉÌ
+     * @param v1 è¢«é™¤æ•°
+     * @param v2 é™¤æ•°
+     * @return ä¸¤ä¸ªå‚æ•°çš„å•†
      */
     public static Double divide(Double v1, Double v2) {
         return divide(v1, v2, DEF_DIV_SCALE);
     }
 
     /**
-     * Ìá¹©£¨Ïà¶Ô£©¾«È·µÄ³ı·¨ÔËËã.
-     * µ±·¢Éú³ı²»¾¡µÄÇé¿öÊ±,ÓÉscale²ÎÊıÖ¸ ¶¨¾«¶È,ÒÔºóµÄÊı×ÖËÄÉáÎåÈë.
+     * æä¾›ï¼ˆç›¸å¯¹ï¼‰ç²¾ç¡®çš„é™¤æ³•è¿ç®—.
+     * å½“å‘ç”Ÿé™¤ä¸å°½çš„æƒ…å†µæ—¶,ç”±scaleå‚æ•°æŒ‡ å®šç²¾åº¦,ä»¥åçš„æ•°å­—å››èˆäº”å…¥.
      *
-     * @param v1    ±»³ıÊı
-     * @param v2    ³ıÊı
-     * @param scale ±íÊ¾ĞèÒª¾«È·µ½Ğ¡ÊıµãÒÔºó¼¸Î»
-     * @return Á½¸ö²ÎÊıµÄÉÌ
+     * @param v1    è¢«é™¤æ•°
+     * @param v2    é™¤æ•°
+     * @param scale è¡¨ç¤ºéœ€è¦ç²¾ç¡®åˆ°å°æ•°ç‚¹ä»¥åå‡ ä½
+     * @return ä¸¤ä¸ªå‚æ•°çš„å•†
      */
     public static Double divide(Double v1, Double v2, int scale) {
         if (v1 == null || v2 == null) {
@@ -346,11 +346,11 @@ public class NumberUtil {
     }
 
     /**
-     * Ìá¹©¾«È·µÄĞ¡ÊıÎ»ËÄÉáÎåÈë´¦Àí
+     * æä¾›ç²¾ç¡®çš„å°æ•°ä½å››èˆäº”å…¥å¤„ç†
      *
-     * @param v     ĞèÒªËÄÉáÎåÈëµÄÊı×Ö
-     * @param scale Ğ¡Êıµãºó±£Áô¼¸Î»
-     * @return ËÄÉáÎåÈëºóµÄ½á¹û
+     * @param v     éœ€è¦å››èˆäº”å…¥çš„æ•°å­—
+     * @param scale å°æ•°ç‚¹åä¿ç•™å‡ ä½
+     * @return å››èˆäº”å…¥åçš„ç»“æœ
      */
     public static Double round(Double v, int scale) {
         if (v == null) {

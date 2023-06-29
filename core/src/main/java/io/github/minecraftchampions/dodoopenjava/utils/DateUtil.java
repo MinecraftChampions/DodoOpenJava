@@ -12,32 +12,32 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 
 /**
- * ¹ØÓÚ Ê±¼ä µÄÒ»Ğ©ÊµÓÃ·½·¨
+ * å…³äº æ—¶é—´ çš„ä¸€äº›å®ç”¨æ–¹æ³•
  * @author qscbm187531
  */
 public class DateUtil {
     /**
-     * ¼ò»¯¸ñÊ½1
+     * ç®€åŒ–æ ¼å¼1
      */
     public final static String Format_One = "yyyy-MM-dd";
     /**
-     * ¼ò»¯¸ñÊ½2
+     * ç®€åŒ–æ ¼å¼2
      */
-    public final static String Format_Two = "yyyyÄêMMÔÂddÈÕ";
+    public final static String Format_Two = "yyyyå¹´MMæœˆddæ—¥";
     /**
-     * ¼ò»¯¸ñÊ½3
+     * ç®€åŒ–æ ¼å¼3
      */
     public final static String Format_Three = "yyyy-MM-dd hh:mm:ss";
     /**
-     * ¼ò»¯¸ñÊ½4
+     * ç®€åŒ–æ ¼å¼4
      */
-    public final static String Format_Four = "yyyyÄêMMÔÂddÈÕ hhÊ±mm·ÖssÃë";
+    public final static String Format_Four = "yyyyå¹´MMæœˆddæ—¥ hhæ—¶mmåˆ†ssç§’";
 
     /**
-     * ×Ö·û´®×ªdate
+     * å­—ç¬¦ä¸²è½¬date
      *
-     * @param string    ×Ö·û´®
-     * @param format ¸ñÊ½
+     * @param string    å­—ç¬¦ä¸²
+     * @param format æ ¼å¼
      * @return date
      */
     public static Date parse(String string, String format) {
@@ -49,21 +49,21 @@ public class DateUtil {
     }
 
     /**
-     * Date×ª×Ö·û´®
+     * Dateè½¬å­—ç¬¦ä¸²
      *
-     * @param date   Ê±¼ä
-     * @param format ¸ñÊ½
-     * @return ×Ö·û´®
+     * @param date   æ—¶é—´
+     * @param format æ ¼å¼
+     * @return å­—ç¬¦ä¸²
      */
     public static String format(Date date, String format) {
         return (new SimpleDateFormat(format)).format(date);
     }
 
     /**
-     * »ñÈ¡Ê±¼äÔö¼ÓºóµÄÈÕÆÚ
+     * è·å–æ—¶é—´å¢åŠ åçš„æ—¥æœŸ
      *
-     * @param day Ôö¼ÓÌìÊı
-     * @return Ê±¼ä
+     * @param day å¢åŠ å¤©æ•°
+     * @return æ—¶é—´
      */
     public static Date getDate(Integer day) {
         Calendar gregorianCalendar = new GregorianCalendar();
@@ -73,9 +73,9 @@ public class DateUtil {
     }
 
     /**
-     * »ñÈ¡ÏÖÔÚÊ±¼ä(Ä¬ÈÏ¼ò»¯¸ñÊ½1)
+     * è·å–ç°åœ¨æ—¶é—´(é»˜è®¤ç®€åŒ–æ ¼å¼1)
      *
-     * @return ÏÖÔÚÊ±¼ä
+     * @return ç°åœ¨æ—¶é—´
      */
     public static Date getNow() {
         Date date = new Date();
@@ -89,9 +89,9 @@ public class DateUtil {
     }
 
     /**
-     * »ñÈ¡ÏÖÔÚÊ±¼ä
+     * è·å–ç°åœ¨æ—¶é—´
      *
-     * @return ÏÖÔÚÊ±¼ä
+     * @return ç°åœ¨æ—¶é—´
      */
     public static Date getNow(String format) {
         Date date = new Date();
@@ -105,9 +105,9 @@ public class DateUtil {
     }
 
     /**
-     * »ñÈ¡ÖÜÒ»ÈÕÆÚ
+     * è·å–å‘¨ä¸€æ—¥æœŸ
      *
-     * @return ÖÜÒ»ÈÕÆÚ
+     * @return å‘¨ä¸€æ—¥æœŸ
      */
     public static Date getMonday() {
         Calendar calendar = Calendar.getInstance(Locale.CHINA);
@@ -118,9 +118,9 @@ public class DateUtil {
     }
 
     /**
-     * »ñÈ¡ÖÜÈÕÈÕÆÚ
+     * è·å–å‘¨æ—¥æ—¥æœŸ
      *
-     * @return ÖÜÈÕÈÕÆÚ
+     * @return å‘¨æ—¥æ—¥æœŸ
      */
     public static Date getSunday() {
         Calendar calendar = Calendar.getInstance(Locale.CHINA);
@@ -131,10 +131,10 @@ public class DateUtil {
     }
 
     /**
-     * »ñµÃÖ¸¶¨ÈÕÆÚÊÇĞÇÆÚ¼¸
+     * è·å¾—æŒ‡å®šæ—¥æœŸæ˜¯æ˜ŸæœŸå‡ 
      *
-     * @param date ÈÕÆÚ
-     * @return ¶ÔÓ¦µÄĞÇÆÚ
+     * @param date æ—¥æœŸ
+     * @return å¯¹åº”çš„æ˜ŸæœŸ
      */
     public static Integer dayOfWeekEnum(Date date) {
         Integer[] weekDays = new Integer[]{7, 1, 2, 3, 4, 5, 6};
@@ -143,7 +143,7 @@ public class DateUtil {
     }
 
     /**
-     * LocalDateTime ×ª date
+     * LocalDateTime è½¬ date
      *
      * @param localDateTime localDateTime
      * @return Date
@@ -153,7 +153,7 @@ public class DateUtil {
     }
 
     /**
-     * date ×ª LocalDateTime
+     * date è½¬ LocalDateTime
      *
      * @param date date
      * @return LocalDateTime
@@ -163,44 +163,44 @@ public class DateUtil {
     }
 
     /**
-     * LocalDateTime ×ªºÁÃëÊ±¼ä´Á
+     * LocalDateTime è½¬æ¯«ç§’æ—¶é—´æˆ³
      *
      * @param localDateTime localDateTime
-     * @return ºÁÃëÊ±¼ä´Á
+     * @return æ¯«ç§’æ—¶é—´æˆ³
      */
     public static long toEpochSecond(LocalDateTime localDateTime) {
         return localDateTime.toInstant(ZoneOffset.of("+8")).toEpochMilli();
     }
 
     /**
-     * ¼ÆËãÏà²îĞ¡Ê±
+     * è®¡ç®—ç›¸å·®å°æ—¶
      *
-     * @param date_One µÚÒ»¸öÊ±¼ä
-     * @param date_Two µÚ¶ş¸öÊ±¼ä
-     * @return Ïà²îĞ¡Ê±
+     * @param date_One ç¬¬ä¸€ä¸ªæ—¶é—´
+     * @param date_Two ç¬¬äºŒä¸ªæ—¶é—´
+     * @return ç›¸å·®å°æ—¶
      */
     public static long between(Date date_One, Date date_Two) {
         return between(date_One, date_Two, ChronoUnit.HOURS);
     }
 
     /**
-     * ¼ÆËãÊ±¼äÏà²î
+     * è®¡ç®—æ—¶é—´ç›¸å·®
      *
-     * @param date_One µÚÒ»¸öÊ±¼ä
-     * @param date_Two µÚ¶ş¸öÊ±¼ä
+     * @param date_One ç¬¬ä¸€ä¸ªæ—¶é—´
+     * @param date_Two ç¬¬äºŒä¸ªæ—¶é—´
      * @param unit unit
-     * @return Ïà²î¶à¾Ã
+     * @return ç›¸å·®å¤šä¹…
      */
     public static long between(Date date_One, Date date_Two, ChronoUnit unit) {
         return unit.between(toLocalDateTime(date_One), toLocalDateTime(date_Two));
     }
 
     /**
-     * ¸ù¾İÈÕÆÚ»ñÈ¡±¾ÖÜ¼¸
+     * æ ¹æ®æ—¥æœŸè·å–æœ¬å‘¨å‡ 
      *
-     * @param date Ê±¼ä
-     * @param week ÖÜ¼¸1-7
-     * @return ¶ÔÓ¦ÖÜÈÕÆÚ
+     * @param date æ—¶é—´
+     * @param week å‘¨å‡ 1-7
+     * @return å¯¹åº”å‘¨æ—¥æœŸ
      */
     public static Date getWeek(Date date, int week) {
         week = week + 1;
@@ -215,12 +215,12 @@ public class DateUtil {
     }
 
     /**
-     * Ê±¼äÔö¼Ó
-     * ÕûÊıÍùºóÍÆ,¸ºÊıÍùÇ°ÒÆ¶¯
+     * æ—¶é—´å¢åŠ 
+     * æ•´æ•°å¾€åæ¨,è´Ÿæ•°å¾€å‰ç§»åŠ¨
      *
-     * @param date ÈÕÆÚ
-     * @param day  Ôö¼ÓÌìÊı
-     * @return Ê±¼ä
+     * @param date æ—¥æœŸ
+     * @param day  å¢åŠ å¤©æ•°
+     * @return æ—¶é—´
      */
     public static Date addDate(Date date, Integer day) {
         Calendar calendar = new GregorianCalendar();
@@ -230,10 +230,10 @@ public class DateUtil {
     }
 
     /**
-     * »ñÈ¡ÔÂ³õ
+     * è·å–æœˆåˆ
      *
-     * @param date ÈÕÆÚ
-     * @return ÔÂ³õ
+     * @param date æ—¥æœŸ
+     * @return æœˆåˆ
      */
     public static Date getFirstDayOfMonth(Date date) {
         Calendar cale = Calendar.getInstance();
@@ -244,10 +244,10 @@ public class DateUtil {
     }
 
     /**
-     * »ñÈ¡ÔÂÄ©
+     * è·å–æœˆæœ«
      *
-     * @param date ÈÕÆÚ
-     * @return ÔÂÄ©
+     * @param date æ—¥æœŸ
+     * @return æœˆæœ«
      */
     public static Date getLastDayOfMonth(Date date) {
         Calendar cale = Calendar.getInstance();
@@ -258,11 +258,11 @@ public class DateUtil {
     }
 
     /**
-     * ¸ù¾İÈÕÆÚ»ñÈ¡±¾ÔÂ¼¸ºÅ
+     * æ ¹æ®æ—¥æœŸè·å–æœ¬æœˆå‡ å·
      *
-     * @param date  Ê±¼ä
-     * @param month ¼¸ºÅ
-     * @return ¶ÔÓ¦ÔÂÈÕÆÚ
+     * @param date  æ—¶é—´
+     * @param month å‡ å·
+     * @return å¯¹åº”æœˆæ—¥æœŸ
      */
     public static Date getMonth(Date date, int month) {
         Calendar calendar = Calendar.getInstance(Locale.CHINA);
@@ -273,12 +273,12 @@ public class DateUtil {
     }
 
     /**
-     * µ÷ÕûÈÕÆÚºÍÊ±¼ä
+     * è°ƒæ•´æ—¥æœŸå’Œæ—¶é—´
      *
-     * @param date   Ê±¼ä
-     * @param field  ÀàĞÍ ²Î¿¼Calendar
-     * @param offset Æ«ÒÆÁ¿£¬ÕıÊıÎªÏòºóÆ«ÒÆ£¬¸ºÊıÎªÏòÇ°Æ«ÒÆ
-     * @return ĞÂÊ±¼ä¶ÔÏó
+     * @param date   æ—¶é—´
+     * @param field  ç±»å‹ å‚è€ƒCalendar
+     * @param offset åç§»é‡ï¼Œæ­£æ•°ä¸ºå‘ååç§»ï¼Œè´Ÿæ•°ä¸ºå‘å‰åç§»
+     * @return æ–°æ—¶é—´å¯¹è±¡
      */
     public static Date offset(Date date, int field, int offset) {
         Calendar cal = Calendar.getInstance();

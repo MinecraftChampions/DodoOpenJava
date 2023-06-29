@@ -4,7 +4,7 @@ import io.github.minecraftchampions.dodoopenjava.configuration.MemoryConfigurati
 import io.github.minecraftchampions.dodoopenjava.configuration.MemoryConfigurationOptions;
 
 /**
- * ÓÃÓÚ¿ØÖÆÎÄ¼şÅäÖÃµÄÊäÈëºÍÊä³öµÄ¸÷ÖÖÉèÖÃ
+ * ç”¨äºæ§åˆ¶æ–‡ä»¶é…ç½®çš„è¾“å…¥å’Œè¾“å‡ºçš„å„ç§è®¾ç½®
  */
 public class FileConfigurationOptions extends MemoryConfigurationOptions {
     private String header = null;

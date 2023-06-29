@@ -7,33 +7,33 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 /**
- * Ë½ĞÅAPI
+ * ç§ä¿¡API
  * */
 public class PersonalApi {
     public static String URL, param;
 
     /**
-     * ·¢ËÍÎÄ±¾ÏûÏ¢
+     * å‘é€æ–‡æœ¬æ¶ˆæ¯
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param message ·¢ËÍµÄÏûÏ¢
-     * @param dodoSourceId DodoºÅ
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param message å‘é€çš„æ¶ˆæ¯
+     * @param dodoSourceId Dodoå·
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject sendPersonalMessage(String clientId, String token, String dodoSourceId, String message) throws IOException {
         return sendPersonalMessage(BaseUtil.Authorization(clientId,token), dodoSourceId, message);
     }
 
     /**
-     * ·¢ËÍÎÄ±¾ÏûÏ¢
+     * å‘é€æ–‡æœ¬æ¶ˆæ¯
      *
      * @param authorization authorization
-     * @param message ·¢ËÍµÄÏûÏ¢
-     * @param dodoSourceId DodoºÅ
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param message å‘é€çš„æ¶ˆæ¯
+     * @param dodoSourceId Dodoå·
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject sendPersonalMessage(String authorization, String dodoSourceId, String message) throws IOException {
         URL = "https://botopen.imdodo.com/api/v2/personal/message/send";
@@ -48,33 +48,33 @@ public class PersonalApi {
     }
 
     /**
-     * ·¢ËÍÍ¼Æ¬ÏûÏ¢
+     * å‘é€å›¾ç‰‡æ¶ˆæ¯
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param dodoSourceId dodoºÅ
-     * @param url Í¼Æ¬urlµØÖ·
-     * @param height Í¼Æ¬¸ß¶È
-     * @param width Í¼Æ¬¿í¶È
-     * @param isOriginal ÊÇ·ñÔ­Í¼
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param dodoSourceId dodoå·
+     * @param url å›¾ç‰‡urlåœ°å€
+     * @param height å›¾ç‰‡é«˜åº¦
+     * @param width å›¾ç‰‡å®½åº¦
+     * @param isOriginal æ˜¯å¦åŸå›¾
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject sendDodoPictureMessage(String clientId, String token, String dodoSourceId, String url, int width, int height, Boolean isOriginal) throws IOException {
         return sendDodoPictureMessage(BaseUtil.Authorization(clientId,token), dodoSourceId, url, width, height, isOriginal);
     }
 
     /**
-     * ·¢ËÍÍ¼Æ¬ÏûÏ¢
+     * å‘é€å›¾ç‰‡æ¶ˆæ¯
      *
      * @param authorization authorization
-     * @param dodoSourceId dodoºÅ
-     * @param url Í¼Æ¬urlµØÖ·
-     * @param height Í¼Æ¬¸ß¶È
-     * @param width Í¼Æ¬¿í¶È
-     * @param isOriginal ÊÇ·ñÔ­Í¼
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param dodoSourceId dodoå·
+     * @param url å›¾ç‰‡urlåœ°å€
+     * @param height å›¾ç‰‡é«˜åº¦
+     * @param width å›¾ç‰‡å®½åº¦
+     * @param isOriginal æ˜¯å¦åŸå›¾
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject sendDodoPictureMessage(String authorization, String dodoSourceId, String url, int width, int height, Boolean isOriginal) throws IOException {
         URL = "https://botopen.imdodo.com/api/v2/personal/message/send";
@@ -98,31 +98,31 @@ public class PersonalApi {
     }
 
     /**
-     * ·¢ËÍÍ¼Æ¬ÏûÏ¢
+     * å‘é€å›¾ç‰‡æ¶ˆæ¯
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param dodoSourceId dodoºÅ
-     * @param url Í¼Æ¬urlµØÖ·
-     * @param height Í¼Æ¬¸ß¶È
-     * @param width Í¼Æ¬¿í¶È
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param dodoSourceId dodoå·
+     * @param url å›¾ç‰‡urlåœ°å€
+     * @param height å›¾ç‰‡é«˜åº¦
+     * @param width å›¾ç‰‡å®½åº¦
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject sendDodoPictureMessage(String clientId, String token, String dodoSourceId, String url, int width, int height) throws IOException {
         return sendDodoPictureMessage(BaseUtil.Authorization(clientId,token), dodoSourceId, url, width, height);
     }
 
     /**
-     * ·¢ËÍÍ¼Æ¬ÏûÏ¢
+     * å‘é€å›¾ç‰‡æ¶ˆæ¯
      *
      * @param authorization authorization
-     * @param dodoSourceId dodoºÅ
-     * @param url Í¼Æ¬urlµØÖ·
-     * @param height Í¼Æ¬¸ß¶È
-     * @param width Í¼Æ¬¿í¶È
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param dodoSourceId dodoå·
+     * @param url å›¾ç‰‡urlåœ°å€
+     * @param height å›¾ç‰‡é«˜åº¦
+     * @param width å›¾ç‰‡å®½åº¦
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject sendDodoPictureMessage(String authorization, String dodoSourceId, String url, int width, int height) throws IOException {
         URL = "https://botopen.imdodo.com/api/v2/personal/message/send";
@@ -139,27 +139,27 @@ public class PersonalApi {
     }
 
     /**
-     * ·¢ËÍÊÓÆµÏûÏ¢
+     * å‘é€è§†é¢‘æ¶ˆæ¯
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param dodoSourceId dodoºÅ
-     * @param url ÊÓÆµurlµØÖ·
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param dodoSourceId dodoå·
+     * @param url è§†é¢‘urlåœ°å€
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject sendDodoVideoMessage(String clientId, String token, String dodoSourceId, String url) throws IOException {
         return sendDodoVideoMessage(BaseUtil.Authorization(clientId,token), dodoSourceId, url);
     }
 
     /**
-     * ·¢ËÍÊÓÆµÏûÏ¢
+     * å‘é€è§†é¢‘æ¶ˆæ¯
      *
      * @param authorization authorization
-     * @param dodoSourceId dodoºÅ
-     * @param url ÊÓÆµurlµØÖ·
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param dodoSourceId dodoå·
+     * @param url è§†é¢‘urlåœ°å€
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject sendDodoVideoMessage(String authorization, String dodoSourceId, String url) throws IOException {
         URL = "https://botopen.imdodo.com/api/v2/personal/message/send";
@@ -174,33 +174,33 @@ public class PersonalApi {
     }
 
     /**
-     * ·¢ËÍÊÓÆµÏûÏ¢
+     * å‘é€è§†é¢‘æ¶ˆæ¯
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param dodoSourceId dodoºÅ
-     * @param url ÊÓÆµurlµØÖ·
-     * @param coverurl ·âÃæurlµØÖ·
-     * @param duration ÊÓÆµ³¤¶È
-     * @param size ÊÓÆµ´óĞ¡
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param dodoSourceId dodoå·
+     * @param url è§†é¢‘urlåœ°å€
+     * @param coverurl å°é¢urlåœ°å€
+     * @param duration è§†é¢‘é•¿åº¦
+     * @param size è§†é¢‘å¤§å°
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject sendDodoVideoMessage(String clientId, String token, String dodoSourceId, String url, String coverurl, long duration, long size) throws IOException {
         return sendDodoVideoMessage(BaseUtil.Authorization(clientId,token), dodoSourceId, url, coverurl, duration, size);
     }
 
     /**
-     * ·¢ËÍÊÓÆµÏûÏ¢
+     * å‘é€è§†é¢‘æ¶ˆæ¯
      *
      * @param authorization authorization
-     * @param dodoSourceId dodoºÅ
-     * @param url ÊÓÆµurlµØÖ·
-     * @param coverurl ·âÃæurlµØÖ·
-     * @param duration ÊÓÆµ³¤¶È
-     * @param size ÊÓÆµ´óĞ¡
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param dodoSourceId dodoå·
+     * @param url è§†é¢‘urlåœ°å€
+     * @param coverurl å°é¢urlåœ°å€
+     * @param duration è§†é¢‘é•¿åº¦
+     * @param size è§†é¢‘å¤§å°
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject sendDodoVideoMessage(String authorization, String dodoSourceId, String url, String coverurl, long duration, long size) throws IOException {
         URL = "https://botopen.imdodo.com/api/v2/personal/message/send";

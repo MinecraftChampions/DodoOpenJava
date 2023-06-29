@@ -13,11 +13,11 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * JsonÎÄ¼ş´æ´¢
+ * Jsonæ–‡ä»¶å­˜å‚¨
  */
 public class JsonData extends PermData {
     /**
-     * ³õÊ¼»¯
+     * åˆå§‹åŒ–
      */
     public JsonData() {
         File Config = new File(ConfigUtil.getJarPath() + "permissions/");
@@ -45,38 +45,38 @@ public class JsonData extends PermData {
 
         GroupManager.setGroupsFile(Group);
         UserManager.setUsersFile(User);
-        //»ñÈ¡ÎÄ¼şÄÚÈİ
+        //è·å–æ–‡ä»¶å†…å®¹
         JSONObject groupJson = getGroupFile();
         JSONObject userJson = getUserFile();
-        //¼üÊı×é
+        //é”®æ•°ç»„
         Set<String> groupSet = groupJson.getJSONObject("Groups").keySet();
         List<Group> groups = new ArrayList<>();
-        io.github.minecraftchampions.dodoopenjava.permissions.Group defaultGroup = null; //±£Ö¤ÖØĞÂ¼ÓÔØ
+        io.github.minecraftchampions.dodoopenjava.permissions.Group defaultGroup = null; //ä¿è¯é‡æ–°åŠ è½½
         for (String group : groupSet) {
-            //»ñÈ¡Ò»¸ö×éµÄÈ¨ÏŞ
+            //è·å–ä¸€ä¸ªç»„çš„æƒé™
             List<String> perms = BaseUtil.toStringList(groupJson.getJSONObject("Groups").
                                 getJSONObject(group).getJSONArray("perms").toList());
             io.github.minecraftchampions.dodoopenjava.permissions.Group g = new Group(group);
             for (String perm : perms) {
-                //Ôö¼ÓÈ¨ÏŞ
+                //å¢åŠ æƒé™
                 g.addPermission(perm);
             }
 
             if (groupJson.getJSONObject("Groups").getJSONObject(group).getBoolean("isDefault")) {
                 if (defaultGroup != null) {
-                    System.out.println("Á½¸öÖØ¸´µÄÄ¬ÈÏ×é");
+                    System.out.println("ä¸¤ä¸ªé‡å¤çš„é»˜è®¤ç»„");
                 } else {
                     defaultGroup = g;
                 }
             }
-            groups.add(g);//½«×éÌí¼Óµ½¼¯ºÏ
+            groups.add(g);//å°†ç»„æ·»åŠ åˆ°é›†åˆ
         }
-        //±£Ö¤ÖØĞÂ¼ÓÔØ
+        //ä¿è¯é‡æ–°åŠ è½½
         GroupManager.setGroups(new TreeMap<>());
         for (io.github.minecraftchampions.dodoopenjava.permissions.Group group : groups) {
             String name = group.getName();
             if (groupJson.getJSONObject("Groups").getJSONObject(name).keySet().contains("extend")) {
-                //Ìí¼Ó¼Ì³Ğ×é
+                //æ·»åŠ ç»§æ‰¿ç»„
                 for (String s : BaseUtil.toStringList(groupJson.getJSONObject("Groups")
                         .getJSONObject(name).getJSONArray("extend").toList())) {
                     List<Group> list = new ArrayList<>(groups);
@@ -89,12 +89,12 @@ public class JsonData extends PermData {
                     }
                 }
             }
-            //Ìí¼Ó×é
+            //æ·»åŠ ç»„
             GroupManager.addGroup(group);
         }
-        //±£Ö¤Êı¾İÖØ¼ÓÔØ
+        //ä¿è¯æ•°æ®é‡åŠ è½½
         GroupManager.setDefaultGroup(defaultGroup);
-        //Í¬ÉÏ
+        //åŒä¸Š
         Set<String> userSet = userJson.getJSONObject("Users").keySet();
         UserManager.setUsers(new TreeMap<>());
         for (String s : userSet) {
@@ -109,8 +109,8 @@ public class JsonData extends PermData {
     }
 
     /**
-     * ±£´æµ½ÎÄ¼ş
-     * @throws IOException Òì³£
+     * ä¿å­˜åˆ°æ–‡ä»¶
+     * @throws IOException å¼‚å¸¸
      */
     @Override
     public void saveToFile() throws IOException {
@@ -145,16 +145,16 @@ public class JsonData extends PermData {
     }
 
     /**
-     * »ñÈ¡È¨ÏŞ×éÎÄ¼ş
-     * @return JSON¶ÔÏó
+     * è·å–æƒé™ç»„æ–‡ä»¶
+     * @return JSONå¯¹è±¡
      */
     public JSONObject getGroupFile() {
         return new JSONObject(Objects.requireNonNull(ConfigUtil.readFile(Group)));
     }
 
     /**
-     * »ñÈ¡ÓÃ»§ÎÄ¼ş
-     * @return JSON¶ÔÏó
+     * è·å–ç”¨æˆ·æ–‡ä»¶
+     * @return JSONå¯¹è±¡
      */
     public JSONObject getUserFile() {
         return new JSONObject(Objects.requireNonNull(ConfigUtil.readFile(User)));

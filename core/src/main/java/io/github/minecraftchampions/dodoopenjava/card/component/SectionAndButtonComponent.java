@@ -3,14 +3,14 @@ package io.github.minecraftchampions.dodoopenjava.card.component;
 import io.github.minecraftchampions.dodoopenjava.card.enums.Align;
 
 /**
- * ÎÄ×ÖºÍÄ£¿é
+ * æ–‡å­—å’Œæ¨¡å—
  */
 public class SectionAndButtonComponent extends Component {
      /**
-      * ³õÊ¼»¯
-      * @param align ¶ÔÆë·½Ê½£¬left£º×ó¶ÔÆë£¬right£ºÓÒ¶ÔÆë
-      * @param sectionComponent ÎÄ×Ö
-      * @param buttonGroupComponent °´Å¥
+      * åˆå§‹åŒ–
+      * @param align å¯¹é½æ–¹å¼ï¼Œleftï¼šå·¦å¯¹é½ï¼Œrightï¼šå³å¯¹é½
+      * @param sectionComponent æ–‡å­—
+      * @param buttonGroupComponent æŒ‰é’®
       */
      public SectionAndButtonComponent(Align align,ButtonGroupComponent buttonGroupComponent,SectionComponent sectionComponent) {
           if (sectionComponent.isParagraph) {
@@ -23,10 +23,10 @@ public class SectionAndButtonComponent extends Component {
      }
 
      /**
-      * ³õÊ¼»¯
-      * @param align ¶ÔÆë·½Ê½£¬left£º×ó¶ÔÆë£¬right£ºÓÒ¶ÔÆë
-      * @param sectionComponent ÎÄ×Ö
-      * @param imageComponent Í¼Æ¬
+      * åˆå§‹åŒ–
+      * @param align å¯¹é½æ–¹å¼ï¼Œleftï¼šå·¦å¯¹é½ï¼Œrightï¼šå³å¯¹é½
+      * @param sectionComponent æ–‡å­—
+      * @param imageComponent å›¾ç‰‡
       */
      public SectionAndButtonComponent(Align align,ImageComponent imageComponent,SectionComponent sectionComponent) {
           if (sectionComponent.isParagraph) {
@@ -39,8 +39,8 @@ public class SectionAndButtonComponent extends Component {
      }
 
      /**
-      * ±à¼­¶ÔÆë·½Ê½
-      * @param align ¶ÔÆë·½Ê½
+      * ç¼–è¾‘å¯¹é½æ–¹å¼
+      * @param align å¯¹é½æ–¹å¼
       */
      public void editAlign(Align align) {
           jsonCard.put("align",align.getType());

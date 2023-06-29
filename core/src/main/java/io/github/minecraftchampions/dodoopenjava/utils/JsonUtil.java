@@ -5,14 +5,14 @@ import org.json.JSONObject;
 import java.util.Map;
 
 /**
- * ÓĞ¹ØÓÚ JSON µÄÏà¹ØÊµÓÃĞÔ·½·¨
+ * æœ‰å…³äº JSON çš„ç›¸å…³å®ç”¨æ€§æ–¹æ³•
  * @author qscbm187531
  */
 public class JsonUtil {
     /**
-     * ×ª»¯×Ö·û´®Îªjson
+     * è½¬åŒ–å­—ç¬¦ä¸²ä¸ºjson
      *
-     * @param string ×Ö·û´®
+     * @param string å­—ç¬¦ä¸²
      * @return JSONObject
      */
     public static JSONObject parseJson(String string) {
@@ -21,7 +21,7 @@ public class JsonUtil {
 
 
     /**
-     * json×ª»¯Îª×Ö·û´®
+     * jsonè½¬åŒ–ä¸ºå­—ç¬¦ä¸²
      *
      * @param obj obj
      * @return json
@@ -31,7 +31,7 @@ public class JsonUtil {
     }
 
     /**
-     * ½«json×°»»Îªmap
+     * å°†jsonè£…æ¢ä¸ºmap
      * @param jsonObject json
      * @return map
      */

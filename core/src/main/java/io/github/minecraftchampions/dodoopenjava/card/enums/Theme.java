@@ -1,47 +1,47 @@
 package io.github.minecraftchampions.dodoopenjava.card.enums;
 
 /**
- * ¿¨Æ¬·ç¸ñ
+ * å¡ç‰‡é£æ ¼
  */
 public enum Theme {
     /**
-     * »ÒÉ«
+     * ç°è‰²
      */
     Grey("grey"),
     /**
-     * ºìÉ«
+     * çº¢è‰²
      */
     Red("red"),
     /**
-     * ³ÈÉ«
+     * æ©™è‰²
      */
     Orange("orange"),
     /**
-     * »ÆÉ«
+     * é»„è‰²
      */
     Yellow("yellow"),
     /**
-     * ÂÌÉ«
+     * ç»¿è‰²
      */
     Green("green"),
     /**
-     * µ­À¶É«
+     * æ·¡è“è‰²
      */
     Indigo("indigo"),
     /**
-     * À¶É«
+     * è“è‰²
      */
     Blue("blue"),
     /**
-     * ×ÏÉ«
+     * ç´«è‰²
      */
     Purple("purple"),
     /**
-     * ºÚÉ«
+     * é»‘è‰²
      */
     Black("black"),
     /**
-     * Ä¬ÈÏ
+     * é»˜è®¤
      */
     Default("default");
 
@@ -50,13 +50,13 @@ public enum Theme {
     }
 
     /**
-     * ĞĞÊı
+     * è¡Œæ•°
      */
     private final String type;
 
     /**
-     * »ñÈ¡ÀàĞÍ
-     * @return ÀàĞÍ
+     * è·å–ç±»å‹
+     * @return ç±»å‹
      */
     public String getType() {
         return type;

@@ -1,4 +1,4 @@
 /**
- * 权限系统
+ * 鏉冮檺绯荤粺
  */
 package io.github.minecraftchampions.dodoopenjava.permissions;

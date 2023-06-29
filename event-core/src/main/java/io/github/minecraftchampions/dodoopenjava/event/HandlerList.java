@@ -5,25 +5,25 @@ import org.jetbrains.annotations.NotNull;
 import java.util.*;
 
 /**
- * Ò»¸ö´¦ÀíÊÂ¼şµÄÀà, ´æ´¢Ã¿¸öÊÂ¼ş¡£
+ * ä¸€ä¸ªå¤„ç†äº‹ä»¶çš„ç±», å­˜å‚¨æ¯ä¸ªäº‹ä»¶ã€‚
  */
 public class HandlerList {
     /**
-     * °üº¬ÁËËùÓĞHandlerListµÄÊı×é.´ËÊı×é×Ö¶ÎÊÇÕâ¸öÏµÍ³ËÙ¶ÈµÄ¹Ø¼ü.
+     * åŒ…å«äº†æ‰€æœ‰HandlerListçš„æ•°ç»„.æ­¤æ•°ç»„å­—æ®µæ˜¯è¿™ä¸ªç³»ç»Ÿé€Ÿåº¦çš„å…³é”®.
      */
     private volatile RegisteredListener[] handlers = null;
 
     private final EnumMap<EventPriority, ArrayList<RegisteredListener>> handlerslots;
 
     /**
-     * ËùÓĞÒÑ¾­´´½¨µÄHandlerList,ÓÃÓÚbakeAll().
+     * æ‰€æœ‰å·²ç»åˆ›å»ºçš„HandlerList,ç”¨äºbakeAll().
      */
     private static ArrayList<HandlerList> allLists = new ArrayList<>();
 
     /**
-     * ÓÃEventPriorityÀ´´´½¨ºÍ³õÊ¼»¯Ò»¸öĞÂµÄHandlerList.
+     * ç”¨EventPriorityæ¥åˆ›å»ºå’Œåˆå§‹åŒ–ä¸€ä¸ªæ–°çš„HandlerList.
      * <p>
-     * HandlerList½«»á±»Ìí¼Óµ½ÔªÁĞ±í£¬ÎªÁËbakeAll()·½·¨.
+     * HandlerListå°†ä¼šè¢«æ·»åŠ åˆ°å…ƒåˆ—è¡¨ï¼Œä¸ºäº†bakeAll()æ–¹æ³•.
      * <p>
      */
     public HandlerList() {
@@ -37,9 +37,9 @@ public class HandlerList {
     }
 
     /**
-     * ÔÚ´¦ÀíÆ÷ÁĞ±íÖĞ×¢²áÒ»¸ö¼àÌıÆ÷.
+     * åœ¨å¤„ç†å™¨åˆ—è¡¨ä¸­æ³¨å†Œä¸€ä¸ªç›‘å¬å™¨.
      *
-     * @param listener Òª×¢²áµÄ¼àÌıÆ÷
+     * @param listener è¦æ³¨å†Œçš„ç›‘å¬å™¨
      */
     public synchronized void register(@NotNull RegisteredListener listener) {
         if (handlerslots.get(listener.getPriority()).contains(listener))
@@ -49,9 +49,9 @@ public class HandlerList {
     }
 
     /**
-     * ÔÚ´¦ÀíÁĞ±íÖĞ×¢²áÒ»¸ö¼àÌıÆ÷¼¯ºÏ(ÅúÁ¿×¢²á¼àÌıÆ÷).
+     * åœ¨å¤„ç†åˆ—è¡¨ä¸­æ³¨å†Œä¸€ä¸ªç›‘å¬å™¨é›†åˆ(æ‰¹é‡æ³¨å†Œç›‘å¬å™¨).
      *
-     * @param listeners Òª×¢²áµÄ¼àÌıÆ÷
+     * @param listeners è¦æ³¨å†Œçš„ç›‘å¬å™¨
      */
     public void registerAll(@NotNull Collection<RegisteredListener> listeners) {
         for (RegisteredListener listener : listeners) {
@@ -69,9 +69,9 @@ public class HandlerList {
     }
 
     /**
-     * »ñÈ¡ÓëÕâ¸ö´¦ÀíÆ÷ÁĞ±íÏà¹ØµÄÒÑ×¢²áµÄ¼àÌıÆ÷.
+     * è·å–ä¸è¿™ä¸ªå¤„ç†å™¨åˆ—è¡¨ç›¸å…³çš„å·²æ³¨å†Œçš„ç›‘å¬å™¨.
      *
-     * @return ×¢²á¹ıµÄ¼àÌıÆ÷µÄÊı×é
+     * @return æ³¨å†Œè¿‡çš„ç›‘å¬å™¨çš„æ•°ç»„
      */
     @NotNull
     public RegisteredListener[] getRegisteredListeners() {
@@ -81,9 +81,9 @@ public class HandlerList {
     }
 
     /**
-     * »ñÈ¡Ã¿¸öÊÂ¼şÀàĞÍµÄËùÓĞ´¦ÀíÆ÷µÄÁĞ±í.
+     * è·å–æ¯ä¸ªäº‹ä»¶ç±»å‹çš„æ‰€æœ‰å¤„ç†å™¨çš„åˆ—è¡¨.
      *
-     * @return ËùÓĞ´¦ÀíÆ÷µÄÁĞ±í
+     * @return æ‰€æœ‰å¤„ç†å™¨çš„åˆ—è¡¨
      */
     @SuppressWarnings("unchecked")
     @NotNull

@@ -3,13 +3,13 @@ package io.github.minecraftchampions.dodoopenjava.card.component;
 import org.json.JSONObject;
 
 /**
- * ×é¼ş
+ * ç»„ä»¶
  */
 public class Component {
     protected JSONObject jsonCard = new JSONObject();
 
     /**
-     * ³õÊ¼»¯
+     * åˆå§‹åŒ–
      */
     public Component() {}
 

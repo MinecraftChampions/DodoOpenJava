@@ -7,7 +7,7 @@ import org.json.JSONObject;
 import javax.annotation.Nonnull;
 
 /**
- * »ı·Ö±ä¸üÊÂ¼ş
+ * ç§¯åˆ†å˜æ›´äº‹ä»¶
  */
 public class IntegralChangeEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
@@ -53,49 +53,49 @@ public class IntegralChangeEvent extends Event {
     }
 
     /**
-     * »ñÈ¡³¡¾°ÀàĞÍ
-     * 1£ºÇ©µ½£¬2£ºÑûÇë£¬3£º×ªÕË£¬4£º¹ºÂòÉÌÆ·£¬5£º¹ÜÀí»ı·Ö£¬6£ºÍËÈº
-     * @return ³¡¾°ÀàĞÍ
+     * è·å–åœºæ™¯ç±»å‹
+     * 1ï¼šç­¾åˆ°ï¼Œ2ï¼šé‚€è¯·ï¼Œ3ï¼šè½¬è´¦ï¼Œ4ï¼šè´­ä¹°å•†å“ï¼Œ5ï¼šç®¡ç†ç§¯åˆ†ï¼Œ6ï¼šé€€ç¾¤
+     * @return åœºæ™¯ç±»å‹
      */
     public int getOperateType() {
         return operateType;
     }
 
     /**
-     * »ñÈ¡»ı·ÖÊıÁ¿
-     * ÕıÊıÊ±±íÊ¾»ı·ÖÔö¼Ó£¬¸ºÊıÊ±±íÊ¾»ı·Ö¼õÉÙ
-     * @return »ı·Ö
+     * è·å–ç§¯åˆ†æ•°é‡
+     * æ­£æ•°æ—¶è¡¨ç¤ºç§¯åˆ†å¢åŠ ï¼Œè´Ÿæ•°æ—¶è¡¨ç¤ºç§¯åˆ†å‡å°‘
+     * @return ç§¯åˆ†
      */
     public long getIntegral() {
         return integral;
     }
 
     /**
-     * »ñÈ¡Ê±¼ä´Á
-     * @return ·µ»ØÊ±¼ä´Á
+     * è·å–æ—¶é—´æˆ³
+     * @return è¿”å›æ—¶é—´æˆ³
      */
     public Integer getTimestamp() {
         return this.timestamp;
     }
 
     /**
-     * »ñÈ¡ÊÂ¼şID
-     * @return ÊÂ¼şID
+     * è·å–äº‹ä»¶ID
+     * @return äº‹ä»¶ID
      */
     public String getEventId() {
         return this.eventId;
     }
 
     /**
-     * »ñÈ¡ÈººÅ
-     * @return ÈººÅ
+     * è·å–ç¾¤å·
+     * @return ç¾¤å·
      */
     public String getIslandSourceId() {
         return this.islandSourceId;
     }
 
     /**
-     * »ñÈ¡DodoId
+     * è·å–DodoId
      * @return DodoSourceId
      */
     public String getDodoSourceId() {
@@ -103,15 +103,15 @@ public class IntegralChangeEvent extends Event {
     }
 
     /**
-     * »ñÈ¡±ä¶¯Ê±¼ä
-     * @return ±ä¶¯Ê±¼ä
+     * è·å–å˜åŠ¨æ—¶é—´
+     * @return å˜åŠ¨æ—¶é—´
      */
     public String getModifyTime() {
         return this.modifyTime;
     }
 
     /**
-     * »ñÈ¡JSONObject
+     * è·å–JSONObject
      * @return JSONObject
      */
     public JSONObject getJsonObject() {
@@ -119,7 +119,7 @@ public class IntegralChangeEvent extends Event {
     }
 
     /**
-     * »ñÈ¡JsonString
+     * è·å–JsonString
      * @return String
      */
     public String getJsonString() {

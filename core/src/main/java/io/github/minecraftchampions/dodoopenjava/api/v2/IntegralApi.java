@@ -7,33 +7,33 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 /**
- * »ı·ÖAPI
+ * ç§¯åˆ†API
  */
 public class IntegralApi {
     public static String url, param;
 
     /**
-     * ²éÑ¯³ÉÔ±»ı·Ö
+     * æŸ¥è¯¢æˆå‘˜ç§¯åˆ†
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param islandSourceId ÈºID
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param islandSourceId ç¾¤ID
      * @param dodoSourceId DodoId
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject getIntegralInfo(String clientId, String token, String islandSourceId, String dodoSourceId) throws IOException {
         return getIntegralInfo(BaseUtil.Authorization(clientId,token), islandSourceId, dodoSourceId);
     }
 
     /**
-     * ²éÑ¯³ÉÔ±»ı·Ö
+     * æŸ¥è¯¢æˆå‘˜ç§¯åˆ†
      *
      * @param Authorization Authorization
-     * @param islandSourceId ÈºID
+     * @param islandSourceId ç¾¤ID
      * @param dodoSourceId DodoId
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject getIntegralInfo(String Authorization, String islandSourceId, String dodoSourceId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/integral/info";
@@ -45,31 +45,31 @@ public class IntegralApi {
     }
 
     /**
-     * ¹ÜÀí³ÉÔ±»ı·Ö
+     * ç®¡ç†æˆå‘˜ç§¯åˆ†
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param islandSourceId ÈºID
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param islandSourceId ç¾¤ID
      * @param dodoSourceId DodoId
-     * @param operateType ¹ÜÀíÀàĞÍ£¬1£º·¢·Å»ı·Ö£¬2£º¿Û³ı»ı·Ö
-     * @param integral »ı·Ö£¬±ØĞëÊÇÕıÕûÊıÇÒĞ¡ÓÚ1Ç§ÒÚ
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param operateType ç®¡ç†ç±»å‹ï¼Œ1ï¼šå‘æ”¾ç§¯åˆ†ï¼Œ2ï¼šæ‰£é™¤ç§¯åˆ†
+     * @param integral ç§¯åˆ†ï¼Œå¿…é¡»æ˜¯æ­£æ•´æ•°ä¸”å°äº1åƒäº¿
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject setIntegralEdit(String clientId, String token, String islandSourceId, String dodoSourceId, int operateType, long integral) throws IOException {
         return setIntegralEdit(BaseUtil.Authorization(clientId,token), islandSourceId, dodoSourceId,operateType,integral);
     }
 
     /**
-     * ¹ÜÀí³ÉÔ±»ı·Ö
+     * ç®¡ç†æˆå‘˜ç§¯åˆ†
      *
      * @param Authorization Authorization
-     * @param islandSourceId ÈºID
+     * @param islandSourceId ç¾¤ID
      * @param dodoSourceId DodoId
-     * @param operateType ¹ÜÀíÀàĞÍ£¬1£º·¢·Å»ı·Ö£¬2£º¿Û³ı»ı·Ö
-     * @param integral »ı·Ö£¬±ØĞëÊÇÕıÕûÊıÇÒĞ¡ÓÚ1Ç§ÒÚ
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param operateType ç®¡ç†ç±»å‹ï¼Œ1ï¼šå‘æ”¾ç§¯åˆ†ï¼Œ2ï¼šæ‰£é™¤ç§¯åˆ†
+     * @param integral ç§¯åˆ†ï¼Œå¿…é¡»æ˜¯æ­£æ•´æ•°ä¸”å°äº1åƒäº¿
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject setIntegralEdit(String Authorization, String islandSourceId, String dodoSourceId, int operateType, long integral) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/integral/info";

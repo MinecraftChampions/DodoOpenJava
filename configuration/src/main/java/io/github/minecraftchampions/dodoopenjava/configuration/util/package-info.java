@@ -1,4 +1,4 @@
 /**
- * ¹¤¾ßÀà
+ * å·¥å…·ç±»
  */
 package io.github.minecraftchampions.dodoopenjava.configuration.util;

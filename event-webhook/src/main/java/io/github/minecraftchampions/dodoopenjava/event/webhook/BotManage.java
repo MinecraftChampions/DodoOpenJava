@@ -1,42 +1,42 @@
 package io.github.minecraftchampions.dodoopenjava.event.webhook;
 
 /**
- * »úÆ÷ÈËÏà¹ØĞÅÏ¢
+ * æœºå™¨äººç›¸å…³ä¿¡æ¯
  */
 public class BotManage {
     /**
-     * ¶Ë¿Ú£¨Ä¬ÈÏ80£©
+     * ç«¯å£ï¼ˆé»˜è®¤80ï¼‰
      */
     public static int port = 80;
 
     /**
-     * ½âÃÜÃÜÔ¿
+     * è§£å¯†å¯†é’¥
      */
     public static String SecretKey;
 
     /**
-     * apiÂ·¾¶(Ä¬ÈÏÎª¿Õ)
+     * apiè·¯å¾„(é»˜è®¤ä¸ºç©º)
      */
     public static String path;
 
     /**
-     * ÉèÖÃapiÂ·¾¶
-     * @param path Â·¾¶
+     * è®¾ç½®apiè·¯å¾„
+     * @param path è·¯å¾„
      */
     public static void setPath(String path) {
         BotManage.path = path;
     }
 
     /**
-     * ÉèÖÃ¶Ë¿Ú(Ä¬ÈÏ80)
-     * @param port ¶Ë¿Ú
+     * è®¾ç½®ç«¯å£(é»˜è®¤80)
+     * @param port ç«¯å£
      */
     public void setPort(int port) {
         BotManage.port = port;
     }
 
     /**
-     * ½âÃÜÃÜÔ¿
+     * è§£å¯†å¯†é’¥
      */
     public static void setSecretKey(String s) {
         SecretKey = s;

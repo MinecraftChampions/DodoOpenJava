@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * ÃüÁîÏµÍ³µÄÏà¹Ø·½·¨
+ * å‘½ä»¤ç³»ç»Ÿçš„ç›¸å…³æ–¹æ³•
  */
 public class Command {
     public static List<CommandExecutor> commands = new ArrayList<>();
@@ -17,11 +17,11 @@ public class Command {
     public static String Authorization;
 
     /**
-     * ³õÊ¼»¯ÃüÁîÏµÍ³(Ä¬ÈÏV2,²»¿¼ÂÇÊ¹ÓÃV1)
+     * åˆå§‹åŒ–å‘½ä»¤ç³»ç»Ÿ
      *
-     * @param Class    ÃüÁî´¦ÀíËùÔÚµÄÀà
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¾
-     * @param token    »úÆ÷ÈËToken
+     * @param Class    å‘½ä»¤å¤„ç†æ‰€åœ¨çš„ç±»
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡ç¤º
+     * @param token    æœºå™¨äººToken
      */
     public static void registerCommand(CommandExecutor Class, String clientId, String token) {
         commands.add(Class);
@@ -30,11 +30,11 @@ public class Command {
     }
 
     /**
-     * ³õÊ¼»¯ÃüÁîÏµÍ³(Ä¬ÈÏV2,²»¿¼ÂÇÊ¹ÓÃV1)
+     * åˆå§‹åŒ–å‘½ä»¤ç³»ç»Ÿ
      *
-     * @param Class    ÃüÁî´¦ÀíËùÔÚµÄÀà
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¾
-     * @param token    »úÆ÷ÈËToken
+     * @param Class    å‘½ä»¤å¤„ç†æ‰€åœ¨çš„ç±»
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡ç¤º
+     * @param token    æœºå™¨äººToken
      */
     public static void registerCommand(String clientId, String token, CommandExecutor... Class) {
         commands.addAll(List.of(Class));
@@ -43,9 +43,9 @@ public class Command {
     }
 
     /**
-     * ³õÊ¼»¯ÃüÁîÏµÍ³(Ä¬ÈÏV2,²»¿¼ÂÇÊ¹ÓÃV1)
+     * åˆå§‹åŒ–å‘½ä»¤ç³»ç»Ÿ
      *
-     * @param Class         ÃüÁî´¦ÀíËùÔÚµÄÀà
+     * @param Class         å‘½ä»¤å¤„ç†æ‰€åœ¨çš„ç±»
      * @param authorization authorization
      */
     public static void registerCommand(CommandExecutor Class, String authorization) {
@@ -55,9 +55,9 @@ public class Command {
     }
 
     /**
-     * ³õÊ¼»¯ÃüÁîÏµÍ³(Ä¬ÈÏV2,²»¿¼ÂÇÊ¹ÓÃV1)
+     * åˆå§‹åŒ–å‘½ä»¤ç³»ç»Ÿ
      *
-     * @param Class         ÃüÁî´¦ÀíËùÔÚµÄÀà
+     * @param Class         å‘½ä»¤å¤„ç†æ‰€åœ¨çš„ç±»
      * @param authorization authorization
      */
     public static void registerCommand(String authorization, CommandExecutor... Class) {
@@ -67,11 +67,11 @@ public class Command {
     }
 
     /**
-     * ´¥·¢ÃüÁî
+     * è§¦å‘å‘½ä»¤
      *
-     * @param sender ·¢ËÍÕß
-     * @param mainCommandName ÃüÁîÃû
-     * @param args ÃüÁî²ÎÊı
+     * @param sender å‘é€è€…
+     * @param mainCommandName å‘½ä»¤å
+     * @param args å‘½ä»¤å‚æ•°
      */
     @SuppressWarnings("UnusedReturnValue")
     public static Boolean trigger(CommandSender sender, String mainCommandName, String... args) {

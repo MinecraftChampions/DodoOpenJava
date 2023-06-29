@@ -4,13 +4,13 @@ import io.github.minecraftchampions.dodoopenjava.card.enums.TextType;
 import org.json.JSONObject;
 
 /**
- * ±êÌâ×é¼ş
+ * æ ‡é¢˜ç»„ä»¶
  */
 public class HeaderComponent extends Component{
     /**
-     * ³õÊ¼»¯
-     * @param type ÎÄ±¾ÀàĞÍ
-     * @param title ÄÚÈİ
+     * åˆå§‹åŒ–
+     * @param type æ–‡æœ¬ç±»å‹
+     * @param title å†…å®¹
      */
     public HeaderComponent(TextType type, String title) {
         jsonCard.put("type","header");
@@ -21,16 +21,16 @@ public class HeaderComponent extends Component{
     }
 
     /**
-     * ±à¼­ÀàĞÍ
-     * @param type ÀàĞÍ
+     * ç¼–è¾‘ç±»å‹
+     * @param type ç±»å‹
      */
     public void editTextType(TextType type) {
         jsonCard.getJSONObject("text").put("type",type.getType());
     }
 
     /**
-     * ±à¼­ÎÄ±¾
-     * @param context ÎÄ±¾
+     * ç¼–è¾‘æ–‡æœ¬
+     * @param context æ–‡æœ¬
      */
     public void editContent(String context) {
         jsonCard.getJSONObject("text").put("content",context);

@@ -3,7 +3,7 @@ package io.github.minecraftchampions.dodoopenjava.event;
 import java.util.EventListener;
 
 /**
- * ÊÂ¼ş´¦ÀíµÄ½Ó¿Ú
+ * äº‹ä»¶å¤„ç†çš„æ¥å£
  */
 public interface Listener extends EventListener {
 }

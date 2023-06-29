@@ -1,24 +1,24 @@
 package io.github.minecraftchampions.dodoopenjava.card.enums;
 
 /**
- * °´Å¥µÄÏà¹ØÃ¶¾Ù
+ * æŒ‰é’®çš„ç›¸å…³æšä¸¾
  */
 
 public enum ButtonAction {
     /**
-     * Ìø×ªURL
+     * è·³è½¬URL
      */
     link_url("link_url"),
     /**
-     * »Ø´«²ÎÊı
+     * å›ä¼ å‚æ•°
      */
     call_back("call_back"),
     /**
-     * ¸´ÖÆÎÄ±¾
+     * å¤åˆ¶æ–‡æœ¬
      */
     copy_content("copy_content"),
     /**
-     * »Ø´«±íµ¥
+     * å›ä¼ è¡¨å•
      */
     form("form");
     ButtonAction(String type) {
@@ -26,13 +26,13 @@ public enum ButtonAction {
     }
 
     /**
-     * ĞĞÊı
+     * è¡Œæ•°
      */
     private final String type;
 
     /**
-     * »ñÈ¡ÀàĞÍ
-     * @return ÀàĞÍ
+     * è·å–ç±»å‹
+     * @return ç±»å‹
      */
     public String getType() {
         return type;

@@ -8,12 +8,12 @@ import java.security.DigestInputStream;
 import java.security.MessageDigest;
 
 /**
- * ¹ØÓÚmd5µÄÒ»Ğ©·½·¨
+ * å…³äºmd5çš„ä¸€äº›æ–¹æ³•
  */
 public class MD5Util {
     /**
-     * »ñÈ¡MD5Öµ
-     * @param path ÎÄ¼ş
+     * è·å–MD5å€¼
+     * @param path æ–‡ä»¶
      * @return md5
      */
     public static String getMd5(File path) {
@@ -25,8 +25,8 @@ public class MD5Util {
     }
 
     /**
-     * »ñÈ¡MD5Öµ
-     * @param is ÊäÈëÁ÷
+     * è·å–MD5å€¼
+     * @param is è¾“å…¥æµ
      * @return md5
      */
     public static String getMd5(InputStream is) {

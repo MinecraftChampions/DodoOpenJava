@@ -15,14 +15,14 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * XMLÎÄ¼ş´æ´¢
+ * XMLæ–‡ä»¶å­˜å‚¨
  */
 public class XmlData extends PermData {
     /**
-     * ³õÊ¼»¯
+     * åˆå§‹åŒ–
      */
     public XmlData() {
-        //ÀàËÆJsonDataµÄ×¢ÊÍ
+        //ç±»ä¼¼JsonDataçš„æ³¨é‡Š
         File Config = new File(ConfigUtil.getJarPath() + "permissions/");
         if (!Config.exists()) {
             Config.mkdir();
@@ -66,7 +66,7 @@ public class XmlData extends PermData {
 
             if (groupJson.getJSONObject("Groups").getJSONObject(group).getBoolean("isDefault")) {
                 if (defaultGroup != null) {
-                    System.out.println("Á½¸öÖØ¸´µÄÄ¬ÈÏ×é");
+                    System.out.println("ä¸¤ä¸ªé‡å¤çš„é»˜è®¤ç»„");
                 } else {
                     defaultGroup = g;
                 }
@@ -114,8 +114,8 @@ public class XmlData extends PermData {
     }
 
     /**
-     * ±£´æµ½ÎÄ¼ş
-     * @throws IOException Òì³£
+     * ä¿å­˜åˆ°æ–‡ä»¶
+     * @throws IOException å¼‚å¸¸
      */
     @Override
     public void saveToFile() throws IOException {
@@ -150,16 +150,16 @@ public class XmlData extends PermData {
     }
 
     /**
-     * »ñÈ¡È¨ÏŞ×éÎÄ¼ş
-     * @return JSON¶ÔÏó
+     * è·å–æƒé™ç»„æ–‡ä»¶
+     * @return JSONå¯¹è±¡
      */
     public JSONObject getGroupFile() {
         return XmlUtil.toJSONObject(ConfigUtil.readFile(Group));
     }
 
     /**
-     * »ñÈ¡ÓÃ»§ÎÄ¼ş
-     * @return JSON¶ÔÏó
+     * è·å–ç”¨æˆ·æ–‡ä»¶
+     * @return JSONå¯¹è±¡
      */
     public JSONObject getUserFile() {
         return XmlUtil.toJSONObject(ConfigUtil.readFile(User));

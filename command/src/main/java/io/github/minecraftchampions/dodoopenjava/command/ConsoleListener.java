@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 /**
- * ¿ØÖÆÌ¨ÊäÈë¼àÌı
+ * æ§åˆ¶å°è¾“å…¥ç›‘å¬
  */
 public class ConsoleListener {
     HashMap<String, Action> answers = new HashMap<>();
@@ -12,18 +12,18 @@ public class ConsoleListener {
     Action defaultAction;
 
     /**
-     * Ôö¼Ó¶¯×÷£¨ÊäÈëÖ¸¶¨ÏûÏ¢£©
-     * @param message ÏûÏ¢
-     * @param action ¶¯×÷
+     * å¢åŠ åŠ¨ä½œï¼ˆè¾“å…¥æŒ‡å®šæ¶ˆæ¯ï¼‰
+     * @param message æ¶ˆæ¯
+     * @param action åŠ¨ä½œ
      */
     public void addAction(String message, Action action) {
         answers.put(message.toLowerCase(), action);
     }
 
     /**
-     * ³õÊ¼»¯
-     * @param scanner ¼üÅÌ
-     * @param defaultAction Ä¬ÈÏ¶¯×÷
+     * åˆå§‹åŒ–
+     * @param scanner é”®ç›˜
+     * @param defaultAction é»˜è®¤åŠ¨ä½œ
      */
     public ConsoleListener(Scanner scanner, Action defaultAction) {
         this.scanner = scanner;
@@ -35,25 +35,25 @@ public class ConsoleListener {
     }
 
     /**
-     * ÒÆ³ı¶¯×÷
-     * @param message ÏûÏ¢
-     * @param action ¶¯×÷
+     * ç§»é™¤åŠ¨ä½œ
+     * @param message æ¶ˆæ¯
+     * @param action åŠ¨ä½œ
      */
     public void removeAction(String message, Action action) {
         answers.remove(message, action);
     }
 
     /**
-     * Ìæ»»¶¯×÷
-     * @param message ÏûÏ¢
-     * @param action ¶¯×÷
+     * æ›¿æ¢åŠ¨ä½œ
+     * @param message æ¶ˆæ¯
+     * @param action åŠ¨ä½œ
      */
     public Action replaceAction(String message, Action action) {
         return answers.replace(message, action);
     }
 
     /**
-     * ¼àÌı£¨´´½¨ĞÂµÄÏß³Ì£©
+     * ç›‘å¬ï¼ˆåˆ›å»ºæ–°çš„çº¿ç¨‹ï¼‰
      */
     public void listenInNewThread() {
         Thread t = new Thread(this::listen);
@@ -61,7 +61,7 @@ public class ConsoleListener {
     }
 
     /**
-     * ¼àÌı
+     * ç›‘å¬
      */
     @SuppressWarnings("InfiniteLoopStatement")
     public void listen() {
@@ -80,12 +80,12 @@ public class ConsoleListener {
     }
 
     /**
-     * ÊÕµ½Ö®ºó×öµÄ´¦Àí
+     * æ”¶åˆ°ä¹‹ååšçš„å¤„ç†
      */
     public interface Action {
         /**
-         * ´¦Àí
-         * @param msg ´«ÈëµÄ¿ØÖÆÌ¨µÄÊäÈë
+         * å¤„ç†
+         * @param msg ä¼ å…¥çš„æ§åˆ¶å°çš„è¾“å…¥
          */
         void act(String msg);
     }

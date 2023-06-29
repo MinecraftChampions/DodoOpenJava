@@ -1,4 +1,4 @@
 /**
- * ¸üÈİÒ×Ê¹ÓÃÃüÁîÏµÍ³
+ * æ›´å®¹æ˜“ä½¿ç”¨å‘½ä»¤ç³»ç»Ÿ
  */
 package io.github.minecraftchampions.dodoopenjava.command.util;

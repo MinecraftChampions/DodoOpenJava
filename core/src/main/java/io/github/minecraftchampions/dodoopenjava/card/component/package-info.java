@@ -1,4 +1,4 @@
 /**
- * 组件列表
+ * 缁勪欢鍒楄〃
  */
 package io.github.minecraftchampions.dodoopenjava.card.component;

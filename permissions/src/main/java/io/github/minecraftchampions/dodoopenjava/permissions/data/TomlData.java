@@ -12,14 +12,14 @@ import java.nio.file.Paths;
 import java.util.*;
 
 /**
- * TomlÎÄ¼ş´æ´¢·½Ê½
+ * Tomlæ–‡ä»¶å­˜å‚¨æ–¹å¼
  */
 public class TomlData extends PermData {
     /**
-     * ³õÊ¼»¯
+     * åˆå§‹åŒ–
      */
     public TomlData() {
-        //ÀàËÆJsonDataµÄ×¢ÊÍ
+        //ç±»ä¼¼JsonDataçš„æ³¨é‡Š
         File Config = new File(ConfigUtil.getJarPath() + "permissions/");
         if (!Config.exists()) {
             Config.mkdir();
@@ -60,7 +60,7 @@ public class TomlData extends PermData {
 
             if (groupJson.getJSONObject("Groups").getJSONObject(group).getBoolean("isDefault")) {
                 if (defaultGroup != null) {
-                    System.out.println("Á½¸öÖØ¸´µÄÄ¬ÈÏ×é");
+                    System.out.println("ä¸¤ä¸ªé‡å¤çš„é»˜è®¤ç»„");
                 } else {
                     defaultGroup = g;
                 }
@@ -100,8 +100,8 @@ public class TomlData extends PermData {
     }
 
     /**
-     * ±£´æµ½ÎÄ¼ş
-     * @throws IOException Òì³£
+     * ä¿å­˜åˆ°æ–‡ä»¶
+     * @throws IOException å¼‚å¸¸
      */
     @Override
     public void saveToFile() throws IOException {
@@ -137,8 +137,8 @@ public class TomlData extends PermData {
 
 
     /**
-     * »ñÈ¡È¨ÏŞ×éÎÄ¼ş
-     * @return json¶ÔÏó
+     * è·å–æƒé™ç»„æ–‡ä»¶
+     * @return jsonå¯¹è±¡
      */
     public JSONObject getGroupFile() {
         try {
@@ -149,8 +149,8 @@ public class TomlData extends PermData {
     }
 
     /**
-     * »ñÈ¡ÓÃ»§ÎÄ¼ş
-     * @return json¶ÔÏó
+     * è·å–ç”¨æˆ·æ–‡ä»¶
+     * @return jsonå¯¹è±¡
      */
     public JSONObject getUserFile() {
         try {

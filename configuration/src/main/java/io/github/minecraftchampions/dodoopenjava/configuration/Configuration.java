@@ -3,67 +3,67 @@ package io.github.minecraftchampions.dodoopenjava.configuration;
 import java.util.Map;
 
 /**
- * ÅäÖÃÎÄ¼şµÄ»ùÀà.
+ * é…ç½®æ–‡ä»¶çš„åŸºç±».
  */
 public interface Configuration extends ConfigurationSection {
     /**
-     * ÉèÖÃÖ¸¶¨Â·¾¶µÄÈ±Ê¡Öµ.
-     * Èç¹ûÃ»ÓĞÄ¬ÈÏµÄ Configuration. ÄÇÃ´½«»á½¨Á¢Ò»¸öĞÂµÄ MemoryConfiguration ÓÃÓÚ±£´æ.
+     * è®¾ç½®æŒ‡å®šè·¯å¾„çš„ç¼ºçœå€¼.
+     * å¦‚æœæ²¡æœ‰é»˜è®¤çš„ Configuration. é‚£ä¹ˆå°†ä¼šå»ºç«‹ä¸€ä¸ªæ–°çš„ MemoryConfiguration ç”¨äºä¿å­˜.
      *
-     * Èç¹ûÖµÎª null £¬¸ÃÖµ½«±»´ÓÄ¬ÈÏµÄÅäÖÃÔ´ÖĞÉ¾³ı.
+     * å¦‚æœå€¼ä¸º null ï¼Œè¯¥å€¼å°†è¢«ä»é»˜è®¤çš„é…ç½®æºä¸­åˆ é™¤.
      *
-     * @param path Â·¾¶
-     * @param value È±Ê¡Öµ
-     * @throws IllegalArgumentException Èç¹ûÂ·¾¶Îª null .
+     * @param path è·¯å¾„
+     * @param value ç¼ºçœå€¼
+     * @throws IllegalArgumentException å¦‚æœè·¯å¾„ä¸º null .
      */
     void addDefault(String path, Object value);
 
     /**
-     * °ÑÖ¸¶¨mapÀïÃæµÄ¼üÖµ¶¼¼ÓÈëµ½È±Ê¡ÖµÁĞ±í.
-     * Èç¹ûÃ»ÓĞÈ±Ê¡Öµ Configuration, ÄÇÃ´½«»á½¨Á¢Ò»¸öĞÂµÄÈ±Ê¡Öµ MemoryConfiguration ÓÃÓÚ±£´æ.
+     * æŠŠæŒ‡å®šmapé‡Œé¢çš„é”®å€¼éƒ½åŠ å…¥åˆ°ç¼ºçœå€¼åˆ—è¡¨.
+     * å¦‚æœæ²¡æœ‰ç¼ºçœå€¼ Configuration, é‚£ä¹ˆå°†ä¼šå»ºç«‹ä¸€ä¸ªæ–°çš„ç¼ºçœå€¼ MemoryConfiguration ç”¨äºä¿å­˜.
      *
-     * Èç¹ûÖµÎª null , ½«»áÉ¾³ı¸ÃÂ·¾¶ÉÏµÄÈ±Ê¡Öµ.
+     * å¦‚æœå€¼ä¸º null , å°†ä¼šåˆ é™¤è¯¥è·¯å¾„ä¸Šçš„ç¼ºçœå€¼.
      *
-     * @param defaults Map µÄ¼üÊÇÂ·¾¶, ÖµÊÇ¶ÔÓ¦Â·¾¶µÄÖµ.
-     * @throws IllegalArgumentException Èç¹ûdefaultsÎªnull.
+     * @param defaults Map çš„é”®æ˜¯è·¯å¾„, å€¼æ˜¯å¯¹åº”è·¯å¾„çš„å€¼.
+     * @throws IllegalArgumentException å¦‚æœdefaultsä¸ºnull.
      */
     void addDefaults(Map<String, Object> defaults);
 
     /**
-     * °ÑÖ¸¶¨ Configuration È«²¿¼ÓÈëµ½È±Ê¡ÖµÁĞ±í.
-     * Èç¹ûÃ»ÓĞÈ±Ê¡Öµ Configuration, ÄÇÃ´½«»á½¨Á¢Ò»¸öĞÂµÄ MemoryConfiguration ÓÃÓÚ±£´æ.
+     * æŠŠæŒ‡å®š Configuration å…¨éƒ¨åŠ å…¥åˆ°ç¼ºçœå€¼åˆ—è¡¨.
+     * å¦‚æœæ²¡æœ‰ç¼ºçœå€¼ Configuration, é‚£ä¹ˆå°†ä¼šå»ºç«‹ä¸€ä¸ªæ–°çš„ MemoryConfiguration ç”¨äºä¿å­˜.
      *
-     * Äã¿ÉÒÔÊ¹ÓÃsetDefaults(org.bukkit.configuration.Configuration)À´ÉèÖÃÈ±Ê¡ÖµÁĞ±íÀ´Ô´.
+     * ä½ å¯ä»¥ä½¿ç”¨setDefaults(org.bukkit.configuration.Configuration)æ¥è®¾ç½®ç¼ºçœå€¼åˆ—è¡¨æ¥æº.
      *
-     * @param defaults °üº¬Òª¸´ÖÆµÄÄ¬ÈÏÖµÁĞ±íµÄÅäÖÃ
-     * @throws IllegalArgumentException Èç¹ûdefaultsÎªnull
+     * @param defaults åŒ…å«è¦å¤åˆ¶çš„é»˜è®¤å€¼åˆ—è¡¨çš„é…ç½®
+     * @throws IllegalArgumentException å¦‚æœdefaultsä¸ºnull
      */
     void addDefaults(Configuration defaults);
 
     /**
-     * ÉèÖÃĞÂµÄÈ±Ê¡ÖµÁĞ±í.
-     * ½«Ö±½ÓÌæ»»Ô­ÓĞµÄÈ±Ê¡ÖµÁĞ±í(Èç¹ûÓĞ).
+     * è®¾ç½®æ–°çš„ç¼ºçœå€¼åˆ—è¡¨.
+     * å°†ç›´æ¥æ›¿æ¢åŸæœ‰çš„ç¼ºçœå€¼åˆ—è¡¨(å¦‚æœæœ‰).
      *
-     * @param defaults ĞÂµÄ Configuration .
-     * @throws IllegalArgumentException µ±²ÎÊıÎª null »ò defaults == getDefaults() Ê±, Å×³ö´ËÒì³£.
+     * @param defaults æ–°çš„ Configuration .
+     * @throws IllegalArgumentException å½“å‚æ•°ä¸º null æˆ– defaults == getDefaults() æ—¶, æŠ›å‡ºæ­¤å¼‚å¸¸.
      */
     void setDefaults(Configuration defaults);
 
     /**
-     * »ñÈ¡Õâ¸ö Configuration µÄÈ±Ê¡Öµ Configuration.
-     * Èç¹ûÉèÖÃ¹ıÈ±Ê¡Öµ, ¼´Ê¹Ã»ÓĞÉèÖÃÈ±Ê¡ÖµÁĞ±í, Ò²»á·µ»Ø Configuration.
+     * è·å–è¿™ä¸ª Configuration çš„ç¼ºçœå€¼ Configuration.
+     * å¦‚æœè®¾ç½®è¿‡ç¼ºçœå€¼, å³ä½¿æ²¡æœ‰è®¾ç½®ç¼ºçœå€¼åˆ—è¡¨, ä¹Ÿä¼šè¿”å› Configuration.
      *
-     * Èç¹û¶¼Ã»ÓĞ, Ôò·µ»Ø null.
+     * å¦‚æœéƒ½æ²¡æœ‰, åˆ™è¿”å› null.
      *
-     * @return ·µ»ØÈ±Ê¡ÖµÁĞ±í, Èç¹ûÃ»ÓĞÔò·µ»Ø null.
+     * @return è¿”å›ç¼ºçœå€¼åˆ—è¡¨, å¦‚æœæ²¡æœ‰åˆ™è¿”å› null.
      */
     Configuration getDefaults();
 
     /**
-     * »ñÈ¡Õâ¸ö Configuration µÄ ConfigurationOptions.
-     * ÈçĞèĞŞ¸ÄÅäÖÃ,Ö±½ÓĞŞ¸Ä·µ»ØÖµ¼´¿É.
+     * è·å–è¿™ä¸ª Configuration çš„ ConfigurationOptions.
+     * å¦‚éœ€ä¿®æ”¹é…ç½®,ç›´æ¥ä¿®æ”¹è¿”å›å€¼å³å¯.
      *
-     * @return Õâ¸öÅäÖÃÎÄ¼şµÄÒ»Ğ©ÅäÖÃ(¸ñÊ½Ö®ÀàµÄ).
+     * @return è¿™ä¸ªé…ç½®æ–‡ä»¶çš„ä¸€äº›é…ç½®(æ ¼å¼ä¹‹ç±»çš„).
      */
     ConfigurationOptions options();
 }

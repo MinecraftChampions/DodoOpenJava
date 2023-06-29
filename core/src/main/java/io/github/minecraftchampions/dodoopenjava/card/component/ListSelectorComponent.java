@@ -7,18 +7,18 @@ import org.json.JSONObject;
 import java.util.HashMap;
 
 /**
- * ÁĞ±íÑ¡ÔñÆ÷
+ * åˆ—è¡¨é€‰æ‹©å™¨
  */
 public class ListSelectorComponent extends Component {
     /**
-     * ³õÊ¼»¯
+     * åˆå§‹åŒ–
      * <p>
-     * ²»ĞèÒª²ÎÊıµÄÇëÌîĞ´null
-     * @param interactCustomId ×Ô¶¨Òå½»»¥id
-     * @param placeholder ÊäÈë¿òÌáÊ¾
-     * @param min ×îÉÙÑ¡ÖĞ¸öÊı
-     * @param max ×î¶àÑ¡ÖĞ¸öÊı
-     * @param element Êı¾İ£¬ÎªÁË·½±ãÓÃHashMap´æ´¢£¬Ç°ÃæÎªÑ¡ÏîÃû¡£ºóÃæÎªÑ¡ÏîÃèÊö
+     * ä¸éœ€è¦å‚æ•°çš„è¯·å¡«å†™null
+     * @param interactCustomId è‡ªå®šä¹‰äº¤äº’id
+     * @param placeholder è¾“å…¥æ¡†æç¤º
+     * @param min æœ€å°‘é€‰ä¸­ä¸ªæ•°
+     * @param max æœ€å¤šé€‰ä¸­ä¸ªæ•°
+     * @param element æ•°æ®ï¼Œä¸ºäº†æ–¹ä¾¿ç”¨HashMapå­˜å‚¨ï¼Œå‰é¢ä¸ºé€‰é¡¹åã€‚åé¢ä¸ºé€‰é¡¹æè¿°
      */
     public ListSelectorComponent(String interactCustomId, String placeholder, int min, int max, HashMap<String,String> element) {
         jsonCard.put("type","list-selector");
@@ -39,13 +39,13 @@ public class ListSelectorComponent extends Component {
     }
 
     /**
-     * ³õÊ¼»¯
+     * åˆå§‹åŒ–
      * <p>
-     * ²»ĞèÒª²ÎÊıµÄÇëÌîĞ´null
-     * @param interactCustomId ×Ô¶¨Òå½»»¥id
-     * @param placeholder ÊäÈë¿òÌáÊ¾
-     * @param min ×îÉÙÑ¡ÖĞ¸öÊı
-     * @param max ×î¶àÑ¡ÖĞ¸öÊı
+     * ä¸éœ€è¦å‚æ•°çš„è¯·å¡«å†™null
+     * @param interactCustomId è‡ªå®šä¹‰äº¤äº’id
+     * @param placeholder è¾“å…¥æ¡†æç¤º
+     * @param min æœ€å°‘é€‰ä¸­ä¸ªæ•°
+     * @param max æœ€å¤šé€‰ä¸­ä¸ªæ•°
      */
     public ListSelectorComponent(String interactCustomId, String placeholder, int min, int max) {
         jsonCard.put("type","list-selector");
@@ -57,9 +57,9 @@ public class ListSelectorComponent extends Component {
     }
 
     /**
-     * Ôö¼ÓÑ¡Ïî
-     * @param data1 Ñ¡ÏîÃû
-     * @param data2 ÃèÊö
+     * å¢åŠ é€‰é¡¹
+     * @param data1 é€‰é¡¹å
+     * @param data2 æè¿°
      */
     public void addElement(String data1,String data2) {
         JSONObject json = new JSONObject();

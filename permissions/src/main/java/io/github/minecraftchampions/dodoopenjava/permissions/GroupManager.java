@@ -7,7 +7,7 @@ import java.util.TreeMap;
 import static io.github.minecraftchampions.dodoopenjava.permissions.Util.comparePermissionString;
 
 /**
- * È¨ÏŞ×é¹ÜÀí
+ * æƒé™ç»„ç®¡ç†
  */
 public class GroupManager {
     private static Group defaultGroup;

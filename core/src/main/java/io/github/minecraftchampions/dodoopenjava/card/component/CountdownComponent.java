@@ -3,13 +3,13 @@ package io.github.minecraftchampions.dodoopenjava.card.component;
 import io.github.minecraftchampions.dodoopenjava.card.enums.Style;
 
 /**
- * µ¹¼ÆÊ±×é¼ş
+ * å€’è®¡æ—¶ç»„ä»¶
  */
 public class CountdownComponent extends Component {
     /**
-     * ³õÊ¼»¯
-     * @param style ÏÔÊ¾ÑùÊ½
-     * @param endTime Ê±¼ä´Á
+     * åˆå§‹åŒ–
+     * @param style æ˜¾ç¤ºæ ·å¼
+     * @param endTime æ—¶é—´æˆ³
      */
     public CountdownComponent(Style style, long endTime) {
         jsonCard.put("type","countdown");
@@ -18,10 +18,10 @@ public class CountdownComponent extends Component {
     }
 
     /**
-     * ³õÊ¼»¯
-     * @param style ÏÔÊ¾ÑùÊ½
-     * @param endTime Ê±¼ä´Á
-     * @param title ±êÌâ
+     * åˆå§‹åŒ–
+     * @param style æ˜¾ç¤ºæ ·å¼
+     * @param endTime æ—¶é—´æˆ³
+     * @param title æ ‡é¢˜
      */
     public CountdownComponent(Style style, long endTime,String title) {
         jsonCard.put("type","countdown");
@@ -31,24 +31,24 @@ public class CountdownComponent extends Component {
     }
 
     /**
-     * ±à¼­ÏÔÊ¾ÑùÊ½
-     * @param style ÑùÊ½
+     * ç¼–è¾‘æ˜¾ç¤ºæ ·å¼
+     * @param style æ ·å¼
      */
     public void editStyle(Style style) {
         jsonCard.put("style",style);
     }
 
     /**
-     * ±à¼­½áÊøÊ±¼ä´Á
-     * @param endTime Ê±¼ä´Á
+     * ç¼–è¾‘ç»“æŸæ—¶é—´æˆ³
+     * @param endTime æ—¶é—´æˆ³
      */
     public void editCover(long endTime) {
         jsonCard.put("endTime",endTime);
     }
 
     /**
-     * ±à¼­±êÌâ
-     * @param title ±êÌâ
+     * ç¼–è¾‘æ ‡é¢˜
+     * @param title æ ‡é¢˜
      */
     public void editTitle(String title) {
         jsonCard.put("title",title);

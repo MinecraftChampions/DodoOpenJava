@@ -1,7 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.card.enums;
 
 /**
- * ÊäÈë¿ò¸ß¶È
+ * è¾“å…¥æ¡†é«˜åº¦
  */
 public enum Rows {
     /**
@@ -26,13 +26,13 @@ public enum Rows {
     }
 
     /**
-     * ĞĞÊı
+     * è¡Œæ•°
      */
     private final int row;
 
     /**
-     * »ñÈ¡ĞĞÊı
-     * @return ĞĞÊı
+     * è·å–è¡Œæ•°
+     * @return è¡Œæ•°
      */
     public int getRow() {
         return row;

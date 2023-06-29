@@ -1,4 +1,4 @@
 /**
- * Dodo开放平台各个版本的接口
+ * Dodo寮�鏀惧钩鍙板悇涓増鏈殑鎺ュ彛
  */
 package io.github.minecraftchampions.dodoopenjava.api;

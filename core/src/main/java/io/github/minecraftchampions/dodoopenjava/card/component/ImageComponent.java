@@ -1,12 +1,12 @@
 package io.github.minecraftchampions.dodoopenjava.card.component;
 
 /**
- * µ¥Í¼×é¼ş
+ * å•å›¾ç»„ä»¶
  */
 public class ImageComponent extends Component{
     /**
-     * ³õÊ¼»¯
-     * @param url Í¼Æ¬url
+     * åˆå§‹åŒ–
+     * @param url å›¾ç‰‡url
      */
     public ImageComponent(String url) {
         jsonCard.put("type","image");
@@ -14,8 +14,8 @@ public class ImageComponent extends Component{
     }
 
     /**
-     * ĞŞ¸ÄÍ¼Æ¬Á¬½Ó
-     * @param url Í¼Æ¬url
+     * ä¿®æ”¹å›¾ç‰‡è¿æ¥
+     * @param url å›¾ç‰‡url
      */
     public void editUrl(String url) {
         jsonCard.put("src",url);

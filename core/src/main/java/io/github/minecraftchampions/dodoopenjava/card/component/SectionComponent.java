@@ -9,14 +9,14 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * ÎÄ×Ö×é¼ş
+ * æ–‡å­—ç»„ä»¶
  */
 public class SectionComponent extends Component{
 
     public boolean isParagraph;
 
     /**
-     * ³õÊ¼»¯Section
+     * åˆå§‹åŒ–Section
      */
     public SectionComponent(SectionType type) {
         if (jsonCard.isEmpty()) {
@@ -26,7 +26,7 @@ public class SectionComponent extends Component{
                         "                        \"type\": \"sectionComponent\",\n" +
                         "                        \"text\": {\n" +
                         "                                \"type\": \"" + Type + "\",\n" +
-                        "                                \"content\": \"Ò»³¤¶ÎÎÄ±¾×ÖºÅµÄÎÄ±¾ÄÚÈİ£¬Ö§³ÖMarkdown£¬×î´óÖ§³Ö×Ö·ûÊı2000¡£\"\n" +
+                        "                                \"content\": \"ä¸€é•¿æ®µæ–‡æœ¬å­—å·çš„æ–‡æœ¬å†…å®¹ï¼Œæ”¯æŒMarkdownï¼Œæœ€å¤§æ”¯æŒå­—ç¬¦æ•°2000ã€‚\"\n" +
                         "                        }\n" +
                         "                    }");
                 isParagraph = false;
@@ -46,8 +46,8 @@ public class SectionComponent extends Component{
     }
 
     /**
-     * ±à¼­¶àÀ¸ÎÄ±¾
-     * @param stringList stringÁĞ±í
+     * ç¼–è¾‘å¤šæ æ–‡æœ¬
+     * @param stringList stringåˆ—è¡¨
      */
     public void editParagraphContent(List<String> stringList) {
         int count = stringList.size();
@@ -62,16 +62,16 @@ public class SectionComponent extends Component{
     }
 
     /**
-     * ±à¼­ÎÄ±¾£¨·Ç¶àÀ¸£©
-     * @param content ÎÄ±¾
+     * ç¼–è¾‘æ–‡æœ¬ï¼ˆéå¤šæ ï¼‰
+     * @param content æ–‡æœ¬
      */
     public void editContent(String content) {
         jsonCard.getJSONObject("text").put("content", content);
     }
 
     /**
-     * ±à¼­ÎÄ±¾Àà±ğ
-     * @param type Àà±ğ
+     * ç¼–è¾‘æ–‡æœ¬ç±»åˆ«
+     * @param type ç±»åˆ«
      */
     public void editContentType(TextType type) {
         String Type;
@@ -80,17 +80,17 @@ public class SectionComponent extends Component{
     }
 
     /**
-     * ±à¼­ÎÄ±¾£¨¶àÀ¸£©
-     * @param content ÎÄ±¾
-     * @param count µÚ¼¸¸ö
+     * ç¼–è¾‘æ–‡æœ¬ï¼ˆå¤šæ ï¼‰
+     * @param content æ–‡æœ¬
+     * @param count ç¬¬å‡ ä¸ª
      */
     public void editParagraphContent(String content,int count) {
         jsonCard.getJSONObject("text").getJSONArray("fields").getJSONObject(count).put("content", content);
     }
 
     /**
-     * ±à¼­ÎÄ±¾Àà±ğ£¨¶àÀ¸£©
-     * @param type Àà±ğ
+     * ç¼–è¾‘æ–‡æœ¬ç±»åˆ«ï¼ˆå¤šæ ï¼‰
+     * @param type ç±»åˆ«
      * @param count index
      */
     public void editParagraphContentType(TextType type, int count) {
@@ -100,8 +100,8 @@ public class SectionComponent extends Component{
     }
 
     /**
-     * ±à¼­¶àÀ¸ÎÄ±¾À¸Êı
-     * @param col À¸Êı
+     * ç¼–è¾‘å¤šæ æ–‡æœ¬æ æ•°
+     * @param col æ æ•°
      */
     public void editParagraphContentCols(Cols col) {
         int Col = col.getCol();
@@ -109,7 +109,7 @@ public class SectionComponent extends Component{
     }
 
     /**
-     * ÒÆ³ı¶àÀ¸ÎÄ±¾µÄÒ»¶ËÎÄ±¾
+     * ç§»é™¤å¤šæ æ–‡æœ¬çš„ä¸€ç«¯æ–‡æœ¬
      * @param count index
      */
     public void editParagraphContentType(int count) {

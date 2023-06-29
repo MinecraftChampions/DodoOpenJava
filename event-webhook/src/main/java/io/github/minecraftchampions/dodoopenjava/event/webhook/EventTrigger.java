@@ -16,12 +16,12 @@ import java.util.Arrays;
 import java.util.Objects;
 
 /**
- * ÊÂ¼ş´¥·¢
+ * äº‹ä»¶è§¦å‘
  */
 public class EventTrigger {
     public static MockWebServer server= null;
     /**
-     * Æô¶¯¼àÌı
+     * å¯åŠ¨ç›‘å¬
      */
     public static void main() {
         server = new MockWebServer();
@@ -34,7 +34,7 @@ public class EventTrigger {
     }
 
     /**
-     * ¹Ø±Õ·şÎñÆ÷
+     * å…³é—­æœåŠ¡å™¨
      */
     public static void closeServer() {
         if (server == null) {
@@ -48,7 +48,7 @@ public class EventTrigger {
     }
 
     /**
-     * ´¦ÀíÇëÇó
+     * å¤„ç†è¯·æ±‚
      */
     public static final Dispatcher dispatcher = new Dispatcher() {
         @Override
@@ -59,7 +59,7 @@ public class EventTrigger {
                 return mockResponse.setBody("""
                         {
                           "status": -9999,
-                          "message": "´íÎóµÄÇëÇó"
+                          "message": "é”™è¯¯çš„è¯·æ±‚"
                         }
                         """);
             }
@@ -89,14 +89,14 @@ public class EventTrigger {
             return mockResponse.setBody("""
                         {
                           "status": -9999,
-                          "message": "´íÎóµÄÇëÇó"
+                          "message": "é”™è¯¯çš„è¯·æ±‚"
                         }
                         """);
         }
     };
 
     /**
-     * ´¥·¢ÊÂ¼ş
+     * è§¦å‘äº‹ä»¶
      */
     public static class DisposeEvent extends Thread {
         @Override
@@ -211,7 +211,7 @@ public class EventTrigger {
                         throw new RuntimeException(e);
                     }
                 }
-                default -> System.out.println("Î´ÖªµÄÊÂ¼ş£¡");
+                default -> System.out.println("æœªçŸ¥çš„äº‹ä»¶ï¼");
             }
         }
     }

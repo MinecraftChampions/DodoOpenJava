@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 /**
- * ÊÂ¼şµÄÏà¹Ø·½·¨£¨°üº¬¼àÌıÆ÷×¢²áµÈ£©
+ * äº‹ä»¶çš„ç›¸å…³æ–¹æ³•ï¼ˆåŒ…å«ç›‘å¬å™¨æ³¨å†Œç­‰ï¼‰
  */
 public class EventManage {
     @NotNull
@@ -66,8 +66,8 @@ public class EventManage {
     private static boolean isInit = false;
 
     /**
-     * ×¢²áÊÂ¼ş¼àÌıÆ÷
-     * @param listener ¼àÌıÆ÷
+     * æ³¨å†Œäº‹ä»¶ç›‘å¬å™¨
+     * @param listener ç›‘å¬å™¨
      * @param an Authorization
      */
     public static void registerEvents(@NotNull Listener listener,@NotNull String an) {
@@ -81,8 +81,8 @@ public class EventManage {
     }
 
     /**
-     * Í¨¹ı·´Éä»ñÈ¡Ê¹ÓÃÁËÁ½ÕßµÄÄÄ¸ö¿â
-     * @return Àà
+     * é€šè¿‡åå°„è·å–ä½¿ç”¨äº†ä¸¤è€…çš„å“ªä¸ªåº“
+     * @return ç±»
      */
     public static Class<?> getEventTriggerClass() {
         String wh = "io.github.minecraftchampions.dodoopenjava.event.webhook.EventTrigger";
@@ -97,13 +97,13 @@ public class EventManage {
         }
         try {
             if (isWh && isWs) {
-                System.out.println("¼ì²âµ½Í¬Ê±ÓµÓĞ WebSocket ºÍ WebHook¿â£¬Ä¬ÈÏÑ¡ÔñÊ¹ÓÃWebSocket¿â");
+                System.out.println("æ£€æµ‹åˆ°åŒæ—¶æ‹¥æœ‰ WebSocket å’Œ WebHookåº“ï¼Œé»˜è®¤é€‰æ‹©ä½¿ç”¨WebSocketåº“");
             } else if (isWh) {
                 return Class.forName(wh);
             } else if (isWs) {
                 return Class.forName(ws);
             } else {
-                throw new RuntimeException("Ã»ÓĞÊ¹ÓÃ event-websocket or event-webhook ¿â");
+                throw new RuntimeException("æ²¡æœ‰ä½¿ç”¨ event-websocket or event-webhook åº“");
             }
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
@@ -112,7 +112,7 @@ public class EventManage {
     }
 
     /**
-     * ³õÊ¼»¯ÊÂ¼ş¼àÌı
+     * åˆå§‹åŒ–äº‹ä»¶ç›‘å¬
      * @param an Authorization
      */
     public static void init(String an) {
@@ -127,14 +127,14 @@ public class EventManage {
     }
 
     /**
-     * ½«Ö¸¶¨µÄÖ´ĞĞÆ÷×¢²áÖÁÖ¸¶¨µÄÊÂ¼şÀà.
+     * å°†æŒ‡å®šçš„æ‰§è¡Œå™¨æ³¨å†Œè‡³æŒ‡å®šçš„äº‹ä»¶ç±».
      * <p>
-     * Ô­ÎÄ:Registers the specified executor to the given event class
+     * åŸæ–‡:Registers the specified executor to the given event class
      *
-     * @param event Òª×¢²áµÄÊÂ¼şÀàĞÍ
-     * @param listener Òª×¢²áµÄ¼àÌıÆ÷
-     * @param priority Òª×¢²áµÄÊÂ¼şµÄÓÅÏÈ¼¶
-     * @param executor Òª×¢²áµÄÊÂ¼ş´¥·¢Æ÷
+     * @param event è¦æ³¨å†Œçš„äº‹ä»¶ç±»å‹
+     * @param listener è¦æ³¨å†Œçš„ç›‘å¬å™¨
+     * @param priority è¦æ³¨å†Œçš„äº‹ä»¶çš„ä¼˜å…ˆçº§
+     * @param executor è¦æ³¨å†Œçš„äº‹ä»¶è§¦å‘å™¨
      * @param an Authorization
      */
     public static void registerEvent(@NotNull Class<? extends Event> event, @NotNull Listener listener, @NotNull EventPriority priority, @NotNull EventExecutor executor,@NotNull String an) {

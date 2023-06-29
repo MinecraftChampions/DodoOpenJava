@@ -2,17 +2,17 @@ package io.github.minecraftchampions.dodoopenjava.utils;
 
 public class ClassUtil {
     /**
-     * ÅĞ¶ÏclassÊÇ·ñ´æÔÚ
-     * @param className Àà
-     * @return ÊÇ or ·ñ
+     * åˆ¤æ–­classæ˜¯å¦å­˜åœ¨
+     * @param className ç±»
+     * @return æ˜¯ or å¦
      */
     public static boolean classExists(String className) {
         try {
             ClassLoader classLoader = ClassUtil.class.getClassLoader();
-            Class.forName(className, false, classLoader);//²»³õÊ¼»¯¼ÓÔØclass
+            Class.forName(className, false, classLoader);//ä¸åˆå§‹åŒ–åŠ è½½class
             return true;
         } catch (ClassNotFoundException exception) {
-            return false;//²»Å×³öÒì³£·µ»Øfalse
+            return false;//ä¸æŠ›å‡ºå¼‚å¸¸è¿”å›false
         }
     }
 }

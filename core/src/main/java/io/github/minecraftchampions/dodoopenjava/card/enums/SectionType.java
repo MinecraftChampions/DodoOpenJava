@@ -1,19 +1,19 @@
 package io.github.minecraftchampions.dodoopenjava.card.enums;
 
 /**
- * ÎÄ±¾ÀàĞÍ
+ * æ–‡æœ¬ç±»å‹
  */
 public enum SectionType {
     /**
-     * mdÎÄ±¾
+     * mdæ–‡æœ¬
      */
     Markdown("dodo-md"),
     /**
-     * ÆÕÍ¨ÎÄ±¾
+     * æ™®é€šæ–‡æœ¬
      */
     PlainText("plain-text"),
     /**
-     * ¶àÀ¸ÎÄ±¾
+     * å¤šæ æ–‡æœ¬
      */
     Paragraph("Paragraph");
 
@@ -22,13 +22,13 @@ public enum SectionType {
     }
 
     /**
-     * ĞĞÊı
+     * è¡Œæ•°
      */
     private final String type;
 
     /**
-     * »ñÈ¡ÀàĞÍ
-     * @return ÀàĞÍ
+     * è·å–ç±»å‹
+     * @return ç±»å‹
      */
     public String getType() {
         return type;

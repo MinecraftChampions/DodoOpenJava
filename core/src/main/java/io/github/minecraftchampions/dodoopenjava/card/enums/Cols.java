@@ -1,7 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.card.enums;
 
 /**
- * ĞĞÊı£¨2-6£©
+ * è¡Œæ•°ï¼ˆ2-6ï¼‰
  */
 public enum Cols {
     /**
@@ -30,13 +30,13 @@ public enum Cols {
     }
 
     /**
-     * ĞĞÊı
+     * è¡Œæ•°
      */
     private final int col;
 
     /**
-     * »ñÈ¡ĞĞÊı
-     * @return ĞĞÊı
+     * è·å–è¡Œæ•°
+     * @return è¡Œæ•°
      */
     public int getCol() {
         return col;

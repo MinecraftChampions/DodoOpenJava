@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ¿¨Æ¬ÏûÏ¢
+ * å¡ç‰‡æ¶ˆæ¯
  */
 public class Card {
     private JSONObject JsonCard = new JSONObject();
 
     /**
-     * ÊÇ·ñ²»´æÔÚ
+     * æ˜¯å¦ä¸å­˜åœ¨
      * @return true/false
      */
     public boolean isEmpty() {
@@ -22,7 +22,7 @@ public class Card {
     }
 
     /**
-     * ÊÇ·ñ²»´æÔÚ
+     * æ˜¯å¦ä¸å­˜åœ¨
      * @param card Card
      * @return true/false
      */
@@ -31,7 +31,7 @@ public class Card {
     }
 
     /**
-     * ×ª»»ÎªJSON¶ÔÏó
+     * è½¬æ¢ä¸ºJSONå¯¹è±¡
      * @return true
      */
     public JSONObject toJSONObject() {
@@ -39,7 +39,7 @@ public class Card {
     }
 
     /**
-     * ³õÊ¼»¯¿¨Æ¬
+     * åˆå§‹åŒ–å¡ç‰‡
      * @param card JSON
      */
     public Card(JSONObject card) {
@@ -47,7 +47,7 @@ public class Card {
     }
 
     /**
-     * ³õÊ¼»¯¿¨Æ¬
+     * åˆå§‹åŒ–å¡ç‰‡
      */
     public Card() {
         JsonCard = new JSONObject("""
@@ -63,31 +63,31 @@ public class Card {
     }
 
     /**
-     * ±à¼­·ç¸ñ
-     * @param theme ·Ö¸î
+     * ç¼–è¾‘é£æ ¼
+     * @param theme åˆ†å‰²
      */
     public void editTheme(Theme theme) {
         JsonCard.getJSONObject("card").put("theme", theme.getType());
     }
 
     /**
-     * ±à¼­±êÌâ
-     * @param title ±êÌâ
+     * ç¼–è¾‘æ ‡é¢˜
+     * @param title æ ‡é¢˜
      */
     public void editTitle(String title) {
         JsonCard.getJSONObject("card").put("title", title);
     }
 
     /**
-     * ±à¼­ÎÄ±¾
-     * @param content ÎÄ±¾
+     * ç¼–è¾‘æ–‡æœ¬
+     * @param content æ–‡æœ¬
      */
     public void editContent(String content) {
         JsonCard.put("content", content);
     }
 
     /**
-     * ÒÆ³ıÎÄ±¾
+     * ç§»é™¤æ–‡æœ¬
      */
     public void removeContent() {
         if (!JsonCard.keySet().contains("content")) return;
@@ -95,16 +95,16 @@ public class Card {
     }
 
     /**
-     * Ôö¼Ó×é¼ş
-     * @param component ×é¼ş
+     * å¢åŠ ç»„ä»¶
+     * @param component ç»„ä»¶
      */
     public void addComponent(Component component) {
         JsonCard.getJSONObject("card").getJSONArray("components").put(component.getJsonCard());
     }
 
     /**
-     * ÒÆ³ı×é¼ş£¬Èç¹ûÓĞ¶à¸öÏàÍ¬µÄÔòÈ«²¿ÒÆ³ı
-     * @param component ×é¼ş
+     * ç§»é™¤ç»„ä»¶ï¼Œå¦‚æœæœ‰å¤šä¸ªç›¸åŒçš„åˆ™å…¨éƒ¨ç§»é™¤
+     * @param component ç»„ä»¶
      */
     public void removeComponent(Component component) {
         List<Object> list = JsonCard.getJSONObject("card").getJSONArray("components").toList();
@@ -124,7 +124,7 @@ public class Card {
 
 
     /**
-     * É¾³ıÒ»¸ö×é¼ş
+     * åˆ é™¤ä¸€ä¸ªç»„ä»¶
      * @param index index
      */
     public void removeComponent(int index) {

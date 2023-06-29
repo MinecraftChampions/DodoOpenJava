@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * ×ÊÔ´Ëø
+ * èµ„æºé”
  * @author qscbm187531
  */
 public class LockUtil {
@@ -14,9 +14,9 @@ public class LockUtil {
     private static final ConcurrentHashMap<UUID, AtomicInteger> UUID_LOCK_MAP = new ConcurrentHashMap<>();
 
     /**
-     * ¼ÓËø
+     * åŠ é”
      *
-     * @param key Ëøkey
+     * @param key é”key
      * @return AtomicInteger
      */
     public static AtomicInteger lock(String key) {
@@ -28,7 +28,7 @@ public class LockUtil {
     }
 
     /**
-     * ÊÍ·ÅËø
+     * é‡Šæ”¾é”
      *
      * @param key key
      */
@@ -42,9 +42,9 @@ public class LockUtil {
     }
 
     /**
-     * ¼ÓËø
+     * åŠ é”
      *
-     * @param key Ëøkey
+     * @param key é”key
      * @return AtomicInteger
      */
     public static AtomicInteger lock(UUID key) {
@@ -56,7 +56,7 @@ public class LockUtil {
     }
 
     /**
-     * ÊÍ·ÅËø
+     * é‡Šæ”¾é”
      *
      * @param key key
      */

@@ -12,27 +12,27 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * ¹ØÓÚ Bean µÄÒ»Ğ©ÊµÓÃ·½·¨
+ * å…³äº Bean çš„ä¸€äº›å®ç”¨æ–¹æ³•
  * @author qscbm187531
  */
 public class BeanUtil {
-    //getter·½·¨µÄÕıÔò±í´ïÊ½
+    //getteræ–¹æ³•çš„æ­£åˆ™è¡¨è¾¾å¼
     private final static Pattern GET_PATTERN = Pattern.compile("get(\\p{javaUpperCase}\\w*)");
-    //setter·½·¨µÄÕıÔò±í´ïÊ½
+    //setteræ–¹æ³•çš„æ­£åˆ™è¡¨è¾¾å¼
     private final static Pattern SET_PATTERN = Pattern.compile("set(\\p{javaUpperCase}\\w*)");
     private final static String CLASS = "class";
 
     /**
-     * »ñÈ¡¶ÔÏóµÄsetter·½·¨¡£
+     * è·å–å¯¹è±¡çš„setteræ–¹æ³•ã€‚
      *
-     * @param object ¶ÔÏó
-     * @return ¶ÔÏóµÄsetter·½·¨ÁĞ±í
+     * @param object å¯¹è±¡
+     * @return å¯¹è±¡çš„setteræ–¹æ³•åˆ—è¡¨
      */
     public static List<Method> getSetterMethods(Object object) {
         List<Method> setterMethods = new ArrayList<>();
-        Method[] methods = object.getClass().getMethods(); // »ñÈ¡·½·¨ÁĞ±í
+        Method[] methods = object.getClass().getMethods(); // è·å–æ–¹æ³•åˆ—è¡¨
         for (Method method : methods) {
-            //Æ¥Åä
+            //åŒ¹é…
             Matcher m = SET_PATTERN.matcher(method.getName());
             if (m.matches() && (method.getParameterTypes().length == 1)) {
                 setterMethods.add(method);
@@ -42,10 +42,10 @@ public class BeanUtil {
     }
 
     /**
-     * »ñÈ¡¶ÔÏóµÄgetter·½·¨¡£
+     * è·å–å¯¹è±¡çš„getteræ–¹æ³•ã€‚
      *
-     * @param object ¶ÔÏó
-     * @return ¶ÔÏóµÄgetter·½·¨ÁĞ±í
+     * @param object å¯¹è±¡
+     * @return å¯¹è±¡çš„getteræ–¹æ³•åˆ—è¡¨
      */
     public static List<Method> getGetterMethods(Object object) {
         List<Method> getterMethods = new ArrayList<>();
@@ -60,9 +60,9 @@ public class BeanUtil {
     }
 
     /**
-     * bean×ªmap
+     * beanè½¬map
      *
-     * @param object ¶ÔÏó
+     * @param object å¯¹è±¡
      * @return map
      */
     public static Map<String, Object> toMap(Object object) {

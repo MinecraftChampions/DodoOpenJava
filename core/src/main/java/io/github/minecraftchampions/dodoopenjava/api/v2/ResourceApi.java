@@ -7,29 +7,29 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 /**
- * ×ÊÔ´API
+ * èµ„æºAPI
  */
 public class ResourceApi {
     public static String url;
 
     /**
-     * ÉÏ´«×ÊÔ´
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param path Â·¾¶
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * ä¸Šä¼ èµ„æº
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param path è·¯å¾„
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject uploadResource(String clientId, String token, String path) throws IOException {
         return uploadResource(BaseUtil.Authorization(clientId,token), path);
     }
 
     /**
-     * ÉÏ´«×ÊÔ´
+     * ä¸Šä¼ èµ„æº
      * @param authorization authorization
-     * @param path Â·¾¶
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @param path è·¯å¾„
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject uploadResource(String authorization, String path) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/resource/picture/upload";

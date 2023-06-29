@@ -6,15 +6,15 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Êı×é¹¤¾ßÀà
+ * æ•°ç»„å·¥å…·ç±»
  */
 public class ArrayUtil {
     /**
-     * Ç°ÖÃÊı×é
-     * @param arr Êı×é
-     * @param element Ç°ÖÃµÄ¶ÔÏó
-     * @return Êı×é
-     * @param <T> ·ºĞÍ
+     * å‰ç½®æ•°ç»„
+     * @param arr æ•°ç»„
+     * @param element å‰ç½®çš„å¯¹è±¡
+     * @return æ•°ç»„
+     * @param <T> æ³›å‹
      */
     public static <T> T[] prepend(T[] arr, T element) {
         int n = arr.length;
@@ -27,11 +27,11 @@ public class ArrayUtil {
     }
 
     /**
-     * ºóÖÃÊı×é
-     * @param arr Êı×é
-     * @param element ºóÖÃµÄ¶ÔÏó
-     * @return Êı×é
-     * @param <T> ·ºĞÍ
+     * åç½®æ•°ç»„
+     * @param arr æ•°ç»„
+     * @param element åç½®çš„å¯¹è±¡
+     * @return æ•°ç»„
+     * @param <T> æ³›å‹
      */
     public static <T> T[] append(T[] arr, T element) {
         int n = arr.length;
@@ -41,19 +41,19 @@ public class ArrayUtil {
     }
 
     /**
-     * Ç°ÖÃÊı×é
-     * @param arr Êı×é
-     * @param elements Ç°ÖÃµÄÊı×é
-     * @return Êı×é
-     * @param <T> ·ºĞÍ
+     * å‰ç½®æ•°ç»„
+     * @param arr æ•°ç»„
+     * @param elements å‰ç½®çš„æ•°ç»„
+     * @return æ•°ç»„
+     * @param <T> æ³›å‹
      */
     public static <T> T[] prepend(T[] arr, T[] elements) {
         List<T> list = new ArrayList<>();
         T[] element = elements.clone();
         Collections.addAll(list, element);
-        Collections.reverse(list); //µßµ¹Êı×é
+        Collections.reverse(list); //é¢ å€’æ•°ç»„
 
-        list.toArray(element); //¸³Öµ
+        list.toArray(element); //èµ‹å€¼
         for (T t : element) {
             arr = prepend(arr,t);
         }
@@ -61,11 +61,11 @@ public class ArrayUtil {
     }
 
     /**
-     * ºóÖÃÊı×é
-     * @param arr Êı×é
-     * @param elements ºóÖÃµÄÊı×é
-     * @return Êı×é
-     * @param <T> ·ºĞÍ
+     * åç½®æ•°ç»„
+     * @param arr æ•°ç»„
+     * @param elements åç½®çš„æ•°ç»„
+     * @return æ•°ç»„
+     * @param <T> æ³›å‹
      */
     public static <T> T[] append(T[] arr, T[] elements) {
         for (T t : elements) {

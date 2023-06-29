@@ -1,4 +1,4 @@
 /**
- * DodoOpenJavaµÄAPI
+ * DodoOpenJavaçš„API
  */
 package io.github.minecraftchampions.dodoopenjava;

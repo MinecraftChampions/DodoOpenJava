@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * ¹ØÓÚ ¸ÅÂÊ µÄÒ»Ğ©ÊµÓÃ·½·¨
+ * å…³äº æ¦‚ç‡ çš„ä¸€äº›å®ç”¨æ–¹æ³•
  * @author qscbm187531
  */
 public class ProbabilityUtil {
@@ -15,10 +15,10 @@ public class ProbabilityUtil {
     private final List<Integer> probabilityNumList = new ArrayList<>();
 
     /**
-     * ²»¼ÓËø½øĞĞ¸ÅÂÊ³éÈ¡
+     * ä¸åŠ é”è¿›è¡Œæ¦‚ç‡æŠ½å–
      *
-     * @param num ¸ÅÂÊÊı×Ö
-     * @return true ³éµ½
+     * @param num æ¦‚ç‡æ•°å­—
+     * @return true æŠ½åˆ°
      */
     public boolean pickIndex(double num) {
         if (num == 0) {
@@ -29,11 +29,11 @@ public class ProbabilityUtil {
     }
 
     /**
-     * ²»¼ÓËø½øĞĞ¸ÅÂÊ³éÈ¡
+     * ä¸åŠ é”è¿›è¡Œæ¦‚ç‡æŠ½å–
      *
-     * @param num    ¸ÅÂÊÊı×Ö
-     * @param maxNum ×Ü¸ÅÂÊ
-     * @return true ³éµ½
+     * @param num    æ¦‚ç‡æ•°å­—
+     * @param maxNum æ€»æ¦‚ç‡
+     * @return true æŠ½åˆ°
      */
     public boolean pickIndex(int num, int maxNum) {
         if (num >= maxNum) {
@@ -44,31 +44,31 @@ public class ProbabilityUtil {
     }
 
     /**
-     * ¼ÓËø½øĞĞ¸ÅÂÊ³éÈ¡
+     * åŠ é”è¿›è¡Œæ¦‚ç‡æŠ½å–
      *
-     * @param num ¸ÅÂÊÊı×Ö
-     * @return true ³éµ½
+     * @param num æ¦‚ç‡æ•°å­—
+     * @return true æŠ½åˆ°
      */
     public synchronized boolean pickSyncIndex(double num) {
         return pickIndex(num);
     }
 
     /**
-     * ¼ÓËø½øĞĞ¸ÅÂÊ³éÈ¡
+     * åŠ é”è¿›è¡Œæ¦‚ç‡æŠ½å–
      *
-     * @param num    ¸ÅÂÊÊı×Ö
-     * @param maxNum ×Ü¸ÅÂÊ
-     * @return true ³éµ½
+     * @param num    æ¦‚ç‡æ•°å­—
+     * @param maxNum æ€»æ¦‚ç‡
+     * @return true æŠ½åˆ°
      */
     public synchronized boolean pickSyncIndex(int num, int maxNum) {
         return pickIndex(num, maxNum);
     }
 
     /**
-     * ½øĞĞËæ»úµÄ¶ş·Ö²éÑ¯
+     * è¿›è¡Œéšæœºçš„äºŒåˆ†æŸ¥è¯¢
      *
-     * @param nums Êı×é
-     * @return ·µ»Ø0ÎªÆ¥Åäµ½ÁËÊı×éµÚÒ»¸öÊı
+     * @param nums æ•°ç»„
+     * @return è¿”å›0ä¸ºåŒ¹é…åˆ°äº†æ•°ç»„ç¬¬ä¸€ä¸ªæ•°
      */
     private int randomIndex(int[] nums) {
         // 1 5 7 9 11 12

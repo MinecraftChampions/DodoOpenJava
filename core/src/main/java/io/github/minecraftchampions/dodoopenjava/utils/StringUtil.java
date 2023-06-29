@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Ò»Ğ© ×Ö·û´® µÄÊµÓÃ·½·¨
+ * ä¸€äº› å­—ç¬¦ä¸² çš„å®ç”¨æ–¹æ³•
  * @author qscbm187531
  */
 public class StringUtil {
@@ -16,31 +16,32 @@ public class StringUtil {
     public final static Pattern LINE_PATTERN = Pattern.compile("_(\\w)");
     public final static Pattern CHINESE = Pattern.compile("[^u4E00-u9FA5]+", Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
     public static final Pattern BRACKET_NUMBER = Pattern.compile("\\[(\\d+)\\]");
+
     /**
-     * ÊÇ·ñÎª¿Õ
+     * æ˜¯å¦ä¸ºç©º
      *
-     * @param str ×Ö·û´®
-     * @return true/ÊÇ
+     * @param str å­—ç¬¦ä¸²
+     * @return true/æ˜¯
      */
     public static boolean isEmpty(CharSequence str) {
         return str == null || str.length() == 0 || str.isEmpty();
     }
 
     /**
-     * ÊÇ·ñ²»Îª¿Õ
+     * æ˜¯å¦ä¸ä¸ºç©º
      *
-     * @param str ×Ö·û´®
-     * @return true/ÊÇ
+     * @param str å­—ç¬¦ä¸²
+     * @return true/æ˜¯
      */
     public static boolean isNotEmpty(CharSequence str) {
         return !isEmpty(str);
     }
 
     /**
-     * Ò»¶Î×Ö·û´®ÊÇ·ñÎªÖĞÎÄ
+     * ä¸€æ®µå­—ç¬¦ä¸²æ˜¯å¦ä¸ºä¸­æ–‡
      *
-     * @param value ×Ö·û´®
-     * @return true´ú±íÊÒ£¬false´ú±í²»ÊÇ
+     * @param value å­—ç¬¦ä¸²
+     * @return trueä»£è¡¨å®¤ï¼Œfalseä»£è¡¨ä¸æ˜¯
      */
     public static boolean isChinese(String value) {
         boolean result = false;
@@ -53,10 +54,10 @@ public class StringUtil {
     }
 
     /**
-     * ½«Ò»¶Î×Ö½Ú¼¯ºÏ×ªÎª×Ö·û´®£¨UTF-8)
+     * å°†ä¸€æ®µå­—èŠ‚é›†åˆè½¬ä¸ºå­—ç¬¦ä¸²ï¼ˆUTF-8)
      *
-     * @param data ×Ö½Ú
-     * @return ×Ö·û´®
+     * @param data å­—èŠ‚
+     * @return å­—ç¬¦ä¸²
      */
     public static String toString(byte[] data){
         try{
@@ -68,11 +69,11 @@ public class StringUtil {
     }
 
     /**
-     * ½«Ò»¶Î×Ö½Ú¼¯ºÏ×ªÎª×Ö·û´®
+     * å°†ä¸€æ®µå­—èŠ‚é›†åˆè½¬ä¸ºå­—ç¬¦ä¸²
      *
-     * @param data ×Ö½Ú
-     * @param charset ±àÂë
-     * @return ×Ö·û´®
+     * @param data å­—èŠ‚
+     * @param charset ç¼–ç 
+     * @return å­—ç¬¦ä¸²
      */
     public static String toString(byte[] data, String charset){
         try{
@@ -84,23 +85,23 @@ public class StringUtil {
     }
 
     /**
-     * ¸ù¾İ·Ö¸ô·û»ñÈ¡×Ô¶¨ÒåÃû³Æ
-     * ÀıÈç£º[123]²âÊÔ123 »ñÈ¡µ½ ²âÊÔ123
+     * æ ¹æ®åˆ†éš”ç¬¦è·å–è‡ªå®šä¹‰åç§°
+     * ä¾‹å¦‚ï¼š[123]æµ‹è¯•123 è·å–åˆ° æµ‹è¯•123
      *
-     * @param str       ×Ö·û´®
-     * @param separator ·Ö¸ô·û
-     * @return ×Ö·û´®
+     * @param str       å­—ç¬¦ä¸²
+     * @param separator åˆ†éš”ç¬¦
+     * @return å­—ç¬¦ä¸²
      */
     public static String getSeparatorCustomName(String str, String separator) {
         return str.substring(str.indexOf(separator) + 1);
     }
 
     /**
-     * »ñÈ¡[]ÄÚµÄÊı×Ö
-     * ÀıÈç£º[123]²âÊÔ123 »ñÈ¡µ½ 123
+     * è·å–[]å†…çš„æ•°å­—
+     * ä¾‹å¦‚ï¼š[123]æµ‹è¯•123 è·å–åˆ° 123
      *
-     * @param str ×Ö·û´®
-     * @return Êı×Ö
+     * @param str å­—ç¬¦ä¸²
+     * @return æ•°å­—
      * @since 1.1.6
      */
     public static int getSeparatorCustomNameNumber(String str) {
@@ -113,41 +114,41 @@ public class StringUtil {
 
 
     /**
-     * ×ª»»Ğ¡Ğ´
+     * è½¬æ¢å°å†™
      *
-     * @param str ×Ö·û´®
-     * @return Ğ¡Ğ´×Ö·û´®
+     * @param str å­—ç¬¦ä¸²
+     * @return å°å†™å­—ç¬¦ä¸²
      */
     public static String toLowerCase(String str) {
         return str != null ? str.toLowerCase() : null;
     }
 
     /**
-     * Ê××ÖÄ¸´óĞ´
+     * é¦–å­—æ¯å¤§å†™
      *
-     * @param str ×Ö·û´®
-     * @return Ê××ÖÄ¸´óĞ´×Ö·û´®
+     * @param str å­—ç¬¦ä¸²
+     * @return é¦–å­—æ¯å¤§å†™å­—ç¬¦ä¸²
      */
     public static String capture(String str) {
         return StringUtils.capitalize(str);
     }
 
     /**
-     * ÖØ¸´Æ´½Ó×Ö·û´®
+     * é‡å¤æ‹¼æ¥å­—ç¬¦ä¸²
      *
-     * @param str ×Ö·û´®
-     * @param repeatInt ÖØ¸´´ÎÊı
-     * @return ×Ö·û´®
+     * @param str å­—ç¬¦ä¸²
+     * @param repeatInt é‡å¤æ¬¡æ•°
+     * @return å­—ç¬¦ä¸²
      */
     public static String repeat(String str, int repeatInt) {
         return StringUtils.repeat(str, repeatInt);
     }
 
     /**
-     * ½«#Ìæ»»³É¿Õ¸ñ
+     * å°†#æ›¿æ¢æˆç©ºæ ¼
      *
-     * @param str ×Ö·û´®
-     * @return Ìæ»»ºóµÄ×Ö·û´®
+     * @param str å­—ç¬¦ä¸²
+     * @return æ›¿æ¢åçš„å­—ç¬¦ä¸²
      */
     public static String replaceSpace(String str) {
         if (StringUtil.isEmpty(str)) {
@@ -157,10 +158,10 @@ public class StringUtil {
     }
 
     /**
-     * ÏÂ»®Ïß×ªÍÕ·å
+     * ä¸‹åˆ’çº¿è½¬é©¼å³°
      *
-     * @param str ×Ö·û
-     * @return ½á¹û
+     * @param str å­—ç¬¦
+     * @return ç»“æœ
      */
     public static String lineToHump(String str) {
         str = str.toLowerCase();
@@ -174,10 +175,10 @@ public class StringUtil {
     }
 
     /**
-     * ÍÕ·å×ªÏÂ»®Ïß
+     * é©¼å³°è½¬ä¸‹åˆ’çº¿
      *
-     * @param str ×Ö·û
-     * @return ½á¹û
+     * @param str å­—ç¬¦
+     * @return ç»“æœ
      */
     public static String humpToLine(String str) {
         Matcher matcher = HUMP_PATTERN.matcher(str);
@@ -190,10 +191,10 @@ public class StringUtil {
     }
 
     /**
-     * È¥³ı×Ö·û´®ÖĞËùÓĞµÄ¿Õ°×·û
+     * å»é™¤å­—ç¬¦ä¸²ä¸­æ‰€æœ‰çš„ç©ºç™½ç¬¦
      *
-     * @param str ×Ö·û´®
-     * @return ĞÂ×Ö·û´®
+     * @param str å­—ç¬¦ä¸²
+     * @return æ–°å­—ç¬¦ä¸²
      */
     public static String deleteWhitespace(String str) {
         if (isEmpty(str)) {
@@ -215,9 +216,9 @@ public class StringUtil {
     }
 
     /**
-     * ¹ıÂËÌØÊâ×Ö·û %
+     * è¿‡æ»¤ç‰¹æ®Šå­—ç¬¦ %
      *
-     * @param str ±äÁ¿
+     * @param str å˜é‡
      * @return str
      */
     public static String stringFilter(String str) {
@@ -225,9 +226,9 @@ public class StringUtil {
     }
 
     /**
-     * ×ª»»×Ö·û´®ÎªUUID
+     * è½¬æ¢å­—ç¬¦ä¸²ä¸ºUUID
      *
-     * @param uuid ×Ö·û´®
+     * @param uuid å­—ç¬¦ä¸²
      * @return UUID
      */
     public static UUID getUUID(String uuid) {
@@ -239,10 +240,10 @@ public class StringUtil {
     }
 
     /**
-     * ×ª»» Char Îª Unicode ×Ö·û
+     * è½¬æ¢ Char ä¸º Unicode å­—ç¬¦
      *
      * @param c Char
-     * @return Unicode ×Ö·û
+     * @return Unicode å­—ç¬¦
      */
     public static String unicode(char c) {
         return "\\u" + String.format("%04x", (int) c).toUpperCase(Locale.ROOT);

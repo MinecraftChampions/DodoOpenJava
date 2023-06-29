@@ -3,7 +3,7 @@ package io.github.minecraftchampions.dodoopenjava.configuration.serialization;
 import java.util.Map;
 
 /**
- * ÓĞ¹Ø·´ĞòÁĞ»¯µÄÒ»Ğ©¶«Î÷
+ * æœ‰å…³ååºåˆ—åŒ–çš„ä¸€äº›ä¸œè¥¿
  *
  * @see DelegateDeserialization
  * @see SerializableAs

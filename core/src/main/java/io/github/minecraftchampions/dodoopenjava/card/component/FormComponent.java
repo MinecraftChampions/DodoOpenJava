@@ -5,12 +5,12 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * »Ø´«±íµ¥
+ * å›ä¼ è¡¨å•
  * @author qscbm187531
  */
 public class FormComponent extends Component{
     /**
-     * ³õÊ¼»¯»Ø´«±íµ¥
+     * åˆå§‹åŒ–å›ä¼ è¡¨å•
      */
     public void initForm() {
         jsonCard.put("title","");
@@ -18,15 +18,15 @@ public class FormComponent extends Component{
     }
 
     /**
-     * ±à¼­±êÌâ
-     * @param title ±êÌâ
+     * ç¼–è¾‘æ ‡é¢˜
+     * @param title æ ‡é¢˜
      */
     public void editContent(String title) {
         jsonCard.put("title", title);
     }
 
     /**
-     * É¾³ıÒ»¸öÊı¾İ
+     * åˆ é™¤ä¸€ä¸ªæ•°æ®
      * @param count index
      */
     public void removeElement(int count) {
@@ -34,12 +34,12 @@ public class FormComponent extends Component{
     }
 
     /**
-     * Ôö¼ÓÒ»¸öÊı¾İ
-     * @param key Ñ¡Ïî×Ô¶¨ÒåID
-     * @param title Ãû³Æ
-     * @param rows ÊäÈë¿ò¸ß¶È£¬Ìî one ±íÊ¾µ¥ĞĞ£¬×î¶à4ĞĞ
-     * @param minChar ×îĞ¡×Ö·ûÊı£¬½éÓÚ0~4000
-     * @param maxChar ×î´ó×Ö·ûÊı£¬½éÓÚ1~4000£¬ÇÒ×î´ó×Ö·ûÊı²»µÃĞ¡ÓÚ×îĞ¡×Ö·ûÊı
+     * å¢åŠ ä¸€ä¸ªæ•°æ®
+     * @param key é€‰é¡¹è‡ªå®šä¹‰ID
+     * @param title åç§°
+     * @param rows è¾“å…¥æ¡†é«˜åº¦ï¼Œå¡« one è¡¨ç¤ºå•è¡Œï¼Œæœ€å¤š4è¡Œ
+     * @param minChar æœ€å°å­—ç¬¦æ•°ï¼Œä»‹äº0~4000
+     * @param maxChar æœ€å¤§å­—ç¬¦æ•°ï¼Œä»‹äº1~4000ï¼Œä¸”æœ€å¤§å­—ç¬¦æ•°ä¸å¾—å°äºæœ€å°å­—ç¬¦æ•°
      */
     public void addElement(String key, String title, Rows rows, int minChar, int maxChar) {
         JSONObject json = new JSONObject();
@@ -61,13 +61,13 @@ public class FormComponent extends Component{
     }
 
     /**
-     * Ôö¼ÓÒ»¸öÊı¾İ
-     * @param key Ñ¡Ïî×Ô¶¨ÒåID
-     * @param placeholder ÊäÈë¿òÌáÊ¾
-     * @param title Ãû³Æ
-     * @param rows ÊäÈë¿ò¸ß¶È£¬Ìî one ±íÊ¾µ¥ĞĞ£¬×î¶à4ĞĞ
-     * @param minChar ×îĞ¡×Ö·ûÊı£¬½éÓÚ0~4000
-     * @param maxChar ×î´ó×Ö·ûÊı£¬½éÓÚ1~4000£¬ÇÒ×î´ó×Ö·ûÊı²»µÃĞ¡ÓÚ×îĞ¡×Ö·ûÊı
+     * å¢åŠ ä¸€ä¸ªæ•°æ®
+     * @param key é€‰é¡¹è‡ªå®šä¹‰ID
+     * @param placeholder è¾“å…¥æ¡†æç¤º
+     * @param title åç§°
+     * @param rows è¾“å…¥æ¡†é«˜åº¦ï¼Œå¡« one è¡¨ç¤ºå•è¡Œï¼Œæœ€å¤š4è¡Œ
+     * @param minChar æœ€å°å­—ç¬¦æ•°ï¼Œä»‹äº0~4000
+     * @param maxChar æœ€å¤§å­—ç¬¦æ•°ï¼Œä»‹äº1~4000ï¼Œä¸”æœ€å¤§å­—ç¬¦æ•°ä¸å¾—å°äºæœ€å°å­—ç¬¦æ•°
      */
     public void addElement(String key, String placeholder, String title, Rows rows, int minChar, int maxChar) {
         JSONObject json = new JSONObject();

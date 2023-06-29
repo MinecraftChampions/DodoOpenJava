@@ -10,12 +10,12 @@ import java.util.Objects;
 import java.util.Scanner;
 
 /**
- * ÃüÁî´¥·¢
+ * å‘½ä»¤è§¦å‘
  */
 public class CommandTrigger implements Listener {
     /**
-     * ¼àÌýÏûÏ¢ÊÂ¼þ
-     * @param e ÊÂ¼þ
+     * ç›‘å¬æ¶ˆæ¯äº‹ä»¶
+     * @param e äº‹ä»¶
      */
     @EventHandler
     public void event(MessageEvent e) {
@@ -32,7 +32,7 @@ public class CommandTrigger implements Listener {
     }
 
     /**
-     * ¼àÌý¿ØÖÆÌ¨ÊäÈëÃüÁî
+     * ç›‘å¬æŽ§åˆ¶å°è¾“å…¥å‘½ä»¤
      */
     public static void listenerConsole() {
         ConsoleListener cs = new ConsoleListener(new Scanner(System.in), msg -> {

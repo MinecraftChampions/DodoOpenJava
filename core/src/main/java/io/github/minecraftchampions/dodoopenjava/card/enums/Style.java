@@ -1,15 +1,15 @@
 package io.github.minecraftchampions.dodoopenjava.card.enums;
 
 /**
- * Ê±¼äÏÔÊ¾ÖÖÀà
+ * æ—¶é—´æ˜¾ç¤ºç§ç±»
  */
 public enum Style {
     /**
-     * Ìì
+     * å¤©
      */
     day,
     /**
-     * Ğ¡Ê±
+     * å°æ—¶
      */
     hour
 }

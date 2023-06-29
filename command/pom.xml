@@ -15,9 +15,6 @@
 
     <properties>
         <java.version>16</java.version>
-        <project.build.sourceEncoding>GBK</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>GBK</project.reporting.outputEncoding>
-        <maven.compiler.encoding>GBK</maven.compiler.encoding>
     </properties>
 
     <dependencies>

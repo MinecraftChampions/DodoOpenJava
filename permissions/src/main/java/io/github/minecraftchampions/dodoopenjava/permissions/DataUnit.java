@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * 权限实例
+ * 鏉冮檺瀹炰緥
  */
 public class DataUnit {
     private String lastName = "";
@@ -22,8 +22,8 @@ public class DataUnit {
     }
 
     /**
-     * 移除权限
-     * @param permission 权限
+     * 绉婚櫎鏉冮檺
+     * @param permission 鏉冮檺
      * @return true/false
      */
     public boolean removePermission(String permission) {
@@ -52,8 +52,8 @@ public class DataUnit {
     }
 
     /**
-     * 判断是否有一样的权限
-     * @param permission 权限
+     * 鍒ゆ柇鏄惁鏈変竴鏍风殑鏉冮檺
+     * @param permission 鏉冮檺
      * @return true/false
      */
     public boolean hasSamePermission(String permission) {
@@ -61,9 +61,9 @@ public class DataUnit {
     }
 
     /**
-     * 添加权限
+     * 娣诲姞鏉冮檺
      *
-     * @param permission 权限
+     * @param permission 鏉冮檺
      */
     public void addPermission(String permission) {
         if (!permissions.contains(permission)) {

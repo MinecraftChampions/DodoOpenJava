@@ -1,11 +1,11 @@
 package io.github.minecraftchampions.dodoopenjava.card.component;
 
 /**
- * ·Ö¸îÏß×é¼ş
+ * åˆ†å‰²çº¿ç»„ä»¶
  */
 public class DividerComponent extends Component{
     /**
-     * ³õÊ¼»¯
+     * åˆå§‹åŒ–
      */
     public DividerComponent() {
         jsonCard.put("type","divider");

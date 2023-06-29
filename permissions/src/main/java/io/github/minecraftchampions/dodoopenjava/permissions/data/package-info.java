@@ -1,5 +1,5 @@
 /**
- * 权限数据存储
+ * 鏉冮檺鏁版嵁瀛樺偍
  * @author qscbm187531
  */
 package io.github.minecraftchampions.dodoopenjava.permissions.data;

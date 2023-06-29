@@ -1,4 +1,4 @@
 /**
- * ÊÂ¼ş´¥·¢£¨WebHook£©
+ * äº‹ä»¶è§¦å‘ï¼ˆWebHookï¼‰
  */
 package io.github.minecraftchampions.dodoopenjava.event.webhook;

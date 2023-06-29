@@ -1,38 +1,38 @@
 package io.github.minecraftchampions.dodoopenjava.configuration;
 
 /**
- * ³¢ÊÔ¼ÓÔØÎŞĞ§ÅäÖÃÊ±Òı·¢Òì³£
+ * å°è¯•åŠ è½½æ— æ•ˆé…ç½®æ—¶å¼•å‘å¼‚å¸¸
  */
 public class InvalidConfigurationException extends Exception {
 
     /**
-     * ´´½¨InvalidConfigurationExceptionµÄĞÂÊµÀı£¬µ«²»°üº¬ÏûÏ¢»òÔ­Òò¡£
+     * åˆ›å»ºInvalidConfigurationExceptionçš„æ–°å®ä¾‹ï¼Œä½†ä¸åŒ…å«æ¶ˆæ¯æˆ–åŸå› ã€‚
      */
     public InvalidConfigurationException() {}
 
     /**
-     * Ê¹ÓÃÖ¸¶¨µÄÏûÏ¢¹¹ÔìInvalidConfigurationExceptionµÄÊµÀı¡£
+     * ä½¿ç”¨æŒ‡å®šçš„æ¶ˆæ¯æ„é€ InvalidConfigurationExceptionçš„å®ä¾‹ã€‚
      *
-     * @param msg Òì³£µÄÏêÏ¸ĞÅÏ¢¡£
+     * @param msg å¼‚å¸¸çš„è¯¦ç»†ä¿¡æ¯ã€‚
      */
     public InvalidConfigurationException(String msg) {
         super(msg);
     }
 
     /**
-     * ¹¹Ôì¾ßÓĞÖ¸¶¨Ô­ÒòµÄInvalidConfigurationExceptionÊµÀı¡£
+     * æ„é€ å…·æœ‰æŒ‡å®šåŸå› çš„InvalidConfigurationExceptionå®ä¾‹ã€‚
      *
-     * @param cause Òì³£µÄÔ­Òò¡£
+     * @param cause å¼‚å¸¸çš„åŸå› ã€‚
      */
     public InvalidConfigurationException(Throwable cause) {
         super(cause);
     }
 
     /**
-     * Ê¹ÓÃÖ¸¶¨µÄÏûÏ¢ºÍÔ­Òò¹¹ÔìInvalidConfigurationExceptionµÄÊµÀı¡£
+     * ä½¿ç”¨æŒ‡å®šçš„æ¶ˆæ¯å’ŒåŸå› æ„é€ InvalidConfigurationExceptionçš„å®ä¾‹ã€‚
      *
-     * @param cause Ô­Òò
-     * @param msg ĞÅÏ¢
+     * @param cause åŸå› 
+     * @param msg ä¿¡æ¯
      */
     public InvalidConfigurationException(String msg, Throwable cause) {
         super(msg, cause);

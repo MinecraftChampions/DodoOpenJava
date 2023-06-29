@@ -8,9 +8,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * ±£´æÊ±±£ÁôÅäÖÃÎÄ¼ş×¢ÊÍµÄYamlÊµÀı
- * »áÒÔKVµÄĞÎÊ½´æ´¢
- * ¡±'comment   # ×¢ÊÍÄÚÈİ': comment¡°µÄ¸ñÊ½´æ´¢
+ * ä¿å­˜æ—¶ä¿ç•™é…ç½®æ–‡ä»¶æ³¨é‡Šçš„Yamlå®ä¾‹
+ * ä¼šä»¥KVçš„å½¢å¼å­˜å‚¨
+ * â€'comment   # æ³¨é‡Šå†…å®¹': commentâ€œçš„æ ¼å¼å­˜å‚¨
  */
 public class CommentConfiguration extends YamlConfiguration {
     protected static String commentPrefixSymbol = "'comment ";
@@ -50,7 +50,7 @@ public class CommentConfiguration extends YamlConfiguration {
                         comment = comment.substring(1);
                     }
                     comment = COMMENT_PREFIX + comment;
-                    lastComments.add(comment.replaceAll("\\.", "£®").replaceAll("'", "£§").replaceAll(":", "£º"));
+                    lastComments.add(comment.replaceAll("\\.", "ï¼").replaceAll("'", "ï¼‡").replaceAll(":", "ï¼š"));
                 }
             } else {
                 matcher = countSpacePattern.matcher(part);
@@ -82,7 +82,7 @@ public class CommentConfiguration extends YamlConfiguration {
             if (matcher.find() && matcher.groupCount() == 5) {
                 part = this.checkNull(matcher.group(1)) + matcher.group(4);
             }
-            savcontent.append(part.replaceAll("£®", ".").replaceAll("£§", "'").replaceAll("£º", ":"));
+            savcontent.append(part.replaceAll("ï¼", ".").replaceAll("ï¼‡", "'").replaceAll("ï¼š", ":"));
             savcontent.append("\n");
         }
         return savcontent.toString();

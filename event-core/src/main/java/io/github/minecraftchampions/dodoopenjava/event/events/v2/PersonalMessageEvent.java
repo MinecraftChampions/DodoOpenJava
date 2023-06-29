@@ -7,7 +7,7 @@ import org.json.JSONObject;
 import javax.annotation.Nonnull;
 
 /**
- * Ë½ĞÅÊÂ¼ş
+ * ç§ä¿¡äº‹ä»¶
  */
 
 public class PersonalMessageEvent extends Event {
@@ -68,50 +68,50 @@ public class PersonalMessageEvent extends Event {
     }
 
     /**
-     * ×ª»» ÎªIntÊı¾İÀàĞÍµÄ ĞÔ±ğ¹Ø¼ü×Ö Îª String ÀàĞÍ
-     * @param IntSex ĞÔ±ğ
-     * @return ĞÔ±ğ
+     * è½¬æ¢ ä¸ºIntæ•°æ®ç±»å‹çš„ æ€§åˆ«å…³é”®å­— ä¸º String ç±»å‹
+     * @param IntSex æ€§åˆ«
+     * @return æ€§åˆ«
      */
     public String IntSexToSex(Integer IntSex) {
         return switch (IntSex) {
-            case 0 -> "Å®";
-            case 1 -> "ÄĞ";
-            default -> "±£ÃÜ";
+            case 0 -> "å¥³";
+            case 1 -> "ç”·";
+            default -> "ä¿å¯†";
         };
     }
 
     /**
-     * ×ª»» ÎªIntÊı¾İÀàĞÍµÄ ÏûÏ¢ÀàĞÍ¹Ø¼ü×Ö Îª String ÀàĞÍ
-     * @param type ÏûÏ¢ÀàĞÍ
-     * @return ÏûÏ¢ÀàĞÍ
+     * è½¬æ¢ ä¸ºIntæ•°æ®ç±»å‹çš„ æ¶ˆæ¯ç±»å‹å…³é”®å­— ä¸º String ç±»å‹
+     * @param type æ¶ˆæ¯ç±»å‹
+     * @return æ¶ˆæ¯ç±»å‹
      */
     public String IntMessageTypeToMessageType(Integer type) {
         return switch (type) {
-            case 1 -> "ÎÄ×ÖÏûÏ¢";
-            case 2 -> "Í¼Æ¬ÏûÏ¢";
-            case 3 -> "ÊÓÆµÏûÏ¢";
-            default -> "Î´ÖªÏûÏ¢";
+            case 1 -> "æ–‡å­—æ¶ˆæ¯";
+            case 2 -> "å›¾ç‰‡æ¶ˆæ¯";
+            case 3 -> "è§†é¢‘æ¶ˆæ¯";
+            default -> "æœªçŸ¥æ¶ˆæ¯";
         };
     }
 
     /**
-     * »ñÈ¡Ê±¼ä´Á
-     * @return Ê±¼ä´Á
+     * è·å–æ—¶é—´æˆ³
+     * @return æ—¶é—´æˆ³
      */
     public Integer getTimestamp() {
         return this.timestamp;
     }
 
     /**
-     * »ñÈ¡ÊÂ¼şID
-     * @return ÊÂ¼şID
+     * è·å–äº‹ä»¶ID
+     * @return äº‹ä»¶ID
      */
     public String getEventId() {
         return this.eventId;
     }
 
     /**
-     * »ñÈ¡DodoSourceId
+     * è·å–DodoSourceId
      * @return DodoSourceId
      */
     public String getDodoSourceId() {
@@ -119,24 +119,24 @@ public class PersonalMessageEvent extends Event {
     }
 
     /**
-     * »ñÈ¡ÏûÏ¢ID
-     * @return ÏûÏ¢ID
+     * è·å–æ¶ˆæ¯ID
+     * @return æ¶ˆæ¯ID
      */
     public String getMessageId() {
         return this.messageId;
     }
 
     /**
-     * »ñÈ¡ÏûÏ¢Àà±ğ£¨IntÀàĞÍ£©
-     * @return ÏûÏ¢Àà±ğ
+     * è·å–æ¶ˆæ¯ç±»åˆ«ï¼ˆIntç±»å‹ï¼‰
+     * @return æ¶ˆæ¯ç±»åˆ«
      */
     public Integer getMessageIntType() {
         return this.messageIntType;
     }
 
     /**
-     * »ñÈ¡ÏûÏ¢Àà±ğ£¨StringÀàĞÍ£©
-     * @return ÏûÏ¢Àà±ğ
+     * è·å–æ¶ˆæ¯ç±»åˆ«ï¼ˆStringç±»å‹ï¼‰
+     * @return æ¶ˆæ¯ç±»åˆ«
      */
     public String getMessageType() {
         return this.messageType;
@@ -144,8 +144,8 @@ public class PersonalMessageEvent extends Event {
 
 
     /**
-     * »ñÈ¡³ÉÔ±Object
-     * @return »ñÈ¡³ÉÔ±µÄ JsonObject
+     * è·å–æˆå‘˜Object
+     * @return è·å–æˆå‘˜çš„ JsonObject
      */
     public JSONObject getPersonal() {
         return this.personal;
@@ -153,40 +153,40 @@ public class PersonalMessageEvent extends Event {
 
 
     /**
-     * »ñÈ¡·¢ËÍÕßÃû×Ö
-     * @return Ãû×Ö
+     * è·å–å‘é€è€…åå­—
+     * @return åå­—
      */
     public String getSenderNickName() {
         return this.senderNickName;
     }
 
     /**
-     * »ñÈ¡·¢ËÍÕßÍ·ÏñURL
-     * @return Í·Ïñurl
+     * è·å–å‘é€è€…å¤´åƒURL
+     * @return å¤´åƒurl
      */
     public String getSenderAvatarUrl() {
         return this.senderAvatarUrl;
     }
 
     /**
-     * »ñÈ¡ĞÔ±ğ£¨IntÀàĞÍ£©
-     * @return ĞÔ±ğ
+     * è·å–æ€§åˆ«ï¼ˆIntç±»å‹ï¼‰
+     * @return æ€§åˆ«
      */
     public Integer getSenderIntSex() {
         return this.senderIntSex;
     }
 
     /**
-     * »ñÈ¡ĞÔ±ğ£¨StringÀàĞÍ£©
-     * @return ĞÔ±ğ
+     * è·å–æ€§åˆ«ï¼ˆStringç±»å‹ï¼‰
+     * @return æ€§åˆ«
      */
     public String getSenderSex() {
         return this.senderSex;
     }
 
     /**
-     * »ñÈ¡ÏûÏ¢ Object
-     * @return ¶ÔÏó
+     * è·å–æ¶ˆæ¯ Object
+     * @return å¯¹è±¡
      */
     public JSONObject getMessageBody() {
         return this.messageBody;

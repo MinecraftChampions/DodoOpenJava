@@ -7,32 +7,32 @@ import java.nio.file.Files;
 import java.util.Map;
 
 /**
- * ¹ØÓÚ Yml µÄÒ»Ğ©ÊµÓÃĞÔ·½·¨
+ * å…³äº Yml çš„ä¸€äº›å®ç”¨æ€§æ–¹æ³•
  * @author qscbm187531
  */
 public class YmlUtil {
     /**
-     * yml×ª»¯Îªbean
+     * ymlè½¬åŒ–ä¸ºbean
      *
-     * @param fileName ÎÄ¼şÃû
+     * @param fileName æ–‡ä»¶å
      * @return bean
      */
     public static <T> T toBean(String fileName) throws IOException {
         return new Yaml().load(Files.newInputStream(new File(setYml(fileName)).toPath()));
     }
     /**
-     * bean×ª»¯Îªyml
+     * beanè½¬åŒ–ä¸ºyml
      *
      * @param obj      bean
-     * @param fileName ÎÄ¼şÃû
+     * @param fileName æ–‡ä»¶å
      */
     public static void toYml(Object obj, String fileName) throws IOException {
         new Yaml().dump(obj, new FileWriter(YmlUtil.setYml(fileName)));
     }
     /**
-     * ynl×ª»»Îªmap
+     * ynlè½¬æ¢ä¸ºmap
      *
-     * @param fileName ÎÄ¼şÃû
+     * @param fileName æ–‡ä»¶å
      * @return map
      */
     public static Map<String, Object> toMap(String fileName) throws FileNotFoundException {
@@ -40,10 +40,10 @@ public class YmlUtil {
     }
 
     /**
-     * ÉèÖÃ
+     * è®¾ç½®
      *
-     * @param fileName ÎÄ¼şÃû
-     * @return ÎÄ¼şÃû
+     * @param fileName æ–‡ä»¶å
+     * @return æ–‡ä»¶å
      */
     public static String setYml(String fileName) {
         if (!fileName.contains(".yml")) {

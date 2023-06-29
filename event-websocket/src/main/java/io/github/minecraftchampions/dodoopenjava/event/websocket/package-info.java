@@ -1,4 +1,4 @@
 /**
- * Dodo事件Websocket监听方式
+ * Dodo浜嬩欢Websocket鐩戝惉鏂瑰紡
  */
 package io.github.minecraftchampions.dodoopenjava.event.websocket;

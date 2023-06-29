@@ -3,7 +3,7 @@ package io.github.minecraftchampions.dodoopenjava.command.util;
 import java.lang.annotation.*;
 
 /**
- * ×ÓÃüÁî×¢½â
+ * å­å‘½ä»¤æ³¨è§£
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

@@ -14,12 +14,12 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * YamlÎÄ¼ş´æ´¢·½Ê½
+ * Yamlæ–‡ä»¶å­˜å‚¨æ–¹å¼
  */
 public class YamlData extends PermData {
     /**
-     * ±£´æµ½ÎÄ¼ş
-     * @throws IOException Òì³£
+     * ä¿å­˜åˆ°æ–‡ä»¶
+     * @throws IOException å¼‚å¸¸
      */
     @Override
     public void saveToFile() throws IOException {
@@ -46,7 +46,7 @@ public class YamlData extends PermData {
     }
 
     public YamlData() {
-        //ÀàËÆJsonDataµÄ×¢ÊÍ
+        //ç±»ä¼¼JsonDataçš„æ³¨é‡Š
         File Config = new File(ConfigUtil.getJarPath() + "permissions/");
         if (!Config.exists()) {
             Config.mkdir();

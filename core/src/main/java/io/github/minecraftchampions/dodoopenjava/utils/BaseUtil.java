@@ -7,34 +7,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Ò»Ğ©³£ÓÃµÄ·½·¨
+ * ä¸€äº›å¸¸ç”¨çš„æ–¹æ³•
  * @author qscbm187531
  */
 public class BaseUtil {
     /**
-     * Æ´½Ó Authorization
+     * æ‹¼æ¥ Authorization
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¾
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @return ·µ»ØÆ´½ÓºóµÄÎÄ±¾
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡ç¤º
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @return è¿”å›æ‹¼æ¥åçš„æ–‡æœ¬
      */
     public static String Authorization(String clientId, String token) {
         return "Bot " + clientId + "." + token;
     }
 
     /**
-     * ÅĞ¶Ï·µ»ØÂëµÄÒâÒå
-     * @param status ·µ»ØÂë
-     * @return ÒâË¼
+     * åˆ¤æ–­è¿”å›ç çš„æ„ä¹‰
+     * @param status è¿”å›ç 
+     * @return æ„æ€
      */
     public static String getStatus(int status) throws IOException {
         return new JSONObject(NetUtil.simulationBrowserRequest("https://mcchampions.github.io/status.json")).getString(String.valueOf(status));
     }
 
     /**
-     * Object¼¯ºÏ×ªString¼¯ºÏ
-     * @param list Object¼¯ºÏ
-     * @return String¼¯ºÏ
+     * Objecté›†åˆè½¬Stringé›†åˆ
+     * @param list Objecté›†åˆ
+     * @return Stringé›†åˆ
      */
     public static List<String> toStringList(List<Object> list) {
         List<String> returnList = new ArrayList<>();
@@ -45,12 +45,12 @@ public class BaseUtil {
     }
 
     /**
-     * ÅĞ¶ÏÒ»¸öÎÄ±¾ÖĞÊÇ·ñº¬ÓĞÃô¸Ğ´Ê£¨´Ê¿âURL£º<a href="https://mcchampions.github.io/database.json">´Ê¿âµØÖ·</a>)
-     * @param text ÎÄ±¾
-     * @return true´ú±íÊÇ
+     * åˆ¤æ–­ä¸€ä¸ªæ–‡æœ¬ä¸­æ˜¯å¦å«æœ‰æ•æ„Ÿè¯ï¼ˆè¯åº“URLï¼š<a href="https://mcchampions.github.io/database.json">è¯åº“åœ°å€</a>)
+     * @param text æ–‡æœ¬
+     * @return trueä»£è¡¨æ˜¯
      */
     public static boolean hasSensitiveWord(String text) throws IOException {
-        //»ñÈ¡´Ê¿âÄÚÈİ
+        //è·å–è¯åº“å†…å®¹
         List<String> list = toStringList((new JSONObject(NetUtil.simulationBrowserRequest("https://mcchampions.github.io/database.json"))).getJSONArray("words").toList());
         boolean isSensitiveWord = false;
         for (String word : list) {

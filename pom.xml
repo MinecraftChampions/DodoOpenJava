@@ -6,10 +6,10 @@
 
     <properties>
         <java.version>16</java.version>
-        <project.build.sourceEncoding>GBK</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>GBK</project.reporting.outputEncoding>
-        <maven.compiler.encoding>GBK</maven.compiler.encoding>
-        <revision>2.2.1</revision>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <revision>2.3.0</revision>
     </properties>
 
     <groupId>io.github.minecraftchampions.dodoopenjava</groupId>
@@ -109,9 +109,9 @@
                 <version>3.0.1</version>
                 <configuration>
                     <locale>zh_CN</locale>
-                    <charset>GBK</charset>
-                    <encoding>GBK</encoding>
-                    <docencoding>GBK</docencoding>
+                    <charset>UTF-8</charset>
+                    <encoding>UTF-8</encoding>
+                    <docencoding>UTF-8</docencoding>
                     <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
                     <additionalJOptions>
                         <additionalJOption>-Xdoclint:none</additionalJOption>

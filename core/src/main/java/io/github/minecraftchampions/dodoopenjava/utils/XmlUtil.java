@@ -4,22 +4,22 @@ import org.json.JSONObject;
 import org.json.XML;
 
 /**
- * ¹ØÓÚ XML ÎÄ¼şµÄÒ»Ğ©Ïà¹ØÊµÓÃ·½·¨
+ * å…³äº XML æ–‡ä»¶çš„ä¸€äº›ç›¸å…³å®ç”¨æ–¹æ³•
  * @author qscbm187531
  */
 public class XmlUtil {
     /**
-     * ×ª»»ÎªJSON×Ö·û´®
-     * @param xml xml×Ö·û´®
-     * @return ×Ö·û´®
+     * è½¬æ¢ä¸ºJSONå­—ç¬¦ä¸²
+     * @param xml xmlå­—ç¬¦ä¸²
+     * @return å­—ç¬¦ä¸²
      */
     public static String toJSONString(String xml) {
         return XML.toJSONObject(xml).toString();
     }
 
     /**
-     * ×ª»»ÎªJSON¶ÔÏó
-     * @param xml xml×Ö·û´®
+     * è½¬æ¢ä¸ºJSONå¯¹è±¡
+     * @param xml xmlå­—ç¬¦ä¸²
      * @return JSONObject
      */
     public static JSONObject toJSONObject(String xml) {

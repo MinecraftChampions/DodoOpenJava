@@ -7,7 +7,7 @@ import org.json.JSONObject;
 import javax.annotation.Nonnull;
 
 /**
- * ³ÉÔ±ÍË³öÓïÒôÆµµÀÊÂ¼ş
+ * æˆå‘˜é€€å‡ºè¯­éŸ³é¢‘é“äº‹ä»¶
  */
 public class ChannelVoiceMemberLeaveEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
@@ -74,52 +74,52 @@ public class ChannelVoiceMemberLeaveEvent extends Event {
     }
 
     /**
-     * ×ª»» ÎªIntÊı¾İÀàĞÍµÄ ĞÔ±ğ¹Ø¼ü×Ö Îª String ÀàĞÍ
-     * @param IntSex ĞÔ±ğ
-     * @return ĞÔ±ğ
+     * è½¬æ¢ ä¸ºIntæ•°æ®ç±»å‹çš„ æ€§åˆ«å…³é”®å­— ä¸º String ç±»å‹
+     * @param IntSex æ€§åˆ«
+     * @return æ€§åˆ«
      */
     public String IntSexToSex(Integer IntSex) {
         return switch (IntSex) {
-            case 0 -> "Å®";
-            case 1 -> "ÄĞ";
-            default -> "±£ÃÜ";
+            case 0 -> "å¥³";
+            case 1 -> "ç”·";
+            default -> "ä¿å¯†";
         };
     }
 
     /**
-     * »ñÈ¡Ê±¼ä´Á
-     * @return Ê±¼ä´Á
+     * è·å–æ—¶é—´æˆ³
+     * @return æ—¶é—´æˆ³
      */
     public Integer getTimestamp() {
         return this.timestamp;
     }
 
     /**
-     * »ñÈ¡ÊÂ¼şID
-     * @return ÊÂ¼şID
+     * è·å–äº‹ä»¶ID
+     * @return äº‹ä»¶ID
      */
     public String getEventId() {
         return this.eventId;
     }
 
     /**
-     * »ñÈ¡ÈººÅ
-     * @return ÈººÅ
+     * è·å–ç¾¤å·
+     * @return ç¾¤å·
      */
     public String getIslandSourceId() {
         return this.islandSourceId;
     }
 
     /**
-     * »ñÈ¡ÆµµÀID
-     * @return ÆµµÀID
+     * è·å–é¢‘é“ID
+     * @return é¢‘é“ID
      */
     public String getChannelId() {
         return this.channelId;
     }
 
     /**
-     * »ñÈ¡DodoSourceId
+     * è·å–DodoSourceId
      * @return DodoSourceId
      */
     public String getDodoSourceId() {
@@ -128,8 +128,8 @@ public class ChannelVoiceMemberLeaveEvent extends Event {
 
 
     /**
-     * »ñÈ¡³ÉÔ±Object
-     * @return »ñÈ¡³ÉÔ±µÄ JsonObject
+     * è·å–æˆå‘˜Object
+     * @return è·å–æˆå‘˜çš„ JsonObject
      */
     public JSONObject getPersonal() {
         return this.personal;
@@ -137,32 +137,32 @@ public class ChannelVoiceMemberLeaveEvent extends Event {
 
 
     /**
-     * »ñÈ¡·¢ËÍÕßÃû×Ö
-     * @return Ãû×Ö
+     * è·å–å‘é€è€…åå­—
+     * @return åå­—
      */
     public String getUserNickName() {
         return this.userNickName;
     }
 
     /**
-     * »ñÈ¡·¢ËÍÕßÍ·ÏñURL
-     * @return Í·Ïñurl
+     * è·å–å‘é€è€…å¤´åƒURL
+     * @return å¤´åƒurl
      */
     public String getUserAvatarUrl() {
         return this.userAvatarUrl;
     }
 
     /**
-     * »ñÈ¡ĞÔ±ğ£¨IntÀàĞÍ£©
-     * @return ĞÔ±ğ
+     * è·å–æ€§åˆ«ï¼ˆIntç±»å‹ï¼‰
+     * @return æ€§åˆ«
      */
     public Integer getUserIntSex() {
         return this.userIntSex;
     }
 
     /**
-     * »ñÈ¡ĞÔ±ğ£¨StringÀàĞÍ£©
-     * @return ĞÔ±ğ
+     * è·å–æ€§åˆ«ï¼ˆStringç±»å‹ï¼‰
+     * @return æ€§åˆ«
      */
     public String getUserSex() {
         return this.userSex;
@@ -170,46 +170,46 @@ public class ChannelVoiceMemberLeaveEvent extends Event {
 
 
     /**
-     * »ñÈ¡³ÉÔ±Object
-     * @return ³ÉÔ± JsonObject
+     * è·å–æˆå‘˜Object
+     * @return æˆå‘˜ JsonObject
      */
     public JSONObject getMember() {
         return this.member;
     }
 
     /**
-     * »ñÈ¡³ÉÔ±ÏÔÊ¾Ãû
-     * @return Ãû×Ö
+     * è·å–æˆå‘˜æ˜¾ç¤ºå
+     * @return åå­—
      */
     public String getMemberNickName() {
         return this.memberNickName;
     }
 
     /**
-     * »ñÈ¡³ÉÔ±¼ÓÈëÊ±¼ä
-     * @return ¼ÓÈëÊ±¼ä
+     * è·å–æˆå‘˜åŠ å…¥æ—¶é—´
+     * @return åŠ å…¥æ—¶é—´
      */
     public String getMemberJoinTime() {
         return this.memberJoinTime;
     }
 
     /**
-     * »ñÈ¡³ÉÔ±¼ÓÈëÊ±¼ä
-     * @return ¼ÓÈëÊ±¼ä
+     * è·å–æˆå‘˜åŠ å…¥æ—¶é—´
+     * @return åŠ å…¥æ—¶é—´
      */
     public String getModifyTime() {
         return this.modifyTime;
     }
 
     /**
-     * »ñÈ¡¿¨Æ¬ÏûÏ¢JSON×Ö·û´®
+     * è·å–å¡ç‰‡æ¶ˆæ¯JSONå­—ç¬¦ä¸²
      */
     public String getJsonString() {
         return this.jsonString;
     }
 
     /**
-     * »ñÈ¡¿¨Æ¬ÏûÏ¢JSON¶ÔÏó
+     * è·å–å¡ç‰‡æ¶ˆæ¯JSONå¯¹è±¡
      */
     public JSONObject getJsonObject() {
         return this.jsonObject;

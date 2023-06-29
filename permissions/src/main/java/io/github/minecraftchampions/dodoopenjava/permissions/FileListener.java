@@ -9,7 +9,7 @@ import org.apache.commons.io.monitor.FileAlterationListenerAdaptor;
 import java.io.File;
 
 /**
- * ÎÄ¼ş¼àÌı
+ * æ–‡ä»¶ç›‘å¬
  */
 public class FileListener extends FileAlterationListenerAdaptor {
     @Override
@@ -19,7 +19,7 @@ public class FileListener extends FileAlterationListenerAdaptor {
             case "JSON" -> Permissions.permData = new JsonData();
             case "Xml" -> Permissions.permData = new XmlData();
             case "Toml" -> Permissions.permData = new TomlData();
-            default -> System.err.println("´íÎóµÄ´æ´¢ÖÖÀà");
+            default -> System.err.println("é”™è¯¯çš„å­˜å‚¨ç§ç±»");
         }
     }
 
@@ -30,7 +30,7 @@ public class FileListener extends FileAlterationListenerAdaptor {
             case "JSON" -> Permissions.permData = new JsonData();
             case "Xml" -> Permissions.permData = new XmlData();
             case "Toml" -> Permissions.permData = new TomlData();
-            default -> System.err.println("´íÎóµÄ´æ´¢ÖÖÀà");
+            default -> System.err.println("é”™è¯¯çš„å­˜å‚¨ç§ç±»");
         }
     }
 }

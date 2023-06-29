@@ -1,15 +1,15 @@
 package io.github.minecraftchampions.dodoopenjava.card.enums;
 
 /**
- * ¶ÔÆë·½Ê½
+ * å¯¹é½æ–¹å¼
  */
 public enum Align {
     /**
-     * ×ó¶ÔÆë
+     * å·¦å¯¹é½
      */
     Left("left"),
     /**
-     * ÓÒ¶ÔÆë
+     * å³å¯¹é½
      */
     Right("right");
 
@@ -18,13 +18,13 @@ public enum Align {
     }
 
     /**
-     * ¶ÔÆë·½Ê½
+     * å¯¹é½æ–¹å¼
      */
     private final String type;
 
     /**
-     * »ñÈ¡ÀàĞÍ
-     * @return ÀàĞÍ
+     * è·å–ç±»å‹
+     * @return ç±»å‹
      */
     public String getType() {
         return type;

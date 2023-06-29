@@ -1,23 +1,23 @@
 package io.github.minecraftchampions.dodoopenjava.permissions;
 
 /**
- * 数据存储类型
+ * 鏁版嵁瀛樺偍绫诲瀷
  */
 public enum DataType {
     /**
-     * YAML文件
+     * YAML鏂囦欢
      */
     YAML("YAML"),
     /**
-     * JSON文件
+     * JSON鏂囦欢
      */
     JSON("JSON"),
     /**
-     * Xml文件
+     * Xml鏂囦欢
      */
     Xml("Xml"),
     /**
-     * Toml文件
+     * Toml鏂囦欢
      */
     Toml("Toml");
 
@@ -26,13 +26,13 @@ public enum DataType {
     }
 
     /**
-     * 数据存储方式
+     * 鏁版嵁瀛樺偍鏂瑰紡
      */
     private final String type;
 
     /**
-     * 获取类型
-     * @return 类型
+     * 鑾峰彇绫诲瀷
+     * @return 绫诲瀷
      */
     public String getType() {
         return type;

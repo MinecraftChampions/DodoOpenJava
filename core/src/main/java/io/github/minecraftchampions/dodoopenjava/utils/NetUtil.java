@@ -11,17 +11,17 @@ import java.net.*;
 import java.util.*;
 
 /**
- * Ò»Ğ©¹ØÓÚ ÍøÂçÇëÇó µÄÏà¹Ø·½·¨
+ * ä¸€äº›å…³äº ç½‘ç»œè¯·æ±‚ çš„ç›¸å…³æ–¹æ³•
  * @author qscbm187531
  */
 public class NetUtil {
     static OkHttpClient client = new OkHttpClient();
 
     /**
-     * ·¢ËÍÇëÇó£¨Dodo¿ª·ÅÆ½Ì¨×¨ÓÃ£©
+     * å‘é€è¯·æ±‚ï¼ˆDodoå¼€æ”¾å¹³å°ä¸“ç”¨ï¼‰
      *
-     * @param parm ·¢ËÍ¸½´ø²ÎÊı
-     * @param url Á´½ÓµØÖ·
+     * @param parm å‘é€é™„å¸¦å‚æ•°
+     * @param url é“¾æ¥åœ°å€
      * @param Authorization Authorization
      */
      public static String sendRequest(String parm, String url, String Authorization) throws IOException {
@@ -32,38 +32,38 @@ public class NetUtil {
      }
 
     /**
-     * ·¢ËÍÆÕÍ¨POSTÇëÇó
+     * å‘é€æ™®é€šPOSTè¯·æ±‚
      *
-     * @param url Á´½ÓµØÖ·
+     * @param url é“¾æ¥åœ°å€
      */
     public static String sendPostJsonRequest(String url) throws IOException {
         return sendPostJsonRequest(url, new HashMap<>(), "");
     }
 
     /**
-     * ·¢ËÍÆÕÍ¨POSTÇëÇó£¨´øHeader£©
+     * å‘é€æ™®é€šPOSTè¯·æ±‚ï¼ˆå¸¦Headerï¼‰
      *
-     * @param url Á´½ÓµØÖ·
+     * @param url é“¾æ¥åœ°å€
      */
     public static String sendPostJsonRequest(String url, HashMap<String, String> Header) throws IOException {
         return sendPostJsonRequest(url, Header, "");
     }
 
     /**
-     * ·¢ËÍÆÕÍ¨POSTÇëÇó£¨´ø²ÎÊı£©
+     * å‘é€æ™®é€šPOSTè¯·æ±‚ï¼ˆå¸¦å‚æ•°ï¼‰
      *
-     * @param url Á´½ÓµØÖ·
+     * @param url é“¾æ¥åœ°å€
      */
     public static String sendPostJsonRequest(String url, String param) throws IOException {
         return sendPostJsonRequest(url, null, param);
     }
 
     /**
-     * ·¢ËÍÆÕÍ¨POSTÇëÇó£¨´øHeaderºÍ²ÎÊı£©
+     * å‘é€æ™®é€šPOSTè¯·æ±‚ï¼ˆå¸¦Headerå’Œå‚æ•°ï¼‰
      *
-     * @param url Á´½ÓµØÖ·
+     * @param url é“¾æ¥åœ°å€
      * @param Header Header
-     * @param param ²ÎÊı
+     * @param param å‚æ•°
      */
     public static String sendPostJsonRequest(String url, HashMap<String, String> Header, String param) throws IOException {
         Request.Builder builder = new Request.Builder();
@@ -79,8 +79,8 @@ public class NetUtil {
     }
 
     /**
-     * ·¢ËÍÆÕÍ¨µÄGetÇëÇó£¨´øHeader£©
-     * @param url Á´½ÓµØÖ·
+     * å‘é€æ™®é€šçš„Getè¯·æ±‚ï¼ˆå¸¦Headerï¼‰
+     * @param url é“¾æ¥åœ°å€
      */
     public static String sendGetRequest(String url, HashMap<String, String> Header) throws IOException {
         Request.Builder builder = new Request.Builder()
@@ -98,10 +98,10 @@ public class NetUtil {
     }
 
     /**
-     * ÉÏ´«×ÊÔ´Í¼Æ¬
+     * ä¸Šä¼ èµ„æºå›¾ç‰‡
      *
-     * @param path ÎÄ¼şÂ·¾¶
-     * @param url ÉÏ´«Á´½Ó
+     * @param path æ–‡ä»¶è·¯å¾„
+     * @param url ä¸Šä¼ é“¾æ¥
      * @param Authorization Authorization
      */
     public static String uploadFile(String Authorization, String path, String url) throws IOException {
@@ -125,8 +125,8 @@ public class NetUtil {
     }
 
     /**
-     * Ä£Äâä¯ÀÀÆ÷·¢ËÍÇëÇó
-     * @param url Á´½ÓµØÖ·
+     * æ¨¡æ‹Ÿæµè§ˆå™¨å‘é€è¯·æ±‚
+     * @param url é“¾æ¥åœ°å€
      */
      public static String simulationBrowserRequest(String url) throws IOException {
          HashMap<String, String> Header = new HashMap<>();
@@ -135,20 +135,20 @@ public class NetUtil {
      }
 
     /**
-     * ·¢ËÍÆÕÍ¨µÄGetÇëÇó
-     * @param url Á´½ÓµØÖ·
+     * å‘é€æ™®é€šçš„Getè¯·æ±‚
+     * @param url é“¾æ¥åœ°å€
      */
     public static String sendGetRequest(String url) throws IOException {
         return sendGetRequest(url,new HashMap<>());
     }
 
     /**
-     * ´ÓÍøÂçUrlÖĞÏÂÔØÎÄ¼ş
+     * ä»ç½‘ç»œUrlä¸­ä¸‹è½½æ–‡ä»¶
      *
-     * @param url   Â·¾¶
-     * @param saveDir  ±£´æÂ·¾¶
-     * @param fileName ÎÄ¼şÃû³Æ
-     * @throws IOException IOExceptionÒì³£
+     * @param url   è·¯å¾„
+     * @param saveDir  ä¿å­˜è·¯å¾„
+     * @param fileName æ–‡ä»¶åç§°
+     * @throws IOException IOExceptionå¼‚å¸¸
      */
     public static void downloadFile(String url, File saveDir, String fileName) throws IOException {
         Request request = new Request.Builder()
@@ -171,11 +171,11 @@ public class NetUtil {
     }
 
     /**
-     * ´ÓÍøÂçUrlÖĞÏÂÔØÎÄ¼ş£¨Ê¹ÓÃÎÄ¼şÔ­±¾Ãû×Ö£©
+     * ä»ç½‘ç»œUrlä¸­ä¸‹è½½æ–‡ä»¶ï¼ˆä½¿ç”¨æ–‡ä»¶åŸæœ¬åå­—ï¼‰
      *
-     * @param url   Â·¾¶
-     * @param saveDir  ±£´æÂ·¾¶
-     * @throws IOException IOExceptionÒì³£
+     * @param url   è·¯å¾„
+     * @param saveDir  ä¿å­˜è·¯å¾„
+     * @throws IOException IOExceptionå¼‚å¸¸
      */
     public static void downloadFile(String url, File saveDir) throws IOException {
         Request request = new Request.Builder()
@@ -198,9 +198,9 @@ public class NetUtil {
     }
 
     /**
-     * »ñÈ¡±¾»ú¹«ÍøIP
+     * è·å–æœ¬æœºå…¬ç½‘IP
      * @return IP
-     * @throws IOException IOExceptionÒì³£
+     * @throws IOException IOExceptionå¼‚å¸¸
      */
     public static String getIP() throws IOException {
         JSONObject json = new JSONObject(sendGetRequest("https://ipinfo.io/"));
@@ -208,21 +208,21 @@ public class NetUtil {
     }
 
     /**
-     * »ñµÃÖ¸¶¨µØÖ·ĞÅÏ¢ÖĞµÄMACµØÖ·£¬Ê¹ÓÃ·Ö¸ô·û¡°-¡±
+     * è·å¾—æŒ‡å®šåœ°å€ä¿¡æ¯ä¸­çš„MACåœ°å€ï¼Œä½¿ç”¨åˆ†éš”ç¬¦â€œ-â€
      *
      * @param inetAddress {@link InetAddress}
-     * @return MACµØÖ·£¬ÓÃ-·Ö¸ô
+     * @return MACåœ°å€ï¼Œç”¨-åˆ†éš”
      */
     private static String getMacAddress(InetAddress inetAddress) {
         return getMacAddress(inetAddress, "-");
     }
 
     /**
-     * »ñµÃÖ¸¶¨µØÖ·ĞÅÏ¢ÖĞµÄMACµØÖ·
+     * è·å¾—æŒ‡å®šåœ°å€ä¿¡æ¯ä¸­çš„MACåœ°å€
      *
      * @param inetAddress {@link InetAddress}
-     * @param separator   ·Ö¸ô·û£¬ÍÆ¼öÊ¹ÓÃ¡°-¡±»òÕß¡°:¡±
-     * @return MACµØÖ·£¬ÓÃ-·Ö¸ô
+     * @param separator   åˆ†éš”ç¬¦ï¼Œæ¨èä½¿ç”¨â€œ-â€æˆ–è€…â€œ:â€
+     * @return MACåœ°å€ï¼Œç”¨-åˆ†éš”
      */
     private static String getMacAddress(InetAddress inetAddress, String separator) {
         if (inetAddress == null) {
@@ -237,7 +237,7 @@ public class NetUtil {
                 if (i != 0) {
                     sb.append(separator);
                 }
-                // ×Ö½Ú×ª»»ÎªÕûÊı
+                // å­—èŠ‚è½¬æ¢ä¸ºæ•´æ•°
                 s = Integer.toHexString(mac[i] & 0xFF);
                 sb.append(s.length() == 1 ? 0 + s : s);
             }
@@ -248,10 +248,10 @@ public class NetUtil {
     }
 
     /**
-     * »ñµÃÖ¸¶¨µØÖ·ĞÅÏ¢ÖĞµÄÓ²¼şµØÖ·
+     * è·å¾—æŒ‡å®šåœ°å€ä¿¡æ¯ä¸­çš„ç¡¬ä»¶åœ°å€
      *
      * @param inetAddress {@link InetAddress}
-     * @return Ó²¼şµØÖ·
+     * @return ç¡¬ä»¶åœ°å€
      */
     private static byte[] getHardwareAddress(InetAddress inetAddress) {
         if (inetAddress == null) {
@@ -270,9 +270,9 @@ public class NetUtil {
     }
 
     /**
-     * »ñµÃ±¾»úMACµØÖ·
+     * è·å¾—æœ¬æœºMACåœ°å€
      *
-     * @return ±¾»úMACµØÖ·
+     * @return æœ¬æœºMACåœ°å€
      */
     public static String getLocalMacAddress() throws IOException {
         String macAddress = getMacAddress(getLocalhost());
@@ -283,17 +283,17 @@ public class NetUtil {
     }
 
     /**
-     * »ñÈ¡±¾»úÍø¿¨IPµØÖ·£¬¹æÔòÈçÏÂ£º
+     * è·å–æœ¬æœºç½‘å¡IPåœ°å€ï¼Œè§„åˆ™å¦‚ä¸‹ï¼š
      *
      * <pre>
-     * 1. ²éÕÒËùÓĞÍø¿¨µØÖ·£¬±ØĞë·Ç»ØÂ·£¨loopback£©µØÖ·¡¢·Ç¾ÖÓòÍøµØÖ·£¨siteLocal£©¡¢IPv4µØÖ·
-     * 2. Èç¹ûÎŞÂú×ãÒªÇóµÄµØÖ·£¬µ÷ÓÃ {@link InetAddress#getLocalHost()} »ñÈ¡µØÖ·
+     * 1. æŸ¥æ‰¾æ‰€æœ‰ç½‘å¡åœ°å€ï¼Œå¿…é¡»éå›è·¯ï¼ˆloopbackï¼‰åœ°å€ã€éå±€åŸŸç½‘åœ°å€ï¼ˆsiteLocalï¼‰ã€IPv4åœ°å€
+     * 2. å¦‚æœæ— æ»¡è¶³è¦æ±‚çš„åœ°å€ï¼Œè°ƒç”¨ {@link InetAddress#getLocalHost()} è·å–åœ°å€
      * </pre>
      * <p>
-     * ´Ë·½·¨²»»áÅ×³öÒì³££¬»ñÈ¡Ê§°Ü½«·µ»Ø{@code null}<br>
+     * æ­¤æ–¹æ³•ä¸ä¼šæŠ›å‡ºå¼‚å¸¸ï¼Œè·å–å¤±è´¥å°†è¿”å›{@code null}<br>
      * <p>
      *
-     * @return ±¾»úÍø¿¨IPµØÖ·£¬»ñÈ¡Ê§°Ü·µ»Ø{@code null}
+     * @return æœ¬æœºç½‘å¡IPåœ°å€ï¼Œè·å–å¤±è´¥è¿”å›{@code null}
      */
     private static InetAddress getLocalhost() throws UnknownHostException {
         Enumeration allNetInterfaces;

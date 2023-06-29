@@ -7,31 +7,31 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 /**
- * ÔùÀñÏµÍ³Api
+ * èµ ç¤¼ç³»ç»ŸApi
  */
 public class GiftApi {
     public static String url, param;
 
     /**
-     * »ñÈ¡ÈºÊÕÈë
+     * è·å–ç¾¤æ”¶å…¥
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param islandSourceId ÈººÅ
-     * @return ·µ»ØJSON¶ÔÏó
-     * @throws IOException ·¢ËÍÇëÇóÊ§°ÜºóÅ×³ö
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param islandSourceId ç¾¤å·
+     * @return è¿”å›JSONå¯¹è±¡
+     * @throws IOException å‘é€è¯·æ±‚å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject getGiftAccount(String clientId, String token, String islandSourceId) throws IOException {
         return getGiftAccount(BaseUtil.Authorization(clientId,token), islandSourceId);
     }
 
     /**
-     * »ñÈ¡ÈºÊÕÈë
+     * è·å–ç¾¤æ”¶å…¥
      *
      * @param authorization authorization
-     * @param islandSourceId ÈººÅ
-     * @return ·µ»ØJSON¶ÔÏó
-     * @throws IOException ·¢ËÍÇëÇóÊ§°ÜºóÅ×³ö
+     * @param islandSourceId ç¾¤å·
+     * @return è¿”å›JSONå¯¹è±¡
+     * @throws IOException å‘é€è¯·æ±‚å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject getGiftAccount(String authorization, String islandSourceId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/gift/account/info";
@@ -40,25 +40,25 @@ public class GiftApi {
     }
 
     /**
-     * »ñÈ¡³ÉÔ±·Ö³É¹ÜÀí
+     * è·å–æˆå‘˜åˆ†æˆç®¡ç†
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param islandSourceId ÈººÅ
-     * @return ·µ»ØJSON¶ÔÏó
-     * @throws IOException ·¢ËÍÇëÇóÊ§°ÜºóÅ×³ö
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param islandSourceId ç¾¤å·
+     * @return è¿”å›JSONå¯¹è±¡
+     * @throws IOException å‘é€è¯·æ±‚å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject getGiftShareRatioInfo(String clientId, String token, String islandSourceId) throws IOException {
         return getGiftShareRatioInfo(BaseUtil.Authorization(clientId,token), islandSourceId);
     }
 
     /**
-     * »ñÈ¡³ÉÔ±·Ö³É¹ÜÀí
+     * è·å–æˆå‘˜åˆ†æˆç®¡ç†
      *
      * @param authorization authorization
-     * @param islandSourceId ÈººÅ
-     * @return ·µ»ØJSON¶ÔÏó
-     * @throws IOException ·¢ËÍÇëÇóÊ§°ÜºóÅ×³ö
+     * @param islandSourceId ç¾¤å·
+     * @return è¿”å›JSONå¯¹è±¡
+     * @throws IOException å‘é€è¯·æ±‚å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject getGiftShareRatioInfo(String authorization, String islandSourceId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/gift/share/ratio/info";
@@ -67,27 +67,27 @@ public class GiftApi {
     }
 
     /**
-     * »ñÈ¡ÄÚÈİÀñÎïÁĞ±í
+     * è·å–å†…å®¹ç¤¼ç‰©åˆ—è¡¨
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param targetId ÄÚÈİID
-     * @param targetType ÄÚÈİÀàĞÍ£¬1£ºÏûÏ¢£¬2£ºÌû×Ó
-     * @return ·µ»ØJSON¶ÔÏó
-     * @throws IOException ·¢ËÍÇëÇóÊ§°ÜºóÅ×³ö
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param targetId å†…å®¹ID
+     * @param targetType å†…å®¹ç±»å‹ï¼Œ1ï¼šæ¶ˆæ¯ï¼Œ2ï¼šå¸–å­
+     * @return è¿”å›JSONå¯¹è±¡
+     * @throws IOException å‘é€è¯·æ±‚å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject getGiftList(String clientId, String token, String targetId, int targetType) throws IOException {
         return getGiftList(BaseUtil.Authorization(clientId,token), targetId, targetType);
     }
 
     /**
-     * »ñÈ¡ÄÚÈİÀñÎïÁĞ±í
+     * è·å–å†…å®¹ç¤¼ç‰©åˆ—è¡¨
      *
      * @param authorization authorization
-     * @param targetId ÄÚÈİID
-     * @param targetType ÄÚÈİÀàĞÍ£¬1£ºÏûÏ¢£¬2£ºÌû×Ó
-     * @return ·µ»ØJSON¶ÔÏó
-     * @throws IOException ·¢ËÍÇëÇóÊ§°ÜºóÅ×³ö
+     * @param targetId å†…å®¹ID
+     * @param targetType å†…å®¹ç±»å‹ï¼Œ1ï¼šæ¶ˆæ¯ï¼Œ2ï¼šå¸–å­
+     * @return è¿”å›JSONå¯¹è±¡
+     * @throws IOException å‘é€è¯·æ±‚å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject getGiftList(String authorization, String targetId, int targetType) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/gift/list";
@@ -96,33 +96,33 @@ public class GiftApi {
     }
 
     /**
-     * »ñÈ¡ÄÚÈİÀñÎïÄÚ³ÉÔ±ÁĞ±í
+     * è·å–å†…å®¹ç¤¼ç‰©å†…æˆå‘˜åˆ—è¡¨
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param targetId ÄÚÈİID
-     * @param targetType ÄÚÈİÀàĞÍ£¬1£ºÏûÏ¢£¬2£ºÌû×Ó
-     * @param giftId ÀñÎïID
-     * @param pageSize Ò³´óĞ¡£¬×î´ó100
-     * @param maxId ÉÏÒ»Ò³×î´óIDÖµ£¬ÎªÌáÉı·ÖÒ³²éÑ¯ĞÔÄÜ£¬ĞèÒª´«ÈëÉÏÒ»Ò³²éÑ¯¼ÇÂ¼ÖĞµÄ×î´óIDÖµ£¬Ê×Ò³Çë´«0
-     * @return ·µ»ØJSON¶ÔÏó
-     * @throws IOException ·¢ËÍÇëÇóÊ§°ÜºóÅ×³ö
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param targetId å†…å®¹ID
+     * @param targetType å†…å®¹ç±»å‹ï¼Œ1ï¼šæ¶ˆæ¯ï¼Œ2ï¼šå¸–å­
+     * @param giftId ç¤¼ç‰©ID
+     * @param pageSize é¡µå¤§å°ï¼Œæœ€å¤§100
+     * @param maxId ä¸Šä¸€é¡µæœ€å¤§IDå€¼ï¼Œä¸ºæå‡åˆ†é¡µæŸ¥è¯¢æ€§èƒ½ï¼Œéœ€è¦ä¼ å…¥ä¸Šä¸€é¡µæŸ¥è¯¢è®°å½•ä¸­çš„æœ€å¤§IDå€¼ï¼Œé¦–é¡µè¯·ä¼ 0
+     * @return è¿”å›JSONå¯¹è±¡
+     * @throws IOException å‘é€è¯·æ±‚å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject getGiftMemberList(String clientId, String token, String targetId, int targetType, String giftId, int pageSize, long maxId) throws IOException {
         return getGiftMemberList(BaseUtil.Authorization(clientId,token), targetId, targetType, giftId, pageSize, maxId);
     }
 
     /**
-     * »ñÈ¡ÄÚÈİÀñÎïÄÚ³ÉÔ±ÁĞ±í
+     * è·å–å†…å®¹ç¤¼ç‰©å†…æˆå‘˜åˆ—è¡¨
      *
      * @param authorization authorization
-     * @param targetId ÄÚÈİID
-     * @param targetType ÄÚÈİÀàĞÍ£¬1£ºÏûÏ¢£¬2£ºÌû×Ó
-     * @param giftId ÀñÎïID
-     * @param pageSize Ò³´óĞ¡£¬×î´ó100
-     * @param maxId ÉÏÒ»Ò³×î´óIDÖµ£¬ÎªÌáÉı·ÖÒ³²éÑ¯ĞÔÄÜ£¬ĞèÒª´«ÈëÉÏÒ»Ò³²éÑ¯¼ÇÂ¼ÖĞµÄ×î´óIDÖµ£¬Ê×Ò³Çë´«0
-     * @return ·µ»ØJSON¶ÔÏó
-     * @throws IOException ·¢ËÍÇëÇóÊ§°ÜºóÅ×³ö
+     * @param targetId å†…å®¹ID
+     * @param targetType å†…å®¹ç±»å‹ï¼Œ1ï¼šæ¶ˆæ¯ï¼Œ2ï¼šå¸–å­
+     * @param giftId ç¤¼ç‰©ID
+     * @param pageSize é¡µå¤§å°ï¼Œæœ€å¤§100
+     * @param maxId ä¸Šä¸€é¡µæœ€å¤§IDå€¼ï¼Œä¸ºæå‡åˆ†é¡µæŸ¥è¯¢æ€§èƒ½ï¼Œéœ€è¦ä¼ å…¥ä¸Šä¸€é¡µæŸ¥è¯¢è®°å½•ä¸­çš„æœ€å¤§IDå€¼ï¼Œé¦–é¡µè¯·ä¼ 0
+     * @return è¿”å›JSONå¯¹è±¡
+     * @throws IOException å‘é€è¯·æ±‚å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject getGiftMemberList(String authorization, String targetId, int targetType, String giftId, int pageSize, long maxId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/gift/member/list";
@@ -131,31 +131,31 @@ public class GiftApi {
     }
 
     /**
-     * ÓÃÓÚ»ñÈ¡Ö¸¶¨ÄÚÈİµÄÀñÎï×ÜÖµÁĞ±í
+     * ç”¨äºè·å–æŒ‡å®šå†…å®¹çš„ç¤¼ç‰©æ€»å€¼åˆ—è¡¨
      *
-     * @param clientId »úÆ÷ÈËÎ¨Ò»±êÊ¶
-     * @param token »úÆ÷ÈË¼øÈ¨Token
-     * @param targetId ÄÚÈİID
-     * @param targetType ÄÚÈİÀàĞÍ£¬1£ºÏûÏ¢£¬2£ºÌû×Ó
-     * @param pageSize Ò³´óĞ¡£¬×î´ó100
-     * @param maxId ÉÏÒ»Ò³×î´óIDÖµ£¬ÎªÌáÉı·ÖÒ³²éÑ¯ĞÔÄÜ£¬ĞèÒª´«ÈëÉÏÒ»Ò³²éÑ¯¼ÇÂ¼ÖĞµÄ×î´óIDÖµ£¬Ê×Ò³Çë´«0
-     * @return ·µ»ØJSON¶ÔÏó
-     * @throws IOException ·¢ËÍÇëÇóÊ§°ÜºóÅ×³ö
+     * @param clientId æœºå™¨äººå”¯ä¸€æ ‡è¯†
+     * @param token æœºå™¨äººé‰´æƒToken
+     * @param targetId å†…å®¹ID
+     * @param targetType å†…å®¹ç±»å‹ï¼Œ1ï¼šæ¶ˆæ¯ï¼Œ2ï¼šå¸–å­
+     * @param pageSize é¡µå¤§å°ï¼Œæœ€å¤§100
+     * @param maxId ä¸Šä¸€é¡µæœ€å¤§IDå€¼ï¼Œä¸ºæå‡åˆ†é¡µæŸ¥è¯¢æ€§èƒ½ï¼Œéœ€è¦ä¼ å…¥ä¸Šä¸€é¡µæŸ¥è¯¢è®°å½•ä¸­çš„æœ€å¤§IDå€¼ï¼Œé¦–é¡µè¯·ä¼ 0
+     * @return è¿”å›JSONå¯¹è±¡
+     * @throws IOException å‘é€è¯·æ±‚å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject getGiftGrossValueList(String clientId, String token, String targetId, int targetType, int pageSize, long maxId) throws IOException {
         return getGiftGrossValueList(BaseUtil.Authorization(clientId,token), targetId, targetType, pageSize, maxId);
     }
 
     /**
-     * ÓÃÓÚ»ñÈ¡Ö¸¶¨ÄÚÈİµÄÀñÎï×ÜÖµÁĞ±í
+     * ç”¨äºè·å–æŒ‡å®šå†…å®¹çš„ç¤¼ç‰©æ€»å€¼åˆ—è¡¨
      *
      * @param authorization authorization
-     * @param targetId ÄÚÈİID
-     * @param targetType ÄÚÈİÀàĞÍ£¬1£ºÏûÏ¢£¬2£ºÌû×Ó
-     * @param pageSize Ò³´óĞ¡£¬×î´ó100
-     * @param maxId ÉÏÒ»Ò³×î´óIDÖµ£¬ÎªÌáÉı·ÖÒ³²éÑ¯ĞÔÄÜ£¬ĞèÒª´«ÈëÉÏÒ»Ò³²éÑ¯¼ÇÂ¼ÖĞµÄ×î´óIDÖµ£¬Ê×Ò³Çë´«0
-     * @return ·µ»ØJSON¶ÔÏó
-     * @throws IOException ·¢ËÍÇëÇóÊ§°ÜºóÅ×³ö
+     * @param targetId å†…å®¹ID
+     * @param targetType å†…å®¹ç±»å‹ï¼Œ1ï¼šæ¶ˆæ¯ï¼Œ2ï¼šå¸–å­
+     * @param pageSize é¡µå¤§å°ï¼Œæœ€å¤§100
+     * @param maxId ä¸Šä¸€é¡µæœ€å¤§IDå€¼ï¼Œä¸ºæå‡åˆ†é¡µæŸ¥è¯¢æ€§èƒ½ï¼Œéœ€è¦ä¼ å…¥ä¸Šä¸€é¡µæŸ¥è¯¢è®°å½•ä¸­çš„æœ€å¤§IDå€¼ï¼Œé¦–é¡µè¯·ä¼ 0
+     * @return è¿”å›JSONå¯¹è±¡
+     * @throws IOException å‘é€è¯·æ±‚å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject getGiftGrossValueList(String authorization, String targetId, int targetType, int pageSize, long maxId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/gift/gross/value/list";

@@ -7,7 +7,7 @@ import org.apache.commons.io.monitor.FileAlterationObserver;
 import java.io.File;
 
 /**
- * ÎÄ¼ş¼à¿Ø
+ * æ–‡ä»¶ç›‘æ§
  */
 public class FileMonitor {
 
@@ -18,10 +18,10 @@ public class FileMonitor {
     }
 
     /**
-     * ¸øÎÄ¼şÌí¼Ó¼àÌı
+     * ç»™æ–‡ä»¶æ·»åŠ ç›‘å¬
      *
-     * @param file     ÎÄ¼ş
-     * @param listener ÎÄ¼ş¼àÌıÆ÷
+     * @param file     æ–‡ä»¶
+     * @param listener æ–‡ä»¶ç›‘å¬å™¨
      */
     public void monitor(File file, FileAlterationListener listener) {
         FileAlterationObserver observer = new FileAlterationObserver(file);

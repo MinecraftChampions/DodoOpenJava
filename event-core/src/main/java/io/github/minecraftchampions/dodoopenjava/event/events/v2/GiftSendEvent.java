@@ -8,7 +8,7 @@ import javax.annotation.Nonnull;
 import java.math.BigDecimal;
 
 /**
- * ÔùÀñ³É¹¦ÊÂ¼ş
+ * èµ ç¤¼æˆåŠŸäº‹ä»¶
  */
 public class GiftSendEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
@@ -84,152 +84,152 @@ public class GiftSendEvent extends Event {
     }
 
     /**
-     * »ñÈ¡¶©µ¥ºÅ
-     * @return ¶©µ¥ºÅ
+     * è·å–è®¢å•å·
+     * @return è®¢å•å·
      */
     public String getOrderNo() {
         return this.orderNo;
     }
 
     /**
-     * »ñÈ¡À´Ô´ÆµµÀID
-     * @return À´Ô´ÆµµÀID
+     * è·å–æ¥æºé¢‘é“ID
+     * @return æ¥æºé¢‘é“ID
      */
     public String getChannelId() {
         return this.channelId;
     }
 
     /**
-     * »ñÈ¡ÀñÎï×Ü¼ÛÖµ£¨ÁåÇ®£©
-     * @return ÀñÎï×Ü¼ÛÖµ£¨ÁåÇ®£©
+     * è·å–ç¤¼ç‰©æ€»ä»·å€¼ï¼ˆé“ƒé’±ï¼‰
+     * @return ç¤¼ç‰©æ€»ä»·å€¼ï¼ˆé“ƒé’±ï¼‰
      */
     public BigDecimal getTotalAmount() {
         return this.totalAmount;
     }
 
     /**
-     * »ñÈ¡±»ÔùÀñÈËDoDoID
-     * @return ±»ÔùÀñÈËDoDoID
+     * è·å–è¢«èµ ç¤¼äººDoDoID
+     * @return è¢«èµ ç¤¼äººDoDoID
      */
     public String getToDodoSourceId() {
         return this.toDodoSourceId;
     }
 
     /**
-     * »ñÈ¡±»ÔùÀñÈË·Ö³É£¨°Ù·Ö±È£©
-     * @return ±»ÔùÀñÈË·Ö³É£¨°Ù·Ö±È£©
+     * è·å–è¢«èµ ç¤¼äººåˆ†æˆï¼ˆç™¾åˆ†æ¯”ï¼‰
+     * @return è¢«èµ ç¤¼äººåˆ†æˆï¼ˆç™¾åˆ†æ¯”ï¼‰
      */
     public BigDecimal getToDodoRatio() {
         return this.toDodoRatio;
     }
 
     /**
-     * »ñÈ¡±»ÔùÀñÈËÈºêÇ³Æ
-     * @return ±»ÔùÀñÈËÈºêÇ³Æ
+     * è·å–è¢«èµ ç¤¼äººç¾¤æ˜µç§°
+     * @return è¢«èµ ç¤¼äººç¾¤æ˜µç§°
      */
     public String getToDodoIslandNickName() {
         return this.toDodoIslandNickName;
     }
 
     /**
-     * »ñÈ¡±»ÔùÀñÈËÊÕÈë£¨Àï³Ì£©
-     * @return ±»ÔùÀñÈËÊÕÈë£¨Àï³Ì£©
+     * è·å–è¢«èµ ç¤¼äººæ”¶å…¥ï¼ˆé‡Œç¨‹ï¼‰
+     * @return è¢«èµ ç¤¼äººæ”¶å…¥ï¼ˆé‡Œç¨‹ï¼‰
      */
     public BigDecimal getToDodoIncome() {
         return this.toDodoIncome;
     }
 
     /**
-     * »ñÈ¡Ê±¼ä´Á
-     * @return Ê±¼ä´Á
+     * è·å–æ—¶é—´æˆ³
+     * @return æ—¶é—´æˆ³
      */
     public Integer getTimestamp() {
         return this.timestamp;
     }
 
     /**
-     * »ñÈ¡ÄÚÈİÀàĞÍ£¬1£ºÏûÏ¢£¬2£ºÌû×Ó
-     * @return ÄÚÈİÀàĞÍ£¬1£ºÏûÏ¢£¬2£ºÌû×Ó
+     * è·å–å†…å®¹ç±»å‹ï¼Œ1ï¼šæ¶ˆæ¯ï¼Œ2ï¼šå¸–å­
+     * @return å†…å®¹ç±»å‹ï¼Œ1ï¼šæ¶ˆæ¯ï¼Œ2ï¼šå¸–å­
      */
     public Integer getTargetType() {
         return this.targetType;
     }
 
     /**
-     * »ñÈ¡ÄÚÈİID
-     * @return ÄÚÈİID
+     * è·å–å†…å®¹ID
+     * @return å†…å®¹ID
      */
     public String getTargetId() {
         return this.targetId;
     }
 
     /**
-     * »ñÈ¡ÊÂ¼şÄÚÈİ
-     * @return ÊÂ¼şÄÚÈİ
+     * è·å–äº‹ä»¶å†…å®¹
+     * @return äº‹ä»¶å†…å®¹
      */
     public String getJsonString() {
         return this.jsonString;
     }
 
     /**
-     * »ñÈ¡ÊÂ¼şÄÚÈİ
-     * @return ÊÂ¼şÄÚÈİ
+     * è·å–äº‹ä»¶å†…å®¹
+     * @return äº‹ä»¶å†…å®¹
      */
     public JSONObject getJsonObject() {
         return this.jsonObject;
     }
 
     /**
-     * »ñÈ¡À´Ô´ÈºID
-     * @return À´Ô´ÈºID
+     * è·å–æ¥æºç¾¤ID
+     * @return æ¥æºç¾¤ID
      */
     public String getIslandSourceId() {
         return this.islandSourceId;
     }
 
     /**
-     * »ñÈ¡Èº·Ö³É£¨°Ù·Ö±È£©
-     * @return Èº·Ö³É£¨°Ù·Ö±È£©
+     * è·å–ç¾¤åˆ†æˆï¼ˆç™¾åˆ†æ¯”ï¼‰
+     * @return ç¾¤åˆ†æˆï¼ˆç™¾åˆ†æ¯”ï¼‰
      */
     public BigDecimal getIslandRatio() {
         return this.islandRatio;
     }
 
     /**
-     * »ñÈ¡ÈºÊÕÈë£¨Àï³Ì£©
-     * @return ÈºÊÕÈë£¨Àï³Ì£©
+     * è·å–ç¾¤æ”¶å…¥ï¼ˆé‡Œç¨‹ï¼‰
+     * @return ç¾¤æ”¶å…¥ï¼ˆé‡Œç¨‹ï¼‰
      */
     public BigDecimal getIslandIncome() {
         return this.islandIncome;
     }
 
     /**
-     * »ñÈ¡ÀñÎïĞÅÏ¢Object
-     * @return ÀñÎïĞÅÏ¢Object
+     * è·å–ç¤¼ç‰©ä¿¡æ¯Object
+     * @return ç¤¼ç‰©ä¿¡æ¯Object
      */
     public JSONObject getGift() {
         return this.gift;
     }
 
     /**
-     * »ñÈ¡ÊÂ¼şID
-     * @return ÊÂ¼şID
+     * è·å–äº‹ä»¶ID
+     * @return äº‹ä»¶ID
      */
     public String getEventId() {
         return this.eventId;
     }
 
     /**
-     * »ñÈ¡ÔùÀñÈËDoDoID
-     * @return ÔùÀñÈËDoDoID
+     * è·å–èµ ç¤¼äººDoDoID
+     * @return èµ ç¤¼äººDoDoID
      */
     public String getDodoSourceId() {
         return this.dodoSourceId;
     }
 
     /**
-     * »ñÈ¡ÔùÀñÈËÈºêÇ³Æ
-     * @return ÔùÀñÈËÈºêÇ³Æ
+     * è·å–èµ ç¤¼äººç¾¤æ˜µç§°
+     * @return èµ ç¤¼äººç¾¤æ˜µç§°
      */
     public String getDodoIslandNickName() {
         return this.dodoIslandNickName;

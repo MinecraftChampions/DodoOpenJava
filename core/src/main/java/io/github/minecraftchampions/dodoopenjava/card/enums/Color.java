@@ -1,35 +1,35 @@
 package io.github.minecraftchampions.dodoopenjava.card.enums;
 
 /**
- * 按钮颜色
+ * 鎸夐挳棰滆壊
  */
 public enum Color {
     /**
-     * 灰色
+     * 鐏拌壊
      */
     Grey("grey"),
     /**
-     * 红色
+     * 绾㈣壊
      */
     Red("red"),
     /**
-     * 橙色
+     * 姗欒壊
      */
     Orange("orange"),
     /**
-     * 绿色
+     * 缁胯壊
      */
     Green("green"),
     /**
-     * 蓝色
+     * 钃濊壊
      */
     Blue("blue"),
     /**
-     * 紫色
+     * 绱壊
      */
     Purple("purple"),
     /**
-     * 默认
+     * 榛樿
      */
     Default("default");
 
@@ -38,13 +38,13 @@ public enum Color {
     }
 
     /**
-     * 行数
+     * 琛屾暟
      */
     private final String type;
 
     /**
-     * 获取类型
-     * @return 类型
+     * 鑾峰彇绫诲瀷
+     * @return 绫诲瀷
      */
     public String getType() {
         return type;

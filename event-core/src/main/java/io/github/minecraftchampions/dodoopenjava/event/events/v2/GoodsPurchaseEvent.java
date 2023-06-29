@@ -9,7 +9,7 @@ import javax.annotation.Nonnull;
 import java.util.List;
 
 /**
- * ÉÌÆ·¹ºÂò³É¹¦ÊÂ¼ş
+ * å•†å“è´­ä¹°æˆåŠŸäº‹ä»¶
  */
 public class GoodsPurchaseEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
@@ -64,72 +64,72 @@ public class GoodsPurchaseEvent extends Event {
     }
 
     /**
-     * »ñÈ¡¶©µ¥ºÅ
-     * @return ¶©µ¥ºÅ
+     * è·å–è®¢å•å·
+     * @return è®¢å•å·
      */
     public String getOrderNo() {
         return orderNo;
     }
 
     /**
-     * »ñÈ¡ÉÌÆ·ÀàĞÍ
-     * 1£ºÉí·İ×é£¬2£º×Ô¶¨ÒåÉÌÆ·
-     * @return ÉÌÆ·ÀàĞÍ
+     * è·å–å•†å“ç±»å‹
+     * 1ï¼šèº«ä»½ç»„ï¼Œ2ï¼šè‡ªå®šä¹‰å•†å“
+     * @return å•†å“ç±»å‹
      */
     public int getGoodsType() {
         return goodsType;
     }
 
     /**
-     * »ñÈ¡ÉÌÆ·ID
-     * @return ÉÌÆ·ID
+     * è·å–å•†å“ID
+     * @return å•†å“ID
      */
     public String getGoodsId() {
         return goodsId;
     }
 
     /**
-     * »ñÈ¡ÉÌÆ·Í¼Æ¬ÁĞ±í£¬Á´½Óºó½Ó²ÎÊı¿ÉÒÔµ÷ÕûÍ¼Æ¬ÑùÊ½
-     * @return Í¼Æ¬ÁĞ±í
+     * è·å–å•†å“å›¾ç‰‡åˆ—è¡¨ï¼Œé“¾æ¥åæ¥å‚æ•°å¯ä»¥è°ƒæ•´å›¾ç‰‡æ ·å¼
+     * @return å›¾ç‰‡åˆ—è¡¨
      */
     public String getGoodsName() {
         return goodsName;
     }
 
     /**
-     * »ñÈ¡¶©µ¥ºÅ
-     * @return ¶©µ¥ºÅ
+     * è·å–è®¢å•å·
+     * @return è®¢å•å·
      */
     public List<String> getGoodsImageList() {
         return goodsImageList;
     }
 
     /**
-     * »ñÈ¡Ê±¼ä´Á
-     * @return ·µ»ØÊ±¼ä´Á
+     * è·å–æ—¶é—´æˆ³
+     * @return è¿”å›æ—¶é—´æˆ³
      */
     public Integer getTimestamp() {
         return this.timestamp;
     }
 
     /**
-     * »ñÈ¡ÊÂ¼şID
-     * @return ÊÂ¼şID
+     * è·å–äº‹ä»¶ID
+     * @return äº‹ä»¶ID
      */
     public String getEventId() {
         return this.eventId;
     }
 
     /**
-     * »ñÈ¡ÈººÅ
-     * @return ÈººÅ
+     * è·å–ç¾¤å·
+     * @return ç¾¤å·
      */
     public String getIslandSourceId() {
         return this.islandSourceId;
     }
 
     /**
-     * »ñÈ¡DodoId
+     * è·å–DodoId
      * @return DodoSourceId
      */
     public String getDodoSourceId() {
@@ -137,15 +137,15 @@ public class GoodsPurchaseEvent extends Event {
     }
 
     /**
-     * »ñÈ¡±ä¶¯Ê±¼ä
-     * @return ±ä¶¯Ê±¼ä
+     * è·å–å˜åŠ¨æ—¶é—´
+     * @return å˜åŠ¨æ—¶é—´
      */
     public String getModifyTime() {
         return this.modifyTime;
     }
 
     /**
-     * »ñÈ¡JSONObject
+     * è·å–JSONObject
      * @return JSONObject
      */
     public JSONObject getJsonObject() {
@@ -153,7 +153,7 @@ public class GoodsPurchaseEvent extends Event {
     }
 
     /**
-     * »ñÈ¡JsonString
+     * è·å–JsonString
      * @return String
      */
     public String getJsonString() {

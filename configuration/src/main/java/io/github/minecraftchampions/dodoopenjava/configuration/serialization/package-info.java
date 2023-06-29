@@ -1,4 +1,4 @@
 /**
- * ÊµÏÖÊ¹ÅäÖÃ¿ÉÒÔ±»Ö´ĞĞĞòÁĞ»¯µÄÀà£¨Ò»°ã²»ÓÃ¿´£©
+ * å®ç°ä½¿é…ç½®å¯ä»¥è¢«æ‰§è¡Œåºåˆ—åŒ–çš„ç±»ï¼ˆä¸€èˆ¬ä¸ç”¨çœ‹ï¼‰
  */
 package io.github.minecraftchampions.dodoopenjava.configuration.serialization;

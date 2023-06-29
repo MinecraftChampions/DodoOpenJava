@@ -21,7 +21,7 @@ public class YamlConstructor extends SafeConstructor {
         @Override
         public Object construct(Node node) {
             if (node.isTwoStepsConstruction()) {
-                throw new YAMLException("ÒâÍâµÄ½á¹¹. ½Úµã: " + node);
+                throw new YAMLException("æ„å¤–çš„ç»“æ„. èŠ‚ç‚¹: " + node);
             }
 
             Map<?, ?> raw = (Map<?, ?>) super.construct(node);
@@ -35,7 +35,7 @@ public class YamlConstructor extends SafeConstructor {
                 try {
                     return ConfigurationSerialization.deserializeObject(typed);
                 } catch (IllegalArgumentException ex) {
-                    throw new YAMLException("ÎŞ·¨·´ĞòÁĞ»¯¶ÔÏó", ex);
+                    throw new YAMLException("æ— æ³•ååºåˆ—åŒ–å¯¹è±¡", ex);
                 }
             }
 
@@ -44,7 +44,7 @@ public class YamlConstructor extends SafeConstructor {
 
         @Override
         public void construct2ndStep(Node node, Object object) {
-            throw new YAMLException("ÒâÍâµÄ½á¹¹.  ½Úµã: " + node);
+            throw new YAMLException("æ„å¤–çš„ç»“æ„.  èŠ‚ç‚¹: " + node);
         }
     }
 }

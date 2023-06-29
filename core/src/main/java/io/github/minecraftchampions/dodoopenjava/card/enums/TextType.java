@@ -1,15 +1,15 @@
 package io.github.minecraftchampions.dodoopenjava.card.enums;
 
 /**
- * ÎÄ±¾ÀàĞÍ
+ * æ–‡æœ¬ç±»å‹
  */
 public enum TextType {
     /**
-     * MDÎÄ±¾
+     * MDæ–‡æœ¬
      */
     Markdown("dodo-md"),
     /**
-     * ÆÕÍ¨ÎÄ±¾
+     * æ™®é€šæ–‡æœ¬
      */
     PlainText("plain-text");
 
@@ -18,13 +18,13 @@ public enum TextType {
     }
 
     /**
-     * ĞĞÊı
+     * è¡Œæ•°
      */
     private final String type;
 
     /**
-     * »ñÈ¡ÀàĞÍ
-     * @return ÀàĞÍ
+     * è·å–ç±»å‹
+     * @return ç±»å‹
      */
     public String getType() {
         return type;

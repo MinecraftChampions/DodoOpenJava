@@ -10,24 +10,24 @@ import java.security.AlgorithmParameters;
 import java.security.Security;
 
 /**
- * ¿ª·ÅÃØÃÜ¹¤¾ß
+ * å¼€æ”¾ç§˜å¯†å·¥å…·
  * @author Dodo
  */
 public class OpenSecretUtil {
     /*
-      ³õÊ¼»¯Provider£¬Ç§Íò±ğÂ©ÁË£¡
+      åˆå§‹åŒ–Providerï¼Œåƒä¸‡åˆ«æ¼äº†ï¼
      */
     static {
         Security.addProvider(new BouncyCastleProvider());
     }
 
     /**
-     * WebHook½âÃÜ
+     * WebHookè§£å¯†
      *
-     * @param payload   ¼ÓÃÜÏûÏ¢
-     * @param secretKey ½âÃÜÃÜÔ¿
+     * @param payload   åŠ å¯†æ¶ˆæ¯
+     * @param secretKey è§£å¯†å¯†é’¥
      *
-     * @return ½âÃÜºóµÄ×Ö·û´®
+     * @return è§£å¯†åçš„å­—ç¬¦ä¸²
      */
     public static String WebHookDecrypt(String payload, String secretKey) {
         try {
@@ -39,14 +39,14 @@ public class OpenSecretUtil {
 
 
     /**
-     * AES½âÃÜ
+     * AESè§£å¯†
      *
-     * @param payload   ¼ÓÃÜÏûÏ¢
-     * @param secretKey ½âÃÜÃÜÔ¿
-     * @param iv        IVÏòÁ¿
-     * @param cipher    AESÅäÖÃ
+     * @param payload   åŠ å¯†æ¶ˆæ¯
+     * @param secretKey è§£å¯†å¯†é’¥
+     * @param iv        IVå‘é‡
+     * @param cipher    AESé…ç½®
      *
-     * @return ½âÃÜÃÜ¹ıºóµÄÖµ
+     * @return è§£å¯†å¯†è¿‡åçš„å€¼
      *
      */
     private static String AESDecrypt(byte[] payload, byte[] secretKey, byte[] iv, Cipher cipher) throws Exception {
@@ -59,11 +59,11 @@ public class OpenSecretUtil {
     }
 
     /**
-     * Ê®Áù½øÖÆ×Ö·û´®×ª×Ö½ÚÊı×é
+     * åå…­è¿›åˆ¶å­—ç¬¦ä¸²è½¬å­—èŠ‚æ•°ç»„
      *
-     * @param hexStr Ê®Áù½øÖÆ×Ö·û´®
+     * @param hexStr åå…­è¿›åˆ¶å­—ç¬¦ä¸²
      *
-     * @return ×Ö½ÚÊı×é
+     * @return å­—èŠ‚æ•°ç»„
      */
     private static byte[] HexStringToBytes(String hexStr) throws Exception {
         return Hex.decodeHex(hexStr.toCharArray());

@@ -7,31 +7,31 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 /**
- * ÓïÑÔÆµµÀAPI
+ * è¯­è¨€é¢‘é“API
  */
 public class ChannelVoiceApi {
     public static String url,param;
 
     /**
-     * »ñÈ¡³ÉÔ±ÓïÒôÆµµÀ×´Ì¬
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId DodoºÅ
+     * è·å–æˆå‘˜è¯­éŸ³é¢‘é“çŠ¶æ€
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId Dodoå·
      * @param clientId clientId
      * @param token token
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject getChannelVoiceMemberStatus(String islandSourceId,String dodoSourceId,String clientId, String token) throws IOException {
         return getChannelVoiceMemberStatus(islandSourceId, dodoSourceId, BaseUtil.Authorization(clientId, token));
     }
 
     /**
-     * »ñÈ¡³ÉÔ±ÓïÒôÆµµÀ×´Ì¬
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId DodoºÅ
+     * è·å–æˆå‘˜è¯­éŸ³é¢‘é“çŠ¶æ€
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId Dodoå·
      * @param authorization authorization
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject getChannelVoiceMemberStatus(String islandSourceId,String dodoSourceId,String authorization) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/voice/member/status";
@@ -44,27 +44,27 @@ public class ChannelVoiceApi {
 
 
     /**
-     * ÒÆ¶¯ÓïÒôÆµµÀ³ÉÔ±
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId DodoºÅ
-     * @param channelId ÒÆ¶¯µ½µÄÆµµÀºÅ
+     * ç§»åŠ¨è¯­éŸ³é¢‘é“æˆå‘˜
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId Dodoå·
+     * @param channelId ç§»åŠ¨åˆ°çš„é¢‘é“å·
      * @param clientId clientId
      * @param token token
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject moveChannelVoiceMember(String islandSourceId,String dodoSourceId,String channelId,String clientId, String token) throws IOException {
         return moveChannelVoiceMember(islandSourceId, dodoSourceId, channelId, BaseUtil.Authorization(clientId, token));
     }
 
     /**
-     * ÒÆ¶¯ÓïÒôÆµµÀ³ÉÔ±
-     * @param islandSourceId ÈººÅ
-     * @param dodoSourceId DodoºÅ
-     * @param channelId ÒÆ¶¯µ½µÄÆµµÀºÅ
+     * ç§»åŠ¨è¯­éŸ³é¢‘é“æˆå‘˜
+     * @param islandSourceId ç¾¤å·
+     * @param dodoSourceId Dodoå·
+     * @param channelId ç§»åŠ¨åˆ°çš„é¢‘é“å·
      * @param authorization authorization
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject moveChannelVoiceMember(String islandSourceId,String dodoSourceId,String channelId,String authorization) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/voice/member/move";
@@ -77,27 +77,27 @@ public class ChannelVoiceApi {
     }
 
     /**
-     * ¹ÜÀíÓïÒôÖĞµÄ³ÉÔ±
-     * @param operateType Ö´ĞĞ¹ÜÀí£¨Ïê¼ûÎÄµµ£©
-     * @param dodoSourceId DodoºÅ
-     * @param channelId ÒÆ¶¯µ½µÄÆµµÀºÅ
+     * ç®¡ç†è¯­éŸ³ä¸­çš„æˆå‘˜
+     * @param operateType æ‰§è¡Œç®¡ç†ï¼ˆè¯¦è§æ–‡æ¡£ï¼‰
+     * @param dodoSourceId Dodoå·
+     * @param channelId ç§»åŠ¨åˆ°çš„é¢‘é“å·
      * @param clientId clientId
      * @param token token
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject editChannelVoiceMember(int operateType,String dodoSourceId,String channelId,String clientId, String token) throws IOException {
         return editChannelVoiceMember(operateType, dodoSourceId, channelId, BaseUtil.Authorization(clientId, token));
     }
 
     /**
-     * ¹ÜÀíÓïÒôÖĞµÄ³ÉÔ±
-     * @param operateType Ö´ĞĞ¹ÜÀí£¨Ïê¼ûÎÄµµ£©
-     * @param dodoSourceId DodoºÅ
-     * @param channelId ÒÆ¶¯µ½µÄÆµµÀºÅ
+     * ç®¡ç†è¯­éŸ³ä¸­çš„æˆå‘˜
+     * @param operateType æ‰§è¡Œç®¡ç†ï¼ˆè¯¦è§æ–‡æ¡£ï¼‰
+     * @param dodoSourceId Dodoå·
+     * @param channelId ç§»åŠ¨åˆ°çš„é¢‘é“å·
      * @param authorization authorization
-     * @return JSON¶ÔÏó
-     * @throws IOException Ê§°ÜºóÅ×³ö
+     * @return JSONå¯¹è±¡
+     * @throws IOException å¤±è´¥åæŠ›å‡º
      */
     public static JSONObject editChannelVoiceMember(int operateType,String dodoSourceId,String channelId,String authorization) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/voice/member/edit";
