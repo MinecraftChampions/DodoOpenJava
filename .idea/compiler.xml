@@ -9,12 +9,14 @@
         <module name="event-core" />
         <module name="core" />
         <module name="configuration" />
-        <module name="command-cloudextend" />
         <module name="permissions" />
         <module name="event-websocket" />
         <module name="event-webhook" />
         <module name="command" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="command-cloudextend" target="16" />
+    </bytecodeTargetLevel>
   </component>
 </project>
