@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * �洢ʵ��
+ * 存储实例
  */
 public class PermData {
     public File User;
