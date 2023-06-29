@@ -9,7 +9,7 @@
         <project.build.sourceEncoding>GBK</project.build.sourceEncoding>
         <project.reporting.outputEncoding>GBK</project.reporting.outputEncoding>
         <maven.compiler.encoding>GBK</maven.compiler.encoding>
-        <revision>2.2.0</revision>
+        <revision>2.2.1</revision>
     </properties>
 
     <groupId>io.github.minecraftchampions.dodoopenjava</groupId>
@@ -26,6 +26,7 @@
         <module>event-webhook</module>
         <module>permissions</module>
         <module>event-core</module>
+        <module>command-cloudextend</module>
     </modules>
 
     <build>
@@ -148,6 +149,10 @@
 
     <repositories>
         <repository>
+            <id>sonatype-snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </repository>
+        <repository>
             <id>sonatype</id>
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
@@ -170,6 +175,12 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>3.12.0</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>cloud.commandframework</groupId>
+                <artifactId>cloud-core</artifactId>
+                <version>1.8.3</version>
                 <scope>compile</scope>
             </dependency>
             <dependency>
@@ -258,6 +269,12 @@
             <dependency>
                 <groupId>io.github.minecraftchampions.dodoopenjava</groupId>
                 <artifactId>command</artifactId>
+                <version>${project.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.github.minecraftchampions.dodoopenjava</groupId>
+                <artifactId>command-cloudextend</artifactId>
                 <version>${project.version}</version>
                 <scope>provided</scope>
             </dependency>

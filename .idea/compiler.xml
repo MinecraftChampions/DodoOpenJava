@@ -9,6 +9,7 @@
         <module name="event-core" />
         <module name="core" />
         <module name="configuration" />
+        <module name="command-cloudextend" />
         <module name="permissions" />
         <module name="event-websocket" />
         <module name="event-webhook" />
