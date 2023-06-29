@@ -6,6 +6,9 @@ import java.util.TreeMap;
 
 import static io.github.minecraftchampions.dodoopenjava.permissions.Util.comparePermissionString;
 
+/**
+ * 权限组管理
+ */
 public class GroupManager {
     private static Group defaultGroup;
     private static File groupsFile;

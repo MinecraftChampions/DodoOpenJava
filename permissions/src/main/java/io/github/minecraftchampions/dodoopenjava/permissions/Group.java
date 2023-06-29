@@ -5,7 +5,6 @@ import java.util.List;
 
 /**
  * È¨ÏÞ×é
- * @author qscbm187531
  */
 public class Group extends DataUnit implements Cloneable {
     private List<String> inherits = new LinkedList<>();
