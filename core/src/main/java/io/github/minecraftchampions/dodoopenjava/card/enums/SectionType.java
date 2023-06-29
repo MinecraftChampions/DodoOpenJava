@@ -2,7 +2,6 @@ package io.github.minecraftchampions.dodoopenjava.card.enums;
 
 /**
  * 文本类型
- * @author qscbm187531
  */
 public enum SectionType {
     /**

@@ -5,6 +5,9 @@ import java.util.*;
 
 import static io.github.minecraftchampions.dodoopenjava.permissions.Util.comparePermissionString;
 
+/**
+ * 用户管理
+ */
 public class UserManager {
     public static boolean hasPerm(User user,String perm) {
         if (UserManager.users.containsKey(user.getLastName())) {

@@ -1,7 +1,5 @@
 package io.github.minecraftchampions.dodoopenjava.event;
 
-import io.github.minecraftchampions.dodoopenjava.event.EventHandler;
-
 /**
  * 代表一个事件的优先级.
  * @see EventHandler

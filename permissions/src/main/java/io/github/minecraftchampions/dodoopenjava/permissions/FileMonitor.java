@@ -6,6 +6,9 @@ import org.apache.commons.io.monitor.FileAlterationObserver;
 
 import java.io.File;
 
+/**
+ * нд╪Ч╪Ю©ь
+ */
 public class FileMonitor {
 
     private FileAlterationMonitor monitor;

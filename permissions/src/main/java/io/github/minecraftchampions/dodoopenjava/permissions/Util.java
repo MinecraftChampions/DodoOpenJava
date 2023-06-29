@@ -7,8 +7,17 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * 工具类
+ */
 public class Util {
 
+    /**
+     * 判断权限是否符合
+     * @param userPerm 用户的权限
+     * @param perm 判断的权限
+     * @return ture/false
+     */
     public static boolean comparePermissionString(String userPerm, String perm) {
         if (userPerm.equals(perm)) {
             return true;

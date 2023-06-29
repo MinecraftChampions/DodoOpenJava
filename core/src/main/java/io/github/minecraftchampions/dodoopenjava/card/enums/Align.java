@@ -2,7 +2,6 @@ package io.github.minecraftchampions.dodoopenjava.card.enums;
 
 /**
  * ¶ÔÆë·½Ê½
- * @author qscbm187531
  */
 public enum Align {
     /**

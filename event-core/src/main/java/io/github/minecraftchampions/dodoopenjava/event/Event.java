@@ -18,7 +18,6 @@ import org.jetbrains.annotations.NotNull;
  }
  * </pre>
  *
- * @author qscbm187531
  */
 public abstract class Event {
     private String name;

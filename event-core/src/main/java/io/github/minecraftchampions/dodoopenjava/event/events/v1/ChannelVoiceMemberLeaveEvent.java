@@ -8,7 +8,6 @@ import javax.annotation.Nonnull;
 
 /**
  * 成员退出语音频道事件
- * @author qscbm187531
  */
 public class ChannelVoiceMemberLeaveEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
@@ -22,6 +21,7 @@ public class ChannelVoiceMemberLeaveEvent extends Event {
     public static HandlerList getHandlerList() {
         return handlers;
     }
+
     public Integer timestamp;
 
     public String eventId;

@@ -8,6 +8,9 @@ import org.json.JSONObject;
 import javax.annotation.Nonnull;
 import java.util.List;
 
+/**
+ * 商品购买成功事件
+ */
 public class GoodsPurchaseEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
 
@@ -20,6 +23,7 @@ public class GoodsPurchaseEvent extends Event {
     public static HandlerList getHandlerList() {
         return handlers;
     }
+
     public Integer timestamp;
 
     public String eventId;

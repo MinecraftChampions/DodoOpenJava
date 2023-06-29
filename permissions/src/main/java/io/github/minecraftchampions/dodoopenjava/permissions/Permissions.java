@@ -1,17 +1,14 @@
 package io.github.minecraftchampions.dodoopenjava.permissions;
 
-import io.github.minecraftchampions.dodoopenjava.permissions.data.JsonData;
-import io.github.minecraftchampions.dodoopenjava.permissions.data.TomlData;
-import io.github.minecraftchampions.dodoopenjava.permissions.data.XmlData;
-import io.github.minecraftchampions.dodoopenjava.permissions.data.YamlData;
+import io.github.minecraftchampions.dodoopenjava.permissions.data.*;
 
 import java.io.IOException;
 
 /**
  * 权限系统核心
- * @author qscbm187531
  */
 public class Permissions {
+    public static PermData permData = new PermData();
     public static DataType type;
 
     public static boolean initialized;
@@ -21,7 +18,7 @@ public class Permissions {
      * @param type 存储类型
      * @return true成功，false失败
      */
-    public static Boolean init(DataType type) {
+    public static boolean init(DataType type) {
         if (initialized) {
             return false;
         } else {
@@ -30,24 +27,28 @@ public class Permissions {
         FileMonitor fileMonitor = new FileMonitor(1000);
         switch (type.getType()) {
             case "YAML" -> {
-                fileMonitor.monitor(YamlData.Group, new FileListener());
-                fileMonitor.monitor(YamlData.User, new FileListener());
-                YamlData.init();
+                YamlData yamlData = new YamlData();
+                fileMonitor.monitor(yamlData.Group, new FileListener());
+                fileMonitor.monitor(yamlData.User, new FileListener());
+                permData = yamlData;
             }
             case "JSON" -> {
-                fileMonitor.monitor(JsonData.Group, new FileListener());
-                fileMonitor.monitor(JsonData.User, new FileListener());
-                JsonData.init();
+                JsonData jsonData = new JsonData();
+                fileMonitor.monitor(jsonData.Group, new FileListener());
+                fileMonitor.monitor(jsonData.User, new FileListener());
+                permData = jsonData;
             }
             case "Xml" -> {
-                fileMonitor.monitor(XmlData.Group, new FileListener());
-                fileMonitor.monitor(XmlData.User, new FileListener());
-                XmlData.init();
+                XmlData xmlData = new XmlData();
+                fileMonitor.monitor(xmlData.Group, new FileListener());
+                fileMonitor.monitor(xmlData.User, new FileListener());
+                permData = xmlData;
             }
             case "Toml" -> {
-                fileMonitor.monitor(TomlData.Group, new FileListener());
-                fileMonitor.monitor(TomlData.User, new FileListener());
-                TomlData.init();
+                TomlData tomlData = new TomlData();
+                fileMonitor.monitor(tomlData.Group, new FileListener());
+                fileMonitor.monitor(tomlData.User, new FileListener());
+                permData = tomlData;
             }
             default -> {
                 return false;
@@ -87,10 +88,10 @@ public class Permissions {
                 try {
                     Thread.sleep(10*60*60);
                     switch (Permissions.type.getType()) {
-                        case "YAML" -> YamlData.saveToFile();
-                        case "JSON" -> JsonData.saveToFile();
-                        case "Xml" -> XmlData.saveToFile();
-                        case "Toml" -> TomlData.saveToFile();
+                        case "YAML" -> permData.saveToFile();
+                        case "JSON" -> permData.saveToFile();
+                        case "Xml" -> permData.saveToFile();
+                        case "Toml" -> permData.saveToFile();
                         default -> System.err.println("错误的存储种类");
                     }
                 } catch (InterruptedException e) {

@@ -9,7 +9,6 @@ import java.io.IOException;
 
 /**
  * ÎÄ×ÖÆµµÀAPI
- * @author qscbm187531
  */
 public class ChannelTextApi {
     public static String url,parm;

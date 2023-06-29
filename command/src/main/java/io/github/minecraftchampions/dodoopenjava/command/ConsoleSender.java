@@ -2,7 +2,6 @@ package io.github.minecraftchampions.dodoopenjava.command;
 
 /**
  * 控制台发送者
- * @author qscbm187531
  */
 public class ConsoleSender extends CommandSender{
     /**

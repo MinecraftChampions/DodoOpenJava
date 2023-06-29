@@ -11,7 +11,6 @@ import java.util.*;
 
 /**
  * 事件的相关方法（包含监听器注册等）
- * @author qscbm187531
  */
 public class EventManage {
     @NotNull

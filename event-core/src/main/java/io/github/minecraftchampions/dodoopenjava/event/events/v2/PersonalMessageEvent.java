@@ -8,7 +8,6 @@ import javax.annotation.Nonnull;
 
 /**
  * Ë½ĞÅÊÂ¼ş
- * @author qscbm187531
  */
 
 public class PersonalMessageEvent extends Event {
@@ -23,6 +22,7 @@ public class PersonalMessageEvent extends Event {
     public static HandlerList getHandlerList() {
         return handlers;
     }
+
     public Integer timestamp;
 
     public String eventId;

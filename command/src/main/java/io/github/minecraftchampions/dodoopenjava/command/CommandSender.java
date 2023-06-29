@@ -11,7 +11,6 @@ import java.io.IOException;
 
 /**
  * ÃüÁî·¢ËÍÕß
- * @author qscbm187531
  */
 public class CommandSender{
     public String SenderDodoSourceId;

@@ -13,11 +13,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * Yaml文件存储方式
+ */
 public class YamlData extends PermData {
-    public static File User;
-    public static File Group;
-
-    public static void saveToFile() throws IOException {
+    /**
+     * 保存到文件
+     * @throws IOException 异常
+     */
+    @Override
+    public void saveToFile() throws IOException {
         FileConfiguration groupFile = getGroupFile();
         Map<String,Group> map = GroupManager.getGroups();
         map.forEach((key,value) -> {
@@ -40,7 +45,7 @@ public class YamlData extends PermData {
         userFile.save(User);
     }
 
-    public static void init() {
+    public YamlData() {
         //类似JsonData的注释
         File Config = new File(ConfigUtil.getJarPath() + "permissions/");
         if (!Config.exists()) {
@@ -100,11 +105,11 @@ public class YamlData extends PermData {
         }
     }
 
-    public static FileConfiguration getGroupFile() {
+    public FileConfiguration getGroupFile() {
         return ConfigUtil.load(Group);
     }
 
-    public static FileConfiguration getUserFile() {
+    public FileConfiguration getUserFile() {
         return ConfigUtil.load(User);
     }
 }

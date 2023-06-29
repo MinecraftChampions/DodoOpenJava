@@ -8,7 +8,6 @@ import java.io.IOException;
 
 /**
  * ×ÊÔ´API
- * @author qscbm187531
  */
 public class ResourceApi {
     public static String url;

@@ -8,7 +8,6 @@ import java.io.IOException;
 
 /**
  * Ë½ÐÅAPI
- * @author qscbm187531
  */
 public class PersonalApi {
     public static String URL, param;

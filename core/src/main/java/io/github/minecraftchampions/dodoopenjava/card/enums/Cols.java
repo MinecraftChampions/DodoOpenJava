@@ -2,7 +2,6 @@ package io.github.minecraftchampions.dodoopenjava.card.enums;
 
 /**
  * ÐÐÊý£¨2-6£©
- * @author qscbm187531
  */
 public enum Cols {
     /**

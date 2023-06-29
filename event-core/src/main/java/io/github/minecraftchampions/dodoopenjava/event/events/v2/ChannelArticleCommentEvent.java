@@ -10,7 +10,6 @@ import java.util.List;
 
 /**
  * 帖子评论回复事件
- * @author qscbm187531
  */
 public class ChannelArticleCommentEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
@@ -24,6 +23,7 @@ public class ChannelArticleCommentEvent extends Event {
     public static HandlerList getHandlerList() {
         return handlers;
     }
+
     public Integer timestamp;
 
     public String eventId;

@@ -14,13 +14,12 @@ import java.util.*;
 
 /**
  * Json文件存储
- * @author qscbm187531
  */
 public class JsonData extends PermData {
     /**
      * 初始化
      */
-    public static void init() {
+    public JsonData() {
         File Config = new File(ConfigUtil.getJarPath() + "permissions/");
         if (!Config.exists()) {
             Config.mkdir();
@@ -109,7 +108,12 @@ public class JsonData extends PermData {
         }
     }
 
-    public static void saveToFile() throws IOException {
+    /**
+     * 保存到文件
+     * @throws IOException 异常
+     */
+    @Override
+    public void saveToFile() throws IOException {
         Map<String,Group> map = GroupManager.getGroups();
         JSONObject group = new JSONObject();
         group.put("Groups",new JSONObject());
@@ -144,7 +148,7 @@ public class JsonData extends PermData {
      * 获取权限组文件
      * @return JSON对象
      */
-    public static JSONObject getGroupFile() {
+    public JSONObject getGroupFile() {
         return new JSONObject(Objects.requireNonNull(ConfigUtil.readFile(Group)));
     }
 
@@ -152,7 +156,7 @@ public class JsonData extends PermData {
      * 获取用户文件
      * @return JSON对象
      */
-    public static JSONObject getUserFile() {
+    public JSONObject getUserFile() {
         return new JSONObject(Objects.requireNonNull(ConfigUtil.readFile(User)));
     }
 }

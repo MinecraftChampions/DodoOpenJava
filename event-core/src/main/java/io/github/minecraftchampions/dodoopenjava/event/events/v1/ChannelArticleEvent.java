@@ -10,7 +10,6 @@ import java.util.List;
 
 /**
  * 帖子发布事件
- * @author qscbm187531
  */
 public class ChannelArticleEvent extends Event {
     private static final HandlerList handlers = new HandlerList();

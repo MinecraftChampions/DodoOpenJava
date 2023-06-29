@@ -2,7 +2,6 @@ package io.github.minecraftchampions.dodoopenjava.card.enums;
 
 /**
  * 按钮的相关枚举
- * @author Administrator
  */
 
 public enum ButtonAction {

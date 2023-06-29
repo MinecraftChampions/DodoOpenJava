@@ -2,7 +2,6 @@ package io.github.minecraftchampions.dodoopenjava.card.enums;
 
 /**
  * ¿¨Æ¬·ç¸ñ
- * @author qscbm187531
  */
 public enum Theme {
     /**

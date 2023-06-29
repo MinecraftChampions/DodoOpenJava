@@ -8,7 +8,6 @@ import java.io.IOException;
 
 /**
  * ≥…‘±API
- * @author qscbm187531
  */
 public class MemberApi {
     public static String url, param;

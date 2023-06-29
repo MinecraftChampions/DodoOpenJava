@@ -10,7 +10,6 @@ import java.util.Objects;
 
 /**
  * 命令系统的相关方法
- * @author qscbm187531
  */
 public class Command {
     public static List<CommandExecutor> commands = new ArrayList<>();

@@ -4,7 +4,6 @@ import okio.ByteString;
 
 /**
  * ÃüÁîµÄ½Ó¿Ú
- * @author qscbm187531
  */
 public interface CommandExecutor {
     /**

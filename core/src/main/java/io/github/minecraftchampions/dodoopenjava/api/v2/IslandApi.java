@@ -8,7 +8,6 @@ import java.io.IOException;
 
 /**
  * ȺAPI
- * @author qscbm187531
  */
 public class IslandApi {
     public static String url, param;

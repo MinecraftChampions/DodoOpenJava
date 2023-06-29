@@ -8,7 +8,6 @@ import java.io.IOException;
 
 /**
  * »ý·ÖAPI
- * @author qscbm187531
  */
 public class IntegralApi {
     public static String url, param;

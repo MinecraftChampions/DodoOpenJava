@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 /**
  * ¿ØÖÆÌ¨ÊäÈë¼àÌı
- * @author qscbm187531
  */
 public class ConsoleListener {
     HashMap<String, Action> answers = new HashMap<>();

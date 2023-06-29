@@ -8,7 +8,6 @@ import java.io.IOException;
 
 /**
  * ”Ô—‘∆µµ¿API
- * @author qscbm187531
  */
 public class ChannelVoiceApi {
     public static String url,param;

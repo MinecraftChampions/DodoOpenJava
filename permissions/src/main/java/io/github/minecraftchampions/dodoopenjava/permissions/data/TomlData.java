@@ -13,16 +13,12 @@ import java.util.*;
 
 /**
  * Toml文件存储方式
- * @author qscbm187531
  */
 public class TomlData extends PermData {
-    public static File User;
-    public static File Group;
-
     /**
      * 初始化
      */
-    public static void init() {
+    public TomlData() {
         //类似JsonData的注释
         File Config = new File(ConfigUtil.getJarPath() + "permissions/");
         if (!Config.exists()) {
@@ -103,7 +99,12 @@ public class TomlData extends PermData {
         }
     }
 
-    public static void saveToFile() throws IOException {
+    /**
+     * 保存到文件
+     * @throws IOException 异常
+     */
+    @Override
+    public void saveToFile() throws IOException {
         Map<String,Group> map = GroupManager.getGroups();
         JSONObject group = new JSONObject();
         group.put("Groups",new JSONObject());
@@ -139,7 +140,7 @@ public class TomlData extends PermData {
      * 获取权限组文件
      * @return json对象
      */
-    public static JSONObject getGroupFile() {
+    public JSONObject getGroupFile() {
         try {
             return new JSONObject(Toml.parse(Paths.get(Group.getPath())).toMap());
         } catch (IOException e) {
@@ -151,7 +152,7 @@ public class TomlData extends PermData {
      * 获取用户文件
      * @return json对象
      */
-    public static JSONObject getUserFile() {
+    public JSONObject getUserFile() {
         try {
             return new JSONObject(Toml.parse(Paths.get(User.getPath())));
         } catch (IOException e) {

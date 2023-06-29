@@ -2,7 +2,6 @@ package io.github.minecraftchampions.dodoopenjava.card.enums;
 
 /**
  * °´Å¥ÑÕÉ«
- * @author qscbm187531
  */
 public enum Color {
     /**

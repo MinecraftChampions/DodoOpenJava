@@ -8,7 +8,6 @@ import java.io.IOException;
 
 /**
  * Êý×Ö²ØÆ·API
- * @author qscbm187531
  */
 
 public class NTFApi {

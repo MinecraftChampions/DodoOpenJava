@@ -8,7 +8,6 @@ import java.io.IOException;
 
 /**
  * »úÆ÷ÈËAPI
- * @author qscbm187531
  */
 public class BotApi {
     public static String url, param;

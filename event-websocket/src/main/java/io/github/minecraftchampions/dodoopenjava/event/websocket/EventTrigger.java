@@ -18,7 +18,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * ÊÂ¼þ´¥·¢
- * @author qscbm187531
  */
 public class EventTrigger {
     public static EventTrigger p;

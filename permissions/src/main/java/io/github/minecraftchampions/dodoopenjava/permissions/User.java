@@ -2,7 +2,6 @@ package io.github.minecraftchampions.dodoopenjava.permissions;
 
 /**
  * ”√ªß
- * @author qscbm187531
  */
 public class User extends DataUnit implements Cloneable {
 

@@ -8,14 +8,17 @@ import org.apache.commons.io.monitor.FileAlterationListenerAdaptor;
 
 import java.io.File;
 
+/**
+ * 文件监听
+ */
 public class FileListener extends FileAlterationListenerAdaptor {
     @Override
     public void onFileChange(File file) {
         switch (Permissions.type.getType()) {
-            case "YAML" -> YamlData.init();
-            case "JSON" -> JsonData.init();
-            case "Xml" -> XmlData.init();
-            case "Toml" -> TomlData.init();
+            case "YAML" -> Permissions.permData = new YamlData();
+            case "JSON" -> Permissions.permData = new JsonData();
+            case "Xml" -> Permissions.permData = new XmlData();
+            case "Toml" -> Permissions.permData = new TomlData();
             default -> System.err.println("错误的存储种类");
         }
     }
@@ -23,10 +26,10 @@ public class FileListener extends FileAlterationListenerAdaptor {
     @Override
     public void onFileDelete(File file) {
         switch (Permissions.type.getType()) {
-            case "YAML" -> YamlData.init();
-            case "JSON" -> JsonData.init();
-            case "Xml" -> XmlData.init();
-            case "Toml" -> TomlData.init();
+            case "YAML" -> Permissions.permData = new YamlData();
+            case "JSON" -> Permissions.permData = new JsonData();
+            case "Xml" -> Permissions.permData = new XmlData();
+            case "Toml" -> Permissions.permData = new TomlData();
             default -> System.err.println("错误的存储种类");
         }
     }

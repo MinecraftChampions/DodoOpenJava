@@ -26,6 +26,101 @@
   <component name="ChangeListManager">
     <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="更新">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/command/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/src/main/java/io/github/minecraftchampions/dodoopenjava/command/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/command/src/main/java/io/github/minecraftchampions/dodoopenjava/command/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/src/main/java/io/github/minecraftchampions/dodoopenjava/command/CommandExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/command/src/main/java/io/github/minecraftchampions/dodoopenjava/command/CommandExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/src/main/java/io/github/minecraftchampions/dodoopenjava/command/CommandSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/command/src/main/java/io/github/minecraftchampions/dodoopenjava/command/CommandSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/src/main/java/io/github/minecraftchampions/dodoopenjava/command/CommandTrigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/command/src/main/java/io/github/minecraftchampions/dodoopenjava/command/CommandTrigger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/src/main/java/io/github/minecraftchampions/dodoopenjava/command/ConsoleListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/command/src/main/java/io/github/minecraftchampions/dodoopenjava/command/ConsoleListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/src/main/java/io/github/minecraftchampions/dodoopenjava/command/ConsoleSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/command/src/main/java/io/github/minecraftchampions/dodoopenjava/command/ConsoleSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/command/src/main/java/io/github/minecraftchampions/dodoopenjava/command/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/command/src/main/java/io/github/minecraftchampions/dodoopenjava/command/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configuration/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/configuration/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v1/BotApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v1/BotApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v1/ChannelApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v1/ChannelApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v1/ChannelArticleApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v1/ChannelArticleApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v1/ChannelTextApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v1/ChannelTextApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v1/ChannelVoiceApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v1/ChannelVoiceApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v1/IslandApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v1/IslandApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v1/MemberApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v1/MemberApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v1/NTFApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v1/NTFApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v1/PersonalApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v1/PersonalApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v1/ResourceApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v1/ResourceApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v1/RoleApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v1/RoleApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v2/BotApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v2/BotApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v2/ChannelApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v2/ChannelApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v2/ChannelArticleApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v2/ChannelArticleApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v2/ChannelMessageApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v2/ChannelMessageApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v2/ChannelVoiceApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v2/ChannelVoiceApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v2/IntegralApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v2/IntegralApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v2/IslandApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v2/IslandApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v2/MemberApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v2/MemberApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v2/NTFApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v2/NTFApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v2/PersonalApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v2/PersonalApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v2/ResourceApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v2/ResourceApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v2/RoleApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/api/v2/RoleApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/card/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/card/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/card/enums/Align.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/card/enums/Align.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/card/enums/ButtonAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/card/enums/ButtonAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/card/enums/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/card/enums/Color.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/card/enums/Cols.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/card/enums/Cols.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/card/enums/Rows.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/card/enums/Rows.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/card/enums/SectionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/card/enums/SectionType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/card/enums/Style.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/card/enums/Style.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/card/enums/TextType.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/card/enums/TextType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/card/enums/Theme.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/card/enums/Theme.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/card/enums/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/card/enums/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/EventManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/EventManage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/EventPriority.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/EventPriority.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v1/CardMessageButtonClickEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v1/CardMessageButtonClickEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v1/CardMessageFormSubmitEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v1/CardMessageFormSubmitEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v1/CardMessageListSubmitEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v1/CardMessageListSubmitEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v1/ChannelArticleCommentEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v1/ChannelArticleCommentEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v1/ChannelArticleEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v1/ChannelArticleEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v1/ChannelVoiceMemberJoinEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v1/ChannelVoiceMemberJoinEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v1/ChannelVoiceMemberLeaveEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v1/ChannelVoiceMemberLeaveEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v1/MemberJoinEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v1/MemberJoinEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v1/MemberLeaveEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v1/MemberLeaveEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v1/MessageEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v1/MessageEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v1/MessageReactionEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v1/MessageReactionEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v1/PersonalMessageEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v1/PersonalMessageEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/CardMessageButtonClickEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/CardMessageButtonClickEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/CardMessageFormSubmitEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/CardMessageFormSubmitEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/CardMessageListSubmitEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/CardMessageListSubmitEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/ChannelArticleCommentEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/ChannelArticleCommentEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/ChannelArticleEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/ChannelArticleEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/ChannelVoiceMemberJoinEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/ChannelVoiceMemberJoinEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/ChannelVoiceMemberLeaveEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/ChannelVoiceMemberLeaveEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/GoodsPurchaseEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/GoodsPurchaseEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/IntegralChangeEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/IntegralChangeEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/MemberJoinEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/MemberJoinEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/MemberLeaveEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/MemberLeaveEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/MessageEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/MessageEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/MessageReactionEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/MessageReactionEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/PersonalMessageEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/PersonalMessageEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-webhook/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/event-webhook/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/event-websocket/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-websocket/src/main/java/io/github/minecraftchampions/dodoopenjava/event/websocket/EventTrigger.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-websocket/src/main/java/io/github/minecraftchampions/dodoopenjava/event/websocket/EventTrigger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/DataType.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/DataType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/DataUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/DataUnit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/FileListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/FileListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/FileMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/FileMonitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/Group.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/GroupManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/GroupManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/Permissions.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/Permissions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/data/JsonData.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/data/JsonData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/data/PermData.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/data/PermData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/data/TomlData.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/data/TomlData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/data/XmlData.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/data/XmlData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/data/YamlData.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/data/YamlData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/package-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,30 +174,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "go.import.settings.migrated": "true",
-    "jdk.selected.JAVA_MODULE": "corretto-16",
-    "last_opened_file_path": "D:/projects/MoreMobs/DodoOpenJava",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDK",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;corretto-16&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/projects/MoreMobs/DodoOpenJava&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDK&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\projects\MoreMobs\DodoOpenJava\permissions" />
@@ -404,6 +499,7 @@
       <workItem from="1687435316811" duration="1618000" />
       <workItem from="1687437320956" duration="69000" />
       <workItem from="1688005363389" duration="210000" />
+      <workItem from="1688005604730" duration="1374000" />
     </task>
     <servers />
   </component>
@@ -436,6 +532,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/data/JsonData.java</url>
+          <line>159</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog>
           <selected-grouping-rules>

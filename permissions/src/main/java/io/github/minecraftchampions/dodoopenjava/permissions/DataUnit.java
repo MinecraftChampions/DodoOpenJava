@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * È¨ÏÞÊµÀý
+ */
 public class DataUnit {
     private String lastName = "";
 

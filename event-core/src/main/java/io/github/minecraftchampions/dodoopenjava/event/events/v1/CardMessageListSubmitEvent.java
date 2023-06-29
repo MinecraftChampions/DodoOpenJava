@@ -9,7 +9,6 @@ import javax.annotation.Nonnull;
 
 /**
  * 卡片消息列表回传事件
- * @author qscbm187531
  */
 public class CardMessageListSubmitEvent extends Event {
     public String getJsonString() {

@@ -8,7 +8,6 @@ import java.io.IOException;
 
 /**
  * Éí·Ý×éAPI
- * @author qscbm187531
  */
 public class RoleApi {
     public static String url, param;

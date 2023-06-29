@@ -16,16 +16,12 @@ import java.util.*;
 
 /**
  * XML文件存储
- * @author qscbm187531
  */
 public class XmlData extends PermData {
-    public static File User;
-    public static File Group;
-
     /**
      * 初始化
      */
-    public static void init() {
+    public XmlData() {
         //类似JsonData的注释
         File Config = new File(ConfigUtil.getJarPath() + "permissions/");
         if (!Config.exists()) {
@@ -117,7 +113,12 @@ public class XmlData extends PermData {
         }
     }
 
-    public static void saveToFile() throws IOException {
+    /**
+     * 保存到文件
+     * @throws IOException 异常
+     */
+    @Override
+    public void saveToFile() throws IOException {
         Map<String,Group> map = GroupManager.getGroups();
         JSONObject group = new JSONObject();
         group.put("Groups",new JSONObject());
@@ -152,7 +153,7 @@ public class XmlData extends PermData {
      * 获取权限组文件
      * @return JSON对象
      */
-    public static JSONObject getGroupFile() {
+    public JSONObject getGroupFile() {
         return XmlUtil.toJSONObject(ConfigUtil.readFile(Group));
     }
 
@@ -160,7 +161,7 @@ public class XmlData extends PermData {
      * 获取用户文件
      * @return JSON对象
      */
-    public static JSONObject getUserFile() {
+    public JSONObject getUserFile() {
         return XmlUtil.toJSONObject(ConfigUtil.readFile(User));
     }
 }

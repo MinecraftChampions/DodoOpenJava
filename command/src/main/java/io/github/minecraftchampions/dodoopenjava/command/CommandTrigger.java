@@ -11,7 +11,6 @@ import java.util.Scanner;
 
 /**
  * ÃüÁî´¥·¢
- * @author qscbm187531
  */
 public class CommandTrigger implements Listener {
     /**

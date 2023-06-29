@@ -9,7 +9,6 @@ import java.util.List;
 
 /**
  * ¿¨Æ¬ÏûÏ¢
- * @author qscbm187531
  */
 public class Card {
     private JSONObject JsonCard = new JSONObject();

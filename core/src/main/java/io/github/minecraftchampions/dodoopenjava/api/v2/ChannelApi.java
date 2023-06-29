@@ -8,7 +8,6 @@ import java.io.IOException;
 
 /**
  * ÆµµÀAPI
- * @author qscbm187531
  */
 public class ChannelApi {
     public static String url, param;
