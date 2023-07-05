@@ -11,14 +11,30 @@ import java.util.regex.Pattern;
  * 工具类
  */
 public class Util {
-
+    /**
+     * 判断用户是否拥有权限(请传入前面不带横杠的权限)
+     * @param userPerm 用户权限
+     * @param perm 权限
+     * @return true/false
+     */
+    public static boolean hasPermission(String userPerm,String perm) {
+        if (comparePermissionString(userPerm, perm)) {
+            if (!comparePermissionString(userPerm, perm)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
     /**
      * 判断权限是否符合
      * @param userPerm 用户的权限
      * @param perm 判断的权限
      * @return ture/false
      */
-    public static boolean comparePermissionString(String userPerm, String perm) {
+    private static boolean comparePermissionString(String userPerm, String perm) {
         if (userPerm.equals(perm)) {
             return true;
         }

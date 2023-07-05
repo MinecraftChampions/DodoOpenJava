@@ -86,9 +86,11 @@ public class MessageEvent extends Event {
         this.memberJoinTime = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("joinTime");
         this.memberNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("nickName");
         this.reference = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reference");
-        this.referenceMessageId = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reference").getString("messageId");
-        this.referenceDodoSourceId = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reference").getString("dodoSourceId");
-        this.referenceNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reference").getString("nickName");
+        if (json.getJSONObject("data").getJSONObject("eventBody").keySet().contains("reference")) {
+            this.referenceMessageId = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reference").getString("messageId");
+            this.referenceDodoSourceId = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reference").getString("dodoSourceId");
+            this.referenceNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reference").getString("nickName");
+        }
         this.messageType = IntMessageTypeToMessageType(json.getJSONObject("data").getJSONObject("eventBody").getInt("messageType"));
         this.messageIntType = json.getJSONObject("data").getJSONObject("eventBody").getInt("messageType");
         this.messageBody = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("messageBody");

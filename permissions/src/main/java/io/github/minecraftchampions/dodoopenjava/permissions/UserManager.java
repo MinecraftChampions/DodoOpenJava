@@ -1,9 +1,10 @@
 package io.github.minecraftchampions.dodoopenjava.permissions;
 
 import java.io.File;
-import java.util.*;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
-import static io.github.minecraftchampions.dodoopenjava.permissions.Util.comparePermissionString;
+import static io.github.minecraftchampions.dodoopenjava.permissions.Util.hasPermission;
 
 /**
  * 用户管理
@@ -14,7 +15,7 @@ public class UserManager {
             UserManager.addUser(user);
         }
         for (String access : user.getPermissions()) {
-            if (comparePermissionString(access, perm)) {
+            if (hasPermission(access, perm)) {
                 return true;
             }
         }

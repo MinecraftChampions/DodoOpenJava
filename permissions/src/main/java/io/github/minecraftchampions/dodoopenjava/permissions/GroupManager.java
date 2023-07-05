@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-import static io.github.minecraftchampions.dodoopenjava.permissions.Util.comparePermissionString;
+import static io.github.minecraftchampions.dodoopenjava.permissions.Util.hasPermission;
 
 /**
  * 权限组管理
@@ -18,7 +18,7 @@ public class GroupManager {
 
     public static boolean hasPerm(Group now,String perm) {
         for (String access : getGroup(now.getName()).getPermissions()) {
-            if (comparePermissionString(access, perm)) {
+            if (hasPermission(access, perm)) {
                 return true;
             }
         }

@@ -11,7 +11,7 @@ import java.util.Objects;
 /**
  * 命令系统的相关方法
  */
-public class Command {
+public class  Command {
     public static List<CommandExecutor> commands = new ArrayList<>();
 
     public static String Authorization;
