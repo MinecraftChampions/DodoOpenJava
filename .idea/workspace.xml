@@ -24,18 +24,7 @@
     </loaded-modules>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="更新">
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/command/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/command/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/command/src/main/java/io/github/minecraftchampions/dodoopenjava/command/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/command/src/main/java/io/github/minecraftchampions/dodoopenjava/command/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/utils/XmlUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/utils/XmlUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/permissions/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/GroupManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/GroupManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/UserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="更新" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -417,6 +406,7 @@
       <workItem from="1688031457441" duration="63000" />
       <workItem from="1688045995023" duration="1791000" />
       <workItem from="1688522908206" duration="2574000" />
+      <workItem from="1688548876474" duration="248000" />
     </task>
     <servers />
   </component>
