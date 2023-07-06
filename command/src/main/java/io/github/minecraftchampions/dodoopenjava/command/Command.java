@@ -77,8 +77,8 @@ public class  Command {
     public static Boolean trigger(CommandSender sender, String mainCommandName, String... args) {
         boolean hasCommand = false;
         for (CommandExecutor command : commands) {
-            if (Objects.equals(command.MainCommand().utf8(), ByteString.encodeUtf8((mainCommandName)).utf8())) {
-                if (sender.hasPermission(command.Permission())) {
+            if (Objects.equals(command.getMainCommand(), ByteString.encodeUtf8((mainCommandName)).utf8())) {
+                if (command.getPermission().isEmpty() || command.getPermission() == null || sender.hasPermission(command.getPermission())) {
                     command.onCommand(sender, args);
                     hasCommand = true;
                     break;

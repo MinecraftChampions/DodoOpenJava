@@ -1,7 +1,5 @@
 package io.github.minecraftchampions.dodoopenjava.command;
 
-import okio.ByteString;
-
 /**
  * 命令的接口
  */
@@ -10,13 +8,13 @@ public interface CommandExecutor {
      * 命令名（不带斜杆）
      * @return 主命令
      */
-    ByteString MainCommand();
+    String getMainCommand();
 
     /**
      * 需要的权限
      * @return 权限
      */
-    String Permission();
+    String getPermission();
 
     /**
      * 命令处理

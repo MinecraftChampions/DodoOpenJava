@@ -36,12 +36,12 @@ public class CommandUtil {
                 String permission = mainCommand.permission();
                 Command.registerCommand(new CommandExecutor() {
                     @Override
-                    public ByteString MainCommand() {
-                        return ByteString.encodeUtf8(command);
+                    public String getMainCommand() {
+                        return command;
                     }
 
                     @Override
-                    public String Permission() {
+                    public String getPermission() {
                         return permission;
                     }
 

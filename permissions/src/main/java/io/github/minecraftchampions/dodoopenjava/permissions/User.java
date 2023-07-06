@@ -14,7 +14,7 @@ public class User extends DataUnit implements Cloneable {
 
     @Override
     public User clone() {
-        User clone = new User(this.getLastName());
+        User clone = new User(getLastName());
         clone.group = this.group;
 
         for (String perm : this.getPermissions()) {

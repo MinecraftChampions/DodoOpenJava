@@ -15,10 +15,8 @@ public class DataUnit {
     }
 
     public void setLastName(String lastName) {
-        if (!lastName.equalsIgnoreCase(this.lastName)) {
-            this.lastName = lastName;
-            changed = true;
-        }
+        this.lastName = lastName;
+        changed = true;
     }
 
     /**
