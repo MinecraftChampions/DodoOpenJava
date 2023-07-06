@@ -18,6 +18,9 @@ public class Util {
      * @return true/false
      */
     public static boolean hasPermission(String userPerm,String perm) {
+        if (perm == null || perm.isEmpty()) {
+            return true;
+        }
         if (comparePermissionString(userPerm, perm)) {
             if (!comparePermissionString(userPerm, perm)) {
                 return true;
