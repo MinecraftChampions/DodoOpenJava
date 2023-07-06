@@ -78,7 +78,7 @@ public class  Command {
         boolean hasCommand = false;
         for (CommandExecutor command : commands) {
             if (Objects.equals(command.getMainCommand(), ByteString.encodeUtf8((mainCommandName)).utf8())) {
-                if (command.getPermission().isEmpty() || command.getPermission() == null || sender.hasPermission(command.getPermission())) {
+                if (command.getPermission() == null || command.getPermission().isEmpty() || sender.hasPermission(command.getPermission())) {
                     command.onCommand(sender, args);
                     hasCommand = true;
                     break;
