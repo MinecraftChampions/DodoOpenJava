@@ -2,7 +2,6 @@ package io.github.minecraftchampions.dodoopenjava.command;
 
 import io.github.minecraftchampions.dodoopenjava.api.v2.ChannelMessageApi;
 import io.github.minecraftchampions.dodoopenjava.api.v2.MemberApi;
-import io.github.minecraftchampions.dodoopenjava.api.v2.PersonalApi;
 import io.github.minecraftchampions.dodoopenjava.api.v2.RoleApi;
 import io.github.minecraftchampions.dodoopenjava.permissions.UserManager;
 import org.json.JSONObject;
@@ -167,15 +166,6 @@ public class CommandSender{
      */
     public void removeBanSender() throws IOException {
         MemberApi.removeMemberBan(Command.Authorization,IslandSourceId,SenderDodoSourceId);
-    }
-
-    /**
-     * 发送私信
-     * @param Message 私信
-     * @throws IOException 失败后抛出
-     */
-    public void sendPrivateMessage(String Message) throws IOException {
-        PersonalApi.sendPersonalMessage(Command.Authorization,SenderDodoSourceId,MessageId);
     }
 
     /**
