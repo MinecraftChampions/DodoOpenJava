@@ -22,8 +22,8 @@ public class PersonalApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendPersonalMessage(String clientId, String token, String dodoSourceId, String message) throws IOException {
-        return sendPersonalMessage(BaseUtil.Authorization(clientId,token), dodoSourceId, message);
+    public static JSONObject sendPersonalMessage(String clientId, String token, String islandSourceId, String dodoSourceId, String message) throws IOException {
+        return sendPersonalMessage(BaseUtil.Authorization(clientId,token), islandSourceId,dodoSourceId, message);
     }
 
     /**
@@ -35,10 +35,11 @@ public class PersonalApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendPersonalMessage(String authorization, String dodoSourceId, String message) throws IOException {
+    public static JSONObject sendPersonalMessage(String authorization, String islandSourceId, String dodoSourceId, String message) throws IOException {
         URL = "https://botopen.imdodo.com/api/v2/personal/message/send";
         param = "{" +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
+                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"messageType\": 1," +
                 "    \"messageBody\": {" +
                 "        \"content\": \"" + message + "\"" +
@@ -60,8 +61,8 @@ public class PersonalApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendDodoPictureMessage(String clientId, String token, String dodoSourceId, String url, int width, int height, Boolean isOriginal) throws IOException {
-        return sendDodoPictureMessage(BaseUtil.Authorization(clientId,token), dodoSourceId, url, width, height, isOriginal);
+    public static JSONObject sendDodoPictureMessage(String clientId, String token,String islandSourceId, String dodoSourceId, String url, int width, int height, Boolean isOriginal) throws IOException {
+        return sendDodoPictureMessage(BaseUtil.Authorization(clientId,token), islandSourceId,dodoSourceId, url, width, height, isOriginal);
     }
 
     /**
@@ -76,7 +77,7 @@ public class PersonalApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendDodoPictureMessage(String authorization, String dodoSourceId, String url, int width, int height, Boolean isOriginal) throws IOException {
+    public static JSONObject sendDodoPictureMessage(String authorization, String islandSourceId, String dodoSourceId, String url, int width, int height, Boolean isOriginal) throws IOException {
         URL = "https://botopen.imdodo.com/api/v2/personal/message/send";
         int original;
         if (isOriginal) {
@@ -86,6 +87,7 @@ public class PersonalApi {
         }
         param = "{" +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
+                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"messageType\": 2," +
                 "    \"messageBody\": {" +
                 "        \"url\": \"" + url + "\"," +
@@ -109,8 +111,8 @@ public class PersonalApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendDodoPictureMessage(String clientId, String token, String dodoSourceId, String url, int width, int height) throws IOException {
-        return sendDodoPictureMessage(BaseUtil.Authorization(clientId,token), dodoSourceId, url, width, height);
+    public static JSONObject sendDodoPictureMessage(String clientId, String token, String islandSourceId, String dodoSourceId, String url, int width, int height) throws IOException {
+        return sendDodoPictureMessage(BaseUtil.Authorization(clientId,token), islandSourceId, dodoSourceId, url, width, height);
     }
 
     /**
@@ -124,10 +126,11 @@ public class PersonalApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendDodoPictureMessage(String authorization, String dodoSourceId, String url, int width, int height) throws IOException {
+    public static JSONObject sendDodoPictureMessage(String authorization, String islandSourceId, String dodoSourceId, String url, int width, int height) throws IOException {
         URL = "https://botopen.imdodo.com/api/v2/personal/message/send";
         param = "{" +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
+                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"messageType\": 2," +
                 "    \"messageBody\": {" +
                 "        \"url\": \"" + url + "\"," +
@@ -148,8 +151,8 @@ public class PersonalApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendDodoVideoMessage(String clientId, String token, String dodoSourceId, String url) throws IOException {
-        return sendDodoVideoMessage(BaseUtil.Authorization(clientId,token), dodoSourceId, url);
+    public static JSONObject sendDodoVideoMessage(String clientId, String token,String islandSourceId,  String dodoSourceId, String url) throws IOException {
+        return sendDodoVideoMessage(BaseUtil.Authorization(clientId,token), islandSourceId, dodoSourceId, url);
     }
 
     /**
@@ -161,10 +164,11 @@ public class PersonalApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendDodoVideoMessage(String authorization, String dodoSourceId, String url) throws IOException {
+    public static JSONObject sendDodoVideoMessage(String authorization,String islandSourceId, String dodoSourceId, String url) throws IOException {
         URL = "https://botopen.imdodo.com/api/v2/personal/message/send";
         param = "{" +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
+                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"messageType\": 3," +
                 "    \"messageBody\": {" +
                 "        \"url\": \"" + url + "\"" +
@@ -186,8 +190,8 @@ public class PersonalApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendDodoVideoMessage(String clientId, String token, String dodoSourceId, String url, String coverurl, long duration, long size) throws IOException {
-        return sendDodoVideoMessage(BaseUtil.Authorization(clientId,token), dodoSourceId, url, coverurl, duration, size);
+    public static JSONObject sendDodoVideoMessage(String clientId, String token, String islandSourceId, String dodoSourceId, String url, String coverurl, long duration, long size) throws IOException {
+        return sendDodoVideoMessage(BaseUtil.Authorization(clientId,token), islandSourceId, dodoSourceId, url, coverurl, duration, size);
     }
 
     /**
@@ -202,10 +206,11 @@ public class PersonalApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendDodoVideoMessage(String authorization, String dodoSourceId, String url, String coverurl, long duration, long size) throws IOException {
+    public static JSONObject sendDodoVideoMessage(String authorization, String islandSourceId, String dodoSourceId, String url, String coverurl, long duration, long size) throws IOException {
         URL = "https://botopen.imdodo.com/api/v2/personal/message/send";
         param = "{" +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
+                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"messageType\": 3," +
                 "    \"messageBody\": {" +
                 "        \"url\": \"" + url + "\"," +
