@@ -24,7 +24,10 @@
     </loaded-modules>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="更新" />
+    <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="更新">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -417,7 +420,15 @@
       <workItem from="1688650816661" duration="87000" />
       <workItem from="1688651507380" duration="32000" />
       <workItem from="1688651723757" duration="1000" />
-      <workItem from="1688702911134" duration="318000" />
+      <workItem from="1688702911134" duration="544000" />
+      <workItem from="1689584827882" duration="49000" />
+      <workItem from="1689674141244" duration="396000" />
+      <workItem from="1689674868777" duration="13000" />
+      <workItem from="1689676531254" duration="38000" />
+      <workItem from="1689678515260" duration="4000" />
+      <workItem from="1689678590332" duration="2000" />
+      <workItem from="1689865824931" duration="2000" />
+      <workItem from="1689865846153" duration="7000" />
     </task>
     <servers />
   </component>

@@ -15,6 +15,8 @@ public class  Command {
     public static List<CommandExecutor> commands = new ArrayList<>();
 
     public static String Authorization;
+    
+    public static boolean initialized = false;
 
     /**
      * 初始化命令系统
@@ -25,7 +27,10 @@ public class  Command {
      */
     public static void registerCommand(CommandExecutor Class, String clientId, String token) {
         commands.add(Class);
-        EventManage.registerEvents(new CommandTrigger(), BaseUtil.Authorization(clientId, token));
+        if (!initialized) {
+            EventManage.registerEvents(new CommandTrigger(), BaseUtil.Authorization(clientId, token));
+            initialized = true;
+        }
         Authorization = BaseUtil.Authorization(clientId, token);
     }
 
@@ -38,7 +43,10 @@ public class  Command {
      */
     public static void registerCommand(String clientId, String token, CommandExecutor... Class) {
         commands.addAll(List.of(Class));
-        EventManage.registerEvents(new CommandTrigger(), BaseUtil.Authorization(clientId, token));
+        if (!initialized) {
+            EventManage.registerEvents(new CommandTrigger(), BaseUtil.Authorization(clientId, token));
+            initialized = true;
+        }
         Authorization = BaseUtil.Authorization(clientId, token);
     }
 
@@ -50,7 +58,10 @@ public class  Command {
      */
     public static void registerCommand(CommandExecutor Class, String authorization) {
         commands.add(Class);
-        EventManage.registerEvents(new CommandTrigger(), authorization);
+        if (!initialized) {
+            EventManage.registerEvents(new CommandTrigger(), authorization);
+            initialized = true;
+        }
         Authorization = authorization;
     }
 
@@ -62,7 +73,10 @@ public class  Command {
      */
     public static void registerCommand(String authorization, CommandExecutor... Class) {
         commands.addAll(List.of(Class));
-        EventManage.registerEvents(new CommandTrigger(), authorization);
+        if (!initialized) {
+            EventManage.registerEvents(new CommandTrigger(), authorization);
+            initialized = true;
+        }
         Authorization = authorization;
     }
 
