@@ -4,7 +4,7 @@ import io.github.minecraftchampions.dodoopenjava.event.EventManage;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import okio.ByteString;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,7 +12,7 @@ import java.util.Objects;
  * 命令系统的相关方法
  */
 public class  Command {
-    public static List<CommandExecutor> commands = new ArrayList<>();
+    public static HashSet<CommandExecutor> commands = new HashSet<>();
 
     public static String Authorization;
     
