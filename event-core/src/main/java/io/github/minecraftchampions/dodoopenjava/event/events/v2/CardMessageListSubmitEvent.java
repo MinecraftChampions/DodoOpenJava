@@ -82,7 +82,7 @@ public class CardMessageListSubmitEvent extends Event {
 
     /**
      * 转换 为Int数据类型的 性别关键字 为 String 类型
-     * @param IntSex 性别
+     * @param IntSex 性别).get
      * @return 性别
      */
     public String IntSexToSex(Integer IntSex) {

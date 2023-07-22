@@ -69,7 +69,7 @@ public class ChannelArticleCommentEvent extends Event {
         this.commentId = json.getJSONObject("data").getJSONObject("eventBody").getString("commentId");
         this.articleId = json.getJSONObject("data").getJSONObject("eventBody").getString("articleId");
         this.content = json.getJSONObject("data").getJSONObject("eventBody").getString("content");
-        this.imageList = BaseUtil.toStringList(json.getJSONObject("data").getJSONObject("eventBody").getJSONArray("content").toList());
+        this.imageList = BaseUtil.toStringList(json.getJSONObject("data").getJSONObject("eventBody").getJSONArray("imageList").toList());
         this.jsonObject = json;
         this.channelId = json.getJSONObject("data").getJSONObject("eventBody").getString("channelId");
         this.jsonString = json.toString();
