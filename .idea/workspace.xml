@@ -24,7 +24,10 @@
     </loaded-modules>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="更新" />
+    <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="更新">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/ChannelArticleEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/ChannelArticleEvent.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -427,6 +430,11 @@
       <workItem from="1689865824931" duration="2000" />
       <workItem from="1689865846153" duration="7000" />
       <workItem from="1689916130243" duration="325000" />
+      <workItem from="1689919089236" duration="142000" />
+      <workItem from="1689952801663" duration="184000" />
+      <workItem from="1689953983917" duration="8000" />
+      <workItem from="1689954129832" duration="2000" />
+      <workItem from="1689991707437" duration="190000" />
     </task>
     <servers />
   </component>

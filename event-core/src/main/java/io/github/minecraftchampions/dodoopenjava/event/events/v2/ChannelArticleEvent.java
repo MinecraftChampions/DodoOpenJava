@@ -66,7 +66,7 @@ public class ChannelArticleEvent extends Event {
         this.articleId = json.getJSONObject("data").getJSONObject("eventBody").getString("articleId");
         this.title = json.getJSONObject("data").getJSONObject("eventBody").getString("title");
         this.content = json.getJSONObject("data").getJSONObject("eventBody").getString("content");
-        this.imageList = BaseUtil.toStringList(json.getJSONObject("data").getJSONObject("eventBody").getJSONArray("content").toList());
+        this.imageList = BaseUtil.toStringList(json.getJSONObject("data").getJSONObject("eventBody").getJSONArray("imageList").toList());
         this.jsonObject = json;
         this.channelId = json.getJSONObject("data").getJSONObject("eventBody").getString("channelId");
         this.jsonString = json.toString();
