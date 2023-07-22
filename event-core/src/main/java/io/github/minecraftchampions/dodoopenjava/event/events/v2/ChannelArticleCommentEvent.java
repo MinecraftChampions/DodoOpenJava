@@ -2,11 +2,9 @@ package io.github.minecraftchampions.dodoopenjava.event.events.v2;
 
 import io.github.minecraftchampions.dodoopenjava.event.Event;
 import io.github.minecraftchampions.dodoopenjava.event.HandlerList;
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import org.json.JSONObject;
 
 import javax.annotation.Nonnull;
-import java.util.List;
 
 /**
  * 帖子评论回复事件
@@ -58,15 +56,12 @@ public class ChannelArticleCommentEvent extends Event {
 
     public String content;
 
-    public List<String> imageList;
-
     public String commentId;
 
     public ChannelArticleCommentEvent(JSONObject json) {
         this.commentId = json.getJSONObject("data").getJSONObject("eventBody").getString("commentId");
         this.articleId = json.getJSONObject("data").getJSONObject("eventBody").getString("articleId");
         this.content = json.getJSONObject("data").getJSONObject("eventBody").getString("content");
-        this.imageList = BaseUtil.toStringList(json.getJSONObject("data").getJSONObject("eventBody").getJSONArray("imageList").toList());
         this.jsonObject = json;
         this.channelId = json.getJSONObject("data").getJSONObject("eventBody").getString("channelId");
         this.jsonString = json.toString();
@@ -224,15 +219,6 @@ public class ChannelArticleCommentEvent extends Event {
      */
     public String getContent() {
         return this.content;
-    }
-
-
-    /**
-     * 获取出现的图片URL地址
-     * @return 集合
-     */
-    public List<String> getImageList() {
-        return this.imageList;
     }
 
     /**
