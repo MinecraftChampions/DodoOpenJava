@@ -62,10 +62,7 @@ public class ChannelArticleCommentEvent extends Event {
 
     public String commentId;
 
-    public String replyId;
-
     public ChannelArticleCommentEvent(JSONObject json) {
-        this.replyId = json.getJSONObject("data").getJSONObject("eventBody").getString("replyId");
         this.commentId = json.getJSONObject("data").getJSONObject("eventBody").getString("commentId");
         this.articleId = json.getJSONObject("data").getJSONObject("eventBody").getString("articleId");
         this.content = json.getJSONObject("data").getJSONObject("eventBody").getString("content");
@@ -252,13 +249,5 @@ public class ChannelArticleCommentEvent extends Event {
      */
     public String getCommentId() {
         return this.commentId;
-    }
-
-    /**
-     * 帖子评论的回复ID，为空时：为评论事件，不为空时：为评论回复事件，可以自己做个判断
-     * @return ID
-     */
-    public String getReplyId() {
-        return this.replyId;
     }
 }

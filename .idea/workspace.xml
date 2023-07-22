@@ -25,8 +25,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="更新">
+      <change afterPath="$PROJECT_DIR$/.flattened-pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/.flattened-pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/event-core/.flattened-pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/DodoOpenJava-2.4.1-shaded.pom" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/ChannelArticleEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/ChannelArticleEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/ChannelArticleCommentEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/event-core/src/main/java/io/github/minecraftchampions/dodoopenjava/event/events/v2/ChannelArticleCommentEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,8 +127,8 @@
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn compile" />
-      <command value="mvn install" />
       <command value="mvn -B package --file pom.xml" />
+      <command value="mvn install" />
     </option>
   </component>
   <component name="RunManager" selected="应用程序.demo">
@@ -435,6 +440,8 @@
       <workItem from="1689953983917" duration="8000" />
       <workItem from="1689954129832" duration="2000" />
       <workItem from="1689991707437" duration="190000" />
+      <workItem from="1689992379187" duration="235000" />
+      <workItem from="1689994761788" duration="672000" />
     </task>
     <servers />
   </component>

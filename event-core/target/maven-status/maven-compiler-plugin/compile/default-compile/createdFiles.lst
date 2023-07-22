@@ -1,0 +1,11 @@
+io\github\minecraftchampions\dodoopenjava\event\events\v2\MemberJoinEvent.class
+io\github\minecraftchampions\dodoopenjava\event\EventExecutor.class
+io\github\minecraftchampions\dodoopenjava\event\Event.class
+io\github\minecraftchampions\dodoopenjava\event\EventPriority.class
+io\github\minecraftchampions\dodoopenjava\event\events\v2\CardMessageFormSubmitEvent.class
+io\github\minecraftchampions\dodoopenjava\event\HandlerList.class
+io\github\minecraftchampions\dodoopenjava\event\Event$Result.class
+io\github\minecraftchampions\dodoopenjava\event\EventHandler.class
+io\github\minecraftchampions\dodoopenjava\event\Listener.class
+io\github\minecraftchampions\dodoopenjava\event\RegisteredListener.class
+io\github\minecraftchampions\dodoopenjava\event\events\v2\MessageEvent.class
