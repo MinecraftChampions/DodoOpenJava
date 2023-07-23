@@ -9,7 +9,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-        <revision>2.4.7</revision>
+        <revision>2.4.8</revision>
     </properties>
 
     <groupId>io.github.minecraftchampions.dodoopenjava</groupId>
@@ -148,6 +148,10 @@
 
     <repositories>
         <repository>
+            <id>aliyun</id>
+            <url>https://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+        <repository>
             <id>jitpack</id>
             <url>https://jitpack.io</url>
         </repository>
@@ -169,9 +173,16 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.ejlchina</groupId>
-                <artifactId>okhttps</artifactId>
-                <version>3.5.3</version>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>4.11.0</version>
+                <scope>compile</scope>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.squareup.okio/okio -->
+            <dependency>
+                <groupId>com.squareup.okio</groupId>
+                <artifactId>okio</artifactId>
+                <version>3.4.0</version>
                 <scope>compile</scope>
             </dependency>
             <dependency>
@@ -228,9 +239,9 @@
                 <scope>compile</scope>
             </dependency>
             <dependency>
-                <groupId>org.json</groupId>
-                <artifactId>json</artifactId>
-                <version>20230227</version>
+                <groupId>com.github.mcchampions</groupId>
+                <artifactId>JSON-java</artifactId>
+                <version>qs-fork-1.0</version>
                 <scope>compile</scope>
             </dependency>
             <dependency>

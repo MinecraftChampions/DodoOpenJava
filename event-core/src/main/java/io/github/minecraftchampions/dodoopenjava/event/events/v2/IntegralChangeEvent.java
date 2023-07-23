@@ -30,8 +30,6 @@ public class IntegralChangeEvent extends Event {
 
     public String dodoSourceId;
 
-    public String modifyTime;
-
     public JSONObject jsonObject;
 
     public String jsonString;
@@ -47,7 +45,6 @@ public class IntegralChangeEvent extends Event {
         this.eventId = json.getJSONObject("data").getString("eventId");
         this.islandSourceId = json.getJSONObject("data").getJSONObject("eventBody").getString("islandSourceId");
         this.dodoSourceId = json.getJSONObject("data").getJSONObject("eventBody").getString("dodoSourceId");
-        this.modifyTime = json.getJSONObject("data").getJSONObject("eventBody").getString("modifyTime");
         this.integral = json.getJSONObject("data").getJSONObject("eventBody").getLong("integral");
         this.operateType = json.getJSONObject("data").getJSONObject("eventBody").getInt("operateType");
     }
@@ -100,14 +97,6 @@ public class IntegralChangeEvent extends Event {
      */
     public String getDodoSourceId() {
         return this.dodoSourceId;
-    }
-
-    /**
-     * 获取变动时间
-     * @return 变动时间
-     */
-    public String getModifyTime() {
-        return this.modifyTime;
     }
 
     /**

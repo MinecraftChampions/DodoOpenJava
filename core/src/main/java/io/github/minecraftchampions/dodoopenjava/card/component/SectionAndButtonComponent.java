@@ -22,6 +22,9 @@ public class SectionAndButtonComponent extends Component {
           jsonCard.put("accessory", buttonGroupComponent.getJsonCard());
      }
 
+     public void setAlign(Align align) {
+          jsonCard.put("align", align.getType());
+     }
      /**
       * 初始化
       * @param align 对齐方式，left：左对齐，right：右对齐

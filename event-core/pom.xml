@@ -27,12 +27,22 @@
             <artifactId>annotations</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.github.mcchampions</groupId>
+            <artifactId>JSON-java</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>com.google.code.findbugs</groupId>
             <artifactId>jsr305</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.ejlchina</groupId>
-            <artifactId>okhttps</artifactId>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okio</groupId>
+            <artifactId>okio</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>

@@ -72,7 +72,7 @@ public class IntegralApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject setIntegralEdit(String Authorization, String islandSourceId, String dodoSourceId, int operateType, long integral) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/integral/info";
+        url = "https://botopen.imdodo.com/api/v2/integral/edit";
         param = "{\n" +
                 "    \"islandSourceId\": \"" + islandSourceId +"\",\n" +
                 "    \"dodoSourceId\": \"" + dodoSourceId +"\"\n" +

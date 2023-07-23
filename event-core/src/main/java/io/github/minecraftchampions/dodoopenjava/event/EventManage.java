@@ -123,7 +123,9 @@ public class EventManage {
             } else {
                 getEventTriggerClass().getMethod("main").invoke(null);
             }
-        } catch (ClassNotFoundException | InvocationTargetException | IllegalAccessException | NoSuchMethodException ignored) {}
+        } catch (ClassNotFoundException | InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
