@@ -25,7 +25,6 @@ public class EventTrigger {
     public static OkHttpClient wss=new OkHttpClient.Builder()
             .pingInterval(30, TimeUnit.SECONDS) //保活心跳
             .build();
-    public static  WebSocket mWebSocket;
 
     public static String ad;
     public static void main(@NotNull String Authorization) {
@@ -41,7 +40,7 @@ public class EventTrigger {
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
-
+                e.printStackTrace();
             }
 
             @Override
@@ -50,7 +49,7 @@ public class EventTrigger {
                 response.close();
                 Request request = new Request.Builder()
                         .url(wssLo).build();
-                mWebSocket = wss.newWebSocket(request, new WsListenerC(p));
+                WebSocket websocket = wss.newWebSocket(request, new WsListenerC(p));
             }
         });
     }
@@ -180,7 +179,7 @@ public class EventTrigger {
 
         @Override
         public void onClosed(@NotNull WebSocket webSocket, int code, @NotNull String reason) {
-            mWebSocket.close(1000,"正常关闭");
+            webSocket.close(1000,"正常关闭");
         }
     }
 }

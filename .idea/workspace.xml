@@ -24,7 +24,11 @@
     </loaded-modules>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="更新" />
+    <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="更新">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/card/component/SectionComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/io/github/minecraftchampions/dodoopenjava/card/component/SectionComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -435,6 +439,14 @@
       <workItem from="1689992379187" duration="235000" />
       <workItem from="1689994761788" duration="672000" />
       <workItem from="1689995862328" duration="118000" />
+      <workItem from="1689996453088" duration="298000" />
+      <workItem from="1689996777364" duration="40000" />
+      <workItem from="1689997036848" duration="50000" />
+      <workItem from="1689997250724" duration="231000" />
+      <workItem from="1690002438501" duration="69000" />
+      <workItem from="1690002643507" duration="206000" />
+      <workItem from="1690017073284" duration="661000" />
+      <workItem from="1690032211099" duration="68000" />
     </task>
     <servers />
   </component>

@@ -23,7 +23,7 @@ public class SectionComponent extends Component{
             if (!Objects.equals(type.getType(), "Paragraph")) {
                 String Type = type.getType();
                 jsonCard = new JSONObject("{\n" +
-                        "                        \"type\": \"sectionComponent\",\n" +
+                        "                        \"type\": \"section\",\n" +
                         "                        \"text\": {\n" +
                         "                                \"type\": \"" + Type + "\",\n" +
                         "                                \"content\": \"一长段文本字号的文本内容，支持Markdown，最大支持字符数2000。\"\n" +
@@ -34,7 +34,7 @@ public class SectionComponent extends Component{
                 isParagraph = true;
                 jsonCard = new JSONObject("""
                         {
-                                                    "type": "sectionComponent",
+                                                    "type": "section",
                                                      "text": {
                                                          "type": "paragraph",
                                                          "cols": 0,
