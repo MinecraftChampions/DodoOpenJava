@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import org.w3c.dom.events.EventException;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
@@ -21,6 +22,8 @@ import java.util.concurrent.TimeUnit;
 public class EventTrigger {
     public static EventTrigger p;
     public static String wssLo="";
+
+    public static HashSet<WebSocket> socketHashSet = new HashSet<>();
     public static OkHttpClient okHttpClient = new OkHttpClient();
     public static OkHttpClient wss=new OkHttpClient.Builder()
             .pingInterval(30, TimeUnit.SECONDS) //保活心跳
@@ -49,7 +52,7 @@ public class EventTrigger {
                 response.close();
                 Request request = new Request.Builder()
                         .url(wssLo).build();
-                WebSocket websocket = wss.newWebSocket(request, new WsListenerC(p));
+                socketHashSet.add(wss.newWebSocket(request, new WsListenerC(p)));
             }
         });
     }
