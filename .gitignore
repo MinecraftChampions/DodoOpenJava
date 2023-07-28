@@ -27,4 +27,4 @@ replay_pid*
 # ignore Intellij Idea project files
 .idea/
 *.iml
-/target/
+**/target/
