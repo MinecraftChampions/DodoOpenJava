@@ -24,7 +24,11 @@
     </loaded-modules>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="更新" />
+    <list default="true" id="5a4fef2d-9e6b-4f64-a5d9-7dabd855f7a4" name="变更" comment="更新">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/permissions/src/main/java/io/github/minecraftchampions/dodoopenjava/permissions/Util.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -451,6 +455,11 @@
       <workItem from="1690098911249" duration="310000" />
       <workItem from="1690099235549" duration="339000" />
       <workItem from="1690102603102" duration="448000" />
+      <workItem from="1690122755332" duration="185000" />
+      <workItem from="1690123335845" duration="493000" />
+      <workItem from="1690126391615" duration="76000" />
+      <workItem from="1690188470999" duration="1000" />
+      <workItem from="1690527552624" duration="20000" />
     </task>
     <servers />
   </component>
