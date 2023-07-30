@@ -13,6 +13,7 @@ public class RegisteredListener {
 
     /**
      * 注册监听器
+     *
      * @param listener 监听器
      * @param priority 优先级
      */

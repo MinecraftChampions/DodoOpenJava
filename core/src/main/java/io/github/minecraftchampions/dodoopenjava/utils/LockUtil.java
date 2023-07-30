@@ -6,7 +6,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 资源锁
- * @author qscbm187531
  */
 public class LockUtil {
     private static final ConcurrentHashMap<String, AtomicInteger> STRING_LOCK_MAP = new ConcurrentHashMap<>();

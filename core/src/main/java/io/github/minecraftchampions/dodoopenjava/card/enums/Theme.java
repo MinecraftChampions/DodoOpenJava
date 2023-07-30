@@ -56,6 +56,7 @@ public enum Theme {
 
     /**
      * 获取类型
+     *
      * @return 类型
      */
     public String getType() {

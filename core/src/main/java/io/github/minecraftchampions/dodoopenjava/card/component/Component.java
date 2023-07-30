@@ -11,7 +11,8 @@ public class Component {
     /**
      * 初始化
      */
-    public Component() {}
+    public Component() {
+    }
 
     public JSONObject getJsonCard() {
         return jsonCard;

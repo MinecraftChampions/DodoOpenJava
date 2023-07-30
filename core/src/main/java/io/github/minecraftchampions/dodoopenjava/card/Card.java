@@ -15,6 +15,7 @@ public class Card {
 
     /**
      * 是否不存在
+     *
      * @return true/false
      */
     public boolean isEmpty() {
@@ -23,6 +24,7 @@ public class Card {
 
     /**
      * 是否不存在
+     *
      * @param card Card
      * @return true/false
      */
@@ -32,6 +34,7 @@ public class Card {
 
     /**
      * 转换为JSON对象
+     *
      * @return true
      */
     public JSONObject toJSONObject() {
@@ -40,6 +43,7 @@ public class Card {
 
     /**
      * 初始化卡片
+     *
      * @param card JSON
      */
     public Card(JSONObject card) {
@@ -64,6 +68,7 @@ public class Card {
 
     /**
      * 编辑风格
+     *
      * @param theme 分割
      */
     public void editTheme(Theme theme) {
@@ -72,6 +77,7 @@ public class Card {
 
     /**
      * 编辑标题
+     *
      * @param title 标题
      */
     public void editTitle(String title) {
@@ -80,6 +86,7 @@ public class Card {
 
     /**
      * 编辑文本
+     *
      * @param content 文本
      */
     public void editContent(String content) {
@@ -96,6 +103,7 @@ public class Card {
 
     /**
      * 增加组件
+     *
      * @param component 组件
      */
     public void addComponent(Component component) {
@@ -104,12 +112,13 @@ public class Card {
 
     /**
      * 移除组件，如果有多个相同的则全部移除
+     *
      * @param component 组件
      */
     public void removeComponent(Component component) {
         List<Object> list = JsonCard.getJSONObject("card").getJSONArray("components").toList();
         List<Integer> integerList = new ArrayList<>();
-        for (int i = 0;i < list.size();i++) {
+        for (int i = 0; i < list.size(); i++) {
             Object object = list.get(i);
             if (object instanceof JSONObject jsonObject) {
                 if (component.getJsonCard() == jsonObject) {
@@ -117,7 +126,7 @@ public class Card {
                 }
             }
         }
-        for (int i = 0;i < integerList.size();i++) {
+        for (int i = 0; i < integerList.size(); i++) {
             removeComponent(integerList.get(i) - i);
         }
     }
@@ -125,6 +134,7 @@ public class Card {
 
     /**
      * 删除一个组件
+     *
      * @param index index
      */
     public void removeComponent(int index) {

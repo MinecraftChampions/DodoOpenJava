@@ -21,6 +21,7 @@ public class BotManage {
 
     /**
      * 设置api路径
+     *
      * @param path 路径
      */
     public static void setPath(String path) {
@@ -29,6 +30,7 @@ public class BotManage {
 
     /**
      * 设置端口(默认80)
+     *
      * @param port 端口
      */
     public void setPort(int port) {

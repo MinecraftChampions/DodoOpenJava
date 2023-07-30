@@ -10,7 +10,7 @@ import static io.github.minecraftchampions.dodoopenjava.permissions.Util.hasPerm
  * 用户管理
  */
 public class UserManager {
-    public static boolean hasPerm(User user,String perm) {
+    public static boolean hasPerm(User user, String perm) {
         if (UserManager.users.containsKey(user.getLastName())) {
             UserManager.addUser(user);
         }
@@ -31,13 +31,15 @@ public class UserManager {
         }
         return false;
     }
+
     public static boolean addUser(User user) {
         if (users.containsKey(user.getLastName())) {
             return false;
         }
-        users.put(user.getLastName(),user);
+        users.put(user.getLastName(), user);
         return true;
     }
+
     private static File usersFile;
     private static boolean changed = false;
 

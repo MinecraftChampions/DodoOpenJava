@@ -2,6 +2,7 @@ package io.github.minecraftchampions.dodoopenjava.event;
 
 /**
  * 代表一个事件的优先级.
+ *
  * @see EventHandler
  */
 public enum EventPriority {
@@ -15,7 +16,6 @@ public enum EventPriority {
     LOW(1),
     /**
      * 事件中调用的重要性一般
-     *
      */
     NORMAL(2),
     /**

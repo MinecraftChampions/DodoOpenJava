@@ -28,6 +28,7 @@ public enum SectionType {
 
     /**
      * 获取类型
+     *
      * @return 类型
      */
     public String getType() {

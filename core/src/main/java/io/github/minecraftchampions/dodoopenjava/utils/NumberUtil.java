@@ -9,7 +9,6 @@ import java.util.regex.Pattern;
 
 /**
  * 关于 数字 的一些实用方法
- * @author qscbm187531
  */
 public class NumberUtil {
     private final static TreeMap<Integer, String> map = new TreeMap<>();
@@ -41,18 +40,18 @@ public class NumberUtil {
 
     /**
      * 转换数字为罗马数字
+     *
      * @param number 数字
      * @return 罗马数字
      */
     public static String toRoman(int number) {
         if (number > 0) {
-            int l =  map.floorKey(number);
-            if ( number == l ) {
+            int l = map.floorKey(number);
+            if (number == l) {
                 return map.get(number);
             }
-            return map.get(l) + toRoman(number-l);
-        }
-        else {
+            return map.get(l) + toRoman(number - l);
+        } else {
             return String.valueOf(number);
         }
     }
@@ -242,7 +241,7 @@ public class NumberUtil {
      * 请一定要按从小到大的顺序
      *
      * @param srcArray 被匹配的数组
-     * @param des 要匹配的值
+     * @param des      要匹配的值
      * @return 返回匹配的数字的在数组的索引，-1为匹配不到
      */
     public static int binarySearch(Integer[] srcArray, int des) {

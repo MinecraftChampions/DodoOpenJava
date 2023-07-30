@@ -21,15 +21,16 @@ import java.util.concurrent.TimeUnit;
  */
 public class EventTrigger {
     public static EventTrigger p;
-    public static String wssLo="";
+    public static String wssLo = "";
 
     public static HashSet<WebSocket> socketHashSet = new HashSet<>();
     public static OkHttpClient okHttpClient = new OkHttpClient();
-    public static OkHttpClient wss=new OkHttpClient.Builder()
+    public static OkHttpClient wss = new OkHttpClient.Builder()
             .pingInterval(30, TimeUnit.SECONDS) //保活心跳
             .build();
 
     public static String ad;
+
     public static void main(@NotNull String Authorization) {
         v2(Authorization);
     }
@@ -37,7 +38,7 @@ public class EventTrigger {
     public static void v2(String Authorization) {
         ad = Authorization;
         Request request = new Request.Builder().url("https://botopen.imdodo.com/api/v2/websocket/connection").addHeader("Content-Type", "application/json").addHeader("Authorization", ad)
-                .post(RequestBody.create(MediaType.parse("application/json"), "{}"))
+                .post(RequestBody.create("{}", MediaType.parse("application/json")))
                 .build();
 
         okHttpClient.newCall(request).enqueue(new Callback() {
@@ -48,7 +49,7 @@ public class EventTrigger {
 
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                wssLo= new JSONObject(Objects.requireNonNull(response.body()).string()).getJSONObject("data").getString("endpoint");
+                wssLo = new JSONObject(Objects.requireNonNull(response.body()).string()).getJSONObject("data").getString("endpoint");
                 response.close();
                 Request request = new Request.Builder()
                         .url(wssLo).build();
@@ -59,9 +60,11 @@ public class EventTrigger {
 
     public static class WsListenerC extends WebSocketListener {
         EventTrigger p;
+
         public WsListenerC(EventTrigger dodo) {
-            p=dodo;
+            p = dodo;
         }
+
         @Override
         public void onMessage(@NotNull WebSocket webSocket, @NotNull ByteString bytes) {
             JSONObject jsontext = new JSONObject(bytes.utf8());
@@ -182,7 +185,7 @@ public class EventTrigger {
 
         @Override
         public void onClosed(@NotNull WebSocket webSocket, int code, @NotNull String reason) {
-            webSocket.close(1000,"正常关闭");
+            webSocket.close(1000, "正常关闭");
         }
     }
 }

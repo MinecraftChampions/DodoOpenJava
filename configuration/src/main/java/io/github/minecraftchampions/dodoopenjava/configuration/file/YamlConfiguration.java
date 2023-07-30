@@ -29,7 +29,7 @@ public class YamlConfiguration extends FileConfiguration {
     public String saveToString() {
         yamlOptions.setIndent(options().indent());
         yamlOptions.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
-        yamlOptions.setAllowUnicode(SYSTEM_UTF);
+        yamlOptions.setAllowUnicode(true);
         yamlRepresenter.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
 
         String header = buildHeader();
@@ -155,11 +155,11 @@ public class YamlConfiguration extends FileConfiguration {
 
     /**
      * 从给定文件加载，创建新的YamlConfiguration。
-     *
+     * <p>
      * 加载配置时的任何错误都将被记录，然后被忽略。如果指定的输入不是有效的配置，将返回空白配置。
-     *
-     *
-     *
+     * <p>
+     * <p>
+     * <p>
      * 所使用的编码可能遵循系统相关默认值。
      *
      * @param file 文件
@@ -196,7 +196,7 @@ public class YamlConfiguration extends FileConfiguration {
 
     /**
      * 从给定 Reader 加载，创建新的YamlConfiguration。
-     *
+     * <p>
      * 加载配置时的任何错误都将被记录，然后被忽略。如果指定的输入不是有效的配置，将返回空白配置。
      *
      * @param reader Reader

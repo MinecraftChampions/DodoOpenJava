@@ -34,7 +34,7 @@ public class MemorySection implements ConfigurationSection {
      * 构造函数
      *
      * @param parent 参数1
-     * @param path 路径
+     * @param path   路径
      * @throws IllegalArgumentException 异常时抛出
      */
     protected MemorySection(ConfigurationSection parent, String path) {
@@ -259,6 +259,7 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 获取String值
+     *
      * @param path 路径
      * @return String值
      */
@@ -269,8 +270,9 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 获取String值
+     *
      * @param path 路径
-     * @param def 默认值
+     * @param def  默认值
      * @return String值
      */
     public String getString(String path, String def) {
@@ -280,6 +282,7 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 判断指定路径是否为String类型
+     *
      * @param path 路径
      * @return true/false
      */
@@ -290,6 +293,7 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 获取Int值
+     *
      * @param path 路径
      * @return Int值
      */
@@ -300,8 +304,9 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 获取Int值
+     *
      * @param path 路径
-     * @param def 默认值
+     * @param def  默认值
      * @return String值
      */
     public int getInt(String path, int def) {
@@ -311,6 +316,7 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 判断路径是否为Int值
+     *
      * @param path 路径
      * @return true或者false
      */
@@ -321,6 +327,7 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 获取布尔值
+     *
      * @param path 路径
      * @return 布尔值
      */
@@ -331,8 +338,9 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 获取布尔值
+     *
      * @param path 路径
-     * @param def 默认值
+     * @param def  默认值
      * @return 布尔值
      */
     public boolean getBoolean(String path, boolean def) {
@@ -342,6 +350,7 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 判断指定路径的值是否为布尔值
+     *
      * @param path 路径
      * @return true或者是false
      */
@@ -352,6 +361,7 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 获取Double值
+     *
      * @param path 路径
      * @return Double值
      */
@@ -362,8 +372,9 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 获取Double值
+     *
      * @param path 路径
-     * @param def 默认值
+     * @param def  默认值
      * @return Double值
      */
     public double getDouble(String path, double def) {
@@ -373,6 +384,7 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 判断指定路径的值是否为Double值
+     *
      * @param path 路径
      * @return true或者是false
      */
@@ -383,6 +395,7 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 获取Long值
+     *
      * @param path 路径
      * @return long值
      */
@@ -393,8 +406,9 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 获取Long值
+     *
      * @param path 路径
-     * @param def 默认值
+     * @param def  默认值
      * @return long值
      */
     public long getLong(String path, long def) {
@@ -404,6 +418,7 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 判断是否为Long值
+     *
      * @param path 路径
      * @return true/false
      */
@@ -414,6 +429,7 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 获取集合
+     *
      * @param path 路径
      * @return 集合
      */
@@ -424,8 +440,9 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 获取集合
+     *
      * @param path 路径
-     * @param def 默认值
+     * @param def  默认值
      * @return 集合
      */
 
@@ -436,6 +453,7 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 判断指定路径的值是否为集合
+     *
      * @param path 路径
      * @return true或者false
      */
@@ -446,6 +464,7 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 获取String集合
+     *
      * @param path 路径
      * @return 集合
      */
@@ -469,6 +488,7 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 获取Integer集合
+     *
      * @param path 路径
      * @return 集合
      */
@@ -501,6 +521,7 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 获取Boolean集合
+     *
      * @param path 路径
      * @return 集合
      */
@@ -530,6 +551,7 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 获取Double集合
+     *
      * @param path 路径
      * @return 集合
      */
@@ -562,6 +584,7 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 获取Float集合
+     *
      * @param path 路径
      * @return 集合
      */
@@ -594,6 +617,7 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 获取Long集合
+     *
      * @param path 路径
      * @return 集合
      */
@@ -626,6 +650,7 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 获取Byte集合
+     *
      * @param path 路径
      * @return 集合
      */
@@ -658,6 +683,7 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 获取Character集合
+     *
      * @param path 路径
      * @return 集合
      */
@@ -688,6 +714,7 @@ public class MemorySection implements ConfigurationSection {
 
     /**
      * 获取Short集合
+     *
      * @param path 路径
      * @return 集合
      */

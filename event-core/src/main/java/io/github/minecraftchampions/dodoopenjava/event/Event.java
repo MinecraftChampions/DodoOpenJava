@@ -9,15 +9,14 @@ import org.jetbrains.annotations.NotNull;
  * <p>
  * 注:前一句话翻译成代码形式, 就是这样:
  * <pre>
- private static final HandlerList handlers = new HandlerList();
- public HandlerList getHandlers() {
- return handlers;
- }
- public static HandlerList getHandlerList() {
- return handlers;
- }
+ * private static final HandlerList handlers = new HandlerList();
+ * public HandlerList getHandlers() {
+ * return handlers;
+ * }
+ * public static HandlerList getHandlerList() {
+ * return handlers;
+ * }
  * </pre>
- *
  */
 public abstract class Event {
     private String name;
@@ -69,6 +68,7 @@ public abstract class Event {
      * <li>一些实现可能会有选择地声明一个事件是异步的.这一行为应被明确定义.</li>
      * <li>异步调用不会计算在插件定时系统中.</li>
      * </ul>
+     *
      * @return 默认情况下返回false, 事件触发异步了返回true
      */
     public final boolean isAsynchronous() {

@@ -80,6 +80,7 @@ public class CardMessageButtonClickEvent extends Event {
 
     /**
      * 转换 为Int数据类型的 性别关键字 为 String 类型
+     *
      * @param IntSex 性别
      * @return 性别
      */
@@ -93,6 +94,7 @@ public class CardMessageButtonClickEvent extends Event {
 
     /**
      * 转换 为Int数据类型的 消息类型关键字 为 String 类型
+     *
      * @param type 消息类型
      * @return 消息类型
      */
@@ -110,6 +112,7 @@ public class CardMessageButtonClickEvent extends Event {
 
     /**
      * 获取时间戳
+     *
      * @return 时间戳
      */
     public Integer getTimestamp() {
@@ -118,6 +121,7 @@ public class CardMessageButtonClickEvent extends Event {
 
     /**
      * 获取事件ID
+     *
      * @return 事件ID
      */
     public String getEventId() {
@@ -134,6 +138,7 @@ public class CardMessageButtonClickEvent extends Event {
 
     /**
      * 获取群号
+     *
      * @return 群号
      */
     public String getIslandSourceId() {
@@ -142,6 +147,7 @@ public class CardMessageButtonClickEvent extends Event {
 
     /**
      * 获取频道ID
+     *
      * @return 频道ID
      */
     public String getChannelId() {
@@ -150,6 +156,7 @@ public class CardMessageButtonClickEvent extends Event {
 
     /**
      * 获取DodoSourceId
+     *
      * @return DodoSourceId
      */
     public String getDodoSourceId() {
@@ -158,6 +165,7 @@ public class CardMessageButtonClickEvent extends Event {
 
     /**
      * 获取消息ID
+     *
      * @return 消息ID
      */
     public String getMessageId() {
@@ -166,6 +174,7 @@ public class CardMessageButtonClickEvent extends Event {
 
     /**
      * 获取成员Object
+     *
      * @return 获取成员的 JsonObject
      */
     public JSONObject getPersonal() {
@@ -175,6 +184,7 @@ public class CardMessageButtonClickEvent extends Event {
 
     /**
      * 获取发送者名字
+     *
      * @return 名字
      */
     public String getSenderNickName() {
@@ -183,6 +193,7 @@ public class CardMessageButtonClickEvent extends Event {
 
     /**
      * 获取发送者头像URL
+     *
      * @return 头像url
      */
     public String getSenderAvatarUrl() {
@@ -191,6 +202,7 @@ public class CardMessageButtonClickEvent extends Event {
 
     /**
      * 获取性别（Int类型）
+     *
      * @return 性别
      */
     public Integer getSenderIntSex() {
@@ -199,6 +211,7 @@ public class CardMessageButtonClickEvent extends Event {
 
     /**
      * 获取性别（String类型）
+     *
      * @return 性别
      */
     public String getSenderSex() {
@@ -208,6 +221,7 @@ public class CardMessageButtonClickEvent extends Event {
 
     /**
      * 获取成员Object
+     *
      * @return 成员 JsonObject
      */
     public JSONObject getMember() {
@@ -216,6 +230,7 @@ public class CardMessageButtonClickEvent extends Event {
 
     /**
      * 获取成员显示名
+     *
      * @return 名字
      */
     public String getMemberNickName() {
@@ -224,6 +239,7 @@ public class CardMessageButtonClickEvent extends Event {
 
     /**
      * 获取成员加入时间
+     *
      * @return 加入时间
      */
     public String getMemberJoinTime() {
@@ -232,6 +248,7 @@ public class CardMessageButtonClickEvent extends Event {
 
     /**
      * 获取返回的值
+     *
      * @return 值
      */
     public String getValue() {
@@ -240,6 +257,7 @@ public class CardMessageButtonClickEvent extends Event {
 
     /**
      * 获取自定义ID
+     *
      * @return ID
      */
     public String getInteractCustomId() {

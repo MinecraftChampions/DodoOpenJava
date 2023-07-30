@@ -15,8 +15,8 @@ public class IslandApi {
     /**
      * 获取群信息
      *
-     * @param clientId 机器人唯一标识
-     * @param token 机器人鉴权Token
+     * @param clientId       机器人唯一标识
+     * @param token          机器人鉴权Token
      * @param islandSourceId 群号
      * @return JSON对象
      * @throws IOException 失败后抛出
@@ -28,7 +28,7 @@ public class IslandApi {
     /**
      * 获取群信息
      *
-     * @param authorization authorization
+     * @param authorization  authorization
      * @param islandSourceId 群号
      * @return JSON对象
      * @throws IOException 失败后抛出
@@ -45,12 +45,12 @@ public class IslandApi {
      * 获取机器人群列表
      *
      * @param clientId 机器人唯一标识
-     * @param token 机器人鉴权Token
+     * @param token    机器人鉴权Token
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
     public static JSONObject getIslandList(String clientId, String token) throws IOException {
-        return getIslandList(BaseUtil.Authorization(clientId,token));
+        return getIslandList(BaseUtil.Authorization(clientId, token));
     }
 
     /**
@@ -69,11 +69,11 @@ public class IslandApi {
     /**
      * 获取群等级排行榜
      *
-     * @param clientId 机器人唯一标识
-     * @param token 机器人鉴权Token
+     * @param clientId       机器人唯一标识
+     * @param token          机器人鉴权Token
      * @param islandSourceId 群号
-     * @param pageSize 页大小，最大100
-     * @param maxId 上一页最大ID值，为提升分页查询性能，需要传入上一页查询记录中的最大ID值，首页请传0
+     * @param pageSize       页大小，最大100
+     * @param maxId          上一页最大ID值，为提升分页查询性能，需要传入上一页查询记录中的最大ID值，首页请传0
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -84,10 +84,10 @@ public class IslandApi {
     /**
      * 获取群等级排行榜
      *
-     * @param authorization authorization
+     * @param authorization  authorization
      * @param islandSourceId 群号
-     * @param pageSize 页大小，最大100
-     * @param maxId 上一页最大ID值，为提升分页查询性能，需要传入上一页查询记录中的最大ID值，首页请传0
+     * @param pageSize       页大小，最大100
+     * @param maxId          上一页最大ID值，为提升分页查询性能，需要传入上一页查询记录中的最大ID值，首页请传0
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -104,8 +104,8 @@ public class IslandApi {
     /**
      * 获取禁言列表
      *
-     * @param clientId 机器人唯一标识
-     * @param token 机器人鉴权Token
+     * @param clientId       机器人唯一标识
+     * @param token          机器人鉴权Token
      * @param islandSourceId 群号
      * @return JSON对象
      * @throws IOException 失败后抛出
@@ -117,7 +117,7 @@ public class IslandApi {
     /**
      * 获取禁言列表
      *
-     * @param authorization authorization
+     * @param authorization  authorization
      * @param islandSourceId 群号
      * @return JSON对象
      * @throws IOException 失败后抛出
@@ -133,8 +133,8 @@ public class IslandApi {
     /**
      * 获取封禁列表
      *
-     * @param clientId 机器人唯一标识
-     * @param token 机器人鉴权Token
+     * @param clientId       机器人唯一标识
+     * @param token          机器人鉴权Token
      * @param islandSourceId 群号
      * @return JSON对象
      * @throws IOException 失败后抛出
@@ -146,7 +146,7 @@ public class IslandApi {
     /**
      * 获取封禁列表
      *
-     * @param authorization authorization
+     * @param authorization  authorization
      * @param islandSourceId 群号
      * @return JSON对象
      * @throws IOException 失败后抛出

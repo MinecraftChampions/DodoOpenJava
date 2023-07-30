@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
 
 /**
  * 关于 Bean 的一些实用方法
+ *
  * @author qscbm187531
  */
 public class BeanUtil {

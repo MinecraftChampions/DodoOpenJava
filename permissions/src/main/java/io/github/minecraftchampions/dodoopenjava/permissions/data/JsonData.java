@@ -55,7 +55,7 @@ public class JsonData extends PermData {
         for (String group : groupSet) {
             //获取一个组的权限
             List<String> perms = BaseUtil.toStringList(groupJson.getJSONObject("Groups").
-                                getJSONObject(group).getJSONArray("perms").toList());
+                    getJSONObject(group).getJSONArray("perms").toList());
             io.github.minecraftchampions.dodoopenjava.permissions.Group g = new Group(group);
             for (String perm : perms) {
                 //增加权限
@@ -110,13 +110,14 @@ public class JsonData extends PermData {
 
     /**
      * 保存到文件
+     *
      * @throws IOException 异常
      */
     @Override
     public void saveToFile() throws IOException {
-        Map<String,Group> map = GroupManager.getGroups();
+        Map<String, Group> map = GroupManager.getGroups();
         JSONObject group = new JSONObject();
-        group.put("Groups",new JSONObject());
+        group.put("Groups", new JSONObject());
         map.forEach((key, value) -> {
             String name = value.getName();
             boolean isDefault = value.isDefault();
@@ -128,10 +129,10 @@ public class JsonData extends PermData {
             data.put("extend", extendGroups);
             group.getJSONObject("Groups").put(name, data);
         });
-        ConfigUtil.saveToFile(group.toString(),Group);
-        Map<String,User> userMap = UserManager.getUsers();
+        ConfigUtil.saveToFile(group.toString(), Group);
+        Map<String, User> userMap = UserManager.getUsers();
         JSONObject user = new JSONObject();
-        user.put("Users",new JSONObject());
+        user.put("Users", new JSONObject());
         userMap.forEach((key, value) -> {
             String name = value.getLastName();
             List<String> perms = value.getPermissions();
@@ -141,11 +142,12 @@ public class JsonData extends PermData {
             data.put("perms", perms);
             user.getJSONObject("Users").put(name, data);
         });
-        ConfigUtil.saveToFile(user.toString(),User);
+        ConfigUtil.saveToFile(user.toString(), User);
     }
 
     /**
      * 获取权限组文件
+     *
      * @return JSON对象
      */
     public JSONObject getGroupFile() {
@@ -154,6 +156,7 @@ public class JsonData extends PermData {
 
     /**
      * 获取用户文件
+     *
      * @return JSON对象
      */
     public JSONObject getUserFile() {

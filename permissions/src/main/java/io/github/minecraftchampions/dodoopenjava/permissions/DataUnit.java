@@ -21,6 +21,7 @@ public class DataUnit {
 
     /**
      * 移除权限
+     *
      * @param permission 权限
      * @return true/false
      */
@@ -51,6 +52,7 @@ public class DataUnit {
 
     /**
      * 判断是否有一样的权限
+     *
      * @param permission 权限
      * @return true/false
      */

@@ -13,8 +13,9 @@ public class ConsoleListener {
 
     /**
      * 增加动作（输入指定消息）
+     *
      * @param message 消息
-     * @param action 动作
+     * @param action  动作
      */
     public void addAction(String message, Action action) {
         answers.put(message.toLowerCase(), action);
@@ -22,7 +23,8 @@ public class ConsoleListener {
 
     /**
      * 初始化
-     * @param scanner 键盘
+     *
+     * @param scanner       键盘
      * @param defaultAction 默认动作
      */
     public ConsoleListener(Scanner scanner, Action defaultAction) {
@@ -36,8 +38,9 @@ public class ConsoleListener {
 
     /**
      * 移除动作
+     *
      * @param message 消息
-     * @param action 动作
+     * @param action  动作
      */
     public void removeAction(String message, Action action) {
         answers.remove(message, action);
@@ -45,8 +48,9 @@ public class ConsoleListener {
 
     /**
      * 替换动作
+     *
      * @param message 消息
-     * @param action 动作
+     * @param action  动作
      */
     public Action replaceAction(String message, Action action) {
         return answers.replace(message, action);
@@ -85,6 +89,7 @@ public class ConsoleListener {
     public interface Action {
         /**
          * 处理
+         *
          * @param msg 传入的控制台的输入
          */
         void act(String msg);

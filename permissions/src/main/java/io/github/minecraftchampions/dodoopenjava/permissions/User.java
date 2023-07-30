@@ -37,6 +37,6 @@ public class User extends DataUnit implements Cloneable {
     }
 
     public boolean hasPerm(String perm) {
-        return UserManager.hasPerm(this,perm);
+        return UserManager.hasPerm(this, perm);
     }
 }

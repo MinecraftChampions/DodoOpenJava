@@ -11,10 +11,11 @@ import java.util.List;
 public class ArrayUtil {
     /**
      * 前置数组
-     * @param arr 数组
+     *
+     * @param arr     数组
      * @param element 前置的对象
+     * @param <T>     泛型
      * @return 数组
-     * @param <T> 泛型
      */
     public static <T> T[] prepend(T[] arr, T element) {
         int n = arr.length;
@@ -28,10 +29,11 @@ public class ArrayUtil {
 
     /**
      * 后置数组
-     * @param arr 数组
+     *
+     * @param arr     数组
      * @param element 后置的对象
+     * @param <T>     泛型
      * @return 数组
-     * @param <T> 泛型
      */
     public static <T> T[] append(T[] arr, T element) {
         int n = arr.length;
@@ -42,10 +44,11 @@ public class ArrayUtil {
 
     /**
      * 前置数组
-     * @param arr 数组
+     *
+     * @param arr      数组
      * @param elements 前置的数组
+     * @param <T>      泛型
      * @return 数组
-     * @param <T> 泛型
      */
     public static <T> T[] prepend(T[] arr, T[] elements) {
         List<T> list = new ArrayList<>();
@@ -55,22 +58,23 @@ public class ArrayUtil {
 
         list.toArray(element); //赋值
         for (T t : element) {
-            arr = prepend(arr,t);
+            arr = prepend(arr, t);
         }
         return arr;
     }
 
     /**
      * 后置数组
-     * @param arr 数组
+     *
+     * @param arr      数组
      * @param elements 后置的数组
+     * @param <T>      泛型
      * @return 数组
-     * @param <T> 泛型
      */
     public static <T> T[] append(T[] arr, T[] elements) {
         for (T t : elements) {
             System.out.println(t);
-            arr = append(arr,t);
+            arr = append(arr, t);
         }
         return arr;
     }

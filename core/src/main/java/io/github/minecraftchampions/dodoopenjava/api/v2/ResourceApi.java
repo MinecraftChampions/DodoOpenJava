@@ -14,20 +14,22 @@ public class ResourceApi {
 
     /**
      * 上传资源
+     *
      * @param clientId 机器人唯一标识
-     * @param token 机器人鉴权Token
-     * @param path 路径
+     * @param token    机器人鉴权Token
+     * @param path     路径
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
     public static JSONObject uploadResource(String clientId, String token, String path) throws IOException {
-        return uploadResource(BaseUtil.Authorization(clientId,token), path);
+        return uploadResource(BaseUtil.Authorization(clientId, token), path);
     }
 
     /**
      * 上传资源
+     *
      * @param authorization authorization
-     * @param path 路径
+     * @param path          路径
      * @return JSON对象
      * @throws IOException 失败后抛出
      */

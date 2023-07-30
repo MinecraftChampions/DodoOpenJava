@@ -4,7 +4,6 @@ import io.github.minecraftchampions.dodoopenjava.command.Command;
 import io.github.minecraftchampions.dodoopenjava.command.CommandExecutor;
 import io.github.minecraftchampions.dodoopenjava.command.CommandSender;
 import io.github.minecraftchampions.dodoopenjava.utils.MapUtil;
-import okio.ByteString;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
@@ -20,6 +19,7 @@ import java.util.Objects;
 public class CommandUtil {
     /**
      * 注册主命令(会自动进行子命令匹配，不需要额外加入子命令触发)
+     *
      * @param clazz 命令处理的方法所在类(命令处理器方法须非静态)
      */
     public static void registerMainCommand(Class<?> clazz, String authorization) {
@@ -48,27 +48,28 @@ public class CommandUtil {
                     @Override
                     public void onCommand(CommandSender sender, String[] args) {
                         try {
-                            method.invoke(this,sender,args);
+                            method.invoke(this, sender, args);
                         } catch (IllegalAccessException | InvocationTargetException e) {
                             throw new RuntimeException(e);
                         }
-                        onSubCommand(command,sender,args);
+                        onSubCommand(command, sender, args);
                     }
-                },authorization);
+                }, authorization);
                 mainCommand = null;
             }
         }
     }
 
-    public static Map<String[],Method> subCommandMethods = new HashMap<>();
+    public static Map<String[], Method> subCommandMethods = new HashMap<>();
 
-    /** 匹配子命令
+    /**
+     * 匹配子命令
      *
      * @param mainCommand 主命令
-     * @param sender 发送者
-     * @param args 参数
+     * @param sender      发送者
+     * @param args        参数
      */
-    public static void onSubCommand(String mainCommand,CommandSender sender,String[] args) {
+    public static void onSubCommand(String mainCommand, CommandSender sender, String[] args) {
         Method method = null;
         for (List<Object> list : MapUtil.ergodicMaps(subCommandMethods)) {
             String[] strings = (String[]) list.get(0);
@@ -84,7 +85,7 @@ public class CommandUtil {
 
         if (method != null) {
             try {
-                method.invoke(null,sender,args);
+                method.invoke(null, sender, args);
             } catch (IllegalAccessException | InvocationTargetException e) {
                 throw new RuntimeException(e);
             }
@@ -93,6 +94,7 @@ public class CommandUtil {
 
     /**
      * 注册子命令
+     *
      * @param clazz 命令处理的方法所在类(命令处理器方法须静态)
      */
     public static void registerSubCommand(Class<?> clazz) {
@@ -112,7 +114,7 @@ public class CommandUtil {
                 strings[0] = mainCommand;
                 strings[1] = permission;
                 strings[2] = command;
-                subCommandMethods.put(strings,method);
+                subCommandMethods.put(strings, method);
                 subCommand = null;
             }
         }

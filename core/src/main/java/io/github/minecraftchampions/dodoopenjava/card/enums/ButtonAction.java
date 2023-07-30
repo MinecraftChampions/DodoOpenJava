@@ -21,6 +21,7 @@ public enum ButtonAction {
      * 回传表单
      */
     form("form");
+
     ButtonAction(String type) {
         this.type = type;
     }
@@ -32,6 +33,7 @@ public enum ButtonAction {
 
     /**
      * 获取类型
+     *
      * @return 类型
      */
     public String getType() {

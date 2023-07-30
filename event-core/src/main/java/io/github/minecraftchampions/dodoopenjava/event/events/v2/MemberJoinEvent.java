@@ -48,6 +48,7 @@ public class MemberJoinEvent extends Event {
 
     /**
      * 获取时间戳
+     *
      * @return 返回时间戳
      */
     public Integer getTimestamp() {
@@ -56,6 +57,7 @@ public class MemberJoinEvent extends Event {
 
     /**
      * 获取事件ID
+     *
      * @return 事件ID
      */
     public String getEventId() {
@@ -64,6 +66,7 @@ public class MemberJoinEvent extends Event {
 
     /**
      * 获取群号
+     *
      * @return 群号
      */
     public String getIslandSourceId() {
@@ -72,6 +75,7 @@ public class MemberJoinEvent extends Event {
 
     /**
      * 获取DodoSourceId
+     *
      * @return DodoSourceId
      */
     public String getDodoSourceId() {
@@ -80,6 +84,7 @@ public class MemberJoinEvent extends Event {
 
     /**
      * 获取变动时间
+     *
      * @return 变动时间
      */
     public String getModifyTime() {
@@ -88,6 +93,7 @@ public class MemberJoinEvent extends Event {
 
     /**
      * 获取JSONObject
+     *
      * @return JSONObject
      */
     public JSONObject getJsonObject() {
@@ -96,6 +102,7 @@ public class MemberJoinEvent extends Event {
 
     /**
      * 获取JsonString
+     *
      * @return String
      */
     public String getJsonString() {

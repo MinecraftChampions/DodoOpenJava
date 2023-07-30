@@ -14,7 +14,8 @@ public class MemoryConfiguration extends MemorySection implements Configuration 
     /**
      * 创建没有缺省值的空 MemoryConfiguration
      */
-    public MemoryConfiguration() {}
+    public MemoryConfiguration() {
+    }
 
     /**
      * 使用指定的配置作为所有缺省值的源创建空 MemoryConfiguration

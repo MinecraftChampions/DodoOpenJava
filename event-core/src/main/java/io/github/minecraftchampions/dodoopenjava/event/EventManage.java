@@ -67,10 +67,11 @@ public class EventManage {
 
     /**
      * 注册事件监听器
+     *
      * @param listener 监听器
-     * @param an Authorization
+     * @param an       Authorization
      */
-    public static void registerEvents(@NotNull Listener listener,@NotNull String an) {
+    public static void registerEvents(@NotNull Listener listener, @NotNull String an) {
         for (Map.Entry<Class<? extends Event>, Set<RegisteredListener>> entry : createRegisteredListeners(listener).entrySet()) {
             getEventListeners(getRegistrationClass(entry.getKey())).registerAll(entry.getValue());
         }
@@ -82,6 +83,7 @@ public class EventManage {
 
     /**
      * 通过反射获取使用了两者的哪个库
+     *
      * @return 类
      */
     public static Class<?> getEventTriggerClass() {
@@ -113,17 +115,19 @@ public class EventManage {
 
     /**
      * 初始化事件监听
+     *
      * @param an Authorization
      */
     public static void init(String an) {
         Class<?> clazz = getEventTriggerClass();
         try {
             if (clazz == Class.forName("io.github.minecraftchampions.dodoopenjava.event.websocket.EventTrigger")) {
-                getEventTriggerClass().getMethod("main",String.class).invoke(null,an);
+                getEventTriggerClass().getMethod("main", String.class).invoke(null, an);
             } else {
                 getEventTriggerClass().getMethod("main").invoke(null);
             }
-        } catch (ClassNotFoundException | InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
+        } catch (ClassNotFoundException | InvocationTargetException | IllegalAccessException |
+                 NoSuchMethodException e) {
             e.printStackTrace();
         }
     }
@@ -133,13 +137,13 @@ public class EventManage {
      * <p>
      * 原文:Registers the specified executor to the given event class
      *
-     * @param event 要注册的事件类型
+     * @param event    要注册的事件类型
      * @param listener 要注册的监听器
      * @param priority 要注册的事件的优先级
      * @param executor 要注册的事件触发器
-     * @param an Authorization
+     * @param an       Authorization
      */
-    public static void registerEvent(@NotNull Class<? extends Event> event, @NotNull Listener listener, @NotNull EventPriority priority, @NotNull EventExecutor executor,@NotNull String an) {
+    public static void registerEvent(@NotNull Class<? extends Event> event, @NotNull Listener listener, @NotNull EventPriority priority, @NotNull EventExecutor executor, @NotNull String an) {
         Validate.notNull(listener, "Listener cannot be null");
         Validate.notNull(priority, "Priority cannot be null");
         Validate.notNull(executor, "Executor cannot be null");

@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * 一些常用的方法
+ *
  * @author qscbm187531
  */
 public class BaseUtil {
@@ -15,7 +16,7 @@ public class BaseUtil {
      * 拼接 Authorization
      *
      * @param clientId 机器人唯一标示
-     * @param token 机器人鉴权Token
+     * @param token    机器人鉴权Token
      * @return 返回拼接后的文本
      */
     public static String Authorization(String clientId, String token) {
@@ -24,6 +25,7 @@ public class BaseUtil {
 
     /**
      * 判断返回码的意义
+     *
      * @param status 返回码
      * @return 意思
      */
@@ -33,6 +35,7 @@ public class BaseUtil {
 
     /**
      * Object集合转String集合
+     *
      * @param list Object集合
      * @return String集合
      */
@@ -46,6 +49,7 @@ public class BaseUtil {
 
     /**
      * 判断一个文本中是否含有敏感词（词库URL：<a href="https://mcchampions.github.io/database.json">词库地址</a>)
+     *
      * @param text 文本
      * @return true代表是
      */

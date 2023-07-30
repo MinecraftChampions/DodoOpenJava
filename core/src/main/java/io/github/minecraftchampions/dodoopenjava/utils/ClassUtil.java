@@ -3,6 +3,7 @@ package io.github.minecraftchampions.dodoopenjava.utils;
 public class ClassUtil {
     /**
      * 判断class是否存在
+     *
      * @param className 类
      * @return 是 or 否
      */

@@ -43,7 +43,7 @@ public class YamlConfigurationOptions extends FileConfigurationOptions {
 
     /**
      * 获取应使用多少空格来缩进每行。
-     *
+     * <p>
      * 最小值为2，最大值为9。
      *
      * @return 缩进多少
@@ -53,8 +53,8 @@ public class YamlConfigurationOptions extends FileConfigurationOptions {
     }
 
     /**
-     *设置每行缩进应使用多少空格。
-     *
+     * 设置每行缩进应使用多少空格。
+     * <p>
      * 最小值为2，最大值为9
      *
      * @param value 缩进空格数量

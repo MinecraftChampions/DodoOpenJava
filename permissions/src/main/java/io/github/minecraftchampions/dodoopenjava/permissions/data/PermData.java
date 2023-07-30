@@ -9,5 +9,7 @@ import java.io.IOException;
 public class PermData {
     public File User;
     public File Group;
-    public void saveToFile() throws IOException {}
+
+    public void saveToFile() throws IOException {
+    }
 }

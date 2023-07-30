@@ -72,6 +72,7 @@ public class MemberLeaveEvent extends Event {
 
     /**
      * 转换 为Int数据类型的 性别关键字 为 String 类型
+     *
      * @param IntSex 性别
      * @return 性别
      */
@@ -85,6 +86,7 @@ public class MemberLeaveEvent extends Event {
 
     /**
      * 转换 为Int数据类型的 退出类型关键字 为 String 类型
+     *
      * @param Type 类型
      * @return 类型
      */
@@ -98,6 +100,7 @@ public class MemberLeaveEvent extends Event {
 
     /**
      * 获取时间戳
+     *
      * @return 返回时间戳
      */
     public Integer getTimestamp() {
@@ -106,6 +109,7 @@ public class MemberLeaveEvent extends Event {
 
     /**
      * 获取事件ID
+     *
      * @return 事件ID
      */
     public String getEventId() {
@@ -114,6 +118,7 @@ public class MemberLeaveEvent extends Event {
 
     /**
      * 获取群号
+     *
      * @return 群号
      */
     public String getIslandSourceId() {
@@ -122,6 +127,7 @@ public class MemberLeaveEvent extends Event {
 
     /**
      * 获取DodoSourceId
+     *
      * @return DodoSourceId
      */
     public String getDodoSourceId() {
@@ -130,6 +136,7 @@ public class MemberLeaveEvent extends Event {
 
     /**
      * 获取变动时间
+     *
      * @return 变动时间
      */
     public String getModifyTime() {
@@ -138,6 +145,7 @@ public class MemberLeaveEvent extends Event {
 
     /**
      * 获取JSONObject
+     *
      * @return JSONObject
      */
     public JSONObject getJsonObject() {
@@ -146,6 +154,7 @@ public class MemberLeaveEvent extends Event {
 
     /**
      * 获取JsonString
+     *
      * @return String
      */
     public String getJsonString() {
@@ -154,6 +163,7 @@ public class MemberLeaveEvent extends Event {
 
     /**
      * 获取成员Object
+     *
      * @return 获取成员的 JsonObject
      */
     public JSONObject getPersonal() {
@@ -163,6 +173,7 @@ public class MemberLeaveEvent extends Event {
 
     /**
      * 获取发送者名字
+     *
      * @return 名字
      */
     public String getUserNickName() {
@@ -171,6 +182,7 @@ public class MemberLeaveEvent extends Event {
 
     /**
      * 获取发送者头像URL
+     *
      * @return 头像url
      */
     public String getUserAvatarUrl() {
@@ -179,6 +191,7 @@ public class MemberLeaveEvent extends Event {
 
     /**
      * 获取性别（Int类型）
+     *
      * @return 性别
      */
     public Integer getUserIntSex() {
@@ -187,6 +200,7 @@ public class MemberLeaveEvent extends Event {
 
     /**
      * 获取性别（String类型）
+     *
      * @return 性别
      */
     public String getUserSex() {
@@ -195,6 +209,7 @@ public class MemberLeaveEvent extends Event {
 
     /**
      * 获取离开类型（String）
+     *
      * @return 离开类型
      */
     public String getLeaveType() {
@@ -203,6 +218,7 @@ public class MemberLeaveEvent extends Event {
 
     /**
      * 获取离开类型（Int）
+     *
      * @return 离开类型
      */
     public Integer getLeaveIntType() {
@@ -211,6 +227,7 @@ public class MemberLeaveEvent extends Event {
 
     /**
      * 获取操作者Dodo号
+     *
      * @return Dodo号
      */
     public String getOperateDoDoId() {

@@ -6,19 +6,21 @@ import org.json.JSONObject;
 
 /**
  * 回传表单
+ *
  * @author qscbm187531
  */
-public class FormComponent extends Component{
+public class FormComponent extends Component {
     /**
      * 初始化回传表单
      */
     public void initForm() {
-        jsonCard.put("title","");
-        jsonCard.put("elements",new JSONArray());
+        jsonCard.put("title", "");
+        jsonCard.put("elements", new JSONArray());
     }
 
     /**
      * 编辑标题
+     *
      * @param title 标题
      */
     public void editContent(String title) {
@@ -27,6 +29,7 @@ public class FormComponent extends Component{
 
     /**
      * 删除一个数据
+     *
      * @param count index
      */
     public void removeElement(int count) {
@@ -35,9 +38,10 @@ public class FormComponent extends Component{
 
     /**
      * 增加一个数据
-     * @param key 选项自定义ID
-     * @param title 名称
-     * @param rows 输入框高度，填 one 表示单行，最多4行
+     *
+     * @param key     选项自定义ID
+     * @param title   名称
+     * @param rows    输入框高度，填 one 表示单行，最多4行
      * @param minChar 最小字符数，介于0~4000
      * @param maxChar 最大字符数，介于1~4000，且最大字符数不得小于最小字符数
      */
@@ -62,12 +66,13 @@ public class FormComponent extends Component{
 
     /**
      * 增加一个数据
-     * @param key 选项自定义ID
+     *
+     * @param key         选项自定义ID
      * @param placeholder 输入框提示
-     * @param title 名称
-     * @param rows 输入框高度，填 one 表示单行，最多4行
-     * @param minChar 最小字符数，介于0~4000
-     * @param maxChar 最大字符数，介于1~4000，且最大字符数不得小于最小字符数
+     * @param title       名称
+     * @param rows        输入框高度，填 one 表示单行，最多4行
+     * @param minChar     最小字符数，介于0~4000
+     * @param maxChar     最大字符数，介于1~4000，且最大字符数不得小于最小字符数
      */
     public void addElement(String key, String placeholder, String title, Rows rows, int minChar, int maxChar) {
         JSONObject json = new JSONObject();

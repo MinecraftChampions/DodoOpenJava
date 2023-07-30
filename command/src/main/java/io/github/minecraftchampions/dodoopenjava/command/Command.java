@@ -11,11 +11,11 @@ import java.util.Objects;
 /**
  * 命令系统的相关方法
  */
-public class  Command {
+public class Command {
     public static HashSet<CommandExecutor> commands = new HashSet<>();
 
     public static String Authorization;
-    
+
     public static boolean initialized = false;
 
     /**
@@ -83,9 +83,9 @@ public class  Command {
     /**
      * 触发命令
      *
-     * @param sender 发送者
+     * @param sender          发送者
      * @param mainCommandName 命令名
-     * @param args 命令参数
+     * @param args            命令参数
      */
     @SuppressWarnings("UnusedReturnValue")
     public static Boolean trigger(CommandSender sender, String mainCommandName, String... args) {

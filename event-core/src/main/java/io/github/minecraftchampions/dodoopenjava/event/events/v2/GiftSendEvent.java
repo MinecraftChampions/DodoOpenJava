@@ -85,6 +85,7 @@ public class GiftSendEvent extends Event {
 
     /**
      * 获取订单号
+     *
      * @return 订单号
      */
     public String getOrderNo() {
@@ -93,6 +94,7 @@ public class GiftSendEvent extends Event {
 
     /**
      * 获取来源频道ID
+     *
      * @return 来源频道ID
      */
     public String getChannelId() {
@@ -101,6 +103,7 @@ public class GiftSendEvent extends Event {
 
     /**
      * 获取礼物总价值（铃钱）
+     *
      * @return 礼物总价值（铃钱）
      */
     public BigDecimal getTotalAmount() {
@@ -109,6 +112,7 @@ public class GiftSendEvent extends Event {
 
     /**
      * 获取被赠礼人DoDoID
+     *
      * @return 被赠礼人DoDoID
      */
     public String getToDodoSourceId() {
@@ -117,6 +121,7 @@ public class GiftSendEvent extends Event {
 
     /**
      * 获取被赠礼人分成（百分比）
+     *
      * @return 被赠礼人分成（百分比）
      */
     public BigDecimal getToDodoRatio() {
@@ -125,6 +130,7 @@ public class GiftSendEvent extends Event {
 
     /**
      * 获取被赠礼人群昵称
+     *
      * @return 被赠礼人群昵称
      */
     public String getToDodoIslandNickName() {
@@ -133,6 +139,7 @@ public class GiftSendEvent extends Event {
 
     /**
      * 获取被赠礼人收入（里程）
+     *
      * @return 被赠礼人收入（里程）
      */
     public BigDecimal getToDodoIncome() {
@@ -141,6 +148,7 @@ public class GiftSendEvent extends Event {
 
     /**
      * 获取时间戳
+     *
      * @return 时间戳
      */
     public Integer getTimestamp() {
@@ -149,6 +157,7 @@ public class GiftSendEvent extends Event {
 
     /**
      * 获取内容类型，1：消息，2：帖子
+     *
      * @return 内容类型，1：消息，2：帖子
      */
     public Integer getTargetType() {
@@ -157,6 +166,7 @@ public class GiftSendEvent extends Event {
 
     /**
      * 获取内容ID
+     *
      * @return 内容ID
      */
     public String getTargetId() {
@@ -165,6 +175,7 @@ public class GiftSendEvent extends Event {
 
     /**
      * 获取事件内容
+     *
      * @return 事件内容
      */
     public String getJsonString() {
@@ -173,6 +184,7 @@ public class GiftSendEvent extends Event {
 
     /**
      * 获取事件内容
+     *
      * @return 事件内容
      */
     public JSONObject getJsonObject() {
@@ -181,6 +193,7 @@ public class GiftSendEvent extends Event {
 
     /**
      * 获取来源群ID
+     *
      * @return 来源群ID
      */
     public String getIslandSourceId() {
@@ -189,6 +202,7 @@ public class GiftSendEvent extends Event {
 
     /**
      * 获取群分成（百分比）
+     *
      * @return 群分成（百分比）
      */
     public BigDecimal getIslandRatio() {
@@ -197,6 +211,7 @@ public class GiftSendEvent extends Event {
 
     /**
      * 获取群收入（里程）
+     *
      * @return 群收入（里程）
      */
     public BigDecimal getIslandIncome() {
@@ -205,6 +220,7 @@ public class GiftSendEvent extends Event {
 
     /**
      * 获取礼物信息Object
+     *
      * @return 礼物信息Object
      */
     public JSONObject getGift() {
@@ -213,6 +229,7 @@ public class GiftSendEvent extends Event {
 
     /**
      * 获取事件ID
+     *
      * @return 事件ID
      */
     public String getEventId() {
@@ -221,6 +238,7 @@ public class GiftSendEvent extends Event {
 
     /**
      * 获取赠礼人DoDoID
+     *
      * @return 赠礼人DoDoID
      */
     public String getDodoSourceId() {
@@ -229,6 +247,7 @@ public class GiftSendEvent extends Event {
 
     /**
      * 获取赠礼人群昵称
+     *
      * @return 赠礼人群昵称
      */
     public String getDodoIslandNickName() {

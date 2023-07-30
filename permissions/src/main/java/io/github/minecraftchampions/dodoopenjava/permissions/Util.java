@@ -13,11 +13,12 @@ import java.util.regex.Pattern;
 public class Util {
     /**
      * 判断用户是否拥有权限(请传入前面不带横杠的权限)
+     *
      * @param userPerm 用户权限
-     * @param perm 权限
+     * @param perm     权限
      * @return true/false
      */
-    public static boolean hasPermission(String userPerm,String perm) {
+    public static boolean hasPermission(String userPerm, String perm) {
         if (perm == null || perm.isEmpty()) {
             return true;
         }
@@ -31,10 +32,12 @@ public class Util {
             return false;
         }
     }
+
     /**
      * 判断权限是否符合
+     *
      * @param userPerm 用户的权限
-     * @param perm 判断的权限
+     * @param perm     判断的权限
      * @return ture/false
      */
     private static boolean comparePermissionString(String userPerm, String perm) {
@@ -58,33 +61,34 @@ public class Util {
      * 以下的不能转换好
      * 1：
      * {
-     *   array: [
-     *     {
-     *         "key":"value"
-     *     }
-     *   ]
+     * array: [
+     * {
+     * "key":"value"
+     * }
+     * ]
      * }
      * 数组里面别放JsonObject
      * 2：
      * {
-     *   "\"": "a"
+     * "\"": "a"
      * }
      * 键不要有特殊字符
+     *
      * @param s json
      * @return toml
      */
     public static String toToml(String s) {
 
-        Map<String,JSONObject> map = changeMapForEach(new JSONObject(s));
+        Map<String, JSONObject> map = changeMapForEach(new JSONObject(s));
         StringBuilder stringBuilder = new StringBuilder();
         AtomicInteger i = new AtomicInteger();
         map.forEach((key, value) -> {
             i.getAndIncrement();
-            String a = value.toString().replaceAll(",","\n")
-                    .replaceAll("\\{","").replaceAll("}","\n")
-                    .replaceAll("\\[","[\n    ").replaceAll("]","\n]\n")
-                    .replaceAll("\"([^\"]+)\":","$1 = ")
-                    .replaceAll("\"\n\"","\",\n    \"");
+            String a = value.toString().replaceAll(",", "\n")
+                    .replaceAll("\\{", "").replaceAll("}", "\n")
+                    .replaceAll("\\[", "[\n    ").replaceAll("]", "\n]\n")
+                    .replaceAll("\"([^\"]+)\":", "$1 = ")
+                    .replaceAll("\"\n\"", "\",\n    \"");
             String toml = "[" + key + "]" + "\n" + a;
             if (Objects.equals(key, "\"")) {
                 toml = a;
@@ -97,23 +101,24 @@ public class Util {
                 }
             }
         });
-        return String.valueOf(stringBuilder).replaceAll("\n\n","\n");
+        return String.valueOf(stringBuilder).replaceAll("\n\n", "\n");
 
     }
 
-    public static Map<String,JSONObject> changeMapForEach(JSONObject jsonObject) {
-        return changeMapForEach(jsonObject,null);
+    public static Map<String, JSONObject> changeMapForEach(JSONObject jsonObject) {
+        return changeMapForEach(jsonObject, null);
     }
 
     /**
      * 将jsonObject转换为以下map实例
      * [path/path]: {}
      * [path/p]: {}
+     *
      * @param jsonObject jsonObject
-     * @param key 父键
+     * @param key        父键
      * @return Map
      */
-    public static Map<String,JSONObject> changeMapForEach(JSONObject jsonObject, String key) {
+    public static Map<String, JSONObject> changeMapForEach(JSONObject jsonObject, String key) {
         HashMap<String, JSONObject> map = new HashMap<>();
         Set<String> keys = jsonObject.keySet();//获取键的列表
         if (key == null) {
@@ -139,10 +144,10 @@ public class Util {
         //判断各个jsonObject是否重复
         if (key == null) {
             //克隆map循环
-            ((HashMap<String, JSONObject>)map.clone()).forEach((k, value) -> {
+            ((HashMap<String, JSONObject>) map.clone()).forEach((k, value) -> {
                 Set<String> keySet = value.keySet();//获取的json列表
                 List<String> list = new ArrayList<>();
-                HashMap<String, JSONObject> m =  (HashMap<String, JSONObject>)map.clone();//克隆
+                HashMap<String, JSONObject> m = (HashMap<String, JSONObject>) map.clone();//克隆
                 m.remove(k);//移除
                 String[] strings = k.split("\\.");
                 m.forEach((n, object) -> {

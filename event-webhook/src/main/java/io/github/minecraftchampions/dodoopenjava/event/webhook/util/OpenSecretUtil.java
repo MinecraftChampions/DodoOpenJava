@@ -11,6 +11,7 @@ import java.security.Security;
 
 /**
  * 开放秘密工具
+ *
  * @author Dodo
  */
 public class OpenSecretUtil {
@@ -26,7 +27,6 @@ public class OpenSecretUtil {
      *
      * @param payload   加密消息
      * @param secretKey 解密密钥
-     *
      * @return 解密后的字符串
      */
     public static String WebHookDecrypt(String payload, String secretKey) {
@@ -45,9 +45,7 @@ public class OpenSecretUtil {
      * @param secretKey 解密密钥
      * @param iv        IV向量
      * @param cipher    AES配置
-     *
      * @return 解密密过后的值
-     *
      */
     private static String AESDecrypt(byte[] payload, byte[] secretKey, byte[] iv, Cipher cipher) throws Exception {
         var sKeySpec = new SecretKeySpec(secretKey, "AES");
@@ -62,7 +60,6 @@ public class OpenSecretUtil {
      * 十六进制字符串转字节数组
      *
      * @param hexStr 十六进制字符串
-     *
      * @return 字节数组
      */
     private static byte[] HexStringToBytes(String hexStr) throws Exception {

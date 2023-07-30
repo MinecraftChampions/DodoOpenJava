@@ -11,7 +11,7 @@ import java.util.Objects;
 /**
  * 文字组件
  */
-public class SectionComponent extends Component{
+public class SectionComponent extends Component {
 
     public boolean isParagraph;
 
@@ -42,11 +42,12 @@ public class SectionComponent extends Component{
                                                      }
                                                 }""");
             }
-        } 
+        }
     }
 
     /**
      * 编辑多栏文本
+     *
      * @param stringList string列表
      */
     public void editParagraphContent(List<String> stringList) {
@@ -63,6 +64,7 @@ public class SectionComponent extends Component{
 
     /**
      * 编辑文本（非多栏）
+     *
      * @param content 文本
      */
     public void editContent(String content) {
@@ -71,36 +73,42 @@ public class SectionComponent extends Component{
 
     /**
      * 编辑文本类别
+     *
      * @param type 类别
      */
     public void editContentType(TextType type) {
         String Type;
-        if (Objects.equals(type.toString(), "Markdown")) Type = "dodo-md"; else Type = "plain-text";
+        if (Objects.equals(type.toString(), "Markdown")) Type = "dodo-md";
+        else Type = "plain-text";
         jsonCard.getJSONObject("text").put("type", Type);
     }
 
     /**
      * 编辑文本（多栏）
+     *
      * @param content 文本
-     * @param count 第几个
+     * @param count   第几个
      */
-    public void editParagraphContent(String content,int count) {
+    public void editParagraphContent(String content, int count) {
         jsonCard.getJSONObject("text").getJSONArray("fields").getJSONObject(count).put("content", content);
     }
 
     /**
      * 编辑文本类别（多栏）
-     * @param type 类别
+     *
+     * @param type  类别
      * @param count index
      */
     public void editParagraphContentType(TextType type, int count) {
         String Type;
-        if (Objects.equals(type.toString(), "Markdown")) Type = "dodo-md"; else Type = "plain-text";
+        if (Objects.equals(type.toString(), "Markdown")) Type = "dodo-md";
+        else Type = "plain-text";
         jsonCard.getJSONObject("text").getJSONArray("fields").getJSONObject(count).put("type", Type);
     }
 
     /**
      * 编辑多栏文本栏数
+     *
      * @param col 栏数
      */
     public void editParagraphContentCols(Cols col) {
@@ -110,6 +118,7 @@ public class SectionComponent extends Component{
 
     /**
      * 移除多栏文本的一端文本
+     *
      * @param count index
      */
     public void editParagraphContentType(int count) {

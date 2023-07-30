@@ -32,6 +32,7 @@ public enum DataType {
 
     /**
      * 获取类型
+     *
      * @return 类型
      */
     public String getType() {

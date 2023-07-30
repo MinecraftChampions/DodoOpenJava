@@ -10,5 +10,6 @@ import java.lang.annotation.*;
 @Documented
 public @interface MainCommand {
     String command();
+
     String permission() default "";
 }

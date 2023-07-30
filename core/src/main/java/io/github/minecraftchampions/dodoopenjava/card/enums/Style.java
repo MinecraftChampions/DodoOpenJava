@@ -7,9 +7,19 @@ public enum Style {
     /**
      * 天
      */
-    day,
+    day("day"),
     /**
      * 小时
      */
-    hour
+    hour("hour");
+
+    private final String style;
+
+    Style(String sty) {
+        style = sty;
+    }
+
+    public String getStyle() {
+        return style;
+    }
 }

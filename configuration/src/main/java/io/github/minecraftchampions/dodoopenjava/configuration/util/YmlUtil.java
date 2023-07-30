@@ -8,6 +8,7 @@ import java.util.Map;
 
 /**
  * 关于 Yml 的一些实用性方法
+ *
  * @author qscbm187531
  */
 public class YmlUtil {
@@ -20,6 +21,7 @@ public class YmlUtil {
     public static <T> T toBean(String fileName) throws IOException {
         return new Yaml().load(Files.newInputStream(new File(setYml(fileName)).toPath()));
     }
+
     /**
      * bean转化为yml
      *
@@ -29,6 +31,7 @@ public class YmlUtil {
     public static void toYml(Object obj, String fileName) throws IOException {
         new Yaml().dump(obj, new FileWriter(YmlUtil.setYml(fileName)));
     }
+
     /**
      * ynl转换为map
      *

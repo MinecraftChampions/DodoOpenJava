@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.utils;
 
 import org.apache.commons.lang3.StringUtils;
+
 import java.util.Locale;
 import java.util.UUID;
 import java.util.regex.Matcher;
@@ -8,7 +9,6 @@ import java.util.regex.Pattern;
 
 /**
  * 一些 字符串 的实用方法
- * @author qscbm187531
  */
 public class StringUtil {
     public final static Pattern DEL_PATTERN = Pattern.compile("%");
@@ -59,10 +59,10 @@ public class StringUtil {
      * @param data 字节
      * @return 字符串
      */
-    public static String toString(byte[] data){
-        try{
+    public static String toString(byte[] data) {
+        try {
             return toString(data, "UTF-8");
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -71,14 +71,14 @@ public class StringUtil {
     /**
      * 将一段字节集合转为字符串
      *
-     * @param data 字节
+     * @param data    字节
      * @param charset 编码
      * @return 字符串
      */
-    public static String toString(byte[] data, String charset){
-        try{
+    public static String toString(byte[] data, String charset) {
+        try {
             return new String(data, charset);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -136,7 +136,7 @@ public class StringUtil {
     /**
      * 重复拼接字符串
      *
-     * @param str 字符串
+     * @param str       字符串
      * @param repeatInt 重复次数
      * @return 字符串
      */

@@ -65,6 +65,7 @@ public class GoodsPurchaseEvent extends Event {
 
     /**
      * 获取订单号
+     *
      * @return 订单号
      */
     public String getOrderNo() {
@@ -74,6 +75,7 @@ public class GoodsPurchaseEvent extends Event {
     /**
      * 获取商品类型
      * 1：身份组，2：自定义商品
+     *
      * @return 商品类型
      */
     public int getGoodsType() {
@@ -82,6 +84,7 @@ public class GoodsPurchaseEvent extends Event {
 
     /**
      * 获取商品ID
+     *
      * @return 商品ID
      */
     public String getGoodsId() {
@@ -90,6 +93,7 @@ public class GoodsPurchaseEvent extends Event {
 
     /**
      * 获取商品图片列表，链接后接参数可以调整图片样式
+     *
      * @return 图片列表
      */
     public String getGoodsName() {
@@ -98,6 +102,7 @@ public class GoodsPurchaseEvent extends Event {
 
     /**
      * 获取订单号
+     *
      * @return 订单号
      */
     public List<String> getGoodsImageList() {
@@ -106,6 +111,7 @@ public class GoodsPurchaseEvent extends Event {
 
     /**
      * 获取时间戳
+     *
      * @return 返回时间戳
      */
     public Integer getTimestamp() {
@@ -114,6 +120,7 @@ public class GoodsPurchaseEvent extends Event {
 
     /**
      * 获取事件ID
+     *
      * @return 事件ID
      */
     public String getEventId() {
@@ -122,6 +129,7 @@ public class GoodsPurchaseEvent extends Event {
 
     /**
      * 获取群号
+     *
      * @return 群号
      */
     public String getIslandSourceId() {
@@ -130,6 +138,7 @@ public class GoodsPurchaseEvent extends Event {
 
     /**
      * 获取DodoId
+     *
      * @return DodoSourceId
      */
     public String getDodoSourceId() {
@@ -138,6 +147,7 @@ public class GoodsPurchaseEvent extends Event {
 
     /**
      * 获取变动时间
+     *
      * @return 变动时间
      */
     public String getModifyTime() {
@@ -146,6 +156,7 @@ public class GoodsPurchaseEvent extends Event {
 
     /**
      * 获取JSONObject
+     *
      * @return JSONObject
      */
     public JSONObject getJsonObject() {
@@ -154,6 +165,7 @@ public class GoodsPurchaseEvent extends Event {
 
     /**
      * 获取JsonString
+     *
      * @return String
      */
     public String getJsonString() {

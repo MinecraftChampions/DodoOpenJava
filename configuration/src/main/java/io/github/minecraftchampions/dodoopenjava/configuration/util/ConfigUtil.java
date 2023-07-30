@@ -8,16 +8,13 @@ import org.apache.commons.io.FileUtils;
 
 import java.io.*;
 import java.nio.channels.FileChannel;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
-import static io.github.minecraftchampions.dodoopenjava.configuration.file.FileConfiguration.UTF8_OVERRIDE;
-import static io.github.minecraftchampions.dodoopenjava.configuration.file.FileConfiguration.UTF_BIG;
-
 /**
  * 关于 配置文件 的一些方法
+ *
  * @author qscbm187531
  */
 public class ConfigUtil {
@@ -104,9 +101,9 @@ public class ConfigUtil {
      * 设置节点
      *
      * @param fileConfiguration 文件
-     * @param path yml节点
-     * @param value 内容
-     * @param child 文件路径
+     * @param path              yml节点
+     * @param value             内容
+     * @param child             文件路径
      */
     public static void setPath(FileConfiguration fileConfiguration, String path, Object value, String child) {
         try {
@@ -137,7 +134,7 @@ public class ConfigUtil {
     /**
      * 复制文件
      *
-     * @param inFile 原本的文件对象
+     * @param inFile  原本的文件对象
      * @param outFile 复制到的文件对象
      * @return true就是成功，false就是失败
      */
@@ -160,7 +157,8 @@ public class ConfigUtil {
 
     /**
      * 复制Jar包里的文件
-     * @param inPath 文件位于jar包里的路径（前面不带/）（如“config.yml")
+     *
+     * @param inPath  文件位于jar包里的路径（前面不带/）（如“config.yml")
      * @param outPath 复制到的文件路径（如C:/config.yml)
      * @return true 成功，false 失败
      */
@@ -187,6 +185,7 @@ public class ConfigUtil {
 
     /**
      * 获取当前jar包的路径（不包含jar包本身）
+     *
      * @return 路径（如：”C:/Test/“)
      */
     public static String getJarPath() {
@@ -195,6 +194,7 @@ public class ConfigUtil {
         int lastIndex = path.lastIndexOf(File.separator) + 1;
         return path.substring(firstIndex, lastIndex);
     }
+
     /**
      * 读取文件
      *
@@ -221,12 +221,13 @@ public class ConfigUtil {
 
     /**
      * 保存字符串到文件
+     *
      * @param file 文件
      * @param data 数据
      */
-    public static void saveToFile(String data,File file) throws IOException {
+    public static void saveToFile(String data, File file) throws IOException {
         Files.createParentDirs(file);
-        try (Writer writer = new OutputStreamWriter(new FileOutputStream(file), UTF8_OVERRIDE && !UTF_BIG ? Charsets.UTF_8 : Charset.defaultCharset())) {
+        try (Writer writer = new OutputStreamWriter(new FileOutputStream(file), Charsets.UTF_8)) {
             writer.write(data);
         }
     }

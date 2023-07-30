@@ -35,6 +35,7 @@ public class Group extends DataUnit implements Cloneable {
     public boolean isDefault() {
         return GroupManager.getDefaultGroup() == this;
     }
+
     public void addInherits(Group inherit) {
         if (!GroupManager.groupExists(inherit.getName())) {
             GroupManager.addGroup(inherit);
@@ -54,6 +55,6 @@ public class Group extends DataUnit implements Cloneable {
     }
 
     public boolean hasPerm(String perm) {
-        return GroupManager.hasPerm(this,perm);
+        return GroupManager.hasPerm(this, perm);
     }
 }

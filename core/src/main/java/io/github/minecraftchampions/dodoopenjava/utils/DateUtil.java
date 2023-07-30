@@ -13,7 +13,6 @@ import java.util.Locale;
 
 /**
  * 关于 时间 的一些实用方法
- * @author qscbm187531
  */
 public class DateUtil {
     /**
@@ -36,7 +35,7 @@ public class DateUtil {
     /**
      * 字符串转date
      *
-     * @param string    字符串
+     * @param string 字符串
      * @param format 格式
      * @return date
      */
@@ -188,7 +187,7 @@ public class DateUtil {
      *
      * @param date_One 第一个时间
      * @param date_Two 第二个时间
-     * @param unit unit
+     * @param unit     unit
      * @return 相差多久
      */
     public static long between(Date date_One, Date date_Two, ChronoUnit unit) {

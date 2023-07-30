@@ -23,6 +23,7 @@ public @interface EventHandler {
      * <li>HIGHEST</li>
      * <li>MONITOR</li>
      * </ol>
+     *
      * @return 优先级
      */
     EventPriority priority() default EventPriority.NORMAL;

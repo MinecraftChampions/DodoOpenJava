@@ -15,13 +15,14 @@ import java.util.Scanner;
 public class CommandTrigger implements Listener {
     /**
      * 监听消息事件
+     *
      * @param e 事件
      */
     @EventHandler
     public void event(MessageEvent e) {
         if (!Objects.equals(e.getMessageIntType(), 1)) return;
         if (e.getMessageBody().getString("content").indexOf("/") != 0) return;
-        String command = e.getMessageBody().getString("content").replaceFirst("/","");
+        String command = e.getMessageBody().getString("content").replaceFirst("/", "");
         CommandSender sender = new CommandSender();
         sender.InitSender(new JSONObject(e.jsonString));
         List<String> Command = new java.util.ArrayList<>(List.of(command.split(" ")));
@@ -40,7 +41,7 @@ public class CommandTrigger implements Listener {
             String MainCommand = Command.get(0);
             Command.remove(0);
             String[] args = Command.toArray(new String[Command.size()]);
-            io.github.minecraftchampions.dodoopenjava.command.Command.trigger(new ConsoleSender(),MainCommand,args);
+            io.github.minecraftchampions.dodoopenjava.command.Command.trigger(new ConsoleSender(), MainCommand, args);
         });
         cs.listenInNewThread();
     }

@@ -9,11 +9,11 @@ import java.util.*;
 
 /**
  * 一些有关于 Map 的实用方法
- * @author qscbm187531
  */
 public class MapUtil {
     /**
      * 遍历 Map
+     *
      * @param map 指定Map
      * @return 返回集合（集合中内置了一个集合，索引0是key，1是Value）
      */
@@ -23,7 +23,7 @@ public class MapUtil {
         List<List<Object>> list = new ArrayList<>();
         while (iter.hasNext()) {
             List<Object> List = new ArrayList<>();
-            Map.Entry<?, ?> entry =  iter.next();
+            Map.Entry<?, ?> entry = iter.next();
             List.add(entry.getKey());
             List.add(entry.getValue());
             list.add(List);
@@ -33,6 +33,7 @@ public class MapUtil {
 
     /**
      * 遍历 HashMap
+     *
      * @param map 指定HashMap
      * @return 返回集合（集合中内置了一个集合，索引0是key，1是Value）
      */
@@ -42,7 +43,7 @@ public class MapUtil {
         List<List<Object>> list = new ArrayList<>();
         while (iter.hasNext()) {
             List<Object> List = new ArrayList<>();
-            HashMap.Entry<?, ?> entry =  iter.next();
+            HashMap.Entry<?, ?> entry = iter.next();
             List.add(entry.getKey());
             List.add(entry.getValue());
             list.add(List);
@@ -79,7 +80,7 @@ public class MapUtil {
     /**
      * map转json
      *
-     * @param map  map
+     * @param map map
      * @return bean
      */
     public static JSONObject toJson(Map<?, ?> map) {

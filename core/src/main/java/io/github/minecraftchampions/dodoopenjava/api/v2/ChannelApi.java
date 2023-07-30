@@ -11,23 +11,24 @@ import java.io.IOException;
  */
 public class ChannelApi {
     public static String url, param;
+
     /**
      * 获取频道列表
      *
-     * @param clientId 机器人唯一标识
-     * @param token 机器人鉴权Token
+     * @param clientId       机器人唯一标识
+     * @param token          机器人鉴权Token
      * @param islandSourceId 群号
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
     public static JSONObject getChannelList(String clientId, String token, String islandSourceId) throws IOException {
-        return getChannelList(BaseUtil.Authorization(clientId,token), islandSourceId);
+        return getChannelList(BaseUtil.Authorization(clientId, token), islandSourceId);
     }
 
     /**
      * 获取频道列表
      *
-     * @param authorization authorization
+     * @param authorization  authorization
      * @param islandSourceId 群号
      * @return JSON对象
      * @throws IOException 失败后抛出
@@ -37,14 +38,14 @@ public class ChannelApi {
         param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"" +
                 "}";
-        return  new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
      * 获取频道信息
      *
-     * @param clientId 机器人唯一标识
-     * @param token 机器人鉴权Token
+     * @param clientId  机器人唯一标识
+     * @param token     机器人鉴权Token
      * @param channelId 频道号
      * @return JSON对象
      * @throws IOException 失败后抛出
@@ -57,7 +58,7 @@ public class ChannelApi {
      * 获取频道信息
      *
      * @param authorization authorization
-     * @param channelId 频道号
+     * @param channelId     频道号
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -66,17 +67,17 @@ public class ChannelApi {
         param = "{" +
                 "    \"channelId\": \"" + channelId + "\"" +
                 "}";
-        return  new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
      * 创建频道
      *
-     * @param clientId 机器人唯一标识
-     * @param token 机器人鉴权Token
+     * @param clientId       机器人唯一标识
+     * @param token          机器人鉴权Token
      * @param islandSourceId 群号
-     * @param channelName 频道名
-     * @param channelType 频道类型
+     * @param channelName    频道名
+     * @param channelType    频道类型
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -87,10 +88,10 @@ public class ChannelApi {
     /**
      * 创建频道
      *
-     * @param authorization authorization
+     * @param authorization  authorization
      * @param islandSourceId 群号
-     * @param channelName 频道名
-     * @param channelType 频道类型
+     * @param channelName    频道名
+     * @param channelType    频道类型
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -101,17 +102,17 @@ public class ChannelApi {
                 "    \"channelName\": \"" + channelName + "\"," +
                 "    \"channelType\": " + channelType + "" +
                 "}";
-        return  new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
-    
+
     /**
      * 编辑频道
      *
-     * @param clientId 机器人唯一标识
-     * @param token 机器人鉴权Token
+     * @param clientId       机器人唯一标识
+     * @param token          机器人鉴权Token
      * @param islandSourceId 群号
-     * @param channelName 频道名
-     * @param channelId 频道号
+     * @param channelName    频道名
+     * @param channelId      频道号
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -122,10 +123,10 @@ public class ChannelApi {
     /**
      * 编辑频道
      *
-     * @param authorization authorization
+     * @param authorization  authorization
      * @param islandSourceId 群号
-     * @param channelName 频道名
-     * @param channelId 频道号
+     * @param channelName    频道名
+     * @param channelId      频道号
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -136,16 +137,16 @@ public class ChannelApi {
                 "    \"channelId\": \"" + channelId + "\"," +
                 "    \"channelName\": \"" + channelName + "\"" +
                 "}";
-        return  new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
-    
+
     /**
      * 删除频道
      *
-     * @param clientId 机器人唯一标识
-     * @param token 机器人鉴权Token
+     * @param clientId       机器人唯一标识
+     * @param token          机器人鉴权Token
      * @param islandSourceId 群号
-     * @param channelId 频道号
+     * @param channelId      频道号
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -156,9 +157,9 @@ public class ChannelApi {
     /**
      * 删除频道
      *
-     * @param authorization authorization
+     * @param authorization  authorization
      * @param islandSourceId 群号
-     * @param channelId 频道号
+     * @param channelId      频道号
      * @return JSON对象
      * @throws IOException 失败后抛出
      */

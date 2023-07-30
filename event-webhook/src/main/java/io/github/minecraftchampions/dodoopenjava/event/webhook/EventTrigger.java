@@ -19,7 +19,8 @@ import java.util.Objects;
  * 事件触发
  */
 public class EventTrigger {
-    public static MockWebServer server= null;
+    public static MockWebServer server = null;
+
     /**
      * 启动监听
      */
@@ -54,7 +55,7 @@ public class EventTrigger {
         @Override
         public @NotNull MockResponse dispatch(RecordedRequest request) {
             MockResponse mockResponse = new MockResponse();
-            mockResponse.setHeader("Content-Type","application/json");
+            mockResponse.setHeader("Content-Type", "application/json");
             if (!Objects.equals(request.getMethod(), "POST")) {
                 return mockResponse.setBody("""
                         {
@@ -65,16 +66,16 @@ public class EventTrigger {
             }
             String s = request.getBody().readUtf8();
             JSONObject json = new JSONObject(s);
-            if (json.keySet().containsAll(Arrays.asList("clientId","payload"))) {
+            if (json.keySet().containsAll(Arrays.asList("clientId", "payload"))) {
                 String payload = json.getString("payload");
-                String event = OpenSecretUtil.WebHookDecrypt(payload,BotManage.SecretKey);
+                String event = OpenSecretUtil.WebHookDecrypt(payload, BotManage.SecretKey);
                 JSONObject jsonObject = new JSONObject(Objects.requireNonNull(event));
                 if (jsonObject.getInt("type") == 2) {
                     return mockResponse.setBody("{\n" +
                             "    \"status\": 0,\n" +
                             "    \"message\": \"\",\n" +
                             "    \"data\": {\n" +
-                            "        \"checkCode\": \""+jsonObject.getJSONObject("data").getString("checkCode")+"\"\n" +
+                            "        \"checkCode\": \"" + jsonObject.getJSONObject("data").getString("checkCode") + "\"\n" +
                             "    }\n" +
                             "}");
                 }
@@ -87,11 +88,11 @@ public class EventTrigger {
                         }""");
             }
             return mockResponse.setBody("""
-                        {
-                          "status": -9999,
-                          "message": "错误的请求"
-                        }
-                        """);
+                    {
+                      "status": -9999,
+                      "message": "错误的请求"
+                    }
+                    """);
         }
     };
 

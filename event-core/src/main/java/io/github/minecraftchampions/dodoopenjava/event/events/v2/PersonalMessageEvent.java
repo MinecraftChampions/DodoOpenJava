@@ -62,13 +62,15 @@ public class PersonalMessageEvent extends Event {
         this.senderNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("nickName");
         this.senderAvatarUrl = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("avatarUrl");
         this.senderSex = IntSexToSex(json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex"));
-        this.senderIntSex = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex");this.messageType = IntMessageTypeToMessageType(json.getJSONObject("data").getJSONObject("eventBody").getInt("messageType"));
+        this.senderIntSex = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex");
+        this.messageType = IntMessageTypeToMessageType(json.getJSONObject("data").getJSONObject("eventBody").getInt("messageType"));
         this.messageIntType = json.getJSONObject("data").getJSONObject("eventBody").getInt("messageType");
         this.messageBody = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("messageBody");
     }
 
     /**
      * 转换 为Int数据类型的 性别关键字 为 String 类型
+     *
      * @param IntSex 性别
      * @return 性别
      */
@@ -82,6 +84,7 @@ public class PersonalMessageEvent extends Event {
 
     /**
      * 转换 为Int数据类型的 消息类型关键字 为 String 类型
+     *
      * @param type 消息类型
      * @return 消息类型
      */
@@ -96,6 +99,7 @@ public class PersonalMessageEvent extends Event {
 
     /**
      * 获取时间戳
+     *
      * @return 时间戳
      */
     public Integer getTimestamp() {
@@ -104,6 +108,7 @@ public class PersonalMessageEvent extends Event {
 
     /**
      * 获取事件ID
+     *
      * @return 事件ID
      */
     public String getEventId() {
@@ -112,6 +117,7 @@ public class PersonalMessageEvent extends Event {
 
     /**
      * 获取DodoSourceId
+     *
      * @return DodoSourceId
      */
     public String getDodoSourceId() {
@@ -120,6 +126,7 @@ public class PersonalMessageEvent extends Event {
 
     /**
      * 获取消息ID
+     *
      * @return 消息ID
      */
     public String getMessageId() {
@@ -128,6 +135,7 @@ public class PersonalMessageEvent extends Event {
 
     /**
      * 获取消息类别（Int类型）
+     *
      * @return 消息类别
      */
     public Integer getMessageIntType() {
@@ -136,6 +144,7 @@ public class PersonalMessageEvent extends Event {
 
     /**
      * 获取消息类别（String类型）
+     *
      * @return 消息类别
      */
     public String getMessageType() {
@@ -145,6 +154,7 @@ public class PersonalMessageEvent extends Event {
 
     /**
      * 获取成员Object
+     *
      * @return 获取成员的 JsonObject
      */
     public JSONObject getPersonal() {
@@ -154,6 +164,7 @@ public class PersonalMessageEvent extends Event {
 
     /**
      * 获取发送者名字
+     *
      * @return 名字
      */
     public String getSenderNickName() {
@@ -162,6 +173,7 @@ public class PersonalMessageEvent extends Event {
 
     /**
      * 获取发送者头像URL
+     *
      * @return 头像url
      */
     public String getSenderAvatarUrl() {
@@ -170,6 +182,7 @@ public class PersonalMessageEvent extends Event {
 
     /**
      * 获取性别（Int类型）
+     *
      * @return 性别
      */
     public Integer getSenderIntSex() {
@@ -178,6 +191,7 @@ public class PersonalMessageEvent extends Event {
 
     /**
      * 获取性别（String类型）
+     *
      * @return 性别
      */
     public String getSenderSex() {
@@ -186,6 +200,7 @@ public class PersonalMessageEvent extends Event {
 
     /**
      * 获取消息 Object
+     *
      * @return 对象
      */
     public JSONObject getMessageBody() {

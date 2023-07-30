@@ -13,10 +13,10 @@ public class GroupManager {
     private static Group defaultGroup;
     private static File groupsFile;
     private static boolean changed = false;
-    
+
     private static SortedMap<String, Group> groups = new TreeMap<>();
 
-    public static boolean hasPerm(Group now,String perm) {
+    public static boolean hasPerm(Group now, String perm) {
         for (String access : getGroup(now.getName()).getPermissions()) {
             if (hasPermission(access, perm)) {
                 return true;
@@ -33,7 +33,7 @@ public class GroupManager {
         if (groups.containsKey(group.getName())) {
             return false;
         }
-        groups.put(group.getName(),group);
+        groups.put(group.getName(), group);
         return true;
     }
 
@@ -51,7 +51,7 @@ public class GroupManager {
     public static void setDefaultGroup(Group defaultGroup) {
         GroupManager.defaultGroup = defaultGroup;
     }
-    
+
     public static SortedMap<String, Group> getGroups() {
         return groups;
     }
@@ -59,7 +59,7 @@ public class GroupManager {
     public static void resetGroups() {
         groups.clear();
     }
-    
+
     public static File getGroupsFile() {
         return groupsFile;
     }
@@ -67,20 +67,20 @@ public class GroupManager {
     public static boolean groupExists(String groupName) {
         return getGroups().containsKey(groupName);
     }
-    
+
     public static void setGroupsFile(File groupsFile) {
         GroupManager.groupsFile = groupsFile;
     }
-    
+
     public static boolean isGroupsChanged() {
         return changed;
     }
-    
+
     public static void setAllChanged() {
         setGroupsChanged(true);
         groups.entrySet().forEach(entry -> entry.getValue().setChanged(true));
     }
- 
+
     public static void setGroupsChanged(boolean changed) {
         GroupManager.changed = changed;
     }

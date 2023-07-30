@@ -15,11 +15,11 @@ public class MemberApi {
     /**
      * 获取成员列表
      *
-     * @param clientId 机器人唯一标识
-     * @param token 机器人鉴权Token
+     * @param clientId       机器人唯一标识
+     * @param token          机器人鉴权Token
      * @param islandSourceId 群号
-     * @param pageSize 页大小，最大100
-     * @param maxId 上一页最大ID值，为提升分页查询性能，需要传入上一页查询记录中的最大ID值，首页请传0
+     * @param pageSize       页大小，最大100
+     * @param maxId          上一页最大ID值，为提升分页查询性能，需要传入上一页查询记录中的最大ID值，首页请传0
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -30,10 +30,10 @@ public class MemberApi {
     /**
      * 获取成员列表
      *
-     * @param authorization authorization
+     * @param authorization  authorization
      * @param islandSourceId 群号
-     * @param pageSize 页大小，最大100
-     * @param maxId 上一页最大ID值，为提升分页查询性能，需要传入上一页查询记录中的最大ID值，首页请传0
+     * @param pageSize       页大小，最大100
+     * @param maxId          上一页最大ID值，为提升分页查询性能，需要传入上一页查询记录中的最大ID值，首页请传0
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -50,23 +50,23 @@ public class MemberApi {
     /**
      * 获取成员信息
      *
-     * @param clientId 机器人唯一标识
-     * @param token 机器人鉴权Token
+     * @param clientId       机器人唯一标识
+     * @param token          机器人鉴权Token
      * @param islandSourceId 群号
-     * @param dodoSourceId 玩家Dodo号
+     * @param dodoSourceId   玩家Dodo号
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject getMemberInfo(String clientId, String token, String islandSourceId,String dodoSourceId) throws IOException {
+    public static JSONObject getMemberInfo(String clientId, String token, String islandSourceId, String dodoSourceId) throws IOException {
         return getMemberInfo(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId);
     }
 
     /**
      * 获取成员信息
      *
-     * @param authorization authorization
+     * @param authorization  authorization
      * @param islandSourceId 群号
-     * @param dodoSourceId 玩家Dodo号
+     * @param dodoSourceId   玩家Dodo号
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -82,10 +82,10 @@ public class MemberApi {
     /**
      * 获取成员身份组列表
      *
-     * @param clientId 机器人唯一标识
-     * @param token 机器人鉴权Token
+     * @param clientId       机器人唯一标识
+     * @param token          机器人鉴权Token
      * @param islandSourceId 群号
-     * @param dodoSourceId Dodo号
+     * @param dodoSourceId   Dodo号
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -96,9 +96,9 @@ public class MemberApi {
     /**
      * 获取成员身份组列表
      *
-     * @param authorization authorization
+     * @param authorization  authorization
      * @param islandSourceId 群号
-     * @param dodoSourceId Dodo号
+     * @param dodoSourceId   Dodo号
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -114,10 +114,10 @@ public class MemberApi {
     /**
      * 获取成员邀请信息
      *
-     * @param clientId 机器人唯一标识
-     * @param token 机器人鉴权Token
+     * @param clientId       机器人唯一标识
+     * @param token          机器人鉴权Token
      * @param islandSourceId 群号
-     * @param dodoSourceId Dodo号
+     * @param dodoSourceId   Dodo号
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -128,9 +128,9 @@ public class MemberApi {
     /**
      * 获取成员邀请信息
      *
-     * @param authorization authorization
+     * @param authorization  authorization
      * @param islandSourceId 群号
-     * @param dodoSourceId Dodo号
+     * @param dodoSourceId   Dodo号
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -146,11 +146,11 @@ public class MemberApi {
     /**
      * 编辑成员群昵称
      *
-     * @param clientId 机器人唯一标识
-     * @param token 机器人鉴权Token
+     * @param clientId       机器人唯一标识
+     * @param token          机器人鉴权Token
      * @param islandSourceId 群号
-     * @param dodoSourceId Dodo号
-     * @param nickName 群昵称，昵称不能大于32个字符或16个汉字
+     * @param dodoSourceId   Dodo号
+     * @param nickName       群昵称，昵称不能大于32个字符或16个汉字
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -161,10 +161,10 @@ public class MemberApi {
     /**
      * 编辑成员群昵称
      *
-     * @param authorization authorization
+     * @param authorization  authorization
      * @param islandSourceId 群号
-     * @param dodoSourceId Dodo号
-     * @param nickName 群昵称，昵称不能大于32个字符或16个汉字
+     * @param dodoSourceId   Dodo号
+     * @param nickName       群昵称，昵称不能大于32个字符或16个汉字
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -181,11 +181,11 @@ public class MemberApi {
     /**
      * 禁言成员
      *
-     * @param clientId 机器人唯一标识
-     * @param token 机器人鉴权Token
+     * @param clientId       机器人唯一标识
+     * @param token          机器人鉴权Token
      * @param islandSourceId 群号
-     * @param duration 禁言时长(秒),最长为7天
-     * @param dodoSourceId Dodo号
+     * @param duration       禁言时长(秒),最长为7天
+     * @param dodoSourceId   Dodo号
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -196,10 +196,10 @@ public class MemberApi {
     /**
      * 禁言成员
      *
-     * @param authorization authorization
+     * @param authorization  authorization
      * @param islandSourceId 群号
-     * @param dodoSourceId Dodo号
-     * @param duration 禁言时长(秒),最长为7天
+     * @param dodoSourceId   Dodo号
+     * @param duration       禁言时长(秒),最长为7天
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -216,12 +216,12 @@ public class MemberApi {
     /**
      * 禁言成员
      *
-     * @param clientId 机器人唯一标识
-     * @param token 机器人鉴权Token
+     * @param clientId       机器人唯一标识
+     * @param token          机器人鉴权Token
      * @param islandSourceId 群号
-     * @param duration 禁言时长(秒),最长为7天
-     * @param dodoSourceId Dodo号
-     * @param reason 禁言原因，原因不能大于64个字符或32个汉字
+     * @param duration       禁言时长(秒),最长为7天
+     * @param dodoSourceId   Dodo号
+     * @param reason         禁言原因，原因不能大于64个字符或32个汉字
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -232,11 +232,11 @@ public class MemberApi {
     /**
      * 禁言成员
      *
-     * @param authorization authorization
+     * @param authorization  authorization
      * @param islandSourceId 群号
-     * @param dodoSourceId Dodo号
-     * @param duration 禁言时长(秒),最长为7天
-     * @param reason 禁言原因，原因不能大于64个字符或32个汉字
+     * @param dodoSourceId   Dodo号
+     * @param duration       禁言时长(秒),最长为7天
+     * @param reason         禁言原因，原因不能大于64个字符或32个汉字
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -254,10 +254,10 @@ public class MemberApi {
     /**
      * 取消成员禁言
      *
-     * @param clientId 机器人唯一标识
-     * @param token 机器人鉴权Token
+     * @param clientId       机器人唯一标识
+     * @param token          机器人鉴权Token
      * @param islandSourceId 群号
-     * @param dodoSourceId Dodo号
+     * @param dodoSourceId   Dodo号
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -268,9 +268,9 @@ public class MemberApi {
     /**
      * 取消成员禁言
      *
-     * @param authorization authorization
+     * @param authorization  authorization
      * @param islandSourceId 群号
-     * @param dodoSourceId Dodo号
+     * @param dodoSourceId   Dodo号
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -286,10 +286,10 @@ public class MemberApi {
     /**
      * 永久封禁成员
      *
-     * @param clientId 机器人唯一标识
-     * @param token 机器人鉴权Token
+     * @param clientId       机器人唯一标识
+     * @param token          机器人鉴权Token
      * @param islandSourceId 群号
-     * @param dodoSourceId Dodo号
+     * @param dodoSourceId   Dodo号
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -300,9 +300,9 @@ public class MemberApi {
     /**
      * 永久封禁成员
      *
-     * @param authorization authorization
+     * @param authorization  authorization
      * @param islandSourceId 群号
-     * @param dodoSourceId Dodo号
+     * @param dodoSourceId   Dodo号
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -318,11 +318,11 @@ public class MemberApi {
     /**
      * 永久封禁成员
      *
-     * @param clientId 机器人唯一标识
-     * @param token 机器人鉴权Token
+     * @param clientId       机器人唯一标识
+     * @param token          机器人鉴权Token
      * @param islandSourceId 群号
-     * @param dodoSourceId Dodo号
-     * @param reason 封禁理由
+     * @param dodoSourceId   Dodo号
+     * @param reason         封禁理由
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -333,10 +333,10 @@ public class MemberApi {
     /**
      * 永久封禁成员
      *
-     * @param authorization authorization
+     * @param authorization  authorization
      * @param islandSourceId 群号
-     * @param dodoSourceId Dodo号
-     * @param reason 封禁理由
+     * @param dodoSourceId   Dodo号
+     * @param reason         封禁理由
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -353,10 +353,10 @@ public class MemberApi {
     /**
      * 永久封禁成员
      *
-     * @param clientId 机器人唯一标识
-     * @param token 机器人鉴权Token
-     * @param islandSourceId 群号
-     * @param dodoSourceId Dodo号
+     * @param clientId        机器人唯一标识
+     * @param token           机器人鉴权Token
+     * @param islandSourceId  群号
+     * @param dodoSourceId    Dodo号
      * @param noticeChannelId 通知频道ID
      * @return JSON对象
      * @throws IOException 失败后抛出
@@ -368,9 +368,9 @@ public class MemberApi {
     /**
      * 永久封禁成员
      *
-     * @param authorization authorization
-     * @param islandSourceId 群号
-     * @param dodoSourceId Dodo号
+     * @param authorization   authorization
+     * @param islandSourceId  群号
+     * @param dodoSourceId    Dodo号
      * @param noticeChannelId 通知频道ID
      * @return JSON对象
      * @throws IOException 失败后抛出
@@ -388,12 +388,12 @@ public class MemberApi {
     /**
      * 永久封禁成员
      *
-     * @param clientId 机器人唯一标识
-     * @param token 机器人鉴权Token
-     * @param islandSourceId 群号
-     * @param dodoSourceId Dodo号
+     * @param clientId        机器人唯一标识
+     * @param token           机器人鉴权Token
+     * @param islandSourceId  群号
+     * @param dodoSourceId    Dodo号
      * @param noticeChannelId 通知频道ID
-     * @param reason 封禁理由，理由不能大于64个字符或32个汉字
+     * @param reason          封禁理由，理由不能大于64个字符或32个汉字
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -404,11 +404,11 @@ public class MemberApi {
     /**
      * 永久封禁成员
      *
-     * @param authorization authorization
-     * @param islandSourceId 群号
-     * @param dodoSourceId Dodo号
+     * @param authorization   authorization
+     * @param islandSourceId  群号
+     * @param dodoSourceId    Dodo号
      * @param noticeChannelId 通知频道ID
-     * @param reason 封禁理由，理由不能大于64个字符或32个汉字
+     * @param reason          封禁理由，理由不能大于64个字符或32个汉字
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -426,10 +426,10 @@ public class MemberApi {
     /**
      * 取消成员永久封禁
      *
-     * @param clientId 机器人唯一标识
-     * @param token 机器人鉴权Token
+     * @param clientId       机器人唯一标识
+     * @param token          机器人鉴权Token
      * @param islandSourceId 群号
-     * @param dodoSourceId Dodo号
+     * @param dodoSourceId   Dodo号
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -440,9 +440,9 @@ public class MemberApi {
     /**
      * 取消成员永久封禁
      *
-     * @param authorization authorization
+     * @param authorization  authorization
      * @param islandSourceId 群号
-     * @param dodoSourceId Dodo号
+     * @param dodoSourceId   Dodo号
      * @return JSON对象
      * @throws IOException 失败后抛出
      */

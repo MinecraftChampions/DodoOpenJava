@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * 命令发送者
  */
-public class CommandSender{
+public class CommandSender {
     public String SenderDodoSourceId;
 
     public String ChannelId;
@@ -30,13 +30,16 @@ public class CommandSender{
 
     /**
      * 获取DodoID
+     *
      * @return DodoID
      */
     public String getSenderDodoSourceId() {
         return this.SenderDodoSourceId;
     }
+
     /**
      * 获取频道ID
+     *
      * @return 频道ID
      */
     public String getChannelId() {
@@ -45,6 +48,7 @@ public class CommandSender{
 
     /**
      * 获取群号
+     *
      * @return 群号
      */
     public String getIslandSourceId() {
@@ -53,6 +57,7 @@ public class CommandSender{
 
     /**
      * 获取头像URL
+     *
      * @return 头像URL
      */
     public String getAvatarUrl() {
@@ -61,6 +66,7 @@ public class CommandSender{
 
     /**
      * 获取发送者群昵称
+     *
      * @return 群昵称
      */
     public String getSenderNickName() {
@@ -69,6 +75,7 @@ public class CommandSender{
 
     /**
      * 获取发送者原本名称
+     *
      * @return 原名
      */
     public String getSenderName() {
@@ -77,6 +84,7 @@ public class CommandSender{
 
     /**
      * 获取加入时间
+     *
      * @return 加入时间
      */
     public String getJoinTime() {
@@ -85,6 +93,7 @@ public class CommandSender{
 
     /**
      * 初始化发送者这个类型
+     *
      * @param jsontext JSONText
      */
     public void InitSender(JSONObject jsontext) {
@@ -100,6 +109,7 @@ public class CommandSender{
 
     /**
      * 回复发送者发送的消息
+     *
      * @param Message 消息
      * @throws IOException 发送失败时抛出
      */
@@ -109,51 +119,57 @@ public class CommandSender{
 
     /**
      * 编辑成员群昵称
+     *
      * @param NickName 群昵称
      * @throws IOException 编辑失败后抛出
      */
     public void editSenderNickName(String NickName) throws IOException {
-        MemberApi.editMemberNickName(Command.Authorization,IslandSourceId,SenderDodoSourceId,NickName);
+        MemberApi.editMemberNickName(Command.Authorization, IslandSourceId, SenderDodoSourceId, NickName);
     }
 
     /**
      * 禁言成员
+     *
      * @param Time 时间（秒为单位）
      * @throws IOException 失败后抛出
      */
     public void muteSender(int Time) throws IOException {
-        MemberApi.addMemberMute(Command.Authorization, IslandSourceId, SenderDodoSourceId,Time);
+        MemberApi.addMemberMute(Command.Authorization, IslandSourceId, SenderDodoSourceId, Time);
     }
 
     /**
      * 禁言成员
-     * @param Time 时间（秒为单位）
+     *
+     * @param Time   时间（秒为单位）
      * @param reason 禁言理由
      * @throws IOException 失败后抛出
      */
     public void muteSender(int Time, String reason) throws IOException {
-        MemberApi.addMemberReasonrMute(Command.Authorization, IslandSourceId, SenderDodoSourceId,Time,reason);
+        MemberApi.addMemberReasonrMute(Command.Authorization, IslandSourceId, SenderDodoSourceId, Time, reason);
     }
 
     /**
      * 取消禁言成员
+     *
      * @throws IOException 失败后抛出
      */
     public void removeMuteSender() throws IOException {
-        MemberApi.removeMemberMute(Command.Authorization,IslandSourceId,SenderDodoSourceId);
+        MemberApi.removeMemberMute(Command.Authorization, IslandSourceId, SenderDodoSourceId);
     }
 
     /**
      * 封禁成员
+     *
      * @param reason 封禁理由
      * @throws IOException 失败后抛出
      */
     public void banSender(String reason) throws IOException {
-        MemberApi.addMemberReasonBan(Command.Authorization, IslandSourceId, SenderDodoSourceId,reason);
+        MemberApi.addMemberReasonBan(Command.Authorization, IslandSourceId, SenderDodoSourceId, reason);
     }
 
     /**
      * 封禁成员
+     *
      * @throws IOException 失败后抛出
      */
     public void banSender() throws IOException {
@@ -162,32 +178,36 @@ public class CommandSender{
 
     /**
      * 取消封禁成员
+     *
      * @throws IOException 失败后抛出
      */
     public void removeBanSender() throws IOException {
-        MemberApi.removeMemberBan(Command.Authorization,IslandSourceId,SenderDodoSourceId);
+        MemberApi.removeMemberBan(Command.Authorization, IslandSourceId, SenderDodoSourceId);
     }
 
     /**
      * 赋予成员身份组
+     *
      * @param RoleId 权限组ID
      * @throws IOException 失败后抛出
      */
     public void giveRole(String RoleId) throws IOException {
-        RoleApi.addRoleMember(Command.Authorization,IslandSourceId,SenderDodoSourceId,RoleId);
+        RoleApi.addRoleMember(Command.Authorization, IslandSourceId, SenderDodoSourceId, RoleId);
     }
 
     /**
      * 取消成员身份组
+     *
      * @param RoleId 权限组ID
      * @throws IOException 失败后抛出
      */
     public void removeRole(String RoleId) throws IOException {
-        RoleApi.removeRoleMember(Command.Authorization,IslandSourceId,SenderDodoSourceId,RoleId);
+        RoleApi.removeRoleMember(Command.Authorization, IslandSourceId, SenderDodoSourceId, RoleId);
     }
 
     /**
      * 是否拥有权限
+     *
      * @param permission 权限
      * @return true有，false失败
      */

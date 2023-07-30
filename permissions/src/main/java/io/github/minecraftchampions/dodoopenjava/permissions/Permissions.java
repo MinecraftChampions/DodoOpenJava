@@ -15,6 +15,7 @@ public class Permissions {
 
     /**
      * 初始化
+     *
      * @param type 存储类型
      * @return true成功，false失败
      */
@@ -76,6 +77,7 @@ public class Permissions {
 
     private static class AutoSaveC implements Runnable {
         private boolean init = false;
+
         @Override
         public void run() {
             if (init) {
@@ -84,9 +86,9 @@ public class Permissions {
             } else {
                 init = true;
             }
-            while(true) {
+            while (true) {
                 try {
-                    Thread.sleep(10*60*60);
+                    Thread.sleep(10 * 60 * 60);
                     switch (Permissions.type.getType()) {
                         case "YAML" -> permData.saveToFile();
                         case "JSON" -> permData.saveToFile();

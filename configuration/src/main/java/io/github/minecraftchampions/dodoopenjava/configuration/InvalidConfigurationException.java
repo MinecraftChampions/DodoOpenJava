@@ -8,7 +8,8 @@ public class InvalidConfigurationException extends Exception {
     /**
      * 创建InvalidConfigurationException的新实例，但不包含消息或原因。
      */
-    public InvalidConfigurationException() {}
+    public InvalidConfigurationException() {
+    }
 
     /**
      * 使用指定的消息构造InvalidConfigurationException的实例。
@@ -32,7 +33,7 @@ public class InvalidConfigurationException extends Exception {
      * 使用指定的消息和原因构造InvalidConfigurationException的实例。
      *
      * @param cause 原因
-     * @param msg 信息
+     * @param msg   信息
      */
     public InvalidConfigurationException(String msg, Throwable cause) {
         super(msg, cause);

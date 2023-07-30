@@ -101,13 +101,14 @@ public class TomlData extends PermData {
 
     /**
      * 保存到文件
+     *
      * @throws IOException 异常
      */
     @Override
     public void saveToFile() throws IOException {
-        Map<String,Group> map = GroupManager.getGroups();
+        Map<String, Group> map = GroupManager.getGroups();
         JSONObject group = new JSONObject();
-        group.put("Groups",new JSONObject());
+        group.put("Groups", new JSONObject());
         map.forEach((key, value) -> {
             String name = value.getName();
             boolean isDefault = value.isDefault();
@@ -119,10 +120,10 @@ public class TomlData extends PermData {
             data.put("extend", extendGroups);
             group.getJSONObject("Groups").put(name, data);
         });
-        ConfigUtil.saveToFile(Util.toToml(group.toString()),Group);
-        Map<String,User> userMap = UserManager.getUsers();
+        ConfigUtil.saveToFile(Util.toToml(group.toString()), Group);
+        Map<String, User> userMap = UserManager.getUsers();
         JSONObject user = new JSONObject();
-        user.put("Users",new JSONObject());
+        user.put("Users", new JSONObject());
         userMap.forEach((key, value) -> {
             String name = value.getLastName();
             List<String> perms = value.getPermissions();
@@ -132,12 +133,13 @@ public class TomlData extends PermData {
             data.put("perms", perms);
             user.getJSONObject("Users").put(name, data);
         });
-        ConfigUtil.saveToFile(Util.toToml(user.toString()),User);
+        ConfigUtil.saveToFile(Util.toToml(user.toString()), User);
     }
 
 
     /**
      * 获取权限组文件
+     *
      * @return json对象
      */
     public JSONObject getGroupFile() {
@@ -150,6 +152,7 @@ public class TomlData extends PermData {
 
     /**
      * 获取用户文件
+     *
      * @return json对象
      */
     public JSONObject getUserFile() {

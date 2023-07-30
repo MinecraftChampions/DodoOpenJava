@@ -98,6 +98,7 @@ public class MessageEvent extends Event {
 
     /**
      * 转换 为Int数据类型的 性别关键字 为 String 类型
+     *
      * @param IntSex 性别
      * @return 性别
      */
@@ -111,6 +112,7 @@ public class MessageEvent extends Event {
 
     /**
      * 转换 为Int数据类型的 消息类型关键字 为 String 类型
+     *
      * @param type 消息类型
      * @return 消息类型
      */
@@ -128,6 +130,7 @@ public class MessageEvent extends Event {
 
     /**
      * 获取时间戳
+     *
      * @return 时间戳
      */
     public Integer getTimestamp() {
@@ -136,6 +139,7 @@ public class MessageEvent extends Event {
 
     /**
      * 获取事件ID
+     *
      * @return 事件ID
      */
     public String getEventId() {
@@ -144,6 +148,7 @@ public class MessageEvent extends Event {
 
     /**
      * 获取群号
+     *
      * @return 群号
      */
     public String getIslandSourceId() {
@@ -152,6 +157,7 @@ public class MessageEvent extends Event {
 
     /**
      * 获取频道ID
+     *
      * @return 频道ID
      */
     public String getChannelId() {
@@ -160,6 +166,7 @@ public class MessageEvent extends Event {
 
     /**
      * 获取DodoSourceId
+     *
      * @return DodoSourceId
      */
     public String getDodoSourceId() {
@@ -168,6 +175,7 @@ public class MessageEvent extends Event {
 
     /**
      * 获取消息ID
+     *
      * @return 消息ID
      */
     public String getMessageId() {
@@ -176,6 +184,7 @@ public class MessageEvent extends Event {
 
     /**
      * 获取消息类别（Int类型）
+     *
      * @return 消息类别
      */
     public Integer getMessageIntType() {
@@ -184,6 +193,7 @@ public class MessageEvent extends Event {
 
     /**
      * 获取消息类别（String类型）
+     *
      * @return 消息类别
      */
     public String getMessageType() {
@@ -193,6 +203,7 @@ public class MessageEvent extends Event {
 
     /**
      * 获取成员Object
+     *
      * @return 获取成员的 JsonObject
      */
     public JSONObject getPersonal() {
@@ -202,6 +213,7 @@ public class MessageEvent extends Event {
 
     /**
      * 获取发送者名字
+     *
      * @return 名字
      */
     public String getSenderNickName() {
@@ -210,6 +222,7 @@ public class MessageEvent extends Event {
 
     /**
      * 获取发送者头像URL
+     *
      * @return 头像url
      */
     public String getSenderAvatarUrl() {
@@ -218,6 +231,7 @@ public class MessageEvent extends Event {
 
     /**
      * 获取性别（Int类型）
+     *
      * @return 性别
      */
     public Integer getSenderIntSex() {
@@ -226,6 +240,7 @@ public class MessageEvent extends Event {
 
     /**
      * 获取性别（String类型）
+     *
      * @return 性别
      */
     public String getSenderSex() {
@@ -235,6 +250,7 @@ public class MessageEvent extends Event {
 
     /**
      * 获取成员Object
+     *
      * @return 成员 JsonObject
      */
     public JSONObject getMember() {
@@ -243,6 +259,7 @@ public class MessageEvent extends Event {
 
     /**
      * 获取成员显示名
+     *
      * @return 名字
      */
     public String getMemberNickName() {
@@ -251,6 +268,7 @@ public class MessageEvent extends Event {
 
     /**
      * 获取成员加入时间
+     *
      * @return 加入时间
      */
     public String getMemberJoinTime() {
@@ -259,6 +277,7 @@ public class MessageEvent extends Event {
 
     /**
      * 获取回复 Object，没有就null
+     *
      * @return 回复的 JSONObject
      */
     public JSONObject getReference() {
@@ -267,6 +286,7 @@ public class MessageEvent extends Event {
 
     /**
      * 获取回复的消息ID，没有就null
+     *
      * @return 消息ID
      */
     public String getReferenceMessageId() {
@@ -275,6 +295,7 @@ public class MessageEvent extends Event {
 
     /**
      * 获取回复的DodoSourceId，没有就null
+     *
      * @return DodoSourceId
      */
     public String getReferenceDodoSourceId() {
@@ -283,6 +304,7 @@ public class MessageEvent extends Event {
 
     /**
      * 获取回复的消息名字，没有就null
+     *
      * @return 名字
      */
     public String getReferenceNickName() {
@@ -292,6 +314,7 @@ public class MessageEvent extends Event {
 
     /**
      * 获取消息 Object
+     *
      * @return 对象
      */
     public JSONObject getMessageBody() {

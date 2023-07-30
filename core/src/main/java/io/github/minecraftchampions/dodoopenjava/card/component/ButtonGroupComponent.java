@@ -15,17 +15,18 @@ public class ButtonGroupComponent extends Component {
      * 初始化
      */
     public ButtonGroupComponent() {
-        jsonCard.put("type","button-group");
-        jsonCard.put("elements",new JSONArray());
+        jsonCard.put("type", "button-group");
+        jsonCard.put("elements", new JSONArray());
     }
 
     /**
      * 增加交互按钮组件
-     * @param buttonColor 按钮颜色
-     * @param buttonName 按钮名称
+     *
+     * @param buttonColor      按钮颜色
+     * @param buttonName       按钮名称
      * @param interactCustomId 自定义按钮ID
-     * @param action 按钮点击动作类型
-     * @param object 按钮点击动作的值，不是表单就是String类型，是表单就传入Form
+     * @param action           按钮点击动作类型
+     * @param object           按钮点击动作的值，不是表单就是String类型，是表单就传入Form
      */
     public void addButton(Color buttonColor, String buttonName, String interactCustomId, ButtonAction action, Object object) {
         FormComponent formComponent = new FormComponent();
@@ -70,10 +71,11 @@ public class ButtonGroupComponent extends Component {
 
     /**
      * 增加交互按钮组件
+     *
      * @param ButtonColor 按钮颜色
-     * @param ButtonName 按钮名称
-     * @param action 按钮点击动作类型
-     * @param object 按钮点击动作的值，不是表单就是String类型，是表单就传入Form
+     * @param ButtonName  按钮名称
+     * @param action      按钮点击动作类型
+     * @param object      按钮点击动作的值，不是表单就是String类型，是表单就传入Form
      */
     public void addButton(Color ButtonColor, String ButtonName, ButtonAction action, Object object) {
         FormComponent formComponent = new FormComponent();

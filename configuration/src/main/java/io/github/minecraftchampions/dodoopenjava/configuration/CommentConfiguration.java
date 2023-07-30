@@ -21,6 +21,7 @@ public class CommentConfiguration extends YamlConfiguration {
     protected static Pattern toPattern = Pattern.compile(toRegex);
     protected static Pattern countSpacePattern = Pattern.compile("( *)(- )*(.*)");
     protected static int commentSplitWidth = 90;
+
     private static String[] split(String string, int partLength) {
         String[] array = new String[string.length() / partLength + 1];
         for (int i = 0; i < array.length; i++) {
@@ -87,7 +88,7 @@ public class CommentConfiguration extends YamlConfiguration {
         }
         return savcontent.toString();
     }
-    
+
     private String checkNull(String string) {
         return string == null ? "" : string;
     }

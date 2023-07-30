@@ -13,6 +13,7 @@ import java.security.MessageDigest;
 public class MD5Util {
     /**
      * 获取MD5值
+     *
      * @param path 文件
      * @return md5
      */
@@ -26,6 +27,7 @@ public class MD5Util {
 
     /**
      * 获取MD5值
+     *
      * @param is 输入流
      * @return md5
      */
