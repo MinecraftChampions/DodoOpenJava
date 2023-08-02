@@ -100,6 +100,7 @@ public class EventManage {
         try {
             if (isWh && isWs) {
                 System.out.println("检测到同时拥有 WebSocket 和 WebHook库，默认选择使用WebSocket库");
+                return Class.forName(ws);
             } else if (isWh) {
                 return Class.forName(wh);
             } else if (isWs) {
@@ -110,7 +111,6 @@ public class EventManage {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        return null;
     }
 
     /**
