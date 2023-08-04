@@ -5,6 +5,7 @@ import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -30,13 +31,13 @@ public class ChannelMessageApi {
     /**
      * 发送文本消息
      *
-     * @param Authorization Authorization
+     * @param authorization authorization
      * @param Message       发送的消息
      * @param channelId     频道号
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendTextMessage(String Authorization, String channelId, String Message) throws IOException {
+    public static JSONObject sendTextMessage(String authorization, String channelId, String Message) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/message/send";
         param = "{" +
                 "    \"channelId\": \"" + channelId + "\"," +
@@ -45,7 +46,21 @@ public class ChannelMessageApi {
                 "        \"content\": \"" + Message + "\"" +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+    }
+
+    /**
+     * 发送@消息
+     * @param authorization authorization
+     * @param channelId 频道id
+     * @param dodoId 被@的dodoId
+     * @param message 消息
+     * @return JSON对象
+     * @throws IOException 异常后抛出
+     */
+    public static JSONObject sendAtTextMessage(String authorization,String channelId,String dodoId,String message) throws IOException {
+        String text = "<@!" + dodoId + "> "+ message;
+        return sendTextMessage(authorization, channelId, dodoId, text);
     }
 
     /**
@@ -65,19 +80,19 @@ public class ChannelMessageApi {
     /**
      * 置顶消息
      *
-     * @param Authorization Authorization
+     * @param authorization authorization
      * @param operateType   操作类型，0：取消置顶，1：置顶
      * @param messageId     消息id
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject setChannelMessageTop(String Authorization, String messageId, int operateType) throws IOException {
+    public static JSONObject setChannelMessageTop(String authorization, String messageId, int operateType) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/message/top";
         param = "{" +
                 "    \"messageId\": \"" + messageId + "\"," +
                 "    \"operateType\": " + operateType + "" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -96,17 +111,17 @@ public class ChannelMessageApi {
     /**
      * 获取消息反应列表
      *
-     * @param Authorization Authorization
+     * @param authorization authorization
      * @param messageId     消息id
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject getChannelMessageReactionList(String Authorization, String messageId) throws IOException {
+    public static JSONObject getChannelMessageReactionList(String authorization, String messageId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/message/reaction/list";
         param = "{" +
                 "    \"messageId\": \"" + messageId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -125,12 +140,12 @@ public class ChannelMessageApi {
     /**
      * 获取消息反应内成员列表
      *
-     * @param Authorization Authorization
+     * @param authorization authorization
      * @param messageId     消息id
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject getChannelMessageReactionMemberList(String Authorization, String messageId, int type, String id, int pageSize, long maxId) throws IOException {
+    public static JSONObject getChannelMessageReactionMemberList(String authorization, String messageId, int type, String id, int pageSize, long maxId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/message/reaction/member/list";
         param = "{" +
                 "    \"messageId\": \"" + messageId + "\",\n" +
@@ -141,7 +156,7 @@ public class ChannelMessageApi {
                 "    \"pageSize\": " + pageSize + ",\n" +
                 "    \"maxId\": " + maxId +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -162,14 +177,14 @@ public class ChannelMessageApi {
     /**
      * 回复消息
      *
-     * @param Authorization       Authorization
+     * @param authorization       authorization
      * @param Message             发送的消息
      * @param channelId           频道号
      * @param referencedMessageId 回复的消息ID
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject referencedMessage(String Authorization, String channelId, String Message, String referencedMessageId) throws IOException {
+    public static JSONObject referencedMessage(String authorization, String channelId, String Message, String referencedMessageId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/message/send";
         param = "{" +
                 "    \"channelId\": \"" + channelId + "\"," +
@@ -179,7 +194,7 @@ public class ChannelMessageApi {
                 "        \"referencedMessageId\": \"" + referencedMessageId + "\"" +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -202,7 +217,7 @@ public class ChannelMessageApi {
     /**
      * 发送图片消息
      *
-     * @param Authorization Authorization
+     * @param authorization authorization
      * @param channelId     频道号
      * @param Url           图片url地址
      * @param height        图片高度
@@ -211,7 +226,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendChannelPictureMessage(String Authorization, String channelId, String Url, int width, int height, Boolean isOriginal) throws IOException {
+    public static JSONObject sendChannelPictureMessage(String authorization, String channelId, String Url, int width, int height, Boolean isOriginal) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/message/send";
         int Original;
         if (isOriginal) {
@@ -229,7 +244,7 @@ public class ChannelMessageApi {
                 "        \"isOriginal\": " + Original + "" +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -251,7 +266,7 @@ public class ChannelMessageApi {
     /**
      * 发送图片消息
      *
-     * @param Authorization Authorization
+     * @param authorization authorization
      * @param channelId     频道号
      * @param Url           图片url地址
      * @param height        图片高度
@@ -259,7 +274,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendChannelPictureMessage(String Authorization, String channelId, String Url, int width, int height) throws IOException {
+    public static JSONObject sendChannelPictureMessage(String authorization, String channelId, String Url, int width, int height) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/message/send";
         param = "{" +
                 "    \"channelId\": \"" + channelId + "\"," +
@@ -270,7 +285,27 @@ public class ChannelMessageApi {
                 "        \"height\": " + height + "" +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+    }
+
+    /**
+     * 发送图片消息
+     *
+     * @param authorization authorization
+     * @param channelId     频道号
+     * @param file          图片文件
+     * @return JSON对象
+     * @throws IOException 异常后抛出
+     */
+    public static JSONObject sendChannelPictureMessage(String authorization, String channelId, File file) throws IOException {
+        if (!file.exists()) {
+            throw new RuntimeException("传入的文件不存在");
+        }
+        JSONObject jsonObject = ResourceApi.uploadResource(authorization, file.getPath());
+        int width = jsonObject.getInt("width");
+        int height = jsonObject.getInt("height");
+        String url = jsonObject.getString("url");
+        return sendChannelPictureMessage(authorization, channelId, url, width, height);
     }
 
     /**
@@ -290,13 +325,13 @@ public class ChannelMessageApi {
     /**
      * 发送视频消息
      *
-     * @param Authorization Authorization
+     * @param authorization authorization
      * @param channelId     频道号
      * @param Url           视频url地址
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendChannelVideoMessage(String Authorization, String channelId, String Url) throws IOException {
+    public static JSONObject sendChannelVideoMessage(String authorization, String channelId, String Url) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/message/send";
         param = "{" +
                 "    \"channelId\": \"" + channelId + "\"," +
@@ -305,7 +340,7 @@ public class ChannelMessageApi {
                 "        \"url\": \"" + Url + "\"" +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -328,7 +363,7 @@ public class ChannelMessageApi {
     /**
      * 发送视频消息
      *
-     * @param Authorization Authorization
+     * @param authorization authorization
      * @param channelId     频道号
      * @param Url           视频url地址
      * @param coverUrl      封面url地址
@@ -337,7 +372,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendChannelVideoMessage(String Authorization, String channelId, String Url, String coverUrl, long duration, long size) throws IOException {
+    public static JSONObject sendChannelVideoMessage(String authorization, String channelId, String Url, String coverUrl, long duration, long size) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/message/send";
         param = "{" +
                 "    \"channelId\": \"" + channelId + "\"," +
@@ -349,7 +384,7 @@ public class ChannelMessageApi {
                 "        \"size\": " + size + "" +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -369,13 +404,13 @@ public class ChannelMessageApi {
     /**
      * 发送链接分享消息
      *
-     * @param Authorization Authorization
+     * @param authorization authorization
      * @param channelId     频道号
      * @param jumpUrl       跳转的url地址
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendChannelShareMessage(String Authorization, String channelId, String jumpUrl) throws IOException {
+    public static JSONObject sendChannelShareMessage(String authorization, String channelId, String jumpUrl) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/message/send";
         param = "{" +
                 "    \"channelId\": \"" + channelId + "\"," +
@@ -384,7 +419,7 @@ public class ChannelMessageApi {
                 "        \"jumpUrl\": \"" + jumpUrl + "\"" +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -406,7 +441,7 @@ public class ChannelMessageApi {
     /**
      * 发送文件消息
      *
-     * @param Authorization Authorization
+     * @param authorization authorization
      * @param channelId     频道号
      * @param Url           文件链接
      * @param name          文件名称
@@ -414,7 +449,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendChannelFileMessage(String Authorization, String channelId, String Url, String name, long size) throws IOException {
+    public static JSONObject sendChannelFileMessage(String authorization, String channelId, String Url, String name, long size) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/message/send";
         param = "{" +
                 "    \"channelId\": \"" + channelId + "\"," +
@@ -425,7 +460,7 @@ public class ChannelMessageApi {
                 "        \"size\": " + size + "" +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -445,13 +480,13 @@ public class ChannelMessageApi {
     /**
      * 编辑文字消息
      *
-     * @param Authorization Authorization
+     * @param authorization authorization
      * @param messageId     待编辑的消息ID
      * @param content       文字消息
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject editChannelMessage(String Authorization, String messageId, String content) throws IOException {
+    public static JSONObject editChannelMessage(String authorization, String messageId, String content) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/message/edit";
         param = "{" +
                 "    \"messageId\": \"" + messageId + "\"," +
@@ -460,7 +495,7 @@ public class ChannelMessageApi {
                 "        \"content\": \"" + content + "\"" +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -479,17 +514,17 @@ public class ChannelMessageApi {
     /**
      * 撤回消息
      *
-     * @param Authorization Authorization
+     * @param authorization authorization
      * @param messageId     消息ID
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject withdrawChannelMessage(String Authorization, String messageId) throws IOException {
+    public static JSONObject withdrawChannelMessage(String authorization, String messageId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/message/withdraw";
         param = "{" +
                 "    \"messageId\": \"" + messageId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -509,19 +544,19 @@ public class ChannelMessageApi {
     /**
      * 撤回消息
      *
-     * @param Authorization Authorization
+     * @param authorization authorization
      * @param messageId     消息ID
      * @param reason        撤回理由，理由不能大于64个字符或32个汉字
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject withdrawChannelMessageWithReason(String Authorization, String messageId, String reason) throws IOException {
+    public static JSONObject withdrawChannelMessageWithReason(String authorization, String messageId, String reason) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/message/withdraw";
         param = "{" +
                 "    \"messageId\": \"" + messageId + "\"," +
                 "    \"reason\": \"" + reason + "\"" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -541,13 +576,13 @@ public class ChannelMessageApi {
     /**
      * 添加表情反应
      *
-     * @param Authorization Authorization
+     * @param authorization authorization
      * @param messageId     消息ID
      * @param id            表情ID
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject addChannelMessageReaction(String Authorization, String messageId, String id) throws IOException {
+    public static JSONObject addChannelMessageReaction(String authorization, String messageId, String id) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/message/reaction/add";
         param = "{" +
                 "    \"messageId\": \"" + messageId + "\"," +
@@ -556,7 +591,7 @@ public class ChannelMessageApi {
                 "        \"id\": \"" + id + "\"" +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -577,14 +612,14 @@ public class ChannelMessageApi {
     /**
      * 取消指定消息中的指定用户的表情反应
      *
-     * @param Authorization Authorization
+     * @param authorization authorization
      * @param messageId     消息ID
      * @param id            表情ID
      * @param dodoSourceId  用户dodoSourceId
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject removeChannelMessageReaction(String Authorization, String messageId, String id, String dodoSourceId) throws IOException {
+    public static JSONObject removeChannelMessageReaction(String authorization, String messageId, String id, String dodoSourceId) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/message/reaction/remove";
         param = "{" +
                 "    \"messageId\": \"" + messageId + "\"," +
@@ -594,7 +629,7 @@ public class ChannelMessageApi {
                 "    }," +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -614,13 +649,13 @@ public class ChannelMessageApi {
     /**
      * 取消机器人在某条消息的表情反应
      *
-     * @param Authorization Authorization
+     * @param authorization authorization
      * @param messageId     消息ID
      * @param id            表情ID
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject removeChannelMessageBotReaction(String Authorization, String messageId, String id) throws IOException {
+    public static JSONObject removeChannelMessageBotReaction(String authorization, String messageId, String id) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/message/reaction/remove";
         param = "{" +
                 "    \"messageId\": \"" + messageId + "\"," +
@@ -629,7 +664,7 @@ public class ChannelMessageApi {
                 "        \"id\": \"" + id + "\"," +
                 "    }" +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -649,20 +684,20 @@ public class ChannelMessageApi {
     /**
      * 发送卡片消息
      *
-     * @param Authorization Authorization
+     * @param authorization authorization
      * @param channelId     频道号
      * @param messageBody   卡片代码
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendCardMessage(String Authorization, String channelId, Card messageBody) throws IOException {
+    public static JSONObject sendCardMessage(String authorization, String channelId, Card messageBody) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/message/send";
         param = "{" +
                 "    \"channelId\": \"" + channelId + "\"," +
                 "    \"messageType\": 6," +
                 "    \"messageBody\": " + messageBody.toJSONObject().toString() +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
     /**
@@ -682,20 +717,20 @@ public class ChannelMessageApi {
     /**
      * 编辑卡片消息
      *
-     * @param Authorization Authorization
+     * @param authorization authorization
      * @param messageId     待编辑的消息ID
      * @param messageBody   卡片代码
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject editChannelCardMessage(String Authorization, String messageId, Card messageBody) throws IOException {
+    public static JSONObject editChannelCardMessage(String authorization, String messageId, Card messageBody) throws IOException {
         url = "https://botopen.imdodo.com/api/v2/channel/message/edit";
         param = "{" +
                 "    \"messageId\": \"" + messageId + "\"," +
                 "    \"messageType\": 1," +
                 "    \"messageBody\": " + messageBody.toJSONObject().toString() +
                 "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
+        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
 }
