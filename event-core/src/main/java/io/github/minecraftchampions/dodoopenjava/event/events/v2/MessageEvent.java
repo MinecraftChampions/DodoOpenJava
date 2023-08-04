@@ -85,7 +85,7 @@ public class MessageEvent extends Event {
         this.member = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member");
         this.memberJoinTime = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("joinTime");
         this.memberNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("nickName");
-        if (json.getJSONObject("data").getJSONObject("eventBody").keySet().contains("reference")) {
+        if (json.getJSONObject("data").getJSONObject("eventBody").has("reference")) {
             this.referenceMessageId = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reference").getString("messageId");
             this.referenceDodoSourceId = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reference").getString("dodoSourceId");
             this.reference = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reference");

@@ -4,6 +4,8 @@ import io.github.minecraftchampions.dodoopenjava.event.EventManage;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.GiftSendEvent;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.GoodsPurchaseEvent;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.IntegralChangeEvent;
+import io.github.minecraftchampions.dodoopenjava.utils.StringUtil;
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import okio.ByteString;
 import org.jetbrains.annotations.NotNull;
@@ -12,21 +14,27 @@ import org.json.JSONObject;
 import org.w3c.dom.events.EventException;
 
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 /**
  * 事件触发
  */
+@Slf4j
 public class EventTrigger {
     public static EventTrigger p;
     public static String wssLo = "";
+    private static boolean isConnect = false;
 
-    public static HashSet<WebSocket> socketHashSet = new HashSet<>();
+    private final static int MAX_NUM = 5;
+    private final static int MILLIS = 5000;
+
+    private static int connectNum = 0;
+
+    public static WebSocket mWebSocket = null;
     public static OkHttpClient okHttpClient = new OkHttpClient();
     public static OkHttpClient wss = new OkHttpClient.Builder()
-            .pingInterval(30, TimeUnit.SECONDS) //保活心跳
+            .pingInterval(15, TimeUnit.SECONDS) //保活心跳
             .build();
 
     public static String ad;
@@ -35,7 +43,31 @@ public class EventTrigger {
         v2(Authorization);
     }
 
+    public static void reconnect(String Authorization) {
+        log.warn("连接重试");
+        if (connectNum <= MAX_NUM) {
+            try {
+                Thread.sleep(MILLIS);
+                v2(Authorization);
+                connectNum++;
+            } catch (Exception e) {
+                log.error("reconnect",e);
+            }
+        } else {
+            log.info( "reconnect over " + MAX_NUM + ",please check url or network");
+        }
+    }
+    /**
+     * 是否连接
+     */
+    public static boolean isConnectFun() {
+        return mWebSocket != null && isConnect;
+    }
+
     public static void v2(String Authorization) {
+        if (isConnect){
+            return;
+        }
         ad = Authorization;
         Request request = new Request.Builder().url("https://botopen.imdodo.com/api/v2/websocket/connection").addHeader("Content-Type", "application/json").addHeader("Authorization", ad)
                 .post(RequestBody.create("{}", MediaType.parse("application/json")))
@@ -51,9 +83,14 @@ public class EventTrigger {
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 wssLo = new JSONObject(Objects.requireNonNull(response.body()).string()).getJSONObject("data").getString("endpoint");
                 response.close();
-                Request request = new Request.Builder()
-                        .url(wssLo).build();
-                socketHashSet.add(wss.newWebSocket(request, new WsListenerC(p)));
+                try {
+                    Request request = new Request.Builder()
+                            .url(wssLo)
+                            .build();
+                    mWebSocket = wss.newWebSocket(request, new WsListenerC(p));
+                } catch (Exception e){
+                    log.error("链接中断",e);
+                }
             }
         });
     }
@@ -66,126 +103,156 @@ public class EventTrigger {
         }
 
         @Override
+        public void onOpen(WebSocket webSocket, Response response) {
+            super.onOpen(webSocket, response);
+            isConnect = response.code() == 101;
+            if (!isConnectFun()) {
+                reconnect(ad);
+            } else {
+                log.info("WebSocket 连接成功");
+            }
+
+        }
+
+        @Override
         public void onMessage(@NotNull WebSocket webSocket, @NotNull ByteString bytes) {
+            super.onMessage(webSocket,bytes);
             JSONObject jsontext = new JSONObject(bytes.utf8());
             switch (jsontext.getJSONObject("data").getString("eventType")) {
                 case "1001" -> {
                     try {
                         EventManage.fireEvent(new io.github.minecraftchampions.dodoopenjava.event.events.v2.PersonalMessageEvent(jsontext));
                     } catch (EventException e) {
-                        throw new RuntimeException(e);
+                        log.error("1001",e);
                     }
                 }
                 case "2001" -> {
                     try {
                         EventManage.fireEvent(new io.github.minecraftchampions.dodoopenjava.event.events.v2.MessageEvent(jsontext));
                     } catch (EventException e) {
-                        throw new RuntimeException(e);
+                        log.error("2001",e);
                     }
                 }
                 case "3001" -> {
                     try {
                         EventManage.fireEvent(new io.github.minecraftchampions.dodoopenjava.event.events.v2.MessageReactionEvent(jsontext));
                     } catch (EventException e) {
-                        throw new RuntimeException(e);
+                        log.error("3001",e);
                     }
                 }
                 case "3002" -> {
                     try {
                         EventManage.fireEvent(new io.github.minecraftchampions.dodoopenjava.event.events.v2.CardMessageButtonClickEvent(jsontext));
                     } catch (EventException e) {
-                        throw new RuntimeException(e);
+                        log.error("3002",e);
                     }
                 }
                 case "3003" -> {
                     try {
                         EventManage.fireEvent(new io.github.minecraftchampions.dodoopenjava.event.events.v2.CardMessageFormSubmitEvent(jsontext));
                     } catch (EventException e) {
-                        throw new RuntimeException(e);
+                        log.error("3003",e);
                     }
                 }
                 case "3004" -> {
                     try {
                         EventManage.fireEvent(new io.github.minecraftchampions.dodoopenjava.event.events.v2.CardMessageListSubmitEvent(jsontext));
                     } catch (EventException e) {
-                        throw new RuntimeException(e);
+                        log.error("3004",e);
                     }
                 }
                 case "4001" -> {
                     try {
                         EventManage.fireEvent(new io.github.minecraftchampions.dodoopenjava.event.events.v2.MemberJoinEvent(jsontext));
                     } catch (EventException e) {
-                        throw new RuntimeException(e);
+                        log.error("4001",e);
                     }
                 }
                 case "4002" -> {
                     try {
                         EventManage.fireEvent(new io.github.minecraftchampions.dodoopenjava.event.events.v2.MemberLeaveEvent(jsontext));
                     } catch (EventException e) {
-                        throw new RuntimeException(e);
+                        log.error("4002",e);
                     }
                 }
                 case "5001" -> {
                     try {
                         EventManage.fireEvent(new io.github.minecraftchampions.dodoopenjava.event.events.v2.ChannelVoiceMemberJoinEvent(jsontext));
                     } catch (EventException e) {
-                        throw new RuntimeException(e);
+                        log.error("5001",e);
                     }
                 }
                 case "5002" -> {
                     try {
                         EventManage.fireEvent(new io.github.minecraftchampions.dodoopenjava.event.events.v2.ChannelVoiceMemberLeaveEvent(jsontext));
                     } catch (EventException e) {
-                        throw new RuntimeException(e);
+                        log.error("5002",e);
                     }
                 }
                 case "6001" -> {
                     try {
                         EventManage.fireEvent(new io.github.minecraftchampions.dodoopenjava.event.events.v2.ChannelArticleEvent(jsontext));
                     } catch (EventException e) {
-                        throw new RuntimeException(e);
+                        log.error("6001",e);
                     }
                 }
                 case "6002" -> {
                     try {
                         EventManage.fireEvent(new io.github.minecraftchampions.dodoopenjava.event.events.v2.ChannelArticleCommentEvent(jsontext));
                     } catch (EventException e) {
-                        throw new RuntimeException(e);
+                        log.error("6002",e);
                     }
                 }
                 case "7001" -> {
                     try {
                         EventManage.fireEvent(new GiftSendEvent(jsontext));
                     } catch (EventException e) {
-                        throw new RuntimeException(e);
+                        log.error("7001",e);
                     }
                 }
                 case "8001" -> {
                     try {
                         EventManage.fireEvent(new IntegralChangeEvent(jsontext));
                     } catch (EventException e) {
-                        throw new RuntimeException(e);
+                        log.error("8001",e);
                     }
                 }
                 case "9001" -> {
                     try {
                         EventManage.fireEvent(new GoodsPurchaseEvent(jsontext));
                     } catch (EventException e) {
-                        throw new RuntimeException(e);
+                        log.error("9001",e);
                     }
                 }
-                default -> System.out.println("未知的事件！");
+                default -> log.warn("未知的事件！");
             }
         }
 
         @Override
         public void onFailure(@NotNull WebSocket webSocket, @NotNull Throwable t, @Nullable Response response) {
-            t.printStackTrace();
+            super.onFailure(webSocket, t, response);
+            if (response != null) {
+                log.error("WebSocket 连接失败：{}",response.message());
+            }
+            log.error("WebSocket 连接失败异常原因：{}",t.getMessage());
+            isConnect = false;
+            if (StringUtil.isEmpty(t.getMessage())) {
+                log.warn("进行重试");
+                reconnect(ad);
+            }
         }
 
         @Override
         public void onClosed(@NotNull WebSocket webSocket, int code, @NotNull String reason) {
-            webSocket.close(1000, "正常关闭");
+            super.onClosed(webSocket, code, reason);
+            mWebSocket.close(1000,"正常关闭");
+            mWebSocket = null;
+            isConnect = false;
+        }
+
+        @Override
+        public void onClosing(WebSocket webSocket, int code, String reason) {
+            super.onClosing(webSocket, code, reason);
         }
     }
 }

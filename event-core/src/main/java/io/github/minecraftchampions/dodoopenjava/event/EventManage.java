@@ -179,7 +179,7 @@ public class EventManage {
                     && Event.class.isAssignableFrom(clazz.getSuperclass())) {
                 return getRegistrationClass(clazz.getSuperclass().asSubclass(Event.class));
             }
-            return null;
+            throw new RuntimeException("系统异常,clazz.getSuperclass=null");
         }
     }
 
