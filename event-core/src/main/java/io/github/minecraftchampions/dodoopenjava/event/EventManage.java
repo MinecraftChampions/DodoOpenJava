@@ -77,23 +77,7 @@ public class EventManage {
         }
         return ret;
     }
-
-    public static void main(String... args) throws InterruptedException {
-        CompletableFuture.allOf(CompletableFuture.runAsync(()-> {
-            System.out.println("Abcvb");
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            System.out.println("a");
-            while (true) {
-                System.out.println("1");
-            }
-        }));
-        System.out.println("1");
-        Thread.sleep(10000);
-    }
+    
     private static boolean isInit = false;
 
     /**
