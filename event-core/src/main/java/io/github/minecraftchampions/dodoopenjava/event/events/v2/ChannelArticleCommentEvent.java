@@ -59,6 +59,7 @@ public class ChannelArticleCommentEvent extends Event {
     public String commentId;
 
     public ChannelArticleCommentEvent(JSONObject json) {
+        super(true);
         this.commentId = json.getJSONObject("data").getJSONObject("eventBody").getString("commentId");
         this.articleId = json.getJSONObject("data").getJSONObject("eventBody").getString("articleId");
         this.content = json.getJSONObject("data").getJSONObject("eventBody").getString("content");

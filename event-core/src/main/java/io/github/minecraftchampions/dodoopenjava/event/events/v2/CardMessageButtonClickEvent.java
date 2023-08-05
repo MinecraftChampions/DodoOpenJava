@@ -59,6 +59,7 @@ public class CardMessageButtonClickEvent extends Event {
     public String value;
 
     public CardMessageButtonClickEvent(JSONObject json) {
+        super(true);
         this.jsonObject = json;
         this.jsonString = json.toString();
         this.timestamp = json.getJSONObject("data").getInt("timestamp");

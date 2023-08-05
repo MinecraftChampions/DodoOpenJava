@@ -60,6 +60,7 @@ public class CardMessageListSubmitEvent extends Event {
     public JSONArray list;
 
     public CardMessageListSubmitEvent(JSONObject json) {
+        super(true);
         this.jsonObject = json;
         this.jsonString = json.toString();
         this.timestamp = json.getJSONObject("data").getInt("timestamp");

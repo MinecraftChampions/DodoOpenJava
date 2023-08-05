@@ -53,6 +53,7 @@ public class MemberLeaveEvent extends Event {
     public String operateDoDoId;
 
     public MemberLeaveEvent(JSONObject json) {
+        super(true);
         this.personal = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal");
         this.userNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("nickName");
         this.userAvatarUrl = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("avatarUrl");

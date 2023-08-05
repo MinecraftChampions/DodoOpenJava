@@ -55,6 +55,7 @@ public class ChannelVoiceMemberLeaveEvent extends Event {
     public String memberJoinTime;
 
     public ChannelVoiceMemberLeaveEvent(JSONObject json) {
+        super(true);
         this.jsonObject = json;
         this.channelId = json.getJSONObject("data").getJSONObject("eventBody").getString("channelId");
         this.jsonString = json.toString();

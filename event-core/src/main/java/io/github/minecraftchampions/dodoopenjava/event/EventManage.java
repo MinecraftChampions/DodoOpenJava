@@ -8,11 +8,15 @@ import org.w3c.dom.events.EventException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * 事件的相关方法（包含监听器注册等）
  */
 public class EventManage {
+    private final ExecutorService executor = Executors.newCachedThreadPool();
     @NotNull
     public static Map<Class<? extends Event>, Set<RegisteredListener>> createRegisteredListeners(@NotNull Listener listener) {
         Validate.notNull(listener, "Listener can not be null");
@@ -43,17 +47,28 @@ public class EventManage {
             method.setAccessible(true);
             Set<RegisteredListener> eventSet = ret.computeIfAbsent(eventClass, k -> new HashSet<>());
 
-            for (Class<?> clazz = eventClass; Event.class.isAssignableFrom(clazz); clazz = clazz.getSuperclass()) {
-                if (clazz.getAnnotation(Deprecated.class) != null) {
-                    break;
-                }
+            for (Class<?> clazz = eventClass; Event.class.isAssignableFrom(clazz);
+                 clazz = clazz.getSuperclass()) {
+                 if (clazz.getAnnotation(Deprecated.class) != null) {
+                     break;
+                 }
             }
             EventExecutor executor = (listener1, event) -> {
                 try {
                     if (!eventClass.isAssignableFrom(event.getClass())) {
                         return;
                     }
-                    method.invoke(listener1, event);
+                    if (!event.isAsynchronous()) {
+                        method.invoke(listener1, event);
+                    } else {
+                        CompletableFuture.allOf(CompletableFuture.runAsync(()->{
+                            try {
+                                method.invoke(listener1,event);
+                            } catch (IllegalAccessException | InvocationTargetException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }));
+                    }
                 } catch (InvocationTargetException | IllegalAccessException e) {
                     throw new RuntimeException(e);
                 }
@@ -63,6 +78,22 @@ public class EventManage {
         return ret;
     }
 
+    public static void main(String... args) throws InterruptedException {
+        CompletableFuture.allOf(CompletableFuture.runAsync(()-> {
+            System.out.println("Abcvb");
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println("a");
+            while (true) {
+                System.out.println("1");
+            }
+        }));
+        System.out.println("1");
+        Thread.sleep(10000);
+    }
     private static boolean isInit = false;
 
     /**
@@ -135,7 +166,6 @@ public class EventManage {
     /**
      * 将指定的执行器注册至指定的事件类.
      * <p>
-     * 原文:Registers the specified executor to the given event class
      *
      * @param event    要注册的事件类型
      * @param listener 要注册的监听器

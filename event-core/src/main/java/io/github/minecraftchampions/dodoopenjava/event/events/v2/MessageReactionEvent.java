@@ -61,6 +61,7 @@ public class MessageReactionEvent extends Event {
     public String jsonString;
 
     public MessageReactionEvent(JSONObject json) {
+        super(true);
         this.jsonObject = json;
         this.jsonString = json.toString();
         this.timestamp = json.getJSONObject("data").getInt("timestamp");

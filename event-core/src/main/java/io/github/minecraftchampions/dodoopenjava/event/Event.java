@@ -58,18 +58,9 @@ public abstract class Event {
     public abstract HandlerList getHandlers();
 
     /**
-     * 任何自定义事件应该不与其他事件同步,必须使用特定的构造器.这是对使用异步事件的一些警告(注意事项)：
-     * <ul>
-     * <li>这个事件永远不会触发内部代码触发的同步事件.尝试这么做的结果会得到{@link java.lang.IllegalStateException}.</li>
-     * <li>不过，异步事件处理器可能触发同步或异步事件.</li>
-     * <li>事件可能在多个时间任何优先级被触发.</li>
-     * <li>任何新注册或未注册的处理器将在一个事件开始执行后被忽略.</li>
-     * <li>这个事件的处理器可能阻塞一段时间.</li>
-     * <li>一些实现可能会有选择地声明一个事件是异步的.这一行为应被明确定义.</li>
-     * <li>异步调用不会计算在插件定时系统中.</li>
-     * </ul>
+     * 是否异步事件
      *
-     * @return 默认情况下返回false, 事件触发异步了返回true
+     * @return 默认情况下返回false, 异步事件返回true
      */
     public final boolean isAsynchronous() {
         return async;

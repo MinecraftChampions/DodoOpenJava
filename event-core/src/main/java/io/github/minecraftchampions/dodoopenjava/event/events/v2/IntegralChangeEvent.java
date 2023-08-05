@@ -39,6 +39,7 @@ public class IntegralChangeEvent extends Event {
     public long integral;
 
     public IntegralChangeEvent(JSONObject json) {
+        super(true);
         this.jsonObject = json;
         this.jsonString = json.toString();
         this.timestamp = json.getJSONObject("data").getInt("timestamp");

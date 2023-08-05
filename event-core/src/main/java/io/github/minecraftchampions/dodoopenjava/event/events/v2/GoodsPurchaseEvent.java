@@ -49,6 +49,7 @@ public class GoodsPurchaseEvent extends Event {
     public List<String> goodsImageList;
 
     public GoodsPurchaseEvent(JSONObject json) {
+        super(true);
         this.jsonObject = json;
         this.jsonString = json.toString();
         this.timestamp = json.getJSONObject("data").getInt("timestamp");
