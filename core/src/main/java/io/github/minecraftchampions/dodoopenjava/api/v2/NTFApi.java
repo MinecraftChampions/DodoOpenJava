@@ -39,8 +39,8 @@ public class NTFApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject getMemberNftStatus(String authorization, String islandSourceId, String dodoSourceId, String platform) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/member/nft/status";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/member/nft/status";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
                 "    \"platform\": \"" + platform + "\"" +
@@ -72,8 +72,8 @@ public class NTFApi {
      * @param platform       数藏平台
      */
     public static JSONObject getMemberNftStatus(String authorization, String islandSourceId, String dodoSourceId, String platform, String issuer, String series) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/member/nft/status";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/member/nft/status";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
                 "    \"platform\": \"" + platform + "\"," +

@@ -10,8 +10,6 @@ import java.io.IOException;
  * 语言频道API
  */
 public class ChannelVoiceApi {
-    public static String url, param;
-
     /**
      * 获取成员语音频道状态
      *
@@ -36,8 +34,8 @@ public class ChannelVoiceApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject getChannelVoiceMemberStatus(String islandSourceId, String dodoSourceId, String authorization) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/channel/voice/member/status";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/channel/voice/member/status";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"" +
                 "}";
@@ -71,8 +69,8 @@ public class ChannelVoiceApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject moveChannelVoiceMember(String islandSourceId, String dodoSourceId, String channelId, String authorization) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/channel/voice/member/move";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/channel/voice/member/move";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
                 "    \"channelId\": \"" + channelId + "\"" +
@@ -106,8 +104,8 @@ public class ChannelVoiceApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject editChannelVoiceMember(int operateType, String dodoSourceId, String channelId, String authorization) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/channel/voice/member/edit";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/channel/voice/member/edit";
+        String param = "{" +
                 "    \"operateType\": " + operateType + "," +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
                 "    \"channelId\": \"" + channelId + "\"" +

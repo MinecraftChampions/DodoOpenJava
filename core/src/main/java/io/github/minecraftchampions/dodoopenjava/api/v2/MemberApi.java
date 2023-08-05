@@ -10,8 +10,6 @@ import java.io.IOException;
  * 成员API
  */
 public class MemberApi {
-    public static String url, param;
-
     /**
      * 获取成员列表
      *
@@ -38,8 +36,8 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject getMemberList(String authorization, String islandSourceId, int pageSize, long maxId) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/member/list";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/member/list";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"pageSize\": \"" + pageSize + "\"," +
                 "    \"maxId\": \"" + maxId + "\"" +
@@ -71,8 +69,8 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject getMemberInfo(String authorization, String islandSourceId, String dodoSourceId) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/member/info";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/member/info";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"" +
                 "}";
@@ -103,8 +101,8 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject getMemberRoleList(String authorization, String islandSourceId, String dodoSourceId) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/member/role/list";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/member/role/list";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"" +
                 "}";
@@ -135,8 +133,8 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject getMemberInvitationInfo(String authorization, String islandSourceId, String dodoSourceId) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/member/role/list";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/member/role/list";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"" +
                 "}";
@@ -169,8 +167,8 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject editMemberNickName(String authorization, String islandSourceId, String dodoSourceId, String nickName) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/member/nick/set";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/member/nick/set";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
                 "    \"nickName\": \"" + nickName + "\"" +
@@ -204,8 +202,8 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject addMemberMute(String authorization, String islandSourceId, String dodoSourceId, int duration) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/member/ban/set";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/member/ban/set";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
                 "    \"duration\": " + duration + "" +
@@ -241,8 +239,8 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject addMemberReasonrMute(String authorization, String islandSourceId, String dodoSourceId, int duration, String reason) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/member/ban/set";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/member/ban/set";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
                 "    \"duration\": " + duration + "," +
@@ -275,8 +273,8 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject removeMemberMute(String authorization, String islandSourceId, String dodoSourceId) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/member/mute/remove";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/member/mute/remove";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"" +
                 "}";
@@ -307,8 +305,8 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject addMemberBan(String authorization, String islandSourceId, String dodoSourceId) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/member/ban/add";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/member/ban/add";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"" +
                 "}";
@@ -341,8 +339,8 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject addMemberReasonBan(String authorization, String islandSourceId, String dodoSourceId, String reason) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/member/ban/add";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/member/ban/add";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
                 "    \"reason\": \"" + reason + "\"" +
@@ -376,8 +374,8 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject addMemberChannelBan(String authorization, String islandSourceId, String dodoSourceId, String noticeChannelId) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/member/ban/add";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/member/ban/add";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
                 "    \"noticeChannelId\": \"" + noticeChannelId + "\"" +
@@ -413,8 +411,8 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject addMemberBan(String authorization, String islandSourceId, String dodoSourceId, String noticeChannelId, String reason) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/member/ban/add";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/member/ban/add";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
                 "    \"noticeChannelId\": \"" + noticeChannelId + "\"," +
@@ -447,8 +445,8 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject removeMemberBan(String authorization, String islandSourceId, String dodoSourceId) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/member/ban/remove";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/member/ban/remove";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"" +
                 "}";

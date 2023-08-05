@@ -10,8 +10,6 @@ import java.io.IOException;
  * 身份组API
  */
 public class RoleApi {
-    public static String url, param;
-
     /**
      * 获取身份组列表
      *
@@ -34,8 +32,8 @@ public class RoleApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject getRoleList(String authorization, String islandSourceId) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/role/list";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/role/list";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"" +
                 "}";
         return new JSONObject(NetUtil.sendRequest(param, url, authorization));
@@ -67,8 +65,8 @@ public class RoleApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject addRoleMember(String authorization, String islandSourceId, String dodoSourceId, String roleId) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/role/member/add";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/role/member/add";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
                 "    \"roleId\": \"" + roleId + "\"" +
@@ -102,8 +100,8 @@ public class RoleApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject removeRoleMember(String authorization, String islandSourceId, String dodoSourceId, String roleId) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/role/member/remove";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/role/member/remove";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
                 "    \"roleId\": \"" + roleId + "\"" +
@@ -141,7 +139,7 @@ public class RoleApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject addRole(String authorization, String islandSourceId, String roleName, String roleColor, int position, String permission) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/role/add";
+        String url = "https://botopen.imdodo.com/api/v2/role/add";
         JSONObject param = new JSONObject("{" +
                 "  \"islandSourceId\": \"" + islandSourceId + "\"}");
         if (roleName != null) {
@@ -195,7 +193,7 @@ public class RoleApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject editRole(String authorization, String islandSourceId, String roleId, String roleName, String roleColor, int position, String permission) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/role/edit";
+        String url = "https://botopen.imdodo.com/api/v2/role/edit";
         JSONObject param = new JSONObject("{" +
                 "  \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "  \"roleId\": \"" + roleId + "\"}");
@@ -241,8 +239,8 @@ public class RoleApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject deleteRole(String authorization, String islandSourceId, String roleId) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/role/remove";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/role/remove";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"roleId\": \"" + roleId + "\"" +
                 "}";

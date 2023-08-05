@@ -10,8 +10,6 @@ import java.io.IOException;
  * 帖子频道API
  */
 public class ChannelArticleApi {
-    public static String url, param;
-
     /**
      * 发布帖子
      *
@@ -40,8 +38,8 @@ public class ChannelArticleApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject addChannelArticle(String channelId, String title, String content, String imageUrl, String authorization) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/channel/article/add";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/channel/article/add";
+        String param = "{" +
                 "    \"channelId\": \"" + channelId + "\"," +
                 "    \"title\": \"" + title + "\"," +
                 "    \"content\": \"" + content + "\"," +
@@ -77,8 +75,8 @@ public class ChannelArticleApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject removeChannelArticle(int type, String id, String channelId, String authorization) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/channel/article/remove";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/channel/article/remove";
+        String param = "{" +
                 "    \"id\": \"" + id + "\"," +
                 "    \"type\": " + type + "," +
                 "    \"channelId\": \"" + channelId + "\"" +

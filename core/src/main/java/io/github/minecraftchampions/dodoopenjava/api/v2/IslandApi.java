@@ -34,8 +34,8 @@ public class IslandApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject getIslandInfo(String authorization, String islandSourceId) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/island/info";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/island/info";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"" +
                 "}";
         return new JSONObject(NetUtil.sendRequest(param, url, authorization));
@@ -61,8 +61,8 @@ public class IslandApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject getIslandList(String authorization) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/island/list";
-        param = "{}";
+        String url = "https://botopen.imdodo.com/api/v2/island/list";
+        String param = "{}";
         return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
@@ -92,8 +92,8 @@ public class IslandApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject getIslandLevelRankList(String authorization, String islandSourceId, int pageSize, long maxId) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/island/info";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/island/info";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"pageSize\": \"" + pageSize + "\"," +
                 "    \"maxId\": \"" + maxId + "\"" +
@@ -123,8 +123,8 @@ public class IslandApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject getIslandMuteList(String authorization, String islandSourceId) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/island/mute/list";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/island/mute/list";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"" +
                 "}";
         return new JSONObject(NetUtil.sendRequest(param, url, authorization));
@@ -152,8 +152,8 @@ public class IslandApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject getIslandBanList(String authorization, String islandSourceId) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/island/ban/list";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/island/ban/list";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"" +
                 "}";
         return new JSONObject(NetUtil.sendRequest(param, url, authorization));

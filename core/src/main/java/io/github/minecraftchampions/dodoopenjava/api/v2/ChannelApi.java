@@ -10,7 +10,6 @@ import java.io.IOException;
  * 频道API
  */
 public class ChannelApi {
-    public static String url, param;
 
     /**
      * 获取频道列表
@@ -34,8 +33,8 @@ public class ChannelApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject getChannelList(String authorization, String islandSourceId) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/channel/list";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/channel/list";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"" +
                 "}";
         return new JSONObject(NetUtil.sendRequest(param, url, authorization));
@@ -63,8 +62,8 @@ public class ChannelApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject getChannelInfo(String authorization, String channelId) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/channel/info";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/channel/info";
+        String param = "{" +
                 "    \"channelId\": \"" + channelId + "\"" +
                 "}";
         return new JSONObject(NetUtil.sendRequest(param, url, authorization));
@@ -96,8 +95,8 @@ public class ChannelApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject addChannel(String authorization, String islandSourceId, String channelName, int channelType) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/channel/add";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/channel/add";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"channelName\": \"" + channelName + "\"," +
                 "    \"channelType\": " + channelType + "" +
@@ -131,8 +130,8 @@ public class ChannelApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject editChannel(String authorization, String islandSourceId, String channelName, String channelId) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/channel/edit";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/channel/edit";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"channelId\": \"" + channelId + "\"," +
                 "    \"channelName\": \"" + channelName + "\"" +
@@ -164,8 +163,8 @@ public class ChannelApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject deleteChannel(String authorization, String islandSourceId, String channelId) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/channel/remove";
-        param = "{" +
+        String url = "https://botopen.imdodo.com/api/v2/channel/remove";
+        String param = "{" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "    \"channelId\": \"" + channelId + "\"" +
                 "}";

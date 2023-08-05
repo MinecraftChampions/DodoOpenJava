@@ -10,8 +10,6 @@ import java.io.IOException;
  * 赠礼系统Api
  */
 public class GiftApi {
-    public static String url, param;
-
     /**
      * 获取群收入
      *
@@ -34,8 +32,8 @@ public class GiftApi {
      * @throws IOException 发送请求失败后抛出
      */
     public static JSONObject getGiftAccount(String authorization, String islandSourceId) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/gift/account/info";
-        param = new JSONObject().put("islandSourceId", islandSourceId).toString();
+        String url = "https://botopen.imdodo.com/api/v2/gift/account/info";
+        String param = new JSONObject().put("islandSourceId", islandSourceId).toString();
         return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
@@ -61,8 +59,8 @@ public class GiftApi {
      * @throws IOException 发送请求失败后抛出
      */
     public static JSONObject getGiftShareRatioInfo(String authorization, String islandSourceId) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/gift/share/ratio/info";
-        param = new JSONObject().put("islandSourceId", islandSourceId).toString();
+        String url = "https://botopen.imdodo.com/api/v2/gift/share/ratio/info";
+        String param = new JSONObject().put("islandSourceId", islandSourceId).toString();
         return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
@@ -90,8 +88,8 @@ public class GiftApi {
      * @throws IOException 发送请求失败后抛出
      */
     public static JSONObject getGiftList(String authorization, String targetId, int targetType) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/gift/list";
-        param = new JSONObject().put("targetId", targetId).put("targetType", targetType).toString();
+        String url = "https://botopen.imdodo.com/api/v2/gift/list";
+        String param = new JSONObject().put("targetId", targetId).put("targetType", targetType).toString();
         return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
@@ -125,8 +123,8 @@ public class GiftApi {
      * @throws IOException 发送请求失败后抛出
      */
     public static JSONObject getGiftMemberList(String authorization, String targetId, int targetType, String giftId, int pageSize, long maxId) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/gift/member/list";
-        param = new JSONObject().put("targetId", targetId).put("targetType", targetType).put("giftId", giftId).put("pageSize", pageSize).put("maxId", maxId).toString();
+        String url = "https://botopen.imdodo.com/api/v2/gift/member/list";
+        String param = new JSONObject().put("targetId", targetId).put("targetType", targetType).put("giftId", giftId).put("pageSize", pageSize).put("maxId", maxId).toString();
         return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 
@@ -158,8 +156,8 @@ public class GiftApi {
      * @throws IOException 发送请求失败后抛出
      */
     public static JSONObject getGiftGrossValueList(String authorization, String targetId, int targetType, int pageSize, long maxId) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/gift/gross/value/list";
-        param = new JSONObject().put("targetId", targetId).put("targetType", targetType).put("pageSize", pageSize).put("maxId", maxId).toString();
+        String url = "https://botopen.imdodo.com/api/v2/gift/gross/value/list";
+        String param = new JSONObject().put("targetId", targetId).put("targetType", targetType).put("pageSize", pageSize).put("maxId", maxId).toString();
         return new JSONObject(NetUtil.sendRequest(param, url, authorization));
     }
 }

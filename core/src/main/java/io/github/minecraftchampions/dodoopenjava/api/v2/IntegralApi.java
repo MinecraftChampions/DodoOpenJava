@@ -10,8 +10,6 @@ import java.io.IOException;
  * 积分API
  */
 public class IntegralApi {
-    public static String url, param;
-
     /**
      * 查询成员积分
      *
@@ -36,8 +34,8 @@ public class IntegralApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject getIntegralInfo(String Authorization, String islandSourceId, String dodoSourceId) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/integral/info";
-        param = "{\n" +
+        String url = "https://botopen.imdodo.com/api/v2/integral/info";
+        String param = "{\n" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\",\n" +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"\n" +
                 "}";
@@ -72,8 +70,8 @@ public class IntegralApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject setIntegralEdit(String Authorization, String islandSourceId, String dodoSourceId, int operateType, long integral) throws IOException {
-        url = "https://botopen.imdodo.com/api/v2/integral/edit";
-        param = "{\n" +
+        String url = "https://botopen.imdodo.com/api/v2/integral/edit";
+        String param = "{\n" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\",\n" +
                 "    \"dodoSourceId\": \"" + dodoSourceId + "\"\n" +
                 "    \"operateType\": " + operateType + ",\n" +
