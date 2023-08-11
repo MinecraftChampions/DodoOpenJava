@@ -77,7 +77,7 @@ public class EventManage {
         }
         return ret;
     }
-    
+
     private static boolean isInit = false;
 
     /**
