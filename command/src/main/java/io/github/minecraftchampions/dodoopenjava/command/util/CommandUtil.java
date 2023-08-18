@@ -20,7 +20,7 @@ public class CommandUtil {
     /**
      * 注册主命令(会自动进行子命令匹配，不需要额外加入子命令触发)
      *
-     * @param clazz 命令处理的方法所在类(命令处理器方法须非静态)
+     * @param clazz 命令处理的方法所在类(命令处理器方法须静态)
      */
     public static void registerMainCommand(Class<?> clazz, String authorization) {
         MainCommand mainCommand = null;
@@ -48,7 +48,7 @@ public class CommandUtil {
                     @Override
                     public void onCommand(CommandSender sender, String[] args) {
                         try {
-                            method.invoke(this, sender, args);
+                            method.invoke(null, sender, args);
                         } catch (IllegalAccessException | InvocationTargetException e) {
                             throw new RuntimeException(e);
                         }

@@ -23,11 +23,7 @@ public class Util {
             return true;
         }
         if (comparePermissionString(userPerm, perm)) {
-            if (!comparePermissionString(userPerm, perm)) {
-                return true;
-            } else {
-                return false;
-            }
+            return !comparePermissionString(userPerm, perm);
         } else {
             return false;
         }
