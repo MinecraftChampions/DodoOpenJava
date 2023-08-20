@@ -33,7 +33,7 @@ public class BotManage {
      *
      * @param port 端口
      */
-    public void setPort(int port) {
+    public static void setPort(int port) {
         BotManage.port = port;
     }
 

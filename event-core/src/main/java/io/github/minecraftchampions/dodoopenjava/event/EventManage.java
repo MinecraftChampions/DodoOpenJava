@@ -136,14 +136,15 @@ public class EventManage {
     public static void init(String an) {
         Class<?> clazz = getEventTriggerClass();
         try {
-            if (clazz == Class.forName("io.github.minecraftchampions.dodoopenjava.event.websocket.EventTrigger")) {
-                getEventTriggerClass().getMethod("main", String.class).invoke(null, an);
-            } else {
-                getEventTriggerClass().getMethod("main").invoke(null);
-            }
+            Class.forName("io.github.minecraftchampions.dodoopenjava.event.websocket.EventTrigger");
+            getEventTriggerClass().getMethod("main", String.class).invoke(null, an);
         } catch (ClassNotFoundException | InvocationTargetException | IllegalAccessException |
                  NoSuchMethodException e) {
-            e.printStackTrace();
+            try {
+                getEventTriggerClass().getMethod("main").invoke(null);
+            } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException ex) {
+                throw new RuntimeException(ex);
+            }
         }
     }
 

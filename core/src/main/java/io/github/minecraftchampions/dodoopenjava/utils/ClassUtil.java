@@ -13,7 +13,7 @@ public class ClassUtil {
             Class.forName(className, false, classLoader);//不初始化加载class
             return true;
         } catch (ClassNotFoundException exception) {
-            return false;//不抛出异常返回false
+            return false;//抛出异常返回false
         }
     }
 }
