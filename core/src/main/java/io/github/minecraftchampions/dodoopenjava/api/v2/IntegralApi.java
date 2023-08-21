@@ -73,7 +73,7 @@ public class IntegralApi {
         String url = "https://botopen.imdodo.com/api/v2/integral/edit";
         String param = "{\n" +
                 "    \"islandSourceId\": \"" + islandSourceId + "\",\n" +
-                "    \"dodoSourceId\": \"" + dodoSourceId + "\"\n" +
+                "    \"dodoSourceId\": \"" + dodoSourceId + "\",\n" +
                 "    \"operateType\": " + operateType + ",\n" +
                 "    \"integral\": " + integral +
                 "}";
