@@ -1,29 +1,62 @@
 package io.github.minecraftchampions.dodoopenjava.message;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
+/**
+ * markDown组件组
+ */
 public class TextComponentGroup {
-    public static TextComponent boldComponent = new TextComponent("bold","**${content}**",true,null);
+    /**
+     * 粗体
+     */
+    public static TextComponent boldComponent = new TextComponent("bold", "**${content}**", true, null);
 
-    public static TextComponent italicComponent = new TextComponent("italic","*${content}*",true,null);
+    /**
+     * 斜体
+     */
+    public static TextComponent italicComponent = new TextComponent("italic", "*${content}*", true, null);
 
-    public static TextComponent underlineComponent = new TextComponent("underline","__${content}__",true,null);
+    /**
+     * 下划线
+     */
+    public static TextComponent underlineComponent = new TextComponent("underline", "__${content}__", true, null);
 
-    public static TextComponent strikethroughComponent = new TextComponent("strikethrough","~~${content}~~",true,null);
+    /**
+     * 删除线
+     */
+    public static TextComponent strikethroughComponent = new TextComponent("strikethrough", "~~${content}~~", true, null);
 
-    public static TextComponent codeComponent = new TextComponent("code","```${content}```",false,null);
+    /**
+     * 代码块
+     */
+    public static TextComponent codeComponent = new TextComponent("code", "```${content}```", false, null);
 
-    public static TextComponent antispoilerComponent = new TextComponent("antispoiler","||${content}||",true,null);
+    /**
+     * 隐藏
+     */
+    public static TextComponent antispoilerComponent = new TextComponent("antispoiler", "||${content}||", true, null);
 
-    public static TextComponent citeComponent = new TextComponent("cite","> ${content}",true,null);
+    /**
+     * 引用, 头尾皆换行
+     */
+    public static TextComponent citeComponent = new TextComponent("cite", "\n> ${content}\n", true, null);
 
-    public static TextComponent linkComponent = new TextComponent("link","[${content}](${attrvalue})",false,"url");
+    /**
+     * 链接
+     */
+    public static TextComponent linkComponent = new TextComponent("link", "[${content}](${attrvalue})", false, "url");
 
-    public static TextComponent contentComponent = new TextComponent("content","${content}",false,null);
+    /**
+     * 字符串
+     */
+    public static TextComponent contentComponent = new TextComponent("content", "${content}", false, null);
+
+    private static final Map<String, TextComponent> htmlReplaceMap = new HashMap<>(Map.of("p", contentComponent, "strong", boldComponent, "blockquote", citeComponent, "a", linkComponent, "em", italicComponent, "code", codeComponent));
+
+    public static Map<String, TextComponent> getHtmlReplaceMap() {
+        return htmlReplaceMap;
+    }
 
     private static final List<TextComponent> componentList = new ArrayList<>();
 
@@ -47,6 +80,11 @@ public class TextComponentGroup {
         }
     }
 
+    /**
+     * 获取不允许嵌套的组件
+     *
+     * @return Set
+     */
     public static Set<TextComponent> getNotAllowNestTextComponentList() {
         Set<TextComponent> textComponentSet = new HashSet<>();
         for (int i : notAllowNestIndexList) {
@@ -55,6 +93,12 @@ public class TextComponentGroup {
         return textComponentSet;
     }
 
+
+    /**
+     * 获取所有组件
+     *
+     * @return List
+     */
     public static List<TextComponent> getTextComponentList() {
         return componentList;
     }

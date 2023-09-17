@@ -1,5 +1,8 @@
 package io.github.minecraftchampions.dodoopenjava.message;
 
+/**
+ * markdown组件
+ */
 public class TextComponent {
     private String key;
 
