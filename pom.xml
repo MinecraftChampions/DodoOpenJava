@@ -18,6 +18,7 @@
     <packaging>pom</packaging>
     <name>page</name>
 
+    
     <modules>
         <module>core</module>
         <module>command</module>
