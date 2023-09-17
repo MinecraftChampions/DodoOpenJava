@@ -26,6 +26,7 @@
         <module>event-webhook</module>
         <module>permissions</module>
         <module>event-core</module>
+        <module>message</module>
     </modules>
 
     <build>
@@ -164,6 +165,12 @@
                 <scope>compile</scope>
             </dependency>
             <dependency>
+                <groupId>com.vladsch.flexmark</groupId>
+                <artifactId>flexmark-all</artifactId>
+                <version>0.64.8</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
                 <groupId>com.google.code.findbugs</groupId>
                 <artifactId>jsr305</artifactId>
                 <version>3.0.2</version>
@@ -173,6 +180,12 @@
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
                 <version>2.13.0</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>2.1.4</version>
                 <scope>compile</scope>
             </dependency>
             <dependency>

@@ -27,6 +27,12 @@ public class XmlUtil {
         return XML.toJSONObject(xml);
     }
 
+    /**
+     * json转换为Toml
+     *
+     * @param jsonObject json
+     * @return toml
+     */
     public static String jsonToXml(JSONObject jsonObject) {
         return XML.toString(jsonObject);
     }
