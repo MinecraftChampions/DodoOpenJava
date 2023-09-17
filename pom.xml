@@ -17,7 +17,6 @@
     <version>${revision}</version>
     <packaging>pom</packaging>
     <name>page</name>
-
     
     <modules>
         <module>core</module>
