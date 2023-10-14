@@ -6,10 +6,9 @@ import java.io.IOException;
 /**
  * 存储实例
  */
-public class PermData {
+public abstract class PermData {
     public File User;
     public File Group;
 
-    public void saveToFile() throws IOException {
-    }
+    public abstract void saveToFile() throws IOException;
 }

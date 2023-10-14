@@ -8,7 +8,7 @@ import java.io.IOException;
  * 权限系统核心
  */
 public class Permissions {
-    public static PermData permData = new PermData();
+    public static PermData permData = null;
     public static DataType type;
 
     public static boolean initialized;
@@ -89,16 +89,8 @@ public class Permissions {
             while (true) {
                 try {
                     Thread.sleep(10 * 60 * 60);
-                    switch (Permissions.type.getType()) {
-                        case "YAML" -> permData.saveToFile();
-                        case "JSON" -> permData.saveToFile();
-                        case "Xml" -> permData.saveToFile();
-                        case "Toml" -> permData.saveToFile();
-                        default -> System.err.println("错误的存储种类");
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
+                    permData.saveToFile();
+                } catch (IOException | InterruptedException e) {
                     throw new RuntimeException(e);
                 }
             }
