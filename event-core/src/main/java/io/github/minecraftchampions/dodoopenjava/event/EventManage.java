@@ -60,15 +60,15 @@ public class EventManage {
                     }
                     if (!event.isAsynchronous()) {
                         method.invoke(listener1, event);
-                    } else {
-                        CompletableFuture.allOf(CompletableFuture.runAsync(()->{
-                            try {
-                                method.invoke(listener1,event);
-                            } catch (IllegalAccessException | InvocationTargetException e) {
-                                throw new RuntimeException(e);
-                            }
-                        }));
+                        return;
                     }
+                    CompletableFuture.allOf(CompletableFuture.runAsync(()->{
+                        try {
+                            method.invoke(listener1,event);
+                        } catch (IllegalAccessException | InvocationTargetException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }));
                 } catch (InvocationTargetException | IllegalAccessException e) {
                     throw new RuntimeException(e);
                 }

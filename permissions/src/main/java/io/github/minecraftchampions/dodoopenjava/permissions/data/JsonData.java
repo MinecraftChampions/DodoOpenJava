@@ -6,6 +6,7 @@ import io.github.minecraftchampions.dodoopenjava.permissions.GroupManager;
 import io.github.minecraftchampions.dodoopenjava.permissions.User;
 import io.github.minecraftchampions.dodoopenjava.permissions.UserManager;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
+import io.github.minecraftchampions.dodoopenjava.utils.Equal;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -75,18 +76,19 @@ public class JsonData extends PermData {
         GroupManager.setGroups(new TreeMap<>());
         for (io.github.minecraftchampions.dodoopenjava.permissions.Group group : groups) {
             String name = group.getName();
-            if (groupJson.getJSONObject("Groups").getJSONObject(name).keySet().contains("extend")) {
-                //添加继承组
-                for (String s : BaseUtil.toStringList(groupJson.getJSONObject("Groups")
-                        .getJSONObject(name).getJSONArray("extend").toList())) {
-                    List<Group> list = new ArrayList<>(groups);
-                    list.remove(group);
-                    for (io.github.minecraftchampions.dodoopenjava.permissions.Group g : list) {
-                        if (Objects.equals(g.getName(), s)) {
-                            group.addInherits(g);
-                            break;
-                        }
-                    }
+            if (!groupJson.getJSONObject("Groups").getJSONObject(name).keySet().contains("extend")) {
+                //添加组
+                GroupManager.addGroup(group);
+                return;
+            }
+            for (String s : BaseUtil.toStringList(groupJson.getJSONObject("Groups")
+                    .getJSONObject(name).getJSONArray("extend").toList())) {
+                List<Group> list = new ArrayList<>(groups);
+                list.remove(group);
+                for (io.github.minecraftchampions.dodoopenjava.permissions.Group g : list) {
+                    Equal<String> equal = Equal.of(g.getName());
+                    equal.equal(s).ifEquals(t -> group.addInherits(g));
+                    if (equal.isEqual()) break;
                 }
             }
             //添加组

@@ -6,6 +6,7 @@ import io.github.minecraftchampions.dodoopenjava.permissions.GroupManager;
 import io.github.minecraftchampions.dodoopenjava.permissions.User;
 import io.github.minecraftchampions.dodoopenjava.permissions.UserManager;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
+import io.github.minecraftchampions.dodoopenjava.utils.Equal;
 import io.github.minecraftchampions.dodoopenjava.utils.XmlUtil;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -57,9 +58,7 @@ public class XmlData extends PermData {
             io.github.minecraftchampions.dodoopenjava.permissions.Group g = new Group(group);
             if (groupJson.getJSONObject("Groups").getJSONObject(g.getName()).get("perms") instanceof JSONArray array) {
                 List<String> perms = BaseUtil.toStringList(array.toList());
-                for (String perm : perms) {
-                    g.addPermission(perm);
-                }
+                perms.forEach(g::addPermission);
             } else {
                 g.addPermission(groupJson.getJSONObject("Groups").getJSONObject(g.getName()).getString("perms"));
             }
@@ -76,20 +75,22 @@ public class XmlData extends PermData {
         GroupManager.setGroups(new TreeMap<>());
         for (io.github.minecraftchampions.dodoopenjava.permissions.Group group : groups) {
             String name = group.getName();
-            if (groupJson.getJSONObject("Groups").getJSONObject(name).keySet().contains("extend")) {
-                if (groupJson.getJSONObject("Groups").getJSONObject(name).get("extend") instanceof JSONArray array) {
-                    for (String s : BaseUtil.toStringList(array.toList())) {
-                        List<Group> list = new ArrayList<>(groups);
-                        list.remove(group);
-                        for (io.github.minecraftchampions.dodoopenjava.permissions.Group g : list) {
-                            if (Objects.equals(g.getName(), s)) {
-                                group.addInherits(g);
-                                break;
-                            }
-                        }
-                    }
-                } else {
-                    group.addInherits(GroupManager.getGroup(groupJson.getJSONObject("Groups").getJSONObject(name).getString("extend")));
+            if (!groupJson.getJSONObject("Groups").getJSONObject(name).keySet().contains("extend")) {
+                GroupManager.addGroup(group);
+                return;
+            }
+            Object object = groupJson.getJSONObject("Groups").getJSONObject(name).get("extend");
+            if (!(object instanceof JSONArray array)) {
+                group.addInherits(GroupManager.getGroup(groupJson.getJSONObject("Groups").getJSONObject(name).getString("extend")));
+                return;
+            }
+            for (String s : BaseUtil.toStringList(array.toList())) {
+                List<Group> list = new ArrayList<>(groups);
+                list.remove(group);
+                for (io.github.minecraftchampions.dodoopenjava.permissions.Group g : list) {
+                    Equal<String> equal = Equal.of(g.getName());
+                    equal.equal(s).ifEquals(t -> group.addInherits(g));
+                    if (equal.isEqual()) break;
                 }
             }
             GroupManager.addGroup(group);
@@ -101,9 +102,7 @@ public class XmlData extends PermData {
                 io.github.minecraftchampions.dodoopenjava.permissions.User user = new User(jsonObject.getString("DodoId"));
                 Group group = GroupManager.getGroup(jsonObject.getString("Group"));
                 if (jsonObject.get("perms") instanceof JSONArray array) {
-                    for (String perm : BaseUtil.toStringList(array.toList())) {
-                        user.addPermission(perm);
-                    }
+                    BaseUtil.toStringList(array.toList()).forEach(user::addPermission);
                 } else {
                     user.addPermission(jsonObject.getString("perms"));
                 }
