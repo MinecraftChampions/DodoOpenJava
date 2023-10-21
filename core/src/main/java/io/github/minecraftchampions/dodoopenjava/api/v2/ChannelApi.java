@@ -34,10 +34,9 @@ public class ChannelApi {
      */
     public static JSONObject getChannelList(String authorization, String islandSourceId) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/channel/list";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 
     /**
@@ -63,10 +62,9 @@ public class ChannelApi {
      */
     public static JSONObject getChannelInfo(String authorization, String channelId) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/channel/info";
-        String param = "{" +
-                "    \"channelId\": \"" + channelId + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("channelId", channelId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 
     /**
@@ -96,12 +94,11 @@ public class ChannelApi {
      */
     public static JSONObject addChannel(String authorization, String islandSourceId, String channelName, int channelType) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/channel/add";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
-                "    \"channelName\": \"" + channelName + "\"," +
-                "    \"channelType\": " + channelType + "" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("channelName", channelName)
+                .put("channelType", channelType);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 
     /**
@@ -131,12 +128,11 @@ public class ChannelApi {
      */
     public static JSONObject editChannel(String authorization, String islandSourceId, String channelName, String channelId) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/channel/edit";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
-                "    \"channelId\": \"" + channelId + "\"," +
-                "    \"channelName\": \"" + channelName + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("channelName", channelName)
+                .put("channelId", channelId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 
     /**
@@ -164,10 +160,9 @@ public class ChannelApi {
      */
     public static JSONObject deleteChannel(String authorization, String islandSourceId, String channelId) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/channel/remove";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
-                "    \"channelId\": \"" + channelId + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("channelId", channelId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 }

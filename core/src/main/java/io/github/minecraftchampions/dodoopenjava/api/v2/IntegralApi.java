@@ -35,11 +35,10 @@ public class IntegralApi {
      */
     public static JSONObject getIntegralInfo(String Authorization, String islandSourceId, String dodoSourceId) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/integral/info";
-        String param = "{\n" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\",\n" +
-                "    \"dodoSourceId\": \"" + dodoSourceId + "\"\n" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("dodoSourceId", dodoSourceId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, Authorization));
     }
 
     /**
@@ -71,12 +70,11 @@ public class IntegralApi {
      */
     public static JSONObject setIntegralEdit(String Authorization, String islandSourceId, String dodoSourceId, int operateType, long integral) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/integral/edit";
-        String param = "{\n" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\",\n" +
-                "    \"dodoSourceId\": \"" + dodoSourceId + "\",\n" +
-                "    \"operateType\": " + operateType + ",\n" +
-                "    \"integral\": " + integral +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, Authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("dodoSourceId", dodoSourceId)
+                .put("operateType", operateType)
+                .put("integral", integral);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, Authorization));
     }
 }

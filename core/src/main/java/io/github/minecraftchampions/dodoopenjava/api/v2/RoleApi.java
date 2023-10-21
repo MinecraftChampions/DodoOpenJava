@@ -2,6 +2,7 @@ package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -33,10 +34,9 @@ public class RoleApi {
      */
     public static JSONObject getRoleList(String authorization, String islandSourceId) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/role/list";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 
     /**
@@ -66,12 +66,11 @@ public class RoleApi {
      */
     public static JSONObject addRoleMember(String authorization, String islandSourceId, String dodoSourceId, String roleId) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/role/member/add";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
-                "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
-                "    \"roleId\": \"" + roleId + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("dodoSourceId", dodoSourceId)
+                .put("roleId", roleId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 
     /**
@@ -101,12 +100,11 @@ public class RoleApi {
      */
     public static JSONObject removeRoleMember(String authorization, String islandSourceId, String dodoSourceId, String roleId) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/role/member/remove";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
-                "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
-                "    \"roleId\": \"" + roleId + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("dodoSourceId", dodoSourceId)
+                .put("roleId", roleId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 
     /**
@@ -142,23 +140,7 @@ public class RoleApi {
         String url = "https://botopen.imdodo.com/api/v2/role/add";
         JSONObject param = new JSONObject("{" +
                 "  \"islandSourceId\": \"" + islandSourceId + "\"}");
-        if (roleName != null) {
-            param.put("roleName", roleName);
-        }
-
-        if (roleColor != null) {
-            param.put("roleColor", roleColor);
-        }
-
-        if (position != 1) {
-            param.put("position", position);
-        }
-
-        if (roleColor != null) {
-            param.put("permission", permission);
-        }
-
-        return new JSONObject(NetUtil.sendRequest(param.toString(), url, authorization));
+        return senResult(authorization, roleName, roleColor, position, permission, url, param);
     }
 
     /**
@@ -197,6 +179,11 @@ public class RoleApi {
         JSONObject param = new JSONObject("{" +
                 "  \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "  \"roleId\": \"" + roleId + "\"}");
+        return senResult(authorization, roleName, roleColor, position, permission, url, param);
+    }
+
+    @NotNull
+    private static JSONObject senResult(String authorization, String roleName, String roleColor, int position, String permission, String url, JSONObject param) throws IOException {
         if (roleName != null) {
             param.put("roleName", roleName);
         }
@@ -240,10 +227,9 @@ public class RoleApi {
      */
     public static JSONObject deleteRole(String authorization, String islandSourceId, String roleId) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/role/remove";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
-                "    \"roleId\": \"" + roleId + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("roleId", roleId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 }

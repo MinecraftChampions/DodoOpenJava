@@ -35,11 +35,10 @@ public class ChannelVoiceApi {
      */
     public static JSONObject getChannelVoiceMemberStatus(String islandSourceId, String dodoSourceId, String authorization) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/channel/voice/member/status";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
-                "    \"dodoSourceId\": \"" + dodoSourceId + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("dodoSourceId", dodoSourceId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 
 
@@ -70,12 +69,11 @@ public class ChannelVoiceApi {
      */
     public static JSONObject moveChannelVoiceMember(String islandSourceId, String dodoSourceId, String channelId, String authorization) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/channel/voice/member/move";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
-                "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
-                "    \"channelId\": \"" + channelId + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("dodoSourceId", dodoSourceId)
+                .put("channelId", channelId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 
     /**
@@ -105,11 +103,10 @@ public class ChannelVoiceApi {
      */
     public static JSONObject editChannelVoiceMember(int operateType, String dodoSourceId, String channelId, String authorization) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/channel/voice/member/edit";
-        String param = "{" +
-                "    \"operateType\": " + operateType + "," +
-                "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
-                "    \"channelId\": \"" + channelId + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("operateType", operateType)
+                .put("dodoSourceId", dodoSourceId)
+                .put("channelId", channelId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 }

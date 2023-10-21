@@ -32,8 +32,8 @@ public class BotApi {
      */
     public static JSONObject getBotInfo(String authorization) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/bot/info";
-        String param = "{}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 
     /**
@@ -59,10 +59,9 @@ public class BotApi {
      */
     public static JSONObject setBotIslandLeave(String authorization, String islandSourceId) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/bot/island/leave";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 
     /**
@@ -76,11 +75,10 @@ public class BotApi {
      */
     public static JSONObject getBotInviteList(String authorization, int pageSize, long maxId) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/bot/invite/list";
-        String param = "{" +
-                "    \"pageSize\":" + pageSize + "," +
-                "    \"maxId\":" + maxId + "" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("pageSize", pageSize)
+                .put("maxId", maxId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 
     /**
@@ -93,10 +91,9 @@ public class BotApi {
      */
     public static JSONObject addBotInvite(String authorization, String dodoSourceId) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/bot/invite/add";
-        String param = "{" +
-                "    \"dodoSourceId\": \"" + dodoSourceId + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("dodoSourceId", dodoSourceId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 
     /**
@@ -109,9 +106,8 @@ public class BotApi {
      */
     public static JSONObject removeBotInvite(String authorization, String dodoSourceId) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/bot/invite/remove";
-        String param = "{" +
-                "    \"dodoSourceId\": \"" + dodoSourceId + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("dodoSourceId", dodoSourceId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 }

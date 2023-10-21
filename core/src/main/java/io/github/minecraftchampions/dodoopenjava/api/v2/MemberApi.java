@@ -37,12 +37,11 @@ public class MemberApi {
      */
     public static JSONObject getMemberList(String authorization, String islandSourceId, int pageSize, long maxId) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/member/list";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
-                "    \"pageSize\": \"" + pageSize + "\"," +
-                "    \"maxId\": \"" + maxId + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("pageSize", pageSize)
+                .put("maxId", maxId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 
     /**
@@ -70,11 +69,10 @@ public class MemberApi {
      */
     public static JSONObject getMemberInfo(String authorization, String islandSourceId, String dodoSourceId) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/member/info";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
-                "    \"dodoSourceId\": \"" + dodoSourceId + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("dodoSourceId", dodoSourceId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 
     /**
@@ -102,11 +100,10 @@ public class MemberApi {
      */
     public static JSONObject getMemberRoleList(String authorization, String islandSourceId, String dodoSourceId) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/member/role/list";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
-                "    \"dodoSourceId\": \"" + dodoSourceId + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("dodoSourceId", dodoSourceId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 
     /**
@@ -134,11 +131,10 @@ public class MemberApi {
      */
     public static JSONObject getMemberInvitationInfo(String authorization, String islandSourceId, String dodoSourceId) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/member/role/list";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
-                "    \"dodoSourceId\": \"" + dodoSourceId + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("dodoSourceId", dodoSourceId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 
     /**
@@ -168,12 +164,11 @@ public class MemberApi {
      */
     public static JSONObject editMemberNickName(String authorization, String islandSourceId, String dodoSourceId, String nickName) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/member/nick/set";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
-                "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
-                "    \"nickName\": \"" + nickName + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("nickName", nickName)
+                .put("dodoSourceId", dodoSourceId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 
     /**
@@ -203,12 +198,11 @@ public class MemberApi {
      */
     public static JSONObject addMemberMute(String authorization, String islandSourceId, String dodoSourceId, int duration) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/member/ban/set";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
-                "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
-                "    \"duration\": " + duration + "" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("dodoSourceId", dodoSourceId)
+                .put("duration", duration);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 
     /**
@@ -223,8 +217,8 @@ public class MemberApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject addMemberReasonrMute(String clientId, String token, String islandSourceId, String dodoSourceId, int duration, String reason) throws IOException {
-        return addMemberReasonrMute(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, duration, reason);
+    public static JSONObject addMemberReasonMute(String clientId, String token, String islandSourceId, String dodoSourceId, int duration, String reason) throws IOException {
+        return addMemberReasonMute(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, duration, reason);
     }
 
     /**
@@ -238,15 +232,14 @@ public class MemberApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject addMemberReasonrMute(String authorization, String islandSourceId, String dodoSourceId, int duration, String reason) throws IOException {
+    public static JSONObject addMemberReasonMute(String authorization, String islandSourceId, String dodoSourceId, int duration, String reason) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/member/ban/set";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
-                "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
-                "    \"duration\": " + duration + "," +
-                "    \"reason\": \"" + reason + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("dodoSourceId", dodoSourceId)
+                .put("reason", reason)
+                .put("duration", duration);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 
     /**
@@ -274,11 +267,10 @@ public class MemberApi {
      */
     public static JSONObject removeMemberMute(String authorization, String islandSourceId, String dodoSourceId) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/member/mute/remove";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
-                "    \"dodoSourceId\": \"" + dodoSourceId + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("dodoSourceId", dodoSourceId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 
     /**
@@ -306,11 +298,10 @@ public class MemberApi {
      */
     public static JSONObject addMemberBan(String authorization, String islandSourceId, String dodoSourceId) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/member/ban/add";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
-                "    \"dodoSourceId\": \"" + dodoSourceId + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("dodoSourceId", dodoSourceId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 
     /**
@@ -340,12 +331,12 @@ public class MemberApi {
      */
     public static JSONObject addMemberReasonBan(String authorization, String islandSourceId, String dodoSourceId, String reason) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/member/ban/add";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
-                "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
-                "    \"reason\": \"" + reason + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("dodoSourceId", dodoSourceId)
+                .put("reason", reason);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+
     }
 
     /**
@@ -375,12 +366,11 @@ public class MemberApi {
      */
     public static JSONObject addMemberChannelBan(String authorization, String islandSourceId, String dodoSourceId, String noticeChannelId) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/member/ban/add";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
-                "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
-                "    \"noticeChannelId\": \"" + noticeChannelId + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("dodoSourceId", dodoSourceId)
+                .put("noticeChannelId", noticeChannelId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 
     /**
@@ -412,13 +402,12 @@ public class MemberApi {
      */
     public static JSONObject addMemberBan(String authorization, String islandSourceId, String dodoSourceId, String noticeChannelId, String reason) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/member/ban/add";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
-                "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
-                "    \"noticeChannelId\": \"" + noticeChannelId + "\"," +
-                "    \"reason\": \"" + reason + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("dodoSourceId", dodoSourceId)
+                .put("reason", reason)
+                .put("noticeChannelId", noticeChannelId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 
     /**
@@ -446,10 +435,9 @@ public class MemberApi {
      */
     public static JSONObject removeMemberBan(String authorization, String islandSourceId, String dodoSourceId) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/member/ban/remove";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
-                "    \"dodoSourceId\": \"" + dodoSourceId + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("dodoSourceId", dodoSourceId);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 }

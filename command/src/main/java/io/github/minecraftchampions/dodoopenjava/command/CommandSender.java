@@ -145,7 +145,7 @@ public class CommandSender {
      * @throws IOException 失败后抛出
      */
     public void muteSender(int Time, String reason) throws IOException {
-        MemberApi.addMemberReasonrMute(Command.Authorization, IslandSourceId, SenderDodoSourceId, Time, reason);
+        MemberApi.addMemberReasonMute(Command.Authorization, IslandSourceId, SenderDodoSourceId, Time, reason);
     }
 
     /**

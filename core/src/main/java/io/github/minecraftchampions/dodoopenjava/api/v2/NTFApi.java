@@ -11,8 +11,6 @@ import java.io.IOException;
  */
 
 public class NTFApi {
-    public static String param, url;
-
     /**
      * 获取成员数字藏品判断
      *
@@ -40,12 +38,11 @@ public class NTFApi {
      */
     public static JSONObject getMemberNftStatus(String authorization, String islandSourceId, String dodoSourceId, String platform) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/member/nft/status";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
-                "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
-                "    \"platform\": \"" + platform + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("dodoSourceId", dodoSourceId)
+                .put("platform", platform);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 
     /**
@@ -73,13 +70,12 @@ public class NTFApi {
      */
     public static JSONObject getMemberNftStatus(String authorization, String islandSourceId, String dodoSourceId, String platform, String issuer, String series) throws IOException {
         String url = "https://botopen.imdodo.com/api/v2/member/nft/status";
-        String param = "{" +
-                "    \"islandSourceId\": \"" + islandSourceId + "\"," +
-                "    \"dodoSourceId\": \"" + dodoSourceId + "\"," +
-                "    \"platform\": \"" + platform + "\"," +
-                "    \"issuer\": \"" + issuer + "\"," +
-                "    \"series\": \"" + series + "\"" +
-                "}";
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("dodoSourceId", dodoSourceId)
+                .put("issuer", issuer)
+                .put("series", series)
+                .put("platform", platform);
+        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
 }
