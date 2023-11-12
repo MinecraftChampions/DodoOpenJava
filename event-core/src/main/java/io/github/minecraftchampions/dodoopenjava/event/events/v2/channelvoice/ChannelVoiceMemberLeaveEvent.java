@@ -1,15 +1,14 @@
-package io.github.minecraftchampions.dodoopenjava.event.events.v2;
+package io.github.minecraftchampions.dodoopenjava.event.events.v2.channelvoice;
 
-import io.github.minecraftchampions.dodoopenjava.event.Event;
 import io.github.minecraftchampions.dodoopenjava.event.HandlerList;
 import org.json.JSONObject;
 
 import javax.annotation.Nonnull;
 
 /**
- * 帖子评论回复事件
+ * 成员退出语音频道事件
  */
-public class ChannelArticleCommentEvent extends Event {
+public class ChannelVoiceMemberLeaveEvent extends ChannelVoiceEvent {
     private static final HandlerList handlers = new HandlerList();
 
     @Override
@@ -32,6 +31,8 @@ public class ChannelArticleCommentEvent extends Event {
 
     public String channelId;
 
+    public String modifyTime;
+
     public JSONObject jsonObject;
 
     public String jsonString;
@@ -52,17 +53,8 @@ public class ChannelArticleCommentEvent extends Event {
 
     public String memberJoinTime;
 
-    public String articleId;
-
-    public String content;
-
-    public String commentId;
-
-    public ChannelArticleCommentEvent(JSONObject json) {
+    public ChannelVoiceMemberLeaveEvent(JSONObject json) {
         super(true);
-        this.commentId = json.getJSONObject("data").getJSONObject("eventBody").getString("commentId");
-        this.articleId = json.getJSONObject("data").getJSONObject("eventBody").getString("articleId");
-        this.content = json.getJSONObject("data").getJSONObject("eventBody").getString("content");
         this.jsonObject = json;
         this.channelId = json.getJSONObject("data").getJSONObject("eventBody").getString("channelId");
         this.jsonString = json.toString();
@@ -78,6 +70,7 @@ public class ChannelArticleCommentEvent extends Event {
         this.userAvatarUrl = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("avatarUrl");
         this.userSex = IntSexToSex(json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex"));
         this.userIntSex = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex");
+        this.modifyTime = json.getJSONObject("data").getJSONObject("eventBody").getString("modifyTime");
     }
 
     /**
@@ -215,6 +208,15 @@ public class ChannelArticleCommentEvent extends Event {
     }
 
     /**
+     * 获取成员加入时间
+     *
+     * @return 加入时间
+     */
+    public String getModifyTime() {
+        return this.modifyTime;
+    }
+
+    /**
      * 获取卡片消息JSON字符串
      */
     public String getJsonString() {
@@ -226,32 +228,5 @@ public class ChannelArticleCommentEvent extends Event {
      */
     public JSONObject getJsonObject() {
         return this.jsonObject;
-    }
-
-    /**
-     * 获取内容
-     *
-     * @return 内容
-     */
-    public String getContent() {
-        return this.content;
-    }
-
-    /**
-     * 获取帖子ID
-     *
-     * @return ID
-     */
-    public String getArticleId() {
-        return this.articleId;
-    }
-
-    /**
-     * 获取评论iD
-     *
-     * @return ID
-     */
-    public String getCommentId() {
-        return this.commentId;
     }
 }

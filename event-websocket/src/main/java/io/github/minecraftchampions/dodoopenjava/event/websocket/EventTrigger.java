@@ -1,9 +1,17 @@
 package io.github.minecraftchampions.dodoopenjava.event.websocket;
 
 import io.github.minecraftchampions.dodoopenjava.event.EventManage;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.GiftSendEvent;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.GoodsPurchaseEvent;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.IntegralChangeEvent;
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelarticle.ChannelArticleCommentEvent;
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelarticle.ChannelArticlePublishEvent;
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage.*;
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelvoice.ChannelVoiceMemberJoinEvent;
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelvoice.ChannelVoiceMemberLeaveEvent;
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.gift.GiftSendEvent;
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.integral.IntegralChangeEvent;
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.member.MemberJoinEvent;
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.member.MemberLeaveEvent;
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.personal.PersonalMessageEvent;
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.shop.GoodsPurchaseEvent;
 import io.github.minecraftchampions.dodoopenjava.utils.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
@@ -121,84 +129,84 @@ public class EventTrigger {
             switch (jsontext.getJSONObject("data").getString("eventType")) {
                 case "1001" -> {
                     try {
-                        EventManage.fireEvent(new io.github.minecraftchampions.dodoopenjava.event.events.v2.PersonalMessageEvent(jsontext));
+                        EventManage.fireEvent(new PersonalMessageEvent(jsontext));
                     } catch (EventException e) {
                         log.error("1001",e);
                     }
                 }
                 case "2001" -> {
                     try {
-                        EventManage.fireEvent(new io.github.minecraftchampions.dodoopenjava.event.events.v2.MessageEvent(jsontext));
+                        EventManage.fireEvent(new MessageEvent(jsontext));
                     } catch (EventException e) {
                         log.error("2001",e);
                     }
                 }
                 case "3001" -> {
                     try {
-                        EventManage.fireEvent(new io.github.minecraftchampions.dodoopenjava.event.events.v2.MessageReactionEvent(jsontext));
+                        EventManage.fireEvent(new MessageReactionEvent(jsontext));
                     } catch (EventException e) {
                         log.error("3001",e);
                     }
                 }
                 case "3002" -> {
                     try {
-                        EventManage.fireEvent(new io.github.minecraftchampions.dodoopenjava.event.events.v2.CardMessageButtonClickEvent(jsontext));
+                        EventManage.fireEvent(new CardMessageButtonClickEvent(jsontext));
                     } catch (EventException e) {
                         log.error("3002",e);
                     }
                 }
                 case "3003" -> {
                     try {
-                        EventManage.fireEvent(new io.github.minecraftchampions.dodoopenjava.event.events.v2.CardMessageFormSubmitEvent(jsontext));
+                        EventManage.fireEvent(new CardMessageFormSubmitEvent(jsontext));
                     } catch (EventException e) {
                         log.error("3003",e);
                     }
                 }
                 case "3004" -> {
                     try {
-                        EventManage.fireEvent(new io.github.minecraftchampions.dodoopenjava.event.events.v2.CardMessageListSubmitEvent(jsontext));
+                        EventManage.fireEvent(new CardMessageListSubmitEvent(jsontext));
                     } catch (EventException e) {
                         log.error("3004",e);
                     }
                 }
                 case "4001" -> {
                     try {
-                        EventManage.fireEvent(new io.github.minecraftchampions.dodoopenjava.event.events.v2.MemberJoinEvent(jsontext));
+                        EventManage.fireEvent(new MemberJoinEvent(jsontext));
                     } catch (EventException e) {
                         log.error("4001",e);
                     }
                 }
                 case "4002" -> {
                     try {
-                        EventManage.fireEvent(new io.github.minecraftchampions.dodoopenjava.event.events.v2.MemberLeaveEvent(jsontext));
+                        EventManage.fireEvent(new MemberLeaveEvent(jsontext));
                     } catch (EventException e) {
                         log.error("4002",e);
                     }
                 }
                 case "5001" -> {
                     try {
-                        EventManage.fireEvent(new io.github.minecraftchampions.dodoopenjava.event.events.v2.ChannelVoiceMemberJoinEvent(jsontext));
+                        EventManage.fireEvent(new ChannelVoiceMemberJoinEvent(jsontext));
                     } catch (EventException e) {
                         log.error("5001",e);
                     }
                 }
                 case "5002" -> {
                     try {
-                        EventManage.fireEvent(new io.github.minecraftchampions.dodoopenjava.event.events.v2.ChannelVoiceMemberLeaveEvent(jsontext));
+                        EventManage.fireEvent(new ChannelVoiceMemberLeaveEvent(jsontext));
                     } catch (EventException e) {
                         log.error("5002",e);
                     }
                 }
                 case "6001" -> {
                     try {
-                        EventManage.fireEvent(new io.github.minecraftchampions.dodoopenjava.event.events.v2.ChannelArticleEvent(jsontext));
+                        EventManage.fireEvent(new ChannelArticlePublishEvent(jsontext));
                     } catch (EventException e) {
                         log.error("6001",e);
                     }
                 }
                 case "6002" -> {
                     try {
-                        EventManage.fireEvent(new io.github.minecraftchampions.dodoopenjava.event.events.v2.ChannelArticleCommentEvent(jsontext));
+                        EventManage.fireEvent(new ChannelArticleCommentEvent(jsontext));
                     } catch (EventException e) {
                         log.error("6002",e);
                     }

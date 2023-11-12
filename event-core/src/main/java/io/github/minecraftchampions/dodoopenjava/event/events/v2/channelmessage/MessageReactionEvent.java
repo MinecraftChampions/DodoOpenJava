@@ -1,4 +1,4 @@
-package io.github.minecraftchampions.dodoopenjava.event.events.v2;
+package io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage;
 
 import io.github.minecraftchampions.dodoopenjava.event.Event;
 import io.github.minecraftchampions.dodoopenjava.event.HandlerList;
@@ -7,9 +7,9 @@ import org.json.JSONObject;
 import javax.annotation.Nonnull;
 
 /**
- * 卡片消息按钮事件
+ * 表情反应事件
  */
-public class CardMessageButtonClickEvent extends Event {
+public class MessageReactionEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
 
     @Override
@@ -34,6 +34,8 @@ public class CardMessageButtonClickEvent extends Event {
 
     public String messageId;
 
+    public String reactionType;
+
     public JSONObject personal;
 
     public String senderNickName;
@@ -50,15 +52,15 @@ public class CardMessageButtonClickEvent extends Event {
 
     public String memberJoinTime;
 
+    public JSONObject reactionEmoji;
+
+    public String reactionEmojiId;
+
     public JSONObject jsonObject;
 
     public String jsonString;
 
-    public String interactCustomId;
-
-    public String value;
-
-    public CardMessageButtonClickEvent(JSONObject json) {
+    public MessageReactionEvent(JSONObject json) {
         super(true);
         this.jsonObject = json;
         this.jsonString = json.toString();
@@ -76,7 +78,9 @@ public class CardMessageButtonClickEvent extends Event {
         this.member = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member");
         this.memberJoinTime = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("joinTime");
         this.memberNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("nickName");
-        this.interactCustomId = json.getJSONObject("data").getJSONObject("eventBody").getString("interactCustomId");
+        this.reactionEmoji = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reactionEmoji");
+        this.reactionEmojiId = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reactionEmoji").getString("id");
+        this.reactionType = IntReactionTypeToReactionType(json.getJSONObject("data").getJSONObject("eventBody").getInt("reactionType"));
     }
 
     /**
@@ -99,7 +103,7 @@ public class CardMessageButtonClickEvent extends Event {
      * @param type 消息类型
      * @return 消息类型
      */
-    public String IntMessageTypeToMessageType(Integer type) {
+    public String IntReactionTypeToReactionType(Integer type) {
         return switch (type) {
             case 1 -> "文字消息";
             case 2 -> "图片消息";
@@ -127,14 +131,6 @@ public class CardMessageButtonClickEvent extends Event {
      */
     public String getEventId() {
         return this.eventId;
-    }
-
-    public String getJsonString() {
-        return jsonString;
-    }
-
-    public JSONObject getJsonObject() {
-        return jsonObject;
     }
 
     /**
@@ -248,20 +244,32 @@ public class CardMessageButtonClickEvent extends Event {
     }
 
     /**
-     * 获取返回的值
+     * 获取表情 Object
      *
-     * @return 值
+     * @return 表情的 JSONObject
      */
-    public String getValue() {
-        return this.value;
+    public JSONObject getReactionEmoji() {
+        return this.reactionEmoji;
     }
 
     /**
-     * 获取自定义ID
+     * 获取表情的EmojiId
      *
      * @return ID
      */
-    public String getInteractCustomId() {
-        return this.interactCustomId;
+    public String getReactionEmojiId() {
+        return this.reactionEmojiId;
+    }
+
+    public String getReactionType() {
+        return reactionType;
+    }
+
+    public String getJsonString() {
+        return jsonString;
+    }
+
+    public JSONObject getJsonObject() {
+        return jsonObject;
     }
 }

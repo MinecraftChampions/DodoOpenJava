@@ -1,15 +1,14 @@
-package io.github.minecraftchampions.dodoopenjava.event.events.v2;
+package io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage;
 
-import io.github.minecraftchampions.dodoopenjava.event.Event;
 import io.github.minecraftchampions.dodoopenjava.event.HandlerList;
 import org.json.JSONObject;
 
 import javax.annotation.Nonnull;
 
 /**
- * 消息事件
+ * 卡片消息按钮事件
  */
-public class MessageEvent extends Event {
+public class CardMessageButtonClickEvent extends ChannelMessageEvent {
     private static final HandlerList handlers = new HandlerList();
 
     @Override
@@ -34,10 +33,6 @@ public class MessageEvent extends Event {
 
     public String messageId;
 
-    public Integer messageIntType;
-
-    public String messageType;
-
     public JSONObject personal;
 
     public String senderNickName;
@@ -54,21 +49,15 @@ public class MessageEvent extends Event {
 
     public String memberJoinTime;
 
-    public JSONObject reference;
-
-    public String referenceMessageId;
-
-    public String referenceDodoSourceId;
-
-    public String referenceNickName;
-
-    public JSONObject messageBody;
-
     public JSONObject jsonObject;
 
     public String jsonString;
 
-    public MessageEvent(JSONObject json) {
+    public String interactCustomId;
+
+    public String value;
+
+    public CardMessageButtonClickEvent(JSONObject json) {
         super(true);
         this.jsonObject = json;
         this.jsonString = json.toString();
@@ -86,15 +75,7 @@ public class MessageEvent extends Event {
         this.member = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member");
         this.memberJoinTime = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("joinTime");
         this.memberNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("nickName");
-        if (json.getJSONObject("data").getJSONObject("eventBody").has("reference")) {
-            this.referenceMessageId = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reference").getString("messageId");
-            this.referenceDodoSourceId = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reference").getString("dodoSourceId");
-            this.reference = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reference");
-            this.referenceNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reference").getString("nickName");
-        }
-        this.messageType = IntMessageTypeToMessageType(json.getJSONObject("data").getJSONObject("eventBody").getInt("messageType"));
-        this.messageIntType = json.getJSONObject("data").getJSONObject("eventBody").getInt("messageType");
-        this.messageBody = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("messageBody");
+        this.interactCustomId = json.getJSONObject("data").getJSONObject("eventBody").getString("interactCustomId");
     }
 
     /**
@@ -147,6 +128,14 @@ public class MessageEvent extends Event {
         return this.eventId;
     }
 
+    public String getJsonString() {
+        return jsonString;
+    }
+
+    public JSONObject getJsonObject() {
+        return jsonObject;
+    }
+
     /**
      * 获取群号
      *
@@ -182,25 +171,6 @@ public class MessageEvent extends Event {
     public String getMessageId() {
         return this.messageId;
     }
-
-    /**
-     * 获取消息类别（Int类型）
-     *
-     * @return 消息类别
-     */
-    public Integer getMessageIntType() {
-        return this.messageIntType;
-    }
-
-    /**
-     * 获取消息类别（String类型）
-     *
-     * @return 消息类别
-     */
-    public String getMessageType() {
-        return this.messageType;
-    }
-
 
     /**
      * 获取成员Object
@@ -277,62 +247,20 @@ public class MessageEvent extends Event {
     }
 
     /**
-     * 获取回复 Object，没有就null
+     * 获取返回的值
      *
-     * @return 回复的 JSONObject
+     * @return 值
      */
-    public JSONObject getReference() {
-        return this.reference;
+    public String getValue() {
+        return this.value;
     }
 
     /**
-     * 获取回复的消息ID，没有就null
+     * 获取自定义ID
      *
-     * @return 消息ID
+     * @return ID
      */
-    public String getReferenceMessageId() {
-        return this.referenceMessageId;
-    }
-
-    /**
-     * 获取回复的DodoSourceId，没有就null
-     *
-     * @return DodoSourceId
-     */
-    public String getReferenceDodoSourceId() {
-        return this.referenceDodoSourceId;
-    }
-
-    /**
-     * 获取回复的消息名字，没有就null
-     *
-     * @return 名字
-     */
-    public String getReferenceNickName() {
-        return this.referenceNickName;
-    }
-
-
-    /**
-     * 获取消息 Object
-     *
-     * @return 对象
-     */
-    public JSONObject getMessageBody() {
-        return this.messageBody;
-    }
-
-    /**
-     * 获取卡片消息JSON字符串
-     */
-    public String getJsonString() {
-        return this.jsonString;
-    }
-
-    /**
-     * 获取卡片消息JSON对象
-     */
-    public JSONObject getJsonObject() {
-        return this.jsonObject;
+    public String getInteractCustomId() {
+        return this.interactCustomId;
     }
 }

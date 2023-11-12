@@ -1,4 +1,4 @@
-package io.github.minecraftchampions.dodoopenjava.event.events.v2;
+package io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage;
 
 import io.github.minecraftchampions.dodoopenjava.event.Event;
 import io.github.minecraftchampions.dodoopenjava.event.HandlerList;
@@ -7,9 +7,9 @@ import org.json.JSONObject;
 import javax.annotation.Nonnull;
 
 /**
- * 表情反应事件
+ * 消息事件
  */
-public class MessageReactionEvent extends Event {
+public class MessageEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
 
     @Override
@@ -34,7 +34,9 @@ public class MessageReactionEvent extends Event {
 
     public String messageId;
 
-    public String reactionType;
+    public Integer messageIntType;
+
+    public String messageType;
 
     public JSONObject personal;
 
@@ -52,15 +54,21 @@ public class MessageReactionEvent extends Event {
 
     public String memberJoinTime;
 
-    public JSONObject reactionEmoji;
+    public JSONObject reference;
 
-    public String reactionEmojiId;
+    public String referenceMessageId;
+
+    public String referenceDodoSourceId;
+
+    public String referenceNickName;
+
+    public JSONObject messageBody;
 
     public JSONObject jsonObject;
 
     public String jsonString;
 
-    public MessageReactionEvent(JSONObject json) {
+    public MessageEvent(JSONObject json) {
         super(true);
         this.jsonObject = json;
         this.jsonString = json.toString();
@@ -78,9 +86,15 @@ public class MessageReactionEvent extends Event {
         this.member = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member");
         this.memberJoinTime = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("joinTime");
         this.memberNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("nickName");
-        this.reactionEmoji = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reactionEmoji");
-        this.reactionEmojiId = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reactionEmoji").getString("id");
-        this.reactionType = IntReactionTypeToReactionType(json.getJSONObject("data").getJSONObject("eventBody").getInt("reactionType"));
+        if (json.getJSONObject("data").getJSONObject("eventBody").has("reference")) {
+            this.referenceMessageId = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reference").getString("messageId");
+            this.referenceDodoSourceId = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reference").getString("dodoSourceId");
+            this.reference = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reference");
+            this.referenceNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reference").getString("nickName");
+        }
+        this.messageType = IntMessageTypeToMessageType(json.getJSONObject("data").getJSONObject("eventBody").getInt("messageType"));
+        this.messageIntType = json.getJSONObject("data").getJSONObject("eventBody").getInt("messageType");
+        this.messageBody = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("messageBody");
     }
 
     /**
@@ -103,7 +117,7 @@ public class MessageReactionEvent extends Event {
      * @param type 消息类型
      * @return 消息类型
      */
-    public String IntReactionTypeToReactionType(Integer type) {
+    public String IntMessageTypeToMessageType(Integer type) {
         return switch (type) {
             case 1 -> "文字消息";
             case 2 -> "图片消息";
@@ -168,6 +182,25 @@ public class MessageReactionEvent extends Event {
     public String getMessageId() {
         return this.messageId;
     }
+
+    /**
+     * 获取消息类别（Int类型）
+     *
+     * @return 消息类别
+     */
+    public Integer getMessageIntType() {
+        return this.messageIntType;
+    }
+
+    /**
+     * 获取消息类别（String类型）
+     *
+     * @return 消息类别
+     */
+    public String getMessageType() {
+        return this.messageType;
+    }
+
 
     /**
      * 获取成员Object
@@ -244,32 +277,62 @@ public class MessageReactionEvent extends Event {
     }
 
     /**
-     * 获取表情 Object
+     * 获取回复 Object，没有就null
      *
-     * @return 表情的 JSONObject
+     * @return 回复的 JSONObject
      */
-    public JSONObject getReactionEmoji() {
-        return this.reactionEmoji;
+    public JSONObject getReference() {
+        return this.reference;
     }
 
     /**
-     * 获取表情的EmojiId
+     * 获取回复的消息ID，没有就null
      *
-     * @return ID
+     * @return 消息ID
      */
-    public String getReactionEmojiId() {
-        return this.reactionEmojiId;
+    public String getReferenceMessageId() {
+        return this.referenceMessageId;
     }
 
-    public String getReactionType() {
-        return reactionType;
+    /**
+     * 获取回复的DodoSourceId，没有就null
+     *
+     * @return DodoSourceId
+     */
+    public String getReferenceDodoSourceId() {
+        return this.referenceDodoSourceId;
     }
 
+    /**
+     * 获取回复的消息名字，没有就null
+     *
+     * @return 名字
+     */
+    public String getReferenceNickName() {
+        return this.referenceNickName;
+    }
+
+
+    /**
+     * 获取消息 Object
+     *
+     * @return 对象
+     */
+    public JSONObject getMessageBody() {
+        return this.messageBody;
+    }
+
+    /**
+     * 获取卡片消息JSON字符串
+     */
     public String getJsonString() {
-        return jsonString;
+        return this.jsonString;
     }
 
+    /**
+     * 获取卡片消息JSON对象
+     */
     public JSONObject getJsonObject() {
-        return jsonObject;
+        return this.jsonObject;
     }
 }

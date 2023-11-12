@@ -1,15 +1,14 @@
-package io.github.minecraftchampions.dodoopenjava.event.events.v2;
+package io.github.minecraftchampions.dodoopenjava.event.events.v2.integral;
 
-import io.github.minecraftchampions.dodoopenjava.event.Event;
 import io.github.minecraftchampions.dodoopenjava.event.HandlerList;
 import org.json.JSONObject;
 
 import javax.annotation.Nonnull;
 
 /**
- * 成员加入事件
+ * 积分变更事件
  */
-public class MemberJoinEvent extends Event {
+public class IntegralChangeEvent extends IntegralEvent {
     private static final HandlerList handlers = new HandlerList();
 
     @Override
@@ -30,13 +29,15 @@ public class MemberJoinEvent extends Event {
 
     public String dodoSourceId;
 
-    public String modifyTime;
-
     public JSONObject jsonObject;
 
     public String jsonString;
 
-    public MemberJoinEvent(JSONObject json) {
+    public int operateType;
+
+    public long integral;
+
+    public IntegralChangeEvent(JSONObject json) {
         super(true);
         this.jsonObject = json;
         this.jsonString = json.toString();
@@ -44,7 +45,28 @@ public class MemberJoinEvent extends Event {
         this.eventId = json.getJSONObject("data").getString("eventId");
         this.islandSourceId = json.getJSONObject("data").getJSONObject("eventBody").getString("islandSourceId");
         this.dodoSourceId = json.getJSONObject("data").getJSONObject("eventBody").getString("dodoSourceId");
-        this.modifyTime = json.getJSONObject("data").getJSONObject("eventBody").getString("modifyTime");
+        this.integral = json.getJSONObject("data").getJSONObject("eventBody").getLong("integral");
+        this.operateType = json.getJSONObject("data").getJSONObject("eventBody").getInt("operateType");
+    }
+
+    /**
+     * 获取场景类型
+     * 1：签到，2：邀请，3：转账，4：购买商品，5：管理积分，6：退群
+     *
+     * @return 场景类型
+     */
+    public int getOperateType() {
+        return operateType;
+    }
+
+    /**
+     * 获取积分数量
+     * 正数时表示积分增加，负数时表示积分减少
+     *
+     * @return 积分
+     */
+    public long getIntegral() {
+        return integral;
     }
 
     /**
@@ -75,21 +97,12 @@ public class MemberJoinEvent extends Event {
     }
 
     /**
-     * 获取DodoSourceId
+     * 获取DodoId
      *
      * @return DodoSourceId
      */
     public String getDodoSourceId() {
         return this.dodoSourceId;
-    }
-
-    /**
-     * 获取变动时间
-     *
-     * @return 变动时间
-     */
-    public String getModifyTime() {
-        return this.modifyTime;
     }
 
     /**

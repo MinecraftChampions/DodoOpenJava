@@ -3,7 +3,6 @@ package io.github.minecraftchampions.dodoopenjava.command;
 import io.github.minecraftchampions.dodoopenjava.api.v2.ChannelMessageApi;
 import io.github.minecraftchampions.dodoopenjava.api.v2.MemberApi;
 import io.github.minecraftchampions.dodoopenjava.api.v2.RoleApi;
-import io.github.minecraftchampions.dodoopenjava.permissions.UserManager;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -211,7 +210,10 @@ public class CommandSender {
      * @param permission 权限
      * @return true有，false失败
      */
-    public Boolean hasPermission(String permission) {
-        return UserManager.hasPerm(UserManager.getUser(getSenderDodoSourceId()), permission);
+    public boolean hasPermission(String permission) {
+        if (Command.isEnablePermissionSystem()) {
+            return PermissionsHook.hasPermission(permission, getSenderDodoSourceId());
+        }
+        return false;
     }
 }

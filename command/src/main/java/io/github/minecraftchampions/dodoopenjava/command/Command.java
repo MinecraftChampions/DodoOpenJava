@@ -2,6 +2,7 @@ package io.github.minecraftchampions.dodoopenjava.command;
 
 import io.github.minecraftchampions.dodoopenjava.event.EventManage;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
+import io.github.minecraftchampions.dodoopenjava.utils.ClassUtil;
 import okio.ByteString;
 
 import java.util.HashSet;
@@ -18,15 +19,30 @@ public class Command {
 
     public static boolean initialized = false;
 
+    private static boolean eps = false;
     /**
-     * 初始化命令系统
+     * 初始化
      *
-     * @param Class    命令处理所在的类
      * @param clientId 机器人唯一标示
      * @param token    机器人Token
      */
-    public static void registerCommand(CommandExecutor Class, String clientId, String token) {
-        commands.add(Class);
+    private static void init(String clientId, String token) {
+        if (initialized) return;
+        EventManage.registerEvents(new CommandTrigger(), BaseUtil.Authorization(clientId, token));
+        initialized = true;
+        if (!ClassUtil.classExists("io.github.minecraftchampions.dodoopenjava.permissions.Permissions")) return;
+        eps = true;
+    }
+
+    /**
+     * 初始化命令系统
+     *
+     * @param command  命令实例
+     * @param clientId 机器人唯一标示
+     * @param token    机器人Token
+     */
+    public static void registerCommand(CommandExecutor command, String clientId, String token) {
+        commands.add(command);
         if (!initialized) {
             EventManage.registerEvents(new CommandTrigger(), BaseUtil.Authorization(clientId, token));
             initialized = true;
@@ -37,12 +53,12 @@ public class Command {
     /**
      * 初始化命令系统
      *
-     * @param Class    命令处理所在的类
+     * @param command  命令实例
      * @param clientId 机器人唯一标示
      * @param token    机器人Token
      */
-    public static void registerCommand(String clientId, String token, CommandExecutor... Class) {
-        commands.addAll(List.of(Class));
+    public static void registerCommand(String clientId, String token, CommandExecutor... command) {
+        commands.addAll(List.of(command));
         if (!initialized) {
             EventManage.registerEvents(new CommandTrigger(), BaseUtil.Authorization(clientId, token));
             initialized = true;
@@ -53,11 +69,11 @@ public class Command {
     /**
      * 初始化命令系统
      *
-     * @param Class         命令处理所在的类
+     * @param command       命令实例
      * @param authorization authorization
      */
-    public static void registerCommand(CommandExecutor Class, String authorization) {
-        commands.add(Class);
+    public static void registerCommand(CommandExecutor command, String authorization) {
+        commands.add(command);
         if (!initialized) {
             EventManage.registerEvents(new CommandTrigger(), authorization);
             initialized = true;
@@ -68,11 +84,11 @@ public class Command {
     /**
      * 初始化命令系统
      *
-     * @param Class         命令处理所在的类
+     * @param command       命令实例
      * @param authorization authorization
      */
-    public static void registerCommand(String authorization, CommandExecutor... Class) {
-        commands.addAll(List.of(Class));
+    public static void registerCommand(String authorization, CommandExecutor... command) {
+        commands.addAll(List.of(command));
         if (!initialized) {
             EventManage.registerEvents(new CommandTrigger(), authorization);
             initialized = true;
@@ -100,5 +116,9 @@ public class Command {
             }
         }
         return hasCommand;
+    }
+
+    public static boolean isEnablePermissionSystem() {
+        return eps;
     }
 }

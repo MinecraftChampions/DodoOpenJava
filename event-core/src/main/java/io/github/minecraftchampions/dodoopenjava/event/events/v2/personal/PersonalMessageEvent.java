@@ -1,6 +1,5 @@
-package io.github.minecraftchampions.dodoopenjava.event.events.v2;
+package io.github.minecraftchampions.dodoopenjava.event.events.v2.personal;
 
-import io.github.minecraftchampions.dodoopenjava.event.Event;
 import io.github.minecraftchampions.dodoopenjava.event.HandlerList;
 import org.json.JSONObject;
 
@@ -10,7 +9,7 @@ import javax.annotation.Nonnull;
  * 私信事件
  */
 
-public class PersonalMessageEvent extends Event {
+public class PersonalMessageEvent extends PersonalEvent {
     private static final HandlerList handlers = new HandlerList();
 
     @Override

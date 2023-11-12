@@ -13,26 +13,6 @@ Dodo开放平台：https://open.imdodo.com/
 ### 添加依赖
 #### 依赖关系:
 [![p9GokoF.png](https://s1.ax1x.com/2023/05/02/p9GokoF.png)](https://imgse.com/i/p9GokoF)
-#### 各模块Jar包大小
-core: 1371KB
-
-command: 66KB
-
-configuration: 3825KB
-
-event-core: 186KB
-
-event-webhook: 9316KB
-
-event-websocket: 13KB
-
-permissions: 763KB
-
-共计1371+66+3825+186+9316+13+763 = 15540KB(约15MB)
-
-非常地精简[doge]
-
-不算上外部库的话,本项目大小只有:2.85MB
 #### Maven：
 ```xml
 <repositories>
@@ -48,43 +28,43 @@ permissions: 763KB
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>core</artifactId>
-    <version>2.5.7</version>
+    <version>2.5.14</version>
   </dependency>
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>command</artifactId>
-    <version>2.5.7</version>
+    <version>2.5.14</version>
   </dependency>
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>configuration</artifactId>
-    <version>2.5.7</version>
+    <version>2.5.14</version>
   </dependency>
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>event-core</artifactId>
-    <version>2.5.7</version>
+    <version>2.5.14</version>
   </dependency>
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>event-websocket</artifactId>
-    <version>2.5.7</version>
+    <version>2.5.14</version>
   </dependency>
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>event-webhook</artifactId>
-    <version>2.5.7</version>
+    <version>2.5.14</version>
   </dependency>
   <dependency>
     <groupId>top.qscraft.dodoopenjava</groupId>
     <artifactId>permissions</artifactId>
-    <version>2.5.7</version>
+    <version>2.5.14</version>
   </dependency>
   <!--又或者直接合成一个依赖项-->
   <dependency>
     <groupId>top.qscraft</groupId>
     <artifactId>dodoopenjava</artifactId>
-    <version>2.5.7</version>
+    <version>2.5.14</version>
   </dependency>
 </dependencies>
 ```
@@ -97,15 +77,15 @@ permissions: 763KB
 	}
 
 	dependencies {
-	        implementation 'top.qscraft.dodoopenjava:core:2.5.7'
-	        implementation 'top.qscraft.dodoopenjava:command:2.5.7'
-	        implementation 'top.qscraft.dodoopenjava:configuration:2.5.7'
-	        implementation 'top.qscraft.dodoopenjava:event-core:2.5.7'
-	        implementation 'top.qscraft.dodoopenjava:event-websocket:2.5.7'
-	        implementation 'top.qscraft.dodoopenjava:event-webhook:2.5.7'
-	        implementation 'top.qscraft.dodoopenjava:permissions:2.5.7'
+	        implementation 'top.qscraft.dodoopenjava:core:2.5.14'
+	        implementation 'top.qscraft.dodoopenjava:command:2.5.14'
+	        implementation 'top.qscraft.dodoopenjava:configuration:2.5.14'
+	        implementation 'top.qscraft.dodoopenjava:event-core:2.5.14'
+	        implementation 'top.qscraft.dodoopenjava:event-websocket:2.5.14'
+	        implementation 'top.qscraft.dodoopenjava:event-webhook:2.5.14'
+	        implementation 'top.qscraft.dodoopenjava:permissions:2.5.14'
 		//又或者直接合成一个依赖项
-	        implementation 'top.qscraft:dodoopenjava:2.5.7'
+	        implementation 'top.qscraft:dodoopenjava:2.5.14'
     }
 ```
 ### 教程(过于古老，无参考价值，改日重写)

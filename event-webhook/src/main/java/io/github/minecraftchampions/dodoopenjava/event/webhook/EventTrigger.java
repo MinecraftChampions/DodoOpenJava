@@ -1,7 +1,15 @@
 package io.github.minecraftchampions.dodoopenjava.event.webhook;
 
 import io.github.minecraftchampions.dodoopenjava.event.EventManage;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.*;
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage.*;
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelarticle.*;
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelvoice.*;
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.gift.GiftSendEvent;
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.integral.IntegralChangeEvent;
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.member.MemberJoinEvent;
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.member.MemberLeaveEvent;
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.personal.PersonalMessageEvent;
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.shop.GoodsPurchaseEvent;
 import io.github.minecraftchampions.dodoopenjava.event.webhook.util.OpenSecretUtil;
 import okhttp3.mockwebserver.Dispatcher;
 import okhttp3.mockwebserver.MockResponse;
@@ -179,7 +187,7 @@ public class EventTrigger {
                 }
                 case "6001" -> {
                     try {
-                        EventManage.fireEvent(new ChannelArticleEvent(json));
+                        EventManage.fireEvent(new ChannelArticlePublishEvent(json));
                     } catch (EventException e) {
                         throw new RuntimeException(e);
                     }

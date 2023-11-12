@@ -21,7 +21,7 @@ public class ConsoleSender extends CommandSender {
      * @return true成功，false失败
      */
     @Override
-    public Boolean hasPermission(String permission) {
+    public boolean hasPermission(String permission) {
         return true;
     }
 }

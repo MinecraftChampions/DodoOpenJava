@@ -1,6 +1,5 @@
-package io.github.minecraftchampions.dodoopenjava.event.events.v2;
+package io.github.minecraftchampions.dodoopenjava.event.events.v2.gift;
 
-import io.github.minecraftchampions.dodoopenjava.event.Event;
 import io.github.minecraftchampions.dodoopenjava.event.HandlerList;
 import org.json.JSONObject;
 
@@ -10,7 +9,7 @@ import java.math.BigDecimal;
 /**
  * 赠礼成功事件
  */
-public class GiftSendEvent extends Event {
+public class GiftSendEvent extends GiftEvent {
     private static final HandlerList handlers = new HandlerList();
 
     @Override

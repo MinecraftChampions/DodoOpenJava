@@ -1,16 +1,14 @@
-package io.github.minecraftchampions.dodoopenjava.event.events.v2;
+package io.github.minecraftchampions.dodoopenjava.event.events.v2.channelarticle;
 
-import io.github.minecraftchampions.dodoopenjava.event.Event;
 import io.github.minecraftchampions.dodoopenjava.event.HandlerList;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javax.annotation.Nonnull;
 
 /**
- * 卡片消息表单回传事件
+ * 帖子发布事件
  */
-public class CardMessageFormSubmitEvent extends Event {
+public class ChannelArticlePublishEvent extends ChannelArticleEvent {
     private static final HandlerList handlers = new HandlerList();
 
     @Override
@@ -29,21 +27,23 @@ public class CardMessageFormSubmitEvent extends Event {
 
     public String islandSourceId;
 
-    public String channelId;
-
     public String dodoSourceId;
 
-    public String messageId;
+    public String channelId;
+
+    public JSONObject jsonObject;
+
+    public String jsonString;
 
     public JSONObject personal;
 
-    public String senderNickName;
+    public String userNickName;
 
-    public String senderAvatarUrl;
+    public String userAvatarUrl;
 
-    public Integer senderIntSex;
+    public Integer userIntSex;
 
-    public String senderSex;
+    public String userSex;
 
     public JSONObject member;
 
@@ -51,34 +51,32 @@ public class CardMessageFormSubmitEvent extends Event {
 
     public String memberJoinTime;
 
-    public JSONObject jsonObject;
+    public String articleId;
 
-    public String jsonString;
+    public String title;
 
-    public String interactCustomId;
+    public String content;
 
-    public JSONArray form;
-
-    public CardMessageFormSubmitEvent(JSONObject json) {
+    public ChannelArticlePublishEvent(JSONObject json) {
         super(true);
+        this.articleId = json.getJSONObject("data").getJSONObject("eventBody").getString("articleId");
+        this.title = json.getJSONObject("data").getJSONObject("eventBody").getString("title");
+        this.content = json.getJSONObject("data").getJSONObject("eventBody").getString("content");
         this.jsonObject = json;
+        this.channelId = json.getJSONObject("data").getJSONObject("eventBody").getString("channelId");
         this.jsonString = json.toString();
         this.timestamp = json.getJSONObject("data").getInt("timestamp");
         this.eventId = json.getJSONObject("data").getString("eventId");
         this.islandSourceId = json.getJSONObject("data").getJSONObject("eventBody").getString("islandSourceId");
-        this.channelId = json.getJSONObject("data").getJSONObject("eventBody").getString("channelId");
         this.dodoSourceId = json.getJSONObject("data").getJSONObject("eventBody").getString("dodoSourceId");
-        this.messageId = json.getJSONObject("data").getJSONObject("eventBody").getString("messageId");
-        this.personal = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal");
-        this.senderNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("nickName");
-        this.senderAvatarUrl = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("avatarUrl");
-        this.senderSex = IntSexToSex(json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex"));
-        this.senderIntSex = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex");
         this.member = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member");
         this.memberJoinTime = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("joinTime");
         this.memberNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("nickName");
-        this.form = json.getJSONObject("data").getJSONObject("eventBody").getJSONArray("formData");
-        this.interactCustomId = json.getJSONObject("data").getJSONObject("eventBody").getString("interactCustomId");
+        this.personal = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal");
+        this.userNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("nickName");
+        this.userAvatarUrl = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("avatarUrl");
+        this.userSex = IntSexToSex(json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex"));
+        this.userIntSex = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex");
     }
 
     /**
@@ -92,24 +90,6 @@ public class CardMessageFormSubmitEvent extends Event {
             case 0 -> "女";
             case 1 -> "男";
             default -> "保密";
-        };
-    }
-
-    /**
-     * 转换 为Int数据类型的 消息类型关键字 为 String 类型
-     *
-     * @param type 消息类型
-     * @return 消息类型
-     */
-    public String IntMessageTypeToMessageType(Integer type) {
-        return switch (type) {
-            case 1 -> "文字消息";
-            case 2 -> "图片消息";
-            case 3 -> "视频消息";
-            case 4 -> "分享消息";
-            case 5 -> "文件消息";
-            case 6 -> "卡片消息";
-            default -> "未知消息";
         };
     }
 
@@ -158,14 +138,6 @@ public class CardMessageFormSubmitEvent extends Event {
         return this.dodoSourceId;
     }
 
-    /**
-     * 获取消息ID
-     *
-     * @return 消息ID
-     */
-    public String getMessageId() {
-        return this.messageId;
-    }
 
     /**
      * 获取成员Object
@@ -182,8 +154,8 @@ public class CardMessageFormSubmitEvent extends Event {
      *
      * @return 名字
      */
-    public String getSenderNickName() {
-        return this.senderNickName;
+    public String getUserNickName() {
+        return this.userNickName;
     }
 
     /**
@@ -191,8 +163,8 @@ public class CardMessageFormSubmitEvent extends Event {
      *
      * @return 头像url
      */
-    public String getSenderAvatarUrl() {
-        return this.senderAvatarUrl;
+    public String getUserAvatarUrl() {
+        return this.userAvatarUrl;
     }
 
     /**
@@ -200,8 +172,8 @@ public class CardMessageFormSubmitEvent extends Event {
      *
      * @return 性别
      */
-    public Integer getSenderIntSex() {
-        return this.senderIntSex;
+    public Integer getUserIntSex() {
+        return this.userIntSex;
     }
 
     /**
@@ -209,8 +181,8 @@ public class CardMessageFormSubmitEvent extends Event {
      *
      * @return 性别
      */
-    public String getSenderSex() {
-        return this.senderSex;
+    public String getUserSex() {
+        return this.userSex;
     }
 
 
@@ -242,28 +214,45 @@ public class CardMessageFormSubmitEvent extends Event {
     }
 
     /**
-     * 获取返回的表单
-     *
-     * @return 表单
+     * 获取卡片消息JSON字符串
      */
-    public JSONArray getForm() {
-        return this.form;
+    public String getJsonString() {
+        return this.jsonString;
     }
 
     /**
-     * 获取自定义ID
+     * 获取卡片消息JSON对象
+     */
+    public JSONObject getJsonObject() {
+        return this.jsonObject;
+    }
+
+    /**
+     * 获取标题
+     *
+     * @return 标题
+     */
+    public String getTitle() {
+        return this.title;
+    }
+
+    /**
+     * 获取内容
+     *
+     * @return 内容
+     */
+    public String getContent() {
+        return this.content;
+    }
+
+
+    /**
+     * 获取帖子ID
      *
      * @return ID
      */
-    public String getInteractCustomId() {
-        return this.interactCustomId;
-    }
-
-    public String getJsonString() {
-        return jsonString;
-    }
-
-    public JSONObject getJsonObject() {
-        return jsonObject;
+    public String getArticleId() {
+        return this.articleId;
     }
 }
+

@@ -2,7 +2,7 @@ package io.github.minecraftchampions.dodoopenjava.command;
 
 import io.github.minecraftchampions.dodoopenjava.event.EventHandler;
 import io.github.minecraftchampions.dodoopenjava.event.Listener;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.MessageEvent;
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage.MessageEvent;
 import org.json.JSONObject;
 
 import java.util.List;

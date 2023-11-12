@@ -17,6 +17,7 @@ import java.util.concurrent.Executors;
  */
 public class EventManage {
     private final ExecutorService executor = Executors.newCachedThreadPool();
+
     @NotNull
     public static Map<Class<? extends Event>, Set<RegisteredListener>> createRegisteredListeners(@NotNull Listener listener) {
         Validate.notNull(listener, "Listener can not be null");
@@ -45,14 +46,8 @@ public class EventManage {
             }
             final Class<? extends Event> eventClass = checkClass.asSubclass(Event.class);
             method.setAccessible(true);
-            Set<RegisteredListener> eventSet = ret.computeIfAbsent(eventClass, k -> new HashSet<>());
+            Set<RegisteredListener> eventSet = ret.computeIfAbsent(eventClass, k -> new HashSet<RegisteredListener>());
 
-            for (Class<?> clazz = eventClass; Event.class.isAssignableFrom(clazz);
-                 clazz = clazz.getSuperclass()) {
-                 if (clazz.getAnnotation(Deprecated.class) != null) {
-                     break;
-                 }
-            }
             EventExecutor executor = (listener1, event) -> {
                 try {
                     if (!eventClass.isAssignableFrom(event.getClass())) {
@@ -62,9 +57,9 @@ public class EventManage {
                         method.invoke(listener1, event);
                         return;
                     }
-                    CompletableFuture.allOf(CompletableFuture.runAsync(()->{
+                    CompletableFuture.allOf(CompletableFuture.runAsync(() -> {
                         try {
-                            method.invoke(listener1,event);
+                            method.invoke(listener1, event);
                         } catch (IllegalAccessException | InvocationTargetException e) {
                             throw new RuntimeException(e);
                         }
@@ -167,7 +162,6 @@ public class EventManage {
         getEventListeners(event).register(new RegisteredListener(listener, executor, priority));
         if (!isInit) {
             isInit = true;
-
             init(an);
         }
     }
@@ -194,7 +188,8 @@ public class EventManage {
                     && Event.class.isAssignableFrom(clazz.getSuperclass())) {
                 return getRegistrationClass(clazz.getSuperclass().asSubclass(Event.class));
             }
-            throw new RuntimeException("系统异常,clazz.getSuperclass=null");
+
+            throw new RuntimeException("系统异常");
         }
     }
 

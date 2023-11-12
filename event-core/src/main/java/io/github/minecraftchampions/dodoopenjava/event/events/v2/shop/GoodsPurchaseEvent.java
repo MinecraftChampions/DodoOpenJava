@@ -1,6 +1,5 @@
-package io.github.minecraftchampions.dodoopenjava.event.events.v2;
+package io.github.minecraftchampions.dodoopenjava.event.events.v2.shop;
 
-import io.github.minecraftchampions.dodoopenjava.event.Event;
 import io.github.minecraftchampions.dodoopenjava.event.HandlerList;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import org.json.JSONObject;
@@ -11,7 +10,7 @@ import java.util.List;
 /**
  * 商品购买成功事件
  */
-public class GoodsPurchaseEvent extends Event {
+public class GoodsPurchaseEvent extends ShopEvent {
     private static final HandlerList handlers = new HandlerList();
 
     @Override
