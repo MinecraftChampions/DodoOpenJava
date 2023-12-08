@@ -1,5 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.message;
 
+import lombok.Getter;
+
 import java.lang.reflect.Field;
 import java.util.*;
 
@@ -52,11 +54,8 @@ public class TextComponentGroup {
      */
     public static TextComponent contentComponent = new TextComponent("content", "${content}", false, null);
 
+    @Getter
     private static final Map<String, TextComponent> htmlReplaceMap = new HashMap<>(Map.of("p", contentComponent, "strong", boldComponent, "blockquote", citeComponent, "a", linkComponent, "em", italicComponent, "code", codeComponent));
-
-    public static Map<String, TextComponent> getHtmlReplaceMap() {
-        return htmlReplaceMap;
-    }
 
     private static final List<TextComponent> componentList = new ArrayList<>();
 

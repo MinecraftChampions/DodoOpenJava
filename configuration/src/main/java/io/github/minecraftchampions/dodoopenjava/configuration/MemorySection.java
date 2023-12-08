@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.configuration;
 
 import io.github.minecraftchampions.dodoopenjava.utils.NumberUtil;
+import lombok.Getter;
 import okio.ByteString;
 import org.apache.commons.lang3.Validate;
 
@@ -11,7 +12,9 @@ import java.util.*;
  */
 public class MemorySection implements ConfigurationSection {
     protected final Map<String, Object> map = new LinkedHashMap<>();
+    @Getter
     private final Configuration root;
+    @Getter
     private final ConfigurationSection parent;
     private final String path;
     private final String fullPath;
@@ -105,14 +108,6 @@ public class MemorySection implements ConfigurationSection {
 
     public String getName() {
         return path;
-    }
-
-    public Configuration getRoot() {
-        return root;
-    }
-
-    public ConfigurationSection getParent() {
-        return parent;
     }
 
     public void addDefault(String path, Object value) {

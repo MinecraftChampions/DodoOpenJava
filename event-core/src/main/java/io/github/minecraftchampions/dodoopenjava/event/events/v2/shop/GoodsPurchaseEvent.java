@@ -2,6 +2,7 @@ package io.github.minecraftchampions.dodoopenjava.event.events.v2.shop;
 
 import io.github.minecraftchampions.dodoopenjava.event.HandlerList;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
+import lombok.Getter;
 import org.json.JSONObject;
 
 import javax.annotation.Nonnull;
@@ -10,6 +11,7 @@ import java.util.List;
 /**
  * 商品购买成功事件
  */
+@Getter
 public class GoodsPurchaseEvent extends ShopEvent {
     private static final HandlerList handlers = new HandlerList();
 
@@ -23,28 +25,89 @@ public class GoodsPurchaseEvent extends ShopEvent {
         return handlers;
     }
 
+    /**
+     * -- GETTER --
+     *  获取时间戳
+     *
+     */
     public Integer timestamp;
 
+    /**
+     * -- GETTER --
+     *  获取事件ID
+     *
+     */
     public String eventId;
 
+    /**
+     * -- GETTER --
+     *  获取群号
+     *
+     */
     public String islandSourceId;
 
+    /**
+     * -- GETTER --
+     *  获取DodoId
+     *
+     */
     public String dodoSourceId;
 
+    /**
+     * -- GETTER --
+     *  获取变动时间
+     *
+     */
     public String modifyTime;
 
+    /**
+     * -- GETTER --
+     *  获取JSONObject
+     *
+     */
     public JSONObject jsonObject;
 
+    /**
+     * -- GETTER --
+     *  获取JsonString
+     *
+     */
     public String jsonString;
 
+    /**
+     * -- GETTER --
+     *  获取订单号
+     *
+     */
     public String orderNo;
 
+    /**
+     * -- GETTER --
+     *  获取商品类型
+     *  1：身份组，2：自定义商品
+     *
+     */
     public int goodsType;
 
+    /**
+     * -- GETTER --
+     *  获取商品ID
+     *
+     */
     public String goodsId;
 
+    /**
+     * -- GETTER --
+     *  获取商品图片列表，链接后接参数可以调整图片样式
+     *
+     */
     public String goodsName;
 
+    /**
+     * -- GETTER --
+     *  获取订单号
+     *
+     */
     public List<String> goodsImageList;
 
     public GoodsPurchaseEvent(JSONObject json) {
@@ -63,112 +126,4 @@ public class GoodsPurchaseEvent extends ShopEvent {
         this.goodsImageList = BaseUtil.toStringList(json.getJSONObject("data").getJSONObject("eventBody").getJSONArray("goodsImageList").toList());
     }
 
-    /**
-     * 获取订单号
-     *
-     * @return 订单号
-     */
-    public String getOrderNo() {
-        return orderNo;
-    }
-
-    /**
-     * 获取商品类型
-     * 1：身份组，2：自定义商品
-     *
-     * @return 商品类型
-     */
-    public int getGoodsType() {
-        return goodsType;
-    }
-
-    /**
-     * 获取商品ID
-     *
-     * @return 商品ID
-     */
-    public String getGoodsId() {
-        return goodsId;
-    }
-
-    /**
-     * 获取商品图片列表，链接后接参数可以调整图片样式
-     *
-     * @return 图片列表
-     */
-    public String getGoodsName() {
-        return goodsName;
-    }
-
-    /**
-     * 获取订单号
-     *
-     * @return 订单号
-     */
-    public List<String> getGoodsImageList() {
-        return goodsImageList;
-    }
-
-    /**
-     * 获取时间戳
-     *
-     * @return 返回时间戳
-     */
-    public Integer getTimestamp() {
-        return this.timestamp;
-    }
-
-    /**
-     * 获取事件ID
-     *
-     * @return 事件ID
-     */
-    public String getEventId() {
-        return this.eventId;
-    }
-
-    /**
-     * 获取群号
-     *
-     * @return 群号
-     */
-    public String getIslandSourceId() {
-        return this.islandSourceId;
-    }
-
-    /**
-     * 获取DodoId
-     *
-     * @return DodoSourceId
-     */
-    public String getDodoSourceId() {
-        return this.dodoSourceId;
-    }
-
-    /**
-     * 获取变动时间
-     *
-     * @return 变动时间
-     */
-    public String getModifyTime() {
-        return this.modifyTime;
-    }
-
-    /**
-     * 获取JSONObject
-     *
-     * @return JSONObject
-     */
-    public JSONObject getJsonObject() {
-        return this.jsonObject;
-    }
-
-    /**
-     * 获取JsonString
-     *
-     * @return String
-     */
-    public String getJsonString() {
-        return this.jsonString;
-    }
 }

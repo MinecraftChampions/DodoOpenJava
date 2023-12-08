@@ -44,10 +44,11 @@ public class Util {
         Matcher matcher = pattern.matcher(perm);
         boolean has = false;
         while (matcher.find()) {
-            int index = Integer.parseInt(String.format("%d", matcher.start(), matcher.group()));
+            int index = Integer.parseInt(String.format("%d", matcher.start()));
             if (index == 0) {
                 has = true;
             }
+            String str = matcher.group();
         }
         return has;
     }

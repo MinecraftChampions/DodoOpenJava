@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.event.events.v2.member;
 
 import io.github.minecraftchampions.dodoopenjava.event.HandlerList;
+import lombok.Getter;
 import org.json.JSONObject;
 
 import javax.annotation.Nonnull;
@@ -8,6 +9,7 @@ import javax.annotation.Nonnull;
 /**
  * 成员邀请事件
  */
+@Getter
 public class MemberInviteEvent extends MemberEvent {
     private static final HandlerList handlers = new HandlerList();
 
@@ -21,24 +23,74 @@ public class MemberInviteEvent extends MemberEvent {
         return handlers;
     }
 
+    /**
+     * -- GETTER --
+     *  获取时间戳
+     *
+     */
     public Integer timestamp;
 
+    /**
+     * -- GETTER --
+     *  获取事件ID
+     *
+     */
     public String eventId;
 
+    /**
+     * -- GETTER --
+     *  获取群号
+     *
+     */
     public String islandSourceId;
 
+    /**
+     * -- GETTER --
+     *  获取DodoSourceId
+     *
+     */
     public String dodoSourceId;
 
+    /**
+     * -- GETTER --
+     *  获取变动时间
+     *
+     */
     public String modifyTime;
 
+    /**
+     * -- GETTER --
+     *  获取JSONObject
+     *
+     */
     public JSONObject jsonObject;
 
+    /**
+     * -- GETTER --
+     *  获取JsonString
+     *
+     */
     public String jsonString;
 
+    /**
+     * -- GETTER --
+     *  获取邀请人群昵称
+     *
+     */
     public String dodoIslandNickName;
 
+    /**
+     * -- GETTER --
+     *  获取被邀请人DoDoID
+     *
+     */
     public String toDodoSourceId;
 
+    /**
+     * -- GETTER --
+     *  获取被邀请人群昵称
+     *
+     */
     public String toDodoIslandNickName;
 
     public MemberInviteEvent(JSONObject json) {
@@ -55,93 +107,4 @@ public class MemberInviteEvent extends MemberEvent {
         this.modifyTime = json.getJSONObject("data").getJSONObject("eventBody").getString("modifyTime");
     }
 
-    /**
-     * 获取时间戳
-     *
-     * @return 返回时间戳
-     */
-    public Integer getTimestamp() {
-        return this.timestamp;
-    }
-
-    /**
-     * 获取事件ID
-     *
-     * @return 事件ID
-     */
-    public String getEventId() {
-        return this.eventId;
-    }
-
-    /**
-     * 获取群号
-     *
-     * @return 群号
-     */
-    public String getIslandSourceId() {
-        return this.islandSourceId;
-    }
-
-    /**
-     * 获取DodoSourceId
-     *
-     * @return DodoSourceId
-     */
-    public String getDodoSourceId() {
-        return this.dodoSourceId;
-    }
-
-    /**
-     * 获取变动时间
-     *
-     * @return 变动时间
-     */
-    public String getModifyTime() {
-        return this.modifyTime;
-    }
-
-    /**
-     * 获取JSONObject
-     *
-     * @return JSONObject
-     */
-    public JSONObject getJsonObject() {
-        return this.jsonObject;
-    }
-
-    /**
-     * 获取JsonString
-     *
-     * @return String
-     */
-    public String getJsonString() {
-        return this.jsonString;
-    }
-
-    /**
-     * 获取邀请人群昵称
-     *
-     * @return String
-     */
-    public String getDodoIslandNickName() {
-        return dodoIslandNickName;
-    }
-
-    /**
-     * 获取被邀请人DoDoID
-     *
-     * @return String
-     */
-    public String getToDodoSourceId() {
-        return toDodoSourceId;
-    }
-
-    /**
-     * 获取被邀请人群昵称
-     *
-     * @return String
-     */
-    public String getToDodoIslandNickName() {
-        return toDodoIslandNickName;
-    }
 }

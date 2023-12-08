@@ -1,8 +1,11 @@
 package io.github.minecraftchampions.dodoopenjava.message;
 
+import lombok.Getter;
+
 /**
  * markdown组件
  */
+@Getter
 public class TextComponent {
     private String key;
 
@@ -19,32 +22,16 @@ public class TextComponent {
         this.attribute = attribute;
     }
 
-    public String getKey() {
-        return key;
-    }
-
     public void setKey(String key) {
         this.key = key;
-    }
-
-    public String getMatch() {
-        return match;
     }
 
     public void setMatch(String match) {
         this.match = match;
     }
 
-    public boolean isAllowNest() {
-        return allowNest;
-    }
-
     public void setAllowNest(boolean allowNest) {
         this.allowNest = allowNest;
-    }
-
-    public String getAttribute() {
-        return attribute;
     }
 
     public void setAttribute(String attribute) {

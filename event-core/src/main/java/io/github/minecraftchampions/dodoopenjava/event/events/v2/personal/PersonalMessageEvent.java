@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.event.events.v2.personal;
 
 import io.github.minecraftchampions.dodoopenjava.event.HandlerList;
+import lombok.Getter;
 import org.json.JSONObject;
 
 import javax.annotation.Nonnull;
@@ -9,6 +10,7 @@ import javax.annotation.Nonnull;
  * 私信事件
  */
 
+@Getter
 public class PersonalMessageEvent extends PersonalEvent {
     private static final HandlerList handlers = new HandlerList();
 
@@ -22,28 +24,88 @@ public class PersonalMessageEvent extends PersonalEvent {
         return handlers;
     }
 
+    /**
+     * -- GETTER --
+     *  获取时间戳
+     *
+     */
     public Integer timestamp;
 
+    /**
+     * -- GETTER --
+     *  获取事件ID
+     *
+     */
     public String eventId;
 
+    /**
+     * -- GETTER --
+     *  获取DodoSourceId
+     *
+     */
     public String dodoSourceId;
 
+    /**
+     * -- GETTER --
+     *  获取消息ID
+     *
+     */
     public String messageId;
 
+    /**
+     * -- GETTER --
+     *  获取消息类别（Int类型）
+     *
+     */
     public Integer messageIntType;
 
+    /**
+     * -- GETTER --
+     *  获取消息类别（String类型）
+     *
+     */
     public String messageType;
 
+    /**
+     * -- GETTER --
+     *  获取成员Object
+     *
+     */
     public JSONObject personal;
 
+    /**
+     * -- GETTER --
+     *  获取发送者名字
+     *
+     */
     public String senderNickName;
 
+    /**
+     * -- GETTER --
+     *  获取发送者头像URL
+     *
+     */
     public String senderAvatarUrl;
 
+    /**
+     * -- GETTER --
+     *  获取性别（Int类型）
+     *
+     */
     public Integer senderIntSex;
 
+    /**
+     * -- GETTER --
+     *  获取性别（String类型）
+     *
+     */
     public String senderSex;
 
+    /**
+     * -- GETTER --
+     *  获取消息 Object
+     *
+     */
     public JSONObject messageBody;
 
     public JSONObject jsonObject;
@@ -97,121 +159,5 @@ public class PersonalMessageEvent extends PersonalEvent {
         };
     }
 
-    /**
-     * 获取时间戳
-     *
-     * @return 时间戳
-     */
-    public Integer getTimestamp() {
-        return this.timestamp;
-    }
 
-    /**
-     * 获取事件ID
-     *
-     * @return 事件ID
-     */
-    public String getEventId() {
-        return this.eventId;
-    }
-
-    /**
-     * 获取DodoSourceId
-     *
-     * @return DodoSourceId
-     */
-    public String getDodoSourceId() {
-        return this.dodoSourceId;
-    }
-
-    /**
-     * 获取消息ID
-     *
-     * @return 消息ID
-     */
-    public String getMessageId() {
-        return this.messageId;
-    }
-
-    /**
-     * 获取消息类别（Int类型）
-     *
-     * @return 消息类别
-     */
-    public Integer getMessageIntType() {
-        return this.messageIntType;
-    }
-
-    /**
-     * 获取消息类别（String类型）
-     *
-     * @return 消息类别
-     */
-    public String getMessageType() {
-        return this.messageType;
-    }
-
-
-    /**
-     * 获取成员Object
-     *
-     * @return 获取成员的 JsonObject
-     */
-    public JSONObject getPersonal() {
-        return this.personal;
-    }
-
-
-    /**
-     * 获取发送者名字
-     *
-     * @return 名字
-     */
-    public String getSenderNickName() {
-        return this.senderNickName;
-    }
-
-    /**
-     * 获取发送者头像URL
-     *
-     * @return 头像url
-     */
-    public String getSenderAvatarUrl() {
-        return this.senderAvatarUrl;
-    }
-
-    /**
-     * 获取性别（Int类型）
-     *
-     * @return 性别
-     */
-    public Integer getSenderIntSex() {
-        return this.senderIntSex;
-    }
-
-    /**
-     * 获取性别（String类型）
-     *
-     * @return 性别
-     */
-    public String getSenderSex() {
-        return this.senderSex;
-    }
-
-    /**
-     * 获取消息 Object
-     *
-     * @return 对象
-     */
-    public JSONObject getMessageBody() {
-        return this.messageBody;
-    }
-
-    public String getJsonString() {
-        return jsonString;
-    }
-
-    public JSONObject getJsonObject() {
-        return jsonObject;
-    }
 }

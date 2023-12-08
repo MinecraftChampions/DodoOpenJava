@@ -2,6 +2,7 @@ package io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage
 
 import io.github.minecraftchampions.dodoopenjava.event.Event;
 import io.github.minecraftchampions.dodoopenjava.event.HandlerList;
+import lombok.Getter;
 import org.json.JSONObject;
 
 import javax.annotation.Nonnull;
@@ -9,6 +10,7 @@ import javax.annotation.Nonnull;
 /**
  * 消息事件
  */
+@Getter
 public class MessageEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
 
@@ -22,50 +24,163 @@ public class MessageEvent extends Event {
         return handlers;
     }
 
+    /**
+     * -- GETTER --
+     *  获取时间戳
+     *
+     */
     public Integer timestamp;
 
+    /**
+     * -- GETTER --
+     *  获取事件ID
+     *
+     */
     public String eventId;
 
+    /**
+     * -- GETTER --
+     *  获取群号
+     *
+     */
     public String islandSourceId;
 
+    /**
+     * -- GETTER --
+     *  获取频道ID
+     *
+     */
     public String channelId;
 
+    /**
+     * -- GETTER --
+     *  获取DodoSourceId
+     *
+     */
     public String dodoSourceId;
 
+    /**
+     * -- GETTER --
+     *  获取消息ID
+     *
+     */
     public String messageId;
 
+    /**
+     * -- GETTER --
+     *  获取消息类别（Int类型）
+     *
+     */
     public Integer messageIntType;
 
+    /**
+     * -- GETTER --
+     *  获取消息类别（String类型）
+     *
+     */
     public String messageType;
 
+    /**
+     * -- GETTER --
+     *  获取成员Object
+     *
+     */
     public JSONObject personal;
 
+    /**
+     * -- GETTER --
+     *  获取发送者名字
+     *
+     */
     public String senderNickName;
 
+    /**
+     * -- GETTER --
+     *  获取发送者头像URL
+     *
+     */
     public String senderAvatarUrl;
 
+    /**
+     * -- GETTER --
+     *  获取性别（Int类型）
+     *
+     */
     public Integer senderIntSex;
 
+    /**
+     * -- GETTER --
+     *  获取性别（String类型）
+     *
+     */
     public String senderSex;
 
+    /**
+     * -- GETTER --
+     *  获取成员Object
+     *
+     */
     public JSONObject member;
 
+    /**
+     * -- GETTER --
+     *  获取成员显示名
+     *
+     */
     public String memberNickName;
 
+    /**
+     * -- GETTER --
+     *  获取成员加入时间
+     *
+     */
     public String memberJoinTime;
 
+    /**
+     * -- GETTER --
+     *  获取回复 Object，没有就null
+     *
+     */
     public JSONObject reference;
 
+    /**
+     * -- GETTER --
+     *  获取回复的消息ID，没有就null
+     *
+     */
     public String referenceMessageId;
 
+    /**
+     * -- GETTER --
+     *  获取回复的DodoSourceId，没有就null
+     *
+     */
     public String referenceDodoSourceId;
 
+    /**
+     * -- GETTER --
+     *  获取回复的消息名字，没有就null
+     *
+     */
     public String referenceNickName;
 
+    /**
+     * -- GETTER --
+     *  获取消息 Object
+     *
+     */
     public JSONObject messageBody;
 
+    /**
+     * -- GETTER --
+     *  获取卡片消息JSON对象
+     */
     public JSONObject jsonObject;
 
+    /**
+     * -- GETTER --
+     *  获取卡片消息JSON字符串
+     */
     public String jsonString;
 
     public MessageEvent(JSONObject json) {
@@ -129,210 +244,5 @@ public class MessageEvent extends Event {
         };
     }
 
-    /**
-     * 获取时间戳
-     *
-     * @return 时间戳
-     */
-    public Integer getTimestamp() {
-        return this.timestamp;
-    }
 
-    /**
-     * 获取事件ID
-     *
-     * @return 事件ID
-     */
-    public String getEventId() {
-        return this.eventId;
-    }
-
-    /**
-     * 获取群号
-     *
-     * @return 群号
-     */
-    public String getIslandSourceId() {
-        return this.islandSourceId;
-    }
-
-    /**
-     * 获取频道ID
-     *
-     * @return 频道ID
-     */
-    public String getChannelId() {
-        return this.channelId;
-    }
-
-    /**
-     * 获取DodoSourceId
-     *
-     * @return DodoSourceId
-     */
-    public String getDodoSourceId() {
-        return this.dodoSourceId;
-    }
-
-    /**
-     * 获取消息ID
-     *
-     * @return 消息ID
-     */
-    public String getMessageId() {
-        return this.messageId;
-    }
-
-    /**
-     * 获取消息类别（Int类型）
-     *
-     * @return 消息类别
-     */
-    public Integer getMessageIntType() {
-        return this.messageIntType;
-    }
-
-    /**
-     * 获取消息类别（String类型）
-     *
-     * @return 消息类别
-     */
-    public String getMessageType() {
-        return this.messageType;
-    }
-
-
-    /**
-     * 获取成员Object
-     *
-     * @return 获取成员的 JsonObject
-     */
-    public JSONObject getPersonal() {
-        return this.personal;
-    }
-
-
-    /**
-     * 获取发送者名字
-     *
-     * @return 名字
-     */
-    public String getSenderNickName() {
-        return this.senderNickName;
-    }
-
-    /**
-     * 获取发送者头像URL
-     *
-     * @return 头像url
-     */
-    public String getSenderAvatarUrl() {
-        return this.senderAvatarUrl;
-    }
-
-    /**
-     * 获取性别（Int类型）
-     *
-     * @return 性别
-     */
-    public Integer getSenderIntSex() {
-        return this.senderIntSex;
-    }
-
-    /**
-     * 获取性别（String类型）
-     *
-     * @return 性别
-     */
-    public String getSenderSex() {
-        return this.senderSex;
-    }
-
-
-    /**
-     * 获取成员Object
-     *
-     * @return 成员 JsonObject
-     */
-    public JSONObject getMember() {
-        return this.member;
-    }
-
-    /**
-     * 获取成员显示名
-     *
-     * @return 名字
-     */
-    public String getMemberNickName() {
-        return this.memberNickName;
-    }
-
-    /**
-     * 获取成员加入时间
-     *
-     * @return 加入时间
-     */
-    public String getMemberJoinTime() {
-        return this.memberJoinTime;
-    }
-
-    /**
-     * 获取回复 Object，没有就null
-     *
-     * @return 回复的 JSONObject
-     */
-    public JSONObject getReference() {
-        return this.reference;
-    }
-
-    /**
-     * 获取回复的消息ID，没有就null
-     *
-     * @return 消息ID
-     */
-    public String getReferenceMessageId() {
-        return this.referenceMessageId;
-    }
-
-    /**
-     * 获取回复的DodoSourceId，没有就null
-     *
-     * @return DodoSourceId
-     */
-    public String getReferenceDodoSourceId() {
-        return this.referenceDodoSourceId;
-    }
-
-    /**
-     * 获取回复的消息名字，没有就null
-     *
-     * @return 名字
-     */
-    public String getReferenceNickName() {
-        return this.referenceNickName;
-    }
-
-
-    /**
-     * 获取消息 Object
-     *
-     * @return 对象
-     */
-    public JSONObject getMessageBody() {
-        return this.messageBody;
-    }
-
-    /**
-     * 获取卡片消息JSON字符串
-     */
-    public String getJsonString() {
-        return this.jsonString;
-    }
-
-    /**
-     * 获取卡片消息JSON对象
-     */
-    public JSONObject getJsonObject() {
-        return this.jsonObject;
-    }
 }

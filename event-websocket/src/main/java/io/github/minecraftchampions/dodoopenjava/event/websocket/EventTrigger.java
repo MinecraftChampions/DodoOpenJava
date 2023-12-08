@@ -111,7 +111,7 @@ public class EventTrigger {
         }
 
         @Override
-        public void onOpen(WebSocket webSocket, Response response) {
+        public void onOpen(@NotNull WebSocket webSocket, @NotNull Response response) {
             super.onOpen(webSocket, response);
             isConnect = response.code() == 101;
             if (!isConnectFun()) {
@@ -259,7 +259,7 @@ public class EventTrigger {
         }
 
         @Override
-        public void onClosing(WebSocket webSocket, int code, String reason) {
+        public void onClosing(@NotNull WebSocket webSocket, int code, @NotNull String reason) {
             super.onClosing(webSocket, code, reason);
         }
     }

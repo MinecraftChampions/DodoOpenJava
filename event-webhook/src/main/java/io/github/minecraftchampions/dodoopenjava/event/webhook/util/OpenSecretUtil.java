@@ -15,9 +15,6 @@ import java.security.Security;
  * @author Dodo
  */
 public class OpenSecretUtil {
-    /*
-      初始化Provider，千万别漏了！
-     */
     static {
         Security.addProvider(new BouncyCastleProvider());
     }

@@ -111,8 +111,6 @@ public class MiniMessageParser {
         while (matcher.find()) {
             String key = matcher.group(1);
             String attr = matcher.group("attr");
-            String content = matcher.group("content");
-            String attrValue = matcher.group("attrvalue");
             String attrKey = matcher.group("attrkey");
             if (!textComponentMap.containsKey(key)) {
                 throw new RuntimeException("错误的标记:" + key);

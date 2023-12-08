@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.card.component;
 
+import lombok.Getter;
 import org.json.JSONObject;
 
 import java.io.Serializable;
@@ -7,6 +8,7 @@ import java.io.Serializable;
 /**
  * 组件
  */
+@Getter
 public abstract class Component implements Serializable {
     protected JSONObject jsonCard = new JSONObject();
 
@@ -16,7 +18,4 @@ public abstract class Component implements Serializable {
     public Component() {
     }
 
-    public JSONObject getJsonCard() {
-        return jsonCard;
-    }
 }

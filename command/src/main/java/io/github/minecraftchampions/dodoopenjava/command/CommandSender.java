@@ -3,6 +3,7 @@ package io.github.minecraftchampions.dodoopenjava.command;
 import io.github.minecraftchampions.dodoopenjava.api.v2.ChannelMessageApi;
 import io.github.minecraftchampions.dodoopenjava.api.v2.MemberApi;
 import io.github.minecraftchampions.dodoopenjava.api.v2.RoleApi;
+import lombok.Getter;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -10,85 +11,63 @@ import java.io.IOException;
 /**
  * 命令发送者
  */
+@Getter
 public class CommandSender {
+    /**
+     * -- GETTER --
+     *  获取DodoID
+     *
+     */
     public String SenderDodoSourceId;
 
+    /**
+     * -- GETTER --
+     *  获取频道ID
+     *
+     */
     public String ChannelId;
 
+    /**
+     * -- GETTER --
+     *  获取群号
+     *
+     */
     public String IslandSourceId;
 
+    /**
+     * -- GETTER --
+     *  获取头像URL
+     *
+     */
     public String AvatarUrl;
 
+    /**
+     * -- GETTER --
+     *  获取发送者群昵称
+     *
+     */
     public String SenderNickName;
 
+    /**
+     * -- GETTER --
+     *  获取发送者原本名称
+     *
+     */
     public String SenderName;
 
+    /**
+     * -- GETTER --
+     *  获取加入时间
+     *
+     */
     public String JoinTime;
 
+    /**
+     * -- GETTER --
+     *  获取触发命令的消息ID
+     *
+     */
     public String MessageId;
-
-    /**
-     * 获取DodoID
-     *
-     * @return DodoID
-     */
-    public String getSenderDodoSourceId() {
-        return this.SenderDodoSourceId;
-    }
-
-    /**
-     * 获取频道ID
-     *
-     * @return 频道ID
-     */
-    public String getChannelId() {
-        return this.ChannelId;
-    }
-
-    /**
-     * 获取群号
-     *
-     * @return 群号
-     */
-    public String getIslandSourceId() {
-        return this.IslandSourceId;
-    }
-
-    /**
-     * 获取头像URL
-     *
-     * @return 头像URL
-     */
-    public String getAvatarUrl() {
-        return this.AvatarUrl;
-    }
-
-    /**
-     * 获取发送者群昵称
-     *
-     * @return 群昵称
-     */
-    public String getSenderNickName() {
-        return this.SenderNickName;
-    }
-
-    /**
-     * 获取发送者原本名称
-     *
-     * @return 原名
-     */
-    public String getSenderName() {
-        return this.SenderName;
-    }
-
-    /**
-     * 获取加入时间
-     *
-     * @return 加入时间
-     */
-    public String getJoinTime() {
-        return this.JoinTime;
-    }
 
     /**
      * 初始化发送者这个类型

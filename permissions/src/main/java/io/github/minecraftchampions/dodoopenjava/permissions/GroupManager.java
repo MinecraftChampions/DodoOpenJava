@@ -1,5 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.permissions;
 
+import lombok.Getter;
+
 import java.io.File;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -11,9 +13,11 @@ import static io.github.minecraftchampions.dodoopenjava.permissions.Util.hasPerm
  */
 public class GroupManager {
     private static Group defaultGroup;
+    @Getter
     private static File groupsFile;
     private static boolean changed = false;
 
+    @Getter
     private static SortedMap<String, Group> groups = new TreeMap<>();
 
     public static boolean hasPerm(Group now, String perm) {
@@ -52,16 +56,8 @@ public class GroupManager {
         GroupManager.defaultGroup = defaultGroup;
     }
 
-    public static SortedMap<String, Group> getGroups() {
-        return groups;
-    }
-
     public static void resetGroups() {
         groups.clear();
-    }
-
-    public static File getGroupsFile() {
-        return groupsFile;
     }
 
     public static boolean groupExists(String groupName) {
@@ -78,7 +74,7 @@ public class GroupManager {
 
     public static void setAllChanged() {
         setGroupsChanged(true);
-        groups.entrySet().forEach(entry -> entry.getValue().setChanged(true));
+        groups.forEach((key, value) -> value.setChanged(true));
     }
 
     public static void setGroupsChanged(boolean changed) {

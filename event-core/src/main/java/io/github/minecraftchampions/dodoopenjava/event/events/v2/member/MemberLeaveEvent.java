@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.event.events.v2.member;
 
 import io.github.minecraftchampions.dodoopenjava.event.HandlerList;
+import lombok.Getter;
 import org.json.JSONObject;
 
 import javax.annotation.Nonnull;
@@ -8,6 +9,7 @@ import javax.annotation.Nonnull;
 /**
  * 成员离开事件
  */
+@Getter
 public class MemberLeaveEvent extends MemberEvent {
     private static final HandlerList handlers = new HandlerList();
 
@@ -21,34 +23,109 @@ public class MemberLeaveEvent extends MemberEvent {
         return handlers;
     }
 
+    /**
+     * -- GETTER --
+     *  获取时间戳
+     *
+     */
     public Integer timestamp;
 
+    /**
+     * -- GETTER --
+     *  获取事件ID
+     *
+     */
     public String eventId;
 
+    /**
+     * -- GETTER --
+     *  获取群号
+     *
+     */
     public String islandSourceId;
 
+    /**
+     * -- GETTER --
+     *  获取DodoSourceId
+     *
+     */
     public String dodoSourceId;
 
+    /**
+     * -- GETTER --
+     *  获取成员Object
+     *
+     */
     public JSONObject personal;
 
+    /**
+     * -- GETTER --
+     *  获取发送者名字
+     *
+     */
     public String userNickName;
 
+    /**
+     * -- GETTER --
+     *  获取发送者头像URL
+     *
+     */
     public String userAvatarUrl;
 
+    /**
+     * -- GETTER --
+     *  获取性别（Int类型）
+     *
+     */
     public Integer userIntSex;
 
+    /**
+     * -- GETTER --
+     *  获取性别（String类型）
+     *
+     */
     public String userSex;
 
+    /**
+     * -- GETTER --
+     *  获取变动时间
+     *
+     */
     public String modifyTime;
 
+    /**
+     * -- GETTER --
+     *  获取JSONObject
+     *
+     */
     public JSONObject jsonObject;
 
+    /**
+     * -- GETTER --
+     *  获取JsonString
+     *
+     */
     public String jsonString;
 
+    /**
+     * -- GETTER --
+     *  获取离开类型（String）
+     *
+     */
     public String leaveType;
 
+    /**
+     * -- GETTER --
+     *  获取离开类型（Int）
+     *
+     */
     public Integer leaveIntType;
 
+    /**
+     * -- GETTER --
+     *  获取操作者Dodo号
+     *
+     */
     public String operateDoDoId;
 
     public MemberLeaveEvent(JSONObject json) {
@@ -98,139 +175,5 @@ public class MemberLeaveEvent extends MemberEvent {
         };
     }
 
-    /**
-     * 获取时间戳
-     *
-     * @return 返回时间戳
-     */
-    public Integer getTimestamp() {
-        return this.timestamp;
-    }
 
-    /**
-     * 获取事件ID
-     *
-     * @return 事件ID
-     */
-    public String getEventId() {
-        return this.eventId;
-    }
-
-    /**
-     * 获取群号
-     *
-     * @return 群号
-     */
-    public String getIslandSourceId() {
-        return this.islandSourceId;
-    }
-
-    /**
-     * 获取DodoSourceId
-     *
-     * @return DodoSourceId
-     */
-    public String getDodoSourceId() {
-        return this.dodoSourceId;
-    }
-
-    /**
-     * 获取变动时间
-     *
-     * @return 变动时间
-     */
-    public String getModifyTime() {
-        return this.modifyTime;
-    }
-
-    /**
-     * 获取JSONObject
-     *
-     * @return JSONObject
-     */
-    public JSONObject getJsonObject() {
-        return this.jsonObject;
-    }
-
-    /**
-     * 获取JsonString
-     *
-     * @return String
-     */
-    public String getJsonString() {
-        return this.jsonString;
-    }
-
-    /**
-     * 获取成员Object
-     *
-     * @return 获取成员的 JsonObject
-     */
-    public JSONObject getPersonal() {
-        return this.personal;
-    }
-
-
-    /**
-     * 获取发送者名字
-     *
-     * @return 名字
-     */
-    public String getUserNickName() {
-        return this.userNickName;
-    }
-
-    /**
-     * 获取发送者头像URL
-     *
-     * @return 头像url
-     */
-    public String getUserAvatarUrl() {
-        return this.userAvatarUrl;
-    }
-
-    /**
-     * 获取性别（Int类型）
-     *
-     * @return 性别
-     */
-    public Integer getUserIntSex() {
-        return this.userIntSex;
-    }
-
-    /**
-     * 获取性别（String类型）
-     *
-     * @return 性别
-     */
-    public String getUserSex() {
-        return this.userSex;
-    }
-
-    /**
-     * 获取离开类型（String）
-     *
-     * @return 离开类型
-     */
-    public String getLeaveType() {
-        return this.leaveType;
-    }
-
-    /**
-     * 获取离开类型（Int）
-     *
-     * @return 离开类型
-     */
-    public Integer getLeaveIntType() {
-        return this.leaveIntType;
-    }
-
-    /**
-     * 获取操作者Dodo号
-     *
-     * @return Dodo号
-     */
-    public String getOperateDoDoId() {
-        return this.operateDoDoId;
-    }
 }

@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.configuration;
 
+import lombok.Getter;
 import org.apache.commons.lang3.Validate;
 
 import java.util.Map;
@@ -8,6 +9,7 @@ import java.util.Map;
  * 这是一个配置实现，不保存或从任何源加载，只将所有值存储在内存中。这对于提供缺省值的临时配置非常有用。
  */
 public class MemoryConfiguration extends MemorySection implements Configuration {
+    @Getter
     protected Configuration defaults;
     protected MemoryConfigurationOptions options;
 
@@ -56,10 +58,6 @@ public class MemoryConfiguration extends MemorySection implements Configuration 
         Validate.notNull(defaults, "缺省值不能为null!");
 
         this.defaults = defaults;
-    }
-
-    public Configuration getDefaults() {
-        return defaults;
     }
 
     @Override

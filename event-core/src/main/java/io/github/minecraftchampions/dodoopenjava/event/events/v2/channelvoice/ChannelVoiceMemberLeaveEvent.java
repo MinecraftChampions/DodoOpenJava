@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.event.events.v2.channelvoice;
 
 import io.github.minecraftchampions.dodoopenjava.event.HandlerList;
+import lombok.Getter;
 import org.json.JSONObject;
 
 import javax.annotation.Nonnull;
@@ -8,6 +9,7 @@ import javax.annotation.Nonnull;
 /**
  * 成员退出语音频道事件
  */
+@Getter
 public class ChannelVoiceMemberLeaveEvent extends ChannelVoiceEvent {
     private static final HandlerList handlers = new HandlerList();
 
@@ -21,36 +23,114 @@ public class ChannelVoiceMemberLeaveEvent extends ChannelVoiceEvent {
         return handlers;
     }
 
+    /**
+     * -- GETTER --
+     *  获取时间戳
+     *
+     */
     public Integer timestamp;
 
+    /**
+     * -- GETTER --
+     *  获取事件ID
+     *
+     */
     public String eventId;
 
+    /**
+     * -- GETTER --
+     *  获取群号
+     *
+     */
     public String islandSourceId;
 
+    /**
+     * -- GETTER --
+     *  获取DodoSourceId
+     *
+     */
     public String dodoSourceId;
 
+    /**
+     * -- GETTER --
+     *  获取频道ID
+     *
+     */
     public String channelId;
 
+    /**
+     * -- GETTER --
+     *  获取成员加入时间
+     *
+     */
     public String modifyTime;
 
+    /**
+     * -- GETTER --
+     *  获取卡片消息JSON对象
+     */
     public JSONObject jsonObject;
 
+    /**
+     * -- GETTER --
+     *  获取卡片消息JSON字符串
+     */
     public String jsonString;
 
+    /**
+     * -- GETTER --
+     *  获取成员Object
+     *
+     */
     public JSONObject personal;
 
+    /**
+     * -- GETTER --
+     *  获取发送者名字
+     *
+     */
     public String userNickName;
 
+    /**
+     * -- GETTER --
+     *  获取发送者头像URL
+     *
+     */
     public String userAvatarUrl;
 
+    /**
+     * -- GETTER --
+     *  获取性别（Int类型）
+     *
+     */
     public Integer userIntSex;
 
+    /**
+     * -- GETTER --
+     *  获取性别（String类型）
+     *
+     */
     public String userSex;
 
+    /**
+     * -- GETTER --
+     *  获取成员Object
+     *
+     */
     public JSONObject member;
 
+    /**
+     * -- GETTER --
+     *  获取成员显示名
+     *
+     */
     public String memberNickName;
 
+    /**
+     * -- GETTER --
+     *  获取成员加入时间
+     *
+     */
     public String memberJoinTime;
 
     public ChannelVoiceMemberLeaveEvent(JSONObject json) {
@@ -87,146 +167,5 @@ public class ChannelVoiceMemberLeaveEvent extends ChannelVoiceEvent {
         };
     }
 
-    /**
-     * 获取时间戳
-     *
-     * @return 时间戳
-     */
-    public Integer getTimestamp() {
-        return this.timestamp;
-    }
 
-    /**
-     * 获取事件ID
-     *
-     * @return 事件ID
-     */
-    public String getEventId() {
-        return this.eventId;
-    }
-
-    /**
-     * 获取群号
-     *
-     * @return 群号
-     */
-    public String getIslandSourceId() {
-        return this.islandSourceId;
-    }
-
-    /**
-     * 获取频道ID
-     *
-     * @return 频道ID
-     */
-    public String getChannelId() {
-        return this.channelId;
-    }
-
-    /**
-     * 获取DodoSourceId
-     *
-     * @return DodoSourceId
-     */
-    public String getDodoSourceId() {
-        return this.dodoSourceId;
-    }
-
-
-    /**
-     * 获取成员Object
-     *
-     * @return 获取成员的 JsonObject
-     */
-    public JSONObject getPersonal() {
-        return this.personal;
-    }
-
-
-    /**
-     * 获取发送者名字
-     *
-     * @return 名字
-     */
-    public String getUserNickName() {
-        return this.userNickName;
-    }
-
-    /**
-     * 获取发送者头像URL
-     *
-     * @return 头像url
-     */
-    public String getUserAvatarUrl() {
-        return this.userAvatarUrl;
-    }
-
-    /**
-     * 获取性别（Int类型）
-     *
-     * @return 性别
-     */
-    public Integer getUserIntSex() {
-        return this.userIntSex;
-    }
-
-    /**
-     * 获取性别（String类型）
-     *
-     * @return 性别
-     */
-    public String getUserSex() {
-        return this.userSex;
-    }
-
-
-    /**
-     * 获取成员Object
-     *
-     * @return 成员 JsonObject
-     */
-    public JSONObject getMember() {
-        return this.member;
-    }
-
-    /**
-     * 获取成员显示名
-     *
-     * @return 名字
-     */
-    public String getMemberNickName() {
-        return this.memberNickName;
-    }
-
-    /**
-     * 获取成员加入时间
-     *
-     * @return 加入时间
-     */
-    public String getMemberJoinTime() {
-        return this.memberJoinTime;
-    }
-
-    /**
-     * 获取成员加入时间
-     *
-     * @return 加入时间
-     */
-    public String getModifyTime() {
-        return this.modifyTime;
-    }
-
-    /**
-     * 获取卡片消息JSON字符串
-     */
-    public String getJsonString() {
-        return this.jsonString;
-    }
-
-    /**
-     * 获取卡片消息JSON对象
-     */
-    public JSONObject getJsonObject() {
-        return this.jsonObject;
-    }
 }

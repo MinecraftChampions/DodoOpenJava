@@ -1,5 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.permissions;
 
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -7,12 +9,9 @@ import java.util.Objects;
 /**
  * 权限实例
  */
+@Getter
 public class DataUnit {
     private String lastName = "";
-
-    public String getLastName() {
-        return this.lastName;
-    }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
@@ -30,16 +29,8 @@ public class DataUnit {
         return permissions.remove(permission);
     }
 
-    public boolean isChanged() {
-        return changed;
-    }
-
     public void setChanged(boolean changed) {
         this.changed = changed;
-    }
-
-    public List<String> getPermissions() {
-        return permissions;
     }
 
     private boolean changed;

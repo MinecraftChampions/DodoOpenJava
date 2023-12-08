@@ -129,7 +129,6 @@ public class EventManage {
      * @param an Authorization
      */
     public static void init(String an) {
-        Class<?> clazz = getEventTriggerClass();
         try {
             Class.forName("io.github.minecraftchampions.dodoopenjava.event.websocket.EventTrigger");
             getEventTriggerClass().getMethod("main", String.class).invoke(null, an);

@@ -40,7 +40,6 @@ public class MessageComponent {
         while (matcher.find()) {
             String tempToken = matcher.group("token");
             int start = matcher.start("token");
-            int end = matcher.end("token");
             Matcher m = MessageUtil.tokenPattern.matcher(tempToken);
             if (m.find()) {
                 String token = m.group("token");

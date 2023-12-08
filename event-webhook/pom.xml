@@ -41,6 +41,10 @@
             <artifactId>mockwebserver</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
             <groupId>io.github.minecraftchampions.dodoopenjava</groupId>
             <artifactId>event-core</artifactId>
         </dependency>

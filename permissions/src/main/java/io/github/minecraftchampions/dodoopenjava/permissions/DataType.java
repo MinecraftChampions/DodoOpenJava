@@ -1,8 +1,11 @@
 package io.github.minecraftchampions.dodoopenjava.permissions;
 
+import lombok.Getter;
+
 /**
  * 数据存储类型
  */
+@Getter
 public enum DataType {
     /**
      * YAML文件
@@ -27,15 +30,12 @@ public enum DataType {
 
     /**
      * 数据存储方式
+     * -- GETTER --
+     *  获取类型
+     *
+     * @return 类型
+
      */
     private final String type;
 
-    /**
-     * 获取类型
-     *
-     * @return 类型
-     */
-    public String getType() {
-        return type;
-    }
 }

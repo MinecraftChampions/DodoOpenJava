@@ -1,10 +1,13 @@
 package io.github.minecraftchampions.dodoopenjava.event;
 
+import lombok.Getter;
+
 /**
  * 代表一个事件的优先级.
  *
  * @see EventHandler
  */
+@Getter
 public enum EventPriority {
     /**
      * 事件中调用的重要性非常低,并且应该首先运行,允许其他插件以进一步自定义结果
@@ -37,7 +40,4 @@ public enum EventPriority {
         this.slot = slot;
     }
 
-    public int getSlot() {
-        return slot;
-    }
 }

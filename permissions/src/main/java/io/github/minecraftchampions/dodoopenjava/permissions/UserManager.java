@@ -1,5 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.permissions;
 
+import lombok.Getter;
+
 import java.io.File;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -40,17 +42,15 @@ public class UserManager {
         return true;
     }
 
+    @Getter
     private static File usersFile;
     private static boolean changed = false;
 
+    @Getter
     private static SortedMap<String, User> users = new TreeMap<>();
 
     public static void setUsers(SortedMap<String, User> users) {
         UserManager.users = users;
-    }
-
-    public static SortedMap<String, User> getUsers() {
-        return users;
     }
 
     public static User getUser(String name) {
@@ -59,10 +59,6 @@ public class UserManager {
 
     void resetUsers() {
         users.clear();
-    }
-
-    public static File getUsersFile() {
-        return usersFile;
     }
 
     public static void setUsersFile(File usersFile) {
