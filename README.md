@@ -6,6 +6,61 @@ JavaDoc：https://qscraft.top/javadoc
 
 Dodo开放平台：https://open.imdodo.com/
 
+### 代码范例
+```java
+package io.github.minecraftchampions.dodoopenjava.test;
+
+import io.github.minecraftchampions.dodoopenjava.Bot;
+import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
+import io.github.minecraftchampions.dodoopenjava.command.CommandExecutor;
+import io.github.minecraftchampions.dodoopenjava.command.CommandSender;
+import io.github.minecraftchampions.dodoopenjava.event.EventHandler;
+import io.github.minecraftchampions.dodoopenjava.event.Listener;
+import io.github.minecraftchampions.dodoopenjava.event.WebHookEventTrigger;
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage.MessageEvent;
+import lombok.SneakyThrows;
+
+public class Main implements CommandExecutor,Listener{
+    @SneakyThrows
+    public static void main(String... args) {
+        //创建机器人实例
+        Bot bot = DodoOpenJava.createBot("111111","Abwadfbhshs");
+        //使用WebHook监听事件(默认为WebSocket)
+        bot.initEventListenSystem(new WebHookEventTrigger());
+        //注册事件监听器
+        bot.registerListener(new Main());
+        //注册命令处理器
+        bot.registerListener(new Main());
+        Thread.sleep(1000*60);
+        //卸载
+        bot.disable();
+    }
+
+    @EventHandler
+    public void onEvent(MessageEvent e) {
+        System.out.println(e.getEventName());
+        System.out.println(e.getMessageId());
+    }
+
+    @Override
+    public String getMainCommand() {
+        return "test";
+    }
+
+    @Override
+    public String getPermission() {
+        return null;
+    }
+
+    @SneakyThrows
+    @Override
+    public void onCommand(CommandSender commandSender, String[] strings) {
+        System.out.println(commandSender.getSenderName());
+        commandSender.banSender();
+        commandSender.editSenderNickName("测试名字");
+    }
+}
+```
 ### 计划
 ~~目前，计划大改SDK，可感觉似乎kotlin可好用，正在学习中~~
 
