@@ -27,6 +27,5 @@ replay_pid*
 # ignore Intellij Idea project files
 .idea/
 *.iml
-**/target/
-**/.flattened-pom.xml
+target/
 test/

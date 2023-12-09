@@ -2,10 +2,6 @@
 
 Dodo开放平台的JavaSDK
 
-尚在开发中，我们目前已经支持全部的接口和事件
-
-目前还新增了权限系统以及命令系统
-
 JavaDoc：https://qscraft.top/javadoc
 
 Dodo开放平台：https://open.imdodo.com/
@@ -13,11 +9,11 @@ Dodo开放平台：https://open.imdodo.com/
 ### 计划
 ~~目前，计划大改SDK，可感觉似乎kotlin可好用，正在学习中~~
 
-想了想，还是java好，准备去除多模块开始大改
+~~想了想，还是java好，准备去除多模块开始大改~~
+
+合成了一个模块，但是现在编译后有46MB，疑似有些太臃肿了，为了一个小功能引进了许多前置库，接下来的计划就是慢慢删减掉这些无用的前置
 
 ### 添加依赖
-#### 依赖关系:
-[![p9GokoF.png](https://s1.ax1x.com/2023/05/02/p9GokoF.png)](https://imgse.com/i/p9GokoF)
 #### Maven：
 ```xml
 <repositories>
@@ -29,47 +25,10 @@ Dodo开放平台：https://open.imdodo.com/
 ```
 ```xml
 <dependencies>
-    <!--根据需求添加-->
-  <dependency>
-    <groupId>top.qscraft.dodoopenjava</groupId>
-    <artifactId>core</artifactId>
-    <version>2.5.14</version>
-  </dependency>
-  <dependency>
-    <groupId>top.qscraft.dodoopenjava</groupId>
-    <artifactId>command</artifactId>
-    <version>2.5.14</version>
-  </dependency>
-  <dependency>
-    <groupId>top.qscraft.dodoopenjava</groupId>
-    <artifactId>configuration</artifactId>
-    <version>2.5.14</version>
-  </dependency>
-  <dependency>
-    <groupId>top.qscraft.dodoopenjava</groupId>
-    <artifactId>event-core</artifactId>
-    <version>2.5.14</version>
-  </dependency>
-  <dependency>
-    <groupId>top.qscraft.dodoopenjava</groupId>
-    <artifactId>event-websocket</artifactId>
-    <version>2.5.14</version>
-  </dependency>
-  <dependency>
-    <groupId>top.qscraft.dodoopenjava</groupId>
-    <artifactId>event-webhook</artifactId>
-    <version>2.5.14</version>
-  </dependency>
-  <dependency>
-    <groupId>top.qscraft.dodoopenjava</groupId>
-    <artifactId>permissions</artifactId>
-    <version>2.5.14</version>
-  </dependency>
-  <!--又或者直接合成一个依赖项-->
   <dependency>
     <groupId>top.qscraft</groupId>
     <artifactId>dodoopenjava</artifactId>
-    <version>2.5.14</version>
+    <version>3.0.0</version>
   </dependency>
 </dependencies>
 ```
@@ -82,15 +41,7 @@ Dodo开放平台：https://open.imdodo.com/
 	}
 
 	dependencies {
-	        implementation 'top.qscraft.dodoopenjava:core:2.5.14'
-	        implementation 'top.qscraft.dodoopenjava:command:2.5.14'
-	        implementation 'top.qscraft.dodoopenjava:configuration:2.5.14'
-	        implementation 'top.qscraft.dodoopenjava:event-core:2.5.14'
-	        implementation 'top.qscraft.dodoopenjava:event-websocket:2.5.14'
-	        implementation 'top.qscraft.dodoopenjava:event-webhook:2.5.14'
-	        implementation 'top.qscraft.dodoopenjava:permissions:2.5.14'
-		//又或者直接合成一个依赖项
-	        implementation 'top.qscraft:dodoopenjava:2.5.14'
+	        implementation 'top.qscraft:dodoopenjava:3.0.0'
     }
 ```
 ### 教程(过于古老，无参考价值，改日重写)
