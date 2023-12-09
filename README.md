@@ -11,7 +11,7 @@ JavaDoc：https://qscraft.top/javadoc
 Dodo开放平台：https://open.imdodo.com/
 
 ### 计划
-~~目前，计划大改SDK，可感觉似乎kotlin可好用，真在学习中~~
+~~目前，计划大改SDK，可感觉似乎kotlin可好用，正在学习中~~
 
 想了想，还是java好，准备去除多模块开始大改
 
