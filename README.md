@@ -10,6 +10,9 @@ JavaDoc：https://qscraft.top/javadoc
 
 Dodo开放平台：https://open.imdodo.com/
 
+### 计划
+目前，计划大改SDK，可感觉似乎kotlin可好用，真在学习中
+
 ### 添加依赖
 #### 依赖关系:
 [![p9GokoF.png](https://s1.ax1x.com/2023/05/02/p9GokoF.png)](https://imgse.com/i/p9GokoF)
