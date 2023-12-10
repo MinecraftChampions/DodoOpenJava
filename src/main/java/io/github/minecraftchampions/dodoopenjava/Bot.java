@@ -10,6 +10,7 @@ import io.github.minecraftchampions.dodoopenjava.event.WebSocketEventTrigger;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import lombok.Getter;
 import lombok.SneakyThrows;
+import org.checkerframework.checker.units.qual.C;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -129,7 +130,7 @@ public class Bot {
         DodoOpenJava.getBots().remove(this);
     }
 
-    public static class Api {
+    public class Api {
         Api(Bot bot) {
             V2 = new V2(bot);
         }
@@ -137,12 +138,28 @@ public class Bot {
         public final V2 V2;
 
         @Getter
-        public static class V2 {
+        public class V2 {
             private final Bot bot;
 
             V2(Bot bot) {
                 this.bot = bot;
             }
+
+            public final BotApi botApi = new BotApi();
+            public final ChannelApi channelApi = new ChannelApi();
+            public final ChannelArticleApi channelArticleApi = new ChannelArticleApi();
+            public final ChannelMessageApi channelMessageApi = new ChannelMessageApi();
+            public final ChannelVoiceApi channelVoiceApi = new ChannelVoiceApi();
+            public final GiftApi giftApi = new GiftApi();
+            public final IntegralApi integralApi = new IntegralApi();
+            public final IslandApi islandApi = new IslandApi();
+            public final MemberApi memberApi = new MemberApi();
+            public final NTFApi ntfApi = new NTFApi();
+            public final PersonalApi personalApi = new PersonalApi();
+            public final ResourceApi resourceApi = new ResourceApi();
+            public final RoleApi roleApi = new RoleApi();
+
+
 
             public class BotApi {
                 @SneakyThrows
