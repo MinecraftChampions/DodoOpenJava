@@ -31,7 +31,9 @@ public class Main implements CommandExecutor,Listener{
         bot.registerListener(new Main());
         //注册命令处理器
         bot.registerListener(new Main());
-        Thread.sleep(1000*60);
+        System.out.println(bot.getApi().V2.botApi.getBotInfo());
+        bot.getApi().V2.channelMessageApi.sendTextMessage("111111","测试");
+        Thread.sleep(1000*60*60);
         //卸载
         bot.disable();
     }
@@ -40,6 +42,7 @@ public class Main implements CommandExecutor,Listener{
     public void onEvent(MessageEvent e) {
         System.out.println(e.getEventName());
         System.out.println(e.getMessageId());
+        bot.getApi().V2.channelMessageApi.sendTextMessage(e.getChannelId(),"你发送了" + e.getMessageBody());//这里e.getMessageBody返回的是jsonObject
     }
 
     @Override
@@ -57,7 +60,8 @@ public class Main implements CommandExecutor,Listener{
     public void onCommand(CommandSender commandSender, String[] strings) {
         System.out.println(commandSender.getSenderName());
         commandSender.banSender();
-        commandSender.editSenderNickName("测试名字");
+        commandSender.editSenderNickName("测试名字");  
+        bot.getApi().V2.channelMessageApi.sendTextMessage(commandSender.getChannelId(),"测试成功");
     }
 }
 ```

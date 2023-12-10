@@ -13,7 +13,7 @@
 
     <groupId>io.github.minecraftchampions.dodoopenjava</groupId>
     <artifactId>DodoOpenJava</artifactId>
-    <version>3.0.2</version>
+    <version>3.0.3</version>
     <packaging>jar</packaging>
     <name>DodoOpenJava</name>
 
@@ -24,6 +24,17 @@
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.4.1</version>
                 <configuration>
+                    <filters>
+                        <filter>
+                            <artifact>*:*</artifact>
+                            <excludes>
+                                <!-- 排除以下文件，防止程序启动启动时，校验错误  -->
+                                <exclude>META-INF/*.SF</exclude>
+                                <exclude>META-INF/*.DSA</exclude>
+                                <exclude>META-INF/*.RSA</exclude>
+                            </excludes>
+                        </filter>
+                    </filters>
                     <createDependencyReducedPom>false</createDependencyReducedPom>
                 </configuration>
                 <executions>
