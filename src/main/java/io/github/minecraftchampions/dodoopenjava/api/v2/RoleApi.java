@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.api.v2;
 
+import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
 import org.jetbrains.annotations.NotNull;
@@ -33,7 +34,7 @@ public class RoleApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject getRoleList(String authorization, String islandSourceId) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/role/list";
+        String url = DodoOpenJava.BASEURL + "role/list";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId);
         return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
@@ -65,7 +66,7 @@ public class RoleApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject addRoleMember(String authorization, String islandSourceId, String dodoSourceId, String roleId) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/role/member/add";
+        String url = DodoOpenJava.BASEURL + "role/member/add";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId)
@@ -99,7 +100,7 @@ public class RoleApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject removeRoleMember(String authorization, String islandSourceId, String dodoSourceId, String roleId) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/role/member/remove";
+        String url = DodoOpenJava.BASEURL + "role/member/remove";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId)
@@ -137,7 +138,7 @@ public class RoleApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject addRole(String authorization, String islandSourceId, String roleName, String roleColor, int position, String permission) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/role/add";
+        String url = DodoOpenJava.BASEURL + "role/add";
         JSONObject param = new JSONObject("{" +
                 "  \"islandSourceId\": \"" + islandSourceId + "\"}");
         return senResult(authorization, roleName, roleColor, position, permission, url, param);
@@ -175,7 +176,7 @@ public class RoleApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject editRole(String authorization, String islandSourceId, String roleId, String roleName, String roleColor, int position, String permission) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/role/edit";
+        String url = DodoOpenJava.BASEURL + "role/edit";
         JSONObject param = new JSONObject("{" +
                 "  \"islandSourceId\": \"" + islandSourceId + "\"," +
                 "  \"roleId\": \"" + roleId + "\"}");
@@ -226,7 +227,7 @@ public class RoleApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject deleteRole(String authorization, String islandSourceId, String roleId) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/role/remove";
+        String url = DodoOpenJava.BASEURL + "role/remove";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("roleId", roleId);

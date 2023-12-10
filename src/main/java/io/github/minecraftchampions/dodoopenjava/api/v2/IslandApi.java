@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.api.v2;
 
+import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
 import org.json.JSONObject;
@@ -32,7 +33,7 @@ public class IslandApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject getIslandInfo(String authorization, String islandSourceId) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/island/info";
+        String url = DodoOpenJava.BASEURL + "island/info";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId);
         return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
@@ -58,7 +59,7 @@ public class IslandApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject getIslandList(String authorization) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/island/list";
+        String url = DodoOpenJava.BASEURL + "island/list";
         JSONObject jsonObject = new JSONObject();
         return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
@@ -89,7 +90,7 @@ public class IslandApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject getIslandLevelRankList(String authorization, String islandSourceId, int pageSize, long maxId) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/island/info";
+        String url = DodoOpenJava.BASEURL + "island/info";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("pageSize", pageSize)
@@ -119,7 +120,7 @@ public class IslandApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject getIslandMuteList(String authorization, String islandSourceId) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/island/mute/list";
+        String url = DodoOpenJava.BASEURL + "island/mute/list";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId);
         return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
@@ -147,7 +148,7 @@ public class IslandApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject getIslandBanList(String authorization, String islandSourceId) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/island/ban/list";
+        String url = DodoOpenJava.BASEURL + "island/ban/list";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId);
         return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));

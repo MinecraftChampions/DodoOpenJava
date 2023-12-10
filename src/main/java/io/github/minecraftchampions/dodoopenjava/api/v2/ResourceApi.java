@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.api.v2;
 
+import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
 import org.json.JSONObject;
@@ -32,7 +33,7 @@ public class ResourceApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject uploadResource(String authorization, String path) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/resource/picture/upload";
+        String url = DodoOpenJava.BASEURL + "resource/picture/upload";
         return new JSONObject(NetUtil.uploadFile(authorization, path, url));
     }
 }

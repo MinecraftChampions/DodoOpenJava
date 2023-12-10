@@ -13,7 +13,7 @@
 
     <groupId>io.github.minecraftchampions.dodoopenjava</groupId>
     <artifactId>DodoOpenJava</artifactId>
-    <version>3.0.0</version>
+    <version>3.0.1</version>
     <packaging>jar</packaging>
     <name>DodoOpenJava</name>
 
@@ -47,6 +47,9 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
                     <excludes>
                         <exclude>META-INF/*.SF</exclude>
                         <exclude>META-INF/*.DSA</exclude>
@@ -126,26 +129,14 @@
         </dependency>
         <dependency>
             <groupId>com.vladsch.flexmark</groupId>
-            <artifactId>flexmark-all</artifactId>
+            <artifactId>flexmark</artifactId>
             <version>0.64.8</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.findbugs</groupId>
-            <artifactId>jsr305</artifactId>
-            <version>3.0.2</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.13.0</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.dom4j</groupId>
-            <artifactId>dom4j</artifactId>
-            <version>2.1.4</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -185,33 +176,9 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.tomlj</groupId>
-            <artifactId>tomlj</artifactId>
-            <version>1.1.0</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-all</artifactId>
-            <version>4.1.92.Final</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>mockwebserver</artifactId>
             <version>4.8.0</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.openjdk.nashorn</groupId>
-            <artifactId>nashorn-core</artifactId>
-            <version>15.2</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-reload4j</artifactId>
-            <version>2.0.7</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -221,5 +188,4 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
-
 </project>

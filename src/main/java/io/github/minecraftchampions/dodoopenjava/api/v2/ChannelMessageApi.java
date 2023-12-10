@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.api.v2;
 
+import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.card.Card;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
@@ -38,7 +39,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject sendTextMessage(String authorization, String channelId, String content) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/channel/message/send";
+        String url = DodoOpenJava.BASEURL + "channel/message/send";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageType", 1)
                 .put("channelId", channelId)
@@ -87,7 +88,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject setChannelMessageTop(String authorization, String messageId, int operateType) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/channel/message/top";
+        String url = DodoOpenJava.BASEURL + "channel/message/top";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId)
                 .put("operateType", operateType);
@@ -116,7 +117,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject getChannelMessageReactionList(String authorization, String messageId) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/channel/message/reaction/list";
+        String url = DodoOpenJava.BASEURL + "channel/message/reaction/list";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId);
         return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
@@ -144,7 +145,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject getChannelMessageReactionMemberList(String authorization, String messageId, int type, String id, int pageSize, long maxId) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/channel/message/reaction/member/list";
+        String url = DodoOpenJava.BASEURL + "channel/message/reaction/member/list";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId)
                 .put("pageSize", pageSize)
@@ -182,7 +183,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject referencedMessage(String authorization, String channelId, String content, String referencedMessageId) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/channel/message/send";
+        String url = DodoOpenJava.BASEURL + "channel/message/send";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("channelId", channelId)
                 .put("messageType", 1)
@@ -223,7 +224,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject sendChannelPictureMessage(String authorization, String channelId, String imageUrl, int width, int height, Boolean isOriginal) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/channel/message/send";
+        String url = DodoOpenJava.BASEURL + "channel/message/send";
         int original;
         if (isOriginal) {
             original = 1;
@@ -270,7 +271,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject sendChannelPictureMessage(String authorization, String channelId, String imageUrl, int width, int height) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/channel/message/send";
+        String url = DodoOpenJava.BASEURL + "channel/message/send";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("channelId", channelId)
                 .put("messageType", 2)
@@ -326,7 +327,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject sendChannelVideoMessage(String authorization, String channelId, String videoUrl) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/channel/message/send";
+        String url = DodoOpenJava.BASEURL + "channel/message/send";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("channelId", channelId)
                 .put("messageType", 3)
@@ -366,7 +367,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject sendChannelVideoMessage(String authorization, String channelId, String videoUrl, String coverUrl, long duration, long size) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/channel/message/send";
+        String url = DodoOpenJava.BASEURL + "channel/message/send";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("channelId", channelId)
                 .put("messageType", 3)
@@ -403,7 +404,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject sendChannelShareMessage(String authorization, String channelId, String jumpUrl) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/channel/message/send";
+        String url = DodoOpenJava.BASEURL + "channel/message/send";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("channelId", channelId)
                 .put("messageType", 4)
@@ -441,7 +442,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject sendChannelFileMessage(String authorization, String channelId, String fileUrl, String name, long size) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/channel/message/send";
+        String url = DodoOpenJava.BASEURL + "channel/message/send";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("channelId", channelId)
                 .put("messageType", 5)
@@ -477,7 +478,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject editChannelMessage(String authorization, String messageId, String content) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/channel/message/edit";
+        String url = DodoOpenJava.BASEURL + "channel/message/edit";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId)
                 .put("messageBody", Map.of(
@@ -508,7 +509,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject withdrawChannelMessage(String authorization, String messageId) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/channel/message/withdraw";
+        String url = DodoOpenJava.BASEURL + "channel/message/withdraw";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId);
         return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
@@ -538,7 +539,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject withdrawChannelMessageWithReason(String authorization, String messageId, String reason) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/channel/message/withdraw";
+        String url = DodoOpenJava.BASEURL + "channel/message/withdraw";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId)
                 .put("reason", reason);
@@ -569,7 +570,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject addChannelMessageReaction(String authorization, String messageId, String id) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/channel/message/reaction/add";
+        String url = DodoOpenJava.BASEURL + "channel/message/reaction/add";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId)
                 .put("emoji", Map.of(
@@ -605,7 +606,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject removeChannelMessageReaction(String authorization, String messageId, String id, String dodoSourceId) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/channel/message/reaction/remove";
+        String url = DodoOpenJava.BASEURL + "channel/message/reaction/remove";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId)
                 .put("dodoSourceId", dodoSourceId)
@@ -640,7 +641,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject removeChannelMessageBotReaction(String authorization, String messageId, String id) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/channel/message/reaction/remove";
+        String url = DodoOpenJava.BASEURL + "channel/message/reaction/remove";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId)
                 .put("emoji", Map.of(
@@ -674,7 +675,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject sendCardMessage(String authorization, String channelId, Card messageBody) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/channel/message/send";
+        String url = DodoOpenJava.BASEURL + "channel/message/send";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("channelId", channelId)
                 .put("messageType", 6)
@@ -706,7 +707,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject editChannelCardMessage(String authorization, String messageId, Card messageBody) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/channel/message/edit";
+        String url = DodoOpenJava.BASEURL + "channel/message/edit";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId)
                 .put("messageBody", messageBody.toJSONObject().toString());

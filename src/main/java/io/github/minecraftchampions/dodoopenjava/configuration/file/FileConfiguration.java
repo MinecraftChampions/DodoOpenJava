@@ -7,23 +7,13 @@ import io.github.minecraftchampions.dodoopenjava.configuration.InvalidConfigurat
 import io.github.minecraftchampions.dodoopenjava.configuration.MemoryConfiguration;
 import io.github.minecraftchampions.dodoopenjava.utils.ConfigUtil;
 import org.apache.commons.lang3.Validate;
-import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
 
 import java.io.*;
-import java.nio.charset.Charset;
 
 /**
  * 这是一个实现了 Configuration 的配置文件的基类
  */
 public abstract class FileConfiguration extends MemoryConfiguration {
-    static {
-        final byte[] testBytes = Base64Coder.decode("ICEiIyQlJicoKSorLC0uLzAxMjM0NTY3ODk6Ozw9Pj9AQUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVpbXF1eX2BhYmNkZWZnaGlqa2xtbm9wcXJzdHV2d3h5ent8fX4NCg==");
-        final String testString = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\r\n";
-        final Charset defaultCharset = Charset.defaultCharset();
-        final String resultString = new String(testBytes, defaultCharset);
-        final boolean trueUTF = defaultCharset.name().contains("UTF");
-    }
-
     /**
      * 创建一个空的，没有值默认值的 FileConfiguration.
      */

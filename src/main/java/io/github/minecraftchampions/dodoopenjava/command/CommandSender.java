@@ -16,57 +16,49 @@ import java.io.IOException;
 public class CommandSender {
     /**
      * -- GETTER --
-     *  获取DodoID
-     *
+     * 获取DodoID
      */
     private final String SenderDodoSourceId;
 
     /**
      * -- GETTER --
-     *  获取群号
-     *
+     * 获取群号
      */
     private final String IslandSourceId;
 
     /**
      * -- GETTER --
-     *  获取头像URL
-     *
+     * 获取头像URL
      */
     private final String AvatarUrl;
 
     /**
      * -- GETTER --
-     *  获取发送者群昵称
-     *
+     * 获取发送者群昵称
      */
     private String SenderNickName;
 
     /**
      * -- GETTER --
-     *  获取发送者原本名称
-     *
+     * 获取发送者原本名称
      */
     private final String SenderName;
 
     /**
      * -- GETTER --
-     *  获取加入时间
-     *
+     * 获取加入时间
      */
     private final String JoinTime;
 
     /**
      * -- GETTER --
-     *  获取触发命令的消息ID
-     *
+     * 获取触发命令的消息ID
      */
     private final String MessageId;
 
     /**
      * -- GETTER --
-     *  获取所属机器人
-     *
+     * 获取所属机器人
      */
     private final Bot bot;
 
@@ -75,7 +67,7 @@ public class CommandSender {
      *
      * @param jsontext JSONText
      */
-    public CommandSender(JSONObject jsontext,Bot bot) {
+    public CommandSender(JSONObject jsontext, Bot bot) {
         this.bot = bot;
         this.SenderNickName = jsontext.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("nickName");
         this.SenderName = jsontext.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("nickName");

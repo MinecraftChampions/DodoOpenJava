@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.api.v2;
 
+import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
 import org.json.JSONObject;
@@ -35,7 +36,7 @@ public class PersonalApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject sendPersonalMessage(String authorization, String islandSourceId, String dodoSourceId, String message) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/personal/message/send";
+        String url = DodoOpenJava.BASEURL + "personal/message/send";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId)
@@ -74,7 +75,7 @@ public class PersonalApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject sendDodoPictureMessage(String authorization, String islandSourceId, String dodoSourceId, String u, int width, int height, Boolean isOriginal) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/personal/message/send";
+        String url = DodoOpenJava.BASEURL + "personal/message/send";
         int original;
         if (isOriginal) {
             original = 1;
@@ -121,7 +122,7 @@ public class PersonalApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject sendDodoPictureMessage(String authorization, String islandSourceId, String dodoSourceId, String u, int width, int height) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/personal/message/send";
+        String url = DodoOpenJava.BASEURL + "personal/message/send";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId)
@@ -157,7 +158,7 @@ public class PersonalApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject sendDodoVideoMessage(String authorization, String islandSourceId, String dodoSourceId, String u) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/personal/message/send";
+        String url = DodoOpenJava.BASEURL + "personal/message/send";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId)
@@ -198,7 +199,7 @@ public class PersonalApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject sendDodoVideoMessage(String authorization, String islandSourceId, String dodoSourceId, String u, String coverUrl, long duration, long size) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/personal/message/send";
+        String url = DodoOpenJava.BASEURL + "personal/message/send";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId)

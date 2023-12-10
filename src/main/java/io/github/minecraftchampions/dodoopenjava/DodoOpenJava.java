@@ -9,6 +9,7 @@ import java.util.Set;
  * API
  */
 public class DodoOpenJava {
+    public static final String BASEURL = "https://botopen.imdodo.com/api/v2/";
     @Getter
     private static final Set<Bot> bots = new HashSet<>();
     /**

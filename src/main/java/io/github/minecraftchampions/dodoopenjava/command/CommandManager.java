@@ -21,6 +21,7 @@ public class CommandManager {
     public CommandManager(Bot bot) {
         this.bot = bot;
     }
+
     /**
      * 初始化
      */
@@ -32,7 +33,7 @@ public class CommandManager {
     /**
      * 注册命令
      *
-     * @param command  命令实例
+     * @param command 命令实例
      */
     public void registerCommand(CommandExecutor command) {
         commands.add(command);
@@ -44,7 +45,7 @@ public class CommandManager {
     /**
      * 注销命令
      *
-     * @param command  命令实例
+     * @param command 命令实例
      */
     public void unregisterCommand(CommandExecutor command) {
         commands.remove(command);
@@ -52,7 +53,6 @@ public class CommandManager {
 
     /**
      * 注销所有命令
-     *
      */
     public void unregisterAllCommands() {
         commands.clear();

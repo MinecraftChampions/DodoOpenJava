@@ -9,8 +9,10 @@ public class EventTrigger {
 
     protected Bot bot;
 
-    public void start() {}
+    public void start() {
+    }
 
-    public void close() {}
+    public void close() {
+    }
 
 }

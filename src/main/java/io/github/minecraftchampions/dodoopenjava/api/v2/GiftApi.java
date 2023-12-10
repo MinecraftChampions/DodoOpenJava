@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.api.v2;
 
+import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
 import org.json.JSONObject;
@@ -32,7 +33,7 @@ public class GiftApi {
      * @throws IOException 发送请求失败后抛出
      */
     public static JSONObject getGiftAccount(String authorization, String islandSourceId) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/gift/account/info";
+        String url = DodoOpenJava.BASEURL + "gift/account/info";
         String param = new JSONObject()
                 .put("islandSourceId", islandSourceId)
                 .toString();
@@ -61,7 +62,7 @@ public class GiftApi {
      * @throws IOException 发送请求失败后抛出
      */
     public static JSONObject getGiftShareRatioInfo(String authorization, String islandSourceId) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/gift/share/ratio/info";
+        String url = DodoOpenJava.BASEURL + "gift/share/ratio/info";
         String param = new JSONObject()
                 .put("islandSourceId", islandSourceId)
                 .toString();
@@ -92,7 +93,7 @@ public class GiftApi {
      * @throws IOException 发送请求失败后抛出
      */
     public static JSONObject getGiftList(String authorization, String targetId, int targetType) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/gift/list";
+        String url = DodoOpenJava.BASEURL + "gift/list";
         String param = new JSONObject()
                 .put("targetId", targetId)
                 .put("targetType", targetType)
@@ -130,7 +131,7 @@ public class GiftApi {
      * @throws IOException 发送请求失败后抛出
      */
     public static JSONObject getGiftMemberList(String authorization, String targetId, int targetType, String giftId, int pageSize, long maxId) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/gift/member/list";
+        String url = DodoOpenJava.BASEURL + "gift/member/list";
         String param = new JSONObject()
                 .put("targetId", targetId)
                 .put("targetType", targetType)
@@ -169,7 +170,7 @@ public class GiftApi {
      * @throws IOException 发送请求失败后抛出
      */
     public static JSONObject getGiftGrossValueList(String authorization, String targetId, int targetType, int pageSize, long maxId) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/gift/gross/value/list";
+        String url = DodoOpenJava.BASEURL + "gift/gross/value/list";
         String param = new JSONObject()
                 .put("targetId", targetId)
                 .put("targetType", targetType)

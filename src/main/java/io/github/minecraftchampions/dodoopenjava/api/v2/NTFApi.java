@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.api.v2;
 
+import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
 import org.json.JSONObject;
@@ -37,7 +38,7 @@ public class NTFApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject getMemberNftStatus(String authorization, String islandSourceId, String dodoSourceId, String platform) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/member/nft/status";
+        String url = DodoOpenJava.BASEURL + "member/nft/status";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId)
@@ -69,7 +70,7 @@ public class NTFApi {
      * @param platform       数藏平台
      */
     public static JSONObject getMemberNftStatus(String authorization, String islandSourceId, String dodoSourceId, String platform, String issuer, String series) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/member/nft/status";
+        String url = DodoOpenJava.BASEURL + "member/nft/status";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId)

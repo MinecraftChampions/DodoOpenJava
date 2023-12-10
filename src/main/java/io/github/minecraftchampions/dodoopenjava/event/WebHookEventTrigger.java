@@ -19,11 +19,11 @@ import okhttp3.mockwebserver.MockWebServer;
 import okhttp3.mockwebserver.RecordedRequest;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
-import org.w3c.dom.events.EventException;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.logging.Logger;
 
 /**
  * 事件触发
@@ -105,7 +105,7 @@ public class WebHookEventTrigger extends EventTrigger {
             throw new RuntimeException(e);
         }
     }
-    
+
     @Override
     public boolean isConnect() {
         return server != null && isConnect;
@@ -164,6 +164,7 @@ public class WebHookEventTrigger extends EventTrigger {
      */
     public class DisposeEvent extends Thread {
         EventManager eventManager = getBot().getEventManager();
+
         @Override
         public void run() {
             super.run();
@@ -171,112 +172,22 @@ public class WebHookEventTrigger extends EventTrigger {
 
         public DisposeEvent(JSONObject json) {
             switch (json.getJSONObject("data").getString("eventType")) {
-                case "1001" -> {
-                    try {
-                        eventManager.fireEvent(new PersonalMessageEvent(json));
-                    } catch (EventException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                case "2001" -> {
-                    try {
-                        eventManager.fireEvent(new MessageEvent(json));
-                    } catch (EventException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                case "3001" -> {
-                    try {
-                        eventManager.fireEvent(new MessageReactionEvent(json));
-                    } catch (EventException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                case "3002" -> {
-                    try {
-                        eventManager.fireEvent(new CardMessageButtonClickEvent(json));
-                    } catch (EventException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                case "3003" -> {
-                    try {
-                        eventManager.fireEvent(new CardMessageFormSubmitEvent(json));
-                    } catch (EventException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                case "3004" -> {
-                    try {
-                        eventManager.fireEvent(new CardMessageListSubmitEvent(json));
-                    } catch (EventException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                case "4001" -> {
-                    try {
-                        eventManager.fireEvent(new MemberJoinEvent(json));
-                    } catch (EventException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                case "4002" -> {
-                    try {
-                        eventManager.fireEvent(new MemberLeaveEvent(json));
-                    } catch (EventException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                case "5001" -> {
-                    try {
-                        eventManager.fireEvent(new ChannelVoiceMemberJoinEvent(json));
-                    } catch (EventException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                case "5002" -> {
-                    try {
-                        eventManager.fireEvent(new ChannelVoiceMemberLeaveEvent(json));
-                    } catch (EventException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                case "6001" -> {
-                    try {
-                        eventManager.fireEvent(new ChannelArticlePublishEvent(json));
-                    } catch (EventException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                case "6002" -> {
-                    try {
-                        eventManager.fireEvent(new ChannelArticleCommentEvent(json));
-                    } catch (EventException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                case "7001" -> {
-                    try {
-                        eventManager.fireEvent(new GiftSendEvent(json));
-                    } catch (EventException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                case "8001" -> {
-                    try {
-                        eventManager.fireEvent(new IntegralChangeEvent(json));
-                    } catch (EventException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                case "9001" -> {
-                    try {
-                        eventManager.fireEvent(new GoodsPurchaseEvent(json));
-                    } catch (EventException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                default -> System.out.println("未知的事件！");
+                case "1001" -> eventManager.fireEvent(new PersonalMessageEvent(json));
+                case "2001" -> eventManager.fireEvent(new MessageEvent(json));
+                case "3001" -> eventManager.fireEvent(new MessageReactionEvent(json));
+                case "3002" -> eventManager.fireEvent(new CardMessageButtonClickEvent(json));
+                case "3003" -> eventManager.fireEvent(new CardMessageFormSubmitEvent(json));
+                case "3004" -> eventManager.fireEvent(new CardMessageListSubmitEvent(json));
+                case "4001" -> eventManager.fireEvent(new MemberJoinEvent(json));
+                case "4002" -> eventManager.fireEvent(new MemberLeaveEvent(json));
+                case "5001" -> eventManager.fireEvent(new ChannelVoiceMemberJoinEvent(json));
+                case "5002" -> eventManager.fireEvent(new ChannelVoiceMemberLeaveEvent(json));
+                case "6001" -> eventManager.fireEvent(new ChannelArticlePublishEvent(json));
+                case "6002" -> eventManager.fireEvent(new ChannelArticleCommentEvent(json));
+                case "7001" -> eventManager.fireEvent(new GiftSendEvent(json));
+                case "8001" -> eventManager.fireEvent(new IntegralChangeEvent(json));
+                case "9001" -> eventManager.fireEvent(new GoodsPurchaseEvent(json));
+                default -> System.getLogger(Logger.GLOBAL_LOGGER_NAME).log(System.Logger.Level.WARNING, "未知的事件！");
             }
         }
     }

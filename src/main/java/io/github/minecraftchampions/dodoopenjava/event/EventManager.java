@@ -17,10 +17,11 @@ import java.util.concurrent.CompletableFuture;
  * 事件的相关方法（包含监听器注册等）
  */
 public class EventManager {
-    private HashMap<Class<? extends Event>, ArrayList<SimpleEntry<Method,Object>>> handlers = new HashMap<>();
+    private HashMap<Class<? extends Event>, ArrayList<SimpleEntry<Method, Object>>> handlers = new HashMap<>();
 
     /**
      * 注册事件监听器
+     *
      * @param listener 事件监听器
      */
     public void registerListener(Listener listener) {
@@ -58,18 +59,20 @@ public class EventManager {
 
     /**
      * 注销事件监听器
+     *
      * @param listener listener
      */
     public void unregisterListeners(Listener listener) {
         Set<Class<? extends Event>> set = handlers.keySet();
         for (Class<? extends Event> clazz : set) {
-            List<SimpleEntry<Method,Object>> list =  handlers.get(clazz).stream().filter(e -> e.getKey().getDeclaringClass() == listener.getClass()).toList();
+            List<SimpleEntry<Method, Object>> list = handlers.get(clazz).stream().filter(e -> e.getKey().getDeclaringClass() == listener.getClass()).toList();
             handlers.get(clazz).removeAll(list);
         }
     }
 
     /**
      * 触发事件
+     *
      * @param event 事件
      * @throws RuntimeException 当事件的 EventType 为 null 或 isEmpty 时抛出
      */
@@ -83,16 +86,16 @@ public class EventManager {
             for (SimpleEntry<Method, Object> entry : methodEntryList) {
                 Method method = entry.getKey();
                 if (isAsync) {
-                    CompletableFuture.runAsync(()->{
+                    CompletableFuture.runAsync(() -> {
                         try {
-                            method.invoke(entry.getValue(),event);
+                            method.invoke(entry.getValue(), event);
                         } catch (IllegalAccessException | InvocationTargetException ex) {
                             throw new RuntimeException(ex);
                         }
                     });
                 } else {
                     try {
-                        method.invoke(entry.getValue(),event);
+                        method.invoke(entry.getValue(), event);
                     } catch (IllegalAccessException | InvocationTargetException e) {
                         throw new RuntimeException(e);
                     }

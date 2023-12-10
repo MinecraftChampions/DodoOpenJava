@@ -39,18 +39,6 @@ public class Permissions {
                 fileMonitor.monitor(jsonData.User, new FileListener());
                 permData = jsonData;
             }
-            case "Xml" -> {
-                XmlData xmlData = new XmlData();
-                fileMonitor.monitor(xmlData.Group, new FileListener());
-                fileMonitor.monitor(xmlData.User, new FileListener());
-                permData = xmlData;
-            }
-            case "Toml" -> {
-                TomlData tomlData = new TomlData();
-                fileMonitor.monitor(tomlData.Group, new FileListener());
-                fileMonitor.monitor(tomlData.User, new FileListener());
-                permData = tomlData;
-            }
             default -> {
                 return false;
             }

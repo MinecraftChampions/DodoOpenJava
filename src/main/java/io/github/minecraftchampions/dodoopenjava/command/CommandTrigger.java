@@ -22,7 +22,7 @@ public class CommandTrigger implements Listener {
         if (!Objects.equals(e.getMessageIntType(), 1)) return;
         if (e.getMessageBody().getString("content").indexOf("/") != 0) return;
         String command = e.getMessageBody().getString("content").replaceFirst("/", "");
-        CommandSender sender = new CommandSender(new JSONObject(e.jsonString),commandManager.getBot());
+        CommandSender sender = new CommandSender(new JSONObject(e.jsonString), commandManager.getBot());
         List<String> Command = new java.util.ArrayList<>(List.of(command.split(" ")));
         String mainCommand = Command.get(0);
         Command.remove(0);
@@ -31,6 +31,7 @@ public class CommandTrigger implements Listener {
     }
 
     CommandManager commandManager;
+
     public CommandTrigger(CommandManager commandManager) {
         this.commandManager = commandManager;
     }

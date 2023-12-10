@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.api.v2;
 
+import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
 import org.json.JSONObject;
@@ -30,9 +31,9 @@ public class BotApi {
      * @return 返回JSON对象
      * @throws IOException 发送请求失败后抛出
      */
-    
+
     public static JSONObject getBotInfo(String authorization) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/bot/info";
+        String url = DodoOpenJava.BASEURL + "bot/info";
         JSONObject jsonObject = new JSONObject();
         return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
     }
@@ -58,12 +59,27 @@ public class BotApi {
      * @return 返回JSON对象
      * @throws IOException 发送请求失败后抛出
      */
-    
+
     public static JSONObject setBotIslandLeave(String authorization, String islandSourceId) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/bot/island/leave";
+        String url = DodoOpenJava.BASEURL + "bot/island/leave";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId);
         return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+    }
+
+    /**
+     * 获取机器人邀请列表
+     *
+     * @param clientId 机器人唯一标识
+     * @param token    机器人鉴权Token
+     * @param pageSize 页大小，最大100
+     * @param maxId    上一页最大ID值，为提升分页查询性能，需要传入上一页查询记录中的最大ID值，首页请传0
+     * @return 返回JSON对象
+     * @throws IOException 发送请求失败后抛出
+     */
+
+    public static JSONObject getBotInviteList(String clientId, String token, int pageSize, long maxId) throws IOException {
+        return getBotInviteList(BaseUtil.Authorization(clientId, token), pageSize, maxId);
     }
 
     /**
@@ -75,13 +91,27 @@ public class BotApi {
      * @return 返回JSON对象
      * @throws IOException 发送请求失败后抛出
      */
-    
+
     public static JSONObject getBotInviteList(String authorization, int pageSize, long maxId) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/bot/invite/list";
+        String url = DodoOpenJava.BASEURL + "bot/invite/list";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("pageSize", pageSize)
                 .put("maxId", maxId);
         return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+    }
+
+    /**
+     * 添加成员到机器人邀请列表
+     *
+     * @param clientId     机器人唯一标识
+     * @param token        机器人鉴权Token
+     * @param dodoSourceId dodoSourceId
+     * @return 返回JSON对象
+     * @throws IOException 发送请求失败后抛出
+     */
+
+    public static JSONObject addBotInvite(String clientId, String token, String dodoSourceId) throws IOException {
+        return addBotInvite(BaseUtil.Authorization(clientId, token), dodoSourceId);
     }
 
     /**
@@ -92,12 +122,26 @@ public class BotApi {
      * @return 返回JSON对象
      * @throws IOException 发送请求失败后抛出
      */
-    
+
     public static JSONObject addBotInvite(String authorization, String dodoSourceId) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/bot/invite/add";
+        String url = DodoOpenJava.BASEURL + "bot/invite/add";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("dodoSourceId", dodoSourceId);
         return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+    }
+
+    /**
+     * 移除成员出机器人邀请列表
+     *
+     * @param clientId     机器人唯一标识
+     * @param token        机器人鉴权Token
+     * @param dodoSourceId dodoSourceId
+     * @return 返回JSON对象
+     * @throws IOException 发送请求失败后抛出
+     */
+
+    public static JSONObject removeBotInvite(String clientId, String token, String dodoSourceId) throws IOException {
+        return removeBotInvite(BaseUtil.Authorization(clientId, token), dodoSourceId);
     }
 
     /**
@@ -108,9 +152,9 @@ public class BotApi {
      * @return 返回JSON对象
      * @throws IOException 发送请求失败后抛出
      */
-    
+
     public static JSONObject removeBotInvite(String authorization, String dodoSourceId) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/bot/invite/remove";
+        String url = DodoOpenJava.BASEURL + "bot/invite/remove";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("dodoSourceId", dodoSourceId);
         return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));

@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.api.v2;
 
+import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
 import org.json.JSONObject;
@@ -32,9 +33,9 @@ public class ChannelApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    
+
     public static JSONObject getChannelList(String authorization, String islandSourceId) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/channel/list";
+        String url = DodoOpenJava.BASEURL + "channel/list";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId);
         return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
@@ -61,9 +62,9 @@ public class ChannelApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    
+
     public static JSONObject getChannelInfo(String authorization, String channelId) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/channel/info";
+        String url = DodoOpenJava.BASEURL + "channel/info";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("channelId", channelId);
         return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
@@ -94,9 +95,9 @@ public class ChannelApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    
+
     public static JSONObject addChannel(String authorization, String islandSourceId, String channelName, int channelType) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/channel/add";
+        String url = DodoOpenJava.BASEURL + "channel/add";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("channelName", channelName)
@@ -129,9 +130,9 @@ public class ChannelApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    
+
     public static JSONObject editChannel(String authorization, String islandSourceId, String channelName, String channelId) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/channel/edit";
+        String url = DodoOpenJava.BASEURL + "channel/edit";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("channelName", channelName)
@@ -162,9 +163,9 @@ public class ChannelApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    
+
     public static JSONObject deleteChannel(String authorization, String islandSourceId, String channelId) throws IOException {
-        String url = "https://botopen.imdodo.com/api/v2/channel/remove";
+        String url = DodoOpenJava.BASEURL + "channel/remove";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("channelId", channelId);
