@@ -10,7 +10,6 @@ import io.github.minecraftchampions.dodoopenjava.event.WebSocketEventTrigger;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import lombok.Getter;
 import lombok.SneakyThrows;
-import org.checkerframework.checker.units.qual.C;
 import org.json.JSONObject;
 
 import java.io.File;
