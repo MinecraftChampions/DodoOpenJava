@@ -26,11 +26,11 @@ public class Main implements CommandExecutor,Listener{
         //创建机器人实例
         Bot bot = DodoOpenJava.createBot("111111","Abwadfbhshs");
         //使用WebHook监听事件(默认为WebSocket)
-        bot.initEventListenSystem(new WebHookEventTrigger());
+        bot.initEventListenSystem(new WebHookEventTrigger(bot));
         //注册事件监听器
         bot.registerListener(new Main());
         //注册命令处理器
-        bot.registerListener(new Main());
+        bot.registerCommand(new Main());
         System.out.println(bot.getApi().V2.botApi.getBotInfo());
         bot.getApi().V2.channelMessageApi.sendTextMessage("111111","测试");
         Thread.sleep(1000*60*60);

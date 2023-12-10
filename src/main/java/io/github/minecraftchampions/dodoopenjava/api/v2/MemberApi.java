@@ -164,7 +164,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject editMemberNickName(String authorization, String islandSourceId, String dodoSourceId, String nickName) throws IOException {
-        String url = DodoOpenJava.BASEURL + "member/nick/set";
+        String url = DodoOpenJava.BASEURL + "member/nickname/edit";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("nickName", nickName)
@@ -198,7 +198,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject addMemberMute(String authorization, String islandSourceId, String dodoSourceId, int duration) throws IOException {
-        String url = DodoOpenJava.BASEURL + "member/ban/set";
+        String url = DodoOpenJava.BASEURL + "member/ban/add";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId)
@@ -234,7 +234,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static JSONObject addMemberReasonMute(String authorization, String islandSourceId, String dodoSourceId, int duration, String reason) throws IOException {
-        String url = DodoOpenJava.BASEURL + "member/ban/set";
+        String url = DodoOpenJava.BASEURL + "member/ban/add";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId)

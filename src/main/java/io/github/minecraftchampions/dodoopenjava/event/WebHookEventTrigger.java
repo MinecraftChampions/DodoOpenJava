@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.event;
 
+import io.github.minecraftchampions.dodoopenjava.Bot;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelarticle.ChannelArticleCommentEvent;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelarticle.ChannelArticlePublishEvent;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage.*;
@@ -29,6 +30,9 @@ import java.util.logging.Logger;
  * 事件触发
  */
 public class WebHookEventTrigger extends EventTrigger {
+    public WebHookEventTrigger(Bot bot) {
+        this.bot = bot;
+    }
     public MockWebServer server = null;
 
     /**

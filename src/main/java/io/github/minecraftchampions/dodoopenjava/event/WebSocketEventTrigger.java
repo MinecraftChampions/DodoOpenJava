@@ -49,7 +49,6 @@ public class WebSocketEventTrigger extends EventTrigger {
     @Override
     public void start() {
         v2();
-        isConnect = true;
     }
 
     public void reconnect() {
@@ -77,6 +76,7 @@ public class WebSocketEventTrigger extends EventTrigger {
         if (isConnect) {
             return;
         }
+        isConnect = true;
         Request request = new Request.Builder().url("https://botopen.imdodo.com/api/v2/websocket/connection").addHeader("Content-Type", "application/json").addHeader("Authorization", bot.getAuthorization())
                 .post(RequestBody.create("{}", MediaType.parse("application/json")))
                 .build();

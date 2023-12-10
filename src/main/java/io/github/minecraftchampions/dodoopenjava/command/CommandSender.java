@@ -92,7 +92,7 @@ public class CommandSender {
      * @throws IOException 编辑失败后抛出
      */
     public void editSenderNickName(String NickName) throws IOException {
-        MemberApi.editMemberNickName(bot.getAuthorization(), IslandSourceId, SenderDodoSourceId, NickName);
+        System.out.println(MemberApi.editMemberNickName(bot.getAuthorization(), IslandSourceId, SenderDodoSourceId, NickName));
         SenderNickName = NickName;
     }
 

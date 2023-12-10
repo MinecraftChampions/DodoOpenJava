@@ -26,8 +26,8 @@ public class CommandManager {
      * 初始化
      */
     private void init() {
-        bot.registerListener(new CommandTrigger(this));
         isInit = true;
+        bot.registerListener(new CommandTrigger(this));
     }
 
     /**
