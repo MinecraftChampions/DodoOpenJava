@@ -28,6 +28,12 @@ public class CommandSender {
 
     /**
      * -- GETTER --
+     * 获取触发命令的频道号
+     */
+    private final String ChannelId;
+
+    /**
+     * -- GETTER --
      * 获取头像URL
      */
     private final String AvatarUrl;
@@ -76,6 +82,7 @@ public class CommandSender {
         this.SenderDodoSourceId = jsontext.getJSONObject("data").getJSONObject("eventBody").getString("dodoSourceId");
         this.IslandSourceId = jsontext.getJSONObject("data").getJSONObject("eventBody").getString("islandSourceId");
         this.MessageId = jsontext.getJSONObject("data").getJSONObject("eventBody").getString("messageId");
+        this.ChannelId = jsontext.getJSONObject("data").getJSONObject("eventBody").getString("channelId");
     }
 
     /**
