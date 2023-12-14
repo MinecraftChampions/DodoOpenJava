@@ -89,7 +89,7 @@ public class Main implements CommandExecutor,Listener{
   <dependency>
     <groupId>top.qscraft</groupId>
     <artifactId>dodoopenjava</artifactId>
-    <version>3.0.1</version>
+    <version>3.1.0</version>
   </dependency>
 </dependencies>
 ```
@@ -102,7 +102,7 @@ public class Main implements CommandExecutor,Listener{
 	}
 
 	dependencies {
-	        implementation 'top.qscraft:dodoopenjava:3.0.1'
+	        implementation 'top.qscraft:dodoopenjava:3.1.0'
     }
 ```
 ### 教程(过于古老，无参考价值，改日重写)
