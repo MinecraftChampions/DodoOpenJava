@@ -13,7 +13,7 @@
 
     <groupId>io.github.minecraftchampions.dodoopenjava</groupId>
     <artifactId>DodoOpenJava</artifactId>
-    <version>3.0.4</version>
+    <version>3.1.0</version>
     <packaging>jar</packaging>
     <name>DodoOpenJava</name>
 
@@ -28,7 +28,6 @@
                         <filter>
                             <artifact>*:*</artifact>
                             <excludes>
-                                <!-- 排除以下文件，防止程序启动启动时，校验错误  -->
                                 <exclude>META-INF/*.SF</exclude>
                                 <exclude>META-INF/*.DSA</exclude>
                                 <exclude>META-INF/*.RSA</exclude>
@@ -133,12 +132,6 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.13.0</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.vladsch.flexmark</groupId>
-            <artifactId>flexmark</artifactId>
-            <version>0.64.8</version>
             <scope>compile</scope>
         </dependency>
         <dependency>

@@ -1,150 +1,87 @@
 package io.github.minecraftchampions.dodoopenjava.message;
 
-import com.vladsch.flexmark.html.HtmlRenderer;
-import com.vladsch.flexmark.parser.Parser;
-import com.vladsch.flexmark.util.ast.Node;
-import com.vladsch.flexmark.util.data.MutableDataSet;
+import lombok.Getter;
 
-import java.util.AbstractMap.SimpleEntry;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.regex.Matcher;
+import java.util.*;
 
-/**
- * 消息组件
- */
+@Getter
 public class MessageComponent {
-    private final String text;
-
-    private MessageComponent(String text) {
-        this.text = text;
+    private MessageComponent() {
+        styles.add(MessageStyle.normal);
+    }
+    public static MessageComponent newComponent() {
+        return new MessageComponent();
     }
 
-    /**
-     * 将Markdown转换为MessageComponent
-     *
-     * @param text Markdown
-     * @return MessageComponent
-     */
-    public static MessageComponent parseMarkdown(String text) {
-        MutableDataSet options = new MutableDataSet();
-        Parser parser = Parser.builder(options).build();
-        HtmlRenderer renderer = HtmlRenderer.builder()
-                .build();
-        Node document = parser.parse(text);
-        String html = renderer.render(document);
-        html = html.substring(0,html.length()-1);
-        html = html.replaceAll("\\n<([^>]*)>\\n","\n<$1>");
-        Matcher matcher = MessageUtil.pattern.matcher(html);
-        while (matcher.find()) {
-            String tempToken = matcher.group("token");
-            int start = matcher.start("token");
-            Matcher m = MessageUtil.tokenPattern.matcher(tempToken);
-            if (m.find()) {
-                String token = m.group("token");
-                String attrKey = m.group("attrkey");
-                boolean isEnd = false;
-                if (token.indexOf("/") == 0) {
-                    token = token.split("/")[1];
-                    isEnd = true;
-                }
-                Map<String, TextComponent> map = TextComponentGroup.getHtmlReplaceMap();
-                if (map.containsKey(token)) {
-                    TextComponent component = map.get(token);
-                    String replacement = component.getKey();
-                    token = token.replaceFirst(token, replacement);
-                    String str = token;
-                    if (!isEnd && attrKey != null) {
-                        attrKey = component.getAttribute();
-                        str = str + " " + attrKey + "=\"" + m.group("attrvalue") + "\"";
-                    }
-                    if (isEnd) {
-                        str = "/" + str;
-                    }
-                    String tempStr = html.substring(start);
-                    tempStr = tempStr.replaceFirst(tempToken, str);
-                    html = html.substring(0, start) + tempStr;
-                }
-            }
-        }
-        html = html.replaceAll("</?content>", "").replaceAll("([^|])\\|([^|])", "$1&#124$2").replaceAll("\\|\\|([^|]*)\\|\\|", "<antispoiler>$1</antispoiler>").replaceAll("([^_])_([^_])", "$1&#95$2").replaceAll("__([^_]*)__", "<underline>$1</underline>").replaceAll("([^~])~([^~])", "$1&#126$2").replaceAll("~~([^~]*)~~", "<strikethrough>$1</strikethrough>");
-        return new MessageComponent(html);
+    protected String str;
+
+    protected List<MessageStyle> styles = new ArrayList<>();
+
+    public MessageComponent content(String str) {
+        this.str = str;
+        return this;
     }
 
+    public MessageComponent style(MessageStyle... styles) {
+        this.styles = new ArrayList<>();
+        this.styles.addAll(Arrays.asList(styles));
+        return this;
+    }
+
+    @Override
     public String toString() {
-        return text;
+        String str = this.str;
+        for (MessageStyle style : styles) {
+            str = String.format(style.getRegex(),str);
+        }
+        return str;
     }
 
-    static MessageComponent parse(String miniMessage) {
-        return new MessageComponent(miniMessage);
-    }
+    @Getter
+    public static class LinkComponent extends MessageComponent {
+        protected String link;
 
-    /**
-     * 获取构造器
-     *
-     * @return 构造器
-     */
-    public static MessageComponentBuilder builder() {
-        return new MessageComponentBuilder();
-    }
-
-    /**
-     * 构造器
-     */
-    public static class MessageComponentBuilder {
-        MessageComponentBuilder() {
+        public static LinkComponent newComponent() {
+            return new LinkComponent();
         }
 
-        private final LinkedHashMap<TextComponent, Entry<String, String>> parts = new LinkedHashMap<>();
-
-        /**
-         * 增加组件
-         *
-         * @param component 指定组件类型
-         * @param str       字符
-         * @return 构造器
-         */
-        public MessageComponentBuilder append(TextComponent component, String str) {
-            this.parts.put(component, new SimpleEntry<>(str, null));
+        public LinkComponent link(String link) {
+            this.link = link;
             return this;
         }
 
-        /**
-         * 增加文字组件
-         *
-         * @param str 字符
-         * @return 构造器
-         */
-        public MessageComponentBuilder append(String str) {
-            this.parts.put(TextComponentGroup.contentComponent, new SimpleEntry<>(str, null));
+        @Override
+        public LinkComponent content(String str) {
+            this.str = str;
             return this;
         }
 
-        /**
-         * 增加组件
-         *
-         * @param component 指定组件类型
-         * @param str       字符
-         * @param attr      属性值,目前为链接
-         * @return 构造器
-         */
-        public MessageComponentBuilder append(TextComponent component, String str, String attr) {
-            this.parts.put(component, new SimpleEntry<>(str, attr));
+        @Override
+        public LinkComponent style(MessageStyle... styles) {
+            this.styles = new ArrayList<>();
+            List<MessageStyle> list = Arrays.asList(styles);
+            if (list.contains(MessageStyle.code) ||
+                    list.contains(MessageStyle.cite) )
+                    throw new RuntimeException("LinkComponent不能传入code与cite style");
+
+            this.styles.addAll(list);
             return this;
         }
 
-        /**
-         * 构造
-         *
-         * @return messageComponent
-         */
-        public MessageComponent build() {
-            StringBuilder sb = new StringBuilder();
-            for (Entry<TextComponent, Entry<String, String>> entry : parts.entrySet()) {
-                sb.append(MessageUtil.toMiniMessage(entry));
+        @Override
+        public String toString() {
+            String str = this.str;
+            for (MessageStyle style : styles) {
+                str = String.format(style.getRegex(),str);
             }
-            return MiniMessageParser.parse(sb.toString());
+            return "[" +
+                    str +
+                    "]" +
+                    "(" +
+                    link +
+                    ")";
         }
     }
+
+
 }

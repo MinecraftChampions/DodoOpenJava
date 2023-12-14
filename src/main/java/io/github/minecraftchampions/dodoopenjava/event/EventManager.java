@@ -81,24 +81,25 @@ public class EventManager {
             throw new RuntimeException("未知的Event");
         }
         boolean isAsync = event.isAsynchronous();
-        if (handlers.containsKey(event.eventType)) {
-            ArrayList<SimpleEntry<Method, Object>> methodEntryList = handlers.get(event.eventType);
-            for (SimpleEntry<Method, Object> entry : methodEntryList) {
-                Method method = entry.getKey();
-                if (isAsync) {
-                    CompletableFuture.runAsync(() -> {
-                        try {
-                            method.invoke(entry.getValue(), event);
-                        } catch (IllegalAccessException | InvocationTargetException ex) {
-                            throw new RuntimeException(ex);
-                        }
-                    });
-                } else {
+        if (!handlers.containsKey(event.eventType)) {
+            return;
+        }
+        ArrayList<SimpleEntry<Method, Object>> methodEntryList = handlers.get(event.eventType);
+        for (SimpleEntry<Method, Object> entry : methodEntryList) {
+            Method method = entry.getKey();
+            if (isAsync) {
+                CompletableFuture.runAsync(() -> {
                     try {
                         method.invoke(entry.getValue(), event);
-                    } catch (IllegalAccessException | InvocationTargetException e) {
-                        throw new RuntimeException(e);
+                    } catch (IllegalAccessException | InvocationTargetException ex) {
+                        throw new RuntimeException(ex);
                     }
+                });
+            } else {
+                try {
+                    method.invoke(entry.getValue(), event);
+                } catch (IllegalAccessException | InvocationTargetException e) {
+                    throw new RuntimeException(e);
                 }
             }
         }

@@ -1,6 +1,8 @@
 package io.github.minecraftchampions.dodoopenjava.utils;
 
 import org.json.JSONObject;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -64,5 +66,34 @@ public class BaseUtil {
             }
         }
         return isSensitiveWord;
+    }
+
+    /**
+     * 替换特殊字符
+     * @param text 要替换的字符
+     * @return str
+     */
+    public static String replaceXmlSpecialCharacters(String text) {
+        return text.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("'", "&apos;").replaceAll("\"", "&quot;");
+    }
+
+    /**
+     * 获取一个节点里的所有文本节点
+     * @param node 节点
+     * @return 文本节点集合
+     */
+    public static List<Node> getAllTextNodes(Node node) {
+        NodeList nodeList = node.getChildNodes();
+        List<Node> result = new ArrayList<>();
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Node child = nodeList.item(i);
+            if (child.getNodeName().equals("#text")) {
+                result.add(child);
+            } else {
+                List<Node> childTextNodes = getAllTextNodes(child);
+                result.addAll(childTextNodes);
+            }
+        }
+        return result;
     }
 }

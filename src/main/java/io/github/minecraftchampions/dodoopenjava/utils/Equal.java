@@ -62,11 +62,7 @@ public class Equal<T> {
      */
     public Equal<T> equal(T value) {
         Equal<T> e = Equal.of(this.value);
-        if (Objects.equals(this.value,value)) {
-            e.equal = true;
-        } else {
-            e.equal = false;
-        }
+        e.equal = Objects.equals(this.value, value);
         return e;
     }
 
