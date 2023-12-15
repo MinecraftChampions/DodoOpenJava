@@ -10,7 +10,8 @@ import java.util.List;
  */
 @Getter
 public class MessageBuilder {
-    protected MessageBuilder() {}
+    protected MessageBuilder() {
+    }
 
     private final List<MessageComponent> components = new ArrayList<>();
 
@@ -30,12 +31,12 @@ public class MessageBuilder {
     }
 
     public MessageBuilder prepend(MessageComponent component) {
-        this.components.add(0,component);
+        this.components.add(0, component);
         return this;
     }
 
-    public MessageBuilder insert(int index,MessageComponent component) {
-        this.components.add(0,component);
+    public MessageBuilder insert(int index, MessageComponent component) {
+        this.components.add(0, component);
         return this;
     }
 
@@ -44,7 +45,7 @@ public class MessageBuilder {
         return this;
     }
 
-    public MessageBuilder link(String link,String context,String contextStyle) {
+    public MessageBuilder link(String link, String context, String contextStyle) {
         this.components.add(MessageComponent.LinkComponent.newComponent()
                 .content(context).style(MessageStyle.cite).link(link));
         return this;
@@ -55,6 +56,6 @@ public class MessageBuilder {
         for (MessageComponent component : this.components) {
             sb.append(component.toString());
         }
-        return new Message(sb.toString(),this);
+        return new Message(sb.toString(), this);
     }
 }

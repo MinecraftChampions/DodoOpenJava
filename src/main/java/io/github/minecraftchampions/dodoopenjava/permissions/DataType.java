@@ -31,10 +31,7 @@ public enum DataType {
     /**
      * 数据存储方式
      * -- GETTER --
-     *  获取类型
-     *
-     * @return 类型
-
+     * 获取类型
      */
     private final String type;
 

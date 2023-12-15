@@ -10,106 +10,91 @@ import org.json.JSONObject;
 public class MemberLeaveEvent extends MemberEvent {
     /**
      * -- GETTER --
-     *  获取时间戳
-     *
+     * 获取时间戳
      */
     public Integer timestamp;
 
     /**
      * -- GETTER --
-     *  获取事件ID
-     *
+     * 获取事件ID
      */
     public String eventId;
 
     /**
      * -- GETTER --
-     *  获取群号
-     *
+     * 获取群号
      */
     public String islandSourceId;
 
     /**
      * -- GETTER --
-     *  获取DodoSourceId
-     *
+     * 获取DodoSourceId
      */
     public String dodoSourceId;
 
     /**
      * -- GETTER --
-     *  获取成员Object
-     *
+     * 获取成员Object
      */
     public JSONObject personal;
 
     /**
      * -- GETTER --
-     *  获取发送者名字
-     *
+     * 获取发送者名字
      */
     public String userNickName;
 
     /**
      * -- GETTER --
-     *  获取发送者头像URL
-     *
+     * 获取发送者头像URL
      */
     public String userAvatarUrl;
 
     /**
      * -- GETTER --
-     *  获取性别（Int类型）
-     *
+     * 获取性别（Int类型）
      */
     public Integer userIntSex;
 
     /**
      * -- GETTER --
-     *  获取性别（String类型）
-     *
+     * 获取性别（String类型）
      */
     public String userSex;
 
     /**
      * -- GETTER --
-     *  获取变动时间
-     *
+     * 获取变动时间
      */
     public String modifyTime;
 
     /**
      * -- GETTER --
-     *  获取JSONObject
-     *
+     * 获取JSONObject
      */
     public JSONObject jsonObject;
 
     /**
      * -- GETTER --
-     *  获取JsonString
-     *
+     * 获取JsonString
      */
     public String jsonString;
 
     /**
      * -- GETTER --
-     *  获取离开类型（String）
-     *
+     * 获取离开类型（String）
      */
     public String leaveType;
 
     /**
      * -- GETTER --
-     *  获取离开类型（Int）
-     *
+     * 获取离开类型（Int）
      */
     public Integer leaveIntType;
 
     /**
      * -- GETTER --
-     *  获取操作者Dodo号
-     *
+     * 获取操作者Dodo号
      */
     public String operateDoDoId;
 

@@ -11,7 +11,7 @@ import java.io.File;
  */
 public class FileMonitor {
 
-    private FileAlterationMonitor monitor;
+    private final FileAlterationMonitor monitor;
 
     public FileMonitor(long interval) {
         monitor = new FileAlterationMonitor(interval);

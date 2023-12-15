@@ -11,7 +11,7 @@ import java.net.*;
 import java.util.*;
 
 /**
- * 一些关于 网络请求 的相关方法
+ * 一些 有关 网络请求 的相关方法
  */
 public class NetUtil {
     static OkHttpClient client = new OkHttpClient();
@@ -19,15 +19,15 @@ public class NetUtil {
     /**
      * 发送请求（Dodo开放平台专用）
      *
-     * @param parm          发送附带参数
+     * @param param         发送附带参数
      * @param url           链接地址
      * @param Authorization Authorization
      */
-    public static String sendRequest(String parm, String url, String Authorization) throws IOException {
+    public static String sendRequest(String param, String url, String Authorization) throws IOException {
         HashMap<String, String> Header = new HashMap<>();
         Header.put("Content-Type", "application/json");
         Header.put("Authorization", Authorization);
-        return sendPostJsonRequest(url, Header, parm);
+        return sendPostJsonRequest(url, Header, param);
     }
 
     /**
@@ -66,7 +66,7 @@ public class NetUtil {
      */
     public static String sendPostJsonRequest(String url, HashMap<String, String> Header, String param) throws IOException {
         Request.Builder builder = new Request.Builder();
-        builder.url(url).post(RequestBody.create(MediaType.parse("application/json"), param));
+        builder.url(url).post(RequestBody.Companion.create(param,MediaType.parse("application/json")));
         JSONObject json = new JSONObject(Header);
         for (int i = 0; i < json.keySet().size(); i++) {
             builder.addHeader(Header.keySet().stream().toList().get(i), Header.values().stream().toList().get(i));
@@ -110,8 +110,8 @@ public class NetUtil {
                 .build();
         RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
                 .addFormDataPart("file", File.getName(),
-                        RequestBody.create(MediaType.parse("application/octet-stream"),
-                                new File(path)))
+                        RequestBody.Companion.create(new File(path),
+                                MediaType.parse("application/octet-stream")))
                 .build();
         Request request = new Request.Builder()
                 .url(url)
@@ -210,24 +210,14 @@ public class NetUtil {
         return json.getString("ip");
     }
 
-    /**
-     * 获得指定地址信息中的MAC地址，使用分隔符“-”
-     *
-     * @param inetAddress {@link InetAddress}
-     * @return MAC地址，用-分隔
-     */
-    private static String getMacAddress(InetAddress inetAddress) {
-        return getMacAddress(inetAddress, "-");
-    }
 
     /**
      * 获得指定地址信息中的MAC地址
      *
      * @param inetAddress {@link InetAddress}
-     * @param separator   分隔符，推荐使用“-”或者“:”
      * @return MAC地址，用-分隔
      */
-    private static String getMacAddress(InetAddress inetAddress, String separator) {
+    private static String getMacAddress(InetAddress inetAddress) {
         if (inetAddress == null) {
             return null;
         }
@@ -238,7 +228,7 @@ public class NetUtil {
             String s;
             for (int i = 0; i < mac.length; i++) {
                 if (i != 0) {
-                    sb.append(separator);
+                    sb.append("-");
                 }
                 // 字节转换为整数
                 s = Integer.toHexString(mac[i] & 0xFF);
@@ -299,12 +289,12 @@ public class NetUtil {
      * @return 本机网卡IP地址，获取失败返回{@code null}
      */
     private static InetAddress getLocalhost() throws UnknownHostException {
-        Enumeration allNetInterfaces;
+        Enumeration<NetworkInterface> allNetInterfaces;
         try {
             allNetInterfaces = NetworkInterface.getNetworkInterfaces();
             InetAddress ip;
             while (allNetInterfaces.hasMoreElements()) {
-                NetworkInterface netInterface = (NetworkInterface) allNetInterfaces.nextElement();
+                NetworkInterface netInterface = allNetInterfaces.nextElement();
                 Enumeration<InetAddress> addresses = netInterface.getInetAddresses();
                 while (addresses.hasMoreElements()) {
                     ip = addresses.nextElement();

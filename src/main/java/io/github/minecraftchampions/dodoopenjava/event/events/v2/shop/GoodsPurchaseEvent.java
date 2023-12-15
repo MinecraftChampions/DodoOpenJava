@@ -13,86 +13,74 @@ import java.util.List;
 public class GoodsPurchaseEvent extends ShopEvent {
     /**
      * -- GETTER --
-     *  获取时间戳
-     *
+     * 获取时间戳
      */
     public Integer timestamp;
 
     /**
      * -- GETTER --
-     *  获取事件ID
-     *
+     * 获取事件ID
      */
     public String eventId;
 
     /**
      * -- GETTER --
-     *  获取群号
-     *
+     * 获取群号
      */
     public String islandSourceId;
 
     /**
      * -- GETTER --
-     *  获取DodoId
-     *
+     * 获取DodoId
      */
     public String dodoSourceId;
 
     /**
      * -- GETTER --
-     *  获取变动时间
-     *
+     * 获取变动时间
      */
     public String modifyTime;
 
     /**
      * -- GETTER --
-     *  获取JSONObject
-     *
+     * 获取JSONObject
      */
     public JSONObject jsonObject;
 
     /**
      * -- GETTER --
-     *  获取JsonString
-     *
+     * 获取JsonString
      */
     public String jsonString;
 
     /**
      * -- GETTER --
-     *  获取订单号
-     *
+     * 获取订单号
      */
     public String orderNo;
 
     /**
      * -- GETTER --
-     *  获取商品类型
-     *  1：身份组，2：自定义商品
-     *
+     * 获取商品类型
+     * 1：身份组，2：自定义商品
      */
     public int goodsType;
 
     /**
      * -- GETTER --
-     *  获取商品ID
-     *
+     * 获取商品ID
      */
     public String goodsId;
 
     /**
      * -- GETTER --
-     *  获取商品图片列表，链接后接参数可以调整图片样式
-     *
+     * 获取商品图片列表，链接后接参数可以调整图片样式
      */
     public String goodsName;
 
     /**
      * -- GETTER --
-     *  获取订单号
-     *
+     * 获取订单号
      */
     public List<String> goodsImageList;
 

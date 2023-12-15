@@ -10,59 +10,51 @@ import org.json.JSONObject;
 public class IntegralChangeEvent extends IntegralEvent {
     /**
      * -- GETTER --
-     *  获取时间戳
-     *
+     * 获取时间戳
      */
     public Integer timestamp;
 
     /**
      * -- GETTER --
-     *  获取事件ID
-     *
+     * 获取事件ID
      */
     public String eventId;
 
     /**
      * -- GETTER --
-     *  获取群号
-     *
+     * 获取群号
      */
     public String islandSourceId;
 
     /**
      * -- GETTER --
-     *  获取DodoId
-     *
+     * 获取DodoId
      */
     public String dodoSourceId;
 
     /**
      * -- GETTER --
-     *  获取JSONObject
-     *
+     * 获取JSONObject
      */
     public JSONObject jsonObject;
 
     /**
      * -- GETTER --
-     *  获取JsonString
-     *
+     * 获取JsonString
      */
     public String jsonString;
 
     /**
      * -- GETTER --
-     *  获取场景类型
-     *  1：签到，2：邀请，3：转账，4：购买商品，5：管理积分，6：退群
-     *
+     * 获取场景类型
+     * 1：签到，2：邀请，3：转账，4：购买商品，5：管理积分，6：退群
      */
     public int operateType;
 
     /**
      * -- GETTER --
-     *  获取积分数量
-     *  正数时表示积分增加，负数时表示积分减少
-     *
+     * 获取积分数量
+     * 正数时表示积分增加，负数时表示积分减少
      */
     public long integral;
 

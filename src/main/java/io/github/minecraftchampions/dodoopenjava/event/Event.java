@@ -21,9 +21,6 @@ public abstract class Event {
 
     /**
      * 这个构造器用于显示声明一个事件是同步还是异步的.
-     * <p>
-     * 原文：This constructor is used to explicitly declare an event as synchronous
-     * or asynchronous.
      *
      * @param isAsync true则为异步事件
      */

@@ -11,43 +11,37 @@ import org.json.JSONObject;
 public class MessageReactionEvent extends Event {
     /**
      * -- GETTER --
-     *  获取时间戳
-     *
+     * 获取时间戳
      */
     public Integer timestamp;
 
     /**
      * -- GETTER --
-     *  获取事件ID
-     *
+     * 获取事件ID
      */
     public String eventId;
 
     /**
      * -- GETTER --
-     *  获取群号
-     *
+     * 获取群号
      */
     public String islandSourceId;
 
     /**
      * -- GETTER --
-     *  获取频道ID
-     *
+     * 获取频道ID
      */
     public String channelId;
 
     /**
      * -- GETTER --
-     *  获取DodoSourceId
-     *
+     * 获取DodoSourceId
      */
     public String dodoSourceId;
 
     /**
      * -- GETTER --
-     *  获取消息ID
-     *
+     * 获取消息ID
      */
     public String messageId;
 
@@ -55,71 +49,61 @@ public class MessageReactionEvent extends Event {
 
     /**
      * -- GETTER --
-     *  获取成员Object
-     *
+     * 获取成员Object
      */
     public JSONObject personal;
 
     /**
      * -- GETTER --
-     *  获取发送者名字
-     *
+     * 获取发送者名字
      */
     public String senderNickName;
 
     /**
      * -- GETTER --
-     *  获取发送者头像URL
-     *
+     * 获取发送者头像URL
      */
     public String senderAvatarUrl;
 
     /**
      * -- GETTER --
-     *  获取性别（Int类型）
-     *
+     * 获取性别（Int类型）
      */
     public Integer senderIntSex;
 
     /**
      * -- GETTER --
-     *  获取性别（String类型）
-     *
+     * 获取性别（String类型）
      */
     public String senderSex;
 
     /**
      * -- GETTER --
-     *  获取成员Object
-     *
+     * 获取成员Object
      */
     public JSONObject member;
 
     /**
      * -- GETTER --
-     *  获取成员显示名
-     *
+     * 获取成员显示名
      */
     public String memberNickName;
 
     /**
      * -- GETTER --
-     *  获取成员加入时间
-     *
+     * 获取成员加入时间
      */
     public String memberJoinTime;
 
     /**
      * -- GETTER --
-     *  获取表情 Object
-     *
+     * 获取表情 Object
      */
     public JSONObject reactionEmoji;
 
     /**
      * -- GETTER --
-     *  获取表情的EmojiId
-     *
+     * 获取表情的EmojiId
      */
     public String reactionEmojiId;
 

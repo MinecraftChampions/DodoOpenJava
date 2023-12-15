@@ -43,13 +43,13 @@ public class YmlUtil {
     }
 
     /**
-     * 设置
+     * 将文件后缀名改为.yml
      *
      * @param fileName 文件名
      * @return 文件名
      */
     public static String setYml(String fileName) {
-        if (!fileName.contains(".yml")) {
+        if (fileName.lastIndexOf(".yml") != (fileName.length() - 4)) {
             fileName += ".yml";
         }
         return fileName;

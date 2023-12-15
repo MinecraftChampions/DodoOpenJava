@@ -1,8 +1,11 @@
 package io.github.minecraftchampions.dodoopenjava.card.enums;
 
+import lombok.Getter;
+
 /**
  * 行数（2-6）
  */
+@Getter
 public enum Cols {
     /**
      * 2
@@ -31,15 +34,9 @@ public enum Cols {
 
     /**
      * 行数
+     * -- GETTER --
+     * 获取行数
      */
     private final int col;
 
-    /**
-     * 获取行数
-     *
-     * @return 行数
-     */
-    public int getCol() {
-        return col;
-    }
 }

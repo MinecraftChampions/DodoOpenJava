@@ -10,50 +10,43 @@ import org.json.JSONObject;
 public class MemberJoinEvent extends MemberEvent {
     /**
      * -- GETTER --
-     *  获取时间戳
-     *
+     * 获取时间戳
      */
     public Integer timestamp;
 
     /**
      * -- GETTER --
-     *  获取事件ID
-     *
+     * 获取事件ID
      */
     public String eventId;
 
     /**
      * -- GETTER --
-     *  获取群号
-     *
+     * 获取群号
      */
     public String islandSourceId;
 
     /**
      * -- GETTER --
-     *  获取DodoSourceId
-     *
+     * 获取DodoSourceId
      */
     public String dodoSourceId;
 
     /**
      * -- GETTER --
-     *  获取变动时间
-     *
+     * 获取变动时间
      */
     public String modifyTime;
 
     /**
      * -- GETTER --
-     *  获取JSONObject
-     *
+     * 获取JSONObject
      */
     public JSONObject jsonObject;
 
     /**
      * -- GETTER --
-     *  获取JsonString
-     *
+     * 获取JsonString
      */
     public String jsonString;
 

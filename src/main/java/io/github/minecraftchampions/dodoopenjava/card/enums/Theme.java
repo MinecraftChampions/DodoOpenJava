@@ -1,8 +1,11 @@
 package io.github.minecraftchampions.dodoopenjava.card.enums;
 
+import lombok.Getter;
+
 /**
  * 卡片风格
  */
+@Getter
 public enum Theme {
     /**
      * 灰色
@@ -51,15 +54,9 @@ public enum Theme {
 
     /**
      * 行数
+     * -- GETTER --
+     * 获取类型
      */
     private final String type;
 
-    /**
-     * 获取类型
-     *
-     * @return 类型
-     */
-    public String getType() {
-        return type;
-    }
 }

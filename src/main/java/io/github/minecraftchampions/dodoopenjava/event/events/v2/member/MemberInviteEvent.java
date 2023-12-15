@@ -10,71 +10,61 @@ import org.json.JSONObject;
 public class MemberInviteEvent extends MemberEvent {
     /**
      * -- GETTER --
-     *  获取时间戳
-     *
+     * 获取时间戳
      */
     public Integer timestamp;
 
     /**
      * -- GETTER --
-     *  获取事件ID
-     *
+     * 获取事件ID
      */
     public String eventId;
 
     /**
      * -- GETTER --
-     *  获取群号
-     *
+     * 获取群号
      */
     public String islandSourceId;
 
     /**
      * -- GETTER --
-     *  获取DodoSourceId
-     *
+     * 获取DodoSourceId
      */
     public String dodoSourceId;
 
     /**
      * -- GETTER --
-     *  获取变动时间
-     *
+     * 获取变动时间
      */
     public String modifyTime;
 
     /**
      * -- GETTER --
-     *  获取JSONObject
-     *
+     * 获取JSONObject
      */
     public JSONObject jsonObject;
 
     /**
      * -- GETTER --
-     *  获取JsonString
-     *
+     * 获取JsonString
      */
     public String jsonString;
 
     /**
      * -- GETTER --
-     *  获取邀请人群昵称
-     *
+     * 获取邀请人群昵称
      */
     public String dodoIslandNickName;
 
     /**
      * -- GETTER --
-     *  获取被邀请人DoDoID
-     *
+     * 获取被邀请人DoDoID
      */
     public String toDodoSourceId;
 
     /**
      * -- GETTER --
-     *  获取被邀请人群昵称
-     *
+     * 获取被邀请人群昵称
      */
     public String toDodoIslandNickName;
 

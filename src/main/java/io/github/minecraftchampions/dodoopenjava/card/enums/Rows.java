@@ -1,8 +1,11 @@
 package io.github.minecraftchampions.dodoopenjava.card.enums;
 
+import lombok.Getter;
+
 /**
  * 输入框高度
  */
+@Getter
 public enum Rows {
     /**
      * 1
@@ -27,15 +30,9 @@ public enum Rows {
 
     /**
      * 行数
+     * -- GETTER --
+     * 获取行数
      */
     private final int row;
 
-    /**
-     * 获取行数
-     *
-     * @return 行数
-     */
-    public int getRow() {
-        return row;
-    }
 }

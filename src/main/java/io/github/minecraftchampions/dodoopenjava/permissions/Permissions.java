@@ -61,7 +61,7 @@ public class Permissions {
         thread.start();
     }
 
-    private static Runnable target = new AutoSaveC();
+    private static final Runnable target = new AutoSaveC();
 
     private static class AutoSaveC implements Runnable {
         private boolean init = false;

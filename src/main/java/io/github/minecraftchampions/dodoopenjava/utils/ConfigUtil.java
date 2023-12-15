@@ -88,7 +88,7 @@ public class ConfigUtil {
         Map<String, FileConfiguration> map = new HashMap<>();
         File directory = new File(directoryStr);
         File[] spawnFileList = directory.listFiles();
-        if (spawnFileList == null || spawnFileList.length == 0) {
+        if (spawnFileList == null) {
             return map;
         }
         for (File file : spawnFileList) {
@@ -143,7 +143,8 @@ public class ConfigUtil {
             return false;
         }
 
-        try (FileChannel in = new FileInputStream(inFile).getChannel(); FileChannel out = new FileOutputStream(outFile).getChannel()) {
+        try (FileChannel in = new FileInputStream(inFile).getChannel();
+             FileChannel out = new FileOutputStream(outFile).getChannel()) {
             long pos = 0;
             long size = in.size();
             while (pos < size) {
@@ -189,7 +190,7 @@ public class ConfigUtil {
      * @return 路径（如：”C:/Test/“)
      */
     public static String getJarPath() {
-        String path = java.net.URLDecoder.decode(System.getProperty("java.class.path"));
+        String path = java.net.URLDecoder.decode(System.getProperty("java.class.path"), StandardCharsets.UTF_8);
         int firstIndex = path.lastIndexOf(System.getProperty("path.separator")) + 1;
         int lastIndex = path.lastIndexOf(File.separator) + 1;
         return path.substring(firstIndex, lastIndex);

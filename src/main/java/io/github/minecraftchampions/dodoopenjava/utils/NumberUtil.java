@@ -285,7 +285,7 @@ public class NumberUtil {
      * @param v2 减数
      * @return 两个参数的差
      */
-    public static Double substract(Double v1, Double v2) {
+    public static Double subtract(Double v1, Double v2) {
         if (v1 == null || v2 == null) {
             return null;
         }

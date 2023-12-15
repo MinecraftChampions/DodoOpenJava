@@ -145,8 +145,6 @@ public class MemorySection implements ConfigurationSection {
         }
 
         final char separator = root.options().pathSeparator();
-        // i1 is the leading (higher) index
-        // i2 is the trailing (lower) index
         int i1 = -1, i2;
         ConfigurationSection section = this;
         while ((i1 = path.indexOf(separator, i2 = i1 + 1)) != -1) {

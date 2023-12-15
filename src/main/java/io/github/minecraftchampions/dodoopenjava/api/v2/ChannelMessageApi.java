@@ -2,6 +2,7 @@ package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.card.Card;
+import io.github.minecraftchampions.dodoopenjava.message.Message;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
 import org.json.JSONObject;
@@ -14,19 +15,45 @@ import java.util.Map;
  * 频道消息API
  */
 public class ChannelMessageApi {
+    /**
+     * 发送文本消息
+     *
+     * @param clientId  机器人唯一标识
+     * @param token     机器人鉴权Token
+     * @param message   发送的消息
+     * @param channelId 频道号
+     * @return JSON对象
+     * @throws IOException 失败后抛出
+     */
+    public static JSONObject sendTextMessage(String clientId, String token, String channelId, String message) throws IOException {
+        return sendTextMessage(BaseUtil.Authorization(clientId, token), channelId, message);
+    }
 
     /**
      * 发送文本消息
      *
      * @param clientId  机器人唯一标识
      * @param token     机器人鉴权Token
-     * @param Message   发送的消息
+     * @param message   发送的消息
      * @param channelId 频道号
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendTextMessage(String clientId, String token, String channelId, String Message) throws IOException {
-        return sendTextMessage(BaseUtil.Authorization(clientId, token), channelId, Message);
+    public static JSONObject sendTextMessage(String clientId, String token, String channelId, Message message) throws IOException {
+        return sendTextMessage(BaseUtil.Authorization(clientId, token), channelId, message);
+    }
+
+    /**
+     * 发送文本消息
+     *
+     * @param authorization authorization
+     * @param message       发送的消息
+     * @param channelId     频道号
+     * @return JSON对象
+     * @throws IOException 失败后抛出
+     */
+    public static JSONObject sendTextMessage(String authorization, String channelId, Message message) throws IOException {
+        return sendTextMessage(authorization, channelId, message.toString());
     }
 
     /**

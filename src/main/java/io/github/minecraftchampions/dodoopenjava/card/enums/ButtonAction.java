@@ -1,9 +1,12 @@
 package io.github.minecraftchampions.dodoopenjava.card.enums;
 
+import lombok.Getter;
+
 /**
  * 按钮的相关枚举
  */
 
+@Getter
 public enum ButtonAction {
     /**
      * 跳转URL
@@ -28,15 +31,9 @@ public enum ButtonAction {
 
     /**
      * 行数
+     * -- GETTER --
+     * 获取类型
      */
     private final String type;
 
-    /**
-     * 获取类型
-     *
-     * @return 类型
-     */
-    public String getType() {
-        return type;
-    }
 }

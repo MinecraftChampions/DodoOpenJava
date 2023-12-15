@@ -26,7 +26,7 @@ public class CommandTrigger implements Listener {
         List<String> Command = new java.util.ArrayList<>(List.of(command.split(" ")));
         String mainCommand = Command.get(0);
         Command.remove(0);
-        String[] args = Command.toArray(new String[Command.size()]);
+        String[] args = Command.toArray(new String[]{});
         commandManager.trigger(sender, mainCommand, args);
     }
 

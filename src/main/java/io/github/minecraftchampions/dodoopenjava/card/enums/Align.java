@@ -1,8 +1,11 @@
 package io.github.minecraftchampions.dodoopenjava.card.enums;
 
+import lombok.Getter;
+
 /**
  * 对齐方式
  */
+@Getter
 public enum Align {
     /**
      * 左对齐
@@ -19,15 +22,9 @@ public enum Align {
 
     /**
      * 对齐方式
+     * -- GETTER --
+     * 获取类型
      */
     private final String type;
 
-    /**
-     * 获取类型
-     *
-     * @return 类型
-     */
-    public String getType() {
-        return type;
-    }
 }

@@ -33,6 +33,7 @@ public class WebHookEventTrigger extends EventTrigger {
     public WebHookEventTrigger(Bot bot) {
         this.bot = bot;
     }
+
     public MockWebServer server = null;
 
     /**

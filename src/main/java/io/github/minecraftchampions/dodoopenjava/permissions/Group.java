@@ -1,13 +1,16 @@
 package io.github.minecraftchampions.dodoopenjava.permissions;
 
+import lombok.Getter;
+
 import java.util.LinkedList;
 import java.util.List;
 
 /**
  * 权限组
  */
-public class Group extends DataUnit implements Cloneable {
-    private List<String> inherits = new LinkedList<>();
+@Getter
+public class Group extends DataUnit {
+    private final List<String> inherits = new LinkedList<>();
 
     public Group(String name) {
         super(name);
@@ -15,21 +18,6 @@ public class Group extends DataUnit implements Cloneable {
 
     public String getName() {
         return this.getLastName();
-    }
-
-    @Override
-    public Group clone() {
-        Group clone = new Group(this.getName());
-
-        for (String perm : this.getPermissions()) {
-            clone.addPermission(perm);
-        }
-
-        return clone;
-    }
-
-    public List<String> getInherits() {
-        return inherits;
     }
 
     public boolean isDefault() {

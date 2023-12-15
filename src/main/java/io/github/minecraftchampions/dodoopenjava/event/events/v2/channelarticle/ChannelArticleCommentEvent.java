@@ -10,125 +10,109 @@ import org.json.JSONObject;
 public class ChannelArticleCommentEvent extends ChannelArticleEvent {
     /**
      * -- GETTER --
-     *  获取时间戳
-     *
+     * 获取时间戳
      */
     public Integer timestamp;
 
     /**
      * -- GETTER --
-     *  获取事件ID
-     *
+     * 获取事件ID
      */
     public String eventId;
 
     /**
      * -- GETTER --
-     *  获取群号
-     *
+     * 获取群号
      */
     public String islandSourceId;
 
     /**
      * -- GETTER --
-     *  获取DodoSourceId
-     *
+     * 获取DodoSourceId
      */
     public String dodoSourceId;
 
     /**
      * -- GETTER --
-     *  获取频道ID
-     *
+     * 获取频道ID
      */
     public String channelId;
 
     /**
      * -- GETTER --
-     *  获取卡片消息JSON对象
+     * 获取卡片消息JSON对象
      */
     public JSONObject jsonObject;
 
     /**
      * -- GETTER --
-     *  获取卡片消息JSON字符串
+     * 获取卡片消息JSON字符串
      */
     public String jsonString;
 
     /**
      * -- GETTER --
-     *  获取成员Object
-     *
+     * 获取成员Object
      */
     public JSONObject personal;
 
     /**
      * -- GETTER --
-     *  获取发送者名字
-     *
+     * 获取发送者名字
      */
     public String userNickName;
 
     /**
      * -- GETTER --
-     *  获取发送者头像URL
-     *
+     * 获取发送者头像URL
      */
     public String userAvatarUrl;
 
     /**
      * -- GETTER --
-     *  获取性别（Int类型）
-     *
+     * 获取性别（Int类型）
      */
     public Integer userIntSex;
 
     /**
      * -- GETTER --
-     *  获取性别（String类型）
-     *
+     * 获取性别（String类型）
      */
     public String userSex;
 
     /**
      * -- GETTER --
-     *  获取成员Object
-     *
+     * 获取成员Object
      */
     public JSONObject member;
 
     /**
      * -- GETTER --
-     *  获取成员显示名
-     *
+     * 获取成员显示名
      */
     public String memberNickName;
 
     /**
      * -- GETTER --
-     *  获取成员加入时间
-     *
+     * 获取成员加入时间
      */
     public String memberJoinTime;
 
     /**
      * -- GETTER --
-     *  获取帖子ID
-     *
+     * 获取帖子ID
      */
     public String articleId;
 
     /**
      * -- GETTER --
-     *  获取内容
-     *
+     * 获取内容
      */
     public String content;
 
     /**
      * -- GETTER --
-     *  获取评论iD
-     *
+     * 获取评论iD
      */
     public String commentId;
 

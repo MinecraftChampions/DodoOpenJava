@@ -12,134 +12,115 @@ import java.math.BigDecimal;
 public class GiftSendEvent extends GiftEvent {
     /**
      * -- GETTER --
-     *  获取时间戳
-     *
+     * 获取时间戳
      */
     public Integer timestamp;
 
     /**
      * -- GETTER --
-     *  获取事件ID
-     *
+     * 获取事件ID
      */
     public String eventId;
 
     /**
      * -- GETTER --
-     *  获取来源群ID
-     *
+     * 获取来源群ID
      */
     public String islandSourceId;
 
     /**
      * -- GETTER --
-     *  获取来源频道ID
-     *
+     * 获取来源频道ID
      */
     public String channelId;
 
     /**
      * -- GETTER --
-     *  获取订单号
-     *
+     * 获取订单号
      */
     public String orderNo;
 
     /**
      * -- GETTER --
-     *  获取内容类型，1：消息，2：帖子
-     *
+     * 获取内容类型，1：消息，2：帖子
      */
     public Integer targetType;
 
     /**
      * -- GETTER --
-     *  获取内容ID
-     *
+     * 获取内容ID
      */
     public String targetId;
 
     /**
      * -- GETTER --
-     *  获取礼物总价值（铃钱）
-     *
+     * 获取礼物总价值（铃钱）
      */
     public BigDecimal totalAmount;
 
     /**
      * -- GETTER --
-     *  获取礼物信息Object
-     *
+     * 获取礼物信息Object
      */
     public JSONObject gift;
 
     /**
      * -- GETTER --
-     *  获取群分成（百分比）
-     *
+     * 获取群分成（百分比）
      */
     public BigDecimal islandRatio;
 
     /**
      * -- GETTER --
-     *  获取群收入（里程）
-     *
+     * 获取群收入（里程）
      */
     public BigDecimal islandIncome;
 
     /**
      * -- GETTER --
-     *  获取赠礼人DoDoID
-     *
+     * 获取赠礼人DoDoID
      */
     public String dodoSourceId;
 
     /**
      * -- GETTER --
-     *  获取赠礼人群昵称
-     *
+     * 获取赠礼人群昵称
      */
     public String dodoIslandNickName;
 
     /**
      * -- GETTER --
-     *  获取被赠礼人DoDoID
-     *
+     * 获取被赠礼人DoDoID
      */
     public String toDodoSourceId;
 
     /**
      * -- GETTER --
-     *  获取被赠礼人群昵称
-     *
+     * 获取被赠礼人群昵称
      */
     public String toDodoIslandNickName;
 
     /**
      * -- GETTER --
-     *  获取被赠礼人分成（百分比）
-     *
+     * 获取被赠礼人分成（百分比）
      */
     public BigDecimal toDodoRatio;
 
     /**
      * -- GETTER --
-     *  获取被赠礼人收入（里程）
-     *
+     * 获取被赠礼人收入（里程）
      */
     public BigDecimal toDodoIncome;
 
     /**
      * -- GETTER --
-     *  获取事件内容
-     *
+     * 获取事件内容
      */
     public JSONObject jsonObject;
 
     /**
      * -- GETTER --
-     *  获取事件内容
-     *
+     * 获取事件内容
      */
     public String jsonString;
 

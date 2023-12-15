@@ -1,8 +1,11 @@
 package io.github.minecraftchampions.dodoopenjava.card.enums;
 
+import lombok.Getter;
+
 /**
  * 文本类型
  */
+@Getter
 public enum TextType {
     /**
      * MD文本
@@ -19,15 +22,9 @@ public enum TextType {
 
     /**
      * 行数
+     * -- GETTER --
+     * 获取类型
      */
     private final String type;
 
-    /**
-     * 获取类型
-     *
-     * @return 类型
-     */
-    public String getType() {
-        return type;
-    }
 }

@@ -7,6 +7,7 @@ import io.github.minecraftchampions.dodoopenjava.event.EventManager;
 import io.github.minecraftchampions.dodoopenjava.event.EventTrigger;
 import io.github.minecraftchampions.dodoopenjava.event.Listener;
 import io.github.minecraftchampions.dodoopenjava.event.WebSocketEventTrigger;
+import io.github.minecraftchampions.dodoopenjava.message.Message;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import lombok.Getter;
 import lombok.SneakyThrows;
@@ -129,7 +130,7 @@ public class Bot {
         DodoOpenJava.getBots().remove(this);
     }
 
-    public class Api {
+    public static class Api {
         Api(Bot bot) {
             V2 = new V2(bot);
         }
@@ -137,7 +138,7 @@ public class Bot {
         public final V2 V2;
 
         @Getter
-        public class V2 {
+        public static class V2 {
             private final Bot bot;
 
             V2(Bot bot) {
@@ -157,7 +158,7 @@ public class Bot {
             public final PersonalApi personalApi = new PersonalApi();
             public final ResourceApi resourceApi = new ResourceApi();
             public final RoleApi roleApi = new RoleApi();
-
+            public final EventApi eventApi = new EventApi();
 
 
             public class BotApi {
@@ -292,6 +293,11 @@ public class Bot {
                 @SneakyThrows
                 public JSONObject sendTextMessage(String channelId, String content) {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.ChannelMessageApi.sendTextMessage(bot.getAuthorization(), channelId, content);
+                }
+
+                @SneakyThrows
+                public JSONObject sendTextMessage(String channelId, Message message) {
+                    return io.github.minecraftchampions.dodoopenjava.api.v2.ChannelMessageApi.sendTextMessage(bot.getAuthorization(), channelId, message);
                 }
 
                 @SneakyThrows
@@ -2716,6 +2722,13 @@ public class Bot {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.RoleApi.deleteRole(bot.getAuthorization(), islandSourceId, roleId);
                 }
 
+            }
+
+            public class EventApi {
+                @SneakyThrows
+                public JSONObject getWebSocketConnection() {
+                    return io.github.minecraftchampions.dodoopenjava.api.v2.EventApi.getWebSocketConnection(bot.getAuthorization());
+                }
             }
         }
     }

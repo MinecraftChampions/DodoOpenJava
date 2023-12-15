@@ -1,8 +1,11 @@
 package io.github.minecraftchampions.dodoopenjava.card.enums;
 
+import lombok.Getter;
+
 /**
  * 按钮颜色
  */
+@Getter
 public enum Color {
     /**
      * 灰色
@@ -39,15 +42,9 @@ public enum Color {
 
     /**
      * 行数
+     * -- GETTER --
+     * 获取类型
      */
     private final String type;
 
-    /**
-     * 获取类型
-     *
-     * @return 类型
-     */
-    public String getType() {
-        return type;
-    }
 }

@@ -20,7 +20,8 @@ import java.util.List;
 public class Message {
     private String text;
 
-    private Message() {}
+    private Message() {
+    }
 
     protected Message(String text, MessageBuilder builder) {
         this.text = text;
@@ -31,6 +32,7 @@ public class Message {
 
     /**
      * 获取构造器
+     *
      * @return builder
      */
     public static MessageBuilder builder() {
@@ -39,6 +41,7 @@ public class Message {
 
     /**
      * 序列化
+     *
      * @return 序列化后的文本
      */
     public String serialize() {
@@ -59,7 +62,7 @@ public class Message {
                                 .append(">");
                     }
                     sb.append(content);
-                    for (int i = styles.size()-1;i>=0;i--) {
+                    for (int i = styles.size() - 1; i >= 0; i--) {
                         sb.append("</")
                                 .append(styles.get(i))
                                 .append(">");
@@ -75,7 +78,7 @@ public class Message {
                                 .append(">");
                     }
                     sb.append(content);
-                    for (int i = styles.size()-1;i>=0;i--) {
+                    for (int i = styles.size() - 1; i >= 0; i--) {
                         sb.append("</")
                                 .append(styles.get(i))
                                 .append(">");
@@ -88,6 +91,7 @@ public class Message {
 
     /**
      * 反序列化
+     *
      * @param str 需要被反序列化的文本
      * @return Message
      */
@@ -137,6 +141,7 @@ public class Message {
 
     /**
      * 转换为 markdown
+     *
      * @return markdown
      */
     @Override

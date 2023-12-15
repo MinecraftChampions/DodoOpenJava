@@ -11,7 +11,7 @@ import java.util.List;
  * 卡片消息
  */
 public class Card {
-    private JSONObject JsonCard = new JSONObject();
+    private final JSONObject JsonCard;
 
     /**
      * 是否不存在

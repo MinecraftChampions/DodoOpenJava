@@ -6,8 +6,6 @@ import java.io.File;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-import static io.github.minecraftchampions.dodoopenjava.permissions.Util.hasPermission;
-
 /**
  * 权限组管理
  */

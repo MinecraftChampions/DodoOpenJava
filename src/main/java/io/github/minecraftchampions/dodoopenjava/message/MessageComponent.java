@@ -9,6 +9,7 @@ public class MessageComponent {
     private MessageComponent() {
         styles.add(MessageStyle.normal);
     }
+
     public static MessageComponent newComponent() {
         return new MessageComponent();
     }
@@ -32,7 +33,7 @@ public class MessageComponent {
     public String toString() {
         String str = this.str;
         for (MessageStyle style : styles) {
-            str = String.format(style.getRegex(),str);
+            str = String.format(style.getRegex(), str);
         }
         return str;
     }
@@ -61,8 +62,8 @@ public class MessageComponent {
             this.styles = new ArrayList<>();
             List<MessageStyle> list = Arrays.asList(styles);
             if (list.contains(MessageStyle.code) ||
-                    list.contains(MessageStyle.cite) )
-                    throw new RuntimeException("LinkComponent不能传入code与cite style");
+                    list.contains(MessageStyle.cite))
+                throw new RuntimeException("LinkComponent不能传入code与cite style");
 
             this.styles.addAll(list);
             return this;
@@ -72,7 +73,7 @@ public class MessageComponent {
         public String toString() {
             String str = this.str;
             for (MessageStyle style : styles) {
-                str = String.format(style.getRegex(),str);
+                str = String.format(style.getRegex(), str);
             }
             return "[" +
                     str +
