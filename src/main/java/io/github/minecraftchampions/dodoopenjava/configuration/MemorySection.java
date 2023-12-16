@@ -2,8 +2,6 @@ package io.github.minecraftchampions.dodoopenjava.configuration;
 
 import io.github.minecraftchampions.dodoopenjava.utils.NumberUtil;
 import lombok.Getter;
-import okio.ByteString;
-import org.apache.commons.lang3.Validate;
 
 import java.util.*;
 
@@ -41,15 +39,9 @@ public class MemorySection implements ConfigurationSection {
      * @throws IllegalArgumentException 异常时抛出
      */
     protected MemorySection(ConfigurationSection parent, String path) {
-        Validate.notNull(parent, "Parent cannot be null");
-        Validate.notNull(path, "Path cannot be null");
-
         this.path = path;
         this.parent = parent;
         this.root = parent.getRoot();
-
-        Validate.notNull(root, "Path cannot be orphaned");
-
         this.fullPath = createPath(parent, path);
     }
 
@@ -111,8 +103,6 @@ public class MemorySection implements ConfigurationSection {
     }
 
     public void addDefault(String path, Object value) {
-        Validate.notNull(path, "Path cannot be null");
-
         Configuration root = getRoot();
         if (root == null) {
             throw new IllegalStateException("Cannot add default without root");
@@ -137,8 +127,6 @@ public class MemorySection implements ConfigurationSection {
     }
 
     public void set(String path, Object value) {
-        Validate.notEmpty(path, "Cannot set to an empty path");
-
         Configuration root = getRoot();
         if (root == null) {
             throw new IllegalStateException("Cannot use section without a root");
@@ -174,9 +162,7 @@ public class MemorySection implements ConfigurationSection {
     }
 
     public Object get(String path, Object def) {
-        Validate.notNull(path, "Path cannot be null");
-
-        if (path.length() == 0) {
+        if (path.isEmpty()) {
             return this;
         }
 
@@ -206,7 +192,6 @@ public class MemorySection implements ConfigurationSection {
     }
 
     public ConfigurationSection createSection(String path) {
-        Validate.notEmpty(path, "Cannot create section at empty path");
         Configuration root = getRoot();
         if (root == null) {
             throw new IllegalStateException("Cannot create section without a root");
@@ -258,7 +243,7 @@ public class MemorySection implements ConfigurationSection {
      */
     public String getString(String path) {
         Object def = getDefault(path);
-        return getString(path, def != null ? ByteString.encodeUtf8(def.toString()).utf8() : null);
+        return getString(path, def != null ? def.toString() : null);
     }
 
     /**
@@ -270,7 +255,7 @@ public class MemorySection implements ConfigurationSection {
      */
     public String getString(String path, String def) {
         Object val = get(path, def);
-        return (val != null) ? ByteString.encodeUtf8(val.toString()).utf8() : def;
+        return (val != null) ? val.toString() : def;
     }
 
     /**
@@ -778,8 +763,6 @@ public class MemorySection implements ConfigurationSection {
     }
 
     protected Object getDefault(String path) {
-        Validate.notNull(path, "Path cannot be null");
-
         Configuration root = getRoot();
         Configuration defaults = root == null ? null : root.getDefaults();
         return (defaults == null) ? null : defaults.get(createPath(this, path));
@@ -836,7 +819,6 @@ public class MemorySection implements ConfigurationSection {
      * 创建一个路径
      */
     public static String createPath(ConfigurationSection section, String key, ConfigurationSection relativeTo) {
-        Validate.notNull(section, "Cannot create path without a section");
         Configuration root = section.getRoot();
         if (root == null) {
             throw new IllegalStateException("Cannot create path without a root");
@@ -845,15 +827,15 @@ public class MemorySection implements ConfigurationSection {
 
         StringBuilder builder = new StringBuilder();
         for (ConfigurationSection parent = section; (parent != null) && (parent != relativeTo); parent = parent.getParent()) {
-            if (builder.length() > 0) {
+            if (!builder.isEmpty()) {
                 builder.insert(0, separator);
             }
 
             builder.insert(0, parent.getName());
         }
 
-        if ((key != null) && (key.length() > 0)) {
-            if (builder.length() > 0) {
+        if ((key != null) && (!key.isEmpty())) {
+            if (!builder.isEmpty()) {
                 builder.append(separator);
             }
 

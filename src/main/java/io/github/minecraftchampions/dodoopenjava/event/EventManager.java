@@ -1,7 +1,5 @@
 package io.github.minecraftchampions.dodoopenjava.event;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -17,7 +15,7 @@ import java.util.concurrent.CompletableFuture;
  * 事件的相关方法（包含监听器注册等）
  */
 public class EventManager {
-    private HashMap<Class<? extends Event>, ArrayList<SimpleEntry<Method, Object>>> handlers = new HashMap<>();
+    private final HashMap<Class<? extends Event>, ArrayList<SimpleEntry<Method, Object>>> handlers = new HashMap<>();
 
     /**
      * 注册事件监听器
@@ -76,7 +74,7 @@ public class EventManager {
      * @param event 事件
      * @throws RuntimeException 当事件的 EventType 为 null 或 isEmpty 时抛出
      */
-    public void fireEvent(@NotNull Event event) throws RuntimeException {
+    public void fireEvent(Event event) throws RuntimeException {
         if (event.getEventType() == null || event.getEventName().isEmpty()) {
             throw new RuntimeException("未知的Event");
         }

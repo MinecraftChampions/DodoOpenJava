@@ -2,7 +2,6 @@ package io.github.minecraftchampions.dodoopenjava.command;
 
 import io.github.minecraftchampions.dodoopenjava.Bot;
 import lombok.Getter;
-import okio.ByteString;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -69,7 +68,7 @@ public class CommandManager {
     public boolean trigger(CommandSender sender, String mainCommandName, String... args) {
         boolean hasCommand = false;
         for (CommandExecutor command : commands) {
-            if (Objects.equals(command.getMainCommand(), ByteString.encodeUtf8((mainCommandName)).utf8())) {
+            if (Objects.equals(command.getMainCommand(), mainCommandName)) {
                 if (command.getPermission() == null || command.getPermission().isEmpty() || sender.hasPermission(command.getPermission())) {
                     command.onCommand(sender, args);
                     hasCommand = true;

@@ -25,29 +25,6 @@ public class Permissions {
         } else {
             initialized = true;
         }
-        FileMonitor fileMonitor = new FileMonitor(1000);
-        switch (type.getType()) {
-            case "YAML" -> {
-                YamlData yamlData = new YamlData();
-                fileMonitor.monitor(yamlData.Group, new FileListener());
-                fileMonitor.monitor(yamlData.User, new FileListener());
-                permData = yamlData;
-            }
-            case "JSON" -> {
-                JsonData jsonData = new JsonData();
-                fileMonitor.monitor(jsonData.Group, new FileListener());
-                fileMonitor.monitor(jsonData.User, new FileListener());
-                permData = jsonData;
-            }
-            default -> {
-                return false;
-            }
-        }
-        try {
-            fileMonitor.start();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
         Permissions.type = type;
         return true;
     }

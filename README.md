@@ -72,7 +72,7 @@ public class Main implements CommandExecutor,Listener{
 
 ~~合成了一个模块，但是现在编译后有46MB，疑似有些太臃肿了，为了一个小功能引进了许多前置库，接下来的计划就是慢慢删减掉这些无用的前置~~
 
-减到10MB了
+减到3.5MB了
 
 ### 添加依赖
 #### Maven：
@@ -89,7 +89,7 @@ public class Main implements CommandExecutor,Listener{
   <dependency>
     <groupId>top.qscraft</groupId>
     <artifactId>dodoopenjava</artifactId>
-    <version>3.1.1</version>
+    <version>3.1.2</version>
   </dependency>
 </dependencies>
 ```
@@ -102,7 +102,7 @@ public class Main implements CommandExecutor,Listener{
 	}
 
 	dependencies {
-	        implementation 'top.qscraft:dodoopenjava:3.1.1'
+	        implementation 'top.qscraft:dodoopenjava:3.1.2'
     }
 ```
 ### 教程(过于古老，无参考价值，改日重写)

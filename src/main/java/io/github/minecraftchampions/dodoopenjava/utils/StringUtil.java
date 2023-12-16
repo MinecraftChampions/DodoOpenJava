@@ -1,7 +1,5 @@
 package io.github.minecraftchampions.dodoopenjava.utils;
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.Locale;
 import java.util.UUID;
 import java.util.regex.Matcher;
@@ -25,6 +23,18 @@ public class StringUtil {
      */
     public static boolean isEmpty(CharSequence str) {
         return str == null || str.isEmpty() || str.isEmpty();
+    }
+
+    /**
+     * 取str内，最后一个分隔符separator后的字符串
+     *
+     * @param str       字符串
+     * @param separator 分隔符
+     * @return 字符串
+     */
+    public static String substringAfterLast(String str, String separator) {
+        int pos = str.lastIndexOf(separator);
+        return pos != -1 && pos != str.length() - separator.length() ? str.substring(pos + separator.length()) : "";
     }
 
     /**
@@ -121,27 +131,6 @@ public class StringUtil {
      */
     public static String toLowerCase(String str) {
         return str != null ? str.toLowerCase() : null;
-    }
-
-    /**
-     * 首字母大写
-     *
-     * @param str 字符串
-     * @return 首字母大写字符串
-     */
-    public static String capture(String str) {
-        return StringUtils.capitalize(str);
-    }
-
-    /**
-     * 重复拼接字符串
-     *
-     * @param str       字符串
-     * @param repeatInt 重复次数
-     * @return 字符串
-     */
-    public static String repeat(String str, int repeatInt) {
-        return StringUtils.repeat(str, repeatInt);
     }
 
     /**

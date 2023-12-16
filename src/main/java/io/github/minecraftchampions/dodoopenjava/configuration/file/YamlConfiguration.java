@@ -3,7 +3,6 @@ package io.github.minecraftchampions.dodoopenjava.configuration.file;
 import io.github.minecraftchampions.dodoopenjava.configuration.Configuration;
 import io.github.minecraftchampions.dodoopenjava.configuration.ConfigurationSection;
 import io.github.minecraftchampions.dodoopenjava.configuration.InvalidConfigurationException;
-import org.apache.commons.lang3.Validate;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.error.YAMLException;
@@ -44,8 +43,6 @@ public class YamlConfiguration extends FileConfiguration {
 
     @Override
     public void loadFromString(String contents) throws InvalidConfigurationException {
-        Validate.notNull(contents, "Contents cannot be null");
-
         Map<?, ?> input;
         try {
             input = yaml.load(contents);
@@ -167,8 +164,6 @@ public class YamlConfiguration extends FileConfiguration {
      * @throws IllegalArgumentException 文件为null时抛出
      */
     public static YamlConfiguration loadConfiguration(File file) {
-        Validate.notNull(file, "文件不能为空");
-
         YamlConfiguration config = new YamlConfiguration();
 
         try {
@@ -181,8 +176,6 @@ public class YamlConfiguration extends FileConfiguration {
 
     @Deprecated
     public static YamlConfiguration loadConfiguration(InputStream stream) {
-        Validate.notNull(stream, "Stream不能为空");
-
         YamlConfiguration config = new YamlConfiguration();
 
         try {
@@ -204,8 +197,6 @@ public class YamlConfiguration extends FileConfiguration {
      * @throws IllegalArgumentException Reader为空时抛出
      */
     public static YamlConfiguration loadConfiguration(Reader reader) {
-        Validate.notNull(reader, "Stream cannot不能为空");
-
         YamlConfiguration config = new YamlConfiguration();
 
         try {

@@ -1,24 +1,14 @@
 package io.github.minecraftchampions.dodoopenjava.utils;
 
-import org.apache.commons.codec.binary.Hex;
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
-
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.AlgorithmParameters;
-import java.security.Security;
 
 /**
  * 开放秘密工具
- *
- * @author Dodo
  */
 public class OpenSecretUtil {
-    static {
-        Security.addProvider(new BouncyCastleProvider());
-    }
-
     /**
      * WebHook解密
      *
@@ -28,8 +18,9 @@ public class OpenSecretUtil {
      */
     public static String WebHookDecrypt(String payload, String secretKey) {
         try {
-            return AESDecrypt(HexStringToBytes(payload), HexStringToBytes(secretKey), new byte[16], Cipher.getInstance("AES/CBC/PKCS7Padding"));
+            return AESDecrypt(HexStringToBytes(payload), HexStringToBytes(secretKey), new byte[16], Cipher.getInstance("AES/CBC/PKCS5Padding"));
         } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }
@@ -59,7 +50,19 @@ public class OpenSecretUtil {
      * @param hexStr 十六进制字符串
      * @return 字节数组
      */
-    private static byte[] HexStringToBytes(String hexStr) throws Exception {
-        return Hex.decodeHex(hexStr.toCharArray());
+    private static byte[] HexStringToBytes(String hexStr) {
+        char[] data = hexStr.toCharArray();
+        byte[] out = new byte[data.length >> 1];
+        int len = data.length;
+        int i = 0;
+        for (int j = 0; j < len; ++i) {
+            int f = Character.digit(data[j], j) << 4;
+            ++j;
+            f |= Character.digit(data[j], j);
+            ++j;
+            out[i] = (byte) (f & 255);
+        }
+
+        return out;
     }
 }

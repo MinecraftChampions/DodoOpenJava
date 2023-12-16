@@ -1,10 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.utils;
 
-import com.google.common.base.Charsets;
-import com.google.common.io.Files;
 import io.github.minecraftchampions.dodoopenjava.configuration.file.FileConfiguration;
 import io.github.minecraftchampions.dodoopenjava.configuration.file.YamlConfiguration;
-import org.apache.commons.io.FileUtils;
 
 import java.io.*;
 import java.nio.channels.FileChannel;
@@ -178,7 +175,7 @@ public class ConfigUtil {
         }
         try (InputStream inputStream = ConfigUtil.class.getClassLoader().getResourceAsStream(inPath)) {
             if (inputStream != null) {
-                FileUtils.copyToFile(inputStream, file);
+                saveToFile(new String(inputStream.readAllBytes(),StandardCharsets.UTF_8),file);
             }
         }
         return true;
@@ -227,9 +224,23 @@ public class ConfigUtil {
      * @param data 数据
      */
     public static void saveToFile(String data, File file) throws IOException {
-        Files.createParentDirs(file);
-        try (Writer writer = new OutputStreamWriter(new FileOutputStream(file), Charsets.UTF_8)) {
+        createParentDirs(file);
+        try (Writer writer = new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8)) {
             writer.write(data);
+        }
+    }
+
+    /**
+     * 创建一个文件的所在目录
+     *
+     * @param file 文件
+     * @throws IOException 抛出
+     */
+    public static void createParentDirs(File file) throws IOException {
+        File parent = file.getCanonicalFile().getParentFile();
+
+        if (parent != null) {
+            parent.mkdirs();
         }
     }
 }

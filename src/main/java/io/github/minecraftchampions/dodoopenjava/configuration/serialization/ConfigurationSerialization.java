@@ -1,7 +1,5 @@
 package io.github.minecraftchampions.dodoopenjava.configuration.serialization;
 
-import org.apache.commons.lang3.Validate;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -17,7 +15,7 @@ import java.util.logging.Logger;
 public class ConfigurationSerialization {
     public static final String SERIALIZED_TYPE_KEY = "==";
     private final Class<? extends ConfigurationSerializable> clazz;
-    private static Map<String, Class<? extends ConfigurationSerializable>> aliases = new HashMap<>();
+    private static final Map<String, Class<? extends ConfigurationSerializable>> aliases = new HashMap<>();
 
 
     protected ConfigurationSerialization(Class<? extends ConfigurationSerializable> clazz) {
@@ -82,17 +80,13 @@ public class ConfigurationSerialization {
     }
 
     public ConfigurationSerializable deserialize(Map<String, ?> args) {
-        Validate.notNull(args, "Args must not be null");
-
         ConfigurationSerializable result = null;
         Method method;
 
-        if (result == null) {
-            method = getMethod("deserialize", true);
+        method = getMethod("deserialize", true);
 
-            if (method != null) {
-                result = deserializeViaMethod(method, args);
-            }
+        if (method != null) {
+            result = deserializeViaMethod(method, args);
         }
 
         if (result == null) {

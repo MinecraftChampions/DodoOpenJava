@@ -1,14 +1,12 @@
 package io.github.minecraftchampions.dodoopenjava.configuration.file;
 
-import com.google.common.base.Charsets;
-import com.google.common.io.Files;
 import io.github.minecraftchampions.dodoopenjava.configuration.Configuration;
 import io.github.minecraftchampions.dodoopenjava.configuration.InvalidConfigurationException;
 import io.github.minecraftchampions.dodoopenjava.configuration.MemoryConfiguration;
 import io.github.minecraftchampions.dodoopenjava.utils.ConfigUtil;
-import org.apache.commons.lang3.Validate;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 /**
  * 这是一个实现了 Configuration 的配置文件的基类
@@ -41,15 +39,7 @@ public abstract class FileConfiguration extends MemoryConfiguration {
      * @throws IllegalArgumentException 如果文件为空，抛出该异常
      */
     public void save(File file) throws IOException {
-        Validate.notNull(file, "文件不能为空");
-
-        Files.createParentDirs(file);
-
-        String data = saveToString();
-
-        try (Writer writer = new OutputStreamWriter(new FileOutputStream(file), Charsets.UTF_8)) {
-            writer.write(data);
-        }
+        ConfigUtil.saveToFile(saveToString(), file);
     }
 
     /**
@@ -63,8 +53,6 @@ public abstract class FileConfiguration extends MemoryConfiguration {
      * @throws IllegalArgumentException 如果文件为空，抛出该异常
      */
     public void save(String file) throws IOException {
-        Validate.notNull(file, "文件不能为空");
-
         save(new File(file));
     }
 
@@ -85,8 +73,6 @@ public abstract class FileConfiguration extends MemoryConfiguration {
      * @throws IllegalArgumentException      文件为空时抛出
      */
     public void load(File file) throws FileNotFoundException, IOException, InvalidConfigurationException {
-        Validate.notNull(file, "文件不能为空");
-
         loadFromString(ConfigUtil.readFile(file));
     }
 
@@ -97,9 +83,7 @@ public abstract class FileConfiguration extends MemoryConfiguration {
      */
     @Deprecated
     public void load(InputStream stream) throws IOException, InvalidConfigurationException {
-        Validate.notNull(stream, "Stream cannot be null");
-
-        load(new InputStreamReader(stream, Charsets.UTF_8));
+        load(new InputStreamReader(stream, StandardCharsets.UTF_8));
     }
 
     /**
@@ -147,8 +131,6 @@ public abstract class FileConfiguration extends MemoryConfiguration {
      * @throws IllegalArgumentException      Thrown when file is null.
      */
     public void load(String file) throws FileNotFoundException, IOException, InvalidConfigurationException {
-        Validate.notNull(file, "File cannot be null");
-
         load(new File(file));
     }
 

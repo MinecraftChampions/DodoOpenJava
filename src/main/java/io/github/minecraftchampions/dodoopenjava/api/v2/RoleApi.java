@@ -3,7 +3,6 @@ package io.github.minecraftchampions.dodoopenjava.api.v2;
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
-import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -183,7 +182,6 @@ public class RoleApi {
         return senResult(authorization, roleName, roleColor, position, permission, url, param);
     }
 
-    @NotNull
     private static JSONObject senResult(String authorization, String roleName, String roleColor, int position, String permission, String url, JSONObject param) throws IOException {
         if (roleName != null) {
             param.put("roleName", roleName);

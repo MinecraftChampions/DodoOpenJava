@@ -15,8 +15,6 @@ import io.github.minecraftchampions.dodoopenjava.event.events.v2.shop.GoodsPurch
 import io.github.minecraftchampions.dodoopenjava.utils.StringUtil;
 import okhttp3.*;
 import okio.ByteString;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -83,12 +81,12 @@ public class WebSocketEventTrigger extends EventTrigger {
 
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
-            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+            public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
             }
 
             @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+            public void onResponse( Call call, Response response) throws IOException {
                 wssLo = new JSONObject(Objects.requireNonNull(response.body()).string()).getJSONObject("data").getString("endpoint");
                 response.close();
                 try {
@@ -112,13 +110,13 @@ public class WebSocketEventTrigger extends EventTrigger {
         }
 
         @Override
-        public void onOpen(@NotNull WebSocket webSocket, @NotNull Response response) {
+        public void onOpen(WebSocket webSocket, Response response) {
             super.onOpen(webSocket, response);
             isConnect = response.code() == 101;
         }
 
         @Override
-        public void onMessage(@NotNull WebSocket webSocket, @NotNull ByteString bytes) {
+        public void onMessage( WebSocket webSocket, ByteString bytes) {
             super.onMessage(webSocket, bytes);
             JSONObject jsontext = new JSONObject(bytes.utf8());
             switch (jsontext.getJSONObject("data").getString("eventType")) {
@@ -142,7 +140,7 @@ public class WebSocketEventTrigger extends EventTrigger {
         }
 
         @Override
-        public void onFailure(@NotNull WebSocket webSocket, @NotNull Throwable t, @Nullable Response response) {
+        public void onFailure(WebSocket webSocket, Throwable t, Response response) {
             super.onFailure(webSocket, t, response);
             if (response != null) {
                 System.getLogger(Logger.GLOBAL_LOGGER_NAME).log(System.Logger.Level.WARNING, "WebSocket 连接失败：{}", response.message());
@@ -154,7 +152,7 @@ public class WebSocketEventTrigger extends EventTrigger {
         }
 
         @Override
-        public void onClosed(@NotNull WebSocket webSocket, int code, @NotNull String reason) {
+        public void onClosed(WebSocket webSocket, int code, String reason) {
             super.onClosed(webSocket, code, reason);
             mWebSocket.close(1000, "正常关闭");
             mWebSocket = null;
@@ -162,7 +160,7 @@ public class WebSocketEventTrigger extends EventTrigger {
         }
 
         @Override
-        public void onClosing(@NotNull WebSocket webSocket, int code, @NotNull String reason) {
+        public void onClosing(WebSocket webSocket, int code, String reason) {
             super.onClosing(webSocket, code, reason);
         }
     }

@@ -1,14 +1,15 @@
 package io.github.minecraftchampions.dodoopenjava.utils;
 
 import okhttp3.*;
-import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.*;
-import java.util.*;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * 一些 有关 网络请求 的相关方法
@@ -192,7 +193,7 @@ public class NetUtil {
         if (saveDir.exists()) {
             saveDir.mkdirs();
         }
-        String folder = saveDir + File.separator + StringUtils.substringAfterLast(url, "/");
+        String folder = saveDir + File.separator + StringUtil.substringAfterLast(url, "/");
         File file = new File(folder);
         FileOutputStream fos = new FileOutputStream(file);
         fos.write(bytes);

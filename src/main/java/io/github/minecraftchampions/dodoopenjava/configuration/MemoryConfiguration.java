@@ -1,7 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.configuration;
 
 import lombok.Getter;
-import org.apache.commons.lang3.Validate;
 
 import java.util.Map;
 
@@ -31,8 +30,6 @@ public class MemoryConfiguration extends MemorySection implements Configuration 
 
     @Override
     public void addDefault(String path, Object value) {
-        Validate.notNull(path, "路径不能为null!");
-
         if (defaults == null) {
             defaults = new MemoryConfiguration();
         }
@@ -41,22 +38,16 @@ public class MemoryConfiguration extends MemorySection implements Configuration 
     }
 
     public void addDefaults(Map<String, Object> defaults) {
-        Validate.notNull(defaults, "缺省值不能为null!");
-
         for (Map.Entry<String, Object> entry : defaults.entrySet()) {
             addDefault(entry.getKey(), entry.getValue());
         }
     }
 
     public void addDefaults(Configuration defaults) {
-        Validate.notNull(defaults, "缺省值不能为null!");
-
         addDefaults(defaults.getValues(true));
     }
 
     public void setDefaults(Configuration defaults) {
-        Validate.notNull(defaults, "缺省值不能为null!");
-
         this.defaults = defaults;
     }
 

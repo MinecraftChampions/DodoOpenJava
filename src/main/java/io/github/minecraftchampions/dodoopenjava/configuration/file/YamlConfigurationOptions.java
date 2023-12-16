@@ -1,7 +1,5 @@
 package io.github.minecraftchampions.dodoopenjava.configuration.file;
 
-import org.apache.commons.lang3.Validate;
-
 /**
  * 用于控制YamlConfiguration的输入和输出的各种设置
  */
@@ -61,9 +59,12 @@ public class YamlConfigurationOptions extends FileConfigurationOptions {
      * @return 返回 this
      */
     public YamlConfigurationOptions indent(int value) {
-        Validate.isTrue(value >= 2, "缩进最少要2个空格");
-        Validate.isTrue(value <= 9, "缩进最多只能有9个空格");
-
+        if (value < 2) {
+            throw new RuntimeException("缩进最少要2个空格");
+        }
+        if (value > 9) {
+            throw new RuntimeException("缩进最多只能有9个空格");
+        }
         this.indent = value;
         return this;
     }
