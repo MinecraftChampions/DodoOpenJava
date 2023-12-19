@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.utils;
 
+import lombok.NonNull;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.*;
@@ -18,7 +19,7 @@ public class YmlUtil {
      * @param fileName 文件名
      * @return bean
      */
-    public static <T> T toBean(String fileName) throws IOException {
+    public static <T> T toBean(@NonNull String fileName) throws IOException {
         return new Yaml().load(Files.newInputStream(new File(setYml(fileName)).toPath()));
     }
 
@@ -28,7 +29,7 @@ public class YmlUtil {
      * @param obj      bean
      * @param fileName 文件名
      */
-    public static void toYml(Object obj, String fileName) throws IOException {
+    public static void toYml(@NonNull Object obj, @NonNull String fileName) throws IOException {
         new Yaml().dump(obj, new FileWriter(YmlUtil.setYml(fileName)));
     }
 

@@ -1,5 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.utils;
 
+import lombok.NonNull;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -17,7 +19,7 @@ public class ArrayUtil {
      * @param <T>     泛型
      * @return 数组
      */
-    public static <T> T[] prepend(T[] arr, T element) {
+    public static <T> T[] prepend(@NonNull T[] arr, @NonNull T element) {
         int n = arr.length;
         arr = Arrays.copyOf(arr, n + 1);
         for (int i = arr.length - 1; i > 0; --i) {
@@ -35,7 +37,7 @@ public class ArrayUtil {
      * @param <T>     泛型
      * @return 数组
      */
-    public static <T> T[] append(T[] arr, T element) {
+    public static <T> T[] append(@NonNull T[] arr, @NonNull T element) {
         int n = arr.length;
         arr = Arrays.copyOf(arr, n + 1);
         arr[n] = element;
@@ -50,7 +52,7 @@ public class ArrayUtil {
      * @param <T>      泛型
      * @return 数组
      */
-    public static <T> T[] prepend(T[] arr, T[] elements) {
+    public static <T> T[] prepend(@NonNull T[] arr, @NonNull T[] elements) {
         List<T> list = new ArrayList<>();
         T[] element = elements.clone();
         Collections.addAll(list, element);
@@ -71,7 +73,7 @@ public class ArrayUtil {
      * @param <T>      泛型
      * @return 数组
      */
-    public static <T> T[] append(T[] arr, T[] elements) {
+    public static <T> T[] append(@NonNull T[] arr, @NonNull T[] elements) {
         for (T t : elements) {
             System.out.println(t);
             arr = append(arr, t);

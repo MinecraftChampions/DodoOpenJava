@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.permissions;
 
 import lombok.Getter;
+import lombok.NonNull;
 
 import java.io.File;
 import java.util.SortedMap;
@@ -18,7 +19,7 @@ public class GroupManager {
     @Getter
     private static SortedMap<String, Group> groups = new TreeMap<>();
 
-    public static boolean hasPerm(Group now, String perm) {
+    public static boolean hasPerm(@NonNull Group now, String perm) {
         for (String access : getGroup(now.getName()).getPermissions()) {
             if (Util.hasPermission(access, perm)) {
                 return true;
@@ -27,11 +28,11 @@ public class GroupManager {
         return false;
     }
 
-    public static void setGroups(SortedMap<String, Group> groups) {
+    public static void setGroups(@NonNull SortedMap<String, Group> groups) {
         GroupManager.groups = groups;
     }
 
-    public static boolean addGroup(Group group) {
+    public static boolean addGroup(@NonNull Group group) {
         if (groups.containsKey(group.getName())) {
             return false;
         }
@@ -39,7 +40,7 @@ public class GroupManager {
         return true;
     }
 
-    public static Group getGroup(String name) {
+    public static Group getGroup(@NonNull String name) {
         return groups.get(name);
     }
 
@@ -50,7 +51,7 @@ public class GroupManager {
         return defaultGroup;
     }
 
-    public static void setDefaultGroup(Group defaultGroup) {
+    public static void setDefaultGroup(@NonNull Group defaultGroup) {
         GroupManager.defaultGroup = defaultGroup;
     }
 
@@ -62,7 +63,7 @@ public class GroupManager {
         return getGroups().containsKey(groupName);
     }
 
-    public static void setGroupsFile(File groupsFile) {
+    public static void setGroupsFile(@NonNull File groupsFile) {
         GroupManager.groupsFile = groupsFile;
     }
 

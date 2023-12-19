@@ -1,5 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.event;
 
+import lombok.NonNull;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -20,9 +22,20 @@ public class EventManager {
     /**
      * 注册事件监听器
      *
+     * @param listeners 事件监听器
+     */
+    public void registerListeners(@NonNull Listener... listeners) {
+        for (Listener listener : listeners) {
+            registerListener(listener);
+        }
+    }
+
+    /**
+     * 注册事件监听器
+     *
      * @param listener 事件监听器
      */
-    public void registerListener(Listener listener) {
+    public void registerListener(@NonNull Listener listener) {
         for (Method method : listener.getClass().getDeclaredMethods()) {
             if (!Modifier.isPublic(method.getModifiers()))
                 continue;
@@ -60,7 +73,7 @@ public class EventManager {
      *
      * @param listener listener
      */
-    public void unregisterListeners(Listener listener) {
+    public void unregisterListeners(@NonNull Listener listener) {
         Set<Class<? extends Event>> set = handlers.keySet();
         for (Class<? extends Event> clazz : set) {
             List<SimpleEntry<Method, Object>> list = handlers.get(clazz).stream().filter(e -> e.getKey().getDeclaringClass() == listener.getClass()).toList();
@@ -74,7 +87,7 @@ public class EventManager {
      * @param event 事件
      * @throws RuntimeException 当事件的 EventType 为 null 或 isEmpty 时抛出
      */
-    public void fireEvent(Event event) throws RuntimeException {
+    public void fireEvent(@NonNull Event event) throws RuntimeException {
         if (event.getEventType() == null || event.getEventName().isEmpty()) {
             throw new RuntimeException("未知的Event");
         }

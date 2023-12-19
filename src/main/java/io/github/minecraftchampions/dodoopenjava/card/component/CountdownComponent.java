@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.card.component;
 
 import io.github.minecraftchampions.dodoopenjava.card.enums.Style;
+import lombok.NonNull;
 
 /**
  * 倒计时组件
@@ -12,7 +13,7 @@ public class CountdownComponent extends Component {
      * @param style   显示样式
      * @param endTime 时间戳
      */
-    public CountdownComponent(Style style, long endTime) {
+    public CountdownComponent(@NonNull Style style, long endTime) {
         jsonCard.put("type", "countdown");
         jsonCard.put("style", style.toString());
         jsonCard.put("endTime", endTime);
@@ -25,7 +26,7 @@ public class CountdownComponent extends Component {
      * @param endTime 时间戳
      * @param title   标题
      */
-    public CountdownComponent(Style style, long endTime, String title) {
+    public CountdownComponent(@NonNull Style style, long endTime, String title) {
         jsonCard.put("type", "countdown");
         jsonCard.put("style", style.toString());
         jsonCard.put("endTime", endTime);
@@ -37,7 +38,7 @@ public class CountdownComponent extends Component {
      *
      * @param style 样式
      */
-    public void editStyle(Style style) {
+    public void editStyle(@NonNull Style style) {
         jsonCard.put("style", style);
     }
 
@@ -55,7 +56,7 @@ public class CountdownComponent extends Component {
      *
      * @param title 标题
      */
-    public void editTitle(String title) {
+    public void editTitle(@NonNull String title) {
         jsonCard.put("title", title);
     }
 }

@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.utils;
 
+import lombok.NonNull;
 import org.json.JSONObject;
 
 import java.beans.BeanInfo;
@@ -17,7 +18,7 @@ public class MapUtil {
      * @param map 指定Map
      * @return 返回集合（集合中内置了一个集合，索引0是key，1是Value）
      */
-    public static List<List<Object>> ergodicMaps(Map<?, ?> map) {
+    public static List<List<Object>> ergodicMaps(@NonNull Map<?, ?> map) {
         if (map.isEmpty()) return new ArrayList<>();
         Iterator<? extends Map.Entry<?, ?>> iter = map.entrySet().iterator();
         List<List<Object>> list = new ArrayList<>();
@@ -37,7 +38,7 @@ public class MapUtil {
      * @param map 指定HashMap
      * @return 返回集合（集合中内置了一个集合，索引0是key，1是Value）
      */
-    public static List<List<Object>> ergodicHashMaps(HashMap<?, ?> map) {
+    public static List<List<Object>> ergodicHashMaps(@NonNull HashMap<?, ?> map) {
         if (map.isEmpty()) return new ArrayList<>();
         Iterator<? extends HashMap.Entry<?, ?>> iter = map.entrySet().iterator();
         List<List<Object>> list = new ArrayList<>();
@@ -58,7 +59,7 @@ public class MapUtil {
      * @param map  map
      * @return bean
      */
-    public static <T> T toBean(Class<T> type, Map<?, ?> map) {
+    public static <T> T toBean(@NonNull Class<T> type, Map<?, ?> map) {
         T object = null;
         try {
             BeanInfo info = Introspector.getBeanInfo(type);
@@ -83,7 +84,7 @@ public class MapUtil {
      * @param map map
      * @return bean
      */
-    public static JSONObject toJson(Map<?, ?> map) {
+    public static JSONObject toJson(@NonNull Map<?, ?> map) {
         return new JSONObject(map);
     }
 }

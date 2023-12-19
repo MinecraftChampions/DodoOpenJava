@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.card.component;
 
+import lombok.NonNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -23,7 +24,7 @@ public class RemarkComponent extends Component {
      *
      * @param object 组件
      */
-    public RemarkComponent(ImageComponent object) {
+    public RemarkComponent(@NonNull ImageComponent object) {
         jsonCard.put("type", "remark");
         jsonCard.put("elements", new JSONArray());
         addElement(object);
@@ -34,7 +35,7 @@ public class RemarkComponent extends Component {
      *
      * @param object 数据
      */
-    public void addElement(ImageComponent object) {
+    public void addElement(@NonNull ImageComponent object) {
         jsonCard.getJSONArray("elements").put(object.getJsonCard());
     }
 
@@ -43,7 +44,7 @@ public class RemarkComponent extends Component {
      *
      * @param object 组件
      */
-    public RemarkComponent(SectionComponent object) {
+    public RemarkComponent(@NonNull SectionComponent object) {
         jsonCard.put("type", "remark");
         jsonCard.put("elements", new JSONArray());
         addElement(object);
@@ -55,7 +56,7 @@ public class RemarkComponent extends Component {
      *
      * @param object 数据
      */
-    public void addElement(SectionComponent object) {
+    public void addElement(@NonNull SectionComponent object) {
         if (object.isParagraph) {
             System.out.println("错误的传参(多栏文本)");
         }
@@ -67,7 +68,7 @@ public class RemarkComponent extends Component {
      *
      * @param component 备注
      */
-    public void removeImage(Component component) {
+    public void removeImage(@NonNull Component component) {
         List<Object> list = jsonCard.getJSONArray("element").toList();
         List<Integer> integerList = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {

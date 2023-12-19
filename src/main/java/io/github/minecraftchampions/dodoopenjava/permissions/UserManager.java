@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.permissions;
 
 import lombok.Getter;
+import lombok.NonNull;
 
 import java.io.File;
 import java.util.SortedMap;
@@ -12,7 +13,7 @@ import static io.github.minecraftchampions.dodoopenjava.permissions.Util.hasPerm
  * 用户管理
  */
 public class UserManager {
-    public static boolean hasPerm(User user, String perm) {
+    public static boolean hasPerm(@NonNull User user, @NonNull String perm) {
         if (UserManager.users.containsKey(user.getLastName())) {
             UserManager.addUser(user);
         }
@@ -34,7 +35,7 @@ public class UserManager {
         return false;
     }
 
-    public static boolean addUser(User user) {
+    public static boolean addUser(@NonNull User user) {
         if (users.containsKey(user.getLastName())) {
             return false;
         }
@@ -49,11 +50,11 @@ public class UserManager {
     @Getter
     private static SortedMap<String, User> users = new TreeMap<>();
 
-    public static void setUsers(SortedMap<String, User> users) {
+    public static void setUsers(@NonNull SortedMap<String, User> users) {
         UserManager.users = users;
     }
 
-    public static User getUser(String name) {
+    public static User getUser(@NonNull String name) {
         return users.get(name);
     }
 
@@ -61,7 +62,7 @@ public class UserManager {
         users.clear();
     }
 
-    public static void setUsersFile(File usersFile) {
+    public static void setUsersFile(@NonNull File usersFile) {
         UserManager.usersFile = usersFile;
     }
 

@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava;
 
 import lombok.Getter;
+import lombok.NonNull;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -21,7 +22,7 @@ public class DodoOpenJava {
      * @param token    token
      * @return Bot
      */
-    public static Bot createBot(String clientId, String token) {
+    public static Bot createBot(@NonNull String clientId, @NonNull String token) {
         Bot bot = new Bot(clientId, token);
         bots.add(bot);
         return bot;

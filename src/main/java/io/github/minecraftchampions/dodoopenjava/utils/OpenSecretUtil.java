@@ -18,7 +18,7 @@ public class OpenSecretUtil {
      */
     public static String WebHookDecrypt(String payload, String secretKey) {
         try {
-            return AESDecrypt(HexStringToBytes(payload), HexStringToBytes(secretKey), new byte[16], Cipher.getInstance("AES/CBC/PKCS5Padding"));
+            return AESDecrypt(hexToBytes(payload), hexToBytes(secretKey), new byte[16], Cipher.getInstance("AES/CBC/PKCS5Padding"));
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -47,22 +47,16 @@ public class OpenSecretUtil {
     /**
      * 十六进制字符串转字节数组
      *
-     * @param hexStr 十六进制字符串
+     * @param hex 十六进制字符串
      * @return 字节数组
      */
-    private static byte[] HexStringToBytes(String hexStr) {
-        char[] data = hexStr.toCharArray();
-        byte[] out = new byte[data.length >> 1];
-        int len = data.length;
-        int i = 0;
-        for (int j = 0; j < len; ++i) {
-            int f = Character.digit(data[j], j) << 4;
-            ++j;
-            f |= Character.digit(data[j], j);
-            ++j;
-            out[i] = (byte) (f & 255);
+    private static byte[] hexToBytes(String hex) {
+        byte[] result = new byte[hex.length() / 2];
+        for (int i = 0; i < hex.length() / 2; i++) {
+            int high = Integer.parseInt(hex.substring(i * 2, i * 2 + 1), 16);
+            int low = Integer.parseInt(hex.substring(i * 2 + 1, i * 2 + 2), 16);
+            result[i] = (byte) (high * 16 + low);
         }
-
-        return out;
+        return result;
     }
 }

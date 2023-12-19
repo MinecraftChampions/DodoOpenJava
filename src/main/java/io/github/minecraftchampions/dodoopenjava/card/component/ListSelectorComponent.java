@@ -1,10 +1,12 @@
 package io.github.minecraftchampions.dodoopenjava.card.component;
 
 import io.github.minecraftchampions.dodoopenjava.utils.MapUtil;
+import lombok.NonNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * 列表选择器
@@ -21,19 +23,20 @@ public class ListSelectorComponent extends Component {
      * @param max              最多选中个数
      * @param element          数据，为了方便用HashMap存储，前面为选项名。后面为选项描述
      */
-    public ListSelectorComponent(String interactCustomId, String placeholder, int min, int max, HashMap<String, String> element) {
+    public ListSelectorComponent(String interactCustomId, String placeholder, int min,
+                                 int max, HashMap<String, String> element) {
         jsonCard.put("type", "list-selector");
         jsonCard.put("interactCustomId", interactCustomId);
         jsonCard.put("placeholder", placeholder);
         jsonCard.put("min", min);
         jsonCard.put("max", max);
         jsonCard.put("elements", new JSONArray());
-
-        for (int i = 0; i < MapUtil.ergodicHashMaps(element).size(); i++) {
+        List<List<Object>> list = MapUtil.ergodicHashMaps(element);
+        for (List<Object> objects : list) {
             JSONObject json2 = new JSONObject();
 
-            json2.put("name", MapUtil.ergodicHashMaps(element).get(i).get(0));
-            json2.put("desc", MapUtil.ergodicHashMaps(element).get(i).get(1));
+            json2.put("name", objects.get(0));
+            json2.put("desc", objects.get(1));
 
             jsonCard.getJSONArray("elements").put(json2);
         }
@@ -49,7 +52,8 @@ public class ListSelectorComponent extends Component {
      * @param min              最少选中个数
      * @param max              最多选中个数
      */
-    public ListSelectorComponent(String interactCustomId, String placeholder, int min, int max) {
+    public ListSelectorComponent(String interactCustomId, String placeholder,
+                                 int min, int max) {
         jsonCard.put("type", "list-selector");
         jsonCard.put("interactCustomId", interactCustomId);
         jsonCard.put("placeholder", placeholder);
@@ -64,7 +68,7 @@ public class ListSelectorComponent extends Component {
      * @param data1 选项名
      * @param data2 描述
      */
-    public void addElement(String data1, String data2) {
+    public void addElement(@NonNull String data1, @NonNull String data2) {
         JSONObject json = new JSONObject();
         json.put("name", data1);
         json.put("desc", data2);

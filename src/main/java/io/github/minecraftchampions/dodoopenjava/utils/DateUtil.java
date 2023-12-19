@@ -1,5 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.utils;
 
+import lombok.NonNull;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -39,7 +41,7 @@ public class DateUtil {
      * @param format 格式
      * @return date
      */
-    public static Date parse(String string, String format) {
+    public static Date parse(@NonNull String string, @NonNull String format) {
         try {
             return (new SimpleDateFormat(format)).parse(string);
         } catch (ParseException e) {
@@ -54,7 +56,7 @@ public class DateUtil {
      * @param format 格式
      * @return 字符串
      */
-    public static String format(Date date, String format) {
+    public static String format(@NonNull Date date, @NonNull String format) {
         return (new SimpleDateFormat(format)).format(date);
     }
 
@@ -64,7 +66,7 @@ public class DateUtil {
      * @param day 增加天数
      * @return 时间
      */
-    public static Date getDate(Integer day) {
+    public static Date getDate(@NonNull Integer day) {
         Calendar gregorianCalendar = new GregorianCalendar();
         gregorianCalendar.setTime(new Date());
         gregorianCalendar.add(Calendar.DATE, day);
@@ -92,7 +94,7 @@ public class DateUtil {
      *
      * @return 现在时间
      */
-    public static Date getNow(String format) {
+    public static Date getNow(@NonNull String format) {
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat(format);
         try {
@@ -135,7 +137,7 @@ public class DateUtil {
      * @param date 日期
      * @return 对应的星期
      */
-    public static Integer dayOfWeekEnum(Date date) {
+    public static Integer dayOfWeekEnum(@NonNull Date date) {
         Integer[] weekDays = new Integer[]{7, 1, 2, 3, 4, 5, 6};
         Calendar calendar = Calendar.getInstance();
         return weekDays[calendar.get(Calendar.DAY_OF_WEEK) - 1];
@@ -147,7 +149,7 @@ public class DateUtil {
      * @param localDateTime localDateTime
      * @return Date
      */
-    public static Date toDate(LocalDateTime localDateTime) {
+    public static Date toDate(@NonNull LocalDateTime localDateTime) {
         return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
     }
 
@@ -157,7 +159,7 @@ public class DateUtil {
      * @param date date
      * @return LocalDateTime
      */
-    public static LocalDateTime toLocalDateTime(Date date) {
+    public static LocalDateTime toLocalDateTime(@NonNull Date date) {
         return LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
     }
 
@@ -167,7 +169,7 @@ public class DateUtil {
      * @param localDateTime localDateTime
      * @return 毫秒时间戳
      */
-    public static long toEpochSecond(LocalDateTime localDateTime) {
+    public static long toEpochSecond(@NonNull LocalDateTime localDateTime) {
         return localDateTime.toInstant(ZoneOffset.of("+8")).toEpochMilli();
     }
 
@@ -178,7 +180,7 @@ public class DateUtil {
      * @param date_Two 第二个时间
      * @return 相差小时
      */
-    public static long between(Date date_One, Date date_Two) {
+    public static long between(@NonNull Date date_One, @NonNull Date date_Two) {
         return between(date_One, date_Two, ChronoUnit.HOURS);
     }
 
@@ -190,7 +192,8 @@ public class DateUtil {
      * @param unit     unit
      * @return 相差多久
      */
-    public static long between(Date date_One, Date date_Two, ChronoUnit unit) {
+    public static long between(@NonNull Date date_One, @NonNull Date date_Two,
+                               @NonNull ChronoUnit unit) {
         return unit.between(toLocalDateTime(date_One), toLocalDateTime(date_Two));
     }
 
@@ -201,7 +204,7 @@ public class DateUtil {
      * @param week 周几1-7
      * @return 对应周日期
      */
-    public static Date getWeek(Date date, int week) {
+    public static Date getWeek(@NonNull Date date, int week) {
         week = week + 1;
         if (week > 7) {
             week = 1;
@@ -221,7 +224,7 @@ public class DateUtil {
      * @param day  增加天数
      * @return 时间
      */
-    public static Date addDate(Date date, Integer day) {
+    public static Date addDate(@NonNull Date date, @NonNull Integer day) {
         Calendar calendar = new GregorianCalendar();
         calendar.setTime(date);
         calendar.add(Calendar.DATE, day);
@@ -234,7 +237,7 @@ public class DateUtil {
      * @param date 日期
      * @return 月初
      */
-    public static Date getFirstDayOfMonth(Date date) {
+    public static Date getFirstDayOfMonth(@NonNull Date date) {
         Calendar cale = Calendar.getInstance();
         cale.setTime(date);
         cale.add(Calendar.MONTH, 0);
@@ -248,7 +251,7 @@ public class DateUtil {
      * @param date 日期
      * @return 月末
      */
-    public static Date getLastDayOfMonth(Date date) {
+    public static Date getLastDayOfMonth(@NonNull Date date) {
         Calendar cale = Calendar.getInstance();
         cale.setTime(date);
         cale.add(Calendar.MONTH, 1);
@@ -263,7 +266,7 @@ public class DateUtil {
      * @param month 几号
      * @return 对应月日期
      */
-    public static Date getMonth(Date date, int month) {
+    public static Date getMonth(@NonNull Date date, int month) {
         Calendar calendar = Calendar.getInstance(Locale.CHINA);
         calendar.setFirstDayOfWeek(Calendar.MONDAY);
         calendar.setTimeInMillis(date.getTime());
@@ -279,7 +282,7 @@ public class DateUtil {
      * @param offset 偏移量，正数为向后偏移，负数为向前偏移
      * @return 新时间对象
      */
-    public static Date offset(Date date, int field, int offset) {
+    public static Date offset(@NonNull Date date, int field, int offset) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         cal.add(field, offset);

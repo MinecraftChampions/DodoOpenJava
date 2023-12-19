@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.card.component;
 
+import lombok.NonNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -23,7 +24,7 @@ public class ImageGroupComponent extends Component {
      *
      * @param list 图片组件列表
      */
-    public ImageGroupComponent(List<ImageComponent> list) {
+    public ImageGroupComponent(@NonNull List<ImageComponent> list) {
         jsonCard.put("type", "image-group");
         jsonCard.put("elements", new JSONArray());
         list.forEach(this::addImage);
@@ -34,7 +35,7 @@ public class ImageGroupComponent extends Component {
      *
      * @param image 组件
      */
-    public void addImage(ImageComponent image) {
+    public void addImage(@NonNull ImageComponent image) {
         jsonCard.getJSONArray("elements").put(image.getJsonCard());
     }
 
@@ -43,7 +44,7 @@ public class ImageGroupComponent extends Component {
      *
      * @param component 图片
      */
-    public void removeImage(ImageComponent component) {
+    public void removeImage(@NonNull ImageComponent component) {
         List<Object> list = jsonCard.getJSONArray("element").toList();
         List<Integer> integerList = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {

@@ -2,7 +2,9 @@ package io.github.minecraftchampions.dodoopenjava.message;
 
 import lombok.Getter;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Getter
 public class MessageComponent {
@@ -14,12 +16,12 @@ public class MessageComponent {
         return new MessageComponent();
     }
 
-    protected String str;
+    protected String content;
 
     protected List<MessageStyle> styles = new ArrayList<>();
 
     public MessageComponent content(String str) {
-        this.str = str;
+        this.content = str;
         return this;
     }
 
@@ -31,7 +33,7 @@ public class MessageComponent {
 
     @Override
     public String toString() {
-        String str = this.str;
+        String str = this.content;
         for (MessageStyle style : styles) {
             str = String.format(style.getRegex(), str);
         }
@@ -53,7 +55,7 @@ public class MessageComponent {
 
         @Override
         public LinkComponent content(String str) {
-            this.str = str;
+            this.content = str;
             return this;
         }
 
@@ -71,7 +73,7 @@ public class MessageComponent {
 
         @Override
         public String toString() {
-            String str = this.str;
+            String str = this.content;
             for (MessageStyle style : styles) {
                 str = String.format(style.getRegex(), str);
             }

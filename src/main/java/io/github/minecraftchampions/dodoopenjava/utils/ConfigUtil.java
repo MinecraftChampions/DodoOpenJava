@@ -2,6 +2,7 @@ package io.github.minecraftchampions.dodoopenjava.utils;
 
 import io.github.minecraftchampions.dodoopenjava.configuration.file.FileConfiguration;
 import io.github.minecraftchampions.dodoopenjava.configuration.file.YamlConfiguration;
+import lombok.NonNull;
 
 import java.io.*;
 import java.nio.channels.FileChannel;
@@ -21,7 +22,7 @@ public class ConfigUtil {
      * @param filePath 文件路径
      * @return 数组
      */
-    public static byte[] inputStream2ByteArray(String filePath) {
+    public static byte[] inputStream2ByteArray(@NonNull String filePath) {
         return inputStream2ByteArray(new File(filePath));
     }
 
@@ -31,7 +32,7 @@ public class ConfigUtil {
      * @param file 文件
      * @return 数组
      */
-    public static byte[] inputStream2ByteArray(File file) {
+    public static byte[] inputStream2ByteArray(@NonNull File file) {
         try (InputStream in = new FileInputStream(file)) {
             return toByteArray(in);
         } catch (IOException e) {
@@ -45,7 +46,7 @@ public class ConfigUtil {
      * @param in 输入流
      * @return 数组
      */
-    private static byte[] toByteArray(InputStream in) throws IOException {
+    private static byte[] toByteArray(@NonNull InputStream in) throws IOException {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         byte[] buffer = new byte[1024 * 4];
         int n;
@@ -61,7 +62,7 @@ public class ConfigUtil {
      * @param child 文件路径
      * @return FileConfiguration文件
      */
-    public static FileConfiguration load(String child) {
+    public static FileConfiguration load(@NonNull String child) {
         return YamlConfiguration.loadConfiguration(new File(child));
     }
 
@@ -71,7 +72,7 @@ public class ConfigUtil {
      * @param file 文件
      * @return FileConfiguration文件
      */
-    public static FileConfiguration load(File file) {
+    public static FileConfiguration load(@NonNull File file) {
         return YamlConfiguration.loadConfiguration(file);
     }
 
@@ -81,7 +82,7 @@ public class ConfigUtil {
      * @param directoryStr 目录
      * @return 全部文件
      */
-    public static Map<String, FileConfiguration> loadDirectory(String directoryStr) {
+    public static Map<String, FileConfiguration> loadDirectory(@NonNull String directoryStr) {
         Map<String, FileConfiguration> map = new HashMap<>();
         File directory = new File(directoryStr);
         File[] spawnFileList = directory.listFiles();
@@ -102,7 +103,9 @@ public class ConfigUtil {
      * @param value             内容
      * @param child             文件路径
      */
-    public static void setPath(FileConfiguration fileConfiguration, String path, Object value, String child) {
+    public static void setPath(@NonNull FileConfiguration fileConfiguration,
+                               @NonNull String path, Object value,
+                               @NonNull String child) {
         try {
             fileConfiguration.set(path, value);
             fileConfiguration.save(new File(child));
@@ -120,7 +123,9 @@ public class ConfigUtil {
      * @param value             内容
      * @param child             文件路径
      */
-    public static Boolean setPathIsNotContains(FileConfiguration fileConfiguration, String path, Object value, String child) {
+    public static boolean setPathIsNotContains(@NonNull FileConfiguration fileConfiguration,
+                                               @NonNull String path, Object value,
+                                               @NonNull String child) {
         if (fileConfiguration.contains(path)) {
             return false;
         }
@@ -135,22 +140,26 @@ public class ConfigUtil {
      * @param outFile 复制到的文件对象
      * @return true就是成功，false就是失败
      */
-    public static Boolean copy(File inFile, File outFile) {
+    public static Boolean copy(@NonNull File inFile, @NonNull File outFile) {
         if (!inFile.exists()) {
             return false;
         }
+        try (FileInputStream inputStream = new FileInputStream(inFile);
+             FileOutputStream outputStream = new FileOutputStream(outFile)) {
+            FileChannel in = inputStream.getChannel();
+            FileChannel out = outputStream.getChannel();
 
-        try (FileChannel in = new FileInputStream(inFile).getChannel();
-             FileChannel out = new FileOutputStream(outFile).getChannel()) {
             long pos = 0;
             long size = in.size();
             while (pos < size) {
                 pos += in.transferTo(pos, 10 * 1024 * 1024, out);
             }
+            in.close();
+            out.close();
+            return true;
         } catch (IOException ioe) {
             return false;
         }
-        return true;
     }
 
     /**
@@ -160,7 +169,8 @@ public class ConfigUtil {
      * @param outPath 复制到的文件路径（如C:/config.yml)
      * @return true 成功，false 失败
      */
-    public static Boolean copyResourcesToFile(String inPath, String outPath) throws IOException {
+    public static Boolean copyResourcesToFile(@NonNull String inPath,
+                                              @NonNull String outPath) throws IOException {
         int firstIndex = outPath.lastIndexOf(System.getProperty("path.separator")) + 1;
         int lastIndex = outPath.lastIndexOf(File.separator) + 1;
         File OutPath = new File(outPath.substring(firstIndex, lastIndex));
@@ -175,7 +185,7 @@ public class ConfigUtil {
         }
         try (InputStream inputStream = ConfigUtil.class.getClassLoader().getResourceAsStream(inPath)) {
             if (inputStream != null) {
-                saveToFile(new String(inputStream.readAllBytes(),StandardCharsets.UTF_8),file);
+                saveToFile(new String(inputStream.readAllBytes(), StandardCharsets.UTF_8), file);
             }
         }
         return true;
@@ -199,7 +209,7 @@ public class ConfigUtil {
      * @param fileName 文件
      * @return 返回字符串
      */
-    public static String readFile(File fileName) {
+    public static String readFile(@NonNull File fileName) {
         try {
             FileReader fileReader = new FileReader(fileName);
             Reader streamReader = new InputStreamReader(new FileInputStream(fileName), StandardCharsets.UTF_8);
@@ -223,7 +233,7 @@ public class ConfigUtil {
      * @param file 文件
      * @param data 数据
      */
-    public static void saveToFile(String data, File file) throws IOException {
+    public static void saveToFile(@NonNull String data, @NonNull File file) throws IOException {
         createParentDirs(file);
         try (Writer writer = new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8)) {
             writer.write(data);
@@ -236,7 +246,7 @@ public class ConfigUtil {
      * @param file 文件
      * @throws IOException 抛出
      */
-    public static void createParentDirs(File file) throws IOException {
+    public static void createParentDirs(@NonNull File file) throws IOException {
         File parent = file.getCanonicalFile().getParentFile();
 
         if (parent != null) {

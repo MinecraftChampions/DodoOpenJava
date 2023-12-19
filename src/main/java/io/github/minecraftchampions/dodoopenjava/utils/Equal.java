@@ -1,5 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.utils;
 
+import lombok.NonNull;
+
 import java.util.Objects;
 import java.util.function.Consumer;
 
@@ -35,12 +37,13 @@ public class Equal<T> {
      * @return Equal
      * @throws NullPointerException 如果值是null
      */
-    public static <T> Equal<T> of(T value) {
+    public static <T> Equal<T> of(@NonNull T value) {
         return new Equal<>(Objects.requireNonNull(value));
     }
 
     /**
      * 获取对象
+     *
      * @return 存储的对象
      */
     public T get() {
@@ -49,6 +52,7 @@ public class Equal<T> {
 
     /**
      * 是否相等
+     *
      * @return 没进行判断就是null
      */
     public Boolean isEqual() {
@@ -57,10 +61,11 @@ public class Equal<T> {
 
     /**
      * 判断
+     *
      * @param value 需要判断的对象
      * @return Equal
      */
-    public Equal<T> equal(T value) {
+    public Equal<T> equal(@NonNull T value) {
         Equal<T> e = Equal.of(this.value);
         e.equal = Objects.equals(this.value, value);
         return e;
@@ -68,9 +73,10 @@ public class Equal<T> {
 
     /**
      * 如果相等就运行
+     *
      * @param consumer consumer
      */
-    public void ifEquals(Consumer<T> consumer) {
+    public void ifEquals(@NonNull Consumer<T> consumer) {
         if (equal == null) {
             throw new RuntimeException("没有进行判断就调用Equal#run");
         }

@@ -1,5 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.utils;
 
+import lombok.NonNull;
+
 import java.util.Locale;
 import java.util.UUID;
 import java.util.regex.Matcher;
@@ -32,7 +34,7 @@ public class StringUtil {
      * @param separator 分隔符
      * @return 字符串
      */
-    public static String substringAfterLast(String str, String separator) {
+    public static String substringAfterLast(@NonNull String str, @NonNull String separator) {
         int pos = str.lastIndexOf(separator);
         return pos != -1 && pos != str.length() - separator.length() ? str.substring(pos + separator.length()) : "";
     }
@@ -53,7 +55,7 @@ public class StringUtil {
      * @param value 字符串
      * @return true代表室，false代表不是
      */
-    public static boolean isChinese(String value) {
+    public static boolean isChinese(@NonNull String value) {
         boolean result = false;
         Matcher matcher = CHINESE.matcher(value);
         if (matcher.find()) {
@@ -85,7 +87,7 @@ public class StringUtil {
      * @param charset 编码
      * @return 字符串
      */
-    public static String toString(byte[] data, String charset) {
+    public static String toString(byte[] data, @NonNull String charset) {
         try {
             return new String(data, charset);
         } catch (Exception e) {
@@ -102,7 +104,7 @@ public class StringUtil {
      * @param separator 分隔符
      * @return 字符串
      */
-    public static String getSeparatorCustomName(String str, String separator) {
+    public static String getSeparatorCustomName(@NonNull String str, @NonNull String separator) {
         return str.substring(str.indexOf(separator) + 1);
     }
 
@@ -114,7 +116,7 @@ public class StringUtil {
      * @return 数字
      * @since 1.1.6
      */
-    public static int getSeparatorCustomNameNumber(String str) {
+    public static int getSeparatorCustomNameNumber(@NonNull String str) {
         Matcher matcher = BRACKET_NUMBER.matcher(str);
         if (matcher.find()) {
             return Integer.parseInt(matcher.group(1));
@@ -129,8 +131,8 @@ public class StringUtil {
      * @param str 字符串
      * @return 小写字符串
      */
-    public static String toLowerCase(String str) {
-        return str != null ? str.toLowerCase() : null;
+    public static String toLowerCase(@NonNull String str) {
+        return str.toLowerCase();
     }
 
     /**
@@ -139,10 +141,7 @@ public class StringUtil {
      * @param str 字符串
      * @return 替换后的字符串
      */
-    public static String replaceSpace(String str) {
-        if (StringUtil.isEmpty(str)) {
-            return str;
-        }
+    public static String replaceSpace(@NonNull String str) {
         return str.replace("#", " ");
     }
 
@@ -152,7 +151,7 @@ public class StringUtil {
      * @param str 字符
      * @return 结果
      */
-    public static String lineToHump(String str) {
+    public static String lineToHump(@NonNull String str) {
         str = str.toLowerCase();
         Matcher matcher = LINE_PATTERN.matcher(str);
         StringBuilder sb = new StringBuilder();
@@ -169,7 +168,7 @@ public class StringUtil {
      * @param str 字符
      * @return 结果
      */
-    public static String humpToLine(String str) {
+    public static String humpToLine(@NonNull String str) {
         Matcher matcher = HUMP_PATTERN.matcher(str);
         StringBuilder sb = new StringBuilder();
         while (matcher.find()) {
@@ -185,10 +184,7 @@ public class StringUtil {
      * @param str 字符串
      * @return 新字符串
      */
-    public static String deleteWhitespace(String str) {
-        if (isEmpty(str)) {
-            return str;
-        }
+    public static String deleteWhitespace(@NonNull String str) {
         int sz = str.length();
         char[] chs = new char[sz];
         int count = 0;
@@ -210,7 +206,7 @@ public class StringUtil {
      * @param str 变量
      * @return str
      */
-    public static String stringFilter(String str) {
+    public static String stringFilter(@NonNull String str) {
         return DEL_PATTERN.matcher(str).replaceAll("").trim();
     }
 
@@ -220,7 +216,7 @@ public class StringUtil {
      * @param uuid 字符串
      * @return UUID
      */
-    public static UUID getUUID(String uuid) {
+    public static UUID getUUID(@NonNull String uuid) {
         try {
             return UUID.fromString(uuid);
         } catch (final IllegalArgumentException ignored) {

@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.permissions;
 
 import io.github.minecraftchampions.dodoopenjava.permissions.data.*;
+import lombok.NonNull;
 
 import java.io.IOException;
 
@@ -19,7 +20,7 @@ public class Permissions {
      * @param type 存储类型
      * @return true成功，false失败
      */
-    public static boolean init(DataType type) {
+    public static boolean init(@NonNull DataType type) {
         if (initialized) {
             return false;
         } else {

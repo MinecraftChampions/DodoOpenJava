@@ -1,7 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.message;
 
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
-import lombok.SneakyThrows;
+import lombok.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -17,17 +17,13 @@ import java.util.List;
 /**
  * 消息组件
  */
+@EqualsAndHashCode
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Message {
     private String text;
 
-    private Message() {
-    }
-
-    protected Message(String text, MessageBuilder builder) {
-        this.text = text;
-        this.messageBuilder = builder;
-    }
-
+    @NonNull
     private MessageBuilder messageBuilder;
 
     /**
@@ -48,7 +44,7 @@ public class Message {
         List<MessageComponent> list = messageBuilder.getComponents();
         StringBuilder sb = new StringBuilder();
         for (MessageComponent component : list) {
-            String content = BaseUtil.replaceXmlSpecialCharacters(component.getStr());
+            String content = BaseUtil.replaceXmlSpecialCharacters(component.getContent());
             List<MessageStyle> styles = component.getStyles();
             if (component instanceof MessageComponent.LinkComponent linkComponent) {
                 sb.append("<").append("link url=\"")

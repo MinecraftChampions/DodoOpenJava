@@ -1,5 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.card.component;
 
+import lombok.NonNull;
+
 /**
  * 视频组件
  */
@@ -10,7 +12,7 @@ public class VideoComponent extends Component {
      * @param url   视频地址
      * @param cover 封面地址
      */
-    public VideoComponent(String url, String cover) {
+    public VideoComponent(@NonNull String url, @NonNull String cover) {
         jsonCard.put("type", "video");
         jsonCard.put("src", url);
         jsonCard.put("cover", cover);
@@ -23,7 +25,7 @@ public class VideoComponent extends Component {
      * @param cover 封面地址
      * @param title 视频标题
      */
-    public VideoComponent(String url, String cover, String title) {
+    public VideoComponent(@NonNull String url, @NonNull String cover, @NonNull String title) {
         jsonCard.put("type", "video");
         jsonCard.put("src", url);
         jsonCard.put("cover", cover);
@@ -35,7 +37,7 @@ public class VideoComponent extends Component {
      *
      * @param url 地址
      */
-    public void editUrl(String url) {
+    public void editUrl(@NonNull String url) {
         jsonCard.put("src", url);
     }
 
@@ -44,7 +46,7 @@ public class VideoComponent extends Component {
      *
      * @param url 地址
      */
-    public void editCover(String url) {
+    public void editCover(@NonNull String url) {
         jsonCard.put("cover", url);
     }
 
@@ -53,7 +55,7 @@ public class VideoComponent extends Component {
      *
      * @param title 标题
      */
-    public void editTitle(String title) {
+    public void editTitle(@NonNull String title) {
         jsonCard.put("title", title);
     }
 }

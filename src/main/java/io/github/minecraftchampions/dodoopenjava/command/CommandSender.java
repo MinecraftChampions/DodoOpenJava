@@ -5,6 +5,7 @@ import io.github.minecraftchampions.dodoopenjava.api.v2.MemberApi;
 import io.github.minecraftchampions.dodoopenjava.api.v2.RoleApi;
 import io.github.minecraftchampions.dodoopenjava.permissions.UserManager;
 import lombok.Getter;
+import lombok.NonNull;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -91,7 +92,7 @@ public class CommandSender {
      * @param NickName 群昵称
      * @throws IOException 编辑失败后抛出
      */
-    public void editSenderNickName(String NickName) throws IOException {
+    public void editSenderNickName(@NonNull String NickName) throws IOException {
         System.out.println(MemberApi.editMemberNickName(bot.getAuthorization(), IslandSourceId, SenderDodoSourceId, NickName));
         SenderNickName = NickName;
     }
@@ -113,7 +114,7 @@ public class CommandSender {
      * @param reason 禁言理由
      * @throws IOException 失败后抛出
      */
-    public void muteSender(int Time, String reason) throws IOException {
+    public void muteSender(int Time, @NonNull String reason) throws IOException {
         MemberApi.addMemberReasonMute(bot.getAuthorization(), IslandSourceId, SenderDodoSourceId, Time, reason);
     }
 
@@ -132,7 +133,7 @@ public class CommandSender {
      * @param reason 封禁理由
      * @throws IOException 失败后抛出
      */
-    public void banSender(String reason) throws IOException {
+    public void banSender(@NonNull String reason) throws IOException {
         MemberApi.addMemberReasonBan(bot.getAuthorization(), IslandSourceId, SenderDodoSourceId, reason);
     }
 
@@ -160,7 +161,7 @@ public class CommandSender {
      * @param RoleId 权限组ID
      * @throws IOException 失败后抛出
      */
-    public void giveRole(String RoleId) throws IOException {
+    public void giveRole(@NonNull String RoleId) throws IOException {
         RoleApi.addRoleMember(bot.getAuthorization(), IslandSourceId, SenderDodoSourceId, RoleId);
     }
 
@@ -170,7 +171,7 @@ public class CommandSender {
      * @param RoleId 权限组ID
      * @throws IOException 失败后抛出
      */
-    public void removeRole(String RoleId) throws IOException {
+    public void removeRole(@NonNull String RoleId) throws IOException {
         RoleApi.removeRoleMember(bot.getAuthorization(), IslandSourceId, SenderDodoSourceId, RoleId);
     }
 

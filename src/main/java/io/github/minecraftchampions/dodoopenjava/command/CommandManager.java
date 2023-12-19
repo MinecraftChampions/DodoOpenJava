@@ -2,6 +2,8 @@ package io.github.minecraftchampions.dodoopenjava.command;
 
 import io.github.minecraftchampions.dodoopenjava.Bot;
 import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -10,16 +12,13 @@ import java.util.Objects;
  * 命令系统的相关方法
  */
 @Getter
+@RequiredArgsConstructor
 public class CommandManager {
     private final HashSet<CommandExecutor> commands = new HashSet<>();
 
-    private final Bot bot;
+    private final @NonNull Bot bot;
 
     private boolean isInit = false;
-
-    public CommandManager(Bot bot) {
-        this.bot = bot;
-    }
 
     /**
      * 初始化
@@ -34,7 +33,7 @@ public class CommandManager {
      *
      * @param command 命令实例
      */
-    public void registerCommand(CommandExecutor command) {
+    public void registerCommand(@NonNull CommandExecutor command) {
         commands.add(command);
         if (!isInit()) {
             init();
@@ -46,7 +45,7 @@ public class CommandManager {
      *
      * @param command 命令实例
      */
-    public void unregisterCommand(CommandExecutor command) {
+    public void unregisterCommand(@NonNull CommandExecutor command) {
         commands.remove(command);
     }
 
@@ -65,7 +64,8 @@ public class CommandManager {
      * @param args            命令参数
      */
     @SuppressWarnings("UnusedReturnValue")
-    public boolean trigger(CommandSender sender, String mainCommandName, String... args) {
+    public boolean trigger(@NonNull CommandSender sender, @NonNull String mainCommandName,
+                           @NonNull String... args) {
         boolean hasCommand = false;
         for (CommandExecutor command : commands) {
             if (Objects.equals(command.getMainCommand(), mainCommandName)) {

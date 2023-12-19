@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.card.component;
 
 import io.github.minecraftchampions.dodoopenjava.card.enums.TextType;
+import lombok.NonNull;
 import org.json.JSONObject;
 
 /**
@@ -13,7 +14,7 @@ public class HeaderComponent extends Component {
      * @param type  文本类型
      * @param title 内容
      */
-    public HeaderComponent(TextType type, String title) {
+    public HeaderComponent(@NonNull TextType type, @NonNull String title) {
         jsonCard.put("type", "header");
         JSONObject object = new JSONObject();
         object.put("type", type.getType());
@@ -26,7 +27,7 @@ public class HeaderComponent extends Component {
      *
      * @param type 类型
      */
-    public void editTextType(TextType type) {
+    public void editTextType(@NonNull TextType type) {
         jsonCard.getJSONObject("text").put("type", type.getType());
     }
 
@@ -35,7 +36,7 @@ public class HeaderComponent extends Component {
      *
      * @param context 文本
      */
-    public void editContent(String context) {
+    public void editContent(@NonNull String context) {
         jsonCard.getJSONObject("text").put("content", context);
     }
 }

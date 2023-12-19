@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.card.component;
 
 import io.github.minecraftchampions.dodoopenjava.card.enums.Align;
+import lombok.NonNull;
 
 /**
  * 文字和模块
@@ -13,7 +14,9 @@ public class SectionAndButtonComponent extends Component {
      * @param sectionComponent     文字
      * @param buttonGroupComponent 按钮
      */
-    public SectionAndButtonComponent(Align align, ButtonGroupComponent buttonGroupComponent, SectionComponent sectionComponent) {
+    public SectionAndButtonComponent(@NonNull Align align,
+                                     @NonNull ButtonGroupComponent buttonGroupComponent,
+                                     @NonNull SectionComponent sectionComponent) {
         if (sectionComponent.isParagraph) {
             return;
         }
@@ -23,7 +26,7 @@ public class SectionAndButtonComponent extends Component {
         jsonCard.put("accessory", buttonGroupComponent.getJsonCard());
     }
 
-    public void setAlign(Align align) {
+    public void setAlign(@NonNull Align align) {
         jsonCard.put("align", align.getType());
     }
 
@@ -34,7 +37,9 @@ public class SectionAndButtonComponent extends Component {
      * @param sectionComponent 文字
      * @param imageComponent   图片
      */
-    public SectionAndButtonComponent(Align align, ImageComponent imageComponent, SectionComponent sectionComponent) {
+    public SectionAndButtonComponent(@NonNull Align align,
+                                     @NonNull ImageComponent imageComponent,
+                                     @NonNull SectionComponent sectionComponent) {
         if (sectionComponent.isParagraph) {
             return;
         }
@@ -49,7 +54,7 @@ public class SectionAndButtonComponent extends Component {
      *
      * @param align 对齐方式
      */
-    public void editAlign(Align align) {
+    public void editAlign(@NonNull Align align) {
         jsonCard.put("align", align.getType());
     }
 }

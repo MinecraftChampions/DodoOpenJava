@@ -2,6 +2,7 @@ package io.github.minecraftchampions.dodoopenjava.card.component;
 
 import io.github.minecraftchampions.dodoopenjava.card.enums.ButtonAction;
 import io.github.minecraftchampions.dodoopenjava.card.enums.Color;
+import lombok.NonNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -28,7 +29,9 @@ public class ButtonGroupComponent extends Component {
      * @param action           按钮点击动作类型
      * @param object           按钮点击动作的值，不是表单就是String类型，是表单就传入Form
      */
-    public void addButton(Color buttonColor, String buttonName, String interactCustomId, ButtonAction action, Object object) {
+    public void addButton(@NonNull Color buttonColor, @NonNull String buttonName,
+                          @NonNull String interactCustomId, @NonNull ButtonAction action,
+                          @NonNull Object object) {
         FormComponent formComponent = new FormComponent();
         String value = "";
         boolean isForm = false;
@@ -77,7 +80,8 @@ public class ButtonGroupComponent extends Component {
      * @param action      按钮点击动作类型
      * @param object      按钮点击动作的值，不是表单就是String类型，是表单就传入Form
      */
-    public void addButton(Color ButtonColor, String ButtonName, ButtonAction action, Object object) {
+    public void addButton(@NonNull Color ButtonColor, @NonNull String ButtonName,
+                          @NonNull ButtonAction action, @NonNull Object object) {
         FormComponent formComponent = new FormComponent();
         String value = "";
         boolean isForm = false;

@@ -1,6 +1,8 @@
 package io.github.minecraftchampions.dodoopenjava.message;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +11,8 @@ import java.util.List;
  * 消息构造器
  */
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class MessageBuilder {
-    protected MessageBuilder() {
-    }
-
     private final List<MessageComponent> components = new ArrayList<>();
 
     public MessageBuilder append(MessageComponent component) {

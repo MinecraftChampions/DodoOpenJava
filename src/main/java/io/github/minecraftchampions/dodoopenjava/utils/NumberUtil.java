@@ -1,8 +1,9 @@
 package io.github.minecraftchampions.dodoopenjava.utils;
 
+import lombok.NonNull;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Objects;
 import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -67,16 +68,11 @@ public class NumberUtil {
      * @param object 值
      * @return 转换后的值
      */
-    public static int toInt(Object object) {
+    public static int toInt(@NonNull Object object) {
         if (object instanceof Number) {
             return ((Number) object).intValue();
         }
-
-        try {
-            return Integer.parseInt(Objects.requireNonNull(object).toString());
-        } catch (NumberFormatException | NullPointerException ignored) {
-        }
-        return 0;
+        return Integer.parseInt(object.toString());
     }
 
     /**
@@ -85,16 +81,11 @@ public class NumberUtil {
      * @param object 值
      * @return 转换后的值
      */
-    public static float toFloat(Object object) {
+    public static float toFloat(@NonNull Object object) {
         if (object instanceof Number) {
             return ((Number) object).floatValue();
         }
-
-        try {
-            return Float.parseFloat(Objects.requireNonNull(object).toString());
-        } catch (NumberFormatException | NullPointerException ignored) {
-        }
-        return 0;
+        return Float.parseFloat(object.toString());
     }
 
     /**
@@ -103,16 +94,11 @@ public class NumberUtil {
      * @param object 值
      * @return 转换后的值
      */
-    public static double toDouble(Object object) {
+    public static double toDouble(@NonNull Object object) {
         if (object instanceof Number) {
             return ((Number) object).doubleValue();
         }
-
-        try {
-            return Double.parseDouble(Objects.requireNonNull(object).toString());
-        } catch (NumberFormatException | NullPointerException ignored) {
-        }
-        return 0;
+        return Double.parseDouble(object.toString());
     }
 
     /**
@@ -121,16 +107,11 @@ public class NumberUtil {
      * @param object 值
      * @return 转换后的值
      */
-    public static long toLong(Object object) {
+    public static long toLong(@NonNull Object object) {
         if (object instanceof Number) {
             return ((Number) object).longValue();
         }
-
-        try {
-            return Long.parseLong(Objects.requireNonNull(object).toString());
-        } catch (NumberFormatException | NullPointerException ignored) {
-        }
-        return 0;
+        return Long.parseLong(object.toString());
     }
 
     /**
@@ -139,16 +120,12 @@ public class NumberUtil {
      * @param object 值
      * @return 转换后的值
      */
-    public static short toShort(Object object) {
+    public static short toShort(@NonNull Object object) {
         if (object instanceof Number) {
             return ((Number) object).shortValue();
         }
 
-        try {
-            return Short.parseShort(Objects.requireNonNull(object).toString());
-        } catch (NumberFormatException | NullPointerException ignored) {
-        }
-        return 0;
+        return Short.parseShort(object.toString());
     }
 
     /**
@@ -157,16 +134,11 @@ public class NumberUtil {
      * @param object 值
      * @return 转换后的值
      */
-    public static byte toByte(Object object) {
+    public static byte toByte(@NonNull Object object) {
         if (object instanceof Number) {
             return ((Number) object).byteValue();
         }
-
-        try {
-            return Byte.parseByte(Objects.requireNonNull(object).toString());
-        } catch (NumberFormatException | NullPointerException ignored) {
-        }
-        return 0;
+        return Byte.parseByte(object.toString());
     }
 
     /**
@@ -195,7 +167,7 @@ public class NumberUtil {
      * @param str 字符串
      * @return true是数字
      */
-    public static Integer isNumericToInt(String str) {
+    public static Integer isNumericToInt(@NonNull String str) {
         try {
             Matcher isNum = NUMERIC.matcher(str);
             if (isNum.matches()) {
@@ -213,7 +185,7 @@ public class NumberUtil {
      * @param str 字符串
      * @return true是数字
      */
-    public static Long isNumericToLong(String str) {
+    public static Long isNumericToLong(@NonNull String str) {
         try {
             Matcher isNum = NUMERIC.matcher(str);
             if (isNum.matches()) {
@@ -244,7 +216,7 @@ public class NumberUtil {
      * @param des      要匹配的值
      * @return 返回匹配的数字的在数组的索引，-1为匹配不到
      */
-    public static int binarySearch(Integer[] srcArray, int des) {
+    public static int binarySearch(@NonNull Integer[] srcArray, int des) {
         int start = 0;
         int end = srcArray.length - 1;
         while (start <= end) {
@@ -269,10 +241,7 @@ public class NumberUtil {
      * @param v2 加数
      * @return 两个参数的和
      */
-    public static Double add(Double v1, Double v2) {
-        if (v1 == null || v2 == null) {
-            return null;
-        }
+    public static Double add(@NonNull Double v1, @NonNull Double v2) {
         BigDecimal b1 = new BigDecimal(Double.toString(v1));
         BigDecimal b2 = new BigDecimal(Double.toString(v2));
         return b1.add(b2).setScale(DEF_DIV_SCALE, RoundingMode.HALF_UP).doubleValue();
@@ -285,10 +254,7 @@ public class NumberUtil {
      * @param v2 减数
      * @return 两个参数的差
      */
-    public static Double subtract(Double v1, Double v2) {
-        if (v1 == null || v2 == null) {
-            return null;
-        }
+    public static Double subtract(@NonNull Double v1, @NonNull Double v2) {
         BigDecimal b1 = new BigDecimal(Double.toString(v1));
         BigDecimal b2 = new BigDecimal(Double.toString(v2));
         return b1.subtract(b2).setScale(DEF_DIV_SCALE, RoundingMode.HALF_UP).doubleValue();
@@ -301,10 +267,7 @@ public class NumberUtil {
      * @param v2 乘数
      * @return 两个参数的积
      */
-    public static Double multiply(Double v1, Double v2) {
-        if (v1 == null || v2 == null) {
-            return null;
-        }
+    public static Double multiply(@NonNull Double v1, @NonNull Double v2) {
         BigDecimal b1 = new BigDecimal(Double.toString(v1));
         BigDecimal b2 = new BigDecimal(Double.toString(v2));
         return b1.multiply(b2).setScale(DEF_DIV_SCALE, RoundingMode.HALF_UP).doubleValue();
@@ -318,7 +281,7 @@ public class NumberUtil {
      * @param v2 除数
      * @return 两个参数的商
      */
-    public static Double divide(Double v1, Double v2) {
+    public static Double divide(@NonNull Double v1, @NonNull Double v2) {
         return divide(v1, v2, DEF_DIV_SCALE);
     }
 
@@ -331,10 +294,7 @@ public class NumberUtil {
      * @param scale 表示需要精确到小数点以后几位
      * @return 两个参数的商
      */
-    public static Double divide(Double v1, Double v2, int scale) {
-        if (v1 == null || v2 == null) {
-            return null;
-        }
+    public static Double divide(@NonNull Double v1, @NonNull Double v2, int scale) {
         if (scale < 0) {
             throw new IllegalArgumentException("The scale must be a positive integer or zero");
         }
@@ -351,10 +311,7 @@ public class NumberUtil {
      * @param scale 小数点后保留几位
      * @return 四舍五入后的结果
      */
-    public static Double round(Double v, int scale) {
-        if (v == null) {
-            return null;
-        }
+    public static Double round(@NonNull Double v, int scale) {
         if (scale < 0) {
             throw new IllegalArgumentException("The scale must be a positive integer or zero");
         }

@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.utils;
 
+import lombok.NonNull;
 import org.json.JSONObject;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -21,7 +22,7 @@ public class BaseUtil {
      * @param token    机器人鉴权Token
      * @return 返回拼接后的文本
      */
-    public static String Authorization(String clientId, String token) {
+    public static String Authorization(@NonNull String clientId, @NonNull String token) {
         return "Bot " + clientId + "." + token;
     }
 
@@ -41,7 +42,7 @@ public class BaseUtil {
      * @param list Object集合
      * @return String集合
      */
-    public static List<String> toStringList(List<Object> list) {
+    public static List<String> toStringList(@NonNull List<Object> list) {
         List<String> returnList = new ArrayList<>();
         for (Object o : list) {
             returnList.add(o.toString());
@@ -55,7 +56,7 @@ public class BaseUtil {
      * @param text 文本
      * @return true代表是
      */
-    public static boolean hasSensitiveWord(String text) throws IOException {
+    public static boolean hasSensitiveWord(@NonNull String text) throws IOException {
         //获取词库内容
         List<String> list = toStringList((new JSONObject(NetUtil.simulationBrowserRequest("https://mcchampions.github.io/database.json"))).getJSONArray("words").toList());
         boolean isSensitiveWord = false;
@@ -70,19 +71,21 @@ public class BaseUtil {
 
     /**
      * 替换特殊字符
+     *
      * @param text 要替换的字符
      * @return str
      */
-    public static String replaceXmlSpecialCharacters(String text) {
+    public static String replaceXmlSpecialCharacters(@NonNull String text) {
         return text.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("'", "&apos;").replaceAll("\"", "&quot;");
     }
 
     /**
      * 获取一个节点里的所有文本节点
+     *
      * @param node 节点
      * @return 文本节点集合
      */
-    public static List<Node> getAllTextNodes(Node node) {
+    public static List<Node> getAllTextNodes(@NonNull Node node) {
         NodeList nodeList = node.getChildNodes();
         List<Node> result = new ArrayList<>();
         for (int i = 0; i < nodeList.getLength(); i++) {

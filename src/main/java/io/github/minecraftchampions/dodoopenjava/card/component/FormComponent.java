@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.card.component;
 
 import io.github.minecraftchampions.dodoopenjava.card.enums.Rows;
+import lombok.NonNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -23,7 +24,7 @@ public class FormComponent extends Component {
      *
      * @param title 标题
      */
-    public void editContent(String title) {
+    public void editContent(@NonNull String title) {
         jsonCard.put("title", title);
     }
 
@@ -45,7 +46,8 @@ public class FormComponent extends Component {
      * @param minChar 最小字符数，介于0~4000
      * @param maxChar 最大字符数，介于1~4000，且最大字符数不得小于最小字符数
      */
-    public void addElement(String key, String title, Rows rows, int minChar, int maxChar) {
+    public void addElement(@NonNull String key, @NonNull String title, @NonNull Rows rows,
+                           int minChar, int maxChar) {
         JSONObject json = new JSONObject();
         if (minChar < 0) return;
         if (minChar > 4000) return;
@@ -74,7 +76,9 @@ public class FormComponent extends Component {
      * @param minChar     最小字符数，介于0~4000
      * @param maxChar     最大字符数，介于1~4000，且最大字符数不得小于最小字符数
      */
-    public void addElement(String key, String placeholder, String title, Rows rows, int minChar, int maxChar) {
+    public void addElement(@NonNull String key, @NonNull String placeholder,
+                           @NonNull String title, @NonNull Rows rows, int minChar,
+                           int maxChar) {
         JSONObject json = new JSONObject();
         if (minChar < 0) return;
         if (minChar > 4000) return;

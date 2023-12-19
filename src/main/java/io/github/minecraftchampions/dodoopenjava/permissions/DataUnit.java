@@ -1,19 +1,21 @@
 package io.github.minecraftchampions.dodoopenjava.permissions;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * 权限实例
  */
 @Getter
+@EqualsAndHashCode
 public class DataUnit {
     private String lastName = "";
 
-    public void setLastName(String lastName) {
+    public void setLastName(@NonNull String lastName) {
         this.lastName = lastName;
         changed = true;
     }
@@ -24,7 +26,7 @@ public class DataUnit {
      * @param permission 权限
      * @return true/false
      */
-    public boolean removePermission(String permission) {
+    public boolean removePermission(@NonNull String permission) {
         changed = true;
         return permissions.remove(permission);
     }
@@ -37,7 +39,7 @@ public class DataUnit {
 
     private final List<String> permissions = new ArrayList<>();
 
-    DataUnit(String name) {
+    DataUnit(@NonNull String name) {
         setLastName(name);
     }
 
@@ -56,30 +58,10 @@ public class DataUnit {
      *
      * @param permission 权限
      */
-    public void addPermission(String permission) {
+    public void addPermission(@NonNull String permission) {
         if (!permissions.contains(permission)) {
             permissions.add(permission);
             changed = true;
         }
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (o instanceof DataUnit go) {
-            if (this.getLastName().equalsIgnoreCase(go.getLastName())) {
-                return Objects.equals(this.lastName, go.getLastName()) &&
-                        Objects.equals(this.changed, go.isChanged()) &&
-                        Objects.equals(this.permissions, go.getPermissions());
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 71 * hash + (this.lastName != null ? this.lastName.toLowerCase().hashCode() : 0);
-        return hash;
     }
 }

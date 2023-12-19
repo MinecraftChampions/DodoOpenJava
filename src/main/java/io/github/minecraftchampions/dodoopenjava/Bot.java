@@ -10,6 +10,8 @@ import io.github.minecraftchampions.dodoopenjava.event.WebSocketEventTrigger;
 import io.github.minecraftchampions.dodoopenjava.message.Message;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.json.JSONObject;
 
@@ -19,15 +21,18 @@ import java.io.File;
  * 机器人实例
  */
 @Getter
+@RequiredArgsConstructor
 public class Bot {
     /**
      * 机器人唯一标识
      */
+    @NonNull
     private final String clientId;
 
     /**
      * 机器人鉴权Token
      */
+    @NonNull
     private final String token;
 
     /**
@@ -36,11 +41,6 @@ public class Bot {
     private final EventManager eventManager = new EventManager();
 
     private final Api api = new Api(this);
-
-    public Bot(String clientId, String token) {
-        this.clientId = clientId;
-        this.token = token;
-    }
 
     /**
      * 获取authorization
@@ -56,7 +56,7 @@ public class Bot {
      *
      * @param listener 监听器
      */
-    public void registerListener(Listener listener) {
+    public void registerListener(@NonNull Listener listener) {
         if (eventTrigger == null) {
             initEventListenSystem(new WebSocketEventTrigger(this));
         }
@@ -71,7 +71,7 @@ public class Bot {
      *
      * @param listeners 监听器
      */
-    public void registerListeners(Listener... listeners) {
+    public void registerListeners(@NonNull Listener... listeners) {
         for (Listener listener : listeners) {
             registerListener(listener);
         }
@@ -82,7 +82,7 @@ public class Bot {
      *
      * @param commandExecutor 命令处理器
      */
-    public void registerCommand(CommandExecutor commandExecutor) {
+    public void registerCommand(@NonNull CommandExecutor commandExecutor) {
         commandManager.registerCommand(commandExecutor);
     }
 
@@ -91,7 +91,7 @@ public class Bot {
      *
      * @param commandExecutors 命令处理器
      */
-    public void registerCommands(CommandExecutor... commandExecutors) {
+    public void registerCommands(@NonNull CommandExecutor... commandExecutors) {
         for (CommandExecutor commandExecutor : commandExecutors) {
             registerCommand(commandExecutor);
         }
@@ -107,7 +107,7 @@ public class Bot {
      *
      * @param t EventTrigger
      */
-    public void initEventListenSystem(EventTrigger t) {
+    public void initEventListenSystem(@NonNull EventTrigger t) {
         if (t.getBot() != this) {
             return;
         }
@@ -130,6 +130,36 @@ public class Bot {
         DodoOpenJava.getBots().remove(this);
     }
 
+    /**
+     * 获取机器人名字
+     *
+     * @return 名字
+     */
+    public String getName() {
+        return this.getApi().V2.botApi.getBotInfo().getJSONObject("data").getString("nickName");
+    }
+
+    /**
+     * 获取机器人DodoId
+     *
+     * @return dodoId
+     */
+    public String getDodoSourceId() {
+        return this.getApi().V2.botApi.getBotInfo().getJSONObject("data").getString("dodoSourceId");
+    }
+
+    /**
+     * 获取机器人头像URL
+     *
+     * @return url
+     */
+    public String getAvatarUrl() {
+        return this.getApi().V2.botApi.getBotInfo().getJSONObject("data").getString("avatarUrl");
+    }
+
+    /**
+     * Api类
+     */
     public static class Api {
         Api(Bot bot) {
             V2 = new V2(bot);

@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.permissions;
 
 import lombok.Getter;
+import lombok.NonNull;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
 public class Group extends DataUnit {
     private final List<String> inherits = new LinkedList<>();
 
-    public Group(String name) {
+    public Group(@NonNull String name) {
         super(name);
     }
 
@@ -24,7 +25,7 @@ public class Group extends DataUnit {
         return GroupManager.getDefaultGroup() == this;
     }
 
-    public void addInherits(Group inherit) {
+    public void addInherits(@NonNull Group inherit) {
         if (!GroupManager.groupExists(inherit.getName())) {
             GroupManager.addGroup(inherit);
         }
@@ -34,7 +35,7 @@ public class Group extends DataUnit {
         setChanged(true);
     }
 
-    public boolean removeInherits(String inherit) {
+    public boolean removeInherits(@NonNull String inherit) {
         if (this.inherits.contains(inherit.toLowerCase())) {
             setChanged(true);
             return inherits.remove(inherit.toLowerCase());

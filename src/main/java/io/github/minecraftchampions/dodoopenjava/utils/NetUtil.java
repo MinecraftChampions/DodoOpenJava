@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.utils;
 
+import lombok.NonNull;
 import okhttp3.*;
 import org.json.JSONObject;
 
@@ -24,7 +25,8 @@ public class NetUtil {
      * @param url           链接地址
      * @param Authorization Authorization
      */
-    public static String sendRequest(String param, String url, String Authorization) throws IOException {
+    public static String sendRequest(@NonNull String param, @NonNull String url,
+                                     @NonNull String Authorization) throws IOException {
         HashMap<String, String> Header = new HashMap<>();
         Header.put("Content-Type", "application/json");
         Header.put("Authorization", Authorization);
@@ -36,7 +38,7 @@ public class NetUtil {
      *
      * @param url 链接地址
      */
-    public static String sendPostJsonRequest(String url) throws IOException {
+    public static String sendPostJsonRequest(@NonNull String url) throws IOException {
         return sendPostJsonRequest(url, new HashMap<>(), "");
     }
 
@@ -45,7 +47,8 @@ public class NetUtil {
      *
      * @param url 链接地址
      */
-    public static String sendPostJsonRequest(String url, HashMap<String, String> Header) throws IOException {
+    public static String sendPostJsonRequest(@NonNull String url,
+                                             @NonNull HashMap<String, String> Header) throws IOException {
         return sendPostJsonRequest(url, Header, "");
     }
 
@@ -54,7 +57,7 @@ public class NetUtil {
      *
      * @param url 链接地址
      */
-    public static String sendPostJsonRequest(String url, String param) throws IOException {
+    public static String sendPostJsonRequest(@NonNull String url, @NonNull String param) throws IOException {
         return sendPostJsonRequest(url, null, param);
     }
 
@@ -65,9 +68,11 @@ public class NetUtil {
      * @param Header Header
      * @param param  参数
      */
-    public static String sendPostJsonRequest(String url, HashMap<String, String> Header, String param) throws IOException {
+    public static String sendPostJsonRequest(@NonNull String url,
+                                             @NonNull HashMap<String, String> Header,
+                                             @NonNull String param) throws IOException {
         Request.Builder builder = new Request.Builder();
-        builder.url(url).post(RequestBody.Companion.create(param,MediaType.parse("application/json")));
+        builder.url(url).post(RequestBody.Companion.create(param, MediaType.parse("application/json")));
         JSONObject json = new JSONObject(Header);
         for (int i = 0; i < json.keySet().size(); i++) {
             builder.addHeader(Header.keySet().stream().toList().get(i), Header.values().stream().toList().get(i));
@@ -83,7 +88,8 @@ public class NetUtil {
      *
      * @param url 链接地址
      */
-    public static String sendGetRequest(String url, HashMap<String, String> Header) throws IOException {
+    public static String sendGetRequest(@NonNull String url,
+                                        @NonNull HashMap<String, String> Header) throws IOException {
         Request.Builder builder = new Request.Builder()
                 .url(url)
                 .get();
@@ -105,7 +111,9 @@ public class NetUtil {
      * @param url           上传链接
      * @param Authorization Authorization
      */
-    public static String uploadFile(String Authorization, String path, String url) throws IOException {
+    public static String uploadFile(@NonNull String Authorization,
+                                    @NonNull String path,
+                                    @NonNull String url) throws IOException {
         File File = new File(path);
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
@@ -130,7 +138,7 @@ public class NetUtil {
      *
      * @param url 链接地址
      */
-    public static String simulationBrowserRequest(String url) throws IOException {
+    public static String simulationBrowserRequest(@NonNull String url) throws IOException {
         HashMap<String, String> Header = new HashMap<>();
         Header.put("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36");
         return sendGetRequest(url, Header);
@@ -141,7 +149,7 @@ public class NetUtil {
      *
      * @param url 链接地址
      */
-    public static String sendGetRequest(String url) throws IOException {
+    public static String sendGetRequest(@NonNull String url) throws IOException {
         return sendGetRequest(url, new HashMap<>());
     }
 
@@ -153,7 +161,8 @@ public class NetUtil {
      * @param fileName 文件名称
      * @throws IOException IOException异常
      */
-    public static void downloadFile(String url, File saveDir, String fileName) throws IOException {
+    public static void downloadFile(@NonNull String url, @NonNull File saveDir,
+                                    @NonNull String fileName) throws IOException {
         Request request = new Request.Builder()
                 .url(url)
                 .get()
@@ -180,7 +189,7 @@ public class NetUtil {
      * @param saveDir 保存路径
      * @throws IOException IOException异常
      */
-    public static void downloadFile(String url, File saveDir) throws IOException {
+    public static void downloadFile(@NonNull String url, @NonNull File saveDir) throws IOException {
         Request request = new Request.Builder()
                 .url(url)
                 .get()
@@ -218,7 +227,7 @@ public class NetUtil {
      * @param inetAddress {@link InetAddress}
      * @return MAC地址，用-分隔
      */
-    private static String getMacAddress(InetAddress inetAddress) {
+    private static String getMacAddress(@NonNull InetAddress inetAddress) {
         if (inetAddress == null) {
             return null;
         }
@@ -247,7 +256,7 @@ public class NetUtil {
      * @param inetAddress {@link InetAddress}
      * @return 硬件地址
      */
-    private static byte[] getHardwareAddress(InetAddress inetAddress) {
+    private static byte[] getHardwareAddress(@NonNull InetAddress inetAddress) {
         if (inetAddress == null) {
             return null;
         }

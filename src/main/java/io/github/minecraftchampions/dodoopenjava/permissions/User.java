@@ -1,5 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.permissions;
 
+import lombok.NonNull;
+
 /**
  * 用户
  */
@@ -20,7 +22,7 @@ public class User extends DataUnit {
         return group;
     }
 
-    public void setGroup(Group group) {
+    public void setGroup(@NonNull Group group) {
         this.group = group.getName();
         setChanged(true);
     }

@@ -3,6 +3,7 @@ package io.github.minecraftchampions.dodoopenjava.card.component;
 import io.github.minecraftchampions.dodoopenjava.card.enums.Cols;
 import io.github.minecraftchampions.dodoopenjava.card.enums.SectionType;
 import io.github.minecraftchampions.dodoopenjava.card.enums.TextType;
+import lombok.NonNull;
 import org.json.JSONObject;
 
 import java.util.List;
@@ -50,16 +51,22 @@ public class SectionComponent extends Component {
      *
      * @param stringList string列表
      */
-    public void editParagraphContent(List<String> stringList) {
+    public void editParagraphContent(@NonNull List<String> stringList) {
         int count = stringList.size();
-        Cols cols = Cols.six;
+        Cols cols;
         switch (count) {
             case 2 -> cols = Cols.two;
             case 3 -> cols = Cols.three;
             case 4 -> cols = Cols.four;
             case 5 -> cols = Cols.five;
+            case 6 -> cols = Cols.six;
+            default -> throw new RuntimeException();
         }
         editParagraphContentCols(cols);
+        for (int i = 0; i < count; i++) {
+            String str = stringList.get(i);
+            editParagraphContent(str, i + 1);
+        }
     }
 
     /**
@@ -67,7 +74,7 @@ public class SectionComponent extends Component {
      *
      * @param content 文本
      */
-    public void editContent(String content) {
+    public void editContent(@NonNull String content) {
         jsonCard.getJSONObject("text").put("content", content);
     }
 
@@ -76,7 +83,7 @@ public class SectionComponent extends Component {
      *
      * @param type 类别
      */
-    public void editContentType(TextType type) {
+    public void editContentType(@NonNull TextType type) {
         String Type;
         if (Objects.equals(type.toString(), "Markdown")) Type = "dodo-md";
         else Type = "plain-text";
@@ -89,7 +96,7 @@ public class SectionComponent extends Component {
      * @param content 文本
      * @param count   第几个
      */
-    public void editParagraphContent(String content, int count) {
+    public void editParagraphContent(@NonNull String content, int count) {
         jsonCard.getJSONObject("text").getJSONArray("fields").getJSONObject(count).put("content", content);
     }
 
@@ -99,7 +106,7 @@ public class SectionComponent extends Component {
      * @param type  类别
      * @param count index
      */
-    public void editParagraphContentType(TextType type, int count) {
+    public void editParagraphContentType(@NonNull TextType type, int count) {
         String Type;
         if (Objects.equals(type.toString(), "Markdown")) Type = "dodo-md";
         else Type = "plain-text";
@@ -111,7 +118,7 @@ public class SectionComponent extends Component {
      *
      * @param col 栏数
      */
-    public void editParagraphContentCols(Cols col) {
+    public void editParagraphContentCols(@NonNull Cols col) {
         int Col = col.getCol();
         jsonCard.getJSONObject("text").put("cols", Col);
     }
@@ -121,7 +128,7 @@ public class SectionComponent extends Component {
      *
      * @param count index
      */
-    public void editParagraphContentType(int count) {
+    public void removeParagraphContentType(int count) {
         jsonCard.getJSONObject("text").getJSONArray("fields").remove(count);
     }
 }

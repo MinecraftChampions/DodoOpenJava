@@ -19,6 +19,7 @@ import io.github.minecraftchampions.dodoopenjava.event.events.v2.personal.Person
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.shop.GoodsPurchaseEvent;
 import io.github.minecraftchampions.dodoopenjava.utils.OpenSecretUtil;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.SneakyThrows;
 import org.json.JSONObject;
 
@@ -80,8 +81,8 @@ public class WebHookEventTrigger extends EventTrigger {
      *
      * @param path 路径
      */
-    public void setPath(String path) {
-        if (path != null && !path.isEmpty()) {
+    public void setPath( String path) {
+        if (path.isEmpty()) {
             this.path = path;
         }
     }
@@ -98,7 +99,7 @@ public class WebHookEventTrigger extends EventTrigger {
     /**
      * 解密密钥
      */
-    public void setSecretKey(String s) {
+    public void setSecretKey(@NonNull String s) {
         SecretKey = s;
     }
 
