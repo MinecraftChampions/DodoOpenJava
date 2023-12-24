@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.utils;
 
+import io.github.minecraftchampions.dodoopenjava.Result;
 import lombok.NonNull;
 import org.json.JSONObject;
 import org.w3c.dom.Node;
@@ -32,8 +33,8 @@ public class BaseUtil {
      * @param status 返回码
      * @return 意思
      */
-    public static String getStatus(int status) throws IOException {
-        return new JSONObject(NetUtil.simulationBrowserRequest("https://mcchampions.github.io/status.json")).getString(String.valueOf(status));
+    public static String getStatus(int status) {
+        return Result.STATUS_CODE.getString(String.valueOf(status));
     }
 
     /**

@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
+import io.github.minecraftchampions.dodoopenjava.Result;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
 import org.json.JSONObject;
@@ -20,7 +21,7 @@ public class GiftApi {
      * @return 返回JSON对象
      * @throws IOException 发送请求失败后抛出
      */
-    public static JSONObject getGiftAccount(String clientId, String token, String islandSourceId) throws IOException {
+    public static Result getGiftAccount(String clientId, String token, String islandSourceId) throws IOException {
         return getGiftAccount(BaseUtil.Authorization(clientId, token), islandSourceId);
     }
 
@@ -32,12 +33,12 @@ public class GiftApi {
      * @return 返回JSON对象
      * @throws IOException 发送请求失败后抛出
      */
-    public static JSONObject getGiftAccount(String authorization, String islandSourceId) throws IOException {
+    public static Result getGiftAccount(String authorization, String islandSourceId) throws IOException {
         String url = DodoOpenJava.BASEURL + "gift/account/info";
         String param = new JSONObject()
                 .put("islandSourceId", islandSourceId)
                 .toString();
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(param, url, authorization)));
     }
 
     /**
@@ -49,7 +50,7 @@ public class GiftApi {
      * @return 返回JSON对象
      * @throws IOException 发送请求失败后抛出
      */
-    public static JSONObject getGiftShareRatioInfo(String clientId, String token, String islandSourceId) throws IOException {
+    public static Result getGiftShareRatioInfo(String clientId, String token, String islandSourceId) throws IOException {
         return getGiftShareRatioInfo(BaseUtil.Authorization(clientId, token), islandSourceId);
     }
 
@@ -61,12 +62,12 @@ public class GiftApi {
      * @return 返回JSON对象
      * @throws IOException 发送请求失败后抛出
      */
-    public static JSONObject getGiftShareRatioInfo(String authorization, String islandSourceId) throws IOException {
+    public static Result getGiftShareRatioInfo(String authorization, String islandSourceId) throws IOException {
         String url = DodoOpenJava.BASEURL + "gift/share/ratio/info";
         String param = new JSONObject()
                 .put("islandSourceId", islandSourceId)
                 .toString();
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(param, url, authorization)));
     }
 
     /**
@@ -79,7 +80,7 @@ public class GiftApi {
      * @return 返回JSON对象
      * @throws IOException 发送请求失败后抛出
      */
-    public static JSONObject getGiftList(String clientId, String token, String targetId, int targetType) throws IOException {
+    public static Result getGiftList(String clientId, String token, String targetId, int targetType) throws IOException {
         return getGiftList(BaseUtil.Authorization(clientId, token), targetId, targetType);
     }
 
@@ -92,13 +93,13 @@ public class GiftApi {
      * @return 返回JSON对象
      * @throws IOException 发送请求失败后抛出
      */
-    public static JSONObject getGiftList(String authorization, String targetId, int targetType) throws IOException {
+    public static Result getGiftList(String authorization, String targetId, int targetType) throws IOException {
         String url = DodoOpenJava.BASEURL + "gift/list";
         String param = new JSONObject()
                 .put("targetId", targetId)
                 .put("targetType", targetType)
                 .toString();
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(param, url, authorization)));
     }
 
     /**
@@ -114,7 +115,7 @@ public class GiftApi {
      * @return 返回JSON对象
      * @throws IOException 发送请求失败后抛出
      */
-    public static JSONObject getGiftMemberList(String clientId, String token, String targetId, int targetType, String giftId, int pageSize, long maxId) throws IOException {
+    public static Result getGiftMemberList(String clientId, String token, String targetId, int targetType, String giftId, int pageSize, long maxId) throws IOException {
         return getGiftMemberList(BaseUtil.Authorization(clientId, token), targetId, targetType, giftId, pageSize, maxId);
     }
 
@@ -130,7 +131,7 @@ public class GiftApi {
      * @return 返回JSON对象
      * @throws IOException 发送请求失败后抛出
      */
-    public static JSONObject getGiftMemberList(String authorization, String targetId, int targetType, String giftId, int pageSize, long maxId) throws IOException {
+    public static Result getGiftMemberList(String authorization, String targetId, int targetType, String giftId, int pageSize, long maxId) throws IOException {
         String url = DodoOpenJava.BASEURL + "gift/member/list";
         String param = new JSONObject()
                 .put("targetId", targetId)
@@ -139,7 +140,7 @@ public class GiftApi {
                 .put("pageSize", pageSize)
                 .put("maxId", maxId)
                 .toString();
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(param, url, authorization)));
     }
 
     /**
@@ -154,7 +155,7 @@ public class GiftApi {
      * @return 返回JSON对象
      * @throws IOException 发送请求失败后抛出
      */
-    public static JSONObject getGiftGrossValueList(String clientId, String token, String targetId, int targetType, int pageSize, long maxId) throws IOException {
+    public static Result getGiftGrossValueList(String clientId, String token, String targetId, int targetType, int pageSize, long maxId) throws IOException {
         return getGiftGrossValueList(BaseUtil.Authorization(clientId, token), targetId, targetType, pageSize, maxId);
     }
 
@@ -169,7 +170,7 @@ public class GiftApi {
      * @return 返回JSON对象
      * @throws IOException 发送请求失败后抛出
      */
-    public static JSONObject getGiftGrossValueList(String authorization, String targetId, int targetType, int pageSize, long maxId) throws IOException {
+    public static Result getGiftGrossValueList(String authorization, String targetId, int targetType, int pageSize, long maxId) throws IOException {
         String url = DodoOpenJava.BASEURL + "gift/gross/value/list";
         String param = new JSONObject()
                 .put("targetId", targetId)
@@ -177,6 +178,6 @@ public class GiftApi {
                 .put("pageSize", pageSize)
                 .put("maxId", maxId)
                 .toString();
-        return new JSONObject(NetUtil.sendRequest(param, url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(param, url, authorization)));
     }
 }

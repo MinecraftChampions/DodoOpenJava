@@ -38,7 +38,7 @@ public class Equal<T> {
      * @throws NullPointerException 如果值是null
      */
     public static <T> Equal<T> of(@NonNull T value) {
-        return new Equal<>(Objects.requireNonNull(value));
+        return new Equal<>(value);
     }
 
     /**
@@ -81,6 +81,19 @@ public class Equal<T> {
             throw new RuntimeException("没有进行判断就调用Equal#run");
         }
         if (equal) {
+            consumer.accept(this.value);
+        }
+    }
+    /**
+     * 如果不相等就运行
+     *
+     * @param consumer consumer
+     */
+    public void ifNoEquals(@NonNull Consumer<T> consumer) {
+        if (equal == null) {
+            throw new RuntimeException("没有进行判断就调用Equal#run");
+        }
+        if (!equal) {
             consumer.accept(this.value);
         }
     }

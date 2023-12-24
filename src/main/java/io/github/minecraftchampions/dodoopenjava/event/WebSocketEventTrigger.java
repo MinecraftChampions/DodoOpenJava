@@ -17,8 +17,6 @@ import okhttp3.*;
 import okio.ByteString;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
@@ -35,7 +33,6 @@ public class WebSocketEventTrigger extends EventTrigger {
     private int connectNum = 0;
 
     public WebSocket mWebSocket = null;
-    public OkHttpClient okHttpClient = new OkHttpClient();
     public static OkHttpClient wss = new OkHttpClient.Builder()
             .pingInterval(15, TimeUnit.SECONDS) //保活心跳
             .build();
@@ -75,30 +72,19 @@ public class WebSocketEventTrigger extends EventTrigger {
             return;
         }
         isConnect = true;
-        Request request = new Request.Builder().url("https://botopen.imdodo.com/api/v2/websocket/connection").addHeader("Content-Type", "application/json").addHeader("Authorization", bot.getAuthorization())
-                .post(RequestBody.create("{}", MediaType.parse("application/json")))
+        bot.getApi().V2.eventApi.getWebSocketConnection()
+                .ifSuccess(result -> {
+                    isConnect = true;
+                    wssLo = result.getJSONObjectData().getString("endpoint");
+                })
+                .ifFailure(result -> {
+                    isConnect = false;
+                    throw new RuntimeException(result.getMessage());
+                });
+        Request request = new Request.Builder()
+                .url(wssLo)
                 .build();
-
-        okHttpClient.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse( Call call, Response response) throws IOException {
-                wssLo = new JSONObject(Objects.requireNonNull(response.body()).string()).getJSONObject("data").getString("endpoint");
-                response.close();
-                try {
-                    Request request = new Request.Builder()
-                            .url(wssLo)
-                            .build();
-                    mWebSocket = wss.newWebSocket(request, new WsListenerC(p));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        mWebSocket = wss.newWebSocket(request, new WsListenerC(p));
     }
 
     public class WsListenerC extends WebSocketListener {
@@ -116,7 +102,7 @@ public class WebSocketEventTrigger extends EventTrigger {
         }
 
         @Override
-        public void onMessage( WebSocket webSocket, ByteString bytes) {
+        public void onMessage(WebSocket webSocket, ByteString bytes) {
             super.onMessage(webSocket, bytes);
             JSONObject jsontext = new JSONObject(bytes.utf8());
             switch (jsontext.getJSONObject("data").getString("eventType")) {

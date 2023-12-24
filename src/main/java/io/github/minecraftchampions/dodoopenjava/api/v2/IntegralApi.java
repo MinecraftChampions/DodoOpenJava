@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
+import io.github.minecraftchampions.dodoopenjava.Result;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
 import org.json.JSONObject;
@@ -21,7 +22,7 @@ public class IntegralApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject getIntegralInfo(String clientId, String token, String islandSourceId, String dodoSourceId) throws IOException {
+    public static Result getIntegralInfo(String clientId, String token, String islandSourceId, String dodoSourceId) throws IOException {
         return getIntegralInfo(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId);
     }
 
@@ -34,12 +35,12 @@ public class IntegralApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject getIntegralInfo(String authorization, String islandSourceId, String dodoSourceId) throws IOException {
+    public static Result getIntegralInfo(String authorization, String islandSourceId, String dodoSourceId) throws IOException {
         String url = DodoOpenJava.BASEURL + "integral/info";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId);
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -54,7 +55,7 @@ public class IntegralApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject setIntegralEdit(String clientId, String token, String islandSourceId, String dodoSourceId, int operateType, long integral) throws IOException {
+    public static Result setIntegralEdit(String clientId, String token, String islandSourceId, String dodoSourceId, int operateType, long integral) throws IOException {
         return setIntegralEdit(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, operateType, integral);
     }
 
@@ -69,13 +70,13 @@ public class IntegralApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject setIntegralEdit(String authorization, String islandSourceId, String dodoSourceId, int operateType, long integral) throws IOException {
+    public static Result setIntegralEdit(String authorization, String islandSourceId, String dodoSourceId, int operateType, long integral) throws IOException {
         String url = DodoOpenJava.BASEURL + "integral/edit";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId)
                 .put("operateType", operateType)
                 .put("integral", integral);
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 }

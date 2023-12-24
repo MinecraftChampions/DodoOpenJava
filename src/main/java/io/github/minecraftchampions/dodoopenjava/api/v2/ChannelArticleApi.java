@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
+import io.github.minecraftchampions.dodoopenjava.Result;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
 import org.json.JSONObject;
@@ -23,7 +24,7 @@ public class ChannelArticleApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject addChannelArticle(String clientId, String token, String channelId, String title, String imageUrl, String content) throws IOException {
+    public static Result addChannelArticle(String clientId, String token, String channelId, String title, String imageUrl, String content) throws IOException {
         return addChannelArticle(BaseUtil.Authorization(clientId, token), channelId, title, content, imageUrl);
     }
 
@@ -39,14 +40,14 @@ public class ChannelArticleApi {
      * @throws IOException 失败后抛出
      */
 
-    public static JSONObject addChannelArticle(String authorization, String channelId, String title, String content, String imageUrl) throws IOException {
+    public static Result addChannelArticle(String authorization, String channelId, String title, String content, String imageUrl) throws IOException {
         String url = DodoOpenJava.BASEURL + "channel/article/add";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("title", title)
                 .put("channelId", channelId)
                 .put("content", content)
                 .put("imageUrl", imageUrl);
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
 
@@ -61,7 +62,7 @@ public class ChannelArticleApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject removeChannelArticle(String clientId, String token, int type, String id, String channelId) throws IOException {
+    public static Result removeChannelArticle(String clientId, String token, int type, String id, String channelId) throws IOException {
         return removeChannelArticle(BaseUtil.Authorization(clientId, token), type, id, channelId);
     }
 
@@ -76,13 +77,13 @@ public class ChannelArticleApi {
      * @throws IOException 失败后抛出
      */
 
-    public static JSONObject removeChannelArticle(String authorization, int type, String id, String channelId) throws IOException {
+    public static Result removeChannelArticle(String authorization, int type, String id, String channelId) throws IOException {
         String url = DodoOpenJava.BASEURL + "channel/article/remove";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("id", id)
                 .put("channelId", channelId)
                 .put("type", type);
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
 }

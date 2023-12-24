@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
+import io.github.minecraftchampions.dodoopenjava.Result;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
 import org.json.JSONObject;
@@ -20,7 +21,7 @@ public class RoleApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject getRoleList(String clientId, String token, String islandSourceId) throws IOException {
+    public static Result getRoleList(String clientId, String token, String islandSourceId) throws IOException {
         return getRoleList(BaseUtil.Authorization(clientId, token), islandSourceId);
     }
 
@@ -32,11 +33,11 @@ public class RoleApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject getRoleList(String authorization, String islandSourceId) throws IOException {
+    public static Result getRoleList(String authorization, String islandSourceId) throws IOException {
         String url = DodoOpenJava.BASEURL + "role/list";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId);
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -50,7 +51,7 @@ public class RoleApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject addRoleMember(String clientId, String token, String islandSourceId, String dodoSourceId, String roleId) throws IOException {
+    public static Result addRoleMember(String clientId, String token, String islandSourceId, String dodoSourceId, String roleId) throws IOException {
         return addRoleMember(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, roleId);
     }
 
@@ -64,13 +65,13 @@ public class RoleApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject addRoleMember(String authorization, String islandSourceId, String dodoSourceId, String roleId) throws IOException {
+    public static Result addRoleMember(String authorization, String islandSourceId, String dodoSourceId, String roleId) throws IOException {
         String url = DodoOpenJava.BASEURL + "role/member/add";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId)
                 .put("roleId", roleId);
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -84,7 +85,7 @@ public class RoleApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject removeRoleMember(String clientId, String token, String islandSourceId, String dodoSourceId, String roleId) throws IOException {
+    public static Result removeRoleMember(String clientId, String token, String islandSourceId, String dodoSourceId, String roleId) throws IOException {
         return removeRoleMember(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, roleId);
     }
 
@@ -98,13 +99,13 @@ public class RoleApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject removeRoleMember(String authorization, String islandSourceId, String dodoSourceId, String roleId) throws IOException {
+    public static Result removeRoleMember(String authorization, String islandSourceId, String dodoSourceId, String roleId) throws IOException {
         String url = DodoOpenJava.BASEURL + "role/member/remove";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId)
                 .put("roleId", roleId);
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -120,7 +121,7 @@ public class RoleApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject addRole(String clientId, String token, String islandSourceId, String roleName, String roleColor, int position, String permission) throws IOException {
+    public static Result addRole(String clientId, String token, String islandSourceId, String roleName, String roleColor, int position, String permission) throws IOException {
         return addRole(BaseUtil.Authorization(clientId, token), islandSourceId, roleName, roleColor, position, permission);
     }
 
@@ -136,7 +137,7 @@ public class RoleApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject addRole(String authorization, String islandSourceId, String roleName, String roleColor, int position, String permission) throws IOException {
+    public static Result addRole(String authorization, String islandSourceId, String roleName, String roleColor, int position, String permission) throws IOException {
         String url = DodoOpenJava.BASEURL + "role/add";
         JSONObject param = new JSONObject("{" +
                 "  \"islandSourceId\": \"" + islandSourceId + "\"}");
@@ -157,7 +158,7 @@ public class RoleApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject editRole(String clientId, String token, String islandSourceId, String roleId, String roleName, String roleColor, int position, String permission) throws IOException {
+    public static Result editRole(String clientId, String token, String islandSourceId, String roleId, String roleName, String roleColor, int position, String permission) throws IOException {
         return editRole(BaseUtil.Authorization(clientId, token), islandSourceId, roleId, roleName, roleColor, position, permission);
     }
 
@@ -174,7 +175,7 @@ public class RoleApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject editRole(String authorization, String islandSourceId, String roleId, String roleName, String roleColor, int position, String permission) throws IOException {
+    public static Result editRole(String authorization, String islandSourceId, String roleId, String roleName, String roleColor, int position, String permission) throws IOException {
         String url = DodoOpenJava.BASEURL + "role/edit";
         JSONObject param = new JSONObject("{" +
                 "  \"islandSourceId\": \"" + islandSourceId + "\"," +
@@ -182,7 +183,7 @@ public class RoleApi {
         return senResult(authorization, roleName, roleColor, position, permission, url, param);
     }
 
-    private static JSONObject senResult(String authorization, String roleName, String roleColor, int position, String permission, String url, JSONObject param) throws IOException {
+    private static Result senResult(String authorization, String roleName, String roleColor, int position, String permission, String url, JSONObject param) throws IOException {
         if (roleName != null) {
             param.put("roleName", roleName);
         }
@@ -198,7 +199,7 @@ public class RoleApi {
         if (roleColor != null) {
             param.put("permission", permission);
         }
-        return new JSONObject(NetUtil.sendRequest(param.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(param.toString(), url, authorization)));
     }
 
     /**
@@ -211,7 +212,7 @@ public class RoleApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject deleteRole(String clientId, String token, String islandSourceId, String roleId) throws IOException {
+    public static Result deleteRole(String clientId, String token, String islandSourceId, String roleId) throws IOException {
         return deleteRole(BaseUtil.Authorization(clientId, token), islandSourceId, roleId);
     }
 
@@ -224,11 +225,11 @@ public class RoleApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject deleteRole(String authorization, String islandSourceId, String roleId) throws IOException {
+    public static Result deleteRole(String authorization, String islandSourceId, String roleId) throws IOException {
         String url = DodoOpenJava.BASEURL + "role/remove";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("roleId", roleId);
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 }

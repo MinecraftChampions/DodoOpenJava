@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
+import io.github.minecraftchampions.dodoopenjava.Result;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
 import org.json.JSONObject;
@@ -19,7 +20,7 @@ public class EventApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject getWebSocketConnection(String clientId, String token) throws IOException {
+    public static Result getWebSocketConnection(String clientId, String token) throws IOException {
         return getWebSocketConnection(BaseUtil.Authorization(clientId, token));
     }
 
@@ -30,9 +31,9 @@ public class EventApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject getWebSocketConnection(String authorization) throws IOException {
+    public static Result getWebSocketConnection(String authorization) throws IOException {
         String url = DodoOpenJava.BASEURL + "websocket/connection";
         JSONObject jsonObject = new JSONObject();
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 }

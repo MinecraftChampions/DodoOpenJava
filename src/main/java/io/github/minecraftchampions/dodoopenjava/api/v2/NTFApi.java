@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
+import io.github.minecraftchampions.dodoopenjava.Result;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
 import org.json.JSONObject;
@@ -23,7 +24,7 @@ public class NTFApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject getMemberNftStatus(String clientId, String token, String islandSourceId, String dodoSourceId, String platform) throws IOException {
+    public static Result getMemberNftStatus(String clientId, String token, String islandSourceId, String dodoSourceId, String platform) throws IOException {
         return getMemberNftStatus(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, platform);
     }
 
@@ -37,13 +38,13 @@ public class NTFApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject getMemberNftStatus(String authorization, String islandSourceId, String dodoSourceId, String platform) throws IOException {
+    public static Result getMemberNftStatus(String authorization, String islandSourceId, String dodoSourceId, String platform) throws IOException {
         String url = DodoOpenJava.BASEURL + "member/nft/status";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId)
                 .put("platform", platform);
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -57,7 +58,7 @@ public class NTFApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject getMemberNftStatus(String clientId, String token, String islandSourceId, String dodoSourceId, String platform, String issuer, String series) throws IOException {
+    public static Result getMemberNftStatus(String clientId, String token, String islandSourceId, String dodoSourceId, String platform, String issuer, String series) throws IOException {
         return getMemberNftStatus(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, platform, issuer, series);
     }
 
@@ -69,7 +70,7 @@ public class NTFApi {
      * @param dodoSourceId   dodoSourceId
      * @param platform       数藏平台
      */
-    public static JSONObject getMemberNftStatus(String authorization, String islandSourceId, String dodoSourceId, String platform, String issuer, String series) throws IOException {
+    public static Result getMemberNftStatus(String authorization, String islandSourceId, String dodoSourceId, String platform, String issuer, String series) throws IOException {
         String url = DodoOpenJava.BASEURL + "member/nft/status";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
@@ -77,6 +78,6 @@ public class NTFApi {
                 .put("issuer", issuer)
                 .put("series", series)
                 .put("platform", platform);
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 }

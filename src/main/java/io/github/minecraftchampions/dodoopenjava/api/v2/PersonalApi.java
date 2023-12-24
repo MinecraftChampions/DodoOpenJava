@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
+import io.github.minecraftchampions.dodoopenjava.Result;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
 import org.json.JSONObject;
@@ -22,7 +23,7 @@ public class PersonalApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendPersonalMessage(String clientId, String token, String islandSourceId, String dodoSourceId, String message) throws IOException {
+    public static Result sendPersonalMessage(String clientId, String token, String islandSourceId, String dodoSourceId, String message) throws IOException {
         return sendPersonalMessage(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, message);
     }
 
@@ -35,14 +36,14 @@ public class PersonalApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendPersonalMessage(String authorization, String islandSourceId, String dodoSourceId, String message) throws IOException {
+    public static Result sendPersonalMessage(String authorization, String islandSourceId, String dodoSourceId, String message) throws IOException {
         String url = DodoOpenJava.BASEURL + "personal/message/send";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId)
                 .put("messageType", 1)
                 .put("messageBody", Map.of("content", message));
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -58,7 +59,7 @@ public class PersonalApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendDodoPictureMessage(String clientId, String token, String islandSourceId, String dodoSourceId, String url, int width, int height, Boolean isOriginal) throws IOException {
+    public static Result sendDodoPictureMessage(String clientId, String token, String islandSourceId, String dodoSourceId, String url, int width, int height, Boolean isOriginal) throws IOException {
         return sendDodoPictureMessage(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, url, width, height, isOriginal);
     }
 
@@ -74,7 +75,7 @@ public class PersonalApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendDodoPictureMessage(String authorization, String islandSourceId, String dodoSourceId, String u, int width, int height, Boolean isOriginal) throws IOException {
+    public static Result sendDodoPictureMessage(String authorization, String islandSourceId, String dodoSourceId, String u, int width, int height, Boolean isOriginal) throws IOException {
         String url = DodoOpenJava.BASEURL + "personal/message/send";
         int original;
         if (isOriginal) {
@@ -91,7 +92,7 @@ public class PersonalApi {
                         "width", width,
                         "height", height,
                         "isOriginal", original));
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -106,7 +107,7 @@ public class PersonalApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendDodoPictureMessage(String clientId, String token, String islandSourceId, String dodoSourceId, String url, int width, int height) throws IOException {
+    public static Result sendDodoPictureMessage(String clientId, String token, String islandSourceId, String dodoSourceId, String url, int width, int height) throws IOException {
         return sendDodoPictureMessage(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, url, width, height);
     }
 
@@ -121,7 +122,7 @@ public class PersonalApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendDodoPictureMessage(String authorization, String islandSourceId, String dodoSourceId, String u, int width, int height) throws IOException {
+    public static Result sendDodoPictureMessage(String authorization, String islandSourceId, String dodoSourceId, String u, int width, int height) throws IOException {
         String url = DodoOpenJava.BASEURL + "personal/message/send";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
@@ -131,7 +132,7 @@ public class PersonalApi {
                         "url", u,
                         "width", width,
                         "height", height));
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -144,7 +145,7 @@ public class PersonalApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendDodoVideoMessage(String clientId, String token, String islandSourceId, String dodoSourceId, String url) throws IOException {
+    public static Result sendDodoVideoMessage(String clientId, String token, String islandSourceId, String dodoSourceId, String url) throws IOException {
         return sendDodoVideoMessage(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, url);
     }
 
@@ -157,7 +158,7 @@ public class PersonalApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendDodoVideoMessage(String authorization, String islandSourceId, String dodoSourceId, String u) throws IOException {
+    public static Result sendDodoVideoMessage(String authorization, String islandSourceId, String dodoSourceId, String u) throws IOException {
         String url = DodoOpenJava.BASEURL + "personal/message/send";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
@@ -166,7 +167,7 @@ public class PersonalApi {
                 .put("messageBody", Map.of(
                         "url", u
                 ));
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -182,7 +183,7 @@ public class PersonalApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendDodoVideoMessage(String clientId, String token, String islandSourceId, String dodoSourceId, String url, String coverUrl, long duration, long size) throws IOException {
+    public static Result sendDodoVideoMessage(String clientId, String token, String islandSourceId, String dodoSourceId, String url, String coverUrl, long duration, long size) throws IOException {
         return sendDodoVideoMessage(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, url, coverUrl, duration, size);
     }
 
@@ -198,7 +199,7 @@ public class PersonalApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendDodoVideoMessage(String authorization, String islandSourceId, String dodoSourceId, String u, String coverUrl, long duration, long size) throws IOException {
+    public static Result sendDodoVideoMessage(String authorization, String islandSourceId, String dodoSourceId, String u, String coverUrl, long duration, long size) throws IOException {
         String url = DodoOpenJava.BASEURL + "personal/message/send";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
@@ -210,6 +211,6 @@ public class PersonalApi {
                         "duration", duration,
                         "size", size
                 ));
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 }

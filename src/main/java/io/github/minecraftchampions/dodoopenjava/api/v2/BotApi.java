@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
+import io.github.minecraftchampions.dodoopenjava.Result;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
 import org.json.JSONObject;
@@ -20,7 +21,7 @@ public class BotApi {
      * @return 返回JSON对象
      * @throws IOException 发送请求失败后抛出
      */
-    public static JSONObject getBotInfo(String clientId, String token) throws IOException {
+    public static Result getBotInfo(String clientId, String token) throws IOException {
         return getBotInfo(BaseUtil.Authorization(clientId, token));
     }
 
@@ -32,10 +33,10 @@ public class BotApi {
      * @throws IOException 发送请求失败后抛出
      */
 
-    public static JSONObject getBotInfo(String authorization) throws IOException {
+    public static Result getBotInfo(String authorization) throws IOException {
         String url = DodoOpenJava.BASEURL + "bot/info";
         JSONObject jsonObject = new JSONObject();
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -47,7 +48,7 @@ public class BotApi {
      * @return 返回JSON对象
      * @throws IOException 发送请求失败后抛出
      */
-    public static JSONObject setBotIslandLeave(String clientId, String token, String islandSourceId) throws IOException {
+    public static Result setBotIslandLeave(String clientId, String token, String islandSourceId) throws IOException {
         return setBotIslandLeave(BaseUtil.Authorization(clientId, token), islandSourceId);
     }
 
@@ -60,11 +61,11 @@ public class BotApi {
      * @throws IOException 发送请求失败后抛出
      */
 
-    public static JSONObject setBotIslandLeave(String authorization, String islandSourceId) throws IOException {
+    public static Result setBotIslandLeave(String authorization, String islandSourceId) throws IOException {
         String url = DodoOpenJava.BASEURL + "bot/island/leave";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId);
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -78,7 +79,7 @@ public class BotApi {
      * @throws IOException 发送请求失败后抛出
      */
 
-    public static JSONObject getBotInviteList(String clientId, String token, int pageSize, long maxId) throws IOException {
+    public static Result getBotInviteList(String clientId, String token, int pageSize, long maxId) throws IOException {
         return getBotInviteList(BaseUtil.Authorization(clientId, token), pageSize, maxId);
     }
 
@@ -92,12 +93,12 @@ public class BotApi {
      * @throws IOException 发送请求失败后抛出
      */
 
-    public static JSONObject getBotInviteList(String authorization, int pageSize, long maxId) throws IOException {
+    public static Result getBotInviteList(String authorization, int pageSize, long maxId) throws IOException {
         String url = DodoOpenJava.BASEURL + "bot/invite/list";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("pageSize", pageSize)
                 .put("maxId", maxId);
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -110,7 +111,7 @@ public class BotApi {
      * @throws IOException 发送请求失败后抛出
      */
 
-    public static JSONObject addBotInvite(String clientId, String token, String dodoSourceId) throws IOException {
+    public static Result addBotInvite(String clientId, String token, String dodoSourceId) throws IOException {
         return addBotInvite(BaseUtil.Authorization(clientId, token), dodoSourceId);
     }
 
@@ -123,11 +124,11 @@ public class BotApi {
      * @throws IOException 发送请求失败后抛出
      */
 
-    public static JSONObject addBotInvite(String authorization, String dodoSourceId) throws IOException {
+    public static Result addBotInvite(String authorization, String dodoSourceId) throws IOException {
         String url = DodoOpenJava.BASEURL + "bot/invite/add";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("dodoSourceId", dodoSourceId);
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -140,7 +141,7 @@ public class BotApi {
      * @throws IOException 发送请求失败后抛出
      */
 
-    public static JSONObject removeBotInvite(String clientId, String token, String dodoSourceId) throws IOException {
+    public static Result removeBotInvite(String clientId, String token, String dodoSourceId) throws IOException {
         return removeBotInvite(BaseUtil.Authorization(clientId, token), dodoSourceId);
     }
 
@@ -153,10 +154,10 @@ public class BotApi {
      * @throws IOException 发送请求失败后抛出
      */
 
-    public static JSONObject removeBotInvite(String authorization, String dodoSourceId) throws IOException {
+    public static Result removeBotInvite(String authorization, String dodoSourceId) throws IOException {
         String url = DodoOpenJava.BASEURL + "bot/invite/remove";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("dodoSourceId", dodoSourceId);
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 }

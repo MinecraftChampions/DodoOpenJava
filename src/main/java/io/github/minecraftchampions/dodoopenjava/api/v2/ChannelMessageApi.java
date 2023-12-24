@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
+import io.github.minecraftchampions.dodoopenjava.Result;
 import io.github.minecraftchampions.dodoopenjava.card.Card;
 import io.github.minecraftchampions.dodoopenjava.message.Message;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
@@ -25,7 +26,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendTextMessage(String clientId, String token, String channelId, String message) throws IOException {
+    public static Result sendTextMessage(String clientId, String token, String channelId, String message) throws IOException {
         return sendTextMessage(BaseUtil.Authorization(clientId, token), channelId, message);
     }
 
@@ -39,7 +40,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendTextMessage(String clientId, String token, String channelId, Message message) throws IOException {
+    public static Result sendTextMessage(String clientId, String token, String channelId, Message message) throws IOException {
         return sendTextMessage(BaseUtil.Authorization(clientId, token), channelId, message);
     }
 
@@ -52,7 +53,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendTextMessage(String authorization, String channelId, Message message) throws IOException {
+    public static Result sendTextMessage(String authorization, String channelId, Message message) throws IOException {
         return sendTextMessage(authorization, channelId, message.toString());
     }
 
@@ -65,7 +66,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendTextMessage(String authorization, String channelId, String content) throws IOException {
+    public static Result sendTextMessage(String authorization, String channelId, String content) throws IOException {
         String url = DodoOpenJava.BASEURL + "channel/message/send";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageType", 1)
@@ -73,7 +74,7 @@ public class ChannelMessageApi {
                 .put("messageBody", Map.of(
                         "content", content
                 ));
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -86,7 +87,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 异常后抛出
      */
-    public static JSONObject sendAtTextMessage(String authorization, String channelId, String dodoId, String message) throws IOException {
+    public static Result sendAtTextMessage(String authorization, String channelId, String dodoId, String message) throws IOException {
         String text = "<@!" + dodoId + "> " + message;
         return sendTextMessage(authorization, channelId, dodoId, text);
     }
@@ -101,7 +102,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject setChannelMessageTop(String clientId, String token, String messageId, int operateType) throws IOException {
+    public static Result setChannelMessageTop(String clientId, String token, String messageId, int operateType) throws IOException {
         return setChannelMessageTop(BaseUtil.Authorization(clientId, token), messageId, operateType);
     }
 
@@ -114,12 +115,12 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject setChannelMessageTop(String authorization, String messageId, int operateType) throws IOException {
+    public static Result setChannelMessageTop(String authorization, String messageId, int operateType) throws IOException {
         String url = DodoOpenJava.BASEURL + "channel/message/top";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId)
                 .put("operateType", operateType);
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -131,7 +132,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject getChannelMessageReactionList(String clientId, String token, String messageId) throws IOException {
+    public static Result getChannelMessageReactionList(String clientId, String token, String messageId) throws IOException {
         return getChannelMessageReactionList(BaseUtil.Authorization(clientId, token), messageId);
     }
 
@@ -143,11 +144,11 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject getChannelMessageReactionList(String authorization, String messageId) throws IOException {
+    public static Result getChannelMessageReactionList(String authorization, String messageId) throws IOException {
         String url = DodoOpenJava.BASEURL + "channel/message/reaction/list";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId);
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -159,7 +160,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject getChannelMessageReactionMemberList(String clientId, String token, String messageId, int type, String id, int pageSize, long maxId) throws IOException {
+    public static Result getChannelMessageReactionMemberList(String clientId, String token, String messageId, int type, String id, int pageSize, long maxId) throws IOException {
         return getChannelMessageReactionMemberList(BaseUtil.Authorization(clientId, token), messageId, type, id, pageSize, maxId);
     }
 
@@ -171,7 +172,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject getChannelMessageReactionMemberList(String authorization, String messageId, int type, String id, int pageSize, long maxId) throws IOException {
+    public static Result getChannelMessageReactionMemberList(String authorization, String messageId, int type, String id, int pageSize, long maxId) throws IOException {
         String url = DodoOpenJava.BASEURL + "channel/message/reaction/member/list";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId)
@@ -181,7 +182,7 @@ public class ChannelMessageApi {
                         "type", type,
                         "id", id
                 ));
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -195,7 +196,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject referencedMessage(String clientId, String token, String channelId, String Message, String referencedMessageId) throws IOException {
+    public static Result referencedMessage(String clientId, String token, String channelId, String Message, String referencedMessageId) throws IOException {
         return referencedMessage(BaseUtil.Authorization(clientId, token), channelId, Message, referencedMessageId);
     }
 
@@ -209,7 +210,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject referencedMessage(String authorization, String channelId, String content, String referencedMessageId) throws IOException {
+    public static Result referencedMessage(String authorization, String channelId, String content, String referencedMessageId) throws IOException {
         String url = DodoOpenJava.BASEURL + "channel/message/send";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("channelId", channelId)
@@ -218,7 +219,7 @@ public class ChannelMessageApi {
                         "content", content,
                         "referencedMessageId", referencedMessageId
                 ));
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -234,7 +235,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendChannelPictureMessage(String clientId, String token, String channelId, String Url, int width, int height, Boolean isOriginal) throws IOException {
+    public static Result sendChannelPictureMessage(String clientId, String token, String channelId, String Url, int width, int height, Boolean isOriginal) throws IOException {
         return sendChannelPictureMessage(BaseUtil.Authorization(clientId, token), channelId, Url, width, height, isOriginal);
     }
 
@@ -250,7 +251,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendChannelPictureMessage(String authorization, String channelId, String imageUrl, int width, int height, Boolean isOriginal) throws IOException {
+    public static Result sendChannelPictureMessage(String authorization, String channelId, String imageUrl, int width, int height, Boolean isOriginal) throws IOException {
         String url = DodoOpenJava.BASEURL + "channel/message/send";
         int original;
         if (isOriginal) {
@@ -267,7 +268,7 @@ public class ChannelMessageApi {
                         "height", height,
                         "isOriginal", original
                 ));
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -282,7 +283,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendChannelPictureMessage(String clientId, String token, String channelId, String Url, int width, int height) throws IOException {
+    public static Result sendChannelPictureMessage(String clientId, String token, String channelId, String Url, int width, int height) throws IOException {
         return sendChannelPictureMessage(BaseUtil.Authorization(clientId, token), channelId, Url, width, height);
     }
 
@@ -297,7 +298,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendChannelPictureMessage(String authorization, String channelId, String imageUrl, int width, int height) throws IOException {
+    public static Result sendChannelPictureMessage(String authorization, String channelId, String imageUrl, int width, int height) throws IOException {
         String url = DodoOpenJava.BASEURL + "channel/message/send";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("channelId", channelId)
@@ -307,7 +308,7 @@ public class ChannelMessageApi {
                         "width", width,
                         "height", height
                 ));
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -319,11 +320,11 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 异常后抛出
      */
-    public static JSONObject sendChannelPictureMessage(String authorization, String channelId, File file) throws IOException {
+    public static Result sendChannelPictureMessage(String authorization, String channelId, File file) throws IOException {
         if (!file.exists()) {
             throw new RuntimeException("传入的文件不存在");
         }
-        JSONObject jsonObject = ResourceApi.uploadResource(authorization, file.getPath()).getJSONObject("data");
+        JSONObject jsonObject = ResourceApi.uploadResource(authorization, file.getPath()).getJSONObjectData();
         int width = jsonObject.getInt("width");
         int height = jsonObject.getInt("height");
         String url = jsonObject.getString("url");
@@ -340,7 +341,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendChannelVideoMessage(String clientId, String token, String channelId, String Url) throws IOException {
+    public static Result sendChannelVideoMessage(String clientId, String token, String channelId, String Url) throws IOException {
         return sendChannelVideoMessage(BaseUtil.Authorization(clientId, token), channelId, Url);
     }
 
@@ -353,7 +354,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendChannelVideoMessage(String authorization, String channelId, String videoUrl) throws IOException {
+    public static Result sendChannelVideoMessage(String authorization, String channelId, String videoUrl) throws IOException {
         String url = DodoOpenJava.BASEURL + "channel/message/send";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("channelId", channelId)
@@ -361,7 +362,7 @@ public class ChannelMessageApi {
                 .put("messageBody", Map.of(
                         "url", videoUrl
                 ));
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -377,7 +378,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendChannelVideoMessage(String clientId, String token, String channelId, String Url, String coverUrl, long duration, long size) throws IOException {
+    public static Result sendChannelVideoMessage(String clientId, String token, String channelId, String Url, String coverUrl, long duration, long size) throws IOException {
         return sendChannelVideoMessage(BaseUtil.Authorization(clientId, token), channelId, Url, coverUrl, duration, size);
     }
 
@@ -393,7 +394,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendChannelVideoMessage(String authorization, String channelId, String videoUrl, String coverUrl, long duration, long size) throws IOException {
+    public static Result sendChannelVideoMessage(String authorization, String channelId, String videoUrl, String coverUrl, long duration, long size) throws IOException {
         String url = DodoOpenJava.BASEURL + "channel/message/send";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("channelId", channelId)
@@ -404,7 +405,7 @@ public class ChannelMessageApi {
                         "duration", duration,
                         "size", size
                 ));
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -417,7 +418,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendChannelShareMessage(String clientId, String token, String channelId, String jumpUrl) throws IOException {
+    public static Result sendChannelShareMessage(String clientId, String token, String channelId, String jumpUrl) throws IOException {
         return sendChannelShareMessage(BaseUtil.Authorization(clientId, token), channelId, jumpUrl);
     }
 
@@ -430,7 +431,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendChannelShareMessage(String authorization, String channelId, String jumpUrl) throws IOException {
+    public static Result sendChannelShareMessage(String authorization, String channelId, String jumpUrl) throws IOException {
         String url = DodoOpenJava.BASEURL + "channel/message/send";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("channelId", channelId)
@@ -438,7 +439,7 @@ public class ChannelMessageApi {
                 .put("messageBody", Map.of(
                         "jumpUrl", jumpUrl
                 ));
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -453,7 +454,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendChannelFileMessage(String clientId, String token, String channelId, String Url, String name, long size) throws IOException {
+    public static Result sendChannelFileMessage(String clientId, String token, String channelId, String Url, String name, long size) throws IOException {
         return sendChannelFileMessage(BaseUtil.Authorization(clientId, token), channelId, Url, name, size);
     }
 
@@ -468,7 +469,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendChannelFileMessage(String authorization, String channelId, String fileUrl, String name, long size) throws IOException {
+    public static Result sendChannelFileMessage(String authorization, String channelId, String fileUrl, String name, long size) throws IOException {
         String url = DodoOpenJava.BASEURL + "channel/message/send";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("channelId", channelId)
@@ -478,7 +479,7 @@ public class ChannelMessageApi {
                         "name", name,
                         "size", size
                 ));
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -491,7 +492,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject editChannelMessage(String clientId, String token, String messageId, String content) throws IOException {
+    public static Result editChannelMessage(String clientId, String token, String messageId, String content) throws IOException {
         return editChannelMessage(BaseUtil.Authorization(clientId, token), messageId, content);
     }
 
@@ -504,14 +505,14 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject editChannelMessage(String authorization, String messageId, String content) throws IOException {
+    public static Result editChannelMessage(String authorization, String messageId, String content) throws IOException {
         String url = DodoOpenJava.BASEURL + "channel/message/edit";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId)
                 .put("messageBody", Map.of(
                         "content", content
                 ));
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -523,7 +524,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject withdrawChannelMessage(String clientId, String token, String messageId) throws IOException {
+    public static Result withdrawChannelMessage(String clientId, String token, String messageId) throws IOException {
         return withdrawChannelMessage(BaseUtil.Authorization(clientId, token), messageId);
     }
 
@@ -535,11 +536,11 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject withdrawChannelMessage(String authorization, String messageId) throws IOException {
+    public static Result withdrawChannelMessage(String authorization, String messageId) throws IOException {
         String url = DodoOpenJava.BASEURL + "channel/message/withdraw";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId);
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -552,7 +553,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject withdrawChannelMessageWithReason(String clientId, String token, String messageId, String reason) throws IOException {
+    public static Result withdrawChannelMessageWithReason(String clientId, String token, String messageId, String reason) throws IOException {
         return withdrawChannelMessageWithReason(BaseUtil.Authorization(clientId, token), messageId, reason);
     }
 
@@ -565,12 +566,12 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject withdrawChannelMessageWithReason(String authorization, String messageId, String reason) throws IOException {
+    public static Result withdrawChannelMessageWithReason(String authorization, String messageId, String reason) throws IOException {
         String url = DodoOpenJava.BASEURL + "channel/message/withdraw";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId)
                 .put("reason", reason);
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -583,7 +584,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject addChannelMessageReaction(String clientId, String token, String messageId, String id) throws IOException {
+    public static Result addChannelMessageReaction(String clientId, String token, String messageId, String id) throws IOException {
         return addChannelMessageReaction(BaseUtil.Authorization(clientId, token), messageId, id);
     }
 
@@ -596,7 +597,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject addChannelMessageReaction(String authorization, String messageId, String id) throws IOException {
+    public static Result addChannelMessageReaction(String authorization, String messageId, String id) throws IOException {
         String url = DodoOpenJava.BASEURL + "channel/message/reaction/add";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId)
@@ -604,7 +605,7 @@ public class ChannelMessageApi {
                         "type", 1,
                         "id", id
                 ));
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -618,7 +619,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject removeChannelMessageReaction(String clientId, String token, String messageId, String id, String dodoSourceId) throws IOException {
+    public static Result removeChannelMessageReaction(String clientId, String token, String messageId, String id, String dodoSourceId) throws IOException {
         return removeChannelMessageReaction(BaseUtil.Authorization(clientId, token), messageId, id, dodoSourceId);
     }
 
@@ -632,7 +633,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject removeChannelMessageReaction(String authorization, String messageId, String id, String dodoSourceId) throws IOException {
+    public static Result removeChannelMessageReaction(String authorization, String messageId, String id, String dodoSourceId) throws IOException {
         String url = DodoOpenJava.BASEURL + "channel/message/reaction/remove";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId)
@@ -641,7 +642,7 @@ public class ChannelMessageApi {
                         "type", 1,
                         "id", id
                 ));
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -654,7 +655,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject removeChannelMessageBotReaction(String clientId, String token, String messageId, String id) throws IOException {
+    public static Result removeChannelMessageBotReaction(String clientId, String token, String messageId, String id) throws IOException {
         return removeChannelMessageBotReaction(BaseUtil.Authorization(clientId, token), messageId, id);
     }
 
@@ -667,7 +668,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject removeChannelMessageBotReaction(String authorization, String messageId, String id) throws IOException {
+    public static Result removeChannelMessageBotReaction(String authorization, String messageId, String id) throws IOException {
         String url = DodoOpenJava.BASEURL + "channel/message/reaction/remove";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId)
@@ -675,7 +676,7 @@ public class ChannelMessageApi {
                         "type", 1,
                         "id", id
                 ));
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -688,7 +689,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendCardMessage(String clientId, String token, String channelId, Card messageBody) throws IOException {
+    public static Result sendCardMessage(String clientId, String token, String channelId, Card messageBody) throws IOException {
         return sendCardMessage(BaseUtil.Authorization(clientId, token), channelId, messageBody);
     }
 
@@ -701,13 +702,13 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject sendCardMessage(String authorization, String channelId, Card messageBody) throws IOException {
+    public static Result sendCardMessage(String authorization, String channelId, Card messageBody) throws IOException {
         String url = DodoOpenJava.BASEURL + "channel/message/send";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("channelId", channelId)
                 .put("messageType", 6)
                 .put("messageBody", messageBody.toJSONObject().toString());
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
     /**
@@ -720,7 +721,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject editChannelCardMessage(String clientId, String token, String messageId, Card messageBody) throws IOException {
+    public static Result editChannelCardMessage(String clientId, String token, String messageId, Card messageBody) throws IOException {
         return editChannelCardMessage(BaseUtil.Authorization(clientId, token), messageId, messageBody);
     }
 
@@ -733,12 +734,12 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static JSONObject editChannelCardMessage(String authorization, String messageId, Card messageBody) throws IOException {
+    public static Result editChannelCardMessage(String authorization, String messageId, Card messageBody) throws IOException {
         String url = DodoOpenJava.BASEURL + "channel/message/edit";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId)
                 .put("messageBody", messageBody.toJSONObject().toString());
-        return new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization));
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
 }
