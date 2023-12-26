@@ -1,36 +1,30 @@
 package io.github.minecraftchampions.dodoopenjava.utils;
 
 import lombok.NonNull;
-import okhttp3.*;
-import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.*;
-import java.util.Enumeration;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
-import java.util.Objects;
 
 /**
  * 一些 有关 网络请求 的相关方法
  */
 public class NetUtil {
-    static OkHttpClient client = new OkHttpClient();
-
     /**
      * 发送请求（Dodo开放平台专用）
      *
      * @param param         发送附带参数
      * @param url           链接地址
-     * @param Authorization Authorization
+     * @param authorization Authorization
      */
     public static String sendRequest(@NonNull String param, @NonNull String url,
-                                     @NonNull String Authorization) throws IOException {
-        HashMap<String, String> Header = new HashMap<>();
-        Header.put("Content-Type", "application/json");
-        Header.put("Authorization", Authorization);
-        return sendPostJsonRequest(url, Header, param);
+                                     @NonNull String authorization) throws IOException {
+        HashMap<String, String> header = new HashMap<>();
+        header.put("Content-Type", "application/json");
+        header.put("Authorization", authorization);
+        return sendPostJsonRequest(url, header, param);
     }
 
     /**
@@ -58,79 +52,114 @@ public class NetUtil {
      * @param url 链接地址
      */
     public static String sendPostJsonRequest(@NonNull String url, @NonNull String param) throws IOException {
-        return sendPostJsonRequest(url, null, param);
+        return sendPostJsonRequest(url, new HashMap<>(), param);
     }
 
     /**
      * 发送普通POST请求（带Header和参数）
      *
-     * @param url    链接地址
-     * @param Header Header
-     * @param param  参数
+     * @param stringUrl 链接地址
+     * @param header    Header
+     * @param param     参数
      */
-    public static String sendPostJsonRequest(@NonNull String url,
-                                             @NonNull HashMap<String, String> Header,
+    public static String sendPostJsonRequest(@NonNull String stringUrl,
+                                             @NonNull HashMap<String, String> header,
                                              @NonNull String param) throws IOException {
-        Request.Builder builder = new Request.Builder();
-        builder.url(url).post(RequestBody.Companion.create(param, MediaType.parse("application/json")));
-        JSONObject json = new JSONObject(Header);
-        for (int i = 0; i < json.keySet().size(); i++) {
-            builder.addHeader(Header.keySet().stream().toList().get(i), Header.values().stream().toList().get(i));
+        return sendPostJsonRequest(stringUrl, header, param.getBytes(StandardCharsets.UTF_8));
+    }
+
+    /**
+     * 发送普通POST请求（带Header和参数）
+     *
+     * @param stringUrl 链接地址
+     * @param header    Header
+     * @param param     参数
+     */
+    public static String sendPostJsonRequest(@NonNull String stringUrl,
+                                             @NonNull HashMap<String, String> header,
+                                             byte[] param) throws IOException {
+        URL url = new URL(stringUrl);
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("POST");
+        con.setConnectTimeout(5000);
+        con.setDoOutput(true);
+        con.setUseCaches(false);
+        con.setInstanceFollowRedirects(true);
+        header.forEach(con::setRequestProperty);
+        con.connect();
+        OutputStream out = con.getOutputStream();
+        out.write(param);
+        out.flush();
+        out.close();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String line;
+        StringBuilder sb = new StringBuilder();
+        while ((line = reader.readLine()) != null) {
+            sb.append(line).append("\n");
         }
-        Response response = client.newCall(builder.build()).execute();
-        String a = Objects.requireNonNull(response.body()).string();
-        response.close();
-        return a;
+        reader.close();
+        return sb.toString();
     }
 
     /**
      * 发送普通的Get请求（带Header）
      *
-     * @param url 链接地址
+     * @param stringUrl 链接地址
      */
-    public static String sendGetRequest(@NonNull String url,
-                                        @NonNull HashMap<String, String> Header) throws IOException {
-        Request.Builder builder = new Request.Builder()
-                .url(url)
-                .get();
-        for (int i = 0; i < MapUtil.ergodicHashMaps(Header).size(); i++) {
-            builder.addHeader(MapUtil.ergodicHashMaps(Header).get(i).get(0).toString(), MapUtil.ergodicHashMaps(Header).get(i).get(1).toString());
+    public static String sendGetRequest(@NonNull String stringUrl,
+                                        @NonNull HashMap<String, String> header) throws IOException {
+        URL url = new URL(stringUrl);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("GET");
+        connection.setConnectTimeout(5000);
+        connection.setDoOutput(false);
+        connection.setInstanceFollowRedirects(true);
+        header.forEach(connection::setRequestProperty);
+        connection.setUseCaches(false);
+        connection.connect();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            sb.append(line).append("\n");
         }
-
-        Response response = client.newCall(builder.build()).execute();
-
-        String a = Objects.requireNonNull(response.body()).string();
-        response.close();
-        return a;
+        reader.close();
+        return sb.toString();
     }
 
     /**
      * 上传资源图片
      *
-     * @param path          文件路径
-     * @param url           上传链接
-     * @param Authorization Authorization
+     * @param path   文件路径
+     * @param url    上传链接
+     * @param header header
      */
-    public static String uploadFile(@NonNull String Authorization,
+    public static String uploadFile(@NonNull HashMap<String, String> header,
                                     @NonNull String path,
                                     @NonNull String url) throws IOException {
-        File File = new File(path);
-        OkHttpClient client = new OkHttpClient().newBuilder()
-                .build();
-        RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
-                .addFormDataPart("file", File.getName(),
-                        RequestBody.Companion.create(new File(path),
-                                MediaType.parse("application/octet-stream")))
-                .build();
-        Request request = new Request.Builder()
-                .url(url)
-                .addHeader("Authorization", Authorization)
-                .addHeader("Content-Type", "multipart/form-data")
-                .method("POST", body)
-                .build();
-        try (Response response = client.newCall(request).execute()) {
-            return Objects.requireNonNull(response.body()).string();
+        StringBuilder sb = new StringBuilder();
+        File file = new File(path);
+        String boundary = "===" + System.currentTimeMillis() + "===";
+        header.put("Content-Type", "multipart/form-data; boundary=" + boundary);
+        sb.append("--").append(boundary).append("\r\n")
+                .append("Content-Disposition: form-data; name=\"file\"; filename=\"")
+                .append(file.getName()).append("\"")
+                .append("\r\n").append("Content-Type: ")
+                .append(HttpURLConnection.guessContentTypeFromName(file.getName())).append("\r\n")
+                .append("\r\n");
+        String start = sb.toString();
+        byte[] bytes;
+        try (InputStream inputStream = new FileInputStream(file)) {
+            bytes = inputStream.readAllBytes();
         }
+        String end = "\r\n" + "--" + boundary + "--" + "\r\n";
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        os.write(start.getBytes());
+        os.write(bytes);
+        os.write(end.getBytes());
+        byte[] byteArray = os.toByteArray();
+        os.close();
+        return sendPostJsonRequest(url, header, byteArray);
     }
 
     /**
@@ -151,178 +180,5 @@ public class NetUtil {
      */
     public static String sendGetRequest(@NonNull String url) throws IOException {
         return sendGetRequest(url, new HashMap<>());
-    }
-
-    /**
-     * 从网络Url中下载文件
-     *
-     * @param url      路径
-     * @param saveDir  保存路径
-     * @param fileName 文件名称
-     * @throws IOException IOException异常
-     */
-    public static void downloadFile(@NonNull String url, @NonNull File saveDir,
-                                    @NonNull String fileName) throws IOException {
-        Request request = new Request.Builder()
-                .url(url)
-                .get()
-                .addHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36")
-                .build();
-        Response response = client.newCall(request).execute();
-
-        byte[] bytes = Objects.requireNonNull(response.body()).bytes();
-
-        if (saveDir.exists()) {
-            saveDir.mkdirs();
-        }
-        String folder = saveDir + File.separator + fileName;
-        File file = new File(folder);
-        FileOutputStream fos = new FileOutputStream(file);
-        fos.write(bytes);
-        fos.close();
-    }
-
-    /**
-     * 从网络Url中下载文件（使用文件原本名字）
-     *
-     * @param url     路径
-     * @param saveDir 保存路径
-     * @throws IOException IOException异常
-     */
-    public static void downloadFile(@NonNull String url, @NonNull File saveDir) throws IOException {
-        Request request = new Request.Builder()
-                .url(url)
-                .get()
-                .addHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36")
-                .build();
-        Response response = client.newCall(request).execute();
-
-        byte[] bytes = Objects.requireNonNull(response.body()).bytes();
-
-        if (saveDir.exists()) {
-            saveDir.mkdirs();
-        }
-        String folder = saveDir + File.separator + StringUtil.substringAfterLast(url, "/");
-        File file = new File(folder);
-        FileOutputStream fos = new FileOutputStream(file);
-        fos.write(bytes);
-        fos.close();
-    }
-
-    /**
-     * 获取本机公网IP
-     *
-     * @return IP
-     * @throws IOException IOException异常
-     */
-    public static String getIP() throws IOException {
-        JSONObject json = new JSONObject(sendGetRequest("https://ipinfo.io/"));
-        return json.getString("ip");
-    }
-
-
-    /**
-     * 获得指定地址信息中的MAC地址
-     *
-     * @param inetAddress {@link InetAddress}
-     * @return MAC地址，用-分隔
-     */
-    private static String getMacAddress(@NonNull InetAddress inetAddress) {
-        if (inetAddress == null) {
-            return null;
-        }
-
-        final byte[] mac = getHardwareAddress(inetAddress);
-        if (mac != null) {
-            final StringBuilder sb = new StringBuilder();
-            String s;
-            for (int i = 0; i < mac.length; i++) {
-                if (i != 0) {
-                    sb.append("-");
-                }
-                // 字节转换为整数
-                s = Integer.toHexString(mac[i] & 0xFF);
-                sb.append(s.length() == 1 ? 0 + s : s);
-            }
-            return sb.toString();
-        }
-
-        return null;
-    }
-
-    /**
-     * 获得指定地址信息中的硬件地址
-     *
-     * @param inetAddress {@link InetAddress}
-     * @return 硬件地址
-     */
-    private static byte[] getHardwareAddress(@NonNull InetAddress inetAddress) {
-        if (inetAddress == null) {
-            return null;
-        }
-
-        try {
-            final NetworkInterface networkInterface = NetworkInterface.getByInetAddress(inetAddress);
-            if (networkInterface != null) {
-                return networkInterface.getHardwareAddress();
-            }
-        } catch (SocketException e) {
-            throw new RuntimeException(e);
-        }
-        return null;
-    }
-
-    /**
-     * 获得本机MAC地址
-     *
-     * @return 本机MAC地址
-     */
-    public static String getLocalMacAddress() throws IOException {
-        String macAddress = getMacAddress(getLocalhost());
-        if (StringUtil.isEmpty(macAddress)) {
-            return getIP();
-        }
-        return macAddress;
-    }
-
-    /**
-     * 获取本机网卡IP地址，规则如下：
-     *
-     * <pre>
-     * 1. 查找所有网卡地址，必须非回路（loopback）地址、非局域网地址（siteLocal）、IPv4地址
-     * 2. 如果无满足要求的地址，调用 {@link InetAddress#getLocalHost()} 获取地址
-     * </pre>
-     * <p>
-     * 此方法不会抛出异常，获取失败将返回{@code null}<br>
-     * <p>
-     *
-     * @return 本机网卡IP地址，获取失败返回{@code null}
-     */
-    private static InetAddress getLocalhost() throws UnknownHostException {
-        Enumeration<NetworkInterface> allNetInterfaces;
-        try {
-            allNetInterfaces = NetworkInterface.getNetworkInterfaces();
-            InetAddress ip;
-            while (allNetInterfaces.hasMoreElements()) {
-                NetworkInterface netInterface = allNetInterfaces.nextElement();
-                Enumeration<InetAddress> addresses = netInterface.getInetAddresses();
-                while (addresses.hasMoreElements()) {
-                    ip = addresses.nextElement();
-                    if (!ip.isSiteLocalAddress() && !ip.isLoopbackAddress() && !ip.getHostAddress().contains(":")) {
-                        if (ip instanceof Inet4Address) {
-                            return ip;
-                        }
-                    }
-                }
-            }
-        } catch (SocketException e) {
-            e.printStackTrace();
-        }
-
-        InetAddress jdkSuppliedAddress = InetAddress.getLocalHost();
-        if (jdkSuppliedAddress == null) {
-            throw new UnknownHostException();
-        }
-        return jdkSuppliedAddress;
     }
 }

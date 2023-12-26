@@ -12,19 +12,21 @@ import io.github.minecraftchampions.dodoopenjava.event.events.v2.member.MemberJo
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.member.MemberLeaveEvent;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.personal.PersonalMessageEvent;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.shop.GoodsPurchaseEvent;
-import io.github.minecraftchampions.dodoopenjava.utils.StringUtil;
-import okhttp3.*;
-import okio.ByteString;
+import lombok.SneakyThrows;
+import org.java_websocket.client.WebSocketClient;
+import org.java_websocket.handshake.ServerHandshake;
 import org.json.JSONObject;
 
-import java.util.concurrent.TimeUnit;
+import java.net.URI;
+import java.nio.ByteBuffer;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Logger;
 
 /**
  * 事件触发
  */
 public class WebSocketEventTrigger extends EventTrigger {
-    public WebSocketEventTrigger p;
     private String wssLo = "";
 
     private static final int MAX_NUM = 5;
@@ -32,10 +34,10 @@ public class WebSocketEventTrigger extends EventTrigger {
 
     private int connectNum = 0;
 
-    public WebSocket mWebSocket = null;
-    public static OkHttpClient wss = new OkHttpClient.Builder()
-            .pingInterval(15, TimeUnit.SECONDS) //保活心跳
-            .build();
+    public WebSocketClient mWebSocket = null;
+
+    public static final long pingInterval = 20 * 1000;
+
 
     public WebSocketEventTrigger(Bot bot) {
         this.bot = bot;
@@ -67,6 +69,26 @@ public class WebSocketEventTrigger extends EventTrigger {
         }
     }
 
+    private static void startHeartbeatTask(WebSocketClient client) {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if (client.isOpen()) {
+                    client.send("""
+                            {
+                            "type": 1
+                            }
+                            """);
+                } else {
+                    cancel();
+                    timer.purge();
+                }
+            }
+        }, 5000, pingInterval);
+    }
+
+    @SneakyThrows
     public void v2() {
         if (isConnect) {
             return;
@@ -81,30 +103,31 @@ public class WebSocketEventTrigger extends EventTrigger {
                     isConnect = false;
                     throw new RuntimeException(result.getMessage());
                 });
-        Request request = new Request.Builder()
-                .url(wssLo)
-                .build();
-        mWebSocket = wss.newWebSocket(request, new WsListenerC(p));
+        mWebSocket = new WsListenerC(new URI(wssLo));
+        mWebSocket.connect();
     }
 
-    public class WsListenerC extends WebSocketListener {
+    class WsListenerC extends WebSocketClient {
         private final EventManager eventManager = bot.getEventManager();
-        WebSocketEventTrigger p;
 
-        public WsListenerC(WebSocketEventTrigger et) {
-            p = et;
+        public WsListenerC(URI serverUri) {
+            super(serverUri);
         }
 
         @Override
-        public void onOpen(WebSocket webSocket, Response response) {
-            super.onOpen(webSocket, response);
-            isConnect = response.code() == 101;
+        public void onOpen(ServerHandshake data) {
+            startHeartbeatTask(this);
+            isConnect = data.getHttpStatus() == 101;
         }
 
         @Override
-        public void onMessage(WebSocket webSocket, ByteString bytes) {
-            super.onMessage(webSocket, bytes);
-            JSONObject jsontext = new JSONObject(bytes.utf8());
+        public void onMessage(String s) {
+        }
+
+        @Override
+        public void onMessage(ByteBuffer bf) {
+            String message = new String(bf.array());
+            JSONObject jsontext = new JSONObject(message);
             switch (jsontext.getJSONObject("data").getString("eventType")) {
                 case "1001" -> eventManager.fireEvent(new PersonalMessageEvent(jsontext));
                 case "2001" -> eventManager.fireEvent(new MessageEvent(jsontext));
@@ -126,28 +149,17 @@ public class WebSocketEventTrigger extends EventTrigger {
         }
 
         @Override
-        public void onFailure(WebSocket webSocket, Throwable t, Response response) {
-            super.onFailure(webSocket, t, response);
-            if (response != null) {
-                System.getLogger(Logger.GLOBAL_LOGGER_NAME).log(System.Logger.Level.WARNING, "WebSocket 连接失败：{}", response.message());
-            }
+        public void onError(Exception ex) {
+            ex.printStackTrace();
             isConnect = false;
-            if (StringUtil.isEmpty(t.getMessage())) {
-                reconnect();
-            }
+            reconnect();
         }
 
         @Override
-        public void onClosed(WebSocket webSocket, int code, String reason) {
-            super.onClosed(webSocket, code, reason);
+        public void onClose(int code, String reason, boolean remote) {
             mWebSocket.close(1000, "正常关闭");
             mWebSocket = null;
             isConnect = false;
-        }
-
-        @Override
-        public void onClosing(WebSocket webSocket, int code, String reason) {
-            super.onClosing(webSocket, code, reason);
         }
     }
 }
