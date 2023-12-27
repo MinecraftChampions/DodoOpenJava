@@ -4,15 +4,12 @@ import io.github.minecraftchampions.dodoopenjava.Bot;
 import lombok.Getter;
 
 @Getter
-public class EventTrigger {
-    boolean isConnect = false;
-
+public abstract class EventTrigger {
     protected Bot bot;
 
-    public void start() {
-    }
+    public abstract void start();
 
-    public void close() {
-    }
+    public abstract void close();
 
+    public abstract boolean isConnect();
 }

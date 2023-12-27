@@ -29,10 +29,14 @@ import java.util.logging.Logger;
 public class WebSocketEventTrigger extends EventTrigger {
     private String wssLo = "";
 
-    private static final int MAX_NUM = 5;
-    private static final int MILLIS = 5000;
-
-    private int connectNum = 0;
+    @Override
+    public boolean isConnect() {
+        if (mWebSocket == null) {
+            return false;
+        } else {
+            return mWebSocket.isOpen();
+        }
+    }
 
     public WebSocketClient mWebSocket = null;
 
@@ -48,23 +52,8 @@ public class WebSocketEventTrigger extends EventTrigger {
         v2();
     }
 
-    public void reconnect() {
-        if (connectNum <= MAX_NUM) {
-            try {
-                Thread.sleep(MILLIS);
-                v2();
-                connectNum++;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else {
-            System.out.println("reconnect over " + MAX_NUM + ",please check url or network");
-        }
-    }
-
     public void close() {
         if (mWebSocket != null) {
-            isConnect = false;
             mWebSocket.close(1000, "");
         }
     }
@@ -75,12 +64,7 @@ public class WebSocketEventTrigger extends EventTrigger {
             @Override
             public void run() {
                 if (client.isOpen()) {
-                    client.send("""
-                            {
-                            "type": 1
-                            }
-                            """);
-                } else {
+                    client.sendPing();
                     cancel();
                     timer.purge();
                 }
@@ -90,22 +74,24 @@ public class WebSocketEventTrigger extends EventTrigger {
 
     @SneakyThrows
     public void v2() {
-        if (isConnect) {
+        if (isConnect()) {
             return;
         }
-        isConnect = true;
         bot.getApi().V2.eventApi.getWebSocketConnection()
-                .ifSuccess(result -> {
-                    isConnect = true;
-                    wssLo = result.getJSONObjectData().getString("endpoint");
-                })
+                .ifSuccess(result -> wssLo = result.getJSONObjectData().getString("endpoint"))
                 .ifFailure(result -> {
-                    isConnect = false;
                     throw new RuntimeException(result.getMessage());
                 });
         mWebSocket = new WsListenerC(new URI(wssLo));
         mWebSocket.connect();
+        long i = waitForTheResponseMills / 500;
+        while (!mWebSocket.isOpen() && i > 0) {
+            Thread.sleep(500);
+            i--;
+        }
     }
+
+    public static final long waitForTheResponseMills = 10 * 1000;
 
     class WsListenerC extends WebSocketClient {
         private final EventManager eventManager = bot.getEventManager();
@@ -116,8 +102,7 @@ public class WebSocketEventTrigger extends EventTrigger {
 
         @Override
         public void onOpen(ServerHandshake data) {
-            startHeartbeatTask(this);
-            isConnect = data.getHttpStatus() == 101;
+            startHeartbeatTask(mWebSocket);
         }
 
         @Override
@@ -151,15 +136,13 @@ public class WebSocketEventTrigger extends EventTrigger {
         @Override
         public void onError(Exception ex) {
             ex.printStackTrace();
-            isConnect = false;
-            reconnect();
+            super.reconnect();
         }
 
         @Override
         public void onClose(int code, String reason, boolean remote) {
             mWebSocket.close(1000, "正常关闭");
             mWebSocket = null;
-            isConnect = false;
         }
     }
 }

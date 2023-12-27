@@ -37,6 +37,8 @@ import java.util.logging.Logger;
  * 事件触发
  */
 public class WebHookEventTrigger extends EventTrigger {
+    boolean isConnect = false;
+
     public WebHookEventTrigger(Bot bot) {
         this.bot = bot;
     }
@@ -81,7 +83,7 @@ public class WebHookEventTrigger extends EventTrigger {
      *
      * @param path 路径
      */
-    public void setPath( String path) {
+    public void setPath(String path) {
         if (path.isEmpty()) {
             this.path = path;
         }
