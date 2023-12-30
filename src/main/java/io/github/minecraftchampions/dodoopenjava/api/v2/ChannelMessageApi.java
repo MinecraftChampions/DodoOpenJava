@@ -89,7 +89,7 @@ public class ChannelMessageApi {
      */
     public static Result sendAtTextMessage(String authorization, String channelId, String dodoId, String message) throws IOException {
         String text = "<@!" + dodoId + "> " + message;
-        return sendTextMessage(authorization, channelId, dodoId, text);
+        return sendTextMessage(authorization, channelId, text);
     }
 
     /**
