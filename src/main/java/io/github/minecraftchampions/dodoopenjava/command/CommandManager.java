@@ -93,13 +93,16 @@ public class CommandManager {
      */
     @SuppressWarnings("UnusedReturnValue")
     public boolean trigger(@NonNull CommandSender sender, @NonNull String commandName,
-                           @NonNull String... args) {
+                           boolean personalMessage, @NonNull String... args) {
         CommandExecutor command;
         if (commands.containsKey(commandName)) {
             command = commands.get(commandName);
         } else if (commandAliasesMapping.containsKey(commandName)) {
             command = commands.get(commandAliasesMapping.get(commandName));
         } else {
+            return false;
+        }
+        if (!command.allowPersonalChat() && personalMessage) {
             return false;
         }
         if (command.getPermission() == null || command.getPermission().isEmpty() || sender.hasPermission(command.getPermission())) {

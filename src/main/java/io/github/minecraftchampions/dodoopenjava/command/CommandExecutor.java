@@ -29,6 +29,11 @@ public interface CommandExecutor {
     String getPermission();
 
     /**
+     * 是否是私聊命令
+     */
+    default boolean allowPersonalChat() { return false; }
+
+    /**
      * 命令处理
      *
      * @param sender 发送者
