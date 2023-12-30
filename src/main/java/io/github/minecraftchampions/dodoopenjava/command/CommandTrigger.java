@@ -22,13 +22,7 @@ public class CommandTrigger implements Listener {
     public void event(MessageEvent e) {
         if (!Objects.equals(e.getMessageIntType(), 1)) return;
         if (e.getMessageBody().getString("content").indexOf("/") != 0) return;
-        String command = e.getMessageBody().getString("content").replaceFirst("/", "");
-        CommandSender sender = new CommandSender(new JSONObject(e.jsonString), commandManager.getBot(), false);
-        List<String> Command = new java.util.ArrayList<>(List.of(command.split(" ")));
-        String mainCommand = Command.get(0);
-        Command.remove(0);
-        String[] args = Command.toArray(new String[]{});
-        commandManager.trigger(sender, mainCommand, false, args);
+        call(e.getJsonObject(), false);
     }
 
     /**
@@ -40,13 +34,20 @@ public class CommandTrigger implements Listener {
     public void event(PersonalMessageEvent e) {
         if (!Objects.equals(e.getMessageIntType(), 1)) return;
         if (e.getMessageBody().getString("content").indexOf("/") != 0) return;
-        String command = e.getMessageBody().getString("content").replaceFirst("/", "");
-        CommandSender sender = new CommandSender(new JSONObject(e.jsonString), commandManager.getBot(), true);
+        call(e.getJsonObject(), true);
+    }
+
+    public void call(JSONObject jsonObject, boolean isPersonalCommand) {
+        String command = jsonObject.getJSONObject("data").getJSONObject("eventBody")
+                .getJSONObject("messageBody").getString("content")
+                .replaceFirst("/", "");
+        CommandSender sender = new CommandSender(jsonObject, commandManager.getBot(), isPersonalCommand);
         List<String> Command = new java.util.ArrayList<>(List.of(command.split(" ")));
         String mainCommand = Command.get(0);
         Command.remove(0);
         String[] args = Command.toArray(new String[]{});
-        commandManager.trigger(sender, mainCommand, true, args);
+        commandManager.trigger(sender, mainCommand, isPersonalCommand, args);
+
     }
 
     CommandManager commandManager;

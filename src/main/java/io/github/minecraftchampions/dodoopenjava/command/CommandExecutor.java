@@ -31,7 +31,9 @@ public interface CommandExecutor {
     /**
      * 是否允许私聊命令
      */
-    default boolean allowPersonalChat() { return false; }
+    default boolean allowPersonalChat() {
+        return false;
+    }
 
     /**
      * 命令处理
