@@ -66,6 +66,7 @@ public class CommandSender {
      * 获取所属机器人
      */
     private final Bot bot;
+
     /**
      * -- GETTER --
      * 是否私聊

@@ -29,7 +29,7 @@ public interface CommandExecutor {
     String getPermission();
 
     /**
-     * 是否是私聊命令
+     * 是否允许私聊命令
      */
     default boolean allowPersonalChat() { return false; }
 
