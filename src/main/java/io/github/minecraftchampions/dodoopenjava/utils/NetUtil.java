@@ -81,7 +81,7 @@ public class NetUtil {
         URL url = new URL(stringUrl);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("POST");
-        con.setConnectTimeout(5000);
+        con.setConnectTimeout(15000);
         con.setDoOutput(true);
         con.setUseCaches(false);
         con.setInstanceFollowRedirects(true);
@@ -111,7 +111,7 @@ public class NetUtil {
         URL url = new URL(stringUrl);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
-        connection.setConnectTimeout(5000);
+        connection.setConnectTimeout(15000);
         connection.setDoOutput(false);
         connection.setInstanceFollowRedirects(true);
         header.forEach(connection::setRequestProperty);

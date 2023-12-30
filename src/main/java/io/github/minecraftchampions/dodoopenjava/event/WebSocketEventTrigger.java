@@ -92,9 +92,9 @@ public class WebSocketEventTrigger extends EventTrigger {
     public void sendHeartbeatPacket() {
         Thread thread = new Thread(()->{
             while (mWebSocket.isOpen()) {
+                mWebSocket.sendPing();
                 try {
                     Thread.sleep(30*1000);
-                    mWebSocket.sendPing();
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -118,7 +118,7 @@ public class WebSocketEventTrigger extends EventTrigger {
 
         @Override
         public void onOpen(ServerHandshake data) {
-
+            sendHeartbeatPacket();
         }
 
         @Override
