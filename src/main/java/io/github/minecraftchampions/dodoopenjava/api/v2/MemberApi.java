@@ -445,7 +445,7 @@ public class MemberApi {
     }
 
     /**
-     * 取消成员永久封禁
+     * 获取成员DoDo号映射列表
      *
      * @param clientId       机器人唯一标识
      * @param token          机器人鉴权Token
@@ -459,7 +459,7 @@ public class MemberApi {
     }
 
     /**
-     * 取消成员永久封禁
+     * 获取成员DoDo号映射列表
      *
      * @param authorization  authorization
      * @param dodoIdList   dodoId

@@ -16,6 +16,7 @@ import lombok.SneakyThrows;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * 机器人实例
@@ -520,6 +521,10 @@ public class Bot {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.MemberApi.addMemberReasonBan(bot.getAuthorization(), islandSourceId, dodoSourceId, reason);
                 }
 
+                @SneakyThrows
+                public Result getMemberDodoIdMapList(List<String> strList) {
+                    return io.github.minecraftchampions.dodoopenjava.api.v2.MemberApi.getMemberDodoIdMapList(bot.getAuthorization(), strList);
+                }
             }
 
             public class NTFApi {
