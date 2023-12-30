@@ -29,7 +29,7 @@ public class CommandSender {
      * -- GETTER --
      * 获取触发命令的频道号
      */
-    private final String ChannelId;
+    private String ChannelId;
 
     /**
      * -- GETTER --
@@ -53,7 +53,7 @@ public class CommandSender {
      * -- GETTER --
      * 获取加入时间
      */
-    private final String JoinTime;
+    private String JoinTime;
 
     /**
      * -- GETTER --
@@ -68,20 +68,29 @@ public class CommandSender {
     private final Bot bot;
 
     /**
+     * -- GETTER --
+     * 是否私聊
+     */
+    private final boolean isPersonalChat;
+
+    /**
      * 初始化发送者这个类型
      *
      * @param jsontext JSONText
      */
-    public CommandSender(JSONObject jsontext, Bot bot) {
+    public CommandSender(JSONObject jsontext, Bot bot, boolean personalMessage) {
         this.bot = bot;
+        this.isPersonalChat = personalMessage;
         this.SenderNickName = jsontext.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("nickName");
         this.SenderName = jsontext.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("nickName");
-        this.JoinTime = jsontext.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("joinTime");
         this.AvatarUrl = jsontext.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("avatarUrl");
         this.SenderDodoSourceId = jsontext.getJSONObject("data").getJSONObject("eventBody").getString("dodoSourceId");
         this.IslandSourceId = jsontext.getJSONObject("data").getJSONObject("eventBody").getString("islandSourceId");
         this.MessageId = jsontext.getJSONObject("data").getJSONObject("eventBody").getString("messageId");
-        this.ChannelId = jsontext.getJSONObject("data").getJSONObject("eventBody").getString("channelId");
+        if (!personalMessage) {
+            this.ChannelId = jsontext.getJSONObject("data").getJSONObject("eventBody").getString("channelId");
+            this.JoinTime = jsontext.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("joinTime");
+        }
     }
 
     /**
