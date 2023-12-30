@@ -5,7 +5,7 @@ import lombok.NonNull;
 /**
  * 视频组件
  */
-public class VideoComponent extends Component {
+public class VideoComponent extends CardComponent {
     /**
      * 初始化
      *

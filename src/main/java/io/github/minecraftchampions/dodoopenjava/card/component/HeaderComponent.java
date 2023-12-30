@@ -7,7 +7,7 @@ import org.json.JSONObject;
 /**
  * 标题组件
  */
-public class HeaderComponent extends Component {
+public class HeaderComponent extends CardComponent {
     /**
      * 初始化
      *

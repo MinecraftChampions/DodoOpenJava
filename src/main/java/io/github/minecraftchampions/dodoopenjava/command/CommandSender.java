@@ -1,8 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.command;
 
 import io.github.minecraftchampions.dodoopenjava.Bot;
-import io.github.minecraftchampions.dodoopenjava.api.v2.MemberApi;
-import io.github.minecraftchampions.dodoopenjava.api.v2.RoleApi;
 import io.github.minecraftchampions.dodoopenjava.permissions.UserManager;
 import lombok.Getter;
 import lombok.NonNull;
@@ -93,8 +91,8 @@ public class CommandSender {
      * @throws IOException 编辑失败后抛出
      */
     public void editSenderNickName(@NonNull String NickName) throws IOException {
-        System.out.println(MemberApi.editMemberNickName(bot.getAuthorization(), IslandSourceId, SenderDodoSourceId, NickName));
         SenderNickName = NickName;
+        bot.getApi().V2.memberApi.editMemberNickName(IslandSourceId, SenderDodoSourceId, NickName);
     }
 
     /**
@@ -104,7 +102,7 @@ public class CommandSender {
      * @throws IOException 失败后抛出
      */
     public void muteSender(int Time) throws IOException {
-        MemberApi.addMemberMute(bot.getAuthorization(), IslandSourceId, SenderDodoSourceId, Time);
+        bot.getApi().V2.memberApi.addMemberMute(IslandSourceId, SenderDodoSourceId, Time);
     }
 
     /**
@@ -115,7 +113,7 @@ public class CommandSender {
      * @throws IOException 失败后抛出
      */
     public void muteSender(int Time, @NonNull String reason) throws IOException {
-        MemberApi.addMemberReasonMute(bot.getAuthorization(), IslandSourceId, SenderDodoSourceId, Time, reason);
+        bot.getApi().V2.memberApi.addMemberReasonMute(IslandSourceId, SenderDodoSourceId, Time, reason);
     }
 
     /**
@@ -124,7 +122,7 @@ public class CommandSender {
      * @throws IOException 失败后抛出
      */
     public void removeMuteSender() throws IOException {
-        MemberApi.removeMemberMute(bot.getAuthorization(), IslandSourceId, SenderDodoSourceId);
+        bot.getApi().V2.memberApi.removeMemberMute(IslandSourceId, SenderDodoSourceId);
     }
 
     /**
@@ -134,7 +132,7 @@ public class CommandSender {
      * @throws IOException 失败后抛出
      */
     public void banSender(@NonNull String reason) throws IOException {
-        MemberApi.addMemberReasonBan(bot.getAuthorization(), IslandSourceId, SenderDodoSourceId, reason);
+        bot.getApi().V2.memberApi.addMemberReasonBan(IslandSourceId, SenderDodoSourceId, reason);
     }
 
     /**
@@ -143,7 +141,7 @@ public class CommandSender {
      * @throws IOException 失败后抛出
      */
     public void banSender() throws IOException {
-        MemberApi.addMemberBan(bot.getAuthorization(), IslandSourceId, SenderDodoSourceId);
+        bot.getApi().V2.memberApi.addMemberBan(IslandSourceId, SenderDodoSourceId);
     }
 
     /**
@@ -152,7 +150,7 @@ public class CommandSender {
      * @throws IOException 失败后抛出
      */
     public void removeBanSender() throws IOException {
-        MemberApi.removeMemberBan(bot.getAuthorization(), IslandSourceId, SenderDodoSourceId);
+        bot.getApi().V2.memberApi.removeMemberBan(IslandSourceId, SenderDodoSourceId);
     }
 
     /**
@@ -162,7 +160,7 @@ public class CommandSender {
      * @throws IOException 失败后抛出
      */
     public void giveRole(@NonNull String RoleId) throws IOException {
-        RoleApi.addRoleMember(bot.getAuthorization(), IslandSourceId, SenderDodoSourceId, RoleId);
+        bot.getApi().V2.roleApi.addRoleMember(IslandSourceId, SenderDodoSourceId, RoleId);
     }
 
     /**
@@ -172,7 +170,7 @@ public class CommandSender {
      * @throws IOException 失败后抛出
      */
     public void removeRole(@NonNull String RoleId) throws IOException {
-        RoleApi.removeRoleMember(bot.getAuthorization(), IslandSourceId, SenderDodoSourceId, RoleId);
+        bot.getApi().V2.roleApi.removeRoleMember(IslandSourceId, SenderDodoSourceId, RoleId);
     }
 
     /**

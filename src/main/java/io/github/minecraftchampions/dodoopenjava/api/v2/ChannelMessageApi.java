@@ -707,7 +707,7 @@ public class ChannelMessageApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("channelId", channelId)
                 .put("messageType", 6)
-                .put("messageBody", messageBody.toJSONObject().toString());
+                .put("messageBody", messageBody.toString());
         return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 
@@ -738,7 +738,7 @@ public class ChannelMessageApi {
         String url = DodoOpenJava.BASEURL + "channel/message/edit";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId)
-                .put("messageBody", messageBody.toJSONObject().toString());
+                .put("messageBody", messageBody.toString());
         return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 

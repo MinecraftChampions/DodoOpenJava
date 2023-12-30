@@ -1,6 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.card;
 
-import io.github.minecraftchampions.dodoopenjava.card.component.Component;
+import io.github.minecraftchampions.dodoopenjava.card.component.CardComponent;
 import io.github.minecraftchampions.dodoopenjava.card.enums.Theme;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
@@ -81,7 +81,7 @@ public class Card {
      *
      * @param component 组件
      */
-    public void addComponent(@NonNull Component component) {
+    public void addComponent(@NonNull CardComponent component) {
         JsonCard.getJSONObject("card").getJSONArray("components").put(component.getJsonCard());
     }
 
@@ -90,7 +90,7 @@ public class Card {
      *
      * @param component 组件
      */
-    public void removeComponent(@NonNull Component component) {
+    public void removeComponent(@NonNull CardComponent component) {
         List<Object> list = JsonCard.getJSONObject("card").getJSONArray("components").toList();
         List<Integer> integerList = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
@@ -114,5 +114,10 @@ public class Card {
      */
     public void removeComponent(int index) {
         JsonCard.getJSONObject("card").getJSONArray("components").remove(index);
+    }
+
+    @Override
+    public String toString() {
+        return toJSONObject().toString();
     }
 }

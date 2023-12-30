@@ -12,7 +12,7 @@ import java.util.Objects;
 /**
  * 文字组件
  */
-public class SectionComponent extends Component {
+public class SectionComponent extends CardComponent {
 
     public boolean isParagraph;
 

@@ -11,7 +11,7 @@ import java.util.Objects;
 /**
  * 按钮交互组件
  */
-public class ButtonGroupComponent extends Component {
+public class ButtonGroupComponent extends CardComponent {
     /**
      * 初始化
      */

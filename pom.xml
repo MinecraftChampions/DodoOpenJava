@@ -115,11 +115,13 @@
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
     </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.java-websocket</groupId>
             <artifactId>Java-WebSocket</artifactId>
             <version>1.5.4</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.yaml</groupId>
@@ -130,7 +132,7 @@
         <dependency>
             <groupId>com.github.mcchampions</groupId>
             <artifactId>JSON-java</artifactId>
-            <version>qs-fork-1.3</version>
+            <version>qs-fork1.4</version>
             <scope>compile</scope>
         </dependency>
         <dependency>

@@ -7,6 +7,7 @@ import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * 成员API
@@ -440,6 +441,35 @@ public class MemberApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId);
+        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+    }
+
+    /**
+     * 取消成员永久封禁
+     *
+     * @param clientId       机器人唯一标识
+     * @param token          机器人鉴权Token
+
+     * @param dodoIdList   dodoId
+     * @return JSON对象
+     * @throws IOException 失败后抛出
+     */
+    public static Result getMemberDodoIdMapList(String clientId, String token, List<String> dodoIdList) throws IOException {
+        return getMemberDodoIdMapList(BaseUtil.Authorization(clientId, token), dodoIdList);
+    }
+
+    /**
+     * 取消成员永久封禁
+     *
+     * @param authorization  authorization
+     * @param dodoIdList   dodoId
+     * @return JSON对象
+     * @throws IOException 失败后抛出
+     */
+    public static Result getMemberDodoIdMapList(String authorization, List<String> dodoIdList) throws IOException {
+        String url = DodoOpenJava.BASEURL + "member/dodoid/map/list";
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("dodoIdList", dodoIdList);
         return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
     }
 }

@@ -13,14 +13,17 @@ import io.github.minecraftchampions.dodoopenjava.event.events.v2.member.MemberLe
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.personal.PersonalMessageEvent;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.shop.GoodsPurchaseEvent;
 import lombok.SneakyThrows;
+import org.java_websocket.WebSocket;
 import org.java_websocket.client.WebSocketClient;
+import org.java_websocket.framing.Framedata;
+import org.java_websocket.framing.PingFrame;
 import org.java_websocket.handshake.ServerHandshake;
 import org.json.JSONObject;
 
 import java.net.URI;
 import java.nio.ByteBuffer;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.logging.Logger;
 
 /**
@@ -58,18 +61,15 @@ public class WebSocketEventTrigger extends EventTrigger {
         }
     }
 
-    private static void startHeartbeatTask(WebSocketClient client) {
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                if (client.isOpen()) {
-                    client.sendPing();
-                    cancel();
-                    timer.purge();
-                }
+    public void reconnectWebsocket() {
+        if (mWebSocket != null && !mWebSocket.isOpen()) {
+            try {
+                CompletableFuture.runAsync(this::v2).get();
+            } catch (InterruptedException | ExecutionException e) {
+                throw new RuntimeException(e);
             }
-        }, 5000, pingInterval);
+
+        }
     }
 
     @SneakyThrows
@@ -83,17 +83,26 @@ public class WebSocketEventTrigger extends EventTrigger {
                     throw new RuntimeException(result.getMessage());
                 });
         mWebSocket = new WsListenerC(new URI(wssLo));
+        mWebSocket.setConnectionLostTimeout(0);
         mWebSocket.connect();
         long i = waitForTheResponseMills / 500;
         while (!mWebSocket.isOpen() && i > 0) {
             Thread.sleep(500);
             i--;
         }
+        if (!mWebSocket.isOpen()) {
+            new RuntimeException("未连接上websocket").printStackTrace();
+        }
     }
 
-    public static final long waitForTheResponseMills = 10 * 1000;
+    public static long waitForTheResponseMills = 15 * 1000;
 
     class WsListenerC extends WebSocketClient {
+        @Override
+        public void onWebsocketPong(WebSocket conn, Framedata f) {
+            sendFrame(new PingFrame());
+        }
+
         private final EventManager eventManager = bot.getEventManager();
 
         public WsListenerC(URI serverUri) {
@@ -102,7 +111,6 @@ public class WebSocketEventTrigger extends EventTrigger {
 
         @Override
         public void onOpen(ServerHandshake data) {
-            startHeartbeatTask(mWebSocket);
         }
 
         @Override
@@ -136,13 +144,13 @@ public class WebSocketEventTrigger extends EventTrigger {
         @Override
         public void onError(Exception ex) {
             ex.printStackTrace();
-            super.reconnect();
+            reconnectWebsocket();
         }
 
         @Override
         public void onClose(int code, String reason, boolean remote) {
-            mWebSocket.close(1000, "正常关闭");
-            mWebSocket = null;
+            System.getLogger(Logger.GLOBAL_LOGGER_NAME).log(System.Logger.Level.WARNING, "websocket关闭;code:" + code + ":reason:" + reason + ";已自动重连");
+            reconnectWebsocket();
         }
     }
 }

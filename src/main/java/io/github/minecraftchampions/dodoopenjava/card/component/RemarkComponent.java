@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * 备注组件
  */
-public class RemarkComponent extends Component {
+public class RemarkComponent extends CardComponent {
     /**
      * 初始化
      */
@@ -66,15 +66,15 @@ public class RemarkComponent extends Component {
     /**
      * 移除备注
      *
-     * @param component 备注
+     * @param cardComponent 备注
      */
-    public void removeImage(@NonNull Component component) {
+    public void removeImage(@NonNull CardComponent cardComponent) {
         List<Object> list = jsonCard.getJSONArray("element").toList();
         List<Integer> integerList = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             Object object = list.get(i);
             if (object instanceof JSONObject jsonObject) {
-                if (component.getJsonCard() == jsonObject) {
+                if (cardComponent.getJsonCard() == jsonObject) {
                     integerList.add(i);
                 }
             }

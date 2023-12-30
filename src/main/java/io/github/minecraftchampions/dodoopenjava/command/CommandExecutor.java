@@ -1,5 +1,8 @@
 package io.github.minecraftchampions.dodoopenjava.command;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * 命令的接口
  */
@@ -10,6 +13,13 @@ public interface CommandExecutor {
      * @return 主命令
      */
     String getMainCommand();
+
+    /**
+     * 命令别名
+     */
+    default Set<String> getCommandAliases() {
+        return new HashSet<>();
+    }
 
     /**
      * 需要的权限

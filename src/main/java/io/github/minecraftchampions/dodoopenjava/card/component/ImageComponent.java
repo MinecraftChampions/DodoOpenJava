@@ -5,7 +5,7 @@ import lombok.NonNull;
 /**
  * 单图组件
  */
-public class ImageComponent extends Component {
+public class ImageComponent extends CardComponent {
     /**
      * 初始化
      *

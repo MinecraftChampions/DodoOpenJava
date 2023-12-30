@@ -18,11 +18,7 @@ public class Util {
         if (perm == null || perm.isEmpty()) {
             return true;
         }
-        if (comparePermissionString(userPerm, perm)) {
-            return !comparePermissionString(userPerm, perm);
-        } else {
-            return false;
-        }
+        return comparePermissionString(userPerm, perm);
     }
 
     /**

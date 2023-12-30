@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * 列表选择器
  */
-public class ListSelectorComponent extends Component {
+public class ListSelectorComponent extends CardComponent {
     /**
      * 初始化
      * <p>

@@ -10,7 +10,7 @@ import org.json.JSONObject;
  *
  * @author qscbm187531
  */
-public class FormComponent extends Component {
+public class FormComponent extends CardComponent {
     /**
      * 初始化回传表单
      */

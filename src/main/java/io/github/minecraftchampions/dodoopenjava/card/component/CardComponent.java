@@ -9,13 +9,13 @@ import java.io.Serializable;
  * 组件
  */
 @Getter
-public abstract class Component implements Serializable {
+public abstract class CardComponent implements Serializable {
     protected JSONObject jsonCard = new JSONObject();
 
     /**
      * 初始化
      */
-    public Component() {
+    public CardComponent() {
     }
 
 }

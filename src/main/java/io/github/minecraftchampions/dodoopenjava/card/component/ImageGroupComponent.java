@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * 多图组件
  */
-public class ImageGroupComponent extends Component {
+public class ImageGroupComponent extends CardComponent {
     /**
      * 初始化
      */

@@ -3,7 +3,7 @@ package io.github.minecraftchampions.dodoopenjava.card.component;
 /**
  * 分割线组件
  */
-public class DividerComponent extends Component {
+public class DividerComponent extends CardComponent {
     /**
      * 初始化
      */

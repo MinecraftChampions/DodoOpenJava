@@ -6,7 +6,7 @@ import lombok.NonNull;
 /**
  * 文字和模块
  */
-public class SectionAndButtonComponent extends Component {
+public class SectionAndButtonComponent extends CardComponent {
     /**
      * 初始化
      *

@@ -6,7 +6,7 @@ import lombok.NonNull;
 /**
  * 倒计时组件
  */
-public class CountdownComponent extends Component {
+public class CountdownComponent extends CardComponent {
     /**
      * 初始化
      *
