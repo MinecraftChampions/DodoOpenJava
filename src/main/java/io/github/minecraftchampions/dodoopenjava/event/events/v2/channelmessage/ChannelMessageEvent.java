@@ -3,7 +3,7 @@ package io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage
 import io.github.minecraftchampions.dodoopenjava.event.Event;
 
 /**
- * 频道消息事件
+ * 频道消息相关事件
  */
 public abstract class ChannelMessageEvent extends Event {
     public ChannelMessageEvent(boolean isAsync) {
