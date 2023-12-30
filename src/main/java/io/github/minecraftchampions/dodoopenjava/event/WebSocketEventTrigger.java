@@ -93,6 +93,11 @@ public class WebSocketEventTrigger extends EventTrigger {
         Thread thread = new Thread(()->{
             while (mWebSocket.isOpen()) {
                 mWebSocket.sendPing();
+                mWebSocket.send("""
+                        {
+                          "type":1
+                        }
+                        """);
                 try {
                     Thread.sleep(30*1000);
                 } catch (InterruptedException e) {
@@ -128,6 +133,10 @@ public class WebSocketEventTrigger extends EventTrigger {
         @Override
         public void onMessage(ByteBuffer bf) {
             String message = new String(bf.array());
+            if (message.equals("{\"type\":1,\"version\":\"\"}")) {
+                sendPing();
+                return;
+            }
             JSONObject jsontext = new JSONObject(message);
             switch (jsontext.getJSONObject("data").getString("eventType")) {
                 case "1001" -> eventManager.fireEvent(new PersonalMessageEvent(jsontext));
