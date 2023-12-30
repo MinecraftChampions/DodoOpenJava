@@ -16,33 +16,33 @@ import io.github.minecraftchampions.dodoopenjava.command.CommandExecutor;
 import io.github.minecraftchampions.dodoopenjava.command.CommandSender;
 import io.github.minecraftchampions.dodoopenjava.event.EventHandler;
 import io.github.minecraftchampions.dodoopenjava.event.Listener;
-import io.github.minecraftchampions.dodoopenjava.event.WebHookEventTrigger;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage.MessageEvent;
-import lombok.SneakyThrows;
+
+import java.io.IOException;
 
 public class Main implements CommandExecutor,Listener{
-    @SneakyThrows
+    public static Bot bot;
     public static void main(String... args) {
         //创建机器人实例
-        Bot bot = DodoOpenJava.createBot("111111","Abwadfbhshs");
-        //使用WebHook监听事件(默认为WebSocket)
-        bot.initEventListenSystem(new WebHookEventTrigger(bot));
+        bot = DodoOpenJava.createBot("111111","token");
         //注册事件监听器
         bot.registerListener(new Main());
         //注册命令处理器
         bot.registerCommand(new Main());
-        System.out.println(bot.getApi().V2.botApi.getBotInfo());
-        bot.getApi().V2.channelMessageApi.sendTextMessage("111111","测试");
-        Thread.sleep(1000*60*60);
-        //卸载
-        bot.disable();
+        System.out.println(bot.getApi().V2.eventApi.getWebSocketConnection().getJSONObjectData().getString("endpoint"));
+        bot.getApi().V2.botApi.getBotInfo().ifSuccess(result -> {
+            System.out.println("成功");
+            System.out.println(result.getJSONObjectData());
+        });
+
+        bot.getApi().V2.channelMessageApi.sendTextMessage("1252355","测试");
     }
 
     @EventHandler
     public void onEvent(MessageEvent e) {
         System.out.println(e.getEventName());
         System.out.println(e.getMessageId());
-        bot.getApi().V2.channelMessageApi.sendTextMessage(e.getChannelId(),"你发送了" + e.getMessageBody());//这里e.getMessageBody返回的是jsonObject
+        bot.getApi().V2.channelMessageApi.sendTextMessage(e.getChannelId(),"你发送了" + e.getMessageBody());
     }
 
     @Override
@@ -55,15 +55,19 @@ public class Main implements CommandExecutor,Listener{
         return null;
     }
 
-    @SneakyThrows
     @Override
     public void onCommand(CommandSender commandSender, String[] strings) {
         System.out.println(commandSender.getSenderName());
-        commandSender.banSender();
-        commandSender.editSenderNickName("测试名字");  
+        try {
+            commandSender.editSenderNickName("测试名字");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         bot.getApi().V2.channelMessageApi.sendTextMessage(commandSender.getChannelId(),"测试成功");
+
     }
 }
+
 ```
 ### 计划
 ~~目前，计划大改SDK，可感觉似乎kotlin可好用，正在学习中~~
@@ -89,7 +93,7 @@ public class Main implements CommandExecutor,Listener{
   <dependency>
     <groupId>top.qscraft</groupId>
     <artifactId>dodoopenjava</artifactId>
-    <version>3.1.6</version>
+    <version>3.1.8</version>
   </dependency>
 </dependencies>
 ```
@@ -102,7 +106,7 @@ public class Main implements CommandExecutor,Listener{
 	}
 
 	dependencies {
-	        implementation 'top.qscraft:dodoopenjava:3.1.6'
+	        implementation 'top.qscraft:dodoopenjava:3.1.8'
     }
 ```
 ### 教程(过于古老，无参考价值，改日重写)

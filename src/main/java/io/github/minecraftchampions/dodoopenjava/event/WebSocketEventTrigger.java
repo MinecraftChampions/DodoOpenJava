@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.event;
 
 import io.github.minecraftchampions.dodoopenjava.Bot;
+import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelarticle.ChannelArticleCommentEvent;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelarticle.ChannelArticlePublishEvent;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage.*;
@@ -19,12 +20,10 @@ import org.java_websocket.framing.Framedata;
 import org.java_websocket.framing.PingFrame;
 import org.java_websocket.handshake.ServerHandshake;
 import org.json.JSONObject;
+import org.slf4j.LoggerFactory;
 
 import java.net.URI;
 import java.nio.ByteBuffer;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.logging.Logger;
 
 /**
  * 事件触发
@@ -62,21 +61,14 @@ public class WebSocketEventTrigger extends EventTrigger {
     }
 
     public void reconnectWebsocket() {
-        if (mWebSocket != null && !mWebSocket.isOpen()) {
-            try {
-                CompletableFuture.runAsync(this::v2).get();
-            } catch (InterruptedException | ExecutionException e) {
-                throw new RuntimeException(e);
-            }
-
+        if (mWebSocket != null) {
+            Thread thread = new Thread(this::start);
+            thread.start();
         }
     }
 
     @SneakyThrows
     public void v2() {
-        if (isConnect()) {
-            return;
-        }
         bot.getApi().V2.eventApi.getWebSocketConnection()
                 .ifSuccess(result -> wssLo = result.getJSONObjectData().getString("endpoint"))
                 .ifFailure(result -> {
@@ -97,6 +89,21 @@ public class WebSocketEventTrigger extends EventTrigger {
 
     public static long waitForTheResponseMills = 15 * 1000;
 
+    public void sendHeartbeatPacket() {
+        Thread thread = new Thread(()->{
+            while (mWebSocket.isOpen()) {
+                try {
+                    Thread.sleep(30*1000);
+                    mWebSocket.sendPing();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+
+            }
+        });
+        thread.start();
+    }
+
     class WsListenerC extends WebSocketClient {
         @Override
         public void onWebsocketPong(WebSocket conn, Framedata f) {
@@ -111,6 +118,7 @@ public class WebSocketEventTrigger extends EventTrigger {
 
         @Override
         public void onOpen(ServerHandshake data) {
+
         }
 
         @Override
@@ -137,7 +145,7 @@ public class WebSocketEventTrigger extends EventTrigger {
                 case "7001" -> eventManager.fireEvent(new GiftSendEvent(jsontext));
                 case "8001" -> eventManager.fireEvent(new IntegralChangeEvent(jsontext));
                 case "9001" -> eventManager.fireEvent(new GoodsPurchaseEvent(jsontext));
-                default -> System.getLogger(Logger.GLOBAL_LOGGER_NAME).log(System.Logger.Level.WARNING, "未知的事件！");
+                default -> LoggerFactory.getLogger(DodoOpenJava.class).warn("未知的事件！");
             }
         }
 
@@ -149,7 +157,7 @@ public class WebSocketEventTrigger extends EventTrigger {
 
         @Override
         public void onClose(int code, String reason, boolean remote) {
-            System.getLogger(Logger.GLOBAL_LOGGER_NAME).log(System.Logger.Level.WARNING, "websocket关闭;code:" + code + ":reason:" + reason + ";已自动重连");
+            LoggerFactory.getLogger(DodoOpenJava.class).warn("websocket关闭;code:" + code + ":reason:" + reason + ";已自动重连");
             reconnectWebsocket();
         }
     }
