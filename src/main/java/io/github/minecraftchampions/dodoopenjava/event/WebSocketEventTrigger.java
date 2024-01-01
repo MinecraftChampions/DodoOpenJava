@@ -20,9 +20,9 @@ import org.java_websocket.framing.Framedata;
 import org.java_websocket.framing.PingFrame;
 import org.java_websocket.handshake.ServerHandshake;
 import org.json.JSONObject;
-import org.slf4j.LoggerFactory;
 
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
 
 /**
@@ -54,7 +54,7 @@ public class WebSocketEventTrigger extends EventTrigger {
         v2();
     }
 
-    public void close() {
+    public synchronized void close() {
         if (mWebSocket != null) {
             mWebSocket.close(1000, "");
         }
@@ -68,29 +68,36 @@ public class WebSocketEventTrigger extends EventTrigger {
     }
 
     @SneakyThrows
-    public void v2() {
+    public synchronized void v2() {
         bot.getApi().V2.eventApi.getWebSocketConnection()
-                .ifSuccess(result -> wssLo = result.getJSONObjectData().getString("endpoint"))
+                .ifSuccess(result -> {
+                    wssLo = result.getJSONObjectData().getString("endpoint");
+                    try {
+                        mWebSocket = new WsListenerC(new URI(wssLo));
+                        mWebSocket.setConnectionLostTimeout(0);
+                        mWebSocket.connect();
+                        long i = waitForTheResponseMills / 500;
+                        while (!mWebSocket.isOpen() && i > 0) {
+                            Thread.sleep(500);
+                            i--;
+                        }
+                        if (!mWebSocket.isOpen()) {
+                            new RuntimeException("未连接上websocket").printStackTrace();
+                        }
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                })
                 .ifFailure(result -> {
-                    throw new RuntimeException(result.getMessage());
+                    DodoOpenJava.LOGGER.warn("获取websocket连接错误" + result.getMessage() + ";尝试重连");
+                    v2();
                 });
-        mWebSocket = new WsListenerC(new URI(wssLo));
-        mWebSocket.setConnectionLostTimeout(0);
-        mWebSocket.connect();
-        long i = waitForTheResponseMills / 500;
-        while (!mWebSocket.isOpen() && i > 0) {
-            Thread.sleep(500);
-            i--;
-        }
-        if (!mWebSocket.isOpen()) {
-            new RuntimeException("未连接上websocket").printStackTrace();
-        }
     }
 
     public static long waitForTheResponseMills = 15 * 1000;
 
     public void sendHeartbeatPacket() {
-        Thread thread = new Thread(()->{
+        Thread thread = new Thread(() -> {
             while (mWebSocket.isOpen()) {
                 mWebSocket.sendPing();
                 mWebSocket.send("""
@@ -99,7 +106,7 @@ public class WebSocketEventTrigger extends EventTrigger {
                         }
                         """);
                 try {
-                    Thread.sleep(30*1000);
+                    Thread.sleep(30 * 1000);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -154,7 +161,7 @@ public class WebSocketEventTrigger extends EventTrigger {
                 case "7001" -> eventManager.fireEvent(new GiftSendEvent(jsontext));
                 case "8001" -> eventManager.fireEvent(new IntegralChangeEvent(jsontext));
                 case "9001" -> eventManager.fireEvent(new GoodsPurchaseEvent(jsontext));
-                default -> LoggerFactory.getLogger(DodoOpenJava.class).warn("未知的事件！");
+                default -> DodoOpenJava.LOGGER.warn("未知的事件！");
             }
         }
 
@@ -166,7 +173,7 @@ public class WebSocketEventTrigger extends EventTrigger {
 
         @Override
         public void onClose(int code, String reason, boolean remote) {
-            LoggerFactory.getLogger(DodoOpenJava.class).warn("websocket关闭;code:" + code + ":reason:" + reason + ";已自动重连");
+            DodoOpenJava.LOGGER.warn("websocket关闭;code:" + code + ":reason:" + reason + ";已自动重连");
             reconnectWebsocket();
         }
     }

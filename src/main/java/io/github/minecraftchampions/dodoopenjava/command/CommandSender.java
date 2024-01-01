@@ -99,7 +99,7 @@ public class CommandSender {
      * @param NickName 群昵称
      * @throws IOException 编辑失败后抛出
      */
-    public void editSenderNickName(@NonNull String NickName) throws IOException {
+    public synchronized void editSenderNickName(@NonNull String NickName) throws IOException {
         SenderNickName = NickName;
         bot.getApi().V2.memberApi.editMemberNickName(IslandSourceId, SenderDodoSourceId, NickName);
     }

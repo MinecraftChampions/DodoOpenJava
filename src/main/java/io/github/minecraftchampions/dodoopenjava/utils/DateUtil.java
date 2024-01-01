@@ -61,6 +61,16 @@ public class DateUtil {
     }
 
     /**
+     * 时间戳转Date
+     *
+     * @param timestamp 时间戳
+     * @return Date
+     */
+    public static Date timestampToDate(@NonNull long timestamp) {
+        return new Date(timestamp);
+    }
+
+    /**
      * 获取时间增加后的日期
      *
      * @param day 增加天数

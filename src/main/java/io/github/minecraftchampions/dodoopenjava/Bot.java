@@ -52,12 +52,16 @@ public class Bot {
         return BaseUtil.Authorization(clientId, token);
     }
 
+    public void enableApiResultsLogger() {
+        DodoOpenJava.enableApiResultsLogger(this);
+    }
+
     /**
      * 注册事件监听器
      *
      * @param listener 监听器
      */
-    public void registerListener(@NonNull Listener listener) {
+    public synchronized void registerListener(@NonNull Listener listener) {
         if (eventTrigger == null) {
             initEventListenSystem(new WebSocketEventTrigger(this));
         }
@@ -65,6 +69,13 @@ public class Bot {
             eventTrigger.start();
         }
         getEventManager().registerListener(listener);
+    }
+
+    public synchronized void removeEventTrigger() {
+        if (eventTrigger != null) {
+            eventTrigger.close();
+            eventTrigger = null;
+        }
     }
 
     /**
@@ -108,7 +119,7 @@ public class Bot {
      *
      * @param t EventTrigger
      */
-    public void initEventListenSystem(@NonNull EventTrigger t) {
+    public synchronized void initEventListenSystem(@NonNull EventTrigger t) {
         if (t.getBot() != this) {
             return;
         }
@@ -122,13 +133,7 @@ public class Bot {
      * 卸载这个bot
      */
     public void disable() {
-        commandManager.unregisterAllCommands();
-        eventManager.unregisterAllListeners();
-        if (eventTrigger != null) {
-            eventTrigger.close();
-        }
-        eventTrigger = null;
-        DodoOpenJava.getBots().remove(this);
+        DodoOpenJava.disableBot(this);
     }
 
     /**
@@ -607,9 +612,7 @@ public class Bot {
                 public Result deleteRole(String islandSourceId, String roleId) {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.RoleApi.deleteRole(bot.getAuthorization(), islandSourceId, roleId);
                 }
-
             }
-
         }
     }
 }

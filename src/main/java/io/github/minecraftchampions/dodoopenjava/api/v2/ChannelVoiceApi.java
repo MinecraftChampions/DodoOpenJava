@@ -40,7 +40,7 @@ public class ChannelVoiceApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
 
@@ -75,7 +75,7 @@ public class ChannelVoiceApi {
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId)
                 .put("channelId", channelId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -109,6 +109,6 @@ public class ChannelVoiceApi {
         jsonObject.put("operateType", operateType)
                 .put("dodoSourceId", dodoSourceId)
                 .put("channelId", channelId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 }

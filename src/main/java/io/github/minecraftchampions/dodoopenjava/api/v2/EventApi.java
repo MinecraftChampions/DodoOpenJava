@@ -34,6 +34,6 @@ public class EventApi {
     public static Result getWebSocketConnection(String authorization) throws IOException {
         String url = DodoOpenJava.BASEURL + "websocket/connection";
         JSONObject jsonObject = new JSONObject();
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 }

@@ -43,7 +43,7 @@ public class PersonalApi {
                 .put("dodoSourceId", dodoSourceId)
                 .put("messageType", 1)
                 .put("messageBody", Map.of("content", message));
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -92,7 +92,7 @@ public class PersonalApi {
                         "width", width,
                         "height", height,
                         "isOriginal", original));
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -132,7 +132,7 @@ public class PersonalApi {
                         "url", u,
                         "width", width,
                         "height", height));
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -167,7 +167,7 @@ public class PersonalApi {
                 .put("messageBody", Map.of(
                         "url", u
                 ));
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -211,6 +211,6 @@ public class PersonalApi {
                         "duration", duration,
                         "size", size
                 ));
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 }

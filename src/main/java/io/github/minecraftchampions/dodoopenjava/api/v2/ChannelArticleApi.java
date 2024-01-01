@@ -47,7 +47,7 @@ public class ChannelArticleApi {
                 .put("channelId", channelId)
                 .put("content", content)
                 .put("imageUrl", imageUrl);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
 
@@ -83,7 +83,7 @@ public class ChannelArticleApi {
         jsonObject.put("id", id)
                 .put("channelId", channelId)
                 .put("type", type);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
 }

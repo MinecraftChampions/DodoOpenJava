@@ -44,7 +44,7 @@ public class MemberApi {
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("pageSize", pageSize)
                 .put("maxId", maxId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -75,7 +75,7 @@ public class MemberApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -106,7 +106,7 @@ public class MemberApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -137,7 +137,7 @@ public class MemberApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -171,7 +171,7 @@ public class MemberApi {
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("nickName", nickName)
                 .put("dodoSourceId", dodoSourceId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -205,7 +205,7 @@ public class MemberApi {
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId)
                 .put("duration", duration);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -242,7 +242,7 @@ public class MemberApi {
                 .put("dodoSourceId", dodoSourceId)
                 .put("reason", reason)
                 .put("duration", duration);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -273,7 +273,7 @@ public class MemberApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -304,7 +304,7 @@ public class MemberApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -338,7 +338,7 @@ public class MemberApi {
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId)
                 .put("reason", reason);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
 
     }
 
@@ -373,7 +373,7 @@ public class MemberApi {
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId)
                 .put("noticeChannelId", noticeChannelId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -410,7 +410,7 @@ public class MemberApi {
                 .put("dodoSourceId", dodoSourceId)
                 .put("reason", reason)
                 .put("noticeChannelId", noticeChannelId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -441,7 +441,7 @@ public class MemberApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -470,6 +470,6 @@ public class MemberApi {
         String url = DodoOpenJava.BASEURL + "member/dodoid/map/list";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("dodoIdList", dodoIdList);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 }

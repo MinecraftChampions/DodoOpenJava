@@ -40,7 +40,7 @@ public class IntegralApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -77,6 +77,6 @@ public class IntegralApi {
                 .put("dodoSourceId", dodoSourceId)
                 .put("operateType", operateType)
                 .put("integral", integral);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 }

@@ -11,6 +11,7 @@ import java.util.function.Consumer;
 /**
  * api结果
  */
+@Getter
 public class Result {
     public static final JSONObject STATUS_CODE = new JSONObject("""
             {
@@ -85,17 +86,18 @@ public class Result {
             }
             """);
 
-    @Getter
     private final int statusCode;
 
-    @Getter
     private final String message;
+
+    private final long timestamp;
 
     private Object data;
 
     private Result(@NonNull JSONObject jsonObject) {
         this.statusCode = jsonObject.getInt("status");
         this.message = jsonObject.getString("message");
+        this.timestamp = System.currentTimeMillis();
         Equal.of(statusCode).equal(0).ifEquals(code -> this.data = jsonObject.get("data"));
     }
 

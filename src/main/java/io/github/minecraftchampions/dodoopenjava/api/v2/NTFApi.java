@@ -44,7 +44,7 @@ public class NTFApi {
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId)
                 .put("platform", platform);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -78,6 +78,6 @@ public class NTFApi {
                 .put("issuer", issuer)
                 .put("series", series)
                 .put("platform", platform);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 }

@@ -36,7 +36,7 @@ public class BotApi {
     public static Result getBotInfo(String authorization) throws IOException {
         String url = DodoOpenJava.BASEURL + "bot/info";
         JSONObject jsonObject = new JSONObject();
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -65,7 +65,7 @@ public class BotApi {
         String url = DodoOpenJava.BASEURL + "bot/island/leave";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -98,7 +98,7 @@ public class BotApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("pageSize", pageSize)
                 .put("maxId", maxId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -128,7 +128,7 @@ public class BotApi {
         String url = DodoOpenJava.BASEURL + "bot/invite/add";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("dodoSourceId", dodoSourceId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -158,6 +158,6 @@ public class BotApi {
         String url = DodoOpenJava.BASEURL + "bot/invite/remove";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("dodoSourceId", dodoSourceId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 }

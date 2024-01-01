@@ -37,7 +37,7 @@ public class RoleApi {
         String url = DodoOpenJava.BASEURL + "role/list";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -71,7 +71,7 @@ public class RoleApi {
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId)
                 .put("roleId", roleId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -105,7 +105,7 @@ public class RoleApi {
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId)
                 .put("roleId", roleId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -199,7 +199,7 @@ public class RoleApi {
         if (roleColor != null) {
             param.put("permission", permission);
         }
-        return Result.of(new JSONObject(NetUtil.sendRequest(param.toString(), url, authorization)));
+        return NetUtil.sendRequest(param.toString(), url, authorization);
     }
 
     /**
@@ -230,6 +230,6 @@ public class RoleApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("roleId", roleId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 }

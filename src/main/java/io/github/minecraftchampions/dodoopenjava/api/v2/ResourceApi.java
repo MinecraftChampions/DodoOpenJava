@@ -4,7 +4,6 @@ import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.Result;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -37,6 +36,6 @@ public class ResourceApi {
      */
     public static Result uploadResource(String authorization, String path) throws IOException {
         String url = DodoOpenJava.BASEURL + "resource/picture/upload";
-        return Result.of(new JSONObject(NetUtil.uploadFile(new HashMap<>(Map.of("Authorization",authorization)), path, url)));
+        return NetUtil.uploadFileToDodo(new HashMap<>(Map.of("Authorization",authorization)), path, url);
     }
 }

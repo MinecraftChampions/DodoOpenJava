@@ -35,7 +35,7 @@ public class EventManager {
      *
      * @param listener 事件监听器
      */
-    public void registerListener(@NonNull Listener listener) {
+    public synchronized void registerListener(@NonNull Listener listener) {
         for (Method method : listener.getClass().getDeclaredMethods()) {
             if (!Modifier.isPublic(method.getModifiers()))
                 continue;
@@ -64,7 +64,7 @@ public class EventManager {
     /**
      * 注销所有事件监听器
      */
-    public void unregisterAllListeners() {
+    public synchronized void unregisterAllListeners() {
         handlers.clear();
     }
 
@@ -73,7 +73,7 @@ public class EventManager {
      *
      * @param listener listener
      */
-    public void unregisterListeners(@NonNull Listener listener) {
+    public synchronized void unregisterListeners(@NonNull Listener listener) {
         Set<Class<? extends Event>> set = handlers.keySet();
         for (Class<? extends Event> clazz : set) {
             List<SimpleEntry<Method, Object>> list = handlers.get(clazz).stream().filter(e -> e.getKey().getDeclaringClass() == listener.getClass()).toList();

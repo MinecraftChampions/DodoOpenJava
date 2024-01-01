@@ -37,7 +37,7 @@ public class IslandApi {
         String url = DodoOpenJava.BASEURL + "island/info";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -62,7 +62,7 @@ public class IslandApi {
     public static Result getIslandList(String authorization) throws IOException {
         String url = DodoOpenJava.BASEURL + "island/list";
         JSONObject jsonObject = new JSONObject();
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -96,7 +96,7 @@ public class IslandApi {
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("pageSize", pageSize)
                 .put("maxId", maxId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -124,7 +124,7 @@ public class IslandApi {
         String url = DodoOpenJava.BASEURL + "island/mute/list";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -152,6 +152,6 @@ public class IslandApi {
         String url = DodoOpenJava.BASEURL + "island/ban/list";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 }

@@ -26,7 +26,7 @@ public class CommandManager {
     /**
      * 初始化
      */
-    private void init() {
+    private synchronized void init() {
         isInit = true;
         bot.registerListener(new CommandTrigger(this));
     }
@@ -36,7 +36,7 @@ public class CommandManager {
      *
      * @param command 命令实例
      */
-    public void registerCommand(@NonNull CommandExecutor command) {
+    public synchronized void registerCommand(@NonNull CommandExecutor command) {
         String commandName = command.getMainCommand();
         Set<String> aliases = command.getCommandAliases();
         if (aliases.contains(commandName)) {
@@ -69,7 +69,7 @@ public class CommandManager {
      *
      * @param command 命令实例
      */
-    public void unregisterCommand(@NonNull CommandExecutor command) {
+    public synchronized void unregisterCommand(@NonNull CommandExecutor command) {
         commands.remove(command.getMainCommand());
         for (String str : command.getCommandAliases()) {
             commandAliasesMapping.remove(str);
@@ -79,7 +79,7 @@ public class CommandManager {
     /**
      * 注销所有命令
      */
-    public void unregisterAllCommands() {
+    public synchronized void unregisterAllCommands() {
         commands.clear();
         commandAliasesMapping.clear();
     }

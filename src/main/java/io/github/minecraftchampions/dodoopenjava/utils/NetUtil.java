@@ -1,6 +1,9 @@
 package io.github.minecraftchampions.dodoopenjava.utils;
 
+import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
+import io.github.minecraftchampions.dodoopenjava.Result;
 import lombok.NonNull;
+import org.json.JSONObject;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -19,12 +22,17 @@ public class NetUtil {
      * @param url           链接地址
      * @param authorization Authorization
      */
-    public static String sendRequest(@NonNull String param, @NonNull String url,
+    public static Result sendRequest(@NonNull String param, @NonNull String url,
                                      @NonNull String authorization) throws IOException {
         HashMap<String, String> header = new HashMap<>();
         header.put("Content-Type", "application/json");
         header.put("Authorization", authorization);
-        return sendPostJsonRequest(url, header, param);
+        String str = sendPostJsonRequest(url, header, param);
+        Result result = Result.of(new JSONObject(str));
+        if (DodoOpenJava.getLogMap().containsKey(authorization)) {
+            DodoOpenJava.getLogMap().get(authorization).addResult(result);
+        }
+        return result;
     }
 
     /**
@@ -126,6 +134,19 @@ public class NetUtil {
         reader.close();
         return sb.toString();
     }
+
+    public static Result uploadFileToDodo(@NonNull HashMap<String, String> header,
+                                          @NonNull String path,
+                                          @NonNull String url) throws IOException {
+        String str = uploadFile(header, path, url);
+        Result result = Result.of(new JSONObject(str));
+        String authorization = header.get("Authorization");
+        if (DodoOpenJava.getLogMap().containsKey(authorization)) {
+            DodoOpenJava.getLogMap().get(authorization).addResult(result);
+        }
+        return result;
+    }
+
 
     /**
      * 上传资源图片

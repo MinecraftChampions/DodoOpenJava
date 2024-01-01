@@ -23,7 +23,6 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.SneakyThrows;
 import org.json.JSONObject;
-import org.slf4j.LoggerFactory;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -46,14 +45,14 @@ public class WebHookEventTrigger extends EventTrigger {
 
     private final HttpServerProvider provider = HttpServerProvider.provider();
 
-    public HttpServer server = null;
+    private HttpServer server = null;
 
     /**
      * 启动监听
      */
     @SneakyThrows
     @Override
-    public void start() {
+    public synchronized void start() {
         server = provider.createHttpServer(new InetSocketAddress(port), 1000);
         server.createContext(getPath(), new Handler());
         server.start();
@@ -84,7 +83,7 @@ public class WebHookEventTrigger extends EventTrigger {
      *
      * @param path 路径
      */
-    public void setPath(String path) {
+    public synchronized void setPath(String path) {
         if (path.isEmpty()) {
             this.path = path;
         }
@@ -95,14 +94,14 @@ public class WebHookEventTrigger extends EventTrigger {
      *
      * @param port 端口
      */
-    public void setPort(int port) {
+    public synchronized void setPort(int port) {
         this.port = port;
     }
 
     /**
      * 解密密钥
      */
-    public void setSecretKey(@NonNull String s) {
+    public synchronized void setSecretKey(@NonNull String s) {
         SecretKey = s;
     }
 
@@ -111,7 +110,7 @@ public class WebHookEventTrigger extends EventTrigger {
      * 关闭服务器
      */
     @Override
-    public void close() {
+    public synchronized void close() {
         if (server == null || isConnect()) {
             return;
         }
@@ -240,7 +239,7 @@ public class WebHookEventTrigger extends EventTrigger {
                 case "7001" -> eventManager.fireEvent(new GiftSendEvent(json));
                 case "8001" -> eventManager.fireEvent(new IntegralChangeEvent(json));
                 case "9001" -> eventManager.fireEvent(new GoodsPurchaseEvent(json));
-                default -> LoggerFactory.getLogger(DodoOpenJava.class).warn( "未知的事件！");
+                default -> DodoOpenJava.LOGGER.warn( "未知的事件！");
             }
         }
     }

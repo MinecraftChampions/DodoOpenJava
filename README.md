@@ -25,6 +25,8 @@ public class Main implements CommandExecutor,Listener{
     public static void main(String... args) {
         //创建机器人实例
         bot = DodoOpenJava.createBot("111111","token");
+        //启用日志记录功能
+        bot.enableApiResultsLogger();
         //注册事件监听器
         bot.registerListener(new Main());
         //注册命令处理器
@@ -36,6 +38,7 @@ public class Main implements CommandExecutor,Listener{
         });
 
         bot.getApi().V2.channelMessageApi.sendTextMessage("1252355","测试");
+        System.out.println(DodoOpenJava.getLogMap().get(bot.getAuthorization()));
     }
 
     @EventHandler
@@ -93,7 +96,7 @@ public class Main implements CommandExecutor,Listener{
   <dependency>
     <groupId>top.qscraft</groupId>
     <artifactId>dodoopenjava</artifactId>
-    <version>3.1.12</version>
+    <version>3.1.13-SNAPSHOT-1</version>
   </dependency>
 </dependencies>
 ```
@@ -106,7 +109,7 @@ public class Main implements CommandExecutor,Listener{
 	}
 
 	dependencies {
-	        implementation 'top.qscraft:dodoopenjava:3.1.12'
+	        implementation 'top.qscraft:dodoopenjava:3.1.13-SNAPSHOT-1'
     }
 ```
 ### 教程(过于古老，无参考价值，改日重写)

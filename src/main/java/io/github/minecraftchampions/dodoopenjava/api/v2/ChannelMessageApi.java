@@ -74,7 +74,7 @@ public class ChannelMessageApi {
                 .put("messageBody", Map.of(
                         "content", content
                 ));
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -120,7 +120,7 @@ public class ChannelMessageApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId)
                 .put("operateType", operateType);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -148,7 +148,7 @@ public class ChannelMessageApi {
         String url = DodoOpenJava.BASEURL + "channel/message/reaction/list";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -182,7 +182,7 @@ public class ChannelMessageApi {
                         "type", type,
                         "id", id
                 ));
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -219,7 +219,7 @@ public class ChannelMessageApi {
                         "content", content,
                         "referencedMessageId", referencedMessageId
                 ));
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -268,7 +268,7 @@ public class ChannelMessageApi {
                         "height", height,
                         "isOriginal", original
                 ));
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -308,7 +308,7 @@ public class ChannelMessageApi {
                         "width", width,
                         "height", height
                 ));
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -362,7 +362,7 @@ public class ChannelMessageApi {
                 .put("messageBody", Map.of(
                         "url", videoUrl
                 ));
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -405,7 +405,7 @@ public class ChannelMessageApi {
                         "duration", duration,
                         "size", size
                 ));
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -439,7 +439,7 @@ public class ChannelMessageApi {
                 .put("messageBody", Map.of(
                         "jumpUrl", jumpUrl
                 ));
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -479,7 +479,7 @@ public class ChannelMessageApi {
                         "name", name,
                         "size", size
                 ));
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -512,7 +512,7 @@ public class ChannelMessageApi {
                 .put("messageBody", Map.of(
                         "content", content
                 ));
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -540,7 +540,7 @@ public class ChannelMessageApi {
         String url = DodoOpenJava.BASEURL + "channel/message/withdraw";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -571,7 +571,7 @@ public class ChannelMessageApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId)
                 .put("reason", reason);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -605,7 +605,7 @@ public class ChannelMessageApi {
                         "type", 1,
                         "id", id
                 ));
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -642,7 +642,7 @@ public class ChannelMessageApi {
                         "type", 1,
                         "id", id
                 ));
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -676,7 +676,7 @@ public class ChannelMessageApi {
                         "type", 1,
                         "id", id
                 ));
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -708,7 +708,7 @@ public class ChannelMessageApi {
         jsonObject.put("channelId", channelId)
                 .put("messageType", 6)
                 .put("messageBody", messageBody.toString());
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -739,7 +739,7 @@ public class ChannelMessageApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId)
                 .put("messageBody", messageBody.toString());
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
 }

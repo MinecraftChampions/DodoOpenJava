@@ -39,7 +39,7 @@ public class ChannelApi {
         String url = DodoOpenJava.BASEURL + "channel/list";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -68,7 +68,7 @@ public class ChannelApi {
         String url = DodoOpenJava.BASEURL + "channel/info";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("channelId", channelId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -103,7 +103,7 @@ public class ChannelApi {
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("channelName", channelName)
                 .put("channelType", channelType);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -138,7 +138,7 @@ public class ChannelApi {
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("channelName", channelName)
                 .put("channelId", channelId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -170,6 +170,6 @@ public class ChannelApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("channelId", channelId);
-        return Result.of(new JSONObject(NetUtil.sendRequest(jsonObject.toString(), url, authorization)));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 }

@@ -38,7 +38,7 @@ public class GiftApi {
         String param = new JSONObject()
                 .put("islandSourceId", islandSourceId)
                 .toString();
-        return Result.of(new JSONObject(NetUtil.sendRequest(param, url, authorization)));
+        return NetUtil.sendRequest(param, url, authorization);
     }
 
     /**
@@ -67,7 +67,7 @@ public class GiftApi {
         String param = new JSONObject()
                 .put("islandSourceId", islandSourceId)
                 .toString();
-        return Result.of(new JSONObject(NetUtil.sendRequest(param, url, authorization)));
+        return NetUtil.sendRequest(param, url, authorization);
     }
 
     /**
@@ -99,7 +99,7 @@ public class GiftApi {
                 .put("targetId", targetId)
                 .put("targetType", targetType)
                 .toString();
-        return Result.of(new JSONObject(NetUtil.sendRequest(param, url, authorization)));
+        return NetUtil.sendRequest(param, url, authorization);
     }
 
     /**
@@ -140,7 +140,7 @@ public class GiftApi {
                 .put("pageSize", pageSize)
                 .put("maxId", maxId)
                 .toString();
-        return Result.of(new JSONObject(NetUtil.sendRequest(param, url, authorization)));
+        return NetUtil.sendRequest(param, url, authorization);
     }
 
     /**
@@ -178,6 +178,6 @@ public class GiftApi {
                 .put("pageSize", pageSize)
                 .put("maxId", maxId)
                 .toString();
-        return Result.of(new JSONObject(NetUtil.sendRequest(param, url, authorization)));
+        return NetUtil.sendRequest(param, url, authorization);
     }
 }
