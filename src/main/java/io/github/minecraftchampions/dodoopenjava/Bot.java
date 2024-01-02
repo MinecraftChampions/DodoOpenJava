@@ -1,6 +1,5 @@
 package io.github.minecraftchampions.dodoopenjava;
 
-import io.github.minecraftchampions.dodoopenjava.card.Card;
 import io.github.minecraftchampions.dodoopenjava.command.CommandExecutor;
 import io.github.minecraftchampions.dodoopenjava.command.CommandManager;
 import io.github.minecraftchampions.dodoopenjava.event.EventManager;
@@ -8,6 +7,8 @@ import io.github.minecraftchampions.dodoopenjava.event.EventTrigger;
 import io.github.minecraftchampions.dodoopenjava.event.Listener;
 import io.github.minecraftchampions.dodoopenjava.event.WebSocketEventTrigger;
 import io.github.minecraftchampions.dodoopenjava.message.Message;
+import io.github.minecraftchampions.dodoopenjava.message.card.CardMessage;
+import io.github.minecraftchampions.dodoopenjava.message.text.TextMessage;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import lombok.Getter;
 import lombok.NonNull;
@@ -52,8 +53,18 @@ public class Bot {
         return BaseUtil.Authorization(clientId, token);
     }
 
+    /**
+     * 启用日志记录器
+     */
     public void enableApiResultsLogger() {
         DodoOpenJava.enableApiResultsLogger(this);
+    }
+
+    /**
+     * 卸载日志记录器
+     */
+    public void disableApiResultsLogger() {
+        DodoOpenJava.disableApiResultsLogger(this);
     }
 
     /**
@@ -71,6 +82,9 @@ public class Bot {
         getEventManager().registerListener(listener);
     }
 
+    /**
+     * 移除事件监听器
+     */
     public synchronized void removeEventTrigger() {
         if (eventTrigger != null) {
             eventTrigger.close();
@@ -223,7 +237,6 @@ public class Bot {
                 public Result setBotIslandLeave(String islandSourceId) {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.BotApi.setBotIslandLeave(bot.getAuthorization(), islandSourceId);
                 }
-
             }
 
             public class ChannelApi {
@@ -251,7 +264,6 @@ public class Bot {
                 public Result deleteChannel(String islandSourceId, String channelId) {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.ChannelApi.deleteChannel(bot.getAuthorization(), islandSourceId, channelId);
                 }
-
             }
 
             public class ChannelArticleApi {
@@ -264,7 +276,6 @@ public class Bot {
                 public Result addChannelArticle(String channelId, String title, String content, String imageUrl) {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.ChannelArticleApi.addChannelArticle(bot.getAuthorization(), channelId, title, content, imageUrl);
                 }
-
             }
 
             public class ChannelMessageApi {
@@ -329,7 +340,7 @@ public class Bot {
                 }
 
                 @SneakyThrows
-                public Result editChannelCardMessage(String messageId, Card messageBody) {
+                public Result editChannelCardMessage(String messageId, CardMessage messageBody) {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.ChannelMessageApi.editChannelCardMessage(bot.getAuthorization(), messageId, messageBody);
                 }
 
@@ -354,8 +365,8 @@ public class Bot {
                 }
 
                 @SneakyThrows
-                public Result sendTextMessage(String channelId, Message message) {
-                    return io.github.minecraftchampions.dodoopenjava.api.v2.ChannelMessageApi.sendTextMessage(bot.getAuthorization(), channelId, message);
+                public Result sendTextMessage(String channelId, TextMessage textMessage) {
+                    return io.github.minecraftchampions.dodoopenjava.api.v2.ChannelMessageApi.sendTextMessage(bot.getAuthorization(), channelId, textMessage);
                 }
 
                 @SneakyThrows
@@ -369,7 +380,7 @@ public class Bot {
                 }
 
                 @SneakyThrows
-                public Result sendCardMessage(String channelId, Card messageBody) {
+                public Result sendCardMessage(String channelId, CardMessage messageBody) {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.ChannelMessageApi.sendCardMessage(bot.getAuthorization(), channelId, messageBody);
                 }
 
@@ -378,9 +389,30 @@ public class Bot {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.ChannelMessageApi.getChannelMessageReactionMemberList(bot.getAuthorization(), messageId, type, id, pageSize, maxId);
                 }
 
+                @SneakyThrows
+                public Result sendMessage(String channelId, Message messageBody) {
+                    return io.github.minecraftchampions.dodoopenjava.api.v2.ChannelMessageApi.sendMessage(bot.getAuthorization(), channelId, messageBody);
+                }
             }
 
             public class ChannelVoiceApi {
+                @SneakyThrows
+                public Result getChannelVoiceMemberStatus(String islandSourceId, String dodoSourceId) {
+                    return io.github.minecraftchampions.dodoopenjava.api.v2.ChannelVoiceApi.getChannelVoiceMemberStatus(bot.getAuthorization(), islandSourceId, dodoSourceId);
+
+                }
+
+                @SneakyThrows
+                public Result moveChannelVoiceMember(String islandSourceId, String dodoSourceId, String channelId) {
+                    return io.github.minecraftchampions.dodoopenjava.api.v2.ChannelVoiceApi.moveChannelVoiceMember(bot.getAuthorization(), islandSourceId, dodoSourceId, channelId);
+
+                }
+
+                @SneakyThrows
+                public Result editChannelVoiceMember(int operateType, String dodoSourceId, String channelId) {
+                    return io.github.minecraftchampions.dodoopenjava.api.v2.ChannelVoiceApi.editChannelVoiceMember(bot.getAuthorization(), operateType, dodoSourceId, channelId);
+
+                }
             }
 
             public class EventApi {
@@ -388,7 +420,6 @@ public class Bot {
                 public Result getWebSocketConnection() {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.EventApi.getWebSocketConnection(bot.getAuthorization());
                 }
-
             }
 
             public class GiftApi {
@@ -416,7 +447,6 @@ public class Bot {
                 public Result getGiftAccount(String islandSourceId) {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.GiftApi.getGiftAccount(bot.getAuthorization(), islandSourceId);
                 }
-
             }
 
             public class IntegralApi {
@@ -429,7 +459,6 @@ public class Bot {
                 public Result setIntegralEdit(String islandSourceId, String dodoSourceId, int operateType, long integral) {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.IntegralApi.setIntegralEdit(bot.getAuthorization(), islandSourceId, dodoSourceId, operateType, integral);
                 }
-
             }
 
             public class IslandApi {
@@ -457,7 +486,6 @@ public class Bot {
                 public Result getIslandBanList(String islandSourceId) {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.IslandApi.getIslandBanList(bot.getAuthorization(), islandSourceId);
                 }
-
             }
 
             public class MemberApi {

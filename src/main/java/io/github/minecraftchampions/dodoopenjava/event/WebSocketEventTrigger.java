@@ -22,7 +22,6 @@ import org.java_websocket.handshake.ServerHandshake;
 import org.json.JSONObject;
 
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
 
 /**
@@ -49,6 +48,10 @@ public class WebSocketEventTrigger extends EventTrigger {
         this.bot = bot;
     }
 
+    private int reacquireCount = 0;
+
+    private final int reacquireMaxCount = 50;
+
     @Override
     public void start() {
         v2();
@@ -71,6 +74,7 @@ public class WebSocketEventTrigger extends EventTrigger {
     public synchronized void v2() {
         bot.getApi().V2.eventApi.getWebSocketConnection()
                 .ifSuccess(result -> {
+                    reacquireCount = 0;
                     wssLo = result.getJSONObjectData().getString("endpoint");
                     try {
                         mWebSocket = new WsListenerC(new URI(wssLo));
@@ -89,7 +93,15 @@ public class WebSocketEventTrigger extends EventTrigger {
                     }
                 })
                 .ifFailure(result -> {
-                    DodoOpenJava.LOGGER.warn("获取websocket连接错误" + result.getMessage() + ";尝试重连");
+                    reacquireCount++;
+                    if (reacquireCount > reacquireMaxCount) {
+                        DodoOpenJava.LOGGER.error("获取websocket连接错误" + result.getMessage() +
+                                ";\n当前重连次数:" + reacquireCount + ",已超过最大重连次数:" + reacquireMaxCount
+                                + ",已取消重连");
+                        return;
+                    }
+                    DodoOpenJava.LOGGER.warn("获取websocket连接错误" + result.getMessage() +
+                            ";\n已尝试重新获取,当前重新获取次数:" + reacquireCount);
                     v2();
                 });
     }
@@ -145,23 +157,29 @@ public class WebSocketEventTrigger extends EventTrigger {
                 return;
             }
             JSONObject jsontext = new JSONObject(message);
-            switch (jsontext.getJSONObject("data").getString("eventType")) {
-                case "1001" -> eventManager.fireEvent(new PersonalMessageEvent(jsontext));
-                case "2001" -> eventManager.fireEvent(new MessageEvent(jsontext));
-                case "3001" -> eventManager.fireEvent(new MessageReactionEvent(jsontext));
-                case "3002" -> eventManager.fireEvent(new CardMessageButtonClickEvent(jsontext));
-                case "3003" -> eventManager.fireEvent(new CardMessageFormSubmitEvent(jsontext));
-                case "3004" -> eventManager.fireEvent(new CardMessageListSubmitEvent(jsontext));
-                case "4001" -> eventManager.fireEvent(new MemberJoinEvent(jsontext));
-                case "4002" -> eventManager.fireEvent(new MemberLeaveEvent(jsontext));
-                case "5001" -> eventManager.fireEvent(new ChannelVoiceMemberJoinEvent(jsontext));
-                case "5002" -> eventManager.fireEvent(new ChannelVoiceMemberLeaveEvent(jsontext));
-                case "6001" -> eventManager.fireEvent(new ChannelArticlePublishEvent(jsontext));
-                case "6002" -> eventManager.fireEvent(new ChannelArticleCommentEvent(jsontext));
-                case "7001" -> eventManager.fireEvent(new GiftSendEvent(jsontext));
-                case "8001" -> eventManager.fireEvent(new IntegralChangeEvent(jsontext));
-                case "9001" -> eventManager.fireEvent(new GoodsPurchaseEvent(jsontext));
-                default -> DodoOpenJava.LOGGER.warn("未知的事件！");
+            try {
+                switch (jsontext.getJSONObject("data").getString("eventType")) {
+                    case "1001" -> eventManager.fireEvent(new PersonalMessageEvent(jsontext));
+                    case "2001" -> eventManager.fireEvent(new MessageEvent(jsontext));
+                    case "3001" -> eventManager.fireEvent(new MessageReactionEvent(jsontext));
+                    case "3002" -> eventManager.fireEvent(new CardMessageButtonClickEvent(jsontext));
+                    case "3003" -> eventManager.fireEvent(new CardMessageFormSubmitEvent(jsontext));
+                    case "3004" -> eventManager.fireEvent(new CardMessageListSubmitEvent(jsontext));
+                    case "4001" -> eventManager.fireEvent(new MemberJoinEvent(jsontext));
+                    case "4002" -> eventManager.fireEvent(new MemberLeaveEvent(jsontext));
+                    case "5001" -> eventManager.fireEvent(new ChannelVoiceMemberJoinEvent(jsontext));
+                    case "5002" -> eventManager.fireEvent(new ChannelVoiceMemberLeaveEvent(jsontext));
+                    case "6001" -> eventManager.fireEvent(new ChannelArticlePublishEvent(jsontext));
+                    case "6002" -> eventManager.fireEvent(new ChannelArticleCommentEvent(jsontext));
+                    case "7001" -> eventManager.fireEvent(new GiftSendEvent(jsontext));
+                    case "8001" -> eventManager.fireEvent(new IntegralChangeEvent(jsontext));
+                    case "9001" -> eventManager.fireEvent(new GoodsPurchaseEvent(jsontext));
+                    default -> DodoOpenJava.LOGGER.warn("未知的事件！");
+                }
+            } catch (Exception e) {
+                DodoOpenJava.LOGGER.warn("Websocket消息接收发生未知错误;消息内容:" + message
+                        + ";\n错误内容:" + e.getLocalizedMessage());
+                sendPing();
             }
         }
 

@@ -103,6 +103,7 @@ public class Result {
 
     /**
      * 初始化
+     *
      * @param jsonObject jsonObject
      * @return Result
      */
@@ -112,6 +113,7 @@ public class Result {
 
     /**
      * 如果成功
+     *
      * @param consumer consumer
      * @return this
      */
@@ -122,6 +124,7 @@ public class Result {
 
     /**
      * 如果失败
+     *
      * @param consumer consumer
      * @return this
      */
@@ -132,6 +135,7 @@ public class Result {
 
     /**
      * 获取
+     *
      * @return jsonObject
      */
     public JSONObject getJSONObjectData() {
@@ -144,6 +148,7 @@ public class Result {
 
     /**
      * 获取
+     *
      * @return jsonArray
      */
     public JSONArray getJSONArrayData() {

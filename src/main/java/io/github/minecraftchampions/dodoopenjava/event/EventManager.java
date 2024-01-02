@@ -7,17 +7,18 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ConcurrentHashMap;
 
 
 /**
  * 事件的相关方法（包含监听器注册等）
  */
 public class EventManager {
-    private final HashMap<Class<? extends Event>, ArrayList<SimpleEntry<Method, Object>>> handlers = new HashMap<>();
+    private final Map<Class<? extends Event>, ArrayList<SimpleEntry<Method, Object>>> handlers = new ConcurrentHashMap<>();
 
     /**
      * 注册事件监听器
@@ -35,7 +36,7 @@ public class EventManager {
      *
      * @param listener 事件监听器
      */
-    public synchronized void registerListener(@NonNull Listener listener) {
+    public void registerListener(@NonNull Listener listener) {
         for (Method method : listener.getClass().getDeclaredMethods()) {
             if (!Modifier.isPublic(method.getModifiers()))
                 continue;
@@ -53,10 +54,13 @@ public class EventManager {
             method.setAccessible(true);
             if (!handlers.containsKey(eventClass))
                 handlers.put(eventClass, new ArrayList<>());
-            if (Modifier.isStatic(method.getModifiers())) {
-                handlers.get(eventClass).add(new SimpleEntry<>(method, null));
-            } else {
-                handlers.get(eventClass).add(new SimpleEntry<>(method, listener));
+            List<SimpleEntry<Method, Object>> list = handlers.get(eventClass);
+            synchronized (list) {
+                if (Modifier.isStatic(method.getModifiers())) {
+                    list.add(new SimpleEntry<>(method, null));
+                } else {
+                    list.add(new SimpleEntry<>(method, listener));
+                }
             }
         }
     }
@@ -65,7 +69,9 @@ public class EventManager {
      * 注销所有事件监听器
      */
     public synchronized void unregisterAllListeners() {
-        handlers.clear();
+        synchronized (handlers) {
+            handlers.clear();
+        }
     }
 
     /**
@@ -73,11 +79,13 @@ public class EventManager {
      *
      * @param listener listener
      */
-    public synchronized void unregisterListeners(@NonNull Listener listener) {
-        Set<Class<? extends Event>> set = handlers.keySet();
-        for (Class<? extends Event> clazz : set) {
-            List<SimpleEntry<Method, Object>> list = handlers.get(clazz).stream().filter(e -> e.getKey().getDeclaringClass() == listener.getClass()).toList();
-            handlers.get(clazz).removeAll(list);
+    public void unregisterListeners(@NonNull Listener listener) {
+        synchronized (handlers) {
+            Set<Class<? extends Event>> set = handlers.keySet();
+            for (Class<? extends Event> clazz : set) {
+                List<SimpleEntry<Method, Object>> list = handlers.get(clazz).stream().filter(e -> e.getKey().getDeclaringClass() == listener.getClass()).toList();
+                handlers.get(clazz).removeAll(list);
+            }
         }
     }
 
@@ -91,6 +99,18 @@ public class EventManager {
         if (event.getEventType() == null || event.getEventName().isEmpty()) {
             throw new RuntimeException("未知的Event");
         }
+        synchronized (handlers) {
+            fireEvent(event, handlers);
+        }
+    }
+
+    /**
+     * 触发事件
+     *
+     * @param event    事件
+     * @param handlers 储存
+     */
+    public static void fireEvent(@NonNull Event event, @NonNull Map<Class<? extends Event>, ArrayList<SimpleEntry<Method, Object>>> handlers) {
         boolean isAsync = event.isAsynchronous();
         if (!handlers.containsKey(event.eventType)) {
             return;

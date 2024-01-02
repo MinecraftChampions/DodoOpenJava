@@ -5,8 +5,9 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
-import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 命令系统的相关方法
@@ -14,10 +15,10 @@ import java.util.Set;
 @Getter
 @RequiredArgsConstructor
 public class CommandManager {
-    private final HashMap<String, CommandExecutor> commands = new HashMap<>();
+    private final Map<String, CommandExecutor> commands = new ConcurrentHashMap<>();
 
 
-    private final HashMap<String, String> commandAliasesMapping = new HashMap<>();
+    private final Map<String, String> commandAliasesMapping = new ConcurrentHashMap<>();
 
     private final @NonNull Bot bot;
 
@@ -36,7 +37,7 @@ public class CommandManager {
      *
      * @param command 命令实例
      */
-    public synchronized void registerCommand(@NonNull CommandExecutor command) {
+    public void registerCommand(@NonNull CommandExecutor command) {
         String commandName = command.getMainCommand();
         Set<String> aliases = command.getCommandAliases();
         if (aliases.contains(commandName)) {
@@ -69,7 +70,7 @@ public class CommandManager {
      *
      * @param command 命令实例
      */
-    public synchronized void unregisterCommand(@NonNull CommandExecutor command) {
+    public void unregisterCommand(@NonNull CommandExecutor command) {
         commands.remove(command.getMainCommand());
         for (String str : command.getCommandAliases()) {
             commandAliasesMapping.remove(str);
@@ -79,7 +80,7 @@ public class CommandManager {
     /**
      * 注销所有命令
      */
-    public synchronized void unregisterAllCommands() {
+    public void unregisterAllCommands() {
         commands.clear();
         commandAliasesMapping.clear();
     }
@@ -95,12 +96,14 @@ public class CommandManager {
     public boolean trigger(@NonNull CommandSender sender, @NonNull String commandName,
                            boolean personalMessage, @NonNull String... args) {
         CommandExecutor command;
-        if (commands.containsKey(commandName)) {
-            command = commands.get(commandName);
-        } else if (commandAliasesMapping.containsKey(commandName)) {
-            command = commands.get(commandAliasesMapping.get(commandName));
-        } else {
-            return false;
+        synchronized (commands) {
+            if (commands.containsKey(commandName)) {
+                command = commands.get(commandName);
+            } else if (commandAliasesMapping.containsKey(commandName)) {
+                command = commands.get(commandAliasesMapping.get(commandName));
+            } else {
+                return false;
+            }
         }
         if (!command.allowPersonalChat() && personalMessage) {
             return false;

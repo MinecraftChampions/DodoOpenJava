@@ -138,7 +138,7 @@ public class WebHookEventTrigger extends EventTrigger {
                 String error = """
                         {
                           "status": -9999,
-                          "message": "错误的请求"
+                          "textMessage": "错误的请求"
                         }
                         """;
                 httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, error.getBytes(StandardCharsets.UTF_8).length);
@@ -165,29 +165,29 @@ public class WebHookEventTrigger extends EventTrigger {
                     String event = OpenSecretUtil.WebHookDecrypt(payload, SecretKey);
                     JSONObject jsonObject = new JSONObject(Objects.requireNonNull(event));
                     if (jsonObject.getInt("type") == 2) {
-                        String message = "{\n" +
+                        String textMessage = "{\n" +
                                 "    \"status\": 0,\n" +
-                                "    \"message\": \"\",\n" +
+                                "    \"textMessage\": \"\",\n" +
                                 "    \"data\": {\n" +
                                 "        \"checkCode\": \"" + jsonObject.getJSONObject("data").getString("checkCode") + "\"\n" +
                                 "    }\n" +
                                 "}";
-                        httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, message.getBytes(StandardCharsets.UTF_8).length);
+                        httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, textMessage.getBytes(StandardCharsets.UTF_8).length);
                         OutputStream responseBody = httpExchange.getResponseBody();
                         OutputStreamWriter writer = new OutputStreamWriter(responseBody, StandardCharsets.UTF_8);
-                        writer.write(message);
+                        writer.write(textMessage);
                         writer.close();
                         responseBody.close();
                     } else {
-                        String message = """
+                        String textMessage = """
                                 {
                                     "status": 0,
-                                    "message": ""
+                                    "textMessage": ""
                                 }""";
-                        httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, message.getBytes(StandardCharsets.UTF_8).length);
+                        httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, textMessage.getBytes(StandardCharsets.UTF_8).length);
                         OutputStream responseBody = httpExchange.getResponseBody();
                         OutputStreamWriter writer = new OutputStreamWriter(responseBody, StandardCharsets.UTF_8);
-                        writer.write(message);
+                        writer.write(textMessage);
                         writer.close();
                         responseBody.close();
                         DisposeEvent thread = new DisposeEvent(jsonObject);
@@ -197,7 +197,7 @@ public class WebHookEventTrigger extends EventTrigger {
                     String error = """
                             {
                               "status": -9999,
-                              "message": "处理失败"
+                              "textMessage": "处理失败"
                             }
                             """;
                     httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, error.getBytes(StandardCharsets.UTF_8).length);

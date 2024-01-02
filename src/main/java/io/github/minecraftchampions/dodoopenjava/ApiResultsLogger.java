@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentSkipListMap;
 
 /**
@@ -21,23 +22,42 @@ public class ApiResultsLogger {
 
     private final ConcurrentSkipListMap<Long, LinkedHashSet<Result>> resultsLogMap = new ConcurrentSkipListMap<>();
 
+    /**
+     * 添加API执行结果记录
+     *
+     * @param result result
+     */
     public void addResult(@NonNull Result result) {
-        long timestamp = result.getTimestamp();
-        Set<Result> results = resultsLogMap.get(timestamp);
-        if (results == null) {
-            resultsLogMap.put(timestamp, new LinkedHashSet<>(Set.of(result)));
-            return;
-        }
-        synchronized (results) {
-            results.add(result);
-        }
+        CompletableFuture.runAsync(() -> {
+            long timestamp = result.getTimestamp();
+            Set<Result> results = resultsLogMap.get(timestamp);
+            if (results == null) {
+                resultsLogMap.put(timestamp, new LinkedHashSet<>(Set.of(result)));
+                return;
+            }
+            synchronized (results) {
+                results.add(result);
+            }
+        });
     }
 
-    public ConcurrentSkipListMap<Long, LinkedHashSet<Result>> getAllLogs() {
+    /**
+     * 获取日志
+     *
+     * @return 日志
+     */
+    public CompletableFuture<ConcurrentSkipListMap<Long, LinkedHashSet<Result>>> getAllLogs() {
         return getLogs(null, null);
     }
 
-    public ConcurrentSkipListMap<Long, LinkedHashSet<Result>> getLogs(Date startDate, Date endDate) {
+    /**
+     * 获取指定时间段到另一个指定时间段的日志
+     *
+     * @param startDate 开始
+     * @param endDate   结束
+     * @return 日志
+     */
+    public CompletableFuture<ConcurrentSkipListMap<Long, LinkedHashSet<Result>>> getLogs(Date startDate, Date endDate) {
         long startTimestamp;
         long endTimestamp;
         if (startDate == null) {
@@ -50,18 +70,26 @@ public class ApiResultsLogger {
         } else {
             endTimestamp = endDate.getTime();
         }
-        return getLogs(startTimestamp,endTimestamp);
+        return getLogs(startTimestamp, endTimestamp);
     }
 
-    public ConcurrentSkipListMap<Long, LinkedHashSet<Result>> getLogs(long startTimestamp, long endTimestamp) {
-        Map<Long, LinkedHashSet<Result>> subMap = resultsLogMap.subMap(startTimestamp, true, endTimestamp, true);
-        ConcurrentSkipListMap<Long, LinkedHashSet<Result>> deepCopiedMap = new ConcurrentSkipListMap<>();
-        for (Map.Entry<Long, LinkedHashSet<Result>> entry : subMap.entrySet()) {
-            deepCopiedMap.put(entry.getKey(), (LinkedHashSet<Result>)entry.getValue().clone());
-        }
-        return deepCopiedMap;
+    /**
+     * 获取指定时间段到另一个指定时间段的日志
+     *
+     * @param startTimestamp 开始
+     * @param endTimestamp   结束
+     * @return 日志
+     */
+    public CompletableFuture<ConcurrentSkipListMap<Long, LinkedHashSet<Result>>> getLogs(long startTimestamp, long endTimestamp) {
+        return CompletableFuture.supplyAsync(() -> {
+            Map<Long, LinkedHashSet<Result>> subMap = resultsLogMap.subMap(startTimestamp, true, endTimestamp, true);
+            ConcurrentSkipListMap<Long, LinkedHashSet<Result>> deepCopiedMap = new ConcurrentSkipListMap<>();
+            for (Map.Entry<Long, LinkedHashSet<Result>> entry : subMap.entrySet()) {
+                deepCopiedMap.put(entry.getKey(), (LinkedHashSet<Result>) entry.getValue().clone());
+            }
+            return deepCopiedMap;
+        });
     }
-
 
     @Override
     public String toString() {

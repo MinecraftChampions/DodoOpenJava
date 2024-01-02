@@ -47,8 +47,8 @@ public class JsonData extends PermData {
         GroupManager.setGroupsFile(Group);
         UserManager.setUsersFile(User);
         //获取文件内容
-        JSONObject groupJson = getGroupFile();
-        JSONObject userJson = getUserFile();
+        JSONObject groupJson = getGroupFileData();
+        JSONObject userJson = getUserFileData();
         //键数组
         Set<String> groupSet = groupJson.getJSONObject("Groups").keySet();
         List<Group> groups = new ArrayList<>();
@@ -146,20 +146,20 @@ public class JsonData extends PermData {
     }
 
     /**
-     * 获取权限组文件
+     * 获取权限组文件数据
      *
      * @return JSON对象
      */
-    public JSONObject getGroupFile() {
+    public JSONObject getGroupFileData() {
         return new JSONObject(Objects.requireNonNull(ConfigUtil.readFile(Group)));
     }
 
     /**
-     * 获取用户文件
+     * 获取用户文件数据
      *
      * @return JSON对象
      */
-    public JSONObject getUserFile() {
+    public JSONObject getUserFileData() {
         return new JSONObject(Objects.requireNonNull(ConfigUtil.readFile(User)));
     }
 }

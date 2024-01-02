@@ -24,7 +24,7 @@ public class YamlData extends PermData {
      */
     @Override
     public void saveToFile() throws IOException {
-        FileConfiguration groupFile = getGroupFile();
+        FileConfiguration groupFile = getGroupFileData();
         Map<String, Group> map = GroupManager.getGroups();
         map.forEach((key, value) -> {
             List<String> perms = value.getPermissions();
@@ -35,7 +35,7 @@ public class YamlData extends PermData {
             groupFile.set("Groups." + key + ".extend", extend);
         });
         groupFile.save(Group);
-        FileConfiguration userFile = getUserFile();
+        FileConfiguration userFile = getUserFileData();
         Map<String, User> hashMap = UserManager.getUsers();
         hashMap.forEach((key, value) -> {
             List<String> perms = value.getPermissions();
@@ -74,11 +74,11 @@ public class YamlData extends PermData {
         GroupManager.setGroupsFile(Group);
         UserManager.setUsersFile(User);
         GroupManager.setGroups(new TreeMap<>());
-        for (int i = 0; i < getGroupFile().getConfigurationSection("Groups").getKeys(false).size(); i++) {
-            String name = getGroupFile().getConfigurationSection("Groups").getKeys(false).stream().toList().get(i);
-            List<String> perms = getGroupFile().getStringList("Groups." + name + ".perms");
-            Boolean isDefault = getGroupFile().getBoolean("Groups." + name + ".isDefault");
-            List<String> extendsGroup = getGroupFile().getStringList("Groups." + name + "extend");
+        for (int i = 0; i < getGroupFileData().getConfigurationSection("Groups").getKeys(false).size(); i++) {
+            String name = getGroupFileData().getConfigurationSection("Groups").getKeys(false).stream().toList().get(i);
+            List<String> perms = getGroupFileData().getStringList("Groups." + name + ".perms");
+            Boolean isDefault = getGroupFileData().getBoolean("Groups." + name + ".isDefault");
+            List<String> extendsGroup = getGroupFileData().getStringList("Groups." + name + "extend");
             io.github.minecraftchampions.dodoopenjava.permissions.Group group = new Group(name);
             for (String perm : perms) {
                 group.addPermission(perm);
@@ -93,10 +93,10 @@ public class YamlData extends PermData {
         }
 
         UserManager.setUsers(new TreeMap<>());
-        for (int i = 0; i < getUserFile().getConfigurationSection("Users").getKeys(false).size(); i++) {
-            String DodoId = getUserFile().getConfigurationSection("Users").getKeys(false).stream().toList().get(i);
-            List<String> perms = getUserFile().getStringList("Users." + DodoId + ".perms");
-            String group = getUserFile().getString("Users." + DodoId + ".Group");
+        for (int i = 0; i < getUserFileData().getConfigurationSection("Users").getKeys(false).size(); i++) {
+            String DodoId = getUserFileData().getConfigurationSection("Users").getKeys(false).stream().toList().get(i);
+            List<String> perms = getUserFileData().getStringList("Users." + DodoId + ".perms");
+            String group = getUserFileData().getString("Users." + DodoId + ".Group");
             User user = new User(DodoId);
             for (String perm : perms) {
                 user.addPermission(perm);
@@ -106,11 +106,11 @@ public class YamlData extends PermData {
         }
     }
 
-    public FileConfiguration getGroupFile() {
+    public FileConfiguration getGroupFileData() {
         return ConfigUtil.load(Group);
     }
 
-    public FileConfiguration getUserFile() {
+    public FileConfiguration getUserFileData() {
         return ConfigUtil.load(User);
     }
 }
