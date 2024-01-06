@@ -113,6 +113,21 @@ public class Bot {
     }
 
     /**
+     * 获取Api请求记录器
+     *
+     * @return ApiResultsLogger
+     */
+    public ApiResultsLogger getApiResultsLogger() {
+        ApiResultsLogger apiResultsLogger = DodoOpenJava.getLogMap().get(this.getAuthorization());
+        if (apiResultsLogger != null) {
+            return apiResultsLogger;
+        } else {
+            DodoOpenJava.LOGGER.error("没有启用日志记录系统就调用Bot#getApiResultsLogger方法,bot:" + getAuthorization());
+            return null;
+        }
+    }
+
+    /**
      * 注册命令
      *
      * @param commandExecutors 命令处理器

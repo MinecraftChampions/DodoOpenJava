@@ -38,7 +38,7 @@ public class Main implements CommandExecutor,Listener{
         });
 
         bot.getApi().V2.channelMessageApi.sendTextMessage("1252355","测试");
-        System.out.println(DodoOpenJava.getLogMap().get(bot.getAuthorization()));
+        System.out.println(bot.getApiResultsLogger());
     }
 
     @EventHandler
