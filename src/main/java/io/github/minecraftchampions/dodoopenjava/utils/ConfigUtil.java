@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.utils;
 
+import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.configuration.file.FileConfiguration;
 import io.github.minecraftchampions.dodoopenjava.configuration.file.YamlConfiguration;
 import lombok.NonNull;
@@ -110,7 +111,7 @@ public class ConfigUtil {
             fileConfiguration.set(path, value);
             fileConfiguration.save(new File(child));
         } catch (IOException e) {
-            e.printStackTrace();
+            DodoOpenJava.LOGGER.error("设置节点时发生错误",e);
         } catch (NoSuchMethodError ignored) {
         }
     }
@@ -222,7 +223,7 @@ public class ConfigUtil {
             streamReader.close();
             return stringBuilder.toString();
         } catch (Exception e) {
-            e.printStackTrace();
+            DodoOpenJava.LOGGER.error("读取文件时发生错误",e);
         }
         return null;
     }

@@ -27,7 +27,7 @@ import java.nio.ByteBuffer;
 /**
  * 事件触发
  */
-public class WebSocketEventTrigger extends EventTrigger {
+public class WebSocketEventTrigger extends AbstractEventTrigger {
     private String wssLo = "";
 
     @Override
@@ -86,7 +86,7 @@ public class WebSocketEventTrigger extends EventTrigger {
                             i--;
                         }
                         if (!mWebSocket.isOpen()) {
-                            new RuntimeException("未连接上websocket").printStackTrace();
+                            DodoOpenJava.LOGGER.error("未连接上websocket");
                         }
                     } catch (Exception e) {
                         throw new RuntimeException(e);
@@ -185,7 +185,7 @@ public class WebSocketEventTrigger extends EventTrigger {
 
         @Override
         public void onError(Exception ex) {
-            ex.printStackTrace();
+            DodoOpenJava.LOGGER.error("websocket接收事件发生错误",ex);
             reconnectWebsocket();
         }
 

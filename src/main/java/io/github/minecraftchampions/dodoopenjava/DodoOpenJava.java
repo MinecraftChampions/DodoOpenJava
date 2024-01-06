@@ -82,7 +82,7 @@ public class DodoOpenJava {
      * @param bot bot
      */
     public static void disableApiResultsLogger(Bot bot) {
-        enableApiResultsLogger(bot.getAuthorization());
+        disableApiResultsLogger(bot.getAuthorization());
     }
 
     /**

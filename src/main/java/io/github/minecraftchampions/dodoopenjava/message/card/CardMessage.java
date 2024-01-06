@@ -1,6 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.message.card;
 
-import io.github.minecraftchampions.dodoopenjava.message.Message;
+import io.github.minecraftchampions.dodoopenjava.message.AbstractMessage;
 import io.github.minecraftchampions.dodoopenjava.message.card.component.CardComponent;
 import io.github.minecraftchampions.dodoopenjava.message.card.enums.Theme;
 import lombok.AllArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.List;
  * 卡片消息
  */
 @AllArgsConstructor
-public class CardMessage extends Message {
+public class CardMessage extends AbstractMessage {
     private final JSONObject JsonCard;
 
     /**

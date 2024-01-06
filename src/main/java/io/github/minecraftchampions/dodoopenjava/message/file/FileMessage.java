@@ -1,15 +1,19 @@
 package io.github.minecraftchampions.dodoopenjava.message.file;
 
-import io.github.minecraftchampions.dodoopenjava.message.Message;
+import io.github.minecraftchampions.dodoopenjava.message.AbstractMessage;
+import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.json.JSONObject;
 
 /**
  * 文件消息组件
  */
 @RequiredArgsConstructor
-public class FileMessage extends Message {
+@Getter
+@Setter
+public class FileMessage extends AbstractMessage {
     @NonNull
     private String url;
 
@@ -21,38 +25,15 @@ public class FileMessage extends Message {
 
     @Override
     public JSONObject toMessage() {
-        return null;
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("url", url);
+        jsonObject.put("name", name);
+        jsonObject.put("size", size);
+        return jsonObject;
     }
 
     @Override
     public int getType() {
         return 5;
-    }
-
-    /**
-     * 设置文件链接
-     *
-     * @param url 链接
-     */
-    public void setUrl(@NonNull String url) {
-        this.url = url;
-    }
-
-    /**
-     * 设置文件名
-     *
-     * @param name 文件名
-     */
-    public void setName(@NonNull String name) {
-        this.name = name;
-    }
-
-    /**
-     * 设置文件大小
-     *
-     * @param size 文件大小
-     */
-    public void setSize(long size) {
-        this.size = size;
     }
 }

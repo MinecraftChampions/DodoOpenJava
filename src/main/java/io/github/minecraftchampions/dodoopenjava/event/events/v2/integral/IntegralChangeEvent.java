@@ -7,7 +7,7 @@ import org.json.JSONObject;
  * 积分变更事件
  */
 @Getter
-public class IntegralChangeEvent extends IntegralEvent {
+public class IntegralChangeEvent extends AbstractIntegralEvent {
     /**
      * -- GETTER --
      * 获取时间戳

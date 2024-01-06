@@ -10,7 +10,7 @@ import java.util.List;
  * 商品购买成功事件
  */
 @Getter
-public class GoodsPurchaseEvent extends ShopEvent {
+public class GoodsPurchaseEvent extends AbstractShopEvent {
     /**
      * -- GETTER --
      * 获取时间戳

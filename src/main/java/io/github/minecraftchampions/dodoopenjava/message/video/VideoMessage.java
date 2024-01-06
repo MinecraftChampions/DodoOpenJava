@@ -1,9 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.message.video;
 
-import io.github.minecraftchampions.dodoopenjava.message.Message;
-import lombok.AllArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import io.github.minecraftchampions.dodoopenjava.message.AbstractMessage;
+import lombok.*;
 import org.json.JSONObject;
 
 /**
@@ -11,7 +9,9 @@ import org.json.JSONObject;
  */
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class VideoMessage extends Message {
+@Getter
+@Setter
+public class VideoMessage extends AbstractMessage {
     @NonNull
     private String url;
 
@@ -20,42 +20,6 @@ public class VideoMessage extends Message {
     private Long duration;
 
     private Long size;
-
-    /**
-     * 设置视频时长
-     *
-     * @param duration 时长
-     */
-    public void setDuration(long duration) {
-        this.duration = duration;
-    }
-
-    /**
-     * 设置视频大小
-     *
-     * @param size 大小
-     */
-    public void setSize(long size) {
-        this.size = size;
-    }
-
-    /**
-     * 设置视频链接
-     *
-     * @param url 链接
-     */
-    public void setUrl(@NonNull String url) {
-        this.url = url;
-    }
-
-    /**
-     * 设置视频大小
-     *
-     * @param coverUrl 大小
-     */
-    public void setCover(@NonNull String coverUrl) {
-        this.coverUrl = coverUrl;
-    }
 
     @Override
     public JSONObject toMessage() {

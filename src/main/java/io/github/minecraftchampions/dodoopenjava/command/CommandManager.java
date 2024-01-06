@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.command;
 
 import io.github.minecraftchampions.dodoopenjava.Bot;
+import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,6 @@ import java.util.concurrent.ConcurrentHashMap;
 @RequiredArgsConstructor
 public class CommandManager {
     private final Map<String, CommandExecutor> commands = new ConcurrentHashMap<>();
-
 
     private final Map<String, String> commandAliasesMapping = new ConcurrentHashMap<>();
 
@@ -41,20 +41,24 @@ public class CommandManager {
         String commandName = command.getMainCommand();
         Set<String> aliases = command.getCommandAliases();
         if (aliases.contains(commandName)) {
-            new RuntimeException("别名包括命令名:" + commandName + ",已取消添加此别名").printStackTrace();
+            DodoOpenJava.LOGGER.error("注册命令时错误",
+                    new RuntimeException("别名包括命令名:" + commandName + ",已取消添加此别名"));
             aliases.remove(commandName);
         }
         if (commands.containsKey(commandName)) {
-            new RuntimeException("重复的命令名:" + commandName + ";已取消注册").printStackTrace();
+            DodoOpenJava.LOGGER.error("注册命令时错误",
+                    new RuntimeException("重复的命令名:" + commandName + ";已取消注册"));
             return;
         }
         commands.put(commandName, command);
         for (String name : aliases) {
             if (commands.containsKey(name)) {
-                new RuntimeException("已经注册过命令名为" + name + "的命令，已经取消添加此别名").printStackTrace();
+                DodoOpenJava.LOGGER.error("注册命令时错误",
+                        new RuntimeException("已经注册过命令名为" + name + "的命令，已经取消添加此别名"));
             } else {
                 if (commandAliasesMapping.containsKey(name)) {
-                    new RuntimeException("已经添加过别名包含" + name + "的命令，已经取消添加别名").printStackTrace();
+                    DodoOpenJava.LOGGER.error("注册命令时错误",
+                            new RuntimeException("已经添加过别名包含" + name + "的命令，已经取消添加别名"));
                 } else {
                     commandAliasesMapping.put(name, commandName);
                 }
@@ -108,7 +112,7 @@ public class CommandManager {
         if (!command.allowPersonalChat() && personalMessage) {
             return false;
         }
-        if (command.getPermission() == null || command.getPermission().isEmpty() || sender.hasPermission(command.getPermission())) {
+        if (sender.hasPermission(command.getPermission())) {
             command.onCommand(sender, args);
         }
         return true;

@@ -49,7 +49,7 @@ public class DataUnit {
      * @param permission 权限
      * @return true/false
      */
-    public boolean hasSamePermission(String permission) {
+    public boolean hasSamePermission(@NonNull String permission) {
         return permissions.contains(permission);
     }
 

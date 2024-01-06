@@ -1,4 +1,4 @@
 /**
- * 图片消息组件
+ * 图片消息组件相关类
  */
 package io.github.minecraftchampions.dodoopenjava.message.image;

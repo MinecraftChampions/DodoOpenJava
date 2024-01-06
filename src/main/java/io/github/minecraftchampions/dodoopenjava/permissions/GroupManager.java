@@ -12,8 +12,10 @@ import java.util.TreeMap;
  */
 public class GroupManager {
     private static Group defaultGroup;
+
     @Getter
     private static File groupsFile;
+
     private static boolean changed = false;
 
     @Getter

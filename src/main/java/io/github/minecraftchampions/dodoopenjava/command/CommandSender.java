@@ -65,6 +65,7 @@ public class CommandSender {
      * -- GETTER --
      * 获取所属机器人
      */
+    @NonNull
     private final Bot bot;
 
     /**
@@ -78,7 +79,7 @@ public class CommandSender {
      *
      * @param jsontext JSONText
      */
-    public CommandSender(JSONObject jsontext, Bot bot, boolean personalMessage) {
+    public CommandSender(@NonNull JSONObject jsontext, @NonNull Bot bot, boolean personalMessage) {
         this.bot = bot;
         this.isPersonalChat = personalMessage;
         this.SenderNickName = jsontext.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("nickName");

@@ -1,12 +1,10 @@
 package io.github.minecraftchampions.dodoopenjava.message.card.component;
 
-import io.github.minecraftchampions.dodoopenjava.utils.MapUtil;
 import lombok.NonNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * 列表选择器
@@ -31,15 +29,14 @@ public class ListSelectorComponent extends CardComponent {
         jsonCard.put("min", min);
         jsonCard.put("max", max);
         jsonCard.put("elements", new JSONArray());
-        List<List<Object>> list = MapUtil.ergodicHashMaps(element);
-        for (List<Object> objects : list) {
+        element.forEach((name, desc) -> {
             JSONObject json2 = new JSONObject();
 
-            json2.put("name", objects.get(0));
-            json2.put("desc", objects.get(1));
+            json2.put("name", name);
+            json2.put("desc", desc);
 
             jsonCard.getJSONArray("elements").put(json2);
-        }
+        });
     }
 
     /**

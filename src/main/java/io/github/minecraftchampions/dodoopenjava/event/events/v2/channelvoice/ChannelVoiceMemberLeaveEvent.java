@@ -7,7 +7,7 @@ import org.json.JSONObject;
  * 成员退出语音频道事件
  */
 @Getter
-public class ChannelVoiceMemberLeaveEvent extends ChannelVoiceEvent {
+public class ChannelVoiceMemberLeaveEvent extends AbstractChannelVoiceEvent {
     /**
      * -- GETTER --
      * 获取时间戳

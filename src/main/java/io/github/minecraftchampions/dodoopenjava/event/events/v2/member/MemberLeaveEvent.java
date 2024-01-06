@@ -7,7 +7,7 @@ import org.json.JSONObject;
  * 成员离开事件
  */
 @Getter
-public class MemberLeaveEvent extends MemberEvent {
+public class MemberLeaveEvent extends AbstractMemberEvent {
     /**
      * -- GETTER --
      * 获取时间戳

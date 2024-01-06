@@ -7,7 +7,7 @@ import org.json.JSONObject;
  * 成员加入事件
  */
 @Getter
-public class MemberJoinEvent extends MemberEvent {
+public class MemberJoinEvent extends AbstractMemberEvent {
     /**
      * -- GETTER --
      * 获取时间戳

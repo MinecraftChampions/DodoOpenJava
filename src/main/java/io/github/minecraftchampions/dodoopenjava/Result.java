@@ -1,6 +1,5 @@
 package io.github.minecraftchampions.dodoopenjava;
 
-import io.github.minecraftchampions.dodoopenjava.utils.Equal;
 import lombok.Getter;
 import lombok.NonNull;
 import org.json.JSONArray;
@@ -98,7 +97,9 @@ public class Result {
         this.statusCode = jsonObject.getInt("status");
         this.message = jsonObject.getString("message");
         this.timestamp = System.currentTimeMillis();
-        Equal.of(statusCode).equal(0).ifEquals(code -> this.data = jsonObject.get("data"));
+        if (statusCode == 0) {
+            this.data = jsonObject.get("data");
+        }
     }
 
     /**
@@ -118,7 +119,9 @@ public class Result {
      * @return this
      */
     public Result ifSuccess(@NonNull Consumer<Result> consumer) {
-        Equal.of(statusCode).equal(0).ifEquals(code -> consumer.accept(this));
+        if (statusCode == 0) {
+            consumer.accept(this);
+        }
         return this;
     }
 
@@ -129,7 +132,9 @@ public class Result {
      * @return this
      */
     public Result ifFailure(@NonNull Consumer<Result> consumer) {
-        Equal.of(statusCode).equal(0).ifNoEquals(code -> consumer.accept(this));
+        if (statusCode != 0) {
+            consumer.accept(this);
+        }
         return this;
     }
 

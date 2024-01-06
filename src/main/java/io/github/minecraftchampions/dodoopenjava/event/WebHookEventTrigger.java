@@ -36,7 +36,7 @@ import java.util.Objects;
 /**
  * 事件触发
  */
-public class WebHookEventTrigger extends EventTrigger {
+public class WebHookEventTrigger extends AbstractEventTrigger {
     boolean isConnect = false;
 
     public WebHookEventTrigger(Bot bot) {

@@ -4,6 +4,8 @@ import io.github.minecraftchampions.dodoopenjava.event.EventHandler;
 import io.github.minecraftchampions.dodoopenjava.event.Listener;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage.MessageEvent;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.personal.PersonalMessageEvent;
+import lombok.AllArgsConstructor;
+import lombok.NonNull;
 import org.json.JSONObject;
 
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.Objects;
 /**
  * 命令触发
  */
+@AllArgsConstructor
 public class CommandTrigger implements Listener {
     /**
      * 监听消息事件
@@ -47,12 +50,8 @@ public class CommandTrigger implements Listener {
         Command.remove(0);
         String[] args = Command.toArray(new String[]{});
         commandManager.trigger(sender, mainCommand, isPersonalCommand, args);
-
     }
 
+    @NonNull
     CommandManager commandManager;
-
-    public CommandTrigger(CommandManager commandManager) {
-        this.commandManager = commandManager;
-    }
 }

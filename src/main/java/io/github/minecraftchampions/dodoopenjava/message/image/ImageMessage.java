@@ -1,9 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.message.image;
 
-import io.github.minecraftchampions.dodoopenjava.message.Message;
-import lombok.AllArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import io.github.minecraftchampions.dodoopenjava.message.AbstractMessage;
+import lombok.*;
 import org.json.JSONObject;
 
 /**
@@ -11,7 +9,9 @@ import org.json.JSONObject;
  */
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class ImageMessage extends Message {
+@Getter
+@Setter
+public class ImageMessage extends AbstractMessage {
     @NonNull
     private String url;
 
@@ -38,33 +38,6 @@ public class ImageMessage extends Message {
     @Override
     public int getType() {
         return 2;
-    }
-
-    /**
-     * 设置图片链接
-     *
-     * @param url 图片
-     */
-    public void setUrl(@NonNull String url) {
-        this.url = url;
-    }
-
-    /**
-     * 设置宽度
-     *
-     * @param width 宽度
-     */
-    public void setWidth(@NonNull Integer width) {
-        this.width = width;
-    }
-
-    /**
-     * 设置高度
-     *
-     * @param height 高度
-     */
-    public void setHeight(@NonNull Integer height) {
-        this.height = height;
     }
 
     /**

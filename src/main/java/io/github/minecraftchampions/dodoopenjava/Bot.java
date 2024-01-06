@@ -3,10 +3,10 @@ package io.github.minecraftchampions.dodoopenjava;
 import io.github.minecraftchampions.dodoopenjava.command.CommandExecutor;
 import io.github.minecraftchampions.dodoopenjava.command.CommandManager;
 import io.github.minecraftchampions.dodoopenjava.event.EventManager;
-import io.github.minecraftchampions.dodoopenjava.event.EventTrigger;
+import io.github.minecraftchampions.dodoopenjava.event.AbstractEventTrigger;
 import io.github.minecraftchampions.dodoopenjava.event.Listener;
 import io.github.minecraftchampions.dodoopenjava.event.WebSocketEventTrigger;
-import io.github.minecraftchampions.dodoopenjava.message.Message;
+import io.github.minecraftchampions.dodoopenjava.message.AbstractMessage;
 import io.github.minecraftchampions.dodoopenjava.message.card.CardMessage;
 import io.github.minecraftchampions.dodoopenjava.message.text.TextMessage;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
@@ -125,7 +125,7 @@ public class Bot {
 
     private final CommandManager commandManager = new CommandManager(this);
 
-    private EventTrigger eventTrigger;
+    private AbstractEventTrigger eventTrigger;
 
     /**
      * 传入一个EventTrigger(要先进行初始化)
@@ -133,7 +133,7 @@ public class Bot {
      *
      * @param t EventTrigger
      */
-    public synchronized void initEventListenSystem(@NonNull EventTrigger t) {
+    public synchronized void initEventListenSystem(@NonNull AbstractEventTrigger t) {
         if (t.getBot() != this) {
             return;
         }
@@ -390,7 +390,7 @@ public class Bot {
                 }
 
                 @SneakyThrows
-                public Result sendMessage(String channelId, Message messageBody) {
+                public Result sendMessage(String channelId, AbstractMessage messageBody) {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.ChannelMessageApi.sendMessage(bot.getAuthorization(), channelId, messageBody);
                 }
             }

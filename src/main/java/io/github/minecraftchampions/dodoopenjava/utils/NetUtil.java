@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import java.io.*;
 import java.net.HttpURLConnection;
+import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
@@ -86,27 +87,36 @@ public class NetUtil {
     public static String sendPostJsonRequest(@NonNull String stringUrl,
                                              @NonNull HashMap<String, String> header,
                                              byte[] param) throws IOException {
-        URL url = new URL(stringUrl);
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        con.setRequestMethod("POST");
-        con.setConnectTimeout(15000);
-        con.setDoOutput(true);
-        con.setUseCaches(false);
-        con.setInstanceFollowRedirects(true);
-        header.forEach(con::setRequestProperty);
-        con.connect();
-        OutputStream out = con.getOutputStream();
-        out.write(param);
-        out.flush();
-        out.close();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-        String line;
-        StringBuilder sb = new StringBuilder();
-        while ((line = reader.readLine()) != null) {
-            sb.append(line).append("\n");
+        try {
+            URL url = new URL(stringUrl);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("POST");
+            con.setConnectTimeout(15000);
+            con.setDoOutput(true);
+            con.setUseCaches(false);
+            con.setInstanceFollowRedirects(true);
+            header.forEach(con::setRequestProperty);
+            con.connect();
+            OutputStream out = con.getOutputStream();
+            out.write(param);
+            out.flush();
+            out.close();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            String line;
+            StringBuilder sb = new StringBuilder();
+            while ((line = reader.readLine()) != null) {
+                sb.append(line).append("\n");
+            }
+            reader.close();
+            return sb.toString();
+        } catch (SocketTimeoutException e) {
+            DodoOpenJava.LOGGER.error("发送请求超时", e);
+            return """
+                    {
+                        "status": -9999,
+                        "message": "发送请求失败,本返回由DodoOpenJava自动生成,请检查网络环境(等待时间:15s)"
+                    }""";
         }
-        reader.close();
-        return sb.toString();
     }
 
     /**
@@ -158,29 +168,34 @@ public class NetUtil {
     public static String uploadFile(@NonNull HashMap<String, String> header,
                                     @NonNull String path,
                                     @NonNull String url) throws IOException {
-        StringBuilder sb = new StringBuilder();
-        File file = new File(path);
-        String boundary = "===" + System.currentTimeMillis() + "===";
-        header.put("Content-Type", "multipart/form-data; boundary=" + boundary);
-        sb.append("--").append(boundary).append("\r\n")
-                .append("Content-Disposition: form-data; name=\"file\"; filename=\"")
-                .append(file.getName()).append("\"")
-                .append("\r\n").append("Content-Type: ")
-                .append(HttpURLConnection.guessContentTypeFromName(file.getName())).append("\r\n")
-                .append("\r\n");
-        String start = sb.toString();
-        byte[] bytes;
-        try (InputStream inputStream = new FileInputStream(file)) {
-            bytes = inputStream.readAllBytes();
+        try {
+            StringBuilder sb = new StringBuilder();
+            File file = new File(path);
+            String boundary = "===" + System.currentTimeMillis() + "===";
+            header.put("Content-Type", "multipart/form-data; boundary=" + boundary);
+            sb.append("--").append(boundary).append("\r\n")
+                    .append("Content-Disposition: form-data; name=\"file\"; filename=\"")
+                    .append(file.getName()).append("\"")
+                    .append("\r\n").append("Content-Type: ")
+                    .append(HttpURLConnection.guessContentTypeFromName(file.getName())).append("\r\n")
+                    .append("\r\n");
+            String start = sb.toString();
+            byte[] bytes;
+            try (InputStream inputStream = new FileInputStream(file)) {
+                bytes = inputStream.readAllBytes();
+            }
+            String end = "\r\n" + "--" + boundary + "--" + "\r\n";
+            ByteArrayOutputStream os = new ByteArrayOutputStream();
+            os.write(start.getBytes());
+            os.write(bytes);
+            os.write(end.getBytes());
+            byte[] byteArray = os.toByteArray();
+            os.close();
+            return sendPostJsonRequest(url, header, byteArray);
+        } catch (SocketTimeoutException e) {
+            DodoOpenJava.LOGGER.error("发送请求超时", e);
+            return null;
         }
-        String end = "\r\n" + "--" + boundary + "--" + "\r\n";
-        ByteArrayOutputStream os = new ByteArrayOutputStream();
-        os.write(start.getBytes());
-        os.write(bytes);
-        os.write(end.getBytes());
-        byte[] byteArray = os.toByteArray();
-        os.close();
-        return sendPostJsonRequest(url, header, byteArray);
     }
 
     /**

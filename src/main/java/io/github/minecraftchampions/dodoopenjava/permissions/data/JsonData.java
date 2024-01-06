@@ -6,7 +6,6 @@ import io.github.minecraftchampions.dodoopenjava.permissions.User;
 import io.github.minecraftchampions.dodoopenjava.permissions.UserManager;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.ConfigUtil;
-import io.github.minecraftchampions.dodoopenjava.utils.Equal;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -86,7 +85,7 @@ public class JsonData extends PermData {
                             .getJSONObject(group.getName()).getJSONArray("extend").toList())) {
                         List<Group> list = new ArrayList<>(groups);
                         list.remove(group);
-                        if (list.stream().anyMatch(g -> Equal.of(g.getName()).equal(s).isEqual()))
+                        if (list.stream().anyMatch(g -> g.getName().equalsIgnoreCase(s)))
                             group.addInherits(list.stream().filter(g -> Objects.equals(g.getName(), s))
                                     .toList().get(0));
                         GroupManager.addGroup(group);

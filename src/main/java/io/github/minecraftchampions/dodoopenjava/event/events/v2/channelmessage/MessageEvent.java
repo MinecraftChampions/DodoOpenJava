@@ -1,6 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage;
 
-import io.github.minecraftchampions.dodoopenjava.event.Event;
+import io.github.minecraftchampions.dodoopenjava.event.AbstractEvent;
 import lombok.Getter;
 import org.json.JSONObject;
 
@@ -8,7 +8,7 @@ import org.json.JSONObject;
  * 消息事件
  */
 @Getter
-public class MessageEvent extends Event {
+public class MessageEvent extends AbstractEvent {
     /**
      * -- GETTER --
      * 获取时间戳

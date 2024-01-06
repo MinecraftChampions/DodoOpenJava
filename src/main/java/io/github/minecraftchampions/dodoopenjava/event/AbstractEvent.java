@@ -5,16 +5,16 @@ import lombok.Getter;
 /**
  * 代表事件.
  */
-public abstract class Event {
+public abstract class AbstractEvent {
     private String name;
     private final boolean async;
     @Getter
-    protected Class<? extends Event> eventType;
+    protected Class<? extends AbstractEvent> eventType;
 
     /**
      * 为了更简单清晰的代码而制造。这个构造器取得的是同步的事件。
      */
-    public Event() {
+    public AbstractEvent() {
         this(false);
     }
 
@@ -23,7 +23,7 @@ public abstract class Event {
      *
      * @param isAsync true则为异步事件
      */
-    public Event(boolean isAsync) {
+    public AbstractEvent(boolean isAsync) {
         this.async = isAsync;
     }
 

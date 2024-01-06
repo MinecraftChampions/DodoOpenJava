@@ -7,7 +7,7 @@ import org.json.JSONObject;
  * 卡片消息按钮事件
  */
 @Getter
-public class CardMessageButtonClickEvent extends ChannelMessageEvent {
+public class CardMessageButtonClickEvent extends AbstractChannelMessageEvent {
     /**
      * -- GETTER --
      * 获取时间戳

@@ -1,6 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.message.text;
 
-import io.github.minecraftchampions.dodoopenjava.message.Message;
+import io.github.minecraftchampions.dodoopenjava.message.AbstractMessage;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import lombok.*;
 import org.json.JSONObject;
@@ -21,7 +21,7 @@ import java.util.List;
  */
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class TextMessage extends Message {
+public class TextMessage extends AbstractMessage {
     private String text;
 
     @NonNull

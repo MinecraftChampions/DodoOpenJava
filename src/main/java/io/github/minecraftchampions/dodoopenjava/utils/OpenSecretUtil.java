@@ -1,5 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.utils;
 
+import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
+
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
@@ -20,7 +22,7 @@ public class OpenSecretUtil {
         try {
             return AESDecrypt(hexToBytes(payload), hexToBytes(secretKey), new byte[16], Cipher.getInstance("AES/CBC/PKCS5Padding"));
         } catch (Exception e) {
-            e.printStackTrace();
+            DodoOpenJava.LOGGER.error("WebHook数据解密时错误", e);
             return null;
         }
     }

@@ -1,4 +1,4 @@
 /**
- * 卡片消息组件
+ * 卡片消息组件相关类
  */
 package io.github.minecraftchampions.dodoopenjava.message.card;

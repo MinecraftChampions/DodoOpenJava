@@ -18,7 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * 事件的相关方法（包含监听器注册等）
  */
 public class EventManager {
-    private final Map<Class<? extends Event>, ArrayList<SimpleEntry<Method, Object>>> handlers = new ConcurrentHashMap<>();
+    private final Map<Class<? extends AbstractEvent>, ArrayList<SimpleEntry<Method, Object>>> handlers = new ConcurrentHashMap<>();
 
     /**
      * 注册事件监听器
@@ -47,10 +47,10 @@ public class EventManager {
             if (parameters.length > 1)
                 continue;
             Class<?> checkClass = parameters[0];
-            if (!Event.class.isAssignableFrom(checkClass)) {
+            if (!AbstractEvent.class.isAssignableFrom(checkClass)) {
                 continue;
             }
-            final Class<? extends Event> eventClass = checkClass.asSubclass(Event.class);
+            final Class<? extends AbstractEvent> eventClass = checkClass.asSubclass(AbstractEvent.class);
             method.setAccessible(true);
             if (!handlers.containsKey(eventClass))
                 handlers.put(eventClass, new ArrayList<>());
@@ -81,8 +81,8 @@ public class EventManager {
      */
     public void unregisterListeners(@NonNull Listener listener) {
         synchronized (handlers) {
-            Set<Class<? extends Event>> set = handlers.keySet();
-            for (Class<? extends Event> clazz : set) {
+            Set<Class<? extends AbstractEvent>> set = handlers.keySet();
+            for (Class<? extends AbstractEvent> clazz : set) {
                 List<SimpleEntry<Method, Object>> list = handlers.get(clazz).stream().filter(e -> e.getKey().getDeclaringClass() == listener.getClass()).toList();
                 handlers.get(clazz).removeAll(list);
             }
@@ -95,7 +95,7 @@ public class EventManager {
      * @param event 事件
      * @throws RuntimeException 当事件的 EventType 为 null 或 isEmpty 时抛出
      */
-    public void fireEvent(@NonNull Event event) throws RuntimeException {
+    public void fireEvent(@NonNull AbstractEvent event) throws RuntimeException {
         if (event.getEventType() == null || event.getEventName().isEmpty()) {
             throw new RuntimeException("未知的Event");
         }
@@ -110,7 +110,7 @@ public class EventManager {
      * @param event    事件
      * @param handlers 储存
      */
-    public static void fireEvent(@NonNull Event event, @NonNull Map<Class<? extends Event>, ArrayList<SimpleEntry<Method, Object>>> handlers) {
+    public static void fireEvent(@NonNull AbstractEvent event, @NonNull Map<Class<? extends AbstractEvent>, ArrayList<SimpleEntry<Method, Object>>> handlers) {
         boolean isAsync = event.isAsynchronous();
         if (!handlers.containsKey(event.eventType)) {
             return;

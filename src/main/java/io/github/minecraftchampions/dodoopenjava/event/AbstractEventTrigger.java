@@ -4,7 +4,7 @@ import io.github.minecraftchampions.dodoopenjava.Bot;
 import lombok.Getter;
 
 @Getter
-public abstract class EventTrigger {
+public abstract class AbstractEventTrigger {
     protected Bot bot;
 
     public abstract void start();

@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.utils;
 
+import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import lombok.NonNull;
 
 import java.text.ParseException;
@@ -94,7 +95,7 @@ public class DateUtil {
         try {
             date = dateFormat.parse(dateFormat.format(date));
         } catch (ParseException e) {
-            e.printStackTrace();
+            DodoOpenJava.LOGGER.error("获取时间时发生错误",e);
         }
         return date;
     }

@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.permissions;
 
 import io.github.minecraftchampions.dodoopenjava.permissions.data.*;
+import lombok.Getter;
 import lombok.NonNull;
 
 import java.io.IOException;
@@ -10,9 +11,11 @@ import java.io.IOException;
  */
 public class Permissions {
     public static PermData permData = null;
-    public static DataType type;
 
-    public static boolean initialized;
+    @Getter
+    private static DataType type;
+
+    private static boolean initialized;
 
     /**
      * 初始化

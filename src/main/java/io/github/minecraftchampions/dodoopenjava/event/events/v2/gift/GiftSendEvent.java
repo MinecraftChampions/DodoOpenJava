@@ -9,7 +9,7 @@ import java.math.BigDecimal;
  * 赠礼成功事件
  */
 @Getter
-public class GiftSendEvent extends GiftEvent {
+public class GiftSendEvent extends AbstractGiftEvent {
     /**
      * -- GETTER --
      * 获取时间戳

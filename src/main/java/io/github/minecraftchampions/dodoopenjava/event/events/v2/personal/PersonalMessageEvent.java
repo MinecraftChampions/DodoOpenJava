@@ -8,7 +8,7 @@ import org.json.JSONObject;
  */
 
 @Getter
-public class PersonalMessageEvent extends PersonalEvent {
+public class PersonalMessageEvent extends AbstractPersonalEvent {
     /**
      * -- GETTER --
      * 获取时间戳

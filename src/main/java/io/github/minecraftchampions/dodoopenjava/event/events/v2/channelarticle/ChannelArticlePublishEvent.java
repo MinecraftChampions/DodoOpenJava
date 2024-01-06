@@ -7,7 +7,7 @@ import org.json.JSONObject;
  * 帖子发布事件
  */
 @Getter
-public class ChannelArticlePublishEvent extends ChannelArticleEvent {
+public class ChannelArticlePublishEvent extends AbstractChannelArticleEvent {
     /**
      * -- GETTER --
      * 获取时间戳
