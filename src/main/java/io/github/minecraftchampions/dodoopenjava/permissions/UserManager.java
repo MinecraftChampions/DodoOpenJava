@@ -7,18 +7,16 @@ import java.io.File;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-import static io.github.minecraftchampions.dodoopenjava.permissions.Util.hasPermission;
-
 /**
  * 用户管理
  */
 public class UserManager {
-    public static boolean hasPerm(@NonNull User user, @NonNull String perm) {
+    public static boolean hasPerm(@NonNull User user, String perm) {
         if (UserManager.users.containsKey(user.getLastName())) {
             UserManager.addUser(user);
         }
         for (String access : user.getPermissions()) {
-            if (hasPermission(access, perm)) {
+            if (Util.hasPermission(access, perm)) {
                 return true;
             }
         }

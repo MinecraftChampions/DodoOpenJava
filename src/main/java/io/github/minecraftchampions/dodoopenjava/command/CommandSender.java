@@ -190,6 +190,9 @@ public class CommandSender {
      * @return true有，false失败
      */
     public boolean hasPermission(String permission) {
+        if (permission == null) {
+            return true;
+        }
         return UserManager.hasPerm(UserManager.getUser(getSenderDodoSourceId()), permission);
     }
 }

@@ -96,18 +96,15 @@ public class CommandManager {
      * @param commandName 命令名
      * @param args        命令参数
      */
-    @SuppressWarnings("UnusedReturnValue")
     public boolean trigger(@NonNull CommandSender sender, @NonNull String commandName,
                            boolean personalMessage, @NonNull String... args) {
         CommandExecutor command;
-        synchronized (commands) {
-            if (commands.containsKey(commandName)) {
-                command = commands.get(commandName);
-            } else if (commandAliasesMapping.containsKey(commandName)) {
-                command = commands.get(commandAliasesMapping.get(commandName));
-            } else {
-                return false;
-            }
+        if (commands.containsKey(commandName)) {
+            command = commands.get(commandName);
+        } else if (commandAliasesMapping.containsKey(commandName)) {
+            command = commands.get(commandAliasesMapping.get(commandName));
+        } else {
+            return false;
         }
         if (!command.allowPersonalChat() && personalMessage) {
             return false;
