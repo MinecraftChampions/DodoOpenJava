@@ -46,7 +46,7 @@ public class ApiResultsLogger {
      *
      * @return 日志
      */
-    public CompletableFuture<ConcurrentSkipListMap<Long, LinkedHashSet<Result>>> getAllLogs() {
+    public CompletableFuture<Map<Long, LinkedHashSet<Result>>> getAllLogs() {
         return getLogs(null, null);
     }
 
@@ -57,7 +57,7 @@ public class ApiResultsLogger {
      * @param endDate   结束
      * @return 日志
      */
-    public CompletableFuture<ConcurrentSkipListMap<Long, LinkedHashSet<Result>>> getLogs(Date startDate, Date endDate) {
+    public CompletableFuture<Map<Long, LinkedHashSet<Result>>> getLogs(Date startDate, Date endDate) {
         long startTimestamp;
         long endTimestamp;
         if (startDate == null) {
@@ -80,7 +80,7 @@ public class ApiResultsLogger {
      * @param endTimestamp   结束
      * @return 日志
      */
-    public CompletableFuture<ConcurrentSkipListMap<Long, LinkedHashSet<Result>>> getLogs(long startTimestamp, long endTimestamp) {
+    public CompletableFuture<Map<Long, LinkedHashSet<Result>>> getLogs(long startTimestamp, long endTimestamp) {
         return CompletableFuture.supplyAsync(() -> {
             Map<Long, LinkedHashSet<Result>> subMap = resultsLogMap.subMap(startTimestamp, true, endTimestamp, true);
             ConcurrentSkipListMap<Long, LinkedHashSet<Result>> deepCopiedMap = new ConcurrentSkipListMap<>();
