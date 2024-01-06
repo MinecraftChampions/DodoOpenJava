@@ -9,6 +9,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
@@ -25,15 +26,25 @@ public class NetUtil {
      */
     public static Result sendRequest(@NonNull String param, @NonNull String url,
                                      @NonNull String authorization) throws IOException {
-        HashMap<String, String> header = new HashMap<>();
-        header.put("Content-Type", "application/json");
-        header.put("Authorization", authorization);
-        String str = sendPostJsonRequest(url, header, param);
-        Result result = Result.of(new JSONObject(str));
-        if (DodoOpenJava.getLogMap().containsKey(authorization)) {
-            DodoOpenJava.getLogMap().get(authorization).addResult(result);
+        try {
+            HashMap<String, String> header = new HashMap<>();
+            header.put("Content-Type", "application/json");
+            header.put("Authorization", authorization);
+            String str = sendPostJsonRequest(url, header, param);
+            Result result = Result.of(new JSONObject(str));
+            if (DodoOpenJava.getLogMap().containsKey(authorization)) {
+                DodoOpenJava.getLogMap().get(authorization).addResult(result);
+            }
+            return result;
+        } catch (UnknownHostException e) {
+            DodoOpenJava.LOGGER.warn("解析Dodo域名错误,本错误理应是偶发事件,不会造成问题,如果一直提醒最终陷入死循环,请检查网络环境");
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException ex) {
+                throw new RuntimeException(ex);
+            }
+            return sendRequest(param, url, authorization);
         }
-        return result;
     }
 
     /**
