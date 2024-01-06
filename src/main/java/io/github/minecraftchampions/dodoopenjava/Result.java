@@ -91,9 +91,12 @@ public class Result {
 
     private final long timestamp;
 
+    private final JSONObject jsonObjectData;
+
     private Object data;
 
     private Result(@NonNull JSONObject jsonObject) {
+        this.jsonObjectData = jsonObject;
         this.statusCode = jsonObject.getInt("status");
         this.message = jsonObject.getString("message");
         this.timestamp = System.currentTimeMillis();
@@ -162,5 +165,10 @@ public class Result {
         } else {
             throw new RuntimeException();
         }
+    }
+
+    @Override
+    public String toString() {
+        return jsonObjectData.toString();
     }
 }

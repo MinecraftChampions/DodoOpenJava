@@ -96,7 +96,7 @@ public class ApiResultsLogger {
         StringBuilder sb = new StringBuilder();
         resultsLogMap.forEach((timestamp, results) -> {
             String date = DateUtil.format(DateUtil.timestampToDate(timestamp), DateUtil.Format_Three);
-            results.forEach((result -> sb.append("[").append(date).append("]").append(" ").append(result.getData()).append("\n")));
+            results.forEach((result -> sb.append("[").append(date).append("]").append(" ").append(result).append("\n")));
         });
         return sb.toString().trim();
     }
