@@ -29,11 +29,11 @@ public class DateUtil {
     /**
      * 简化格式3
      */
-    public final static String Format_Three = "yyyy-MM-dd hh:mm:ss";
+    public final static String Format_Three = "yyyy-MM-dd HH:mm:ss";
     /**
      * 简化格式4
      */
-    public final static String Format_Four = "yyyy年MM月dd日 hh时mm分ss秒";
+    public final static String Format_Four = "yyyy年MM月dd日 HH时mm分ss秒";
 
     /**
      * 字符串转date
