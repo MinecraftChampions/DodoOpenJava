@@ -2,7 +2,7 @@ package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.Result;
-import io.github.minecraftchampions.dodoopenjava.message.AbstractMessage;
+import io.github.minecraftchampions.dodoopenjava.message.Message;
 import io.github.minecraftchampions.dodoopenjava.message.card.CardMessage;
 import io.github.minecraftchampions.dodoopenjava.message.text.TextMessage;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
@@ -722,7 +722,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static Result sendMessage(String clientId, String token, String channelId, AbstractMessage messageBody) throws IOException {
+    public static Result sendMessage(String clientId, String token, String channelId, Message messageBody) throws IOException {
         return sendMessage(BaseUtil.Authorization(clientId, token), channelId, messageBody);
     }
 
@@ -735,7 +735,7 @@ public class ChannelMessageApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static Result sendMessage(String authorization, String channelId, AbstractMessage messageBody) throws IOException {
+    public static Result sendMessage(String authorization, String channelId, Message messageBody) throws IOException {
         String url = DodoOpenJava.BASEURL + "channel/message/send";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("channelId", channelId)

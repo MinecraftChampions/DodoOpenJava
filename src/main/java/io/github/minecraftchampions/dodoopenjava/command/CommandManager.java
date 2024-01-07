@@ -109,9 +109,7 @@ public class CommandManager {
         if (!command.allowPersonalChat() && personalMessage) {
             return false;
         }
-        if (sender.hasPermission(command.getPermission())) {
-            command.onCommand(sender, args);
-        }
+        command.onCommand(sender, args);
         return true;
     }
 }

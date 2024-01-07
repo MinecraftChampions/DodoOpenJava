@@ -6,7 +6,7 @@ import io.github.minecraftchampions.dodoopenjava.event.EventManager;
 import io.github.minecraftchampions.dodoopenjava.event.AbstractEventTrigger;
 import io.github.minecraftchampions.dodoopenjava.event.Listener;
 import io.github.minecraftchampions.dodoopenjava.event.WebSocketEventTrigger;
-import io.github.minecraftchampions.dodoopenjava.message.AbstractMessage;
+import io.github.minecraftchampions.dodoopenjava.message.Message;
 import io.github.minecraftchampions.dodoopenjava.message.card.CardMessage;
 import io.github.minecraftchampions.dodoopenjava.message.text.TextMessage;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
@@ -405,7 +405,7 @@ public class Bot {
                 }
 
                 @SneakyThrows
-                public Result sendMessage(String channelId, AbstractMessage messageBody) {
+                public Result sendMessage(String channelId, Message messageBody) {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.ChannelMessageApi.sendMessage(bot.getAuthorization(), channelId, messageBody);
                 }
             }

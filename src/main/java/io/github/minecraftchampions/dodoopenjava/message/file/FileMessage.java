@@ -1,6 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.message.file;
 
-import io.github.minecraftchampions.dodoopenjava.message.AbstractMessage;
+import io.github.minecraftchampions.dodoopenjava.message.Message;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +13,7 @@ import org.json.JSONObject;
 @RequiredArgsConstructor
 @Getter
 @Setter
-public class FileMessage extends AbstractMessage {
+public class FileMessage implements Message {
     @NonNull
     private String url;
 

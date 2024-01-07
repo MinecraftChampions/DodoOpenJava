@@ -47,7 +47,7 @@ public class ApiResultsLogger {
      * @return 日志
      */
     public CompletableFuture<Map<Long, LinkedHashSet<Result>>> getAllLogs() {
-        return getLogs(null, null);
+        return getLogs((Date) null, null);
     }
 
     /**
@@ -71,6 +71,19 @@ public class ApiResultsLogger {
             endTimestamp = endDate.getTime();
         }
         return getLogs(startTimestamp, endTimestamp);
+    }
+
+    /**
+     * 获取指定时间段到另一个指定时间段的日志
+     *
+     * @param start 开始(样式:yyyy-MM-dd HH:mm:ss)
+     * @param end   结束(样式:yyyy-MM-dd HH:mm:ss)
+     * @return 日志
+     */
+    public CompletableFuture<Map<Long, LinkedHashSet<Result>>> getLogs(@NonNull String start, @NonNull String end) {
+        Date startDate = DateUtil.parse(start, DateUtil.Format_Three);
+        Date endDate = DateUtil.parse(end, DateUtil.Format_Three);
+        return getLogs(startDate, endDate);
     }
 
     /**

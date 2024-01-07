@@ -150,7 +150,7 @@ public class Result {
         if (data instanceof JSONObject jsonObject) {
             return jsonObject;
         } else {
-            throw new RuntimeException();
+            return new JSONObject();
         }
     }
 
@@ -163,7 +163,7 @@ public class Result {
         if (data instanceof JSONArray jsonArray) {
             return jsonArray;
         } else {
-            throw new RuntimeException();
+            return new JSONArray();
         }
     }
 

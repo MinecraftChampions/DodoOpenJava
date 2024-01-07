@@ -1,7 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.command;
 
 import io.github.minecraftchampions.dodoopenjava.Bot;
-import io.github.minecraftchampions.dodoopenjava.permissions.UserManager;
 import lombok.Getter;
 import lombok.NonNull;
 import org.json.JSONObject;
@@ -181,18 +180,5 @@ public class CommandSender {
      */
     public void removeRole(@NonNull String RoleId) throws IOException {
         bot.getApi().V2.roleApi.removeRoleMember(IslandSourceId, SenderDodoSourceId, RoleId);
-    }
-
-    /**
-     * 是否拥有权限
-     *
-     * @param permission 权限
-     * @return true有，false失败
-     */
-    public boolean hasPermission(String permission) {
-        if (permission == null) {
-            return true;
-        }
-        return UserManager.hasPerm(UserManager.getUser(getSenderDodoSourceId()), permission);
     }
 }

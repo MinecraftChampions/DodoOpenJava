@@ -111,7 +111,7 @@ public class ConfigUtil {
             fileConfiguration.set(path, value);
             fileConfiguration.save(new File(child));
         } catch (IOException e) {
-            DodoOpenJava.LOGGER.error("设置节点时发生错误",e);
+            DodoOpenJava.LOGGER.error("设置节点时发生错误", e);
         } catch (NoSuchMethodError ignored) {
         }
     }
@@ -141,7 +141,7 @@ public class ConfigUtil {
      * @param outFile 复制到的文件对象
      * @return true就是成功，false就是失败
      */
-    public static Boolean copy(@NonNull File inFile, @NonNull File outFile) {
+    public static boolean copy(@NonNull File inFile, @NonNull File outFile) {
         if (!inFile.exists()) {
             return false;
         }
@@ -170,13 +170,15 @@ public class ConfigUtil {
      * @param outPath 复制到的文件路径（如C:/config.yml)
      * @return true 成功，false 失败
      */
-    public static Boolean copyResourcesToFile(@NonNull String inPath,
+    public static boolean copyResourcesToFile(@NonNull String inPath,
                                               @NonNull String outPath) throws IOException {
         int firstIndex = outPath.lastIndexOf(System.getProperty("path.separator")) + 1;
         int lastIndex = outPath.lastIndexOf(File.separator) + 1;
         File OutPath = new File(outPath.substring(firstIndex, lastIndex));
         if (!OutPath.exists()) {
-            OutPath.mkdirs();
+            if (!OutPath.mkdirs()) {
+                return false;
+            }
         }
 
         File file = new File(outPath);
@@ -223,7 +225,7 @@ public class ConfigUtil {
             streamReader.close();
             return stringBuilder.toString();
         } catch (Exception e) {
-            DodoOpenJava.LOGGER.error("读取文件时发生错误",e);
+            DodoOpenJava.LOGGER.error("读取文件时发生错误", e);
         }
         return null;
     }

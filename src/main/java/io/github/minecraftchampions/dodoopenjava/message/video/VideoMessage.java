@@ -1,6 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.message.video;
 
-import io.github.minecraftchampions.dodoopenjava.message.AbstractMessage;
+import io.github.minecraftchampions.dodoopenjava.message.Message;
 import lombok.*;
 import org.json.JSONObject;
 
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 @AllArgsConstructor
 @Getter
 @Setter
-public class VideoMessage extends AbstractMessage {
+public class VideoMessage implements Message {
     @NonNull
     private String url;
 
