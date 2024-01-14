@@ -4,8 +4,10 @@ import io.github.minecraftchampions.dodoopenjava.event.EventHandler;
 import io.github.minecraftchampions.dodoopenjava.event.Listener;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage.MessageEvent;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.personal.PersonalMessageEvent;
-import lombok.AllArgsConstructor;
+import io.github.minecraftchampions.dodoopenjava.impl.CommandSenderImpl;
+import lombok.Getter;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;
 
 import java.util.List;
@@ -14,7 +16,8 @@ import java.util.Objects;
 /**
  * 命令触发
  */
-@AllArgsConstructor
+@RequiredArgsConstructor
+@Getter
 public class CommandTrigger implements Listener {
     /**
      * 监听消息事件
@@ -36,20 +39,32 @@ public class CommandTrigger implements Listener {
     @EventHandler
     public void event(PersonalMessageEvent e) {
         if (!Objects.equals(e.getMessageIntType(), 1)) return;
-        if (e.getMessageBody().getString("content").indexOf("/") != 0) return;
+        if (e.getMessageBody().getString("content").indexOf(commandHeader) != 0) return;
         call(e.getJsonObject(), true);
     }
 
     public void call(JSONObject jsonObject, boolean isPersonalCommand) {
         String command = jsonObject.getJSONObject("data").getJSONObject("eventBody")
                 .getJSONObject("messageBody").getString("content")
-                .replaceFirst("/", "");
-        CommandSender sender = new CommandSender(jsonObject, commandManager.getBot(), isPersonalCommand);
+                .replaceFirst(commandHeader, "");
+        CommandSenderImpl sender = new CommandSenderImpl(jsonObject, commandManager.getBot(), isPersonalCommand);
         List<String> Command = new java.util.ArrayList<>(List.of(command.split(" ")));
         String mainCommand = Command.get(0);
         Command.remove(0);
         String[] args = Command.toArray(new String[]{});
         commandManager.trigger(sender, mainCommand, isPersonalCommand, args);
+    }
+
+    private String commandHeader = "/";
+
+    /**
+     * 设置命令头
+     * 默认:"/"
+     *
+     * @param commandHeader header
+     */
+    public void setCommandHeader(@NonNull String commandHeader) {
+        this.commandHeader = commandHeader;
     }
 
     @NonNull

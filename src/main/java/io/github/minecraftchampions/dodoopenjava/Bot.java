@@ -1,11 +1,13 @@
 package io.github.minecraftchampions.dodoopenjava;
 
+import io.github.minecraftchampions.dodoopenjava.api.User;
 import io.github.minecraftchampions.dodoopenjava.command.CommandExecutor;
 import io.github.minecraftchampions.dodoopenjava.command.CommandManager;
-import io.github.minecraftchampions.dodoopenjava.event.EventManager;
 import io.github.minecraftchampions.dodoopenjava.event.AbstractEventTrigger;
+import io.github.minecraftchampions.dodoopenjava.event.EventManager;
 import io.github.minecraftchampions.dodoopenjava.event.Listener;
 import io.github.minecraftchampions.dodoopenjava.event.WebSocketEventTrigger;
+import io.github.minecraftchampions.dodoopenjava.impl.DodoUserImpl;
 import io.github.minecraftchampions.dodoopenjava.message.Message;
 import io.github.minecraftchampions.dodoopenjava.message.card.CardMessage;
 import io.github.minecraftchampions.dodoopenjava.message.text.TextMessage;
@@ -540,6 +542,11 @@ public class Bot {
                 }
 
                 @SneakyThrows
+                public User getUser(String islandSourceId, String dodoSourceId) {
+                    return new DodoUserImpl(dodoSourceId, islandSourceId, bot);
+                }
+
+                @SneakyThrows
                 public Result editMemberNickName(String islandSourceId, String dodoSourceId, String nickName) {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.MemberApi.editMemberNickName(bot.getAuthorization(), islandSourceId, dodoSourceId, nickName);
                 }
@@ -568,6 +575,12 @@ public class Bot {
                 public Result addMemberReasonBan(String islandSourceId, String dodoSourceId, String reason) {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.MemberApi.addMemberReasonBan(bot.getAuthorization(), islandSourceId, dodoSourceId, reason);
                 }
+
+                @SneakyThrows
+                public Result addMemberReasonChannelBan(String islandSourceId, String dodoSourceId, String reason, String noticeChannelId) {
+                    return io.github.minecraftchampions.dodoopenjava.api.v2.MemberApi.addMemberReasonChannelBan(bot.getAuthorization(), islandSourceId, dodoSourceId, reason, noticeChannelId);
+                }
+
 
                 @SneakyThrows
                 public Result getMemberDodoIdMapList(List<String> strList) {
@@ -623,6 +636,10 @@ public class Bot {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.PersonalApi.sendDodoVideoMessage(bot.getAuthorization(), islandSourceId, dodoSourceId, u);
                 }
 
+                @SneakyThrows
+                public Result sendMessage(String islandSourceId, String dodoSourceId, Message message) {
+                    return io.github.minecraftchampions.dodoopenjava.api.v2.PersonalApi.sendMessage(bot.getAuthorization(), islandSourceId, dodoSourceId, message);
+                }
             }
 
             public class RoleApi {

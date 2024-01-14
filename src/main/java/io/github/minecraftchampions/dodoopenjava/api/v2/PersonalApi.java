@@ -2,6 +2,7 @@ package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.Result;
+import io.github.minecraftchampions.dodoopenjava.message.Message;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
 import org.json.JSONObject;
@@ -43,6 +44,41 @@ public class PersonalApi {
                 .put("dodoSourceId", dodoSourceId)
                 .put("messageType", 1)
                 .put("messageBody", Map.of("content", message));
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+    }
+
+    /**
+     * 发送消息
+     *
+     * @param clientId       机器人唯一标识
+     * @param token          机器人鉴权Token
+     * @param messageBody    消息
+     * @param islandSourceId 群ID
+     * @param dodoSourceId   DodoId
+     * @return JSON对象
+     * @throws IOException 失败后抛出
+     */
+    public static Result sendMessage(String clientId, String token, String islandSourceId, String dodoSourceId, Message messageBody) throws IOException {
+        return sendMessage(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, messageBody);
+    }
+
+    /**
+     * 发送消息
+     *
+     * @param authorization  authorization
+     * @param messageBody    消息
+     * @param islandSourceId 群ID
+     * @param dodoSourceId   DodoId
+     * @return JSON对象
+     * @throws IOException 失败后抛出
+     */
+    public static Result sendMessage(String authorization, String islandSourceId, String dodoSourceId, Message messageBody) throws IOException {
+        String url = DodoOpenJava.BASEURL + "channel/message/send";
+        JSONObject jsonObject = new JSONObject()
+                .put("islandSourceId", islandSourceId)
+                .put("dodoSourceId", dodoSourceId)
+                .put("messageType", messageBody.getType())
+                .put("messageBody", messageBody.toMessage());
         return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 

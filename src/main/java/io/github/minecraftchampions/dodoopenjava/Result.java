@@ -2,10 +2,10 @@ package io.github.minecraftchampions.dodoopenjava;
 
 import lombok.Getter;
 import lombok.NonNull;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 /**
  * api结果
@@ -91,18 +91,13 @@ public class Result {
 
     private final long timestamp;
 
-    private final JSONObject jsonObjectData;
-
-    private Object data;
+    private final JSONObject JSONObjectData;
 
     private Result(@NonNull JSONObject jsonObject) {
-        this.jsonObjectData = jsonObject;
+        this.JSONObjectData = jsonObject;
         this.statusCode = jsonObject.getInt("status");
         this.message = jsonObject.getString("message");
         this.timestamp = System.currentTimeMillis();
-        if (statusCode == 0) {
-            this.data = jsonObject.get("data");
-        }
     }
 
     /**
@@ -142,33 +137,36 @@ public class Result {
     }
 
     /**
-     * 获取
+     * 如果成功
      *
-     * @return jsonObject
+     * @param function function
+     * @return this
      */
-    public JSONObject getJSONObjectData() {
-        if (data instanceof JSONObject jsonObject) {
-            return jsonObject;
+    public <T> T ifSuccess(@NonNull Function<Result, T> function) {
+        if (statusCode == 0) {
+            return function.apply(this);
         } else {
-            return new JSONObject();
+            return null;
         }
     }
 
     /**
-     * 获取
+     * 如果失败
      *
-     * @return jsonArray
+     * @param function function
+     * @return this
      */
-    public JSONArray getJSONArrayData() {
-        if (data instanceof JSONArray jsonArray) {
-            return jsonArray;
+    public <T> T ifFailure(@NonNull Function<Result, T> function) {
+        if (statusCode != 0) {
+            return function.apply(this);
         } else {
-            return new JSONArray();
+            return null;
         }
     }
 
+
     @Override
     public String toString() {
-        return jsonObjectData.toString();
+        return getJSONObjectData().toString();
     }
 }

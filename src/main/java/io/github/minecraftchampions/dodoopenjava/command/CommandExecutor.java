@@ -1,5 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.command;
 
+import io.github.minecraftchampions.dodoopenjava.api.CommandSender;
+
 import java.util.HashSet;
 import java.util.Set;
 

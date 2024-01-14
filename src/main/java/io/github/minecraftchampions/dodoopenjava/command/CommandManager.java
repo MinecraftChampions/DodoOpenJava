@@ -2,6 +2,7 @@ package io.github.minecraftchampions.dodoopenjava.command;
 
 import io.github.minecraftchampions.dodoopenjava.Bot;
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
+import io.github.minecraftchampions.dodoopenjava.api.CommandSender;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -24,12 +25,15 @@ public class CommandManager {
 
     private boolean isInit = false;
 
+    private final CommandTrigger commandTrigger = new CommandTrigger(this);
     /**
      * 初始化
      */
     private synchronized void init() {
-        isInit = true;
-        bot.registerListener(new CommandTrigger(this));
+        if (!isInit) {
+            isInit = true;
+            bot.registerListener(commandTrigger);
+        }
     }
 
     /**

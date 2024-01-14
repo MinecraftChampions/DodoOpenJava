@@ -348,6 +348,44 @@ public class MemberApi {
      * @param clientId        机器人唯一标识
      * @param token           机器人鉴权Token
      * @param islandSourceId  群号
+     * @param noticeChannelId 提醒频道ID
+     * @param dodoSourceId    Dodo号
+     * @param reason          封禁理由
+     * @return JSON对象
+     * @throws IOException 失败后抛出
+     */
+    public static Result addMemberReasonChannelBan(String clientId, String token, String islandSourceId, String dodoSourceId, String reason, String noticeChannelId) throws IOException {
+        return addMemberReasonChannelBan(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, reason, noticeChannelId);
+    }
+
+    /**
+     * 永久封禁成员
+     *
+     * @param authorization   authorization
+     * @param islandSourceId  群号
+     * @param dodoSourceId    Dodo号
+     * @param reason          封禁理由
+     * @param noticeChannelId 提醒频道ID
+     * @return JSON对象
+     * @throws IOException 失败后抛出
+     */
+    public static Result addMemberReasonChannelBan(String authorization, String islandSourceId, String dodoSourceId, String reason, String noticeChannelId) throws IOException {
+        String url = DodoOpenJava.BASEURL + "member/ban/add";
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("islandSourceId", islandSourceId)
+                .put("dodoSourceId", dodoSourceId)
+                .put("reason", reason)
+                .put("noticeChannelId", noticeChannelId);
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+
+    }
+
+    /**
+     * 永久封禁成员
+     *
+     * @param clientId        机器人唯一标识
+     * @param token           机器人鉴权Token
+     * @param islandSourceId  群号
      * @param dodoSourceId    Dodo号
      * @param noticeChannelId 通知频道ID
      * @return JSON对象
@@ -447,10 +485,9 @@ public class MemberApi {
     /**
      * 获取成员DoDo号映射列表
      *
-     * @param clientId       机器人唯一标识
-     * @param token          机器人鉴权Token
-
-     * @param dodoIdList   dodoId
+     * @param clientId   机器人唯一标识
+     * @param token      机器人鉴权Token
+     * @param dodoIdList dodoId
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
@@ -461,8 +498,8 @@ public class MemberApi {
     /**
      * 获取成员DoDo号映射列表
      *
-     * @param authorization  authorization
-     * @param dodoIdList   dodoId
+     * @param authorization authorization
+     * @param dodoIdList    dodoId
      * @return JSON对象
      * @throws IOException 失败后抛出
      */

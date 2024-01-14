@@ -75,7 +75,7 @@ public class WebSocketEventTrigger extends AbstractEventTrigger {
         bot.getApi().V2.eventApi.getWebSocketConnection()
                 .ifSuccess(result -> {
                     reacquireCount = 0;
-                    wssLo = result.getJSONObjectData().getString("endpoint");
+                    wssLo = result.getJSONObjectData().getJSONObject("data").getString("endpoint");
                     try {
                         mWebSocket = new WsListenerC(new URI(wssLo));
                         mWebSocket.setConnectionLostTimeout(0);
@@ -153,7 +153,6 @@ public class WebSocketEventTrigger extends AbstractEventTrigger {
         public void onMessage(ByteBuffer bf) {
             String message = new String(bf.array());
             if (message.equals("{\"type\":1,\"version\":\"\"}")) {
-                sendPing();
                 return;
             }
             JSONObject jsontext = new JSONObject(message);
@@ -185,7 +184,7 @@ public class WebSocketEventTrigger extends AbstractEventTrigger {
 
         @Override
         public void onError(Exception ex) {
-            DodoOpenJava.LOGGER.error("websocket接收事件发生错误",ex);
+            DodoOpenJava.LOGGER.error("websocket接收事件发生错误", ex);
             reconnectWebsocket();
         }
 

@@ -7,37 +7,39 @@ JavaDoc：https://qscraft.top/javadoc
 Dodo开放平台：https://open.imdodo.com/
 
 ### 代码范例
+
 ```java
 package io.github.minecraftchampions.dodoopenjava.test;
 
 import io.github.minecraftchampions.dodoopenjava.Bot;
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.command.CommandExecutor;
-import io.github.minecraftchampions.dodoopenjava.command.CommandSender;
+import io.github.minecraftchampions.dodoopenjava.api.CommandSender;
 import io.github.minecraftchampions.dodoopenjava.event.EventHandler;
 import io.github.minecraftchampions.dodoopenjava.event.Listener;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage.MessageEvent;
 
 import java.io.IOException;
 
-public class Main implements CommandExecutor,Listener{
+public class Main implements CommandExecutor, Listener {
     public static Bot bot;
+
     public static void main(String... args) {
         //创建机器人实例
-        bot = DodoOpenJava.createBot("111111","token");
+        bot = DodoOpenJava.createBot("111111", "token");
         //启用日志记录功能
         bot.enableApiResultsLogger();
         //注册事件监听器
         bot.registerListener(new Main());
         //注册命令处理器
         bot.registerCommand(new Main());
-        System.out.println(bot.getApi().V2.eventApi.getWebSocketConnection().getJSONObjectData().getString("endpoint"));
+        // bot.getCommandManager().getCommandTrigger().setCommandHeader("/");;
+        System.out.println(bot.getApi().V2.eventApi.getWebSocketConnection().getJSONObjectData().getJSONObject("data").getString("endpoint"));
         bot.getApi().V2.botApi.getBotInfo().ifSuccess(result -> {
             System.out.println("成功");
-            System.out.println(result.getJSONObjectData());
         });
 
-        bot.getApi().V2.channelMessageApi.sendTextMessage("1252355","测试");
+        bot.getApi().V2.channelMessageApi.sendTextMessage("1252355", "测试");
         System.out.println(bot.getApiResultsLogger());
     }
 
@@ -45,7 +47,7 @@ public class Main implements CommandExecutor,Listener{
     public void onEvent(MessageEvent e) {
         System.out.println(e.getEventName());
         System.out.println(e.getMessageId());
-        bot.getApi().V2.channelMessageApi.sendTextMessage(e.getChannelId(),"你发送了" + e.getMessageBody());
+        bot.getApi().V2.channelMessageApi.sendTextMessage(e.getChannelId(), "你发送了" + e.getMessageBody());
     }
 
     @Override
@@ -60,14 +62,9 @@ public class Main implements CommandExecutor,Listener{
 
     @Override
     public void onCommand(CommandSender commandSender, String[] strings) {
-        System.out.println(commandSender.getSenderName());
-        try {
-            commandSender.editSenderNickName("测试名字");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        bot.getApi().V2.channelMessageApi.sendTextMessage(commandSender.getChannelId(),"测试成功");
-
+        System.out.println(commandSender.getName());
+        commandSender.editNickName("测试名字");
+        bot.getApi().V2.channelMessageApi.sendTextMessage(commandSender.getChannelId(), "测试成功");
     }
 }
 
@@ -96,7 +93,7 @@ public class Main implements CommandExecutor,Listener{
   <dependency>
     <groupId>top.qscraft</groupId>
     <artifactId>dodoopenjava</artifactId>
-    <version>3.2.5-SNAPSHOT</version>
+    <version>3.2.5</version>
   </dependency>
 </dependencies>
 ```
@@ -109,7 +106,7 @@ public class Main implements CommandExecutor,Listener{
 	}
 
 	dependencies {
-	        implementation 'top.qscraft:dodoopenjava:3.2.5-SNAPSHOT'
+	        implementation 'top.qscraft:dodoopenjava:3.2.5'
     }
 ```
 ### 教程(过于古老，无参考价值，改日重写)
