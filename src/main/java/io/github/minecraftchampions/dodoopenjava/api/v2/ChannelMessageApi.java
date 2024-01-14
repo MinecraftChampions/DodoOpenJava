@@ -708,7 +708,7 @@ public class ChannelMessageApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("channelId", channelId)
                 .put("messageType", 6)
-                .put("messageBody", messageBody);
+                .put("messageBody", messageBody.toJSONObject());
         return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
