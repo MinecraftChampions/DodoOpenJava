@@ -12,6 +12,7 @@ import java.net.URL;
 import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * 一些 有关 网络请求 的相关方法
@@ -160,7 +161,7 @@ public class NetUtil {
                                           @NonNull String path,
                                           @NonNull String url) throws IOException {
         String str = uploadFile(header, path, url);
-        Result result = Result.of(new JSONObject(str));
+        Result result = Result.of(new JSONObject(Objects.requireNonNull(str)));
         String authorization = header.get("Authorization");
         if (DodoOpenJava.getLogMap().containsKey(authorization)) {
             DodoOpenJava.getLogMap().get(authorization).addResult(result);
