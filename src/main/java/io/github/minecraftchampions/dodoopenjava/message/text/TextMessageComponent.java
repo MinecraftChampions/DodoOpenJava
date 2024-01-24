@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.message.text;
 
+import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -14,6 +15,10 @@ public class TextMessageComponent {
 
     public static TextMessageComponent newComponent() {
         return new TextMessageComponent();
+    }
+
+    public static LinkComponent newLinkComponent() {
+        return LinkComponent.newComponent();
     }
 
     protected String content;
@@ -63,8 +68,10 @@ public class TextMessageComponent {
             this.styles = new ArrayList<>();
             List<TextMessageStyle> list = Arrays.asList(styles);
             if (list.contains(TextMessageStyle.code) ||
-                    list.contains(TextMessageStyle.cite))
-                throw new RuntimeException("LinkComponent不能传入code与cite style");
+                    list.contains(TextMessageStyle.cite)) {
+                DodoOpenJava.LOGGER.error("LinkComponent不能传入code与cite style");
+                return this;
+            }
 
             this.styles.addAll(list);
             return this;
