@@ -17,7 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Getter
 @RequiredArgsConstructor
 public class CommandManager {
-    private final Map<String, CommandExecutor> commands = new ConcurrentHashMap<>();
+    private final Map<String, CommandExecutor> commandMap = new ConcurrentHashMap<>();
 
     private final Map<String, String> commandAliasesMapping = new ConcurrentHashMap<>();
 
@@ -49,14 +49,14 @@ public class CommandManager {
                     new RuntimeException("别名包括命令名:" + commandName + ",已取消添加此别名"));
             aliases.remove(commandName);
         }
-        if (commands.containsKey(commandName)) {
+        if (commandMap.containsKey(commandName)) {
             DodoOpenJava.LOGGER.error("注册命令时错误",
                     new RuntimeException("重复的命令名:" + commandName + ";已取消注册"));
             return;
         }
-        commands.put(commandName, command);
+        commandMap.put(commandName, command);
         for (String name : aliases) {
-            if (commands.containsKey(name)) {
+            if (commandMap.containsKey(name)) {
                 DodoOpenJava.LOGGER.error("注册命令时错误",
                         new RuntimeException("已经注册过命令名为" + name + "的命令，已经取消添加此别名"));
             } else {
@@ -79,7 +79,7 @@ public class CommandManager {
      * @param command 命令实例
      */
     public void unregisterCommand(@NonNull CommandExecutor command) {
-        commands.remove(command.getMainCommand());
+        commandMap.remove(command.getMainCommand());
         for (String str : command.getCommandAliases()) {
             commandAliasesMapping.remove(str);
         }
@@ -89,7 +89,7 @@ public class CommandManager {
      * 注销所有命令
      */
     public void unregisterAllCommands() {
-        commands.clear();
+        commandMap.clear();
         commandAliasesMapping.clear();
     }
 
@@ -103,10 +103,10 @@ public class CommandManager {
     public boolean trigger(@NonNull CommandSender sender, @NonNull String commandName,
                            boolean personalMessage, @NonNull String... args) {
         CommandExecutor command;
-        if (commands.containsKey(commandName)) {
-            command = commands.get(commandName);
+        if (commandMap.containsKey(commandName)) {
+            command = commandMap.get(commandName);
         } else if (commandAliasesMapping.containsKey(commandName)) {
-            command = commands.get(commandAliasesMapping.get(commandName));
+            command = commandMap.get(commandAliasesMapping.get(commandName));
         } else {
             return false;
         }
