@@ -708,7 +708,11 @@ public class ChannelMessageApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("channelId", channelId)
                 .put("messageType", 6)
-                .put("messageBody", messageBody.toJSONObject());
+<<<<<<< HEAD
+                .put("messageBody", messageBody.toMessage());
+=======
+                .put("messageBody", messageBody.toString());
+>>>>>>> parent of 7580aaf (Merge pull request #5 from zimzaza4/patch-1)
         return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
