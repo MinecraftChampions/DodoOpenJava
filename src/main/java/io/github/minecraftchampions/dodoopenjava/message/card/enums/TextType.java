@@ -1,4 +1,4 @@
-package io.github.minecraftchampions.dodoopenjava.message.card.component;
+package io.github.minecraftchampions.dodoopenjava.message.card.enums;
 
 import lombok.Getter;
 
@@ -23,4 +23,9 @@ public enum TextType {
      * 获取类型
      */
     private final String type;
+
+    @Override
+    public String toString() {
+        return getType();
+    }
 }

@@ -2,8 +2,8 @@ package io.github.minecraftchampions.dodoopenjava.message.card.component;
 
 import org.json.JSONObject;
 
-public abstract class CardComponent {
-    public abstract String getType();
+public interface CardComponent {
+    String getType();
 
-    public abstract JSONObject toJSONObject();
+    JSONObject toJSONObject();
 }
