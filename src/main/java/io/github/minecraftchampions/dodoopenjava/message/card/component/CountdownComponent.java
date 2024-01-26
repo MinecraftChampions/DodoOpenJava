@@ -17,7 +17,7 @@ public class CountdownComponent implements CardComponent {
     @Override
     public JSONObject toJSONObject() {
         JSONObject jsonObject = new JSONObject(Map.of("type",getType(),
-                "style",getStyle().name(),"endTime",getEndTime()));
+                "style",getStyle().toString(),"endTime",getEndTime()));
         if (title != null) {
             jsonObject.put("title",getTitle());
         }
