@@ -46,14 +46,14 @@ public class ImageGroupComponent implements CardComponent {
     }
 
 
-    public ImageGroupComponent prepend(ImageElement image) {
+    public ImageGroupComponent prepend(@NonNull ImageElement image) {
         synchronized (imageElements) {
             imageElements.add(0, image);
             return this;
         }
     }
 
-    public ImageGroupComponent insert(int index, ImageElement image) {
+    public ImageGroupComponent insert(int index, @NonNull ImageElement image) {
         synchronized (imageElements) {
             imageElements.add(index, image);
             return this;
@@ -69,5 +69,13 @@ public class ImageGroupComponent implements CardComponent {
 
     public int size() {
         return imageElements.size();
+    }
+
+    public ImageGroupComponent image(@NonNull ImageElement imageElement) {
+        return append(imageElement);
+    }
+
+    public ImageGroupComponent image(@NonNull String link) {
+        return append(ImageElement.of(link));
     }
 }
