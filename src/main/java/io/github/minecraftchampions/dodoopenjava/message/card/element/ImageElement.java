@@ -14,6 +14,6 @@ public class ImageElement extends Element.DataElement implements Accessory {
     private String link;
 
     public JSONObject toJSONObject() {
-        return new JSONObject(Map.of("type","image","src", getLink()));
+        return new JSONObject(Map.of("type", "image", "src", getLink()));
     }
 }

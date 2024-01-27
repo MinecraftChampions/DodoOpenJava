@@ -60,10 +60,9 @@ public class ImageGroupComponent implements CardComponent {
         }
     }
 
-    public ImageGroupComponent remove(int index) {
+    public void remove(int index) {
         synchronized (imageElements) {
             imageElements.remove(index);
-            return this;
         }
     }
 

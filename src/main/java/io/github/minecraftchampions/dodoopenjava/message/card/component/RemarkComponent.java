@@ -64,9 +64,9 @@ public class RemarkComponent implements CardComponent {
         }
     }
 
-    public Element.DataElement remove(int index) {
+    public void remove(int index) {
         synchronized (elementList) {
-            return elementList.remove(index);
+            elementList.remove(index);
         }
     }
 
@@ -90,6 +90,10 @@ public class RemarkComponent implements CardComponent {
 
     public RemarkComponent image(ImageElement image) {
         return append(image);
+    }
+
+    public RemarkComponent image(String link) {
+        return append(ImageElement.of(link));
     }
 
     public RemarkComponent text(TextElement text) {

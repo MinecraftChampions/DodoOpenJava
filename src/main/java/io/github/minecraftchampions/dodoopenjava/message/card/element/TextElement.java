@@ -86,7 +86,7 @@ public abstract class TextElement extends Element.DataElement {
             }
         }
 
-        public ParagraphText append(NormalText normalText) {
+        public ParagraphText append(@NonNull NormalText normalText) {
             synchronized (texts) {
                 if (texts.size() == 6) {
                     DodoOpenJava.LOGGER.warn("多栏文本栏数已达上限", new Throwable());
@@ -97,7 +97,7 @@ public abstract class TextElement extends Element.DataElement {
             }
         }
 
-        public ParagraphText prepend(NormalText normalText) {
+        public ParagraphText prepend(@NonNull NormalText normalText) {
             synchronized (texts) {
                 if (texts.size() == 6) {
                     DodoOpenJava.LOGGER.warn("多栏文本栏数已达上限", new Throwable());
@@ -108,7 +108,7 @@ public abstract class TextElement extends Element.DataElement {
             }
         }
 
-        public ParagraphText insert(int index, NormalText normalText) {
+        public ParagraphText insert(int index, @NonNull NormalText normalText) {
             synchronized (texts) {
                 if (texts.size() == 6) {
                     DodoOpenJava.LOGGER.warn("多栏文本栏数已达上限", new Throwable());
@@ -119,14 +119,13 @@ public abstract class TextElement extends Element.DataElement {
             }
         }
 
-        public ParagraphText remove(int index) {
+        public void remove(int index) {
             synchronized (texts) {
                 if (size() == 2) {
                     DodoOpenJava.LOGGER.warn("多栏文本栏数已达下限", new Throwable());
-                    return this;
+                    return;
                 }
                 texts.remove(index);
-                return this;
             }
         }
 
@@ -139,8 +138,8 @@ public abstract class TextElement extends Element.DataElement {
             return toJSONObject().toString();
         }
 
-        public void forEach(Consumer<NormalText> consumer) {
-            for (int i = 0;i< size();i++) {
+        public void forEach(@NonNull Consumer<NormalText> consumer) {
+            for (int i = 0; i < size(); i++) {
                 NormalText text = get(i);
                 consumer.accept(text);
             }

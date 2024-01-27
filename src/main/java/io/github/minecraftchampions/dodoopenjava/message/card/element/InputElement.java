@@ -32,7 +32,7 @@ public class InputElement extends Element.InteractiveElement {
     private String placeholder;
 
     public void setRows(int rows) {
-        if (rows < 1 || rows >4) {
+        if (rows < 1 || rows > 4) {
             DodoOpenJava.LOGGER.warn("输入框高度范围限制在1~4");
             return;
         }
@@ -40,7 +40,7 @@ public class InputElement extends Element.InteractiveElement {
     }
 
     public void setMinChar(int minChar) {
-        if (minChar < 0 || minChar >4000) {
+        if (minChar < 0 || minChar > 4000) {
             DodoOpenJava.LOGGER.warn("最小字符数限制在0~4000");
             return;
         }
@@ -48,7 +48,7 @@ public class InputElement extends Element.InteractiveElement {
     }
 
     public void setMaxChar(int maxChar) {
-        if (maxChar < 1 || maxChar >4000) {
+        if (maxChar < 1 || maxChar > 4000) {
             DodoOpenJava.LOGGER.warn("最大字符数限制在1~4000");
             return;
         }
@@ -57,11 +57,11 @@ public class InputElement extends Element.InteractiveElement {
 
     @Override
     public JSONObject toJSONObject() {
-        JSONObject jsonObject = new JSONObject(Map.of("type","input","key",getKey(),
-                "title",getTitle(), "rows",getRows(),"minChar",getMaxChar(),
-                "maxChar",getMaxChar()));
+        JSONObject jsonObject = new JSONObject(Map.of("type", "input", "key", getKey(),
+                "title", getTitle(), "rows", getRows(), "minChar", getMaxChar(),
+                "maxChar", getMaxChar()));
         if (placeholder != null) {
-            jsonObject.put("placeholder",getPlaceholder());
+            jsonObject.put("placeholder", getPlaceholder());
         }
         return jsonObject;
     }
