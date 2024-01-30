@@ -79,15 +79,15 @@ public class RemarkComponent implements CardComponent {
         return remarkComponent;
     }
 
-    public RemarkComponent image(ImageElement image) {
+    public RemarkComponent image(@NonNull ImageElement image) {
         return append(image);
     }
 
-    public RemarkComponent image(String link) {
+    public RemarkComponent image(@NonNull String link) {
         return append(ImageElement.of(link));
     }
 
-    public RemarkComponent text(TextElement text) {
+    public RemarkComponent text(@NonNull TextElement text) {
         return append(text);
     }
 }

@@ -29,27 +29,27 @@ public class ListSelectorComponent implements CardComponent {
 
     private String placeholder;
 
-    public static ListSelectorComponent of(int min, int max, String interactCustomId) {
+    public static ListSelectorComponent of(int min, int max, @NonNull String interactCustomId) {
         ListSelectorComponent listSelectorComponent = of(min, max);
         listSelectorComponent.setInteractCustomId(interactCustomId);
         return listSelectorComponent;
     }
 
-    public static ListSelectorComponent of(int min, int max, OptionElement... elements) {
+    public static ListSelectorComponent of(int min, int max, @NonNull OptionElement... elements) {
         ListSelectorComponent listSelectorComponent = of(min, max);
         listSelectorComponent.elementList.addAll(List.of(elements));
         return listSelectorComponent;
     }
 
-    public static ListSelectorComponent of(int min, int max, String interactCustomId,
-                                           OptionElement... elements) {
+    public static ListSelectorComponent of(int min, int max, @NonNull String interactCustomId,
+                                           @NonNull OptionElement... elements) {
         ListSelectorComponent listSelectorComponent = of(min, max, interactCustomId);
         listSelectorComponent.elementList.addAll(List.of(elements));
         return listSelectorComponent;
     }
 
-    public static ListSelectorComponent of(int min, int max, String interactCustomId,
-                                           String placeholder, OptionElement... elements) {
+    public static ListSelectorComponent of(int min, int max, @NonNull String interactCustomId,
+                                           @NonNull String placeholder, @NonNull OptionElement... elements) {
         ListSelectorComponent listSelectorComponent = of(min, max, interactCustomId, placeholder);
         listSelectorComponent.elementList.addAll(List.of(elements));
         return listSelectorComponent;

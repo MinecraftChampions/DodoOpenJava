@@ -47,59 +47,59 @@ public class CardMessage implements Message {
 
         private Theme theme = Theme.Default;
 
-        public CardMessage.Builder theme(Theme theme) {
+        public CardMessage.Builder theme(@NonNull Theme theme) {
             this.theme = theme;
             return this;
         }
 
-        public CardMessage.Builder title(String title ) {
+        public CardMessage.Builder title(@NonNull String title) {
             this.title = title;
             return this;
         }
 
-        public CardMessage.Builder content(String content) {
+        public CardMessage.Builder content(@NonNull String content) {
             this.content = content;
             return this;
         }
 
-        public CardMessage.Builder append(CardComponent component) {
+        public CardMessage.Builder append(@NonNull CardComponent component) {
             synchronized (this.components) {
                 this.components.add(component);
             }
             return this;
         }
 
-        public CardMessage.Builder text(SectionComponent component) {
+        public CardMessage.Builder text(@NonNull SectionComponent component) {
             append(component);
             return this;
         }
 
-        public CardMessage.Builder text(TextElement text) {
+        public CardMessage.Builder text(@NonNull TextElement text) {
             append(SectionComponent.of(text));
             return this;
         }
 
-        public CardMessage.Builder text(String content, TextType type) {
+        public CardMessage.Builder text(@NonNull String content, @NonNull TextType type) {
             append(SectionComponent.of(content, type));
             return this;
         }
 
-        public CardMessage.Builder texts(TextElement.NormalText text) {
+        public CardMessage.Builder texts(@NonNull TextElement.NormalText text) {
             append(SectionComponent.of(text));
             return this;
         }
 
-        public CardMessage.Builder section(SectionComponent sectionComponent) {
+        public CardMessage.Builder section(@NonNull SectionComponent sectionComponent) {
             append(sectionComponent);
             return this;
         }
 
-        public CardMessage.Builder button(ButtonGroupComponent component) {
+        public CardMessage.Builder button(@NonNull ButtonGroupComponent component) {
             append(component);
             return this;
         }
 
-        public CardMessage.Builder countdown(CountdownComponent component) {
+        public CardMessage.Builder countdown(@NonNull CountdownComponent component) {
             append(component);
             return this;
         }
@@ -109,83 +109,83 @@ public class CardMessage implements Message {
             return this;
         }
 
-        public CardMessage.Builder header(HeaderComponent component) {
+        public CardMessage.Builder header(@NonNull HeaderComponent component) {
             append(component);
             return this;
         }
 
-        public CardMessage.Builder header(TextElement.NormalText text) {
+        public CardMessage.Builder header(@NonNull TextElement.NormalText text) {
             append(HeaderComponent.of(text));
             return this;
         }
 
-        public CardMessage.Builder header(String content,TextType type) {
-            append(HeaderComponent.of(content,type));
+        public CardMessage.Builder header(@NonNull String content, @NonNull TextType type) {
+            append(HeaderComponent.of(content, type));
             return this;
         }
 
-        public CardMessage.Builder image(ImageComponent component) {
+        public CardMessage.Builder image(@NonNull ImageComponent component) {
             append(component);
             return this;
         }
 
-        public CardMessage.Builder image(ImageElement image) {
+        public CardMessage.Builder image(@NonNull ImageElement image) {
             append(ImageComponent.of(image));
             return this;
         }
 
-        public CardMessage.Builder image(String src) {
+        public CardMessage.Builder image(@NonNull String src) {
             append(ImageComponent.of(src));
             return this;
         }
 
-        public CardMessage.Builder images(ImageElement... images) {
+        public CardMessage.Builder images(@NonNull ImageElement... images) {
             append(ImageGroupComponent.of(images));
             return this;
         }
 
-        public CardMessage.Builder images(ImageGroupComponent component) {
+        public CardMessage.Builder images(@NonNull ImageGroupComponent component) {
             append(component);
             return this;
         }
 
-        public CardMessage.Builder remark(RemarkComponent component) {
+        public CardMessage.Builder remark(@NonNull RemarkComponent component) {
             append(component);
             return this;
         }
 
-        public CardMessage.Builder listSelector(ListSelectorComponent component) {
+        public CardMessage.Builder listSelector(@NonNull ListSelectorComponent component) {
             append(component);
             return this;
         }
 
-        public CardMessage.Builder video(VideoComponent component) {
+        public CardMessage.Builder video(@NonNull VideoComponent component) {
             append(component);
             return this;
         }
 
-        public CardMessage.Builder append(CardComponent... components) {
+        public CardMessage.Builder append(@NonNull CardComponent... components) {
             synchronized (this.components) {
                 this.components.addAll(List.of(components));
             }
             return this;
         }
 
-        public CardMessage.Builder append(List<CardComponent> components) {
+        public CardMessage.Builder append(@NonNull List<CardComponent> components) {
             synchronized (this.components) {
                 this.components.addAll(components);
             }
             return this;
         }
 
-        public CardMessage.Builder prepend(CardComponent component) {
+        public CardMessage.Builder prepend(@NonNull CardComponent component) {
             synchronized (this.components) {
                 this.components.add(0, component);
             }
             return this;
         }
 
-        public CardMessage.Builder insert(int index, CardComponent component) {
+        public CardMessage.Builder insert(int index, @NonNull CardComponent component) {
             synchronized (this.components) {
                 this.components.add(index, component);
             }

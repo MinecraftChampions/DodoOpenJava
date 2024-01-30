@@ -74,7 +74,7 @@ public class ButtonGroupComponent implements CardComponent {
         return component;
     }
 
-    public ButtonGroupComponent button(ButtonElement buttonElement) {
+    public ButtonGroupComponent button(@NonNull ButtonElement buttonElement) {
         return append(buttonElement);
     }
 }

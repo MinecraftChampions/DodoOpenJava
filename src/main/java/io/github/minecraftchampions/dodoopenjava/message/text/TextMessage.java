@@ -82,7 +82,7 @@ public class TextMessage implements Message {
      * @param str 需要被反序列化的文本
      * @return Message
      */
-    public static TextMessage deserialize(String str) {
+    public static TextMessage deserialize(@NonNull String str) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = factory.newDocumentBuilder();
@@ -160,35 +160,35 @@ public class TextMessage implements Message {
     public static class Builder {
         private final List<TextMessageComponent> components = new ArrayList<>();
 
-        public Builder append(TextMessageComponent component) {
+        public Builder append(@NonNull TextMessageComponent component) {
             synchronized (this.components) {
                 this.components.add(component);
             }
             return this;
         }
 
-        public Builder append(TextMessageComponent... components) {
+        public Builder append(@NonNull TextMessageComponent... components) {
             synchronized (this.components) {
                 this.components.addAll(List.of(components));
             }
             return this;
         }
 
-        public Builder append(List<TextMessageComponent> components) {
+        public Builder append(@NonNull List<TextMessageComponent> components) {
             synchronized (this.components) {
                 this.components.addAll(components);
             }
             return this;
         }
 
-        public Builder prepend(TextMessageComponent component) {
+        public Builder prepend(@NonNull TextMessageComponent component) {
             synchronized (this.components) {
                 this.components.add(0, component);
             }
             return this;
         }
 
-        public Builder insert(int index, TextMessageComponent component) {
+        public Builder insert(int index, @NonNull TextMessageComponent component) {
             synchronized (this.components) {
                 this.components.add(index, component);
             }
@@ -202,7 +202,8 @@ public class TextMessage implements Message {
             return this;
         }
 
-        public Builder link(String link, String context, TextMessageStyle contextStyle) {
+        public Builder link(@NonNull String link, @NonNull String context,
+                            @NonNull TextMessageStyle contextStyle) {
             synchronized (this.components) {
                 this.components.add(TextMessageComponent.LinkComponent.newComponent()
                         .content(context).style(contextStyle).link(link));
