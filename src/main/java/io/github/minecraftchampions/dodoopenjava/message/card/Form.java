@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@Getter
+@Data
 @RequiredArgsConstructor(staticName = "of")
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Form {
     @NonNull
-    @Setter
     private String title;
 
+    @Getter(AccessLevel.NONE)
     private final List<InputElement> list = new ArrayList<>();
 
     public Form append(@NonNull InputElement inputElement) {
