@@ -6,7 +6,7 @@ import org.json.JSONObject;
 
 import java.util.Map;
 
-@Getter
+@Data
 @RequiredArgsConstructor(staticName = "of")
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ImageComponent implements CardComponent{

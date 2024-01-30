@@ -2,12 +2,11 @@ package io.github.minecraftchampions.dodoopenjava.message.card.component;
 
 import io.github.minecraftchampions.dodoopenjava.message.card.element.TextElement;
 import io.github.minecraftchampions.dodoopenjava.message.card.enums.TextType;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import org.json.JSONObject;
 
-@Getter
+@Data
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @RequiredArgsConstructor(staticName = "of")
 public class HeaderComponent implements CardComponent {
     @NonNull

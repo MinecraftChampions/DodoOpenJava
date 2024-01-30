@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.message.card.component;
 
 import io.github.minecraftchampions.dodoopenjava.message.card.element.ImageElement;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -12,62 +13,62 @@ import java.util.List;
 import java.util.Map;
 
 @NoArgsConstructor(staticName = "of")
+@Getter
 public class ImageGroupComponent implements CardComponent {
-    private final List<ImageElement> imageElements = new ArrayList<>();
-    @Getter
+    @Getter(AccessLevel.NONE)
+    private final List<ImageElement> elementList = new ArrayList<>();
+
     private final String type = "image-group";
 
     @Override
     public JSONObject toJSONObject() {
         JSONObject jsonObject = new JSONObject(Map.of("type",getType(),"elements",new JSONArray()));
-        imageElements.forEach(image ->jsonObject.getJSONArray("elements").put(image.toJSONObject()));
+        elementList.forEach(image ->jsonObject.getJSONArray("elements").put(image.toJSONObject()));
         return jsonObject;
     }
 
-    public ImageGroupComponent of(@NonNull ImageElement... elements) {
+    public static ImageGroupComponent of(@NonNull ImageElement... elements) {
         ImageGroupComponent imageGroupComponent = of();
-        for (ImageElement e : elements) {
-            imageGroupComponent.append(e);
-        }
-        return this;
+        imageGroupComponent.elementList.addAll(List.of(elements));
+        return imageGroupComponent;
     }
 
     public ImageGroupComponent append(@NonNull ImageElement image) {
-        synchronized (imageElements) {
-            imageElements.add(image);
+        synchronized (elementList) {
+            elementList.add(image);
             return this;
         }
     }
 
     public ImageElement get(int size) {
-        synchronized (imageElements) {
-            return imageElements.get(size);
+        synchronized (elementList) {
+            return elementList.get(size);
         }
     }
 
 
     public ImageGroupComponent prepend(@NonNull ImageElement image) {
-        synchronized (imageElements) {
-            imageElements.add(0, image);
+        synchronized (elementList) {
+            elementList.add(0, image);
             return this;
         }
     }
 
     public ImageGroupComponent insert(int index, @NonNull ImageElement image) {
-        synchronized (imageElements) {
-            imageElements.add(index, image);
+        synchronized (elementList) {
+            elementList.add(index, image);
             return this;
         }
     }
 
     public void remove(int index) {
-        synchronized (imageElements) {
-            imageElements.remove(index);
+        synchronized (elementList) {
+            elementList.remove(index);
         }
     }
 
     public int size() {
-        return imageElements.size();
+        return elementList.size();
     }
 
     public ImageGroupComponent image(@NonNull ImageElement imageElement) {

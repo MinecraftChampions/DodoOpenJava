@@ -2,18 +2,17 @@ package io.github.minecraftchampions.dodoopenjava.message.card.component;
 
 import io.github.minecraftchampions.dodoopenjava.message.card.element.TextElement;
 import io.github.minecraftchampions.dodoopenjava.message.card.enums.TextType;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import org.json.JSONObject;
 
 @RequiredArgsConstructor(staticName = "of")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Data
 public class SectionComponent implements CardComponent {
     @NonNull
-    private TextElement text;
+    protected TextElement text;
 
-    @Getter
-    private final String type = "section";
+    protected final String type = "section";
 
     @Override
     public JSONObject toJSONObject() {

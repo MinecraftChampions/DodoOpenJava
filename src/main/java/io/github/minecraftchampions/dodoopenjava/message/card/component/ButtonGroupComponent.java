@@ -2,8 +2,7 @@ package io.github.minecraftchampions.dodoopenjava.message.card.component;
 
 import io.github.minecraftchampions.dodoopenjava.message.card.element.ButtonElement;
 import io.github.minecraftchampions.dodoopenjava.message.card.element.Element;
-import lombok.Getter;
-import lombok.NonNull;
+import lombok.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -11,10 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+@Data
+@NoArgsConstructor(staticName = "of")
 public class ButtonGroupComponent implements CardComponent {
+    @Getter(AccessLevel.NONE)
     private final List<ButtonElement> elementList = new ArrayList<>();
 
-    @Getter
     private final String type = "button-group";
 
     @Override
@@ -26,10 +27,6 @@ public class ButtonGroupComponent implements CardComponent {
             }
         }
         return jsonObject;
-    }
-
-    private ButtonGroupComponent() {
-
     }
 
     public ButtonGroupComponent append(@NonNull ButtonElement element) {
@@ -71,15 +68,9 @@ public class ButtonGroupComponent implements CardComponent {
         }
     }
 
-    public static ButtonGroupComponent of() {
-        return new ButtonGroupComponent();
-    }
-
     public static ButtonGroupComponent of(@NonNull ButtonElement... elements) {
         ButtonGroupComponent component = ButtonGroupComponent.of();
-        for (ButtonElement element : elements) {
-            component.append(element);
-        }
+        component.elementList.addAll(List.of(elements));
         return component;
     }
 

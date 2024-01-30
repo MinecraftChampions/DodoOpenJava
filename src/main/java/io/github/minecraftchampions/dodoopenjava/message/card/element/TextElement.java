@@ -65,14 +65,14 @@ public abstract class TextElement extends Element.DataElement {
     @AllArgsConstructor(access = AccessLevel.PROTECTED)
     @NoArgsConstructor(access = AccessLevel.PRIVATE)
     public static class ParagraphText extends TextElement {
-        private final List<NormalText> texts = new ArrayList<>();
+        private final List<NormalText> textList = new ArrayList<>();
 
         @Override
         public JSONObject toJSONObject() {
-            synchronized (texts) {
-                JSONObject jsonObject = new JSONObject(Map.of("type", "paragraph", "cols", texts.size()));
+            synchronized (textList) {
+                JSONObject jsonObject = new JSONObject(Map.of("type", "paragraph", "cols", textList.size()));
                 JSONArray jsonArray = new JSONArray();
-                for (NormalText normalText : texts) {
+                for (NormalText normalText : textList) {
                     jsonArray.put(normalText.toJSONObject());
                 }
                 jsonObject.put("fields", jsonArray);
@@ -81,56 +81,56 @@ public abstract class TextElement extends Element.DataElement {
         }
 
         public NormalText get(int size) {
-            synchronized (texts) {
-                return texts.get(size);
+            synchronized (textList) {
+                return textList.get(size);
             }
         }
 
         public ParagraphText append(@NonNull NormalText normalText) {
-            synchronized (texts) {
-                if (texts.size() == 6) {
+            synchronized (textList) {
+                if (textList.size() == 6) {
                     DodoOpenJava.LOGGER.warn("多栏文本栏数已达上限", new Throwable());
                     return this;
                 }
-                texts.add(normalText);
+                textList.add(normalText);
                 return this;
             }
         }
 
         public ParagraphText prepend(@NonNull NormalText normalText) {
-            synchronized (texts) {
-                if (texts.size() == 6) {
+            synchronized (textList) {
+                if (textList.size() == 6) {
                     DodoOpenJava.LOGGER.warn("多栏文本栏数已达上限", new Throwable());
                     return this;
                 }
-                texts.add(0, normalText);
+                textList.add(0, normalText);
                 return this;
             }
         }
 
         public ParagraphText insert(int index, @NonNull NormalText normalText) {
-            synchronized (texts) {
-                if (texts.size() == 6) {
+            synchronized (textList) {
+                if (textList.size() == 6) {
                     DodoOpenJava.LOGGER.warn("多栏文本栏数已达上限", new Throwable());
                     return this;
                 }
-                texts.add(index, normalText);
+                textList.add(index, normalText);
                 return this;
             }
         }
 
         public void remove(int index) {
-            synchronized (texts) {
+            synchronized (textList) {
                 if (size() == 2) {
                     DodoOpenJava.LOGGER.warn("多栏文本栏数已达下限", new Throwable());
                     return;
                 }
-                texts.remove(index);
+                textList.remove(index);
             }
         }
 
         public int size() {
-            return texts.size();
+            return textList.size();
         }
 
         @Override

@@ -5,8 +5,7 @@ import org.json.JSONObject;
 
 import java.util.Map;
 
-@Getter
-@Setter
+@Data
 @RequiredArgsConstructor(staticName = "of")
 @AllArgsConstructor(staticName = "of")
 @NoArgsConstructor(access = AccessLevel.PRIVATE)

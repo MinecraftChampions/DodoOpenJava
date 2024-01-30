@@ -3,8 +3,7 @@ package io.github.minecraftchampions.dodoopenjava.message.card.component;
 import io.github.minecraftchampions.dodoopenjava.message.card.element.Element;
 import io.github.minecraftchampions.dodoopenjava.message.card.element.ImageElement;
 import io.github.minecraftchampions.dodoopenjava.message.card.element.TextElement;
-import lombok.Getter;
-import lombok.NonNull;
+import lombok.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -12,15 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+@Data
+@NoArgsConstructor(staticName = "of")
 public class RemarkComponent implements CardComponent {
+    @Getter(AccessLevel.NONE)
     private final List<Element.DataElement> elementList = new ArrayList<>();
 
-    @Getter
     private final String type = "remark";
 
     @Override
     public JSONObject toJSONObject() {
-        JSONObject jsonObject = new JSONObject(Map.of("type",getType(),"elements",new JSONArray()));
+        JSONObject jsonObject = new JSONObject(Map.of("type", getType(), "elements", new JSONArray()));
         synchronized (elementList) {
             for (Element element : elementList) {
                 if (element instanceof TextElement.ParagraphText paragraphText) {
@@ -31,10 +32,6 @@ public class RemarkComponent implements CardComponent {
             }
         }
         return jsonObject;
-    }
-
-    private RemarkComponent() {
-
     }
 
     public RemarkComponent append(@NonNull Element.DataElement element) {
@@ -76,15 +73,9 @@ public class RemarkComponent implements CardComponent {
         }
     }
 
-    public static RemarkComponent of() {
-        return new RemarkComponent();
-    }
-
     public static RemarkComponent of(@NonNull Element.DataElement... elements) {
         RemarkComponent remarkComponent = RemarkComponent.of();
-        for (Element.DataElement element : elements) {
-            remarkComponent.append(element);
-        }
+        remarkComponent.elementList.addAll(List.of(elements));
         return remarkComponent;
     }
 
