@@ -34,9 +34,17 @@ public class SectionComponent implements CardComponent {
         return of(TextElement.newParagraphText(texts));
     }
 
+    public static SectionComponent of(@NonNull String... texts) {
+        TextElement.NormalText[] normalTexts = new TextElement.NormalText[texts.length];
+        for (int i = 0; i < texts.length; i++) {
+            normalTexts[i] = TextElement.newNormalText(texts[i]);
+        }
+        return of(normalTexts);
+    }
+
     public SectionComponent append(@NonNull TextElement.NormalText text) {
         if (this.text instanceof TextElement.NormalText normalText) {
-            this.text = TextElement.newParagraphText(normalText,text);
+            this.text = TextElement.newParagraphText(normalText, text);
         } else {
             TextElement.ParagraphText paragraphText = (TextElement.ParagraphText) this.text;
             paragraphText.append(text);
@@ -46,7 +54,7 @@ public class SectionComponent implements CardComponent {
 
     public SectionComponent prepend(@NonNull TextElement.NormalText text) {
         if (this.text instanceof TextElement.NormalText normalText) {
-            this.text = TextElement.newParagraphText(text,normalText);
+            this.text = TextElement.newParagraphText(text, normalText);
         } else {
             TextElement.ParagraphText paragraphText = (TextElement.ParagraphText) this.text;
             paragraphText.prepend(text);
