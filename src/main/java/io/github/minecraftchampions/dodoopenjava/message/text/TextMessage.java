@@ -45,7 +45,7 @@ public class TextMessage implements Message {
      * @return 序列化后的文本
      */
     public String serialize() {
-        List<TextMessageComponent> list = messageBuilder.getComponents();
+        List<TextMessageComponent> list = messageBuilder.components;
         StringBuilder sb = new StringBuilder();
         for (TextMessageComponent component : list) {
             String content = BaseUtil.replaceXmlSpecialCharacters(component.getContent());
@@ -156,7 +156,6 @@ public class TextMessage implements Message {
     /**
      * 消息构造器
      */
-    @Getter
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class Builder {
         private final List<TextMessageComponent> components = new ArrayList<>();
