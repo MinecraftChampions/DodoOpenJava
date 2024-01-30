@@ -1,13 +1,18 @@
 package io.github.minecraftchampions.dodoopenjava.message.card.component;
 
-/**
- * 分割线组件
- */
-public class DividerComponent extends CardComponent {
-    /**
-     * 初始化
-     */
-    public DividerComponent() {
-        jsonCard.put("type", "divider");
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.json.JSONObject;
+
+import java.util.Map;
+
+@Data
+@NoArgsConstructor(staticName = "of")
+public class DividerComponent implements CardComponent{
+    private final String type = "divider";
+
+    @Override
+    public JSONObject toJSONObject() {
+        return new JSONObject(Map.of("type",getType()));
     }
 }

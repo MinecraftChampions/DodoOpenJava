@@ -12,6 +12,7 @@ import java.net.URL;
 import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * 一些 有关 网络请求 的相关方法
@@ -30,7 +31,7 @@ public class NetUtil {
             HashMap<String, String> header = new HashMap<>();
             header.put("Content-Type", "application/json");
             header.put("Authorization", authorization);
-            String str = sendPostJsonRequest(url, header, param);
+            String str = sendPostRequest(url, header, param);
             Result result = Result.of(new JSONObject(str));
             if (DodoOpenJava.getLogMap().containsKey(authorization)) {
                 DodoOpenJava.getLogMap().get(authorization).addResult(result);
@@ -52,8 +53,8 @@ public class NetUtil {
      *
      * @param url 链接地址
      */
-    public static String sendPostJsonRequest(@NonNull String url) throws IOException {
-        return sendPostJsonRequest(url, new HashMap<>(), "");
+    public static String sendPostRequest(@NonNull String url) throws IOException {
+        return sendPostRequest(url, new HashMap<>(), "");
     }
 
     /**
@@ -61,9 +62,9 @@ public class NetUtil {
      *
      * @param url 链接地址
      */
-    public static String sendPostJsonRequest(@NonNull String url,
-                                             @NonNull HashMap<String, String> Header) throws IOException {
-        return sendPostJsonRequest(url, Header, "");
+    public static String sendPostRequest(@NonNull String url,
+                                         @NonNull HashMap<String, String> Header) throws IOException {
+        return sendPostRequest(url, Header, "");
     }
 
     /**
@@ -71,8 +72,8 @@ public class NetUtil {
      *
      * @param url 链接地址
      */
-    public static String sendPostJsonRequest(@NonNull String url, @NonNull String param) throws IOException {
-        return sendPostJsonRequest(url, new HashMap<>(), param);
+    public static String sendPostRequest(@NonNull String url, @NonNull String param) throws IOException {
+        return sendPostRequest(url, new HashMap<>(), param);
     }
 
     /**
@@ -82,10 +83,10 @@ public class NetUtil {
      * @param header    Header
      * @param param     参数
      */
-    public static String sendPostJsonRequest(@NonNull String stringUrl,
-                                             @NonNull HashMap<String, String> header,
-                                             @NonNull String param) throws IOException {
-        return sendPostJsonRequest(stringUrl, header, param.getBytes(StandardCharsets.UTF_8));
+    public static String sendPostRequest(@NonNull String stringUrl,
+                                         @NonNull HashMap<String, String> header,
+                                         @NonNull String param) throws IOException {
+        return sendPostRequest(stringUrl, header, param.getBytes(StandardCharsets.UTF_8));
     }
 
     /**
@@ -95,9 +96,9 @@ public class NetUtil {
      * @param header    Header
      * @param param     参数
      */
-    public static String sendPostJsonRequest(@NonNull String stringUrl,
-                                             @NonNull HashMap<String, String> header,
-                                             byte[] param) throws IOException {
+    public static String sendPostRequest(@NonNull String stringUrl,
+                                         @NonNull HashMap<String, String> header,
+                                         byte[] param) throws IOException {
         try {
             URL url = new URL(stringUrl);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -160,7 +161,7 @@ public class NetUtil {
                                           @NonNull String path,
                                           @NonNull String url) throws IOException {
         String str = uploadFile(header, path, url);
-        Result result = Result.of(new JSONObject(str));
+        Result result = Result.of(new JSONObject(Objects.requireNonNull(str)));
         String authorization = header.get("Authorization");
         if (DodoOpenJava.getLogMap().containsKey(authorization)) {
             DodoOpenJava.getLogMap().get(authorization).addResult(result);
@@ -202,7 +203,7 @@ public class NetUtil {
             os.write(end.getBytes());
             byte[] byteArray = os.toByteArray();
             os.close();
-            return sendPostJsonRequest(url, header, byteArray);
+            return sendPostRequest(url, header, byteArray);
         } catch (SocketTimeoutException e) {
             DodoOpenJava.LOGGER.error("发送请求超时", e);
             return null;

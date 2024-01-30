@@ -1,61 +1,32 @@
 package io.github.minecraftchampions.dodoopenjava.message.card.component;
 
-import lombok.NonNull;
+import lombok.*;
+import org.json.JSONObject;
 
-/**
- * 视频组件
- */
-public class VideoComponent extends CardComponent {
-    /**
-     * 初始化
-     *
-     * @param url   视频地址
-     * @param cover 封面地址
-     */
-    public VideoComponent(@NonNull String url, @NonNull String cover) {
-        jsonCard.put("type", "video");
-        jsonCard.put("src", url);
-        jsonCard.put("cover", cover);
+import java.util.Map;
+
+@Data
+@RequiredArgsConstructor(staticName = "of")
+@AllArgsConstructor(staticName = "of")
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public class VideoComponent implements CardComponent {
+    private final String type = "video";
+
+    @Override
+    public JSONObject toJSONObject() {
+        JSONObject jsonObject = new JSONObject(Map.of("type",getType(),
+                "cover",getCover(),"src",getLink()));
+        if (title != null) {
+            jsonObject.put("title",getTitle());
+        }
+        return jsonObject;
     }
 
-    /**
-     * 初始化
-     *
-     * @param url   视频地址
-     * @param cover 封面地址
-     * @param title 视频标题
-     */
-    public VideoComponent(@NonNull String url, @NonNull String cover, @NonNull String title) {
-        jsonCard.put("type", "video");
-        jsonCard.put("src", url);
-        jsonCard.put("cover", cover);
-        jsonCard.put("title", title);
-    }
+    private String title;
 
-    /**
-     * 编辑视频url
-     *
-     * @param url 地址
-     */
-    public void editUrl(@NonNull String url) {
-        jsonCard.put("src", url);
-    }
+    @NonNull
+    private String cover;
 
-    /**
-     * 编辑封面url
-     *
-     * @param url 地址
-     */
-    public void editCover(@NonNull String url) {
-        jsonCard.put("cover", url);
-    }
-
-    /**
-     * 编辑标题
-     *
-     * @param title 标题
-     */
-    public void editTitle(@NonNull String title) {
-        jsonCard.put("title", title);
-    }
+    @NonNull
+    private String link;
 }

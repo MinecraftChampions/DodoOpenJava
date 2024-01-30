@@ -1,95 +1,93 @@
 package io.github.minecraftchampions.dodoopenjava.message.card.component;
 
-import lombok.NonNull;
+import io.github.minecraftchampions.dodoopenjava.message.card.element.Element;
+import io.github.minecraftchampions.dodoopenjava.message.card.element.ImageElement;
+import io.github.minecraftchampions.dodoopenjava.message.card.element.TextElement;
+import lombok.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-/**
- * 备注组件
- */
-public class RemarkComponent extends CardComponent {
-    /**
-     * 初始化
-     */
-    public RemarkComponent() {
-        jsonCard.put("type", "remark");
-        jsonCard.put("elements", new JSONArray());
-    }
+@Data
+@NoArgsConstructor(staticName = "of")
+public class RemarkComponent implements CardComponent {
+    @Getter(AccessLevel.NONE)
+    private final List<Element.DataElement> elementList = new ArrayList<>();
 
-    /**
-     * 初始化
-     *
-     * @param object 组件
-     */
-    public RemarkComponent(@NonNull ImageComponent object) {
-        jsonCard.put("type", "remark");
-        jsonCard.put("elements", new JSONArray());
-        addElement(object);
-    }
+    private final String type = "remark";
 
-    /**
-     * 增加备注
-     *
-     * @param object 数据
-     */
-    public void addElement(@NonNull ImageComponent object) {
-        jsonCard.getJSONArray("elements").put(object.getJsonCard());
-    }
-
-    /**
-     * 初始化
-     *
-     * @param object 组件
-     */
-    public RemarkComponent(@NonNull SectionComponent object) {
-        jsonCard.put("type", "remark");
-        jsonCard.put("elements", new JSONArray());
-        addElement(object);
-    }
-
-
-    /**
-     * 增加备注
-     *
-     * @param object 数据
-     */
-    public void addElement(@NonNull SectionComponent object) {
-        if (object.isParagraph) {
-            System.out.println("错误的传参(多栏文本)");
-        }
-        jsonCard.getJSONArray("elements").put(object.getJsonCard());
-    }
-
-    /**
-     * 移除备注
-     *
-     * @param cardComponent 备注
-     */
-    public void removeImage(@NonNull CardComponent cardComponent) {
-        List<Object> list = jsonCard.getJSONArray("element").toList();
-        List<Integer> integerList = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            Object object = list.get(i);
-            if (object instanceof JSONObject jsonObject) {
-                if (cardComponent.getJsonCard() == jsonObject) {
-                    integerList.add(i);
+    @Override
+    public JSONObject toJSONObject() {
+        JSONObject jsonObject = new JSONObject(Map.of("type", getType(), "elements", new JSONArray()));
+        synchronized (elementList) {
+            for (Element element : elementList) {
+                if (element instanceof TextElement.ParagraphText paragraphText) {
+                    paragraphText.forEach((text) -> jsonObject.getJSONArray("elements").put(text.toJSONObject()));
+                } else {
+                    jsonObject.getJSONArray("elements").put(element.toJSONObject());
                 }
             }
         }
-        for (int i = 0; i < integerList.size(); i++) {
-            removeRemark(integerList.get(i) - i);
+        return jsonObject;
+    }
+
+    public RemarkComponent append(@NonNull Element.DataElement element) {
+        synchronized (elementList) {
+            this.elementList.add(element);
+            return this;
         }
     }
 
-    /**
-     * 删除一个备注
-     *
-     * @param index index
-     */
-    public void removeRemark(int index) {
-        jsonCard.getJSONArray("elements").remove(index);
+    public RemarkComponent insert(int index, @NonNull Element.DataElement element) {
+        synchronized (elementList) {
+            this.elementList.add(index, element);
+            return this;
+        }
+    }
+
+    public RemarkComponent prepend(int index, @NonNull Element.DataElement element) {
+        synchronized (elementList) {
+            this.elementList.add(0, element);
+            return this;
+        }
+    }
+
+    public Element.DataElement get(int index) {
+        synchronized (elementList) {
+            return elementList.get(index);
+        }
+    }
+
+    public void remove(int index) {
+        synchronized (elementList) {
+            elementList.remove(index);
+        }
+    }
+
+    public int size() {
+        synchronized (elementList) {
+            return elementList.size();
+        }
+    }
+
+    public static RemarkComponent of(@NonNull Element.DataElement... elements) {
+        RemarkComponent remarkComponent = RemarkComponent.of();
+        remarkComponent.elementList.addAll(List.of(elements));
+        return remarkComponent;
+    }
+
+    public RemarkComponent image(@NonNull ImageElement image) {
+        return append(image);
+    }
+
+    public RemarkComponent image(@NonNull String link) {
+        return append(ImageElement.of(link));
+    }
+
+    public RemarkComponent text(@NonNull TextElement text) {
+        return append(text);
     }
 }

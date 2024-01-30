@@ -1,27 +1,26 @@
 package io.github.minecraftchampions.dodoopenjava.message.card.component;
 
-import lombok.NonNull;
+import io.github.minecraftchampions.dodoopenjava.message.card.element.ImageElement;
+import lombok.*;
+import org.json.JSONObject;
 
-/**
- * 单图组件
- */
-public class ImageComponent extends CardComponent {
-    /**
-     * 初始化
-     *
-     * @param url 图片url
-     */
-    public ImageComponent(@NonNull String url) {
-        jsonCard.put("type", "image");
-        jsonCard.put("src", url);
+import java.util.Map;
+
+@Data
+@RequiredArgsConstructor(staticName = "of")
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public class ImageComponent implements CardComponent{
+    private final String type = "image";
+
+    @NonNull
+    private ImageElement image;
+
+    @Override
+    public JSONObject toJSONObject() {
+        return new JSONObject(Map.of("type",getType(),"src", image.getLink()));
     }
 
-    /**
-     * 修改图片连接
-     *
-     * @param url 图片url
-     */
-    public void editUrl(@NonNull String url) {
-        jsonCard.put("src", url);
+    public static ImageComponent of(@NonNull String link) {
+        return of(ImageElement.of(link));
     }
 }

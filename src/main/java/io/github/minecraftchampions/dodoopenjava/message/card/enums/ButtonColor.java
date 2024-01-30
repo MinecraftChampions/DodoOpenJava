@@ -1,17 +1,15 @@
 package io.github.minecraftchampions.dodoopenjava.message.card.enums;
 
-public enum Theme {
+public enum ButtonColor {
     Grey,
     Red,
     Orange,
-    Yellow,
     Green,
-    Indigo,
     Blue,
     Purple,
-    Black,
     Default;
 
+    @Override
     public String toString() {
         return name().toLowerCase();
     }

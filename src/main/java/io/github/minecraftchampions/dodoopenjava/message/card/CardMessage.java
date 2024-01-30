@@ -1,135 +1,211 @@
 package io.github.minecraftchampions.dodoopenjava.message.card;
 
 import io.github.minecraftchampions.dodoopenjava.message.Message;
-import io.github.minecraftchampions.dodoopenjava.message.card.component.CardComponent;
+import io.github.minecraftchampions.dodoopenjava.message.card.component.*;
+import io.github.minecraftchampions.dodoopenjava.message.card.element.ImageElement;
+import io.github.minecraftchampions.dodoopenjava.message.card.element.TextElement;
+import io.github.minecraftchampions.dodoopenjava.message.card.enums.TextType;
 import io.github.minecraftchampions.dodoopenjava.message.card.enums.Theme;
-import lombok.AllArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 卡片消息
  */
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class CardMessage implements Message {
-    private final JSONObject JsonCard;
-
-    /**
-     * 转换为JSON对象
-     *
-     * @return true
-     */
-    public JSONObject toJSONObject() {
-        return JsonCard;
-    }
-
-    /**
-     * 初始化卡片
-     */
-    public CardMessage() {
-        JsonCard = new JSONObject("""
-                {
-                  "content": "",
-                  "card": {
-                    "type": "card",
-                    "components": [],
-                    "theme": "default",
-                    "title": ""
-                  }
-                }""");
-    }
-
-    /**
-     * 编辑风格
-     *
-     * @param theme 分割
-     */
-    public void editTheme(@NonNull Theme theme) {
-        JsonCard.getJSONObject("card").put("theme", theme.getType());
-    }
-
-    /**
-     * 编辑标题
-     *
-     * @param title 标题
-     */
-    public void editTitle(@NonNull String title) {
-        JsonCard.getJSONObject("card").put("title", title);
-    }
-
-    /**
-     * 编辑文本
-     *
-     * @param content 文本
-     */
-    public void editContent(String content) {
-        JsonCard.put("content", content);
-    }
-
-    /**
-     * 移除文本
-     */
-    public void removeContent() {
-        if (!JsonCard.keySet().contains("content")) return;
-        JsonCard.remove("content");
-    }
-
-    /**
-     * 增加组件
-     *
-     * @param component 组件
-     */
-    public void addComponent(@NonNull CardComponent component) {
-        JsonCard.getJSONObject("card").getJSONArray("components").put(component.getJsonCard());
-    }
-
-    /**
-     * 移除组件，如果有多个相同的则全部移除
-     *
-     * @param component 组件
-     */
-    public void removeComponent(@NonNull CardComponent component) {
-        List<Object> list = JsonCard.getJSONObject("card").getJSONArray("components").toList();
-        List<Integer> integerList = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            Object object = list.get(i);
-            if (object instanceof JSONObject jsonObject) {
-                if (component.getJsonCard() == jsonObject) {
-                    integerList.add(i);
-                }
-            }
-        }
-        for (int i = 0; i < integerList.size(); i++) {
-            removeComponent(integerList.get(i) - i);
-        }
-    }
-
-
-    /**
-     * 删除一个组件
-     *
-     * @param index index
-     */
-    public void removeComponent(int index) {
-        JsonCard.getJSONObject("card").getJSONArray("components").remove(index);
-    }
-
-    @Override
-    public String toString() {
-        return toJSONObject().toString();
-    }
-
+    private final JSONObject jsonObject;
 
     @Override
     public JSONObject toMessage() {
-        return toJSONObject();
+        return jsonObject;
     }
 
     @Override
     public int getType() {
         return 6;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    @Getter
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class Builder {
+        @Getter(AccessLevel.NONE)
+        private final List<CardComponent> components = new ArrayList<>();
+
+        private String content;
+
+        private String title;
+
+        private Theme theme = Theme.Default;
+
+        public CardMessage.Builder theme(@NonNull Theme theme) {
+            this.theme = theme;
+            return this;
+        }
+
+        public CardMessage.Builder title(@NonNull String title) {
+            this.title = title;
+            return this;
+        }
+
+        public CardMessage.Builder content(@NonNull String content) {
+            this.content = content;
+            return this;
+        }
+
+        public CardMessage.Builder append(@NonNull CardComponent component) {
+            synchronized (this.components) {
+                this.components.add(component);
+            }
+            return this;
+        }
+
+        public CardMessage.Builder text(@NonNull SectionComponent component) {
+            append(component);
+            return this;
+        }
+
+        public CardMessage.Builder text(@NonNull TextElement text) {
+            append(SectionComponent.of(text));
+            return this;
+        }
+
+        public CardMessage.Builder text(@NonNull String content, @NonNull TextType type) {
+            append(SectionComponent.of(content, type));
+            return this;
+        }
+
+        public CardMessage.Builder texts(@NonNull TextElement.NormalText text) {
+            append(SectionComponent.of(text));
+            return this;
+        }
+
+        public CardMessage.Builder section(@NonNull SectionComponent sectionComponent) {
+            append(sectionComponent);
+            return this;
+        }
+
+        public CardMessage.Builder button(@NonNull ButtonGroupComponent component) {
+            append(component);
+            return this;
+        }
+
+        public CardMessage.Builder countdown(@NonNull CountdownComponent component) {
+            append(component);
+            return this;
+        }
+
+        public CardMessage.Builder divider() {
+            append(DividerComponent.of());
+            return this;
+        }
+
+        public CardMessage.Builder header(@NonNull HeaderComponent component) {
+            append(component);
+            return this;
+        }
+
+        public CardMessage.Builder header(@NonNull TextElement.NormalText text) {
+            append(HeaderComponent.of(text));
+            return this;
+        }
+
+        public CardMessage.Builder header(@NonNull String content, @NonNull TextType type) {
+            append(HeaderComponent.of(content, type));
+            return this;
+        }
+
+        public CardMessage.Builder image(@NonNull ImageComponent component) {
+            append(component);
+            return this;
+        }
+
+        public CardMessage.Builder image(@NonNull ImageElement image) {
+            append(ImageComponent.of(image));
+            return this;
+        }
+
+        public CardMessage.Builder image(@NonNull String src) {
+            append(ImageComponent.of(src));
+            return this;
+        }
+
+        public CardMessage.Builder images(@NonNull ImageElement... images) {
+            append(ImageGroupComponent.of(images));
+            return this;
+        }
+
+        public CardMessage.Builder images(@NonNull ImageGroupComponent component) {
+            append(component);
+            return this;
+        }
+
+        public CardMessage.Builder remark(@NonNull RemarkComponent component) {
+            append(component);
+            return this;
+        }
+
+        public CardMessage.Builder listSelector(@NonNull ListSelectorComponent component) {
+            append(component);
+            return this;
+        }
+
+        public CardMessage.Builder video(@NonNull VideoComponent component) {
+            append(component);
+            return this;
+        }
+
+        public CardMessage.Builder append(@NonNull CardComponent... components) {
+            synchronized (this.components) {
+                this.components.addAll(List.of(components));
+            }
+            return this;
+        }
+
+        public CardMessage.Builder append(@NonNull List<CardComponent> components) {
+            synchronized (this.components) {
+                this.components.addAll(components);
+            }
+            return this;
+        }
+
+        public CardMessage.Builder prepend(@NonNull CardComponent component) {
+            synchronized (this.components) {
+                this.components.add(0, component);
+            }
+            return this;
+        }
+
+        public CardMessage.Builder insert(int index, @NonNull CardComponent component) {
+            synchronized (this.components) {
+                this.components.add(index, component);
+            }
+            return this;
+        }
+
+        public CardMessage build() {
+            JSONObject json = new JSONObject(Map.of("type", "card", "components", new JSONArray(),
+                    "theme", theme.toString()));
+            if (title != null) {
+                json.put("title", title);
+            }
+            synchronized (this.components) {
+                components.forEach(component -> json.getJSONArray("components").put(component.toJSONObject()));
+            }
+            JSONObject jsonObject = new JSONObject(Map.of("card", json));
+            if (content != null) {
+                jsonObject.put("content", content);
+            }
+            return new CardMessage(jsonObject);
+        }
     }
 }

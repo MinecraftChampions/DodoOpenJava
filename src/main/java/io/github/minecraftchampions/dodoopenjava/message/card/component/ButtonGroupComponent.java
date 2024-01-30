@@ -1,124 +1,80 @@
 package io.github.minecraftchampions.dodoopenjava.message.card.component;
 
-import io.github.minecraftchampions.dodoopenjava.message.card.enums.ButtonAction;
-import io.github.minecraftchampions.dodoopenjava.message.card.enums.Color;
-import lombok.NonNull;
+import io.github.minecraftchampions.dodoopenjava.message.card.element.ButtonElement;
+import io.github.minecraftchampions.dodoopenjava.message.card.element.Element;
+import lombok.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-/**
- * 按钮交互组件
- */
-public class ButtonGroupComponent extends CardComponent {
-    /**
-     * 初始化
-     */
-    public ButtonGroupComponent() {
-        jsonCard.put("type", "button-group");
-        jsonCard.put("elements", new JSONArray());
+@Data
+@NoArgsConstructor(staticName = "of")
+public class ButtonGroupComponent implements CardComponent {
+    @Getter(AccessLevel.NONE)
+    private final List<ButtonElement> elementList = new ArrayList<>();
+
+    private final String type = "button-group";
+
+    @Override
+    public JSONObject toJSONObject() {
+        JSONObject jsonObject = new JSONObject(Map.of("type", getType(), "elements", new JSONArray()));
+        synchronized (elementList) {
+            for (Element element : elementList) {
+                jsonObject.getJSONArray("elements").put(element.toJSONObject());
+            }
+        }
+        return jsonObject;
     }
 
-    /**
-     * 增加交互按钮组件
-     *
-     * @param buttonColor      按钮颜色
-     * @param buttonName       按钮名称
-     * @param interactCustomId 自定义按钮ID
-     * @param action           按钮点击动作类型
-     * @param object           按钮点击动作的值，不是表单就是String类型，是表单就传入Form
-     */
-    public void addButton(@NonNull Color buttonColor, @NonNull String buttonName,
-                          @NonNull String interactCustomId, @NonNull ButtonAction action,
-                          @NonNull Object object) {
-        FormComponent formComponent = new FormComponent();
-        String value = "";
-        boolean isForm = false;
-
-        if (!Objects.equals(action.getType(), "form")) {
-            if (object instanceof String) {
-                value = (String) object;
-            } else {
-                return;
-            }
-        } else {
-            if (object instanceof FormComponent) {
-                formComponent = (FormComponent) object;
-                isForm = true;
-            } else {
-                return;
-            }
+    public ButtonGroupComponent append(@NonNull ButtonElement element) {
+        synchronized (elementList) {
+            this.elementList.add(element);
+            return this;
         }
-
-        JSONObject json1 = new JSONObject();
-
-        json1.put("type", "button");
-        json1.put("interactCustomId", interactCustomId);
-        json1.put("color", buttonColor.getType());
-        json1.put("name", buttonName);
-
-        JSONObject json2 = new JSONObject();
-
-        json2.put("value", value);
-        json2.put("action", action.getType());
-
-        json1.put("click", json2);
-
-        if (isForm) {
-            json1.put("form", formComponent.getJsonCard());
-        }
-
-        jsonCard.getJSONArray("elements").put(json1);
     }
 
-    /**
-     * 增加交互按钮组件
-     *
-     * @param ButtonColor 按钮颜色
-     * @param ButtonName  按钮名称
-     * @param action      按钮点击动作类型
-     * @param object      按钮点击动作的值，不是表单就是String类型，是表单就传入Form
-     */
-    public void addButton(@NonNull Color ButtonColor, @NonNull String ButtonName,
-                          @NonNull ButtonAction action, @NonNull Object object) {
-        FormComponent formComponent = new FormComponent();
-        String value = "";
-        boolean isForm = false;
-
-        if (!Objects.equals(action.getType(), "form")) {
-            if (object instanceof String) {
-                value = (String) object;
-            } else {
-                return;
-            }
-        } else {
-            if (object instanceof FormComponent) {
-                formComponent = (FormComponent) object;
-                isForm = true;
-            } else {
-                return;
-            }
+    public ButtonGroupComponent insert(int index, @NonNull ButtonElement element) {
+        synchronized (elementList) {
+            this.elementList.add(index, element);
+            return this;
         }
-
-        JSONObject json1 = new JSONObject();
-
-        json1.put("type", "button");
-        json1.put("color", ButtonColor.getType());
-        json1.put("name", ButtonName);
-
-        JSONObject json2 = new JSONObject();
-
-        json2.put("value", value);
-        json2.put("action", action.getType());
-
-        json1.put("click", json2);
-
-        if (isForm) {
-            json1.put("form", formComponent.getJsonCard());
-        }
-
-        jsonCard.getJSONArray("elements").put(json1);
     }
 
+    public ButtonGroupComponent prepend(int index, @NonNull ButtonElement element) {
+        synchronized (elementList) {
+            this.elementList.add(0, element);
+            return this;
+        }
+    }
+
+    public ButtonElement get(int index) {
+        synchronized (elementList) {
+            return elementList.get(index);
+        }
+    }
+
+    public void remove(int index) {
+        synchronized (elementList) {
+            elementList.remove(index);
+        }
+    }
+
+    public int size() {
+        synchronized (elementList) {
+            return elementList.size();
+        }
+    }
+
+    public static ButtonGroupComponent of(@NonNull ButtonElement... elements) {
+        ButtonGroupComponent component = ButtonGroupComponent.of();
+        component.elementList.addAll(List.of(elements));
+        return component;
+    }
+
+    public ButtonGroupComponent button(@NonNull ButtonElement buttonElement) {
+        return append(buttonElement);
+    }
 }

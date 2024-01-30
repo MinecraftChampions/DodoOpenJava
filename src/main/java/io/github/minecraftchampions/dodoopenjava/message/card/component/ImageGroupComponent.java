@@ -1,71 +1,89 @@
 package io.github.minecraftchampions.dodoopenjava.message.card.component;
 
+import io.github.minecraftchampions.dodoopenjava.message.card.element.ImageElement;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-/**
- * 多图组件
- */
-public class ImageGroupComponent extends CardComponent {
-    /**
-     * 初始化
-     */
-    public ImageGroupComponent() {
-        jsonCard.put("type", "image-group");
-        jsonCard.put("elements", new JSONArray());
+@NoArgsConstructor(staticName = "of")
+@Getter
+public class ImageGroupComponent implements CardComponent {
+    @Getter(AccessLevel.NONE)
+    private final List<ImageElement> elementList = new ArrayList<>();
+
+    private final String type = "image-group";
+
+    @Override
+    public JSONObject toJSONObject() {
+        JSONObject jsonObject = new JSONObject(Map.of("type", getType(), "elements", new JSONArray()));
+        elementList.forEach(image -> jsonObject.getJSONArray("elements").put(image.toJSONObject()));
+        return jsonObject;
     }
 
-    /**
-     * 初始化
-     *
-     * @param list 图片组件列表
-     */
-    public ImageGroupComponent(@NonNull List<ImageComponent> list) {
-        jsonCard.put("type", "image-group");
-        jsonCard.put("elements", new JSONArray());
-        list.forEach(this::addImage);
+    public static ImageGroupComponent of(@NonNull ImageElement... elements) {
+        ImageGroupComponent imageGroupComponent = of();
+        imageGroupComponent.elementList.addAll(List.of(elements));
+        return imageGroupComponent;
     }
 
-    /**
-     * 增加图片组件
-     *
-     * @param image 组件
-     */
-    public void addImage(@NonNull ImageComponent image) {
-        jsonCard.getJSONArray("elements").put(image.getJsonCard());
-    }
-
-    /**
-     * 移除图片，如果有多个相同的则全部移除
-     *
-     * @param component 图片
-     */
-    public void removeImage(@NonNull ImageComponent component) {
-        List<Object> list = jsonCard.getJSONArray("element").toList();
-        List<Integer> integerList = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            Object object = list.get(i);
-            if (object instanceof JSONObject jsonObject) {
-                if (component.getJsonCard() == jsonObject) {
-                    integerList.add(i);
-                }
-            }
+    public static ImageGroupComponent of(@NonNull String... links) {
+        ImageElement[] imageElements = new ImageElement[links.length];
+        for (int i = 0; i < links.length; i++) {
+            imageElements[i] = ImageElement.of(links[i]);
         }
-        for (int i = 0; i < integerList.size(); i++) {
-            removeImage(integerList.get(i) - i);
+        return of(imageElements);
+    }
+
+    public ImageGroupComponent append(@NonNull ImageElement image) {
+        synchronized (elementList) {
+            elementList.add(image);
+            return this;
         }
     }
 
-    /**
-     * 删除一个图片
-     *
-     * @param index index
-     */
-    public void removeImage(int index) {
-        jsonCard.getJSONArray("elements").remove(index);
+    public ImageElement get(int size) {
+        synchronized (elementList) {
+            return elementList.get(size);
+        }
+    }
+
+
+    public ImageGroupComponent prepend(@NonNull ImageElement image) {
+        synchronized (elementList) {
+            elementList.add(0, image);
+            return this;
+        }
+    }
+
+    public ImageGroupComponent insert(int index, @NonNull ImageElement image) {
+        synchronized (elementList) {
+            elementList.add(index, image);
+            return this;
+        }
+    }
+
+    public void remove(int index) {
+        synchronized (elementList) {
+            elementList.remove(index);
+        }
+    }
+
+    public int size() {
+        return elementList.size();
+    }
+
+    public ImageGroupComponent image(@NonNull ImageElement imageElement) {
+        return append(imageElement);
+    }
+
+    public ImageGroupComponent image(@NonNull String link) {
+        return append(ImageElement.of(link));
     }
 }

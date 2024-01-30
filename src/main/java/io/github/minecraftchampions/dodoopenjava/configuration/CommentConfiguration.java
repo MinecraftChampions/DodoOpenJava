@@ -76,17 +76,17 @@ public class CommentConfiguration extends YamlConfiguration {
     @Override
     public String saveToString() {
         String contents = super.saveToString();
-        StringBuilder savcontent = new StringBuilder();
+        StringBuilder saveContent = new StringBuilder();
         String[] parts = contents.split("\n");
         for (String part : parts) {
             Matcher matcher = toPattern.matcher(part);
             if (matcher.find() && matcher.groupCount() == 5) {
                 part = this.checkNull(matcher.group(1)) + matcher.group(4);
             }
-            savcontent.append(part.replaceAll("．", ".").replaceAll("＇", "'").replaceAll("：", ":"));
-            savcontent.append("\n");
+            saveContent.append(part.replaceAll("．", ".").replaceAll("＇", "'").replaceAll("：", ":"));
+            saveContent.append("\n");
         }
-        return savcontent.toString();
+        return saveContent.toString();
     }
 
     private String checkNull(String string) {
