@@ -22,8 +22,8 @@ public class ImageGroupComponent implements CardComponent {
 
     @Override
     public JSONObject toJSONObject() {
-        JSONObject jsonObject = new JSONObject(Map.of("type",getType(),"elements",new JSONArray()));
-        elementList.forEach(image ->jsonObject.getJSONArray("elements").put(image.toJSONObject()));
+        JSONObject jsonObject = new JSONObject(Map.of("type", getType(), "elements", new JSONArray()));
+        elementList.forEach(image -> jsonObject.getJSONArray("elements").put(image.toJSONObject()));
         return jsonObject;
     }
 
@@ -31,6 +31,14 @@ public class ImageGroupComponent implements CardComponent {
         ImageGroupComponent imageGroupComponent = of();
         imageGroupComponent.elementList.addAll(List.of(elements));
         return imageGroupComponent;
+    }
+
+    public static ImageGroupComponent of(@NonNull String... links) {
+        ImageElement[] imageElements = new ImageElement[links.length];
+        for (int i = 0; i < links.length; i++) {
+            imageElements[i] = ImageElement.of(links[i]);
+        }
+        return of(imageElements);
     }
 
     public ImageGroupComponent append(@NonNull ImageElement image) {
