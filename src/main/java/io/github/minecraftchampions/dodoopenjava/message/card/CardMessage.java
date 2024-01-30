@@ -35,7 +35,7 @@ public class CardMessage implements Message {
         return new Builder();
     }
 
-    @Data
+    @Getter
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class Builder {
         @Getter(AccessLevel.NONE)
@@ -46,6 +46,21 @@ public class CardMessage implements Message {
         private String title;
 
         private Theme theme = Theme.Default;
+
+        public CardMessage.Builder theme(Theme theme) {
+            this.theme = theme;
+            return this;
+        }
+
+        public CardMessage.Builder title(String title ) {
+            this.title = title;
+            return this;
+        }
+
+        public CardMessage.Builder content(String content) {
+            this.content = content;
+            return this;
+        }
 
         public CardMessage.Builder append(CardComponent component) {
             synchronized (this.components) {
