@@ -26,7 +26,7 @@ public class ButtonElement extends Element.InteractiveElement implements Accesso
 
     @Override
     public JSONObject toJSONObject() {
-        HashMap<String, Object> map1 = new HashMap<>(Map.of("type", "button", "color", color.name(),
+        HashMap<String, Object> map1 = new HashMap<>(Map.of("type", "button", "color", color.toString(),
                 "name", name));
         map1.putAll(action.toJSONObject().toMap());
         if (interactCustomId != null) {

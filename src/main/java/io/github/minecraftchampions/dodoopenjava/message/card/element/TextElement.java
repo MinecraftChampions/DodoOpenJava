@@ -63,7 +63,6 @@ public abstract class TextElement extends Element.DataElement {
     }
 
     @AllArgsConstructor(access = AccessLevel.PROTECTED)
-    @NoArgsConstructor(access = AccessLevel.PRIVATE)
     public static class ParagraphText extends TextElement {
         private final List<NormalText> textList = new ArrayList<>();
 
