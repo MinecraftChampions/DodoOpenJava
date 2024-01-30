@@ -58,7 +58,7 @@ public class InputElement extends Element.InteractiveElement {
     @Override
     public JSONObject toJSONObject() {
         JSONObject jsonObject = new JSONObject(Map.of("type", "input", "key", getKey(),
-                "title", getTitle(), "rows", getRows(), "minChar", getMaxChar(),
+                "title", getTitle(), "rows", getRows(), "minChar", getMinChar(),
                 "maxChar", getMaxChar()));
         if (placeholder != null) {
             jsonObject.put("placeholder", getPlaceholder());
