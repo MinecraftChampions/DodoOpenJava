@@ -13,7 +13,7 @@
 
     <groupId>io.github.minecraftchampions.dodoopenjava</groupId>
     <artifactId>DodoOpenJava</artifactId>
-    <version>3.2.5</version>
+    <version>3.2.6</version>
     <packaging>jar</packaging>
     <name>DodoOpenJava</name>
 
