@@ -7,6 +7,9 @@ import org.json.JSONObject;
 
 import java.util.Map;
 
+/**
+ * 图片组件
+ */
 @Data
 @RequiredArgsConstructor(staticName = "of")
 @Accessors(chain = true)

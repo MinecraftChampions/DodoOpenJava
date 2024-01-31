@@ -6,6 +6,9 @@ import org.json.JSONObject;
 
 import java.util.Map;
 
+/**
+ * 分割线组件
+ */
 @Data
 @NoArgsConstructor(staticName = "of")
 public class DividerComponent implements CardComponent{

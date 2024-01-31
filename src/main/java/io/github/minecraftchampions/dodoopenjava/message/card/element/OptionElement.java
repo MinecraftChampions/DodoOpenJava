@@ -6,6 +6,9 @@ import org.json.JSONObject;
 
 import java.util.Map;
 
+/**
+ * 选项元素
+ */
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Accessors(chain = true)

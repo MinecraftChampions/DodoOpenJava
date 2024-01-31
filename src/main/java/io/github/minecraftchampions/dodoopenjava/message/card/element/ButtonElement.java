@@ -10,6 +10,9 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 按钮元素
+ */
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Accessors(chain = true)

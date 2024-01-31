@@ -8,6 +8,9 @@ import lombok.*;
 import lombok.experimental.Accessors;
 import org.json.JSONObject;
 
+/**
+ * 文字+模块组件
+ */
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Accessors(chain = true)

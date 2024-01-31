@@ -6,6 +6,9 @@ import lombok.*;
 import lombok.experimental.Accessors;
 import org.json.JSONObject;
 
+/**
+ * 标题组件
+ */
 @Data
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @RequiredArgsConstructor(staticName = "of")

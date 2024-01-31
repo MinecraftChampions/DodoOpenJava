@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 备注组件
+ */
 @Data
 @NoArgsConstructor(staticName = "of")
 public class RemarkComponent implements CardComponent {

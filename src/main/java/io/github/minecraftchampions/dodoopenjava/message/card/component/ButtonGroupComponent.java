@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 按钮组组件
+ */
 @Data
 @NoArgsConstructor(staticName = "of")
 public class ButtonGroupComponent implements CardComponent {

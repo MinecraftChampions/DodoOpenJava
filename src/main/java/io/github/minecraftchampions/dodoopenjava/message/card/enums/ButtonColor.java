@@ -1,5 +1,8 @@
 package io.github.minecraftchampions.dodoopenjava.message.card.enums;
 
+/**
+ * 按钮颜色
+ */
 public enum ButtonColor {
     Grey,
     Red,

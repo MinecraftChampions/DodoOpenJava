@@ -1,5 +1,8 @@
 package io.github.minecraftchampions.dodoopenjava.message.card.enums;
 
+/**
+ * 卡片风格
+ */
 public enum Theme {
     Grey,
     Red,

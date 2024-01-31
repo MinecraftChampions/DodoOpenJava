@@ -6,6 +6,9 @@ import lombok.*;
 import lombok.experimental.Accessors;
 import org.json.JSONObject;
 
+/**
+ * 文本组件
+ */
 @RequiredArgsConstructor(staticName = "of")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Accessors(chain = true)

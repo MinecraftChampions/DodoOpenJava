@@ -12,6 +12,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
+/**
+ * 文本元素
+ */
 @Slf4j
 public abstract class TextElement extends Element.DataElement {
     public static NormalText newNormalText(@NonNull String content, @NonNull TextType type) {
@@ -35,6 +38,9 @@ public abstract class TextElement extends Element.DataElement {
         return paragraphText;
     }
 
+    /**
+     * 普通文本
+     */
     @EqualsAndHashCode(callSuper = true)
     @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
     @Data
@@ -65,6 +71,9 @@ public abstract class TextElement extends Element.DataElement {
         }
     }
 
+    /**
+     * 多栏文本
+     */
     @AllArgsConstructor(access = AccessLevel.PROTECTED)
     public static class ParagraphText extends TextElement {
         private final List<NormalText> textList = new ArrayList<>();

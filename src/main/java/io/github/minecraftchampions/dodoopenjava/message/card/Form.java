@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 表单
+ */
 @Data
 @Accessors(chain = true)
 @RequiredArgsConstructor(staticName = "of")

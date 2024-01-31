@@ -6,6 +6,9 @@ import org.json.JSONObject;
 
 import java.util.Map;
 
+/**
+ * 视频组件
+ */
 @Data
 @RequiredArgsConstructor(staticName = "of")
 @AllArgsConstructor(staticName = "of")

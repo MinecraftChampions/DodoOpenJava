@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 多图组件
+ */
 @NoArgsConstructor(staticName = "of")
 @Getter
 public class ImageGroupComponent implements CardComponent {

@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 列表选择题组件
+ */
 @Data
 @RequiredArgsConstructor(staticName = "of")
 @Accessors(chain = true)

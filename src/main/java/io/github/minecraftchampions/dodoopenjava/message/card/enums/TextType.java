@@ -2,6 +2,9 @@ package io.github.minecraftchampions.dodoopenjava.message.card.enums;
 
 import lombok.Getter;
 
+/**
+ * 文本类型
+ */
 @Getter
 public enum TextType {
     /**
