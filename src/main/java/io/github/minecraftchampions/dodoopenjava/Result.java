@@ -11,7 +11,7 @@ import java.util.function.Function;
  * api结果
  */
 @Getter
-public class Result {
+public class Result implements Comparable {
     public static final JSONObject STATUS_CODE = new JSONObject("""
             {
                 "0": "成功",
@@ -168,5 +168,10 @@ public class Result {
     @Override
     public String toString() {
         return getJSONObjectData().toString();
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }

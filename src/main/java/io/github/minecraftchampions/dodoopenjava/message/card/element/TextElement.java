@@ -1,8 +1,9 @@
 package io.github.minecraftchampions.dodoopenjava.message.card.element;
 
-import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.message.card.enums.TextType;
 import lombok.*;
+import lombok.experimental.Accessors;
+import lombok.extern.slf4j.Slf4j;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
+@Slf4j
 public abstract class TextElement extends Element.DataElement {
     public static NormalText newNormalText(@NonNull String content, @NonNull TextType type) {
         return new NormalText(content, type);
@@ -23,7 +25,7 @@ public abstract class TextElement extends Element.DataElement {
 
     public static ParagraphText newParagraphText(@NonNull NormalText... texts) {
         if (texts.length <= 1 || texts.length > 6) {
-            DodoOpenJava.LOGGER.error("多栏文本的栏数必须在2~6之间", new Throwable());
+            log.error("多栏文本的栏数必须在2~6之间", new Throwable());
             return null;
         }
         ParagraphText paragraphText = new ParagraphText();
@@ -33,10 +35,11 @@ public abstract class TextElement extends Element.DataElement {
         return paragraphText;
     }
 
+    @EqualsAndHashCode(callSuper = true)
     @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
-    @Getter
+    @Data
+    @Accessors(chain = true)
     @NoArgsConstructor(access = AccessLevel.PRIVATE)
-    @Setter
     public static class NormalText extends TextElement {
         @NonNull
         private String content;
@@ -88,7 +91,7 @@ public abstract class TextElement extends Element.DataElement {
         public ParagraphText append(@NonNull NormalText normalText) {
             synchronized (textList) {
                 if (textList.size() == 6) {
-                    DodoOpenJava.LOGGER.warn("多栏文本栏数已达上限", new Throwable());
+                    log.warn("多栏文本栏数已达上限", new Throwable());
                     return this;
                 }
                 textList.add(normalText);
@@ -99,7 +102,7 @@ public abstract class TextElement extends Element.DataElement {
         public ParagraphText prepend(@NonNull NormalText normalText) {
             synchronized (textList) {
                 if (textList.size() == 6) {
-                    DodoOpenJava.LOGGER.warn("多栏文本栏数已达上限", new Throwable());
+                    log.warn("多栏文本栏数已达上限", new Throwable());
                     return this;
                 }
                 textList.add(0, normalText);
@@ -110,7 +113,7 @@ public abstract class TextElement extends Element.DataElement {
         public ParagraphText insert(int index, @NonNull NormalText normalText) {
             synchronized (textList) {
                 if (textList.size() == 6) {
-                    DodoOpenJava.LOGGER.warn("多栏文本栏数已达上限", new Throwable());
+                    log.warn("多栏文本栏数已达上限", new Throwable());
                     return this;
                 }
                 textList.add(index, normalText);
@@ -121,7 +124,7 @@ public abstract class TextElement extends Element.DataElement {
         public void remove(int index) {
             synchronized (textList) {
                 if (size() == 2) {
-                    DodoOpenJava.LOGGER.warn("多栏文本栏数已达下限", new Throwable());
+                    log.warn("多栏文本栏数已达下限", new Throwable());
                     return;
                 }
                 textList.remove(index);

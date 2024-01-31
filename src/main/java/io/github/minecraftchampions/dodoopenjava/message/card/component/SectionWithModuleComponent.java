@@ -5,10 +5,12 @@ import io.github.minecraftchampions.dodoopenjava.message.card.element.TextElemen
 import io.github.minecraftchampions.dodoopenjava.message.card.enums.AlignType;
 import io.github.minecraftchampions.dodoopenjava.message.card.enums.TextType;
 import lombok.*;
+import lombok.experimental.Accessors;
 import org.json.JSONObject;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
+@Accessors(chain = true)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class SectionWithModuleComponent extends SectionComponent {
     private AlignType align;

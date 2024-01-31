@@ -23,7 +23,7 @@ public class ChannelVoiceApi {
      * @throws IOException 失败后抛出
      */
     public static Result getChannelVoiceMemberStatus(String clientId, String token, String islandSourceId, String dodoSourceId) throws IOException {
-        return getChannelVoiceMemberStatus(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId);
+        return getChannelVoiceMemberStatus(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId);
     }
 
     /**
@@ -56,7 +56,7 @@ public class ChannelVoiceApi {
      * @throws IOException 失败后抛出
      */
     public static Result moveChannelVoiceMember(String clientId, String token, String islandSourceId, String dodoSourceId, String channelId) throws IOException {
-        return moveChannelVoiceMember(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, channelId);
+        return moveChannelVoiceMember(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, channelId);
     }
 
     /**
@@ -90,7 +90,7 @@ public class ChannelVoiceApi {
      * @throws IOException 失败后抛出
      */
     public static Result editChannelVoiceMember(String clientId, String token, int operateType, String dodoSourceId, String channelId) throws IOException {
-        return editChannelVoiceMember(BaseUtil.Authorization(clientId, token), operateType, dodoSourceId, channelId);
+        return editChannelVoiceMember(BaseUtil.generateAuthorization(clientId, token), operateType, dodoSourceId, channelId);
     }
 
     /**

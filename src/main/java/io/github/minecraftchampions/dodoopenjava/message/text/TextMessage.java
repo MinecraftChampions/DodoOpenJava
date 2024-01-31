@@ -1,9 +1,12 @@
 package io.github.minecraftchampions.dodoopenjava.message.text;
 
-import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.message.Message;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -23,12 +26,17 @@ import java.util.List;
  * 消息组件
  */
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
+@Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class TextMessage implements Message {
     private String text;
 
     @NonNull
     private TextMessage.Builder messageBuilder;
+
+    public static TextMessage empty() {
+        return new TextMessage("", new Builder());
+    }
 
     /**
      * 获取构造器
@@ -98,8 +106,8 @@ public class TextMessage implements Message {
                 if (!node.getParentNode().getNodeName().equals("root")) {
                     while (!node.getParentNode().getNodeName().equals("root")) {
                         if (isLink) {
-                            DodoOpenJava.LOGGER.error("link组件外面不能套别的组件");
-                            return null;
+                            log.error("link组件外面不能套别的组件");
+                            return empty();
                         }
                         Node parentNode = node.getParentNode();
                         String nodeName = parentNode.getNodeName();
@@ -107,7 +115,7 @@ public class TextMessage implements Message {
                             isLink = true;
                             link = parentNode.getAttributes().item(0).getNodeValue();
                         } else {
-                            if (!TextMessageStyle.getStyles().contains(nodeName)) return null;
+                            if (!TextMessageStyle.getStyles().contains(nodeName)) return empty();
                             styleList.add(TextMessageStyle.valueOf(nodeName));
                         }
                         node = parentNode;
@@ -126,8 +134,8 @@ public class TextMessage implements Message {
             }
             return TextMessage.builder().append(list).build();
         } catch (ParserConfigurationException | SAXException | IOException e) {
-            DodoOpenJava.LOGGER.error("执行TextMessage#deserialize时发生错误", e);
-            return null;
+            log.error("执行TextMessage#deserialize时发生错误", e);
+            return empty();
         }
     }
 

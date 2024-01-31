@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.message.card.component;
 
 import lombok.*;
+import lombok.experimental.Accessors;
 import org.json.JSONObject;
 
 import java.util.Map;
@@ -9,6 +10,7 @@ import java.util.Map;
 @RequiredArgsConstructor(staticName = "of")
 @AllArgsConstructor(staticName = "of")
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Accessors(chain = true)
 public class VideoComponent implements CardComponent {
     private final String type = "video";
 

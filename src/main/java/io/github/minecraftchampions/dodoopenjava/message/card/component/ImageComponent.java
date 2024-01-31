@@ -2,12 +2,14 @@ package io.github.minecraftchampions.dodoopenjava.message.card.component;
 
 import io.github.minecraftchampions.dodoopenjava.message.card.element.ImageElement;
 import lombok.*;
+import lombok.experimental.Accessors;
 import org.json.JSONObject;
 
 import java.util.Map;
 
 @Data
 @RequiredArgsConstructor(staticName = "of")
+@Accessors(chain = true)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ImageComponent implements CardComponent{
     private final String type = "image";

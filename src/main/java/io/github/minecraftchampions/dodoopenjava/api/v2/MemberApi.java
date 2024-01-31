@@ -25,7 +25,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result getMemberList(String clientId, String token, String islandSourceId, int pageSize, long maxId) throws IOException {
-        return getMemberList(BaseUtil.Authorization(clientId, token), islandSourceId, pageSize, maxId);
+        return getMemberList(BaseUtil.generateAuthorization(clientId, token), islandSourceId, pageSize, maxId);
     }
 
     /**
@@ -58,7 +58,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result getMemberInfo(String clientId, String token, String islandSourceId, String dodoSourceId) throws IOException {
-        return getMemberInfo(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId);
+        return getMemberInfo(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId);
     }
 
     /**
@@ -89,7 +89,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result getMemberRoleList(String clientId, String token, String islandSourceId, String dodoSourceId) throws IOException {
-        return getMemberRoleList(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId);
+        return getMemberRoleList(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId);
     }
 
     /**
@@ -120,7 +120,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result getMemberInvitationInfo(String clientId, String token, String islandSourceId, String dodoSourceId) throws IOException {
-        return getMemberInvitationInfo(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId);
+        return getMemberInvitationInfo(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId);
     }
 
     /**
@@ -152,7 +152,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result editMemberNickName(String clientId, String token, String islandSourceId, String dodoSourceId, String nickName) throws IOException {
-        return editMemberNickName(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, nickName);
+        return editMemberNickName(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, nickName);
     }
 
     /**
@@ -186,7 +186,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result addMemberMute(String clientId, String token, String islandSourceId, String dodoSourceId, int duration) throws IOException {
-        return addMemberMute(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, duration);
+        return addMemberMute(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, duration);
     }
 
     /**
@@ -221,7 +221,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result addMemberReasonMute(String clientId, String token, String islandSourceId, String dodoSourceId, int duration, String reason) throws IOException {
-        return addMemberReasonMute(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, duration, reason);
+        return addMemberReasonMute(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, duration, reason);
     }
 
     /**
@@ -256,7 +256,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result removeMemberMute(String clientId, String token, String islandSourceId, String dodoSourceId) throws IOException {
-        return removeMemberMute(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId);
+        return removeMemberMute(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId);
     }
 
     /**
@@ -287,7 +287,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result addMemberBan(String clientId, String token, String islandSourceId, String dodoSourceId) throws IOException {
-        return addMemberBan(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId);
+        return addMemberBan(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId);
     }
 
     /**
@@ -319,7 +319,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result addMemberReasonBan(String clientId, String token, String islandSourceId, String dodoSourceId, String reason) throws IOException {
-        return addMemberReasonBan(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, reason);
+        return addMemberReasonBan(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, reason);
     }
 
     /**
@@ -355,7 +355,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result addMemberReasonChannelBan(String clientId, String token, String islandSourceId, String dodoSourceId, String reason, String noticeChannelId) throws IOException {
-        return addMemberReasonChannelBan(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, reason, noticeChannelId);
+        return addMemberReasonChannelBan(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, reason, noticeChannelId);
     }
 
     /**
@@ -392,7 +392,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result addMemberChannelBan(String clientId, String token, String islandSourceId, String dodoSourceId, String noticeChannelId) throws IOException {
-        return addMemberChannelBan(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, noticeChannelId);
+        return addMemberChannelBan(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, noticeChannelId);
     }
 
     /**
@@ -427,7 +427,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result addMemberBan(String clientId, String token, String islandSourceId, String dodoSourceId, String noticeChannelId, String reason) throws IOException {
-        return addMemberBan(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, noticeChannelId, reason);
+        return addMemberBan(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, noticeChannelId, reason);
     }
 
     /**
@@ -462,7 +462,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result removeMemberBan(String clientId, String token, String islandSourceId, String dodoSourceId) throws IOException {
-        return removeMemberBan(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId);
+        return removeMemberBan(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId);
     }
 
     /**
@@ -492,7 +492,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result getMemberDodoIdMapList(String clientId, String token, List<String> dodoIdList) throws IOException {
-        return getMemberDodoIdMapList(BaseUtil.Authorization(clientId, token), dodoIdList);
+        return getMemberDodoIdMapList(BaseUtil.generateAuthorization(clientId, token), dodoIdList);
     }
 
     /**

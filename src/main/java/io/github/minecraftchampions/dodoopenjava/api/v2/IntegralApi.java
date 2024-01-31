@@ -23,7 +23,7 @@ public class IntegralApi {
      * @throws IOException 失败后抛出
      */
     public static Result getIntegralInfo(String clientId, String token, String islandSourceId, String dodoSourceId) throws IOException {
-        return getIntegralInfo(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId);
+        return getIntegralInfo(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId);
     }
 
     /**
@@ -56,7 +56,7 @@ public class IntegralApi {
      * @throws IOException 失败后抛出
      */
     public static Result setIntegralEdit(String clientId, String token, String islandSourceId, String dodoSourceId, int operateType, long integral) throws IOException {
-        return setIntegralEdit(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, operateType, integral);
+        return setIntegralEdit(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, operateType, integral);
     }
 
     /**

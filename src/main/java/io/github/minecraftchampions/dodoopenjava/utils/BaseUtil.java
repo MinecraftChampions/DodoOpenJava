@@ -23,7 +23,7 @@ public class BaseUtil {
      * @param token    机器人鉴权Token
      * @return 返回拼接后的文本
      */
-    public static String Authorization(@NonNull String clientId, @NonNull String token) {
+    public static String generateAuthorization(@NonNull String clientId, @NonNull String token) {
         return "Bot " + clientId + "." + token;
     }
 

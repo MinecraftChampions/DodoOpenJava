@@ -1,39 +1,47 @@
 package io.github.minecraftchampions.dodoopenjava.command;
 
 import io.github.minecraftchampions.dodoopenjava.Bot;
-import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.api.CommandSender;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * 命令系统的相关方法
  */
-@Getter
 @RequiredArgsConstructor
+@Slf4j
 public class CommandManager {
     private final Map<String, CommandExecutor> commandMap = new ConcurrentHashMap<>();
 
     private final Map<String, String> commandAliasesMapping = new ConcurrentHashMap<>();
 
+    @Getter
     private final @NonNull Bot bot;
 
-    private boolean isInit = false;
+    private AtomicBoolean isInit = new AtomicBoolean(false);
 
+    @Getter
     private final CommandTrigger commandTrigger = new CommandTrigger(this);
+
+    public boolean isInit() {
+        return isInit.get();
+    }
+
     /**
      * 初始化
      */
     private synchronized void init() {
-        if (!isInit) {
-            isInit = true;
-            bot.registerListener(commandTrigger);
+        if (!isInit.compareAndSet(false, true)) {
+            return;
         }
+        bot.registerListener(commandTrigger);
     }
 
     /**
@@ -45,24 +53,24 @@ public class CommandManager {
         String commandName = command.getMainCommand();
         Set<String> aliases = command.getCommandAliases();
         if (aliases.contains(commandName)) {
-            DodoOpenJava.LOGGER.error("注册命令时错误",
-                    new RuntimeException("别名包括命令名:" + commandName + ",已取消添加此别名"));
+            log.error("注册命令时错误",
+                    new CommandRegistrationException("别名包括命令名:" + commandName + ",已取消添加此别名"));
             aliases.remove(commandName);
         }
         if (commandMap.containsKey(commandName)) {
-            DodoOpenJava.LOGGER.error("注册命令时错误",
-                    new RuntimeException("重复的命令名:" + commandName + ";已取消注册"));
+            log.error("注册命令时错误",
+                    new CommandRegistrationException("重复的命令名:" + commandName + ";已取消注册"));
             return;
         }
         commandMap.put(commandName, command);
         for (String name : aliases) {
             if (commandMap.containsKey(name)) {
-                DodoOpenJava.LOGGER.error("注册命令时错误",
-                        new RuntimeException("已经注册过命令名为" + name + "的命令，已经取消添加此别名"));
+                log.error("注册命令时错误",
+                        new CommandRegistrationException("已经注册过命令名为" + name + "的命令，已经取消添加此别名"));
             } else {
                 if (commandAliasesMapping.containsKey(name)) {
-                    DodoOpenJava.LOGGER.error("注册命令时错误",
-                            new RuntimeException("已经添加过别名包含" + name + "的命令，已经取消添加别名"));
+                    log.error("注册命令时错误",
+                            new CommandRegistrationException("已经添加过别名包含" + name + "的命令，已经取消添加别名"));
                 } else {
                     commandAliasesMapping.put(name, commandName);
                 }
@@ -115,5 +123,11 @@ public class CommandManager {
         }
         command.onCommand(sender, args);
         return true;
+    }
+
+    public static class CommandRegistrationException extends RuntimeException {
+        public CommandRegistrationException(String message) {
+            super(message);
+        }
     }
 }

@@ -25,7 +25,7 @@ public class PersonalApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendPersonalMessage(String clientId, String token, String islandSourceId, String dodoSourceId, String message) throws IOException {
-        return sendPersonalMessage(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, message);
+        return sendPersonalMessage(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, message);
     }
 
     /**
@@ -59,7 +59,7 @@ public class PersonalApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendMessage(String clientId, String token, String islandSourceId, String dodoSourceId, Message messageBody) throws IOException {
-        return sendMessage(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, messageBody);
+        return sendMessage(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, messageBody);
     }
 
     /**
@@ -96,7 +96,7 @@ public class PersonalApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendDodoPictureMessage(String clientId, String token, String islandSourceId, String dodoSourceId, String url, int width, int height, Boolean isOriginal) throws IOException {
-        return sendDodoPictureMessage(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, url, width, height, isOriginal);
+        return sendDodoPictureMessage(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, url, width, height, isOriginal);
     }
 
     /**
@@ -144,7 +144,7 @@ public class PersonalApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendDodoPictureMessage(String clientId, String token, String islandSourceId, String dodoSourceId, String url, int width, int height) throws IOException {
-        return sendDodoPictureMessage(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, url, width, height);
+        return sendDodoPictureMessage(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, url, width, height);
     }
 
     /**
@@ -182,7 +182,7 @@ public class PersonalApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendDodoVideoMessage(String clientId, String token, String islandSourceId, String dodoSourceId, String url) throws IOException {
-        return sendDodoVideoMessage(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, url);
+        return sendDodoVideoMessage(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, url);
     }
 
     /**
@@ -220,7 +220,7 @@ public class PersonalApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendDodoVideoMessage(String clientId, String token, String islandSourceId, String dodoSourceId, String url, String coverUrl, long duration, long size) throws IOException {
-        return sendDodoVideoMessage(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, url, coverUrl, duration, size);
+        return sendDodoVideoMessage(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, url, coverUrl, duration, size);
     }
 
     /**

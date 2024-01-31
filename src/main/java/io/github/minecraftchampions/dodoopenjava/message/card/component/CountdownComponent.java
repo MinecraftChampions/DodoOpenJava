@@ -2,12 +2,14 @@ package io.github.minecraftchampions.dodoopenjava.message.card.component;
 
 import io.github.minecraftchampions.dodoopenjava.message.card.enums.CountdownStyle;
 import lombok.*;
+import lombok.experimental.Accessors;
 import org.json.JSONObject;
 
 import java.util.Map;
 
 @Data
 @RequiredArgsConstructor(staticName = "of")
+@Accessors(chain = true)
 @AllArgsConstructor(staticName = "of")
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class CountdownComponent implements CardComponent {

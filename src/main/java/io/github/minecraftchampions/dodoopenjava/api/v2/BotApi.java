@@ -22,7 +22,7 @@ public class BotApi {
      * @throws IOException 发送请求失败后抛出
      */
     public static Result getBotInfo(String clientId, String token) throws IOException {
-        return getBotInfo(BaseUtil.Authorization(clientId, token));
+        return getBotInfo(BaseUtil.generateAuthorization(clientId, token));
     }
 
     /**
@@ -49,7 +49,7 @@ public class BotApi {
      * @throws IOException 发送请求失败后抛出
      */
     public static Result setBotIslandLeave(String clientId, String token, String islandSourceId) throws IOException {
-        return setBotIslandLeave(BaseUtil.Authorization(clientId, token), islandSourceId);
+        return setBotIslandLeave(BaseUtil.generateAuthorization(clientId, token), islandSourceId);
     }
 
     /**
@@ -80,7 +80,7 @@ public class BotApi {
      */
 
     public static Result getBotInviteList(String clientId, String token, int pageSize, long maxId) throws IOException {
-        return getBotInviteList(BaseUtil.Authorization(clientId, token), pageSize, maxId);
+        return getBotInviteList(BaseUtil.generateAuthorization(clientId, token), pageSize, maxId);
     }
 
     /**
@@ -112,7 +112,7 @@ public class BotApi {
      */
 
     public static Result addBotInvite(String clientId, String token, String dodoSourceId) throws IOException {
-        return addBotInvite(BaseUtil.Authorization(clientId, token), dodoSourceId);
+        return addBotInvite(BaseUtil.generateAuthorization(clientId, token), dodoSourceId);
     }
 
     /**
@@ -142,7 +142,7 @@ public class BotApi {
      */
 
     public static Result removeBotInvite(String clientId, String token, String dodoSourceId) throws IOException {
-        return removeBotInvite(BaseUtil.Authorization(clientId, token), dodoSourceId);
+        return removeBotInvite(BaseUtil.generateAuthorization(clientId, token), dodoSourceId);
     }
 
     /**

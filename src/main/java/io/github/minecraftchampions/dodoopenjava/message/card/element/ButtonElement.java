@@ -4,13 +4,15 @@ import io.github.minecraftchampions.dodoopenjava.message.card.Form;
 import io.github.minecraftchampions.dodoopenjava.message.card.enums.ActionType;
 import io.github.minecraftchampions.dodoopenjava.message.card.enums.ButtonColor;
 import lombok.*;
+import lombok.experimental.Accessors;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Getter
-@Setter
+@EqualsAndHashCode(callSuper = true)
+@Data
+@Accessors(chain = true)
 @RequiredArgsConstructor(staticName = "of")
 public class ButtonElement extends Element.InteractiveElement implements Accessory {
     @NonNull

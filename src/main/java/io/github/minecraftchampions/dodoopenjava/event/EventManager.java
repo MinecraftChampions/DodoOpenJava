@@ -18,7 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * 事件的相关方法（包含监听器注册等）
  */
 public class EventManager {
-    private final Map<Class<? extends AbstractEvent>, ArrayList<SimpleEntry<Method, Object>>> handlers = new ConcurrentHashMap<>();
+    private final Map<Class<? extends AbstractEvent>, List<SimpleEntry<Method, Object>>> handlers = new ConcurrentHashMap<>();
 
     /**
      * 注册事件监听器
@@ -83,7 +83,8 @@ public class EventManager {
         synchronized (handlers) {
             Set<Class<? extends AbstractEvent>> set = handlers.keySet();
             for (Class<? extends AbstractEvent> clazz : set) {
-                List<SimpleEntry<Method, Object>> list = handlers.get(clazz).stream().filter(e -> e.getKey().getDeclaringClass() == listener.getClass()).toList();
+                List<SimpleEntry<Method, Object>> list = handlers.get(clazz).stream().
+                        filter(e -> e.getKey().getDeclaringClass() == listener.getClass()).toList();
                 handlers.get(clazz).removeAll(list);
             }
         }
@@ -110,12 +111,12 @@ public class EventManager {
      * @param event    事件
      * @param handlers 储存
      */
-    public static void fireEvent(@NonNull AbstractEvent event, @NonNull Map<Class<? extends AbstractEvent>, ArrayList<SimpleEntry<Method, Object>>> handlers) {
+    public static void fireEvent(@NonNull AbstractEvent event, @NonNull Map<Class<? extends AbstractEvent>, List<SimpleEntry<Method, Object>>> handlers) {
         boolean isAsync = event.isAsynchronous();
         if (!handlers.containsKey(event.eventType)) {
             return;
         }
-        ArrayList<SimpleEntry<Method, Object>> methodEntryList = handlers.get(event.eventType);
+        List<SimpleEntry<Method, Object>> methodEntryList = handlers.get(event.eventType);
         for (SimpleEntry<Method, Object> entry : methodEntryList) {
             Method method = entry.getKey();
             if (isAsync) {

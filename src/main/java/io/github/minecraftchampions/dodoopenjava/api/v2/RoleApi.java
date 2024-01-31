@@ -22,7 +22,7 @@ public class RoleApi {
      * @throws IOException 失败后抛出
      */
     public static Result getRoleList(String clientId, String token, String islandSourceId) throws IOException {
-        return getRoleList(BaseUtil.Authorization(clientId, token), islandSourceId);
+        return getRoleList(BaseUtil.generateAuthorization(clientId, token), islandSourceId);
     }
 
     /**
@@ -52,7 +52,7 @@ public class RoleApi {
      * @throws IOException 失败后抛出
      */
     public static Result addRoleMember(String clientId, String token, String islandSourceId, String dodoSourceId, String roleId) throws IOException {
-        return addRoleMember(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, roleId);
+        return addRoleMember(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, roleId);
     }
 
     /**
@@ -86,7 +86,7 @@ public class RoleApi {
      * @throws IOException 失败后抛出
      */
     public static Result removeRoleMember(String clientId, String token, String islandSourceId, String dodoSourceId, String roleId) throws IOException {
-        return removeRoleMember(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, roleId);
+        return removeRoleMember(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, roleId);
     }
 
     /**
@@ -122,7 +122,7 @@ public class RoleApi {
      * @throws IOException 失败后抛出
      */
     public static Result addRole(String clientId, String token, String islandSourceId, String roleName, String roleColor, int position, String permission) throws IOException {
-        return addRole(BaseUtil.Authorization(clientId, token), islandSourceId, roleName, roleColor, position, permission);
+        return addRole(BaseUtil.generateAuthorization(clientId, token), islandSourceId, roleName, roleColor, position, permission);
     }
 
     /**
@@ -159,7 +159,7 @@ public class RoleApi {
      * @throws IOException 失败后抛出
      */
     public static Result editRole(String clientId, String token, String islandSourceId, String roleId, String roleName, String roleColor, int position, String permission) throws IOException {
-        return editRole(BaseUtil.Authorization(clientId, token), islandSourceId, roleId, roleName, roleColor, position, permission);
+        return editRole(BaseUtil.generateAuthorization(clientId, token), islandSourceId, roleId, roleName, roleColor, position, permission);
     }
 
     /**
@@ -213,7 +213,7 @@ public class RoleApi {
      * @throws IOException 失败后抛出
      */
     public static Result deleteRole(String clientId, String token, String islandSourceId, String roleId) throws IOException {
-        return deleteRole(BaseUtil.Authorization(clientId, token), islandSourceId, roleId);
+        return deleteRole(BaseUtil.generateAuthorization(clientId, token), islandSourceId, roleId);
     }
 
     /**

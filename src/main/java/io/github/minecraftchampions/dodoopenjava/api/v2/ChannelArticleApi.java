@@ -25,7 +25,7 @@ public class ChannelArticleApi {
      * @throws IOException 失败后抛出
      */
     public static Result addChannelArticle(String clientId, String token, String channelId, String title, String imageUrl, String content) throws IOException {
-        return addChannelArticle(BaseUtil.Authorization(clientId, token), channelId, title, content, imageUrl);
+        return addChannelArticle(BaseUtil.generateAuthorization(clientId, token), channelId, title, content, imageUrl);
     }
 
     /**
@@ -63,7 +63,7 @@ public class ChannelArticleApi {
      * @throws IOException 失败后抛出
      */
     public static Result removeChannelArticle(String clientId, String token, int type, String id, String channelId) throws IOException {
-        return removeChannelArticle(BaseUtil.Authorization(clientId, token), type, id, channelId);
+        return removeChannelArticle(BaseUtil.generateAuthorization(clientId, token), type, id, channelId);
     }
 
     /**

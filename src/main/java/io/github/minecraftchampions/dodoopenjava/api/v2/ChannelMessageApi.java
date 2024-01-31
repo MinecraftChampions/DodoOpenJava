@@ -28,7 +28,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendTextMessage(String clientId, String token, String channelId, String message) throws IOException {
-        return sendTextMessage(BaseUtil.Authorization(clientId, token), channelId, message);
+        return sendTextMessage(BaseUtil.generateAuthorization(clientId, token), channelId, message);
     }
 
     /**
@@ -42,7 +42,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendTextMessage(String clientId, String token, String channelId, TextMessage textMessage) throws IOException {
-        return sendTextMessage(BaseUtil.Authorization(clientId, token), channelId, textMessage);
+        return sendTextMessage(BaseUtil.generateAuthorization(clientId, token), channelId, textMessage);
     }
 
     /**
@@ -104,7 +104,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result setChannelMessageTop(String clientId, String token, String messageId, int operateType) throws IOException {
-        return setChannelMessageTop(BaseUtil.Authorization(clientId, token), messageId, operateType);
+        return setChannelMessageTop(BaseUtil.generateAuthorization(clientId, token), messageId, operateType);
     }
 
     /**
@@ -134,7 +134,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result getChannelMessageReactionList(String clientId, String token, String messageId) throws IOException {
-        return getChannelMessageReactionList(BaseUtil.Authorization(clientId, token), messageId);
+        return getChannelMessageReactionList(BaseUtil.generateAuthorization(clientId, token), messageId);
     }
 
     /**
@@ -162,7 +162,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result getChannelMessageReactionMemberList(String clientId, String token, String messageId, int type, String id, int pageSize, long maxId) throws IOException {
-        return getChannelMessageReactionMemberList(BaseUtil.Authorization(clientId, token), messageId, type, id, pageSize, maxId);
+        return getChannelMessageReactionMemberList(BaseUtil.generateAuthorization(clientId, token), messageId, type, id, pageSize, maxId);
     }
 
     /**
@@ -198,7 +198,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result referencedMessage(String clientId, String token, String channelId, String Message, String referencedMessageId) throws IOException {
-        return referencedMessage(BaseUtil.Authorization(clientId, token), channelId, Message, referencedMessageId);
+        return referencedMessage(BaseUtil.generateAuthorization(clientId, token), channelId, Message, referencedMessageId);
     }
 
     /**
@@ -237,7 +237,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendChannelPictureMessage(String clientId, String token, String channelId, String Url, int width, int height, Boolean isOriginal) throws IOException {
-        return sendChannelPictureMessage(BaseUtil.Authorization(clientId, token), channelId, Url, width, height, isOriginal);
+        return sendChannelPictureMessage(BaseUtil.generateAuthorization(clientId, token), channelId, Url, width, height, isOriginal);
     }
 
     /**
@@ -285,7 +285,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendChannelPictureMessage(String clientId, String token, String channelId, String Url, int width, int height) throws IOException {
-        return sendChannelPictureMessage(BaseUtil.Authorization(clientId, token), channelId, Url, width, height);
+        return sendChannelPictureMessage(BaseUtil.generateAuthorization(clientId, token), channelId, Url, width, height);
     }
 
     /**
@@ -343,7 +343,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendChannelVideoMessage(String clientId, String token, String channelId, String Url) throws IOException {
-        return sendChannelVideoMessage(BaseUtil.Authorization(clientId, token), channelId, Url);
+        return sendChannelVideoMessage(BaseUtil.generateAuthorization(clientId, token), channelId, Url);
     }
 
     /**
@@ -380,7 +380,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendChannelVideoMessage(String clientId, String token, String channelId, String Url, String coverUrl, long duration, long size) throws IOException {
-        return sendChannelVideoMessage(BaseUtil.Authorization(clientId, token), channelId, Url, coverUrl, duration, size);
+        return sendChannelVideoMessage(BaseUtil.generateAuthorization(clientId, token), channelId, Url, coverUrl, duration, size);
     }
 
     /**
@@ -420,7 +420,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendChannelShareMessage(String clientId, String token, String channelId, String jumpUrl) throws IOException {
-        return sendChannelShareMessage(BaseUtil.Authorization(clientId, token), channelId, jumpUrl);
+        return sendChannelShareMessage(BaseUtil.generateAuthorization(clientId, token), channelId, jumpUrl);
     }
 
     /**
@@ -456,7 +456,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendChannelFileMessage(String clientId, String token, String channelId, String Url, String name, long size) throws IOException {
-        return sendChannelFileMessage(BaseUtil.Authorization(clientId, token), channelId, Url, name, size);
+        return sendChannelFileMessage(BaseUtil.generateAuthorization(clientId, token), channelId, Url, name, size);
     }
 
     /**
@@ -494,7 +494,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result editChannelMessage(String clientId, String token, String messageId, String content) throws IOException {
-        return editChannelMessage(BaseUtil.Authorization(clientId, token), messageId, content);
+        return editChannelMessage(BaseUtil.generateAuthorization(clientId, token), messageId, content);
     }
 
     /**
@@ -526,7 +526,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result withdrawChannelMessage(String clientId, String token, String messageId) throws IOException {
-        return withdrawChannelMessage(BaseUtil.Authorization(clientId, token), messageId);
+        return withdrawChannelMessage(BaseUtil.generateAuthorization(clientId, token), messageId);
     }
 
     /**
@@ -555,7 +555,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result withdrawChannelMessageWithReason(String clientId, String token, String messageId, String reason) throws IOException {
-        return withdrawChannelMessageWithReason(BaseUtil.Authorization(clientId, token), messageId, reason);
+        return withdrawChannelMessageWithReason(BaseUtil.generateAuthorization(clientId, token), messageId, reason);
     }
 
     /**
@@ -586,7 +586,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result addChannelMessageReaction(String clientId, String token, String messageId, String id) throws IOException {
-        return addChannelMessageReaction(BaseUtil.Authorization(clientId, token), messageId, id);
+        return addChannelMessageReaction(BaseUtil.generateAuthorization(clientId, token), messageId, id);
     }
 
     /**
@@ -621,7 +621,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result removeChannelMessageReaction(String clientId, String token, String messageId, String id, String dodoSourceId) throws IOException {
-        return removeChannelMessageReaction(BaseUtil.Authorization(clientId, token), messageId, id, dodoSourceId);
+        return removeChannelMessageReaction(BaseUtil.generateAuthorization(clientId, token), messageId, id, dodoSourceId);
     }
 
     /**
@@ -657,7 +657,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result removeChannelMessageBotReaction(String clientId, String token, String messageId, String id) throws IOException {
-        return removeChannelMessageBotReaction(BaseUtil.Authorization(clientId, token), messageId, id);
+        return removeChannelMessageBotReaction(BaseUtil.generateAuthorization(clientId, token), messageId, id);
     }
 
     /**
@@ -691,7 +691,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendCardMessage(String clientId, String token, String channelId, CardMessage messageBody) throws IOException {
-        return sendCardMessage(BaseUtil.Authorization(clientId, token), channelId, messageBody);
+        return sendCardMessage(BaseUtil.generateAuthorization(clientId, token), channelId, messageBody);
     }
 
     /**
@@ -723,7 +723,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendMessage(String clientId, String token, String channelId, Message messageBody) throws IOException {
-        return sendMessage(BaseUtil.Authorization(clientId, token), channelId, messageBody);
+        return sendMessage(BaseUtil.generateAuthorization(clientId, token), channelId, messageBody);
     }
 
     /**
@@ -755,7 +755,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result editChannelCardMessage(String clientId, String token, String messageId, CardMessage messageBody) throws IOException {
-        return editChannelCardMessage(BaseUtil.Authorization(clientId, token), messageId, messageBody);
+        return editChannelCardMessage(BaseUtil.generateAuthorization(clientId, token), messageId, messageBody);
     }
 
     /**

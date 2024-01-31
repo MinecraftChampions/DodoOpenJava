@@ -2,6 +2,7 @@ package io.github.minecraftchampions.dodoopenjava.message.card.component;
 
 import io.github.minecraftchampions.dodoopenjava.message.card.element.OptionElement;
 import lombok.*;
+import lombok.experimental.Accessors;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -11,6 +12,7 @@ import java.util.Map;
 
 @Data
 @RequiredArgsConstructor(staticName = "of")
+@Accessors(chain = true)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(staticName = "of")
 public class ListSelectorComponent implements CardComponent {

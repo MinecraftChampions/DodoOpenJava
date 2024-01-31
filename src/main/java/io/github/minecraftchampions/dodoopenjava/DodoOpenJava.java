@@ -2,25 +2,24 @@ package io.github.minecraftchampions.dodoopenjava;
 
 import lombok.Getter;
 import lombok.NonNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * API
  */
+@Slf4j
 public class DodoOpenJava {
     public static final String BASEURL = "https://botopen.imdodo.com/api/v2/";
 
     private static final HashSet<Bot> bots = new HashSet<>();
 
     @Getter
-    private static final ConcurrentHashMap<String, ApiResultsLogger> logMap = new ConcurrentHashMap<>();
-
-    public static final Logger LOGGER = LoggerFactory.getLogger(DodoOpenJava.class);
+    private static final Map<String, ApiResultsLogger> logMap = new ConcurrentHashMap<>();
 
     /**
      * 新建 Bot
@@ -69,7 +68,7 @@ public class DodoOpenJava {
     public static void enableApiResultsLogger(String authorization) {
         synchronized (logMap) {
             if (logMap.containsKey(authorization)) {
-                LOGGER.warn("已经调用过DodoOpenJava#enableApiResultsLogger");
+                log.warn("已经调用过DodoOpenJava#enableApiResultsLogger");
                 return;
             }
             logMap.put(authorization, new ApiResultsLogger(authorization));

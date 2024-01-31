@@ -1,58 +1,65 @@
 package io.github.minecraftchampions.dodoopenjava.message.card.element;
 
-import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import lombok.*;
+import lombok.experimental.Accessors;
+import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 
 import java.util.Map;
 
-@Getter
+@EqualsAndHashCode(callSuper = true)
+@Data
+@Accessors(chain = true)
 @RequiredArgsConstructor(staticName = "of")
 @AllArgsConstructor(staticName = "of")
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+@Slf4j
 public class InputElement extends Element.InteractiveElement {
-    @Setter
     @NonNull
     private String title;
 
     @NonNull
-    @Setter
     private String key;
 
+    @Setter(AccessLevel.NONE)
     @NonNull
     private int rows;
 
+    @Setter(AccessLevel.NONE)
     @NonNull
     private int minChar;
 
+    @Setter(AccessLevel.NONE)
     @NonNull
     private int maxChar;
 
-    @Setter
     private String placeholder;
 
-    public void setRows(int rows) {
+    public InputElement setRows(int rows) {
         if (rows < 1 || rows > 4) {
-            DodoOpenJava.LOGGER.warn("输入框高度范围限制在1~4");
-            return;
+            log.warn("输入框高度范围限制在1~4");
+            return this;
         }
         this.rows = rows;
+        return this;
     }
 
-    public void setMinChar(int minChar) {
+    public InputElement setMinChar(int minChar) {
         if (minChar < 0 || minChar > 4000) {
-            DodoOpenJava.LOGGER.warn("最小字符数限制在0~4000");
-            return;
+            log.warn("最小字符数限制在0~4000");
+            return this;
         }
         this.minChar = minChar;
+        return this;
     }
 
-    public void setMaxChar(int maxChar) {
+    public InputElement setMaxChar(int maxChar) {
         if (maxChar < 1 || maxChar > 4000) {
-            DodoOpenJava.LOGGER.warn("最大字符数限制在1~4000");
-            return;
+            log.warn("最大字符数限制在1~4000");
+            return this;
         }
         this.maxChar = maxChar;
+        return this;
     }
 
     @Override

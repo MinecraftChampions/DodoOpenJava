@@ -23,7 +23,7 @@ public class ChannelApi {
      * @throws IOException 失败后抛出
      */
     public static Result getChannelList(String clientId, String token, String islandSourceId) throws IOException {
-        return getChannelList(BaseUtil.Authorization(clientId, token), islandSourceId);
+        return getChannelList(BaseUtil.generateAuthorization(clientId, token), islandSourceId);
     }
 
     /**
@@ -52,7 +52,7 @@ public class ChannelApi {
      * @throws IOException 失败后抛出
      */
     public static Result getChannelInfo(String clientId, String token, String channelId) throws IOException {
-        return getChannelInfo(BaseUtil.Authorization(clientId, token), channelId);
+        return getChannelInfo(BaseUtil.generateAuthorization(clientId, token), channelId);
     }
 
     /**
@@ -83,7 +83,7 @@ public class ChannelApi {
      * @throws IOException 失败后抛出
      */
     public static Result addChannel(String clientId, String token, String islandSourceId, String channelName, int channelType) throws IOException {
-        return addChannel(BaseUtil.Authorization(clientId, token), islandSourceId, channelName, channelType);
+        return addChannel(BaseUtil.generateAuthorization(clientId, token), islandSourceId, channelName, channelType);
     }
 
     /**
@@ -118,7 +118,7 @@ public class ChannelApi {
      * @throws IOException 失败后抛出
      */
     public static Result editChannel(String clientId, String token, String islandSourceId, String channelName, String channelId) throws IOException {
-        return editChannel(BaseUtil.Authorization(clientId, token), islandSourceId, channelName, channelId);
+        return editChannel(BaseUtil.generateAuthorization(clientId, token), islandSourceId, channelName, channelId);
     }
 
     /**
@@ -152,7 +152,7 @@ public class ChannelApi {
      * @throws IOException 失败后抛出
      */
     public static Result deleteChannel(String clientId, String token, String islandSourceId, String channelId) throws IOException {
-        return deleteChannel(BaseUtil.Authorization(clientId, token), islandSourceId, channelId);
+        return deleteChannel(BaseUtil.generateAuthorization(clientId, token), islandSourceId, channelId);
     }
 
     /**

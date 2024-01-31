@@ -21,7 +21,7 @@ public class EventApi {
      * @throws IOException 失败后抛出
      */
     public static Result getWebSocketConnection(String clientId, String token) throws IOException {
-        return getWebSocketConnection(BaseUtil.Authorization(clientId, token));
+        return getWebSocketConnection(BaseUtil.generateAuthorization(clientId, token));
     }
 
     /**

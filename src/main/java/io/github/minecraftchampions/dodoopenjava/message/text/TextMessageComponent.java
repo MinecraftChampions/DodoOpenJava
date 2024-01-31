@@ -1,13 +1,14 @@
 package io.github.minecraftchampions.dodoopenjava.message.text;
 
-import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Getter
+@Slf4j
 public class TextMessageComponent {
     private TextMessageComponent() {
         styles.add(TextMessageStyle.normal);
@@ -69,7 +70,7 @@ public class TextMessageComponent {
             List<TextMessageStyle> list = Arrays.asList(styles);
             if (list.contains(TextMessageStyle.code) ||
                     list.contains(TextMessageStyle.cite)) {
-                DodoOpenJava.LOGGER.error("LinkComponent不能传入code与cite style");
+                log.error("LinkComponent不能传入code与cite style");
                 return this;
             }
 

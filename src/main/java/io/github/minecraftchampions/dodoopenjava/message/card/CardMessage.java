@@ -7,6 +7,7 @@ import io.github.minecraftchampions.dodoopenjava.message.card.element.TextElemen
 import io.github.minecraftchampions.dodoopenjava.message.card.enums.TextType;
 import io.github.minecraftchampions.dodoopenjava.message.card.enums.Theme;
 import lombok.*;
+import lombok.experimental.Accessors;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -35,7 +36,8 @@ public class CardMessage implements Message {
         return new Builder();
     }
 
-    @Getter
+    @Data
+    @Accessors(chain = true)
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class Builder {
         @Getter(AccessLevel.NONE)

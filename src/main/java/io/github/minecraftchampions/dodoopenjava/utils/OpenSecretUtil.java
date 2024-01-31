@@ -1,6 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.utils;
 
-import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
@@ -10,6 +10,7 @@ import java.security.AlgorithmParameters;
 /**
  * 开放秘密工具
  */
+@Slf4j
 public class OpenSecretUtil {
     /**
      * WebHook解密
@@ -22,7 +23,7 @@ public class OpenSecretUtil {
         try {
             return AESDecrypt(hexToBytes(payload), hexToBytes(secretKey), new byte[16], Cipher.getInstance("AES/CBC/PKCS5Padding"));
         } catch (Exception e) {
-            DodoOpenJava.LOGGER.error("WebHook数据解密时错误", e);
+            log.error("WebHook数据解密时错误", e);
             return null;
         }
     }

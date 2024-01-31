@@ -23,7 +23,7 @@ public class ResourceApi {
      * @throws IOException 失败后抛出
      */
     public static Result uploadResource(String clientId, String token, String path) throws IOException {
-        return uploadResource(BaseUtil.Authorization(clientId, token), path);
+        return uploadResource(BaseUtil.generateAuthorization(clientId, token), path);
     }
 
     /**

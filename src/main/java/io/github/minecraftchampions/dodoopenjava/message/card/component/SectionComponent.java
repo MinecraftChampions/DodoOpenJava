@@ -3,10 +3,12 @@ package io.github.minecraftchampions.dodoopenjava.message.card.component;
 import io.github.minecraftchampions.dodoopenjava.message.card.element.TextElement;
 import io.github.minecraftchampions.dodoopenjava.message.card.enums.TextType;
 import lombok.*;
+import lombok.experimental.Accessors;
 import org.json.JSONObject;
 
 @RequiredArgsConstructor(staticName = "of")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Accessors(chain = true)
 @Data
 public class SectionComponent implements CardComponent {
     @NonNull

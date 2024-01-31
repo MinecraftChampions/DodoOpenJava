@@ -6,7 +6,6 @@ import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 import com.sun.net.httpserver.spi.HttpServerProvider;
 import io.github.minecraftchampions.dodoopenjava.Bot;
-import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelarticle.ChannelArticleCommentEvent;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelarticle.ChannelArticlePublishEvent;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage.*;
@@ -22,6 +21,7 @@ import io.github.minecraftchampions.dodoopenjava.utils.OpenSecretUtil;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 
 import java.io.InputStream;
@@ -36,6 +36,7 @@ import java.util.Objects;
 /**
  * 事件触发
  */
+@Slf4j
 public class WebHookEventTrigger extends AbstractEventTrigger {
     boolean isConnect = false;
 
@@ -239,7 +240,7 @@ public class WebHookEventTrigger extends AbstractEventTrigger {
                 case "7001" -> eventManager.fireEvent(new GiftSendEvent(json));
                 case "8001" -> eventManager.fireEvent(new IntegralChangeEvent(json));
                 case "9001" -> eventManager.fireEvent(new GoodsPurchaseEvent(json));
-                default -> DodoOpenJava.LOGGER.warn( "未知的事件！");
+                default -> log.warn( "未知的事件！");
             }
         }
     }

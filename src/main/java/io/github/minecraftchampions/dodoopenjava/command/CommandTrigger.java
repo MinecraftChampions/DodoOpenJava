@@ -27,7 +27,7 @@ public class CommandTrigger implements Listener {
     @EventHandler
     public void event(MessageEvent e) {
         if (!Objects.equals(e.getMessageIntType(), 1)) return;
-        if (e.getMessageBody().getString("content").indexOf("/") != 0) return;
+        if (e.getMessageBody().getString("content").indexOf(commandHeader) != 0) return;
         call(e.getJsonObject(), false);
     }
 
@@ -48,11 +48,11 @@ public class CommandTrigger implements Listener {
                 .getJSONObject("messageBody").getString("content")
                 .replaceFirst(commandHeader, "");
         CommandSenderImpl sender = new CommandSenderImpl(jsonObject, commandManager.getBot(), isPersonalCommand);
-        List<String> Command = new java.util.ArrayList<>(List.of(command.split(" ")));
-        String mainCommand = Command.get(0);
-        Command.remove(0);
-        String[] args = Command.toArray(new String[]{});
-        commandManager.trigger(sender, mainCommand, isPersonalCommand, args);
+        List<String> args = new java.util.ArrayList<>(List.of(command.split(" ")));
+        String mainCommand = args.get(0);
+        args.remove(0);
+        String[] argArray = args.toArray(new String[]{});
+        commandManager.trigger(sender, mainCommand, isPersonalCommand, argArray);
     }
 
     private String commandHeader = "/";

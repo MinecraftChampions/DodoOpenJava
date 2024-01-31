@@ -22,7 +22,7 @@ public class IslandApi {
      * @throws IOException 失败后抛出
      */
     public static Result getIslandInfo(String clientId, String token, String islandSourceId) throws IOException {
-        return getIslandInfo(BaseUtil.Authorization(clientId, token), islandSourceId);
+        return getIslandInfo(BaseUtil.generateAuthorization(clientId, token), islandSourceId);
     }
 
     /**
@@ -49,7 +49,7 @@ public class IslandApi {
      * @throws IOException 失败后抛出
      */
     public static Result getIslandList(String clientId, String token) throws IOException {
-        return getIslandList(BaseUtil.Authorization(clientId, token));
+        return getIslandList(BaseUtil.generateAuthorization(clientId, token));
     }
 
     /**
@@ -77,7 +77,7 @@ public class IslandApi {
      * @throws IOException 失败后抛出
      */
     public static Result getIslandLevelRankList(String clientId, String token, String islandSourceId, int pageSize, long maxId) throws IOException {
-        return getIslandLevelRankList(BaseUtil.Authorization(clientId, token), islandSourceId, pageSize, maxId);
+        return getIslandLevelRankList(BaseUtil.generateAuthorization(clientId, token), islandSourceId, pageSize, maxId);
     }
 
     /**
@@ -109,7 +109,7 @@ public class IslandApi {
      * @throws IOException 失败后抛出
      */
     public static Result getIslandMuteList(String clientId, String token, String islandSourceId) throws IOException {
-        return getIslandMuteList(BaseUtil.Authorization(clientId, token), islandSourceId);
+        return getIslandMuteList(BaseUtil.generateAuthorization(clientId, token), islandSourceId);
     }
 
     /**
@@ -137,7 +137,7 @@ public class IslandApi {
      * @throws IOException 失败后抛出
      */
     public static Result getIslandBanList(String clientId, String token, String islandSourceId) throws IOException {
-        return getIslandBanList(BaseUtil.Authorization(clientId, token), islandSourceId);
+        return getIslandBanList(BaseUtil.generateAuthorization(clientId, token), islandSourceId);
     }
 
     /**

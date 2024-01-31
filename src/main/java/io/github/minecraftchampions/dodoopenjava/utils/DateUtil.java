@@ -1,7 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.utils;
 
-import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,6 +10,7 @@ import java.util.Date;
 /**
  * 关于 时间 的一些实用方法
  */
+@Slf4j
 public class DateUtil {
     /**
      * 简化格式1
@@ -39,7 +40,7 @@ public class DateUtil {
         try {
             return (new SimpleDateFormat(format)).parse(string);
         } catch (ParseException e) {
-            DodoOpenJava.LOGGER.error("解析事件错误", e);
+            log.error("解析事件错误", e);
             return null;
         }
     }

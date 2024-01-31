@@ -1,7 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.event;
 
 import io.github.minecraftchampions.dodoopenjava.Bot;
-import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelarticle.ChannelArticleCommentEvent;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelarticle.ChannelArticlePublishEvent;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage.*;
@@ -14,6 +13,7 @@ import io.github.minecraftchampions.dodoopenjava.event.events.v2.member.MemberLe
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.personal.PersonalMessageEvent;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.shop.GoodsPurchaseEvent;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.java_websocket.WebSocket;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.framing.Framedata;
@@ -23,20 +23,19 @@ import org.json.JSONObject;
 
 import java.net.URI;
 import java.nio.ByteBuffer;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * 事件触发
  */
+@Slf4j
 public class WebSocketEventTrigger extends AbstractEventTrigger {
     private String wssLo = "";
 
     @Override
     public boolean isConnect() {
-        if (mWebSocket == null) {
-            return false;
-        } else {
-            return mWebSocket.isOpen();
-        }
+
+        return mWebSocket != null && mWebSocket.isOpen();
     }
 
     public WebSocketClient mWebSocket = null;
@@ -50,7 +49,7 @@ public class WebSocketEventTrigger extends AbstractEventTrigger {
 
     private int reacquireCount = 0;
 
-    private final int reacquireMaxCount = 50;
+    private final int reacquireMaxCount = 5000;
 
     @Override
     public void start() {
@@ -65,8 +64,7 @@ public class WebSocketEventTrigger extends AbstractEventTrigger {
 
     public void reconnectWebsocket() {
         if (mWebSocket != null) {
-            Thread thread = new Thread(this::start);
-            thread.start();
+            CompletableFuture.runAsync(this::start);
         }
     }
 
@@ -86,21 +84,22 @@ public class WebSocketEventTrigger extends AbstractEventTrigger {
                             i--;
                         }
                         if (!mWebSocket.isOpen()) {
-                            DodoOpenJava.LOGGER.error("未连接上websocket");
+                            log.error("未连接上websocket");
                         }
                     } catch (Exception e) {
-                        throw new RuntimeException(e);
+                        log.error("错误", e);
+                        reconnectWebsocket();
                     }
                 })
                 .ifFailure(result -> {
                     reacquireCount++;
                     if (reacquireCount > reacquireMaxCount) {
-                        DodoOpenJava.LOGGER.error("获取websocket连接错误" + result.getMessage() +
+                        log.error("获取websocket连接错误" + result.getMessage() +
                                 ";\n当前重连次数:" + reacquireCount + ",已超过最大重连次数:" + reacquireMaxCount
                                 + ",已取消重连");
                         return;
                     }
-                    DodoOpenJava.LOGGER.warn("获取websocket连接错误" + result.getMessage() +
+                    log.warn("获取websocket连接错误" + result.getMessage() +
                             ";\n已尝试重新获取,当前重新获取次数:" + reacquireCount);
                     v2();
                 });
@@ -173,10 +172,10 @@ public class WebSocketEventTrigger extends AbstractEventTrigger {
                     case "7001" -> eventManager.fireEvent(new GiftSendEvent(jsontext));
                     case "8001" -> eventManager.fireEvent(new IntegralChangeEvent(jsontext));
                     case "9001" -> eventManager.fireEvent(new GoodsPurchaseEvent(jsontext));
-                    default -> DodoOpenJava.LOGGER.warn("未知的事件！");
+                    default -> log.warn("未知的事件！");
                 }
             } catch (Exception e) {
-                DodoOpenJava.LOGGER.warn("Websocket消息接收发生未知错误;消息内容:" + message
+                log.warn("Websocket消息接收发生未知错误;消息内容:" + message
                         + ";\n错误内容:" + e.getLocalizedMessage());
                 sendPing();
             }
@@ -184,13 +183,13 @@ public class WebSocketEventTrigger extends AbstractEventTrigger {
 
         @Override
         public void onError(Exception ex) {
-            DodoOpenJava.LOGGER.error("websocket接收事件发生错误", ex);
+            log.error("websocket接收事件发生错误", ex);
             reconnectWebsocket();
         }
 
         @Override
         public void onClose(int code, String reason, boolean remote) {
-            DodoOpenJava.LOGGER.warn("websocket关闭;code:" + code + ":reason:" + reason + ";已自动重连");
+            log.warn("websocket关闭;code:" + code + ":reason:" + reason + ";已自动重连");
             reconnectWebsocket();
         }
     }

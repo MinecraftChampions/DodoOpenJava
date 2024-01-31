@@ -22,7 +22,7 @@ public class GiftApi {
      * @throws IOException 发送请求失败后抛出
      */
     public static Result getGiftAccount(String clientId, String token, String islandSourceId) throws IOException {
-        return getGiftAccount(BaseUtil.Authorization(clientId, token), islandSourceId);
+        return getGiftAccount(BaseUtil.generateAuthorization(clientId, token), islandSourceId);
     }
 
     /**
@@ -51,7 +51,7 @@ public class GiftApi {
      * @throws IOException 发送请求失败后抛出
      */
     public static Result getGiftShareRatioInfo(String clientId, String token, String islandSourceId) throws IOException {
-        return getGiftShareRatioInfo(BaseUtil.Authorization(clientId, token), islandSourceId);
+        return getGiftShareRatioInfo(BaseUtil.generateAuthorization(clientId, token), islandSourceId);
     }
 
     /**
@@ -81,7 +81,7 @@ public class GiftApi {
      * @throws IOException 发送请求失败后抛出
      */
     public static Result getGiftList(String clientId, String token, String targetId, int targetType) throws IOException {
-        return getGiftList(BaseUtil.Authorization(clientId, token), targetId, targetType);
+        return getGiftList(BaseUtil.generateAuthorization(clientId, token), targetId, targetType);
     }
 
     /**
@@ -116,7 +116,7 @@ public class GiftApi {
      * @throws IOException 发送请求失败后抛出
      */
     public static Result getGiftMemberList(String clientId, String token, String targetId, int targetType, String giftId, int pageSize, long maxId) throws IOException {
-        return getGiftMemberList(BaseUtil.Authorization(clientId, token), targetId, targetType, giftId, pageSize, maxId);
+        return getGiftMemberList(BaseUtil.generateAuthorization(clientId, token), targetId, targetType, giftId, pageSize, maxId);
     }
 
     /**
@@ -156,7 +156,7 @@ public class GiftApi {
      * @throws IOException 发送请求失败后抛出
      */
     public static Result getGiftGrossValueList(String clientId, String token, String targetId, int targetType, int pageSize, long maxId) throws IOException {
-        return getGiftGrossValueList(BaseUtil.Authorization(clientId, token), targetId, targetType, pageSize, maxId);
+        return getGiftGrossValueList(BaseUtil.generateAuthorization(clientId, token), targetId, targetType, pageSize, maxId);
     }
 
     /**

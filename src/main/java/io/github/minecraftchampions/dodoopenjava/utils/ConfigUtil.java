@@ -1,9 +1,9 @@
 package io.github.minecraftchampions.dodoopenjava.utils;
 
-import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.configuration.file.FileConfiguration;
 import io.github.minecraftchampions.dodoopenjava.configuration.file.YamlConfiguration;
 import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.*;
 import java.nio.channels.FileChannel;
@@ -13,9 +13,8 @@ import java.util.Map;
 
 /**
  * 关于 配置文件 的一些方法
- *
- * @author qscbm187531
  */
+@Slf4j
 public class ConfigUtil {
     /**
      * 转换为byte数组
@@ -111,7 +110,7 @@ public class ConfigUtil {
             fileConfiguration.set(path, value);
             fileConfiguration.save(new File(child));
         } catch (IOException e) {
-            DodoOpenJava.LOGGER.error("设置节点时发生错误", e);
+            log.error("设置节点时发生错误", e);
         } catch (NoSuchMethodError ignored) {
         }
     }
@@ -225,7 +224,7 @@ public class ConfigUtil {
             streamReader.close();
             return stringBuilder.toString();
         } catch (Exception e) {
-            DodoOpenJava.LOGGER.error("读取文件时发生错误", e);
+            log.error("读取文件时发生错误", e);
         }
         return null;
     }
@@ -251,7 +250,6 @@ public class ConfigUtil {
      */
     public static void createParentDirs(@NonNull File file) throws IOException {
         File parent = file.getCanonicalFile().getParentFile();
-
         if (parent != null) {
             parent.mkdirs();
         }

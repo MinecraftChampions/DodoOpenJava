@@ -16,6 +16,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -26,6 +27,7 @@ import java.util.List;
  */
 @Getter
 @RequiredArgsConstructor
+@Slf4j
 public class Bot {
     /**
      * 机器人唯一标识
@@ -52,7 +54,7 @@ public class Bot {
      * @return authorization
      */
     public String getAuthorization() {
-        return BaseUtil.Authorization(clientId, token);
+        return BaseUtil.generateAuthorization(clientId, token);
     }
 
     /**
@@ -124,7 +126,7 @@ public class Bot {
         if (apiResultsLogger != null) {
             return apiResultsLogger;
         } else {
-            DodoOpenJava.LOGGER.error("没有启用日志记录系统就调用Bot#getApiResultsLogger方法,bot:" + getAuthorization());
+            log.error("没有启用日志记录系统就调用Bot#getApiResultsLogger方法,bot:" + getAuthorization());
             return null;
         }
     }

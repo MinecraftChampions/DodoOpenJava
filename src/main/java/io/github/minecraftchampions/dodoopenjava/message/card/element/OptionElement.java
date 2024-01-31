@@ -1,12 +1,14 @@
 package io.github.minecraftchampions.dodoopenjava.message.card.element;
 
 import lombok.*;
+import lombok.experimental.Accessors;
 import org.json.JSONObject;
 
 import java.util.Map;
 
-@Getter
-@Setter
+@EqualsAndHashCode(callSuper = true)
+@Data
+@Accessors(chain = true)
 @RequiredArgsConstructor(staticName = "of")
 @AllArgsConstructor(staticName = "of")
 public class OptionElement extends Element.InteractiveElement {

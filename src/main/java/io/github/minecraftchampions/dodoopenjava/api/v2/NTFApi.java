@@ -25,7 +25,7 @@ public class NTFApi {
      * @throws IOException 失败后抛出
      */
     public static Result getMemberNftStatus(String clientId, String token, String islandSourceId, String dodoSourceId, String platform) throws IOException {
-        return getMemberNftStatus(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, platform);
+        return getMemberNftStatus(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, platform);
     }
 
     /**
@@ -59,7 +59,7 @@ public class NTFApi {
      * @throws IOException 失败后抛出
      */
     public static Result getMemberNftStatus(String clientId, String token, String islandSourceId, String dodoSourceId, String platform, String issuer, String series) throws IOException {
-        return getMemberNftStatus(BaseUtil.Authorization(clientId, token), islandSourceId, dodoSourceId, platform, issuer, series);
+        return getMemberNftStatus(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, platform, issuer, series);
     }
 
     /**

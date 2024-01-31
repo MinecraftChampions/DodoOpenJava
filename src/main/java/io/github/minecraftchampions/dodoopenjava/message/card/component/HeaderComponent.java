@@ -3,11 +3,13 @@ package io.github.minecraftchampions.dodoopenjava.message.card.component;
 import io.github.minecraftchampions.dodoopenjava.message.card.element.TextElement;
 import io.github.minecraftchampions.dodoopenjava.message.card.enums.TextType;
 import lombok.*;
+import lombok.experimental.Accessors;
 import org.json.JSONObject;
 
 @Data
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @RequiredArgsConstructor(staticName = "of")
+@Accessors(chain = true)
 public class HeaderComponent implements CardComponent {
     @NonNull
     private TextElement.NormalText text;

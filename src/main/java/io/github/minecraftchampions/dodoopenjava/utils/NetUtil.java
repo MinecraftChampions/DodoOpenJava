@@ -3,6 +3,7 @@ package io.github.minecraftchampions.dodoopenjava.utils;
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.Result;
 import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 
 import java.io.*;
@@ -17,6 +18,7 @@ import java.util.Objects;
 /**
  * 一些 有关 网络请求 的相关方法
  */
+@Slf4j
 public class NetUtil {
     /**
      * 发送请求（Dodo开放平台专用）
@@ -38,7 +40,7 @@ public class NetUtil {
             }
             return result;
         } catch (UnknownHostException e) {
-            DodoOpenJava.LOGGER.warn("解析Dodo域名错误,本错误理应是偶发事件,不会造成问题,如果一直提醒最终陷入死循环,请检查网络环境");
+            log.warn("解析Dodo域名错误,本错误理应是偶发事件,不会造成问题,如果一直提醒最终陷入死循环,请检查网络环境");
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException ex) {
@@ -122,7 +124,7 @@ public class NetUtil {
             reader.close();
             return sb.toString();
         } catch (SocketTimeoutException e) {
-            DodoOpenJava.LOGGER.error("发送请求超时", e);
+            log.error("发送请求超时", e);
             return """
                     {
                         "status": -9999,
@@ -205,7 +207,7 @@ public class NetUtil {
             os.close();
             return sendPostRequest(url, header, byteArray);
         } catch (SocketTimeoutException e) {
-            DodoOpenJava.LOGGER.error("发送请求超时", e);
+            log.error("发送请求超时", e);
             return null;
         }
     }

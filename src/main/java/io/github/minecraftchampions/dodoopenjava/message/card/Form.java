@@ -2,6 +2,7 @@ package io.github.minecraftchampions.dodoopenjava.message.card;
 
 import io.github.minecraftchampions.dodoopenjava.message.card.element.InputElement;
 import lombok.*;
+import lombok.experimental.Accessors;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @Data
+@Accessors(chain = true)
 @RequiredArgsConstructor(staticName = "of")
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Form {
