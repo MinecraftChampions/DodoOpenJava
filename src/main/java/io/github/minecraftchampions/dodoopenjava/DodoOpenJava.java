@@ -35,7 +35,7 @@ public class DodoOpenJava {
     public static Set<Bot> getBots() {
         return (HashSet<Bot>) bots.clone();
     }
-    
+
 
     /**
      * 卸载Bot
