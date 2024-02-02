@@ -122,7 +122,7 @@ public class Bot {
      * @return ApiResultsLogger
      */
     public ApiResultsLogger getApiResultsLogger() {
-        ApiResultsLogger apiResultsLogger = DodoOpenJava.getLogMap().get(this.getAuthorization());
+        ApiResultsLogger apiResultsLogger = DodoOpenJava.LOGGER_MAP.get(this.getAuthorization());
         if (apiResultsLogger != null) {
             return apiResultsLogger;
         } else {

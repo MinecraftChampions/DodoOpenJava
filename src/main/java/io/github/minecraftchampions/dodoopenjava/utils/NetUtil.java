@@ -35,8 +35,8 @@ public class NetUtil {
             header.put("Authorization", authorization);
             String str = sendPostRequest(url, header, param);
             Result result = Result.of(new JSONObject(str));
-            if (DodoOpenJava.getLogMap().containsKey(authorization)) {
-                DodoOpenJava.getLogMap().get(authorization).addResult(result);
+            if (DodoOpenJava.LOGGER_MAP.containsKey(authorization)) {
+                DodoOpenJava.LOGGER_MAP.get(authorization).addResult(result);
             }
             return result;
         } catch (UnknownHostException e) {
@@ -165,8 +165,8 @@ public class NetUtil {
         String str = uploadFile(header, path, url);
         Result result = Result.of(new JSONObject(Objects.requireNonNull(str)));
         String authorization = header.get("Authorization");
-        if (DodoOpenJava.getLogMap().containsKey(authorization)) {
-            DodoOpenJava.getLogMap().get(authorization).addResult(result);
+        if (DodoOpenJava.LOGGER_MAP.containsKey(authorization)) {
+            DodoOpenJava.LOGGER_MAP.get(authorization).addResult(result);
         }
         return result;
     }
