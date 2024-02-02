@@ -1,6 +1,5 @@
 package io.github.minecraftchampions.dodoopenjava;
 
-import lombok.Getter;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,8 +17,7 @@ public class DodoOpenJava {
 
     private static final HashSet<Bot> bots = new HashSet<>();
 
-    @Getter
-    private static final Map<String, ApiResultsLogger> logMap = new ConcurrentHashMap<>();
+    public static final Map<String, ApiResultsLogger> LOGGER_MAP = new ConcurrentHashMap<>();
 
     /**
      * 新建 Bot
@@ -37,6 +35,7 @@ public class DodoOpenJava {
     public static Set<Bot> getBots() {
         return (HashSet<Bot>) bots.clone();
     }
+    
 
     /**
      * 卸载Bot
@@ -66,12 +65,12 @@ public class DodoOpenJava {
      * @param authorization authorization
      */
     public static void enableApiResultsLogger(String authorization) {
-        synchronized (logMap) {
-            if (logMap.containsKey(authorization)) {
+        synchronized (LOGGER_MAP) {
+            if (LOGGER_MAP.containsKey(authorization)) {
                 log.warn("已经调用过DodoOpenJava#enableApiResultsLogger");
                 return;
             }
-            logMap.put(authorization, new ApiResultsLogger(authorization));
+            LOGGER_MAP.put(authorization, new ApiResultsLogger(authorization));
         }
     }
 
@@ -90,8 +89,8 @@ public class DodoOpenJava {
      * @param authorization authorization
      */
     public static void disableApiResultsLogger(String authorization) {
-        synchronized (logMap) {
-            logMap.remove(authorization);
+        synchronized (LOGGER_MAP) {
+            LOGGER_MAP.remove(authorization);
         }
     }
 }
