@@ -30,7 +30,7 @@ public class Form {
     }
 
     public JSONObject toJSONObject() {
-        JSONObject jsonObject = new JSONObject(Map.of("title",title,"elements",new JSONArray()));
+        JSONObject jsonObject = new JSONObject(Map.of("title", title, "elements", new JSONArray()));
         for (InputElement inputElement : list) {
             jsonObject.getJSONArray("elements").put(inputElement.toJSONObject());
         }

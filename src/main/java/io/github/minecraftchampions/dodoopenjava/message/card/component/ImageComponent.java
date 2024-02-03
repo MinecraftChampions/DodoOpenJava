@@ -14,7 +14,7 @@ import java.util.Map;
 @RequiredArgsConstructor(staticName = "of")
 @Accessors(chain = true)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class ImageComponent implements CardComponent{
+public class ImageComponent implements CardComponent {
     private final String type = "image";
 
     @NonNull
@@ -22,7 +22,7 @@ public class ImageComponent implements CardComponent{
 
     @Override
     public JSONObject toJSONObject() {
-        return new JSONObject(Map.of("type",getType(),"src", image.getLink()));
+        return new JSONObject(Map.of("type", getType(), "src", image.getLink()));
     }
 
     public static ImageComponent of(@NonNull String link) {

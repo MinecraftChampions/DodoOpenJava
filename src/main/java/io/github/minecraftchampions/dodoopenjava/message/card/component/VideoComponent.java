@@ -19,10 +19,10 @@ public class VideoComponent implements CardComponent {
 
     @Override
     public JSONObject toJSONObject() {
-        JSONObject jsonObject = new JSONObject(Map.of("type",getType(),
-                "cover",getCover(),"src",getLink()));
+        JSONObject jsonObject = new JSONObject(Map.of("type", getType(),
+                "cover", getCover(), "src", getLink()));
         if (title != null) {
-            jsonObject.put("title",getTitle());
+            jsonObject.put("title", getTitle());
         }
         return jsonObject;
     }

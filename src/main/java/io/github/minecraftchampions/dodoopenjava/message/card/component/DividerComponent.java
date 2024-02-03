@@ -11,11 +11,11 @@ import java.util.Map;
  */
 @Data
 @NoArgsConstructor(staticName = "of")
-public class DividerComponent implements CardComponent{
+public class DividerComponent implements CardComponent {
     private final String type = "divider";
 
     @Override
     public JSONObject toJSONObject() {
-        return new JSONObject(Map.of("type",getType()));
+        return new JSONObject(Map.of("type", getType()));
     }
 }
