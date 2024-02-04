@@ -44,6 +44,17 @@ public class WebHookEventTrigger extends AbstractEventTrigger {
         this.bot = bot;
     }
 
+    public WebHookEventTrigger(Bot bot,int port,String path) {
+        this.bot = bot;
+        setPath(path);
+        setPort(port);
+    }
+
+    public WebHookEventTrigger(Bot bot,int port) {
+        this.bot = bot;
+        setPort(port);
+    }
+
     private final HttpServerProvider provider = HttpServerProvider.provider();
 
     private HttpServer server = null;
@@ -64,48 +75,23 @@ public class WebHookEventTrigger extends AbstractEventTrigger {
      * 端口（默认80）
      */
     @Getter
+    @Setter
     private int port = 80;
 
     /**
      * 解密密钥
      */
     @Getter
-    private String SecretKey;
+    @Setter
+    @NonNull
+    private String secretKey;
 
     /**
      * api路径(默认为空)
      */
     @Getter
+    @Setter
     private String path = "/";
-
-    /**
-     * 设置api路径
-     * 如:/api
-     *
-     * @param path 路径
-     */
-    public synchronized void setPath(String path) {
-        if (path.isEmpty()) {
-            this.path = path;
-        }
-    }
-
-    /**
-     * 设置端口(默认80)
-     *
-     * @param port 端口
-     */
-    public synchronized void setPort(int port) {
-        this.port = port;
-    }
-
-    /**
-     * 解密密钥
-     */
-    public synchronized void setSecretKey(@NonNull String s) {
-        SecretKey = s;
-    }
-
 
     /**
      * 关闭服务器
