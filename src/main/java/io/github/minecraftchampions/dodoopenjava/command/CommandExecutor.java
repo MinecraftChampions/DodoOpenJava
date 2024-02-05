@@ -24,13 +24,6 @@ public interface CommandExecutor {
     }
 
     /**
-     * 需要的权限
-     *
-     * @return 权限
-     */
-    String getPermission();
-
-    /**
      * 是否允许私聊命令
      */
     default boolean allowPersonalChat() {

@@ -1,9 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.event;
 
-import com.sun.net.httpserver.Headers;
-import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
-import com.sun.net.httpserver.HttpServer;
+import com.sun.net.httpserver.*;
 import com.sun.net.httpserver.spi.HttpServerProvider;
 import io.github.minecraftchampions.dodoopenjava.Bot;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelarticle.ChannelArticleCommentEvent;
@@ -20,18 +17,22 @@ import io.github.minecraftchampions.dodoopenjava.event.events.v2.shop.GoodsPurch
 import io.github.minecraftchampions.dodoopenjava.utils.OpenSecretUtil;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
+import javax.net.ssl.KeyManager;
+import javax.net.ssl.KeyManagerFactory;
+import javax.net.ssl.SSLContext;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
+import java.security.KeyStore;
 import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executors;
 
 /**
  * 事件触发
@@ -40,24 +41,46 @@ import java.util.Objects;
 public class WebHookEventTrigger extends AbstractEventTrigger {
     boolean isConnect = false;
 
-    public WebHookEventTrigger(Bot bot) {
+    public WebHookEventTrigger(@NonNull Bot bot, @NonNull String secretKey,
+                               @NonNull String password, @NonNull File file) {
         this.bot = bot;
+        setSecretKey(secretKey);
+        setPassword(password);
+        setFile(file);
     }
 
-    public WebHookEventTrigger(Bot bot,int port,String path) {
+    public WebHookEventTrigger(@NonNull Bot bot, int port, @NonNull String path,
+                               @NonNull String secretKey, @NonNull String password,
+                               @NonNull File file) {
         this.bot = bot;
         setPath(path);
         setPort(port);
+        setSecretKey(secretKey);
+        setPassword(password);
+        setFile(file);
     }
 
-    public WebHookEventTrigger(Bot bot,int port) {
+    public WebHookEventTrigger(@NonNull Bot bot, int port, @NonNull String secretKey,
+                               @NonNull String password, @NonNull File file) {
         this.bot = bot;
         setPort(port);
+        setSecretKey(secretKey);
+        setPassword(password);
+        setFile(file);
+    }
+
+    public WebHookEventTrigger(@NonNull Bot bot, @NonNull String path, @NonNull String secretKey,
+                               @NonNull String password, @NonNull File file) {
+        this.bot = bot;
+        setPath(path);
+        setSecretKey(secretKey);
+        setPassword(password);
+        setFile(file);
     }
 
     private final HttpServerProvider provider = HttpServerProvider.provider();
 
-    private HttpServer server = null;
+    private HttpsServer server = null;
 
     /**
      * 启动监听
@@ -65,18 +88,32 @@ public class WebHookEventTrigger extends AbstractEventTrigger {
     @SneakyThrows
     @Override
     public synchronized void start() {
-        server = provider.createHttpServer(new InetSocketAddress(port), 1000);
+        if (isConnect) {
+            return;
+        }
+        server = provider.createHttpsServer(new InetSocketAddress(port), 1000);
         server.createContext(getPath(), new Handler());
-        server.start();
+        server.setExecutor(Executors.newFixedThreadPool(50));
         isConnect = true;
+        String type = file.getName().substring(file.getName().lastIndexOf(".") + 1).toUpperCase();
+        KeyStore keyStore = KeyStore.getInstance(type);
+        keyStore.load(new FileInputStream(file), password.toCharArray());
+        KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance("SunX509");
+        keyManagerFactory.init(keyStore, password.toCharArray());
+        KeyManager[] km = keyManagerFactory.getKeyManagers();
+        SSLContext sslContext = SSLContext.getInstance("SSL");
+        sslContext.init(km, null, null);
+        sslContext.getSupportedSSLParameters().setNeedClientAuth(false);
+        server.setHttpsConfigurator(new HttpsConfigurator(sslContext));
+        server.start();
     }
 
     /**
-     * 端口（默认80）
+     * 端口（默认443）
      */
     @Getter
     @Setter
-    private int port = 80;
+    private int port = 443;
 
     /**
      * 解密密钥
@@ -85,6 +122,22 @@ public class WebHookEventTrigger extends AbstractEventTrigger {
     @Setter
     @NonNull
     private String secretKey;
+
+    /**
+     * 证书密码
+     */
+    @Getter
+    @Setter
+    @NonNull
+    private String password;
+
+    /**
+     * 证书文件(后缀为 .jks或其它 的 文件)
+     */
+    @Getter
+    @Setter
+    @NonNull
+    private File file;
 
     /**
      * api路径(默认为空)
@@ -107,93 +160,91 @@ public class WebHookEventTrigger extends AbstractEventTrigger {
 
     @Override
     public boolean isConnect() {
-        return server != null && isConnect;
+        return isConnect;
     }
 
     /**
      * 处理请求
      */
     public class Handler implements HttpHandler {
-        @SneakyThrows
         @Override
         public void handle(HttpExchange httpExchange) {
-            InputStream ss = httpExchange.getRequestBody();
-            String requestMethod = httpExchange.getRequestMethod();
-            Headers responseHeaders = httpExchange.getResponseHeaders();
-            responseHeaders.set("Content-Type", "application/json;charset=utf-8");
-            if (!requestMethod.equalsIgnoreCase("POST")) {
-                String error = """
-                        {
-                          "status": -9999,
-                          "textMessage": "错误的请求"
-                        }
-                        """;
-                httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, error.getBytes(StandardCharsets.UTF_8).length);
-                OutputStream responseBody = httpExchange.getResponseBody();
-                OutputStreamWriter writer = new OutputStreamWriter(responseBody, StandardCharsets.UTF_8);
-                writer.write(error);
-                writer.close();
-                responseBody.close();
-            } else {
-                InputStream requestBody = httpExchange.getRequestBody();
-                int count = 0;
-                while (count == 0) {
-                    count = requestBody.available();
-                }
-                byte[] b = new byte[count];
-                int readCount = 0;
-                while (readCount < count) {
-                    readCount += requestBody.read(b, readCount, count - readCount);
-                }
-                String s = new String(b);
-                JSONObject json = new JSONObject(s);
-                if (json.keySet().containsAll(Arrays.asList("clientId", "payload"))) {
-                    String payload = json.getString("payload");
-                    String event = OpenSecretUtil.WebHookDecrypt(payload, SecretKey);
-                    JSONObject jsonObject = new JSONObject(Objects.requireNonNull(event));
-                    if (jsonObject.getInt("type") == 2) {
-                        String textMessage = "{\n" +
-                                "    \"status\": 0,\n" +
-                                "    \"textMessage\": \"\",\n" +
-                                "    \"data\": {\n" +
-                                "        \"checkCode\": \"" + jsonObject.getJSONObject("data").getString("checkCode") + "\"\n" +
-                                "    }\n" +
-                                "}";
-                        httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, textMessage.getBytes(StandardCharsets.UTF_8).length);
-                        OutputStream responseBody = httpExchange.getResponseBody();
-                        OutputStreamWriter writer = new OutputStreamWriter(responseBody, StandardCharsets.UTF_8);
-                        writer.write(textMessage);
-                        writer.close();
-                        responseBody.close();
-                    } else {
-                        String textMessage = """
-                                {
-                                    "status": 0,
-                                    "textMessage": ""
-                                }""";
-                        httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, textMessage.getBytes(StandardCharsets.UTF_8).length);
-                        OutputStream responseBody = httpExchange.getResponseBody();
-                        OutputStreamWriter writer = new OutputStreamWriter(responseBody, StandardCharsets.UTF_8);
-                        writer.write(textMessage);
-                        writer.close();
-                        responseBody.close();
-                        DisposeEvent thread = new DisposeEvent(jsonObject);
-                        thread.start();
-                    }
-                } else {
+            try {
+                InputStream ss = httpExchange.getRequestBody();
+                String requestMethod = httpExchange.getRequestMethod();
+                Headers responseHeaders = httpExchange.getResponseHeaders();
+                responseHeaders.set("Content-Type", "application/json;charset=utf-8");
+                if (!requestMethod.equals("POST")) {
                     String error = """
-                            {
-                              "status": -9999,
-                              "textMessage": "处理失败"
-                            }
-                            """;
-                    httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, error.getBytes(StandardCharsets.UTF_8).length);
+                                {
+                                  "status": -9999,
+                                  "message": "错误的请求"
+                                }
+                                """;
                     OutputStream responseBody = httpExchange.getResponseBody();
                     OutputStreamWriter writer = new OutputStreamWriter(responseBody, StandardCharsets.UTF_8);
                     writer.write(error);
                     writer.close();
                     responseBody.close();
+                } else {
+                    InputStream requestBody = httpExchange.getRequestBody();
+                    String s = new String(requestBody.readAllBytes());
+                    JSONObject json = new JSONObject(s);
+                    if (json.keySet().contains("clientId")) {
+                        String payload = json.getString("payload");
+                        CompletableFuture<JSONObject> future = CompletableFuture.supplyAsync(() -> {
+                            String event = OpenSecretUtil.WebHookDecrypt(payload, secretKey);
+                            return new JSONObject(Objects.requireNonNull(event));
+                        });
+                        JSONObject mJson = new JSONObject("""
+                                    {
+                                        "status": 0,
+                                        "message": ""
+                                    }""");
+                        String m = mJson.toString();
+                        int length = m.getBytes().length;
+                        JSONObject jsonObject = future.get();
+                        if (jsonObject.getInt("type") == 2) {
+                            String textMessage = "{\n" +
+                                    "    \"status\": 0,\n" +
+                                    "    \"message\": \"\",\n" +
+                                    "    \"data\": {\n" +
+                                    "        \"checkCode\": \"" + jsonObject.getJSONObject("data").getString("checkCode") + "\"\n" +
+                                    "    }\n" +
+                                    "}";
+                            httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, textMessage.getBytes(StandardCharsets.UTF_8).length);
+                            OutputStream responseBody = httpExchange.getResponseBody();
+                            OutputStreamWriter writer = new OutputStreamWriter(responseBody, StandardCharsets.UTF_8);
+                            writer.write(textMessage);
+                            writer.close();
+                            responseBody.close();
+                        } else {
+                            httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, length);
+                            OutputStream responseBody = httpExchange.getResponseBody();
+                            OutputStreamWriter writer = new OutputStreamWriter(responseBody, StandardCharsets.UTF_8);
+                            writer.write(m);
+                            writer.close();
+                            responseBody.close();
+                            DisposeEvent thread = new DisposeEvent(jsonObject);
+                            thread.start();
+                        }
+                    } else {
+                        String error = """
+                                    {
+                                      "status": -9999,
+                                      "message": "处理失败"
+                                    }
+                                    """;
+                        httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, error.getBytes(StandardCharsets.UTF_8).length);
+                        OutputStream responseBody = httpExchange.getResponseBody();
+                        OutputStreamWriter writer = new OutputStreamWriter(responseBody, StandardCharsets.UTF_8);
+                        writer.write(error);
+                        writer.close();
+                        responseBody.close();
+                    }
                 }
+            } catch (Exception e) {
+                log.error(e.getMessage(), e);
             }
         }
     }
@@ -226,7 +277,7 @@ public class WebHookEventTrigger extends AbstractEventTrigger {
                 case "7001" -> eventManager.fireEvent(new GiftSendEvent(json));
                 case "8001" -> eventManager.fireEvent(new IntegralChangeEvent(json));
                 case "9001" -> eventManager.fireEvent(new GoodsPurchaseEvent(json));
-                default -> log.warn( "未知的事件！");
+                default -> log.warn("未知的事件！");
             }
         }
     }

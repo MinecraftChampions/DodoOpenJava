@@ -27,6 +27,9 @@ public class Main implements CommandExecutor, Listener {
     public static void main(String... args) {
         //创建机器人实例
         bot = DodoOpenJava.createBot("111111", "token");
+        //采用WebHook监听事件
+        //WebHookEventTrigger webHookEventTrigger = new WebHookEventTrigger(bot,"密钥","ssl证书密码",new File("C:\\abc.com.jks"));
+        //bot.initEventListenSystem(webHookEventTrigger);
         //启用日志记录功能
         bot.enableApiResultsLogger();
         //注册事件监听器
