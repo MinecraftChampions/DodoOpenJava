@@ -9,6 +9,8 @@ import java.util.Map;
 
 /**
  * 倒计时组件
+ *
+ * @author qscbm187531
  */
 @Data
 @RequiredArgsConstructor(staticName = "of")
@@ -19,7 +21,7 @@ public class CountdownComponent implements CardComponent {
     private final String type = "countdown";
 
     @Override
-    public JSONObject toJSONObject() {
+    public JSONObject toJsonObject() {
         JSONObject jsonObject = new JSONObject(Map.of("type", getType(),
                 "style", getStyle().toString(), "endTime", getEndTime()));
         if (title != null) {

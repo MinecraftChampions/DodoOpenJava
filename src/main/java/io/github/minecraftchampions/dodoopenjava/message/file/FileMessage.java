@@ -9,6 +9,8 @@ import org.json.JSONObject;
 
 /**
  * 文件消息组件
+ *
+ * @author qscbm187531
  */
 @RequiredArgsConstructor
 @Getter

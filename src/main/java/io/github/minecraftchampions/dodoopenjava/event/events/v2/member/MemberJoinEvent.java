@@ -5,6 +5,8 @@ import org.json.JSONObject;
 
 /**
  * 成员加入事件
+ *
+ * @author qscbm187531
  */
 @Getter
 public class MemberJoinEvent extends AbstractMemberEvent {

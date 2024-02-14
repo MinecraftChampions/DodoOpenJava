@@ -7,6 +7,9 @@ import java.util.Set;
 
 /**
  * 命令的接口
+ *
+ * @author qscbm187531
+ * @author zimzaza4
  */
 public interface CommandExecutor {
     /**
@@ -17,7 +20,9 @@ public interface CommandExecutor {
     String getMainCommand();
 
     /**
-     * 命令别名
+     * 获取命令别名
+     *
+     * @return 别名列表
      */
     default Set<String> getCommandAliases() {
         return new HashSet<>();
@@ -25,6 +30,8 @@ public interface CommandExecutor {
 
     /**
      * 是否允许私聊命令
+     *
+     * @return boolean
      */
     default boolean allowPersonalChat() {
         return false;

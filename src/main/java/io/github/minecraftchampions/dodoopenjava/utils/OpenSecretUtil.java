@@ -9,6 +9,9 @@ import java.security.AlgorithmParameters;
 
 /**
  * 开放秘密工具
+ *
+ * @author imdodo
+ * @author qscbm187531
  */
 @Slf4j
 public class OpenSecretUtil {
@@ -19,9 +22,9 @@ public class OpenSecretUtil {
      * @param secretKey 解密密钥
      * @return 解密后的字符串
      */
-    public static String WebHookDecrypt(String payload, String secretKey) {
+    public static String webHookDecrypt(String payload, String secretKey) {
         try {
-            return AESDecrypt(hexToBytes(payload), hexToBytes(secretKey), new byte[16], Cipher.getInstance("AES/CBC/PKCS5Padding"));
+            return aesDecrypt(hexToBytes(payload), hexToBytes(secretKey), new byte[16], Cipher.getInstance("AES/CBC/PKCS5Padding"));
         } catch (Exception e) {
             log.error("WebHook数据解密时错误", e);
             return null;
@@ -38,7 +41,7 @@ public class OpenSecretUtil {
      * @param cipher    AES配置
      * @return 解密密过后的值
      */
-    private static String AESDecrypt(byte[] payload, byte[] secretKey, byte[] iv, Cipher cipher) throws Exception {
+    private static String aesDecrypt(byte[] payload, byte[] secretKey, byte[] iv, Cipher cipher) throws Exception {
         var sKeySpec = new SecretKeySpec(secretKey, "AES");
         var params = AlgorithmParameters.getInstance("AES");
         params.init(new IvParameterSpec(iv));

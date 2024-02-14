@@ -10,6 +10,8 @@ import java.io.IOException;
 
 /**
  * 积分API
+ *
+ * @author qscbm187531
  */
 public class IntegralApi {
     /**

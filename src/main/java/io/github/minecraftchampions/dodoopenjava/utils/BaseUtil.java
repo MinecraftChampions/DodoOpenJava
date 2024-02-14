@@ -91,7 +91,7 @@ public class BaseUtil {
         List<Node> result = new ArrayList<>();
         for (int i = 0; i < nodeList.getLength(); i++) {
             Node child = nodeList.item(i);
-            if (child.getNodeName().equals("#text")) {
+            if ("#text".equals(child.getNodeName())) {
                 result.add(child);
             } else {
                 List<Node> childTextNodes = getAllTextNodes(child);
@@ -99,5 +99,17 @@ public class BaseUtil {
             }
         }
         return result;
+    }
+
+
+    public static <T> List<T> castList(Object obj, Class<T> clazz) {
+        List<T> result = new ArrayList<>();
+        if (obj instanceof List<?>) {
+            for (Object o : (List<?>) obj) {
+                result.add(clazz.cast(o));
+            }
+            return result;
+        }
+        return null;
     }
 }

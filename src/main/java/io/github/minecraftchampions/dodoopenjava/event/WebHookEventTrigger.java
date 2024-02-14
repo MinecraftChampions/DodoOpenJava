@@ -3,17 +3,6 @@ package io.github.minecraftchampions.dodoopenjava.event;
 import com.sun.net.httpserver.*;
 import com.sun.net.httpserver.spi.HttpServerProvider;
 import io.github.minecraftchampions.dodoopenjava.Bot;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelarticle.ChannelArticleCommentEvent;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelarticle.ChannelArticlePublishEvent;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage.*;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelvoice.ChannelVoiceMemberJoinEvent;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelvoice.ChannelVoiceMemberLeaveEvent;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.gift.GiftSendEvent;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.integral.IntegralChangeEvent;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.member.MemberJoinEvent;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.member.MemberLeaveEvent;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.personal.PersonalMessageEvent;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.shop.GoodsPurchaseEvent;
 import io.github.minecraftchampions.dodoopenjava.utils.OpenSecretUtil;
 import lombok.Getter;
 import lombok.NonNull;
@@ -31,11 +20,12 @@ import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
 import java.security.KeyStore;
 import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 /**
  * 事件触发
+ *
+ * @author qscbm187531
  */
 @Slf4j
 public class WebHookEventTrigger extends AbstractEventTrigger {
@@ -93,7 +83,9 @@ public class WebHookEventTrigger extends AbstractEventTrigger {
         }
         server = provider.createHttpsServer(new InetSocketAddress(port), 1000);
         server.createContext(getPath(), new Handler());
-        server.setExecutor(Executors.newFixedThreadPool(50));
+        server.setExecutor(new ThreadPoolExecutor(3, 10, 3,
+                TimeUnit.SECONDS, new LinkedBlockingDeque<>(3),
+                Executors.defaultThreadFactory(), new ThreadPoolExecutor.DiscardOldestPolicy()));
         isConnect = true;
         String type = file.getName().substring(file.getName().lastIndexOf(".") + 1).toUpperCase();
         KeyStore keyStore = KeyStore.getInstance(type);
@@ -167,6 +159,13 @@ public class WebHookEventTrigger extends AbstractEventTrigger {
      * 处理请求
      */
     public class Handler implements HttpHandler {
+        public static final String REQUEST_METHOD = "POST";
+
+        public static final int VERIFY_CALLBACK_TYPE = 2;
+
+        public static final String CALLBACK_TYPE_KEY = "type";
+
+
         @Override
         public void handle(HttpExchange httpExchange) {
             try {
@@ -174,13 +173,13 @@ public class WebHookEventTrigger extends AbstractEventTrigger {
                 String requestMethod = httpExchange.getRequestMethod();
                 Headers responseHeaders = httpExchange.getResponseHeaders();
                 responseHeaders.set("Content-Type", "application/json;charset=utf-8");
-                if (!requestMethod.equals("POST")) {
+                if (!REQUEST_METHOD.equals(requestMethod)) {
                     String error = """
-                                {
-                                  "status": -9999,
-                                  "message": "错误的请求"
-                                }
-                                """;
+                            {
+                              "status": -9999,
+                              "message": "错误的请求"
+                            }
+                            """;
                     OutputStream responseBody = httpExchange.getResponseBody();
                     OutputStreamWriter writer = new OutputStreamWriter(responseBody, StandardCharsets.UTF_8);
                     writer.write(error);
@@ -190,94 +189,46 @@ public class WebHookEventTrigger extends AbstractEventTrigger {
                     InputStream requestBody = httpExchange.getRequestBody();
                     String s = new String(requestBody.readAllBytes());
                     JSONObject json = new JSONObject(s);
-                    if (json.keySet().contains("clientId")) {
-                        String payload = json.getString("payload");
-                        CompletableFuture<JSONObject> future = CompletableFuture.supplyAsync(() -> {
-                            String event = OpenSecretUtil.WebHookDecrypt(payload, secretKey);
-                            return new JSONObject(Objects.requireNonNull(event));
-                        });
-                        JSONObject mJson = new JSONObject("""
-                                    {
-                                        "status": 0,
-                                        "message": ""
-                                    }""");
-                        String m = mJson.toString();
-                        int length = m.getBytes().length;
-                        JSONObject jsonObject = future.get();
-                        if (jsonObject.getInt("type") == 2) {
-                            String textMessage = "{\n" +
-                                    "    \"status\": 0,\n" +
-                                    "    \"message\": \"\",\n" +
-                                    "    \"data\": {\n" +
-                                    "        \"checkCode\": \"" + jsonObject.getJSONObject("data").getString("checkCode") + "\"\n" +
-                                    "    }\n" +
-                                    "}";
-                            httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, textMessage.getBytes(StandardCharsets.UTF_8).length);
-                            OutputStream responseBody = httpExchange.getResponseBody();
-                            OutputStreamWriter writer = new OutputStreamWriter(responseBody, StandardCharsets.UTF_8);
-                            writer.write(textMessage);
-                            writer.close();
-                            responseBody.close();
-                        } else {
-                            httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, length);
-                            OutputStream responseBody = httpExchange.getResponseBody();
-                            OutputStreamWriter writer = new OutputStreamWriter(responseBody, StandardCharsets.UTF_8);
-                            writer.write(m);
-                            writer.close();
-                            responseBody.close();
-                            DisposeEvent thread = new DisposeEvent(jsonObject);
-                            thread.start();
-                        }
-                    } else {
-                        String error = """
-                                    {
-                                      "status": -9999,
-                                      "message": "处理失败"
-                                    }
-                                    """;
-                        httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, error.getBytes(StandardCharsets.UTF_8).length);
+                    String payload = json.getString("payload");
+                    CompletableFuture<JSONObject> future = CompletableFuture.supplyAsync(() -> {
+                        String event = OpenSecretUtil.webHookDecrypt(payload, secretKey);
+                        return new JSONObject(Objects.requireNonNull(event));
+                    });
+                    JSONObject mJson = new JSONObject("""
+                            {
+                                "status": 0,
+                                "message": ""
+                            }""");
+                    String m = mJson.toString();
+                    int length = m.getBytes().length;
+                    JSONObject jsonObject = future.get();
+                    if (jsonObject.getInt(CALLBACK_TYPE_KEY) == VERIFY_CALLBACK_TYPE) {
+                        String textMessage = "{\n" +
+                                             "    \"status\": 0,\n" +
+                                             "    \"message\": \"\",\n" +
+                                             "    \"data\": {\n" +
+                                             "        \"checkCode\": \"" + jsonObject.getJSONObject("data").getString("checkCode") + "\"\n" +
+                                             "    }\n" +
+                                             "}";
+                        httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, textMessage.getBytes(StandardCharsets.UTF_8).length);
                         OutputStream responseBody = httpExchange.getResponseBody();
                         OutputStreamWriter writer = new OutputStreamWriter(responseBody, StandardCharsets.UTF_8);
-                        writer.write(error);
+                        writer.write(textMessage);
                         writer.close();
                         responseBody.close();
+                    } else {
+                        httpExchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, length);
+                        OutputStream responseBody = httpExchange.getResponseBody();
+                        OutputStreamWriter writer = new OutputStreamWriter(responseBody, StandardCharsets.UTF_8);
+                        writer.write(m);
+                        writer.close();
+                        responseBody.close();
+                        getBot().getEventManager().parseAndFireEvent(jsonObject);
                     }
+
                 }
             } catch (Exception e) {
                 log.error(e.getMessage(), e);
-            }
-        }
-    }
-
-    /**
-     * 触发事件
-     */
-    public class DisposeEvent extends Thread {
-        EventManager eventManager = getBot().getEventManager();
-
-        @Override
-        public void run() {
-            super.run();
-        }
-
-        public DisposeEvent(JSONObject json) {
-            switch (json.getJSONObject("data").getString("eventType")) {
-                case "1001" -> eventManager.fireEvent(new PersonalMessageEvent(json));
-                case "2001" -> eventManager.fireEvent(new MessageEvent(json));
-                case "3001" -> eventManager.fireEvent(new MessageReactionEvent(json));
-                case "3002" -> eventManager.fireEvent(new CardMessageButtonClickEvent(json));
-                case "3003" -> eventManager.fireEvent(new CardMessageFormSubmitEvent(json));
-                case "3004" -> eventManager.fireEvent(new CardMessageListSubmitEvent(json));
-                case "4001" -> eventManager.fireEvent(new MemberJoinEvent(json));
-                case "4002" -> eventManager.fireEvent(new MemberLeaveEvent(json));
-                case "5001" -> eventManager.fireEvent(new ChannelVoiceMemberJoinEvent(json));
-                case "5002" -> eventManager.fireEvent(new ChannelVoiceMemberLeaveEvent(json));
-                case "6001" -> eventManager.fireEvent(new ChannelArticlePublishEvent(json));
-                case "6002" -> eventManager.fireEvent(new ChannelArticleCommentEvent(json));
-                case "7001" -> eventManager.fireEvent(new GiftSendEvent(json));
-                case "8001" -> eventManager.fireEvent(new IntegralChangeEvent(json));
-                case "9001" -> eventManager.fireEvent(new GoodsPurchaseEvent(json));
-                default -> log.warn("未知的事件！");
             }
         }
     }

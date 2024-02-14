@@ -24,6 +24,8 @@ import java.util.List;
 
 /**
  * 消息组件
+ *
+ * @author qscbm187531
  */
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Slf4j
@@ -85,6 +87,11 @@ public class TextMessage implements Message {
     }
 
     /**
+     * 反序列化时用到的根节点名
+     */
+    public static final String ROOT_NODE_NAME = "root";
+
+    /**
      * 反序列化
      *
      * @param str 需要被反序列化的文本
@@ -94,7 +101,7 @@ public class TextMessage implements Message {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = factory.newDocumentBuilder();
-            String input = "<root>" + str + "</root>";
+            String input = "<" + ROOT_NODE_NAME + str + "</" + ROOT_NODE_NAME + ">";
             Document document = documentBuilder.parse(new InputSource(new StringReader(input)));
             List<TextMessageComponent> list = new ArrayList<>();
             List<Node> nodeList = BaseUtil.getAllTextNodes(document.getFirstChild());
@@ -103,19 +110,21 @@ public class TextMessage implements Message {
                 List<TextMessageStyle> styleList = new ArrayList<>();
                 boolean isLink = false;
                 String link = "";
-                if (!node.getParentNode().getNodeName().equals("root")) {
-                    while (!node.getParentNode().getNodeName().equals("root")) {
+                if (!ROOT_NODE_NAME.equals(node.getParentNode().getNodeName())) {
+                    while (!ROOT_NODE_NAME.equals(node.getParentNode().getNodeName())) {
                         if (isLink) {
                             log.error("link组件外面不能套别的组件");
                             return empty();
                         }
                         Node parentNode = node.getParentNode();
                         String nodeName = parentNode.getNodeName();
-                        if (nodeName.equals("link")) {
+                        if ("link".equals(nodeName)) {
                             isLink = true;
                             link = parentNode.getAttributes().item(0).getNodeValue();
                         } else {
-                            if (!TextMessageStyle.getStyles().contains(nodeName)) return empty();
+                            if (!TextMessageStyle.getStyles().contains(nodeName)) {
+                                return empty();
+                            }
                             styleList.add(TextMessageStyle.valueOf(nodeName));
                         }
                         node = parentNode;

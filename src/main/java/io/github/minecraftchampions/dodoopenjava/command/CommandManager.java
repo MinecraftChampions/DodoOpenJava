@@ -25,7 +25,7 @@ public class CommandManager {
     @Getter
     private final @NonNull Bot bot;
 
-    private AtomicBoolean isInit = new AtomicBoolean(false);
+    private final AtomicBoolean isInit = new AtomicBoolean(false);
 
     @Getter
     private final CommandTrigger commandTrigger = new CommandTrigger(this);

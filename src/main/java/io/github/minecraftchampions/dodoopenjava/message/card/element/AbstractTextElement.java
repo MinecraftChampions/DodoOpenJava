@@ -14,9 +14,11 @@ import java.util.function.Consumer;
 
 /**
  * 文本元素
+ *
+ * @author qscbm187531
  */
 @Slf4j
-public abstract class TextElement extends Element.DataElement {
+public abstract class AbstractTextElement extends AbstractElement.AbstractDataElement {
     public static NormalText newNormalText(@NonNull String content, @NonNull TextType type) {
         return new NormalText(content, type);
     }
@@ -27,7 +29,7 @@ public abstract class TextElement extends Element.DataElement {
 
 
     public static ParagraphText newParagraphText(@NonNull NormalText... texts) {
-        if (texts.length <= 1 || texts.length > 6) {
+        if (texts.length < ParagraphText.MIN_ROWS || texts.length > ParagraphText.MAX_ROWS) {
             log.error("多栏文本的栏数必须在2~6之间", new Throwable());
             return null;
         }
@@ -46,28 +48,28 @@ public abstract class TextElement extends Element.DataElement {
     @Data
     @Accessors(chain = true)
     @NoArgsConstructor(access = AccessLevel.PRIVATE)
-    public static class NormalText extends TextElement {
+    public static class NormalText extends AbstractTextElement {
         @NonNull
         private String content;
         @NonNull
         private TextType type;
 
         @Override
-        public JSONObject toJSONObject() {
+        public JSONObject toJsonObject() {
             return new JSONObject(Map.of("content", content, "type", type.getType()));
         }
 
         public static NormalText of(String content, TextType type) {
-            return TextElement.newNormalText(content, type);
+            return AbstractTextElement.newNormalText(content, type);
         }
 
         public static NormalText of(String content) {
-            return TextElement.newNormalText(content, TextType.PlainText);
+            return AbstractTextElement.newNormalText(content, TextType.PlainText);
         }
 
         @Override
         public String toString() {
-            return toJSONObject().toString();
+            return toJsonObject().toString();
         }
     }
 
@@ -75,16 +77,19 @@ public abstract class TextElement extends Element.DataElement {
      * 多栏文本
      */
     @AllArgsConstructor(access = AccessLevel.PROTECTED)
-    public static class ParagraphText extends TextElement {
+    public static class ParagraphText extends AbstractTextElement {
+        public static final int MAX_ROWS = 6;
+
+        public static final int MIN_ROWS = 2;
         private final List<NormalText> textList = new ArrayList<>();
 
         @Override
-        public JSONObject toJSONObject() {
+        public JSONObject toJsonObject() {
             synchronized (textList) {
                 JSONObject jsonObject = new JSONObject(Map.of("type", "paragraph", "cols", textList.size()));
                 JSONArray jsonArray = new JSONArray();
                 for (NormalText normalText : textList) {
-                    jsonArray.put(normalText.toJSONObject());
+                    jsonArray.put(normalText.toJsonObject());
                 }
                 jsonObject.put("fields", jsonArray);
                 return jsonObject;
@@ -99,7 +104,7 @@ public abstract class TextElement extends Element.DataElement {
 
         public ParagraphText append(@NonNull NormalText normalText) {
             synchronized (textList) {
-                if (textList.size() == 6) {
+                if (textList.size() == MAX_ROWS) {
                     log.warn("多栏文本栏数已达上限", new Throwable());
                     return this;
                 }
@@ -110,7 +115,7 @@ public abstract class TextElement extends Element.DataElement {
 
         public ParagraphText prepend(@NonNull NormalText normalText) {
             synchronized (textList) {
-                if (textList.size() == 6) {
+                if (textList.size() == MAX_ROWS) {
                     log.warn("多栏文本栏数已达上限", new Throwable());
                     return this;
                 }
@@ -121,7 +126,7 @@ public abstract class TextElement extends Element.DataElement {
 
         public ParagraphText insert(int index, @NonNull NormalText normalText) {
             synchronized (textList) {
-                if (textList.size() == 6) {
+                if (textList.size() == MAX_ROWS) {
                     log.warn("多栏文本栏数已达上限", new Throwable());
                     return this;
                 }
@@ -132,7 +137,7 @@ public abstract class TextElement extends Element.DataElement {
 
         public void remove(int index) {
             synchronized (textList) {
-                if (size() == 2) {
+                if (size() == MIN_ROWS) {
                     log.warn("多栏文本栏数已达下限", new Throwable());
                     return;
                 }
@@ -146,7 +151,7 @@ public abstract class TextElement extends Element.DataElement {
 
         @Override
         public String toString() {
-            return toJSONObject().toString();
+            return toJsonObject().toString();
         }
 
         public void forEach(@NonNull Consumer<NormalText> consumer) {

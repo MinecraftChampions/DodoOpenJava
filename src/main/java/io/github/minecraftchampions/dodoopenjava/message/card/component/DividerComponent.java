@@ -8,6 +8,8 @@ import java.util.Map;
 
 /**
  * 分割线组件
+ *
+ * @author qscbm187531
  */
 @Data
 @NoArgsConstructor(staticName = "of")
@@ -15,7 +17,7 @@ public class DividerComponent implements CardComponent {
     private final String type = "divider";
 
     @Override
-    public JSONObject toJSONObject() {
+    public JSONObject toJsonObject() {
         return new JSONObject(Map.of("type", getType()));
     }
 }

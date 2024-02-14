@@ -4,7 +4,14 @@ import org.json.JSONObject;
 
 /**
  * 附件
+ *
+ * @author qscbm187531
  */
 public interface Accessory {
-    JSONObject toJSONObject();
+    /**
+     * 转换为JSONObject
+     *
+     * @return json
+     */
+    JSONObject toJsonObject();
 }

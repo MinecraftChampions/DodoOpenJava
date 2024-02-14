@@ -8,6 +8,8 @@ import java.util.Map;
 
 /**
  * 视频组件
+ *
+ * @author qscbm187531
  */
 @Data
 @RequiredArgsConstructor(staticName = "of")
@@ -18,7 +20,7 @@ public class VideoComponent implements CardComponent {
     private final String type = "video";
 
     @Override
-    public JSONObject toJSONObject() {
+    public JSONObject toJsonObject() {
         JSONObject jsonObject = new JSONObject(Map.of("type", getType(),
                 "cover", getCover(), "src", getLink()));
         if (title != null) {

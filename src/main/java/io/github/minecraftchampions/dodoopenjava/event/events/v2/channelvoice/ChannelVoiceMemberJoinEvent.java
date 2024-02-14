@@ -1,10 +1,13 @@
 package io.github.minecraftchampions.dodoopenjava.event.events.v2.channelvoice;
 
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage.AbstractChannelMessageEvent;
 import lombok.Getter;
 import org.json.JSONObject;
 
 /**
  * 成员加入语音频道事件
+ *
+ * @author qscbm187531
  */
 @Getter
 public class ChannelVoiceMemberJoinEvent extends AbstractChannelVoiceEvent {
@@ -115,25 +118,9 @@ public class ChannelVoiceMemberJoinEvent extends AbstractChannelVoiceEvent {
         this.personal = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal");
         this.userNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("nickName");
         this.userAvatarUrl = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("avatarUrl");
-        this.userSex = IntSexToSex(json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex"));
+        this.userSex = AbstractChannelMessageEvent.intSexToSex(json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex"));
         this.userIntSex = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex");
         this.modifyTime = json.getJSONObject("data").getJSONObject("eventBody").getString("modifyTime");
         eventType = ChannelVoiceMemberJoinEvent.class;
     }
-
-    /**
-     * 转换 为Int数据类型的 性别关键字 为 String 类型
-     *
-     * @param IntSex 性别
-     * @return 性别
-     */
-    public String IntSexToSex(Integer IntSex) {
-        return switch (IntSex) {
-            case 0 -> "女";
-            case 1 -> "男";
-            default -> "保密";
-        };
-    }
-
-
 }

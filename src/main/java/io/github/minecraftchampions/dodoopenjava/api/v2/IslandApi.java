@@ -10,6 +10,8 @@ import java.io.IOException;
 
 /**
  * 群API
+ *
+ * @author qscbm187531
  */
 public class IslandApi {
     /**

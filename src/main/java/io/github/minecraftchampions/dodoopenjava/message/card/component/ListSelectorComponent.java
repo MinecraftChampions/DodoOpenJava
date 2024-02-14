@@ -11,7 +11,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 列表选择题组件
+ * 列表选择器组件
+ *
+ * @author qscbm187531
  */
 @Data
 @RequiredArgsConstructor(staticName = "of")
@@ -61,7 +63,7 @@ public class ListSelectorComponent implements CardComponent {
     }
 
     @Override
-    public JSONObject toJSONObject() {
+    public JSONObject toJsonObject() {
         JSONObject jsonObject = new JSONObject(Map.of("type", getType(), "min", getMin(), "max", getMax(), "elements", new JSONArray()));
         if (placeholder != null) {
             jsonObject.put("placeholder", placeholder);
@@ -70,7 +72,7 @@ public class ListSelectorComponent implements CardComponent {
             jsonObject.put("interactCustomId", interactCustomId);
         }
         for (OptionElement element : elementList) {
-            jsonObject.getJSONArray("elements").put(element.toJSONObject());
+            jsonObject.getJSONArray("elements").put(element.toJsonObject());
         }
         return jsonObject;
     }

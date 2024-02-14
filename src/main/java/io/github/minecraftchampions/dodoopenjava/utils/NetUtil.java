@@ -17,6 +17,8 @@ import java.util.Objects;
 
 /**
  * 一些 有关 网络请求 的相关方法
+ *
+ * @author qscbm187531
  */
 @Slf4j
 public class NetUtil {
@@ -30,7 +32,7 @@ public class NetUtil {
     public static Result sendRequest(@NonNull String param, @NonNull String url,
                                      @NonNull String authorization) throws IOException {
         try {
-            HashMap<String, String> header = new HashMap<>();
+            HashMap<String, String> header = new HashMap<>(2);
             header.put("Content-Type", "application/json");
             header.put("Authorization", authorization);
             String str = sendPostRequest(url, header, param);
@@ -56,7 +58,7 @@ public class NetUtil {
      * @param url 链接地址
      */
     public static String sendPostRequest(@NonNull String url) throws IOException {
-        return sendPostRequest(url, new HashMap<>(), "");
+        return sendPostRequest(url, new HashMap<>(0), "");
     }
 
     /**
@@ -65,8 +67,8 @@ public class NetUtil {
      * @param url 链接地址
      */
     public static String sendPostRequest(@NonNull String url,
-                                         @NonNull HashMap<String, String> Header) throws IOException {
-        return sendPostRequest(url, Header, "");
+                                         @NonNull HashMap<String, String> header) throws IOException {
+        return sendPostRequest(url, header, "");
     }
 
     /**
@@ -75,7 +77,7 @@ public class NetUtil {
      * @param url 链接地址
      */
     public static String sendPostRequest(@NonNull String url, @NonNull String param) throws IOException {
-        return sendPostRequest(url, new HashMap<>(), param);
+        return sendPostRequest(url, new HashMap<>(0), param);
     }
 
     /**
@@ -218,9 +220,9 @@ public class NetUtil {
      * @param url 链接地址
      */
     public static String simulationBrowserRequest(@NonNull String url) throws IOException {
-        HashMap<String, String> Header = new HashMap<>();
-        Header.put("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36");
-        return sendGetRequest(url, Header);
+        HashMap<String, String> header = new HashMap<>(1);
+        header.put("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36");
+        return sendGetRequest(url, header);
     }
 
     /**
@@ -229,6 +231,6 @@ public class NetUtil {
      * @param url 链接地址
      */
     public static String sendGetRequest(@NonNull String url) throws IOException {
-        return sendGetRequest(url, new HashMap<>());
+        return sendGetRequest(url, new HashMap<>(0));
     }
 }

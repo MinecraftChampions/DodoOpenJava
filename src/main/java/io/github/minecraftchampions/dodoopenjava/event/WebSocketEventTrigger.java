@@ -1,17 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.event;
 
 import io.github.minecraftchampions.dodoopenjava.Bot;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelarticle.ChannelArticleCommentEvent;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelarticle.ChannelArticlePublishEvent;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage.*;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelvoice.ChannelVoiceMemberJoinEvent;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelvoice.ChannelVoiceMemberLeaveEvent;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.gift.GiftSendEvent;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.integral.IntegralChangeEvent;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.member.MemberJoinEvent;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.member.MemberLeaveEvent;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.personal.PersonalMessageEvent;
-import io.github.minecraftchampions.dodoopenjava.event.events.v2.shop.GoodsPurchaseEvent;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.java_websocket.WebSocket;
@@ -27,6 +16,9 @@ import java.util.concurrent.CompletableFuture;
 
 /**
  * 事件触发
+ *
+ * @author qscbm187531
+ * @author holdlijun
  */
 @Slf4j
 public class WebSocketEventTrigger extends AbstractEventTrigger {
@@ -40,7 +32,7 @@ public class WebSocketEventTrigger extends AbstractEventTrigger {
 
     public WebSocketClient mWebSocket = null;
 
-    public static final long pingInterval = 20 * 1000;
+    public static final long PING_INTERVAL = 20 * 1000;
 
 
     public WebSocketEventTrigger(Bot bot) {
@@ -56,6 +48,7 @@ public class WebSocketEventTrigger extends AbstractEventTrigger {
         v2();
     }
 
+    @Override
     public synchronized void close() {
         if (mWebSocket != null) {
             mWebSocket.close(1000, "");
@@ -95,12 +88,12 @@ public class WebSocketEventTrigger extends AbstractEventTrigger {
                     reacquireCount++;
                     if (reacquireCount > reacquireMaxCount) {
                         log.error("获取websocket连接错误" + result.getMessage() +
-                                ";\n当前重连次数:" + reacquireCount + ",已超过最大重连次数:" + reacquireMaxCount
-                                + ",已取消重连");
+                                  ";\n当前重连次数:" + reacquireCount + ",已超过最大重连次数:" + reacquireMaxCount
+                                  + ",已取消重连");
                         return;
                     }
                     log.warn("获取websocket连接错误" + result.getMessage() +
-                            ";\n已尝试重新获取,当前重新获取次数:" + reacquireCount);
+                             ";\n已尝试重新获取,当前重新获取次数:" + reacquireCount);
                     v2();
                 });
     }
@@ -108,7 +101,7 @@ public class WebSocketEventTrigger extends AbstractEventTrigger {
     public static long waitForTheResponseMills = 15 * 1000;
 
     public void sendHeartbeatPacket() {
-        Thread thread = new Thread(() -> {
+        CompletableFuture.runAsync(() -> {
             while (mWebSocket.isOpen()) {
                 mWebSocket.sendPing();
                 mWebSocket.send("""
@@ -124,7 +117,6 @@ public class WebSocketEventTrigger extends AbstractEventTrigger {
 
             }
         });
-        thread.start();
     }
 
     class WsListenerC extends WebSocketClient {
@@ -148,35 +140,20 @@ public class WebSocketEventTrigger extends AbstractEventTrigger {
         public void onMessage(String s) {
         }
 
+        public static final String HEARTBEAT_STRING = "{\"type\":1,\"version\":\"\"}";
+
         @Override
         public void onMessage(ByteBuffer bf) {
             String message = new String(bf.array());
-            if (message.equals("{\"type\":1,\"version\":\"\"}")) {
+            if (HEARTBEAT_STRING.equals(message)) {
                 return;
             }
             JSONObject jsontext = new JSONObject(message);
             try {
-                switch (jsontext.getJSONObject("data").getString("eventType")) {
-                    case "1001" -> eventManager.fireEvent(new PersonalMessageEvent(jsontext));
-                    case "2001" -> eventManager.fireEvent(new MessageEvent(jsontext));
-                    case "3001" -> eventManager.fireEvent(new MessageReactionEvent(jsontext));
-                    case "3002" -> eventManager.fireEvent(new CardMessageButtonClickEvent(jsontext));
-                    case "3003" -> eventManager.fireEvent(new CardMessageFormSubmitEvent(jsontext));
-                    case "3004" -> eventManager.fireEvent(new CardMessageListSubmitEvent(jsontext));
-                    case "4001" -> eventManager.fireEvent(new MemberJoinEvent(jsontext));
-                    case "4002" -> eventManager.fireEvent(new MemberLeaveEvent(jsontext));
-                    case "5001" -> eventManager.fireEvent(new ChannelVoiceMemberJoinEvent(jsontext));
-                    case "5002" -> eventManager.fireEvent(new ChannelVoiceMemberLeaveEvent(jsontext));
-                    case "6001" -> eventManager.fireEvent(new ChannelArticlePublishEvent(jsontext));
-                    case "6002" -> eventManager.fireEvent(new ChannelArticleCommentEvent(jsontext));
-                    case "7001" -> eventManager.fireEvent(new GiftSendEvent(jsontext));
-                    case "8001" -> eventManager.fireEvent(new IntegralChangeEvent(jsontext));
-                    case "9001" -> eventManager.fireEvent(new GoodsPurchaseEvent(jsontext));
-                    default -> log.warn("未知的事件！");
-                }
+                eventManager.parseAndFireEvent(jsontext);
             } catch (Exception e) {
                 log.warn("Websocket消息接收发生未知错误;消息内容:" + message
-                        + ";\n错误内容:" + e.getLocalizedMessage());
+                         + ";\n错误内容:" + e.getLocalizedMessage());
                 sendPing();
             }
         }

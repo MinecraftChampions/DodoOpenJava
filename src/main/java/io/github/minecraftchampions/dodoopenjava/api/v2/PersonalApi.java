@@ -12,6 +12,8 @@ import java.util.Map;
 
 /**
  * 私信API
+ *
+ * @author qscbm187531
  */
 public class PersonalApi {
     /**

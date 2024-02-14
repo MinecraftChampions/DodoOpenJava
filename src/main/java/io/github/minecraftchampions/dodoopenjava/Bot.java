@@ -24,6 +24,7 @@ import java.util.List;
 
 /**
  * 机器人实例
+ * @author qscbm187531
  */
 @Getter
 @RequiredArgsConstructor
@@ -224,7 +225,7 @@ public class Bot {
             public final IntegralApi integralApi = new IntegralApi();
             public final IslandApi islandApi = new IslandApi();
             public final MemberApi memberApi = new MemberApi();
-            public final NTFApi ntfApi = new NTFApi();
+            public final NtfApi ntfApi = new NtfApi();
             public final PersonalApi personalApi = new PersonalApi();
             public final ResourceApi resourceApi = new ResourceApi();
             public final RoleApi roleApi = new RoleApi();
@@ -590,16 +591,16 @@ public class Bot {
                 }
             }
 
-            public class NTFApi {
+            public class NtfApi {
                 @SneakyThrows
                 public Result getMemberNftStatus(String islandSourceId, String dodoSourceId, String platform, String issuer, String series) {
-                    return io.github.minecraftchampions.dodoopenjava.api.v2.NTFApi.getMemberNftStatus(bot.getAuthorization(), islandSourceId, dodoSourceId, platform, issuer, series);
+                    return io.github.minecraftchampions.dodoopenjava.api.v2.NtfApi.getMemberNftStatus(bot.getAuthorization(), islandSourceId, dodoSourceId, platform, issuer, series);
                 }
 
 
                 @SneakyThrows
                 public Result getMemberNftStatus(String islandSourceId, String dodoSourceId, String platform) {
-                    return io.github.minecraftchampions.dodoopenjava.api.v2.NTFApi.getMemberNftStatus(bot.getAuthorization(), islandSourceId, dodoSourceId, platform);
+                    return io.github.minecraftchampions.dodoopenjava.api.v2.NtfApi.getMemberNftStatus(bot.getAuthorization(), islandSourceId, dodoSourceId, platform);
                 }
 
             }

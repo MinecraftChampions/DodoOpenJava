@@ -1,14 +1,15 @@
 package io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage;
 
-import io.github.minecraftchampions.dodoopenjava.event.AbstractEvent;
 import lombok.Getter;
 import org.json.JSONObject;
 
 /**
  * 消息事件
+ *
+ * @author qscbm187531
  */
 @Getter
-public class MessageEvent extends AbstractEvent {
+public class MessageEvent extends AbstractChannelMessageEvent {
     /**
      * -- GETTER --
      * 获取时间戳
@@ -160,7 +161,7 @@ public class MessageEvent extends AbstractEvent {
         this.personal = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal");
         this.senderNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("nickName");
         this.senderAvatarUrl = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("avatarUrl");
-        this.senderSex = IntSexToSex(json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex"));
+        this.senderSex = intSexToSex(json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex"));
         this.senderIntSex = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex");
         this.member = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member");
         this.memberJoinTime = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("joinTime");
@@ -171,43 +172,9 @@ public class MessageEvent extends AbstractEvent {
             this.reference = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reference");
             this.referenceNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("reference").getString("nickName");
         }
-        this.messageType = IntMessageTypeToMessageType(json.getJSONObject("data").getJSONObject("eventBody").getInt("messageType"));
+        this.messageType = intMessageTypeToMessageType(json.getJSONObject("data").getJSONObject("eventBody").getInt("messageType"));
         this.messageIntType = json.getJSONObject("data").getJSONObject("eventBody").getInt("messageType");
         this.messageBody = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("messageBody");
         eventType = MessageEvent.class;
     }
-
-    /**
-     * 转换 为Int数据类型的 性别关键字 为 String 类型
-     *
-     * @param IntSex 性别
-     * @return 性别
-     */
-    public String IntSexToSex(Integer IntSex) {
-        return switch (IntSex) {
-            case 0 -> "女";
-            case 1 -> "男";
-            default -> "保密";
-        };
-    }
-
-    /**
-     * 转换 为Int数据类型的 消息类型关键字 为 String 类型
-     *
-     * @param type 消息类型
-     * @return 消息类型
-     */
-    public String IntMessageTypeToMessageType(Integer type) {
-        return switch (type) {
-            case 1 -> "文字消息";
-            case 2 -> "图片消息";
-            case 3 -> "视频消息";
-            case 4 -> "分享消息";
-            case 5 -> "文件消息";
-            case 6 -> "卡片消息";
-            default -> "未知消息";
-        };
-    }
-
-
 }

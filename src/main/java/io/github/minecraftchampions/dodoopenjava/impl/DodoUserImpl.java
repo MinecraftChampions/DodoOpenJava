@@ -7,6 +7,11 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * Dodo用户实现
+ *
+ * @author qscbm187531
+ */
 @Getter
 @RequiredArgsConstructor
 public class DodoUserImpl implements User {
@@ -99,7 +104,7 @@ public class DodoUserImpl implements User {
     }
 
     @Override
-    public int getIsBot() {
+    public int isBot() {
         return getBot().getApi().V2.memberApi.getMemberInfo(getIslandSourceId(), getDodoSourceId()).ifSuccess((result) -> {
             return result.getJSONObjectData().getJSONObject("data").getInt("isBot");
         });

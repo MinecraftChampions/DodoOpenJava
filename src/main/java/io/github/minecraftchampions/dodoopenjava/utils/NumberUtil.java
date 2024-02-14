@@ -4,6 +4,8 @@ import lombok.NonNull;
 
 /**
  * 关于 数字 的一些实用方法
+ *
+ * @author qscbm187531
  */
 public class NumberUtil {
     /**

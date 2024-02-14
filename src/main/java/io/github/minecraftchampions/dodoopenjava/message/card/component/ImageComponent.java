@@ -9,6 +9,8 @@ import java.util.Map;
 
 /**
  * 图片组件
+ *
+ * @author qscbm187531
  */
 @Data
 @RequiredArgsConstructor(staticName = "of")
@@ -21,7 +23,7 @@ public class ImageComponent implements CardComponent {
     private ImageElement image;
 
     @Override
-    public JSONObject toJSONObject() {
+    public JSONObject toJsonObject() {
         return new JSONObject(Map.of("type", getType(), "src", image.getLink()));
     }
 

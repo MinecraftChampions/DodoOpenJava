@@ -15,10 +15,15 @@ import java.util.Objects;
 
 /**
  * 命令触发
+ *
+ * @author qscbm187531
+ * @author zimzaza4
  */
 @RequiredArgsConstructor
 @Getter
 public class CommandTrigger implements Listener {
+    public static final String COMMAND_CONTENT_KEY = "content";
+
     /**
      * 监听消息事件
      *
@@ -26,8 +31,13 @@ public class CommandTrigger implements Listener {
      */
     @EventHandler
     public void event(MessageEvent e) {
-        if (!Objects.equals(e.getMessageIntType(), 1)) return;
-        if (e.getMessageBody().getString("content").indexOf(commandHeader) != 0) return;
+        if (!Objects.equals(e.getMessageIntType(), 1)) {
+            return;
+        }
+        if (e.getMessageBody().getString(COMMAND_CONTENT_KEY).
+                    indexOf(commandHeader) != 0) {
+            return;
+        }
         call(e.getJsonObject(), false);
     }
 
@@ -38,15 +48,18 @@ public class CommandTrigger implements Listener {
      */
     @EventHandler
     public void event(PersonalMessageEvent e) {
-        if (!Objects.equals(e.getMessageIntType(), 1)) return;
-        if (e.getMessageBody().getString("content").indexOf(commandHeader) != 0) return;
+        if (!Objects.equals(e.getMessageIntType(), 1)) {
+            return;
+        }
+        if (e.getMessageBody().getString(COMMAND_CONTENT_KEY)
+                    .indexOf(commandHeader) != 0) {
+            return;
+        }
         call(e.getJsonObject(), true);
     }
 
     public void call(JSONObject jsonObject, boolean isPersonalCommand) {
-        String command = jsonObject.getJSONObject("data").getJSONObject("eventBody")
-                .getJSONObject("messageBody").getString("content")
-                .replaceFirst(commandHeader, "");
+        String command = jsonObject.getJSONObject("data").getJSONObject("eventBody").getJSONObject("messageBody").getString("content").replaceFirst(commandHeader, "");
         CommandSenderImpl sender = new CommandSenderImpl(jsonObject, commandManager.getBot(), isPersonalCommand);
         List<String> args = new java.util.ArrayList<>(List.of(command.split(" ")));
         String mainCommand = args.get(0);
@@ -67,6 +80,5 @@ public class CommandTrigger implements Listener {
         this.commandHeader = commandHeader;
     }
 
-    @NonNull
-    CommandManager commandManager;
+    @NonNull CommandManager commandManager;
 }

@@ -10,6 +10,8 @@ import java.io.IOException;
 
 /**
  * 身份组API
+ *
+ * @author qscbm187531
  */
 public class RoleApi {
     /**
@@ -140,7 +142,7 @@ public class RoleApi {
     public static Result addRole(String authorization, String islandSourceId, String roleName, String roleColor, int position, String permission) throws IOException {
         String url = DodoOpenJava.BASEURL + "role/add";
         JSONObject param = new JSONObject("{" +
-                "  \"islandSourceId\": \"" + islandSourceId + "\"}");
+                                          "  \"islandSourceId\": \"" + islandSourceId + "\"}");
         return senResult(authorization, roleName, roleColor, position, permission, url, param);
     }
 
@@ -178,8 +180,8 @@ public class RoleApi {
     public static Result editRole(String authorization, String islandSourceId, String roleId, String roleName, String roleColor, int position, String permission) throws IOException {
         String url = DodoOpenJava.BASEURL + "role/edit";
         JSONObject param = new JSONObject("{" +
-                "  \"islandSourceId\": \"" + islandSourceId + "\"," +
-                "  \"roleId\": \"" + roleId + "\"}");
+                                          "  \"islandSourceId\": \"" + islandSourceId + "\"," +
+                                          "  \"roleId\": \"" + roleId + "\"}");
         return senResult(authorization, roleName, roleColor, position, permission, url, param);
     }
 

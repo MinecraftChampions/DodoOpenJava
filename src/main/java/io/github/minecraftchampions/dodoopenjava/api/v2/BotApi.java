@@ -10,6 +10,8 @@ import java.io.IOException;
 
 /**
  * 机器人API
+ *
+ * @author qscbm187531
  */
 public class BotApi {
 

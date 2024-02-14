@@ -1,6 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.message.card.component;
 
-import io.github.minecraftchampions.dodoopenjava.message.card.element.TextElement;
+import io.github.minecraftchampions.dodoopenjava.message.card.element.AbstractTextElement;
 import io.github.minecraftchampions.dodoopenjava.message.card.enums.TextType;
 import lombok.*;
 import lombok.experimental.Accessors;
@@ -8,6 +8,8 @@ import org.json.JSONObject;
 
 /**
  * 标题组件
+ *
+ * @author qscbm187531
  */
 @Data
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -15,23 +17,23 @@ import org.json.JSONObject;
 @Accessors(chain = true)
 public class HeaderComponent implements CardComponent {
     @NonNull
-    private TextElement.NormalText text;
+    private AbstractTextElement.NormalText text;
 
     private final String type = "header";
 
     @Override
-    public JSONObject toJSONObject() {
+    public JSONObject toJsonObject() {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("type", getType());
-        jsonObject.put("text", text.toJSONObject());
+        jsonObject.put("text", text.toJsonObject());
         return jsonObject;
     }
 
     public static HeaderComponent of(@NonNull String content, @NonNull TextType type) {
-        return of(TextElement.newNormalText(content, type));
+        return of(AbstractTextElement.newNormalText(content, type));
     }
 
     public static HeaderComponent of(@NonNull String content) {
-        return of(TextElement.newNormalText(content));
+        return of(AbstractTextElement.newNormalText(content));
     }
 }

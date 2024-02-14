@@ -5,6 +5,8 @@ import org.json.JSONObject;
 
 /**
  * 卡片消息按钮事件
+ *
+ * @author qscbm187531
  */
 @Getter
 public class CardMessageButtonClickEvent extends AbstractChannelMessageEvent {
@@ -122,45 +124,12 @@ public class CardMessageButtonClickEvent extends AbstractChannelMessageEvent {
         this.personal = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal");
         this.senderNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("nickName");
         this.senderAvatarUrl = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("avatarUrl");
-        this.senderSex = IntSexToSex(json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex"));
+        this.senderSex = intSexToSex(json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex"));
         this.senderIntSex = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex");
         this.member = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member");
         this.memberJoinTime = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("joinTime");
         this.memberNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("nickName");
         this.interactCustomId = json.getJSONObject("data").getJSONObject("eventBody").getString("interactCustomId");
     }
-
-    /**
-     * 转换 为Int数据类型的 性别关键字 为 String 类型
-     *
-     * @param IntSex 性别
-     * @return 性别
-     */
-    public String IntSexToSex(Integer IntSex) {
-        return switch (IntSex) {
-            case 0 -> "女";
-            case 1 -> "男";
-            default -> "保密";
-        };
-    }
-
-    /**
-     * 转换 为Int数据类型的 消息类型关键字 为 String 类型
-     *
-     * @param type 消息类型
-     * @return 消息类型
-     */
-    public String IntMessageTypeToMessageType(Integer type) {
-        return switch (type) {
-            case 1 -> "文字消息";
-            case 2 -> "图片消息";
-            case 3 -> "视频消息";
-            case 4 -> "分享消息";
-            case 5 -> "文件消息";
-            case 6 -> "卡片消息";
-            default -> "未知消息";
-        };
-    }
-
 
 }

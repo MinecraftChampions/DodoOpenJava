@@ -7,6 +7,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * 文本消息组件
+ *
+ * @author qscbm187531
+ */
 @Getter
 @Slf4j
 public class TextMessageComponent {
@@ -69,7 +74,7 @@ public class TextMessageComponent {
             this.styles = new ArrayList<>();
             List<TextMessageStyle> list = Arrays.asList(styles);
             if (list.contains(TextMessageStyle.code) ||
-                    list.contains(TextMessageStyle.cite)) {
+                list.contains(TextMessageStyle.cite)) {
                 log.error("LinkComponent不能传入code与cite style");
                 return this;
             }
@@ -85,11 +90,11 @@ public class TextMessageComponent {
                 str = String.format(style.getRegex(), str);
             }
             return "[" +
-                    str +
-                    "]" +
-                    "(" +
-                    link +
-                    ")";
+                   str +
+                   "]" +
+                   "(" +
+                   link +
+                   ")";
         }
     }
 

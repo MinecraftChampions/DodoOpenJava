@@ -12,12 +12,14 @@ import java.util.Map;
 
 /**
  * 按钮元素
+ *
+ * @author qscbm187531
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Accessors(chain = true)
 @RequiredArgsConstructor(staticName = "of")
-public class ButtonElement extends Element.InteractiveElement implements Accessory {
+public class ButtonElement extends AbstractElement.AbstractInteractiveElement implements Accessory {
     @NonNull
     private ButtonColor color;
 
@@ -30,10 +32,10 @@ public class ButtonElement extends Element.InteractiveElement implements Accesso
     private String interactCustomId;
 
     @Override
-    public JSONObject toJSONObject() {
+    public JSONObject toJsonObject() {
         HashMap<String, Object> map1 = new HashMap<>(Map.of("type", "button", "color", color.toString(),
                 "name", name));
-        map1.putAll(action.toJSONObject().toMap());
+        map1.putAll(action.toJsonObject().toMap());
         if (interactCustomId != null) {
             map1.put("interactCustomId", interactCustomId);
         }
@@ -62,7 +64,7 @@ public class ButtonElement extends Element.InteractiveElement implements Accesso
             return new FormAction(form);
         }
 
-        public JSONObject toJSONObject() {
+        public JSONObject toJsonObject() {
             return new JSONObject(Map.of("click", Map.of("action", type, "value", value)));
         }
 
@@ -74,9 +76,9 @@ public class ButtonElement extends Element.InteractiveElement implements Accesso
             private Form form;
 
             @Override
-            public JSONObject toJSONObject() {
+            public JSONObject toJsonObject() {
                 return new JSONObject(Map.of("click", Map.of("action", "form", "value", getValue()),
-                        "form", form.toJSONObject()));
+                        "form", form.toJsonObject()));
             }
         }
     }

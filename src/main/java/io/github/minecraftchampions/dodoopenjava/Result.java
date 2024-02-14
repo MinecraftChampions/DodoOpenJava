@@ -1,6 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NonNull;
 import org.json.JSONObject;
 
@@ -9,8 +9,9 @@ import java.util.function.Function;
 
 /**
  * api结果
+ * @author qscbm187531
  */
-@Getter
+@Data
 public class Result implements Comparable<Result> {
     public static final JSONObject STATUS_CODE = new JSONObject("""
             {

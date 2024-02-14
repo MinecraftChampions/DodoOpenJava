@@ -4,6 +4,7 @@ import lombok.Getter;
 
 /**
  * 文本类型
+ * @author qscbm187531
  */
 @Getter
 public enum TextType {

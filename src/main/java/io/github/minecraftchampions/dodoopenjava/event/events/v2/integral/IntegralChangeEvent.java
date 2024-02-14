@@ -5,6 +5,8 @@ import org.json.JSONObject;
 
 /**
  * 积分变更事件
+ *
+ * @author qscbm187531
  */
 @Getter
 public class IntegralChangeEvent extends AbstractIntegralEvent {

@@ -7,6 +7,8 @@ import java.math.BigDecimal;
 
 /**
  * 赠礼成功事件
+ *
+ * @author qscbm187531
  */
 @Getter
 public class GiftSendEvent extends AbstractGiftEvent {

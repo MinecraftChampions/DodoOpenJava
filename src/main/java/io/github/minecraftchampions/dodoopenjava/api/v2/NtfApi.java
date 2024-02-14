@@ -10,9 +10,11 @@ import java.io.IOException;
 
 /**
  * 数字藏品API
+ *
+ * @author qscbm187531
  */
 
-public class NTFApi {
+public class NtfApi {
     /**
      * 获取成员数字藏品判断
      *

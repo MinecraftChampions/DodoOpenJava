@@ -5,6 +5,8 @@ import org.json.JSONObject;
 
 /**
  * 私信事件
+ *
+ * @author qscbm187531
  */
 
 @Getter

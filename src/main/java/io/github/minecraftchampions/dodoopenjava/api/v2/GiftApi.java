@@ -10,6 +10,8 @@ import java.io.IOException;
 
 /**
  * 赠礼系统Api
+ *
+ * @author qscbm187531
  */
 public class GiftApi {
     /**

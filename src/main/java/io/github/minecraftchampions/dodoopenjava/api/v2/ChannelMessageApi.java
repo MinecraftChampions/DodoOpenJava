@@ -15,6 +15,9 @@ import java.util.Map;
 
 /**
  * 频道消息API
+ *
+ * @author qscbm187531
+ * @author zimzaza4
  */
 public class ChannelMessageApi {
     /**
@@ -191,14 +194,14 @@ public class ChannelMessageApi {
      *
      * @param clientId            机器人唯一标识
      * @param token               机器人鉴权Token
-     * @param Message             发送的消息
+     * @param message             发送的消息
      * @param referencedMessageId 回复的消息ID
      * @param channelId           频道号
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static Result referencedMessage(String clientId, String token, String channelId, String Message, String referencedMessageId) throws IOException {
-        return referencedMessage(BaseUtil.generateAuthorization(clientId, token), channelId, Message, referencedMessageId);
+    public static Result referencedMessage(String clientId, String token, String channelId, String message, String referencedMessageId) throws IOException {
+        return referencedMessage(BaseUtil.generateAuthorization(clientId, token), channelId, message, referencedMessageId);
     }
 
     /**
@@ -229,15 +232,15 @@ public class ChannelMessageApi {
      * @param clientId   机器人唯一标识
      * @param token      机器人鉴权Token
      * @param channelId  频道号
-     * @param Url        图片url地址
+     * @param url        图片url地址
      * @param height     图片高度
      * @param width      图片宽度
      * @param isOriginal 是否原图
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static Result sendChannelPictureMessage(String clientId, String token, String channelId, String Url, int width, int height, Boolean isOriginal) throws IOException {
-        return sendChannelPictureMessage(BaseUtil.generateAuthorization(clientId, token), channelId, Url, width, height, isOriginal);
+    public static Result sendChannelPictureMessage(String clientId, String token, String channelId, String url, int width, int height, Boolean isOriginal) throws IOException {
+        return sendChannelPictureMessage(BaseUtil.generateAuthorization(clientId, token), channelId, url, width, height, isOriginal);
     }
 
     /**
@@ -278,14 +281,14 @@ public class ChannelMessageApi {
      * @param clientId  机器人唯一标识
      * @param token     机器人鉴权Token
      * @param channelId 频道号
-     * @param Url       图片url地址
+     * @param url       图片url地址
      * @param height    图片高度
      * @param width     图片宽度
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static Result sendChannelPictureMessage(String clientId, String token, String channelId, String Url, int width, int height) throws IOException {
-        return sendChannelPictureMessage(BaseUtil.generateAuthorization(clientId, token), channelId, Url, width, height);
+    public static Result sendChannelPictureMessage(String clientId, String token, String channelId, String url, int width, int height) throws IOException {
+        return sendChannelPictureMessage(BaseUtil.generateAuthorization(clientId, token), channelId, url, width, height);
     }
 
     /**
@@ -338,12 +341,12 @@ public class ChannelMessageApi {
      * @param clientId  机器人唯一标识
      * @param token     机器人鉴权Token
      * @param channelId 频道号
-     * @param Url       视频url地址
+     * @param url       视频url地址
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static Result sendChannelVideoMessage(String clientId, String token, String channelId, String Url) throws IOException {
-        return sendChannelVideoMessage(BaseUtil.generateAuthorization(clientId, token), channelId, Url);
+    public static Result sendChannelVideoMessage(String clientId, String token, String channelId, String url) throws IOException {
+        return sendChannelVideoMessage(BaseUtil.generateAuthorization(clientId, token), channelId, url);
     }
 
     /**
@@ -372,15 +375,15 @@ public class ChannelMessageApi {
      * @param clientId  机器人唯一标识
      * @param token     机器人鉴权Token
      * @param channelId 频道号
-     * @param Url       视频url地址
+     * @param url       视频url地址
      * @param coverUrl  封面url地址
      * @param duration  视频长度
      * @param size      视频大小
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static Result sendChannelVideoMessage(String clientId, String token, String channelId, String Url, String coverUrl, long duration, long size) throws IOException {
-        return sendChannelVideoMessage(BaseUtil.generateAuthorization(clientId, token), channelId, Url, coverUrl, duration, size);
+    public static Result sendChannelVideoMessage(String clientId, String token, String channelId, String url, String coverUrl, long duration, long size) throws IOException {
+        return sendChannelVideoMessage(BaseUtil.generateAuthorization(clientId, token), channelId, url, coverUrl, duration, size);
     }
 
     /**
@@ -449,14 +452,14 @@ public class ChannelMessageApi {
      * @param clientId  机器人唯一标识
      * @param token     机器人鉴权Token
      * @param channelId 频道号
-     * @param Url       文件链接
+     * @param url       文件链接
      * @param name      文件名称
      * @param size      文件大小
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static Result sendChannelFileMessage(String clientId, String token, String channelId, String Url, String name, long size) throws IOException {
-        return sendChannelFileMessage(BaseUtil.generateAuthorization(clientId, token), channelId, Url, name, size);
+    public static Result sendChannelFileMessage(String clientId, String token, String channelId, String url, String name, long size) throws IOException {
+        return sendChannelFileMessage(BaseUtil.generateAuthorization(clientId, token), channelId, url, name, size);
     }
 
     /**

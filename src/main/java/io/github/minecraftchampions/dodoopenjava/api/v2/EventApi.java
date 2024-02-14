@@ -10,6 +10,8 @@ import java.io.IOException;
 
 /**
  * 事件API
+ *
+ * @author qscbm187531
  */
 public class EventApi {
     /**

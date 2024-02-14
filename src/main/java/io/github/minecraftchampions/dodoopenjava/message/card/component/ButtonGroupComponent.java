@@ -1,7 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.message.card.component;
 
 import io.github.minecraftchampions.dodoopenjava.message.card.element.ButtonElement;
-import io.github.minecraftchampions.dodoopenjava.message.card.element.Element;
+import io.github.minecraftchampions.dodoopenjava.message.card.element.AbstractElement;
 import lombok.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -12,6 +12,8 @@ import java.util.Map;
 
 /**
  * 按钮组组件
+ *
+ * @author qscbm187531
  */
 @Data
 @NoArgsConstructor(staticName = "of")
@@ -22,11 +24,11 @@ public class ButtonGroupComponent implements CardComponent {
     private final String type = "button-group";
 
     @Override
-    public JSONObject toJSONObject() {
+    public JSONObject toJsonObject() {
         JSONObject jsonObject = new JSONObject(Map.of("type", getType(), "elements", new JSONArray()));
         synchronized (elementList) {
-            for (Element element : elementList) {
-                jsonObject.getJSONArray("elements").put(element.toJSONObject());
+            for (AbstractElement element : elementList) {
+                jsonObject.getJSONArray("elements").put(element.toJsonObject());
             }
         }
         return jsonObject;

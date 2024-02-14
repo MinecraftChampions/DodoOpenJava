@@ -4,9 +4,21 @@ import org.json.JSONObject;
 
 /**
  * 组件
+ *
+ * @author qscbm187531
  */
 public interface CardComponent {
+    /**
+     * 获取类型
+     *
+     * @return type
+     */
     String getType();
 
-    JSONObject toJSONObject();
+    /**
+     * 转换为json
+     *
+     * @return json
+     */
+    JSONObject toJsonObject();
 }

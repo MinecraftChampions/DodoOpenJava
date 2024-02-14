@@ -1,21 +1,23 @@
 package io.github.minecraftchampions.dodoopenjava;
 
+import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * API
+ * @author qscbm187531
  */
 @Slf4j
 public class DodoOpenJava {
     public static final String BASEURL = "https://botopen.imdodo.com/api/v2/";
 
-    private static final HashSet<Bot> bots = new HashSet<>();
+    private static final ArrayList<Bot> BOT_LIST = new ArrayList<>();
 
     public static final Map<String, ApiResultsLogger> LOGGER_MAP = new ConcurrentHashMap<>();
 
@@ -28,12 +30,12 @@ public class DodoOpenJava {
      */
     public static synchronized Bot createBot(@NonNull String clientId, @NonNull String token) {
         Bot bot = new Bot(clientId, token);
-        bots.add(bot);
+        BOT_LIST.add(bot);
         return bot;
     }
 
-    public static Set<Bot> getBots() {
-        return (HashSet<Bot>) bots.clone();
+    public static List<Bot> getBotList() {
+        return BaseUtil.castList(BOT_LIST.clone(),Bot.class);
     }
 
 
@@ -43,7 +45,7 @@ public class DodoOpenJava {
      * @param bot bot
      */
     public synchronized static void disableBot(Bot bot) {
-        bots.remove(bot);
+        BOT_LIST.remove(bot);
         bot.getCommandManager().unregisterAllCommands();
         bot.getEventManager().unregisterAllListeners();
         bot.removeEventTrigger();

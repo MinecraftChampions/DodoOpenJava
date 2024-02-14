@@ -11,6 +11,8 @@ import java.util.Map;
 
 /**
  * 资源API
+ *
+ * @author qscbm187531
  */
 public class ResourceApi {
     /**
@@ -36,6 +38,6 @@ public class ResourceApi {
      */
     public static Result uploadResource(String authorization, String path) throws IOException {
         String url = DodoOpenJava.BASEURL + "resource/picture/upload";
-        return NetUtil.uploadFileToDodo(new HashMap<>(Map.of("Authorization",authorization)), path, url);
+        return NetUtil.uploadFileToDodo(new HashMap<>(Map.of("Authorization", authorization)), path, url);
     }
 }

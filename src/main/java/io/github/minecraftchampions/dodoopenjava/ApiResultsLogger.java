@@ -14,6 +14,7 @@ import java.util.concurrent.ConcurrentSkipListSet;
 
 /**
  * 记录API调用的日志
+ * @author qscbm187531
  */
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class ApiResultsLogger {
@@ -65,8 +66,8 @@ public class ApiResultsLogger {
      * @return 日志
      */
     public CompletableFuture<Map<Long, Set<Result>>> getLogs(@NonNull String start, @NonNull String end) {
-        Date startDate = DateUtil.parse(start, DateUtil.Format_Three);
-        Date endDate = DateUtil.parse(end, DateUtil.Format_Three);
+        Date startDate = DateUtil.parse(start, DateUtil.FORMAT_THREE);
+        Date endDate = DateUtil.parse(end, DateUtil.FORMAT_THREE);
         return getLogs(startDate, endDate);
     }
 
@@ -92,7 +93,7 @@ public class ApiResultsLogger {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         resultsLogMap.forEach((timestamp, results) -> {
-            String date = DateUtil.format(DateUtil.timestampToDate(timestamp), DateUtil.Format_Three);
+            String date = DateUtil.format(DateUtil.timestampToDate(timestamp), DateUtil.FORMAT_THREE);
             results.forEach((result -> sb.append("[").append(date).append("]").append(" ").append(result).append("\n")));
         });
         return sb.toString().trim();

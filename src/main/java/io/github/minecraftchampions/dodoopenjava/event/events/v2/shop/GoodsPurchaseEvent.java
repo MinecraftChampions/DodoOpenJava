@@ -8,6 +8,8 @@ import java.util.List;
 
 /**
  * 商品购买成功事件
+ *
+ * @author qscbm187531
  */
 @Getter
 public class GoodsPurchaseEvent extends AbstractShopEvent {

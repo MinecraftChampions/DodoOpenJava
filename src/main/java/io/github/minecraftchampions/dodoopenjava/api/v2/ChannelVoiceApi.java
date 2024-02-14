@@ -10,6 +10,8 @@ import java.io.IOException;
 
 /**
  * 语言频道API
+ *
+ * @author qscbm187531
  */
 public class ChannelVoiceApi {
     /**

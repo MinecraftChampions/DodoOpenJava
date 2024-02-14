@@ -9,6 +9,8 @@ import java.util.Map;
 
 /**
  * 输入框元素
+ *
+ * @author qscbm187531
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -17,7 +19,7 @@ import java.util.Map;
 @AllArgsConstructor(staticName = "of")
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Slf4j
-public class InputElement extends Element.InteractiveElement {
+public class InputElement extends AbstractElement.AbstractInteractiveElement {
     @NonNull
     private String title;
 
@@ -38,8 +40,14 @@ public class InputElement extends Element.InteractiveElement {
 
     private String placeholder;
 
+    public static final int MAX_ROWS = 4;
+
+    public static final int MIN_ROWS = 1;
+
+    public static final int MAX_CHAR_VALUE_CEILING = 4000;
+
     public InputElement setRows(int rows) {
-        if (rows < 1 || rows > 4) {
+        if (rows < MIN_ROWS || rows > MAX_ROWS) {
             log.warn("输入框高度范围限制在1~4");
             return this;
         }
@@ -48,7 +56,7 @@ public class InputElement extends Element.InteractiveElement {
     }
 
     public InputElement setMinChar(int minChar) {
-        if (minChar < 0 || minChar > 4000) {
+        if (minChar < 0 || minChar > MAX_CHAR_VALUE_CEILING) {
             log.warn("最小字符数限制在0~4000");
             return this;
         }
@@ -57,7 +65,7 @@ public class InputElement extends Element.InteractiveElement {
     }
 
     public InputElement setMaxChar(int maxChar) {
-        if (maxChar < 1 || maxChar > 4000) {
+        if (maxChar < 1 || maxChar > MAX_CHAR_VALUE_CEILING) {
             log.warn("最大字符数限制在1~4000");
             return this;
         }
@@ -66,7 +74,7 @@ public class InputElement extends Element.InteractiveElement {
     }
 
     @Override
-    public JSONObject toJSONObject() {
+    public JSONObject toJsonObject() {
         JSONObject jsonObject = new JSONObject(Map.of("type", "input", "key", getKey(),
                 "title", getTitle(), "rows", getRows(), "minChar", getMinChar(),
                 "maxChar", getMaxChar()));

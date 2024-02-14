@@ -3,7 +3,7 @@ package io.github.minecraftchampions.dodoopenjava.message.card;
 import io.github.minecraftchampions.dodoopenjava.message.Message;
 import io.github.minecraftchampions.dodoopenjava.message.card.component.*;
 import io.github.minecraftchampions.dodoopenjava.message.card.element.ImageElement;
-import io.github.minecraftchampions.dodoopenjava.message.card.element.TextElement;
+import io.github.minecraftchampions.dodoopenjava.message.card.element.AbstractTextElement;
 import io.github.minecraftchampions.dodoopenjava.message.card.enums.TextType;
 import io.github.minecraftchampions.dodoopenjava.message.card.enums.Theme;
 import lombok.*;
@@ -17,6 +17,9 @@ import java.util.Map;
 
 /**
  * 卡片消息
+ *
+ * @author qscbm187531
+ * @author zimzaza4
  */
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class CardMessage implements Message {
@@ -76,7 +79,7 @@ public class CardMessage implements Message {
             return this;
         }
 
-        public CardMessage.Builder text(@NonNull TextElement text) {
+        public CardMessage.Builder text(@NonNull AbstractTextElement text) {
             append(SectionComponent.of(text));
             return this;
         }
@@ -86,7 +89,7 @@ public class CardMessage implements Message {
             return this;
         }
 
-        public CardMessage.Builder texts(@NonNull TextElement.NormalText text) {
+        public CardMessage.Builder texts(@NonNull AbstractTextElement.NormalText text) {
             append(SectionComponent.of(text));
             return this;
         }
@@ -116,7 +119,7 @@ public class CardMessage implements Message {
             return this;
         }
 
-        public CardMessage.Builder header(@NonNull TextElement.NormalText text) {
+        public CardMessage.Builder header(@NonNull AbstractTextElement.NormalText text) {
             append(HeaderComponent.of(text));
             return this;
         }
@@ -201,7 +204,7 @@ public class CardMessage implements Message {
                 json.put("title", title);
             }
             synchronized (this.components) {
-                components.forEach(component -> json.getJSONArray("components").put(component.toJSONObject()));
+                components.forEach(component -> json.getJSONArray("components").put(component.toJsonObject()));
             }
             JSONObject jsonObject = new JSONObject(Map.of("card", json));
             if (content != null) {

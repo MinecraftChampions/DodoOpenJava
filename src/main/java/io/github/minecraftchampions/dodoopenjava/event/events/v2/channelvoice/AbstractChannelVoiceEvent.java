@@ -4,6 +4,8 @@ import io.github.minecraftchampions.dodoopenjava.event.AbstractEvent;
 
 /**
  * 语音频道相关事件
+ *
+ * @author qscbm187531
  */
 public abstract class AbstractChannelVoiceEvent extends AbstractEvent {
     public AbstractChannelVoiceEvent(boolean isAsync) {

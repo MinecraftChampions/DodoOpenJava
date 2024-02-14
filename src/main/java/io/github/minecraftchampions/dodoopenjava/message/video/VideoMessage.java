@@ -6,6 +6,8 @@ import org.json.JSONObject;
 
 /**
  * 视频消息组件
+ *
+ * @author qscbm187531
  */
 @RequiredArgsConstructor
 @AllArgsConstructor

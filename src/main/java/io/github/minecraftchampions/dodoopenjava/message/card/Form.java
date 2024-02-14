@@ -12,6 +12,8 @@ import java.util.Map;
 
 /**
  * 表单
+ *
+ * @author qscbm187531
  */
 @Data
 @Accessors(chain = true)
@@ -29,10 +31,10 @@ public class Form {
         return this;
     }
 
-    public JSONObject toJSONObject() {
+    public JSONObject toJsonObject() {
         JSONObject jsonObject = new JSONObject(Map.of("title", title, "elements", new JSONArray()));
         for (InputElement inputElement : list) {
-            jsonObject.getJSONArray("elements").put(inputElement.toJSONObject());
+            jsonObject.getJSONArray("elements").put(inputElement.toJsonObject());
         }
         return jsonObject;
     }

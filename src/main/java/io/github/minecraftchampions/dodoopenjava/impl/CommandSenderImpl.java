@@ -8,7 +8,9 @@ import lombok.NonNull;
 import org.json.JSONObject;
 
 /**
- * 命令发送者
+ * 命令发送者实现
+ *
+ * @author qscbm187531
  */
 @Getter
 public class CommandSenderImpl extends DodoUserImpl implements CommandSender {
@@ -49,6 +51,6 @@ public class CommandSenderImpl extends DodoUserImpl implements CommandSender {
 
     @Override
     public void editMessage(TextMessage message) {
-        getBot().getApi().V2.channelMessageApi.editChannelMessage(messageId,message.toString());
+        getBot().getApi().V2.channelMessageApi.editChannelMessage(messageId, message.toString());
     }
 }

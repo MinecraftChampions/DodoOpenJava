@@ -4,6 +4,8 @@ import lombok.Getter;
 
 /**
  * 代表事件.
+ *
+ * @author qscbm187531
  */
 public abstract class AbstractEvent {
     private String name;

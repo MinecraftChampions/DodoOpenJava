@@ -11,6 +11,8 @@ import java.util.List;
 
 /**
  * 成员API
+ *
+ * @author qscbm187531
  */
 public class MemberApi {
     /**

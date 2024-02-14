@@ -14,6 +14,8 @@ import java.util.Map;
 
 /**
  * 多图组件
+ *
+ * @author qscbm187531
  */
 @NoArgsConstructor(staticName = "of")
 @Getter
@@ -24,9 +26,9 @@ public class ImageGroupComponent implements CardComponent {
     private final String type = "image-group";
 
     @Override
-    public JSONObject toJSONObject() {
+    public JSONObject toJsonObject() {
         JSONObject jsonObject = new JSONObject(Map.of("type", getType(), "elements", new JSONArray()));
-        elementList.forEach(image -> jsonObject.getJSONArray("elements").put(image.toJSONObject()));
+        elementList.forEach(image -> jsonObject.getJSONArray("elements").put(image.toJsonObject()));
         return jsonObject;
     }
 

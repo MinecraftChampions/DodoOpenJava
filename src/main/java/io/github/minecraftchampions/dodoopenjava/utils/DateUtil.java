@@ -9,25 +9,27 @@ import java.util.Date;
 
 /**
  * 关于 时间 的一些实用方法
+ *
+ * @author qscbm187531
  */
 @Slf4j
 public class DateUtil {
     /**
      * 简化格式1
      */
-    public final static String Format_One = "yyyy-MM-dd";
+    public final static String FORMAT_ONE = "yyyy-MM-dd";
     /**
      * 简化格式2
      */
-    public final static String Format_Two = "yyyy年MM月dd日";
+    public final static String FORMAT_TWO = "yyyy年MM月dd日";
     /**
      * 简化格式3
      */
-    public final static String Format_Three = "yyyy-MM-dd HH:mm:ss";
+    public final static String FORMAT_THREE = "yyyy-MM-dd HH:mm:ss";
     /**
      * 简化格式4
      */
-    public final static String Format_Four = "yyyy年MM月dd日 HH时mm分ss秒";
+    public final static String FORMAT_FOUR = "yyyy年MM月dd日 HH时mm分ss秒";
 
     /**
      * 字符串转date
