@@ -11,6 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * API
+ *
  * @author qscbm187531
  */
 @Slf4j
@@ -35,7 +36,7 @@ public class DodoOpenJava {
     }
 
     public static List<Bot> getBotList() {
-        return BaseUtil.castList(BOT_LIST.clone(),Bot.class);
+        return BaseUtil.castList(BOT_LIST.clone(), Bot.class);
     }
 
 

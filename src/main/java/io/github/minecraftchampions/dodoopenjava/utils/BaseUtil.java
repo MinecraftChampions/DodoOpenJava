@@ -101,7 +101,14 @@ public class BaseUtil {
         return result;
     }
 
-
+    /**
+     * 转Object转为List
+     *
+     * @param obj   对象
+     * @param clazz List包含的对象的类
+     * @param <T>   泛型
+     * @return List<T>
+     */
     public static <T> List<T> castList(Object obj, Class<T> clazz) {
         List<T> result = new ArrayList<>();
         if (obj instanceof List<?>) {

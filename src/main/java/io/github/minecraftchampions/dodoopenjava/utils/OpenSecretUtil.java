@@ -57,8 +57,18 @@ public class OpenSecretUtil {
      * @return 字节数组
      */
     private static byte[] hexToBytes(String hex) {
-        byte[] result = new byte[hex.length() / 2];
-        for (int i = 0; i < hex.length() / 2; i++) {
+        int hexLen = hex.length();
+        int arrayLen = hexLen / 2;
+        boolean isOdd = hexLen % 2 == 1;
+        byte[] result;
+        if (isOdd) {
+            arrayLen++;
+            result = new byte[arrayLen];
+            hex = "0" + hex;
+        } else {
+            result = new byte[arrayLen];
+        }
+        for (int i = 0; i < arrayLen; i++) {
             int high = Integer.parseInt(hex.substring(i * 2, i * 2 + 1), 16);
             int low = Integer.parseInt(hex.substring(i * 2 + 1, i * 2 + 2), 16);
             result[i] = (byte) (high * 16 + low);

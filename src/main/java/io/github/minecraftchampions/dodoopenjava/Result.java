@@ -9,6 +9,7 @@ import java.util.function.Function;
 
 /**
  * api结果
+ *
  * @author qscbm187531
  */
 @Data
