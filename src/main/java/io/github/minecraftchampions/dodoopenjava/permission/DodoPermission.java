@@ -7,6 +7,7 @@ import lombok.NonNull;
  * 常用权限值
  *
  * @author qscbm187531
+ * @author KisssStar
  */
 @Getter
 public enum DodoPermission {
