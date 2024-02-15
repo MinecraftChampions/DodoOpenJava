@@ -1,4 +1,4 @@
-package io.github.minecraftchampions.dodoopenjava.utils;
+package io.github.minecraftchampions.dodoopenjava.util;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.Result;

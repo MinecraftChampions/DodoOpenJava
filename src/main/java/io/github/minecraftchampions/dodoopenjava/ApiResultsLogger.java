@@ -1,6 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava;
 
-import io.github.minecraftchampions.dodoopenjava.utils.DateUtil;
+import io.github.minecraftchampions.dodoopenjava.util.DateUtil;
 import lombok.AccessLevel;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;

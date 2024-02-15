@@ -1,7 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.message.text;
 
 import io.github.minecraftchampions.dodoopenjava.message.Message;
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
+import io.github.minecraftchampions.dodoopenjava.util.BaseUtil;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

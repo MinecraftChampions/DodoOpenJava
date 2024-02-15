@@ -1,6 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava;
 
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
+import io.github.minecraftchampions.dodoopenjava.util.BaseUtil;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 

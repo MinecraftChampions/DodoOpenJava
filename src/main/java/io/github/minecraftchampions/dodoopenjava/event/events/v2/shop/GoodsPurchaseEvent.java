@@ -1,6 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.event.events.v2.shop;
 
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
+import io.github.minecraftchampions.dodoopenjava.util.BaseUtil;
 import lombok.Getter;
 import org.json.JSONObject;
 
