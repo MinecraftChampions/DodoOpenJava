@@ -137,7 +137,7 @@ public class Main implements CommandExecutor, Listener {
   <dependency>
     <groupId>top.qscraft</groupId>
     <artifactId>dodoopenjava</artifactId>
-    <version>3.2.8-SNAPSHOT</version>
+    <version>3.2.8</version>
   </dependency>
 </dependencies>
 ```
@@ -150,7 +150,7 @@ public class Main implements CommandExecutor, Listener {
 	}
 
 	dependencies {
-	        implementation 'top.qscraft:dodoopenjava:3.2.8-SNAPSHOT'
+	        implementation 'top.qscraft:dodoopenjava:3.2.8'
     }
 ```
 ### 教程(过于古老，无参考价值，改日重写)
