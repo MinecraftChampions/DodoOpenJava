@@ -25,16 +25,16 @@ public class Main implements CommandExecutor, Listener {
     public static Bot bot;
 
     public static void main(String... args) {
-        //创建机器人实例
+        // 创建机器人实例
         bot = DodoOpenJava.createBot("111111", "token");
-        //采用WebHook监听事件
-        //WebHookEventTrigger webHookEventTrigger = new WebHookEventTrigger(bot,"密钥","ssl证书密码",new File("C:\\abc.com.jks"));
-        //bot.initEventListenSystem(webHookEventTrigger);
+        // 采用WebHook监听事件
+        // WebHookEventTrigger webHookEventTrigger = new WebHookEventTrigger(bot,"密钥","ssl证书密码",new File("C:\\abc.com.jks"));
+        // bot.initEventListenSystem(webHookEventTrigger);
         //启用日志记录功能
         bot.enableApiResultsLogger();
-        //注册事件监听器
+        // 注册事件监听器
         bot.registerListener(new Main());
-        //注册命令处理器
+        // 注册命令处理器
         bot.registerCommand(new Main());
         // bot.getCommandManager().getCommandTrigger().setCommandHeader("/");;
         System.out.println(bot.getApi().V2.eventApi.getWebSocketConnection().getJSONObjectData().getJSONObject("data").getString("endpoint"));
@@ -143,15 +143,15 @@ public class Main implements CommandExecutor, Listener {
 ```
 #### Gradle
 ```groovy
-	allprojects {
-		repositories {
-			maven { url 'https://jitpack.io' }
-		}
-	}
-
-	dependencies {
-	        implementation 'top.qscraft:dodoopenjava:3.2.8'
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
     }
+}
+
+dependencies {
+    implementation 'top.qscraft:dodoopenjava:3.2.8'
+}
 ```
 ### 教程(过于古老，无参考价值，改日重写)
 [直达链接](https://www.showdoc.com.cn/DodoOpenJava/)
