@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -35,10 +36,28 @@ public class DodoOpenJava {
         return bot;
     }
 
+    /**
+     * 获取已经创建的Bot列表
+     *
+     * @return 返回的是浅拷贝的列表
+     */
     public static List<Bot> getBotList() {
         return BaseUtil.castList(BOT_LIST.clone(), Bot.class);
     }
 
+    /**
+     * 根据Authorization获取Bot
+     *
+     * @return bot
+     */
+    public static Optional<Bot> getBot(@NonNull String authorization) {
+        for (Bot bot : BOT_LIST) {
+            if (bot.getAuthorization().equals(authorization)) {
+                return Optional.of(bot);
+            }
+        }
+        return Optional.empty();
+    }
 
     /**
      * 卸载Bot

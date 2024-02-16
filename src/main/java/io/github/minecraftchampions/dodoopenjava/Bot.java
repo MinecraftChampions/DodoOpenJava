@@ -13,15 +13,13 @@ import io.github.minecraftchampions.dodoopenjava.message.card.CardMessage;
 import io.github.minecraftchampions.dodoopenjava.message.text.TextMessage;
 import io.github.minecraftchampions.dodoopenjava.permission.Permission;
 import io.github.minecraftchampions.dodoopenjava.util.BaseUtil;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * 机器人实例
@@ -29,6 +27,7 @@ import java.util.List;
  * @author qscbm187531
  */
 @Getter
+@ToString
 @RequiredArgsConstructor
 @Slf4j
 public class Bot {
@@ -43,6 +42,19 @@ public class Bot {
      */
     @NonNull
     private final String token;
+
+    @Override
+    public boolean equals(Object object) {
+        if (object instanceof Bot bot) {
+            return this == bot || Objects.equals(bot.getAuthorization(), this.getAuthorization());
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return clientId.hashCode() + token.hashCode();
+    }
 
     /**
      * 事件管理器
