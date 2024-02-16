@@ -11,6 +11,7 @@ import io.github.minecraftchampions.dodoopenjava.impl.DodoUserImpl;
 import io.github.minecraftchampions.dodoopenjava.message.Message;
 import io.github.minecraftchampions.dodoopenjava.message.card.CardMessage;
 import io.github.minecraftchampions.dodoopenjava.message.text.TextMessage;
+import io.github.minecraftchampions.dodoopenjava.permission.Permission;
 import io.github.minecraftchampions.dodoopenjava.util.BaseUtil;
 import lombok.Getter;
 import lombok.NonNull;
@@ -653,6 +654,11 @@ public class Bot {
                 }
 
                 @SneakyThrows
+                public Result editRole(String islandSourceId, String roleId, String roleName, String roleColor, int position, Permission permission) {
+                    return io.github.minecraftchampions.dodoopenjava.api.v2.RoleApi.editRole(bot.getAuthorization(), islandSourceId, roleId, roleName, roleColor, position, permission);
+                }
+
+                @SneakyThrows
                 public Result addRoleMember(String islandSourceId, String dodoSourceId, String roleId) {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.RoleApi.addRoleMember(bot.getAuthorization(), islandSourceId, dodoSourceId, roleId);
                 }
@@ -669,6 +675,11 @@ public class Bot {
 
                 @SneakyThrows
                 public Result addRole(String islandSourceId, String roleName, String roleColor, int position, String permission) {
+                    return io.github.minecraftchampions.dodoopenjava.api.v2.RoleApi.addRole(bot.getAuthorization(), islandSourceId, roleName, roleColor, position, permission);
+                }
+
+                @SneakyThrows
+                public Result addRole(String islandSourceId, String roleName, String roleColor, int position, Permission permission) {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.RoleApi.addRole(bot.getAuthorization(), islandSourceId, roleName, roleColor, position, permission);
                 }
 

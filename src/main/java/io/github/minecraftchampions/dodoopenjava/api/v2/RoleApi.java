@@ -2,6 +2,7 @@ package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.Result;
+import io.github.minecraftchampions.dodoopenjava.permission.Permission;
 import io.github.minecraftchampions.dodoopenjava.util.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.util.NetUtil;
 import org.json.JSONObject;
@@ -130,6 +131,39 @@ public class RoleApi {
     /**
      * 创建身份组
      *
+     * @param clientId       机器人唯一标识
+     * @param token          机器人鉴权Token
+     * @param islandSourceId 群号
+     * @param roleName       身份组名称，设置为null时默认为：“为新的身份组”，不能大于32个字符或16个汉字
+     * @param roleColor      身份组颜色，设置为null时默认为：“#333333”，16进制HEX格式颜色码
+     * @param position       身份组排序位置，设置为1时默认为：“1”（废话），不可传比机器人身份组大的排序值
+     * @param permission     权限
+     * @return JSON对象
+     * @throws IOException 失败后抛出
+     */
+    public static Result addRole(String clientId, String token, String islandSourceId, String roleName, String roleColor, int position, Permission permission) throws IOException {
+        return addRole(BaseUtil.generateAuthorization(clientId, token), islandSourceId, roleName, roleColor, position, permission.toHexString());
+    }
+
+    /**
+     * 创建身份组
+     *
+     * @param authorization  authorization
+     * @param islandSourceId 群号
+     * @param roleName       身份组名称，设置为null时默认为：“为新的身份组”，不能大于32个字符或16个汉字
+     * @param roleColor      身份组颜色，设置为null时默认为：“#333333”，16进制HEX格式颜色码
+     * @param position       身份组排序位置，设置为1时默认为：“1”（废话），不可传比机器人身份组大的排序值
+     * @param permission     权限
+     * @return JSON对象
+     * @throws IOException 失败后抛出
+     */
+    public static Result addRole(String authorization, String islandSourceId, String roleName, String roleColor, int position, Permission permission) throws IOException {
+        return addRole(authorization, islandSourceId, roleName, roleColor, position, permission.toHexString());
+    }
+
+    /**
+     * 创建身份组
+     *
      * @param authorization  authorization
      * @param islandSourceId 群号
      * @param roleName       身份组名称，设置为null时默认为：“为新的身份组”，不能大于32个字符或16个汉字
@@ -143,7 +177,7 @@ public class RoleApi {
         String url = DodoOpenJava.BASEURL + "role/add";
         JSONObject param = new JSONObject("{" +
                                           "  \"islandSourceId\": \"" + islandSourceId + "\"}");
-        return senResult(authorization, roleName, roleColor, position, permission, url, param);
+        return sendResult(authorization, roleName, roleColor, position, permission, url, param);
     }
 
     /**
@@ -182,10 +216,45 @@ public class RoleApi {
         JSONObject param = new JSONObject("{" +
                                           "  \"islandSourceId\": \"" + islandSourceId + "\"," +
                                           "  \"roleId\": \"" + roleId + "\"}");
-        return senResult(authorization, roleName, roleColor, position, permission, url, param);
+        return sendResult(authorization, roleName, roleColor, position, permission, url, param);
     }
 
-    private static Result senResult(String authorization, String roleName, String roleColor, int position, String permission, String url, JSONObject param) throws IOException {
+    /**
+     * 编辑身份组
+     *
+     * @param clientId       机器人唯一标识
+     * @param token          机器人鉴权Token
+     * @param islandSourceId 群号
+     * @param roleId         身份组ID
+     * @param roleName       身份组名称，设置为null时默认为：“为新的身份组”，不能大于32个字符或16个汉字
+     * @param roleColor      身份组颜色，设置为null时默认为：“#333333”，16进制HEX格式颜色码
+     * @param position       身份组排序位置，设置为1时默认为：“1”（废话），不可传比机器人身份组大的排序值
+     * @param permission     权限
+     * @return JSON对象
+     * @throws IOException 失败后抛出
+     */
+    public static Result editRole(String clientId, String token, String islandSourceId, String roleId, String roleName, String roleColor, int position, Permission permission) throws IOException {
+        return editRole(BaseUtil.generateAuthorization(clientId, token), islandSourceId, roleId, roleName, roleColor, position, permission.toHexString());
+    }
+
+    /**
+     * 编辑身份组
+     *
+     * @param authorization  authorization
+     * @param islandSourceId 群号
+     * @param roleId         身份组ID
+     * @param roleName       身份组名称，设置为null时默认为：“为新的身份组”，不能大于32个字符或16个汉字
+     * @param roleColor      身份组颜色，设置为null时默认为：“#333333”，16进制HEX格式颜色码
+     * @param position       身份组排序位置，设置为1时默认为：“1”（废话），不可传比机器人身份组大的排序值
+     * @param permission     权限
+     * @return JSON对象
+     * @throws IOException 失败后抛出
+     */
+    public static Result editRole(String authorization, String islandSourceId, String roleId, String roleName, String roleColor, int position, Permission permission) throws IOException {
+        return editRole(authorization, islandSourceId, roleId, roleName, roleColor, position, permission.toHexString());
+    }
+
+    private static Result sendResult(String authorization, String roleName, String roleColor, int position, String permission, String url, JSONObject param) throws IOException {
         if (roleName != null) {
             param.put("roleName", roleName);
         }

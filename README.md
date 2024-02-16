@@ -88,6 +88,7 @@ public class Main implements CommandExecutor, Listener {
                 .button(buttonGroupComponent).section(moduleComponent1).listSelector(listSelectorComponent)
                 .section(moduleComponent2).build();
         bot.getApi().V2.channelMessageApi.sendMessage("1252355", m);
+        //你也可以通过调用io.github.minecraftchampions.dodoopenjava.api.v2下的各个类的方法来调用Dodo接口
     }
 
     @EventHandler
