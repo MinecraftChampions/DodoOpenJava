@@ -18,7 +18,8 @@ import java.util.function.Consumer;
  * @author qscbm187531
  */
 @Slf4j
-public abstract class AbstractTextElement extends AbstractElement.AbstractDataElement {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public class TextElement extends AbstractElement.AbstractDataElement {
     public static NormalText newNormalText(@NonNull String content, @NonNull TextType type) {
         return new NormalText(content, type);
     }
@@ -40,6 +41,11 @@ public abstract class AbstractTextElement extends AbstractElement.AbstractDataEl
         return paragraphText;
     }
 
+    @Override
+    public JSONObject toJsonObject() {
+        return null;
+    }
+
     /**
      * 普通文本
      */
@@ -48,7 +54,7 @@ public abstract class AbstractTextElement extends AbstractElement.AbstractDataEl
     @Data
     @Accessors(chain = true)
     @NoArgsConstructor(access = AccessLevel.PRIVATE)
-    public static class NormalText extends AbstractTextElement {
+    public static class NormalText extends TextElement {
         @NonNull
         private String content;
         @NonNull
@@ -60,11 +66,11 @@ public abstract class AbstractTextElement extends AbstractElement.AbstractDataEl
         }
 
         public static NormalText of(String content, TextType type) {
-            return AbstractTextElement.newNormalText(content, type);
+            return TextElement.newNormalText(content, type);
         }
 
         public static NormalText of(String content) {
-            return AbstractTextElement.newNormalText(content, TextType.PlainText);
+            return TextElement.newNormalText(content, TextType.PlainText);
         }
 
         @Override
@@ -77,7 +83,7 @@ public abstract class AbstractTextElement extends AbstractElement.AbstractDataEl
      * 多栏文本
      */
     @AllArgsConstructor(access = AccessLevel.PROTECTED)
-    public static class ParagraphText extends AbstractTextElement {
+    public static class ParagraphText extends TextElement {
         public static final int MAX_ROWS = 6;
 
         public static final int MIN_ROWS = 2;

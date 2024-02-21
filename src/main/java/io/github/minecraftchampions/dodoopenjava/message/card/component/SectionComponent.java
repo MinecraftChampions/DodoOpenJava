@@ -1,6 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.message.card.component;
 
-import io.github.minecraftchampions.dodoopenjava.message.card.element.AbstractTextElement;
+import io.github.minecraftchampions.dodoopenjava.message.card.element.TextElement;
 import io.github.minecraftchampions.dodoopenjava.message.card.enums.TextType;
 import lombok.*;
 import lombok.experimental.Accessors;
@@ -17,7 +17,7 @@ import org.json.JSONObject;
 @Data
 public class SectionComponent implements CardComponent {
     @NonNull
-    protected AbstractTextElement text;
+    protected TextElement text;
 
     protected final String type = "section";
 
@@ -30,40 +30,40 @@ public class SectionComponent implements CardComponent {
     }
 
     public static SectionComponent of(@NonNull String content, @NonNull TextType type) {
-        return of(AbstractTextElement.newNormalText(content, type));
+        return of(TextElement.newNormalText(content, type));
     }
 
     public static SectionComponent of(@NonNull String content) {
-        return of(AbstractTextElement.newNormalText(content));
+        return of(TextElement.newNormalText(content));
     }
 
-    public static SectionComponent of(@NonNull AbstractTextElement.NormalText... texts) {
-        return of(AbstractTextElement.newParagraphText(texts));
+    public static SectionComponent of(@NonNull TextElement.NormalText... texts) {
+        return of(TextElement.newParagraphText(texts));
     }
 
     public static SectionComponent of(@NonNull String... texts) {
-        AbstractTextElement.NormalText[] normalTexts = new AbstractTextElement.NormalText[texts.length];
+        TextElement.NormalText[] normalTexts = new TextElement.NormalText[texts.length];
         for (int i = 0; i < texts.length; i++) {
-            normalTexts[i] = AbstractTextElement.newNormalText(texts[i]);
+            normalTexts[i] = TextElement.newNormalText(texts[i]);
         }
         return of(normalTexts);
     }
 
-    public SectionComponent append(@NonNull AbstractTextElement.NormalText text) {
-        if (this.text instanceof AbstractTextElement.NormalText normalText) {
-            this.text = AbstractTextElement.newParagraphText(normalText, text);
+    public SectionComponent append(@NonNull TextElement.NormalText text) {
+        if (this.text instanceof TextElement.NormalText normalText) {
+            this.text = TextElement.newParagraphText(normalText, text);
         } else {
-            AbstractTextElement.ParagraphText paragraphText = (AbstractTextElement.ParagraphText) this.text;
+            TextElement.ParagraphText paragraphText = (TextElement.ParagraphText) this.text;
             paragraphText.append(text);
         }
         return this;
     }
 
-    public SectionComponent prepend(@NonNull AbstractTextElement.NormalText text) {
-        if (this.text instanceof AbstractTextElement.NormalText normalText) {
-            this.text = AbstractTextElement.newParagraphText(text, normalText);
+    public SectionComponent prepend(@NonNull TextElement.NormalText text) {
+        if (this.text instanceof TextElement.NormalText normalText) {
+            this.text = TextElement.newParagraphText(text, normalText);
         } else {
-            AbstractTextElement.ParagraphText paragraphText = (AbstractTextElement.ParagraphText) this.text;
+            TextElement.ParagraphText paragraphText = (TextElement.ParagraphText) this.text;
             paragraphText.prepend(text);
             this.text = paragraphText;
         }

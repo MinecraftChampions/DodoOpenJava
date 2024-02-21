@@ -1,6 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.message.card.component;
 
-import io.github.minecraftchampions.dodoopenjava.message.card.element.AbstractTextElement;
+import io.github.minecraftchampions.dodoopenjava.message.card.element.TextElement;
 import io.github.minecraftchampions.dodoopenjava.message.card.enums.TextType;
 import lombok.*;
 import lombok.experimental.Accessors;
@@ -17,7 +17,7 @@ import org.json.JSONObject;
 @Accessors(chain = true)
 public class HeaderComponent implements CardComponent {
     @NonNull
-    private AbstractTextElement.NormalText text;
+    private TextElement.NormalText text;
 
     private final String type = "header";
 
@@ -30,10 +30,10 @@ public class HeaderComponent implements CardComponent {
     }
 
     public static HeaderComponent of(@NonNull String content, @NonNull TextType type) {
-        return of(AbstractTextElement.newNormalText(content, type));
+        return of(TextElement.newNormalText(content, type));
     }
 
     public static HeaderComponent of(@NonNull String content) {
-        return of(AbstractTextElement.newNormalText(content));
+        return of(TextElement.newNormalText(content));
     }
 }

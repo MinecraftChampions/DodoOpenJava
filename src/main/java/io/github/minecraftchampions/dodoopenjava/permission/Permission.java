@@ -2,8 +2,9 @@ package io.github.minecraftchampions.dodoopenjava.permission;
 
 import lombok.*;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Dodo权限
@@ -23,15 +24,14 @@ public class Permission {
      * @param permissions 权限列表
      * @return 权限
      */
-    public static Permission calculatePermission(Permission... permissions) {
+    public static Permission calculatePermission(@NonNull Permission... permissions) {
         int length = permissions.length;
         if (length == 1) {
             return permissions[0];
         }
         int permissionValue = permissions[0].getValue();
         for (int i = 1; i < length; i++) {
-            Permission permission = permissions[i];
-            permissionValue = permissionValue | permission.getValue();
+            permissionValue |= permissions[i].getValue();
         }
         return new Permission(permissionValue);
     }
@@ -42,7 +42,7 @@ public class Permission {
      * @param hexString 权限值
      * @return 权限
      */
-    public static Permission parseHexString(String hexString) {
+    public static Permission parseHexString(@NonNull String hexString) {
         return new Permission(Integer.parseInt(hexString, 16));
     }
 
@@ -53,31 +53,33 @@ public class Permission {
      * @param target     目标
      * @return 是否存在
      */
-    public static boolean checkPermissionExist(Permission permission, Permission target) {
-        return (permission.getValue() & target.getValue()) == target.value;
+    public static boolean checkPermissionExist(@NonNull Permission permission, @NonNull Permission target) {
+        return (permission.getValue() & target.getValue()) == target.getValue();
     }
 
     /**
-     * 从最终权限中倒退所有权限
+     * 从最终权限中倒推所有权限
      *
      * @param target 权限
      * @return 权限列表
      */
-    public static List<DodoPermission> getPermissionList(Permission target) {
+    public static List<DodoPermission> getPermissionList(@NonNull Permission target) {
         DodoPermission[] detectedPermissionList = DodoPermission.values();
-        List<DodoPermission> permissionList = new ArrayList<>();
-        DodoPermission tempPermission = DodoPermission.getDodoPermissionByPermission(target);
-        if (tempPermission != null) {
-            permissionList.add(tempPermission);
-            return permissionList;
-        }
-        for (DodoPermission permission : detectedPermissionList) {
-            boolean isExist = checkPermissionExist(target, permission.getPermission());
-            if (isExist) {
-                permissionList.add(permission);
-            }
-        }
-        return permissionList;
+        return Arrays.stream(detectedPermissionList)
+                .filter(permission -> checkPermissionExist(target, permission.getPermission()))
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * 从最终权限中倒推所有权限
+     *
+     * @return 权限列表
+     */
+    public List<DodoPermission> getPermissionList() {
+        DodoPermission[] detectedPermissionList = DodoPermission.values();
+        return Arrays.stream(detectedPermissionList)
+                .filter(permission -> checkPermissionExist(this, permission.getPermission()))
+                .collect(Collectors.toList());
     }
 
     /**

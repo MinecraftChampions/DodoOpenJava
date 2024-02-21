@@ -2,7 +2,7 @@ package io.github.minecraftchampions.dodoopenjava.message.card.component;
 
 import io.github.minecraftchampions.dodoopenjava.message.card.element.AbstractElement;
 import io.github.minecraftchampions.dodoopenjava.message.card.element.ImageElement;
-import io.github.minecraftchampions.dodoopenjava.message.card.element.AbstractTextElement;
+import io.github.minecraftchampions.dodoopenjava.message.card.element.TextElement;
 import lombok.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -29,7 +29,7 @@ public class RemarkComponent implements CardComponent {
         JSONObject jsonObject = new JSONObject(Map.of("type", getType(), "elements", new JSONArray()));
         synchronized (elementList) {
             for (AbstractElement element : elementList) {
-                if (element instanceof AbstractTextElement.ParagraphText paragraphText) {
+                if (element instanceof TextElement.ParagraphText paragraphText) {
                     paragraphText.forEach((text) -> jsonObject.getJSONArray("elements").put(text.toJsonObject()));
                 } else {
                     jsonObject.getJSONArray("elements").put(element.toJsonObject());
@@ -92,7 +92,7 @@ public class RemarkComponent implements CardComponent {
         return append(ImageElement.of(link));
     }
 
-    public RemarkComponent text(@NonNull AbstractTextElement text) {
+    public RemarkComponent text(@NonNull TextElement text) {
         return append(text);
     }
 }

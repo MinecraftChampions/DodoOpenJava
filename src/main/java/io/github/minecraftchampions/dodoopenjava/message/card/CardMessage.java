@@ -3,7 +3,7 @@ package io.github.minecraftchampions.dodoopenjava.message.card;
 import io.github.minecraftchampions.dodoopenjava.message.Message;
 import io.github.minecraftchampions.dodoopenjava.message.card.component.*;
 import io.github.minecraftchampions.dodoopenjava.message.card.element.ImageElement;
-import io.github.minecraftchampions.dodoopenjava.message.card.element.AbstractTextElement;
+import io.github.minecraftchampions.dodoopenjava.message.card.element.TextElement;
 import io.github.minecraftchampions.dodoopenjava.message.card.enums.TextType;
 import io.github.minecraftchampions.dodoopenjava.message.card.enums.Theme;
 import lombok.*;
@@ -79,7 +79,7 @@ public class CardMessage implements Message {
             return this;
         }
 
-        public CardMessage.Builder text(@NonNull AbstractTextElement text) {
+        public CardMessage.Builder text(@NonNull TextElement text) {
             append(SectionComponent.of(text));
             return this;
         }
@@ -89,7 +89,7 @@ public class CardMessage implements Message {
             return this;
         }
 
-        public CardMessage.Builder texts(@NonNull AbstractTextElement.NormalText text) {
+        public CardMessage.Builder texts(@NonNull TextElement.NormalText text) {
             append(SectionComponent.of(text));
             return this;
         }
@@ -119,7 +119,7 @@ public class CardMessage implements Message {
             return this;
         }
 
-        public CardMessage.Builder header(@NonNull AbstractTextElement.NormalText text) {
+        public CardMessage.Builder header(@NonNull TextElement.NormalText text) {
             append(HeaderComponent.of(text));
             return this;
         }

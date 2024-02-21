@@ -129,7 +129,7 @@ public enum DodoPermission {
     @NonNull
     private final Permission permission;
 
-    DodoPermission(Permission permission) {
+    DodoPermission(@NonNull Permission permission) {
         this.permission = permission;
     }
 
