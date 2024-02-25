@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.event.events.v2.member;
 
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage.MessageEvent;
 import lombok.Getter;
 import org.json.JSONObject;
 
@@ -105,7 +106,7 @@ public class MemberLeaveEvent extends AbstractMemberEvent {
         this.personal = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal");
         this.userNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("nickName");
         this.userAvatarUrl = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("avatarUrl");
-        this.userSex = intSexToSex(json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex"));
+        this.userSex = MessageEvent.intSexToSex(json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex"));
         this.userIntSex = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex");
         this.jsonObject = json;
         this.jsonString = json.toString();
@@ -121,27 +122,13 @@ public class MemberLeaveEvent extends AbstractMemberEvent {
     }
 
     /**
-     * 转换 为Int数据类型的 性别关键字 为 String 类型
-     *
-     * @param IntSex 性别
-     * @return 性别
-     */
-    public String intSexToSex(Integer IntSex) {
-        return switch (IntSex) {
-            case 0 -> "女";
-            case 1 -> "男";
-            default -> "保密";
-        };
-    }
-
-    /**
      * 转换 为Int数据类型的 退出类型关键字 为 String 类型
      *
-     * @param Type 类型
+     * @param type 类型
      * @return 类型
      */
-    public String intLeaveTypeToLeaveType(Integer Type) {
-        return switch (Type) {
+    public String intLeaveTypeToLeaveType(Integer type) {
+        return switch (type) {
             case 1 -> "主动";
             case 2 -> "被踢";
             default -> "未知";

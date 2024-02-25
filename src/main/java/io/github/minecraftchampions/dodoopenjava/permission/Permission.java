@@ -4,6 +4,7 @@ import lombok.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -24,16 +25,16 @@ public class Permission {
      * @param permissions 权限列表
      * @return 权限
      */
-    public static Permission calculatePermission(@NonNull Permission... permissions) {
+    public static Optional<Permission> calculatePermission(@NonNull Permission... permissions) {
         int length = permissions.length;
-        if (length == 1) {
-            return permissions[0];
+        if (length == 0) {
+            return Optional.empty();
         }
         int permissionValue = permissions[0].getValue();
         for (int i = 1; i < length; i++) {
             permissionValue |= permissions[i].getValue();
         }
-        return new Permission(permissionValue);
+        return Optional.of(new Permission(permissionValue));
     }
 
     /**
@@ -63,7 +64,7 @@ public class Permission {
      * @param target 权限
      * @return 权限列表
      */
-    public static List<DodoPermission> getPermissionList(@NonNull Permission target) {
+    public static List<DodoPermission> resolvePermissionList(@NonNull Permission target) {
         DodoPermission[] detectedPermissionList = DodoPermission.values();
         return Arrays.stream(detectedPermissionList)
                 .filter(permission -> checkPermissionExist(target, permission.getPermission()))
@@ -75,11 +76,8 @@ public class Permission {
      *
      * @return 权限列表
      */
-    public List<DodoPermission> getPermissionList() {
-        DodoPermission[] detectedPermissionList = DodoPermission.values();
-        return Arrays.stream(detectedPermissionList)
-                .filter(permission -> checkPermissionExist(this, permission.getPermission()))
-                .collect(Collectors.toList());
+    public List<DodoPermission> resolvePermissionList() {
+        return resolvePermissionList(this);
     }
 
     /**

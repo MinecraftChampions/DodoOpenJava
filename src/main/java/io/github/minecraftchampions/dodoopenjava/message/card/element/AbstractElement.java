@@ -16,10 +16,8 @@ public abstract class AbstractElement {
     public abstract JSONObject toJsonObject();
 
     public abstract static class AbstractDataElement extends AbstractElement {
-
     }
 
     public abstract static class AbstractInteractiveElement extends AbstractElement {
-
     }
 }

@@ -142,4 +142,3 @@ public class ChannelArticlePublishEvent extends AbstractChannelArticleEvent {
         eventType = ChannelArticlePublishEvent.class;
     }
 }
-

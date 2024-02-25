@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.event.events.v2.personal;
 
+import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage.MessageEvent;
 import lombok.Getter;
 import org.json.JSONObject;
 
@@ -98,42 +99,11 @@ public class PersonalMessageEvent extends AbstractPersonalEvent {
         this.personal = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal");
         this.senderNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("nickName");
         this.senderAvatarUrl = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getString("avatarUrl");
-        this.senderSex = IntSexToSex(json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex"));
+        this.senderSex = MessageEvent.intSexToSex(json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex"));
         this.senderIntSex = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex");
-        this.messageType = IntMessageTypeToMessageType(json.getJSONObject("data").getJSONObject("eventBody").getInt("messageType"));
+        this.messageType = MessageEvent.intMessageTypeToMessageType(json.getJSONObject("data").getJSONObject("eventBody").getInt("messageType"));
         this.messageIntType = json.getJSONObject("data").getJSONObject("eventBody").getInt("messageType");
         this.messageBody = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("messageBody");
         eventType = PersonalMessageEvent.class;
     }
-
-    /**
-     * 转换 为Int数据类型的 性别关键字 为 String 类型
-     *
-     * @param IntSex 性别
-     * @return 性别
-     */
-    public String IntSexToSex(Integer IntSex) {
-        return switch (IntSex) {
-            case 0 -> "女";
-            case 1 -> "男";
-            default -> "保密";
-        };
-    }
-
-    /**
-     * 转换 为Int数据类型的 消息类型关键字 为 String 类型
-     *
-     * @param type 消息类型
-     * @return 消息类型
-     */
-    public String IntMessageTypeToMessageType(Integer type) {
-        return switch (type) {
-            case 1 -> "文字消息";
-            case 2 -> "图片消息";
-            case 3 -> "视频消息";
-            default -> "未知消息";
-        };
-    }
-
-
 }

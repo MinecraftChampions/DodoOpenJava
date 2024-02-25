@@ -616,7 +616,6 @@ public class Bot {
                 public Result getMemberNftStatus(String islandSourceId, String dodoSourceId, String platform) {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.NtfApi.getMemberNftStatus(bot.getAuthorization(), islandSourceId, dodoSourceId, platform);
                 }
-
             }
 
             public class ResourceApi {
@@ -624,7 +623,6 @@ public class Bot {
                 public Result uploadResource(String path) {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.ResourceApi.uploadResource(bot.getAuthorization(), path);
                 }
-
             }
 
             public class PersonalApi {

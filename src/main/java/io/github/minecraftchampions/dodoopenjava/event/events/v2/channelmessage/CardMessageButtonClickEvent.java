@@ -131,5 +131,4 @@ public class CardMessageButtonClickEvent extends AbstractChannelMessageEvent {
         this.memberNickName = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("member").getString("nickName");
         this.interactCustomId = json.getJSONObject("data").getJSONObject("eventBody").getString("interactCustomId");
     }
-
 }
