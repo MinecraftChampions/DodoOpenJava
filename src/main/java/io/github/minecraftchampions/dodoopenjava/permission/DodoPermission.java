@@ -139,8 +139,8 @@ public enum DodoPermission {
      * @param targetPermission 权限
      * @return DodoPermission dodo对象
      */
-    public static DodoPermission getDodoPermissionByPermission(Permission targetPermission) {
-        for (DodoPermission dodoPermission : DodoPermission.values()) {
+    public static DodoPermission findDodoPermissionByPermission(@NonNull Permission targetPermission) {
+        for (DodoPermission dodoPermission : values()) {
             if (dodoPermission.getPermission().equals(targetPermission)) {
                 return dodoPermission;
             }
