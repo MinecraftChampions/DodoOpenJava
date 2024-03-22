@@ -32,7 +32,8 @@ public class ApiResultsLogger {
     public void addResult(@NonNull Result result) {
         CompletableFuture.runAsync(() -> {
             long timestamp = result.getTimestamp();
-            Set<Result> results = resultsLogMap.computeIfAbsent(timestamp, k -> new ConcurrentSkipListSet<>());
+            Set<Result> results = resultsLogMap.computeIfAbsent(timestamp,
+                    k -> new ConcurrentSkipListSet<>());
             results.add(result);
         });
     }
@@ -81,7 +82,8 @@ public class ApiResultsLogger {
      */
     public CompletableFuture<Map<Long, Set<Result>>> getLogs(long startTimestamp, long endTimestamp) {
         return CompletableFuture.supplyAsync(() -> {
-            Map<Long, Set<Result>> subMap = resultsLogMap.subMap(startTimestamp, true, endTimestamp, true);
+            Map<Long, Set<Result>> subMap = resultsLogMap
+                    .subMap(startTimestamp, true, endTimestamp, true);
             Map<Long, Set<Result>> deepCopiedMap = new ConcurrentSkipListMap<>();
             for (Map.Entry<Long, Set<Result>> entry : subMap.entrySet()) {
                 deepCopiedMap.put(entry.getKey(), new ConcurrentSkipListSet<>(entry.getValue()));
@@ -95,7 +97,8 @@ public class ApiResultsLogger {
         StringBuilder sb = new StringBuilder();
         resultsLogMap.forEach((timestamp, results) -> {
             String date = DateUtil.format(DateUtil.timestampToDate(timestamp), DateUtil.FORMAT_THREE);
-            results.forEach((result -> sb.append("[").append(date).append("]").append(" ").append(result).append("\n")));
+            results.forEach((result -> sb.append("[").append(date).append("]").append(" ")
+                    .append(result).append("\n")));
         });
         return sb.toString().trim();
     }
