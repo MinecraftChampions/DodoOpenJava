@@ -2,6 +2,7 @@ package io.github.minecraftchampions.dodoopenjava;
 
 import lombok.Data;
 import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 
 import java.util.function.Consumer;
@@ -13,6 +14,7 @@ import java.util.function.Function;
  * @author qscbm187531
  */
 @Data
+@Slf4j
 public class Result implements Comparable<Result> {
     public static final JSONObject STATUS_CODE = new JSONObject("""
             {

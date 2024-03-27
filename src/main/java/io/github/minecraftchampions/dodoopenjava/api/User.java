@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.api;
 
+import io.github.minecraftchampions.dodoopenjava.Result;
 import io.github.minecraftchampions.dodoopenjava.message.Message;
 import lombok.NonNull;
 
@@ -103,7 +104,7 @@ public interface User {
      *
      * @param nickName 群名
      */
-    void editNickName(@NonNull String nickName);
+    Result editNickName(@NonNull String nickName);
 
 
     /**
@@ -111,7 +112,7 @@ public interface User {
      *
      * @param mills 时间
      */
-    void mute(int mills);
+    Result mute(int mills);
 
     /**
      * 禁言
@@ -119,7 +120,7 @@ public interface User {
      * @param mills  时间
      * @param reason 原因
      */
-    void mute(int mills, @NonNull String reason);
+    Result mute(int mills, @NonNull String reason);
 
     /**
      * 获取邀请数量
@@ -134,31 +135,31 @@ public interface User {
      * @param reason          原因
      * @param noticeChannelId 通知频道ID
      */
-    void ban(String reason, String noticeChannelId);
+    Result ban(String reason, String noticeChannelId);
 
     /**
      * 解除禁言
      */
-    void unmute();
+    Result unmute();
 
     /**
      * 解封
      */
-    void unban();
+    Result unban();
 
     /**
      * 添加身份组
      *
      * @param roleId id
      */
-    void addRole(@NonNull String roleId);
+    Result addRole(@NonNull String roleId);
 
     /**
      * 移除身份组
      *
      * @param roleId id
      */
-    void removeRole(@NonNull String roleId);
+    Result removeRole(@NonNull String roleId);
 
     /**
      * 获取余额
@@ -173,21 +174,21 @@ public interface User {
      * @param integral 数量
      * @param type     操作方式
      */
-    void editIntegral(int type, long integral);
+    Result editIntegral(int type, long integral);
 
     /**
      * 添加余额
      *
      * @param integral 数量
      */
-    void addIntegral(long integral);
+    Result addIntegral(long integral);
 
     /**
      * 移除余额
      *
      * @param integral 数量
      */
-    void removeIntegral(long integral);
+    Result removeIntegral(long integral);
 
     /**
      * 发送私聊

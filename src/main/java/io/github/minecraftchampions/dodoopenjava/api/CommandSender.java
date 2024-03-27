@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.api;
 
+import io.github.minecraftchampions.dodoopenjava.Result;
 import io.github.minecraftchampions.dodoopenjava.message.text.TextMessage;
 
 /**
@@ -13,7 +14,7 @@ public interface CommandSender extends User {
      *
      * @param message 编辑后的消息
      */
-    void editMessage(TextMessage message);
+    Result editMessage(TextMessage message);
 
     /**
      * 获取触发事件的频道ID

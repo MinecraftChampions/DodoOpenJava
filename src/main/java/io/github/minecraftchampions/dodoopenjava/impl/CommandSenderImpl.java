@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.impl;
 
 import io.github.minecraftchampions.dodoopenjava.Bot;
+import io.github.minecraftchampions.dodoopenjava.Result;
 import io.github.minecraftchampions.dodoopenjava.api.CommandSender;
 import io.github.minecraftchampions.dodoopenjava.message.text.TextMessage;
 import lombok.Getter;
@@ -50,7 +51,7 @@ public class CommandSenderImpl extends DodoUserImpl implements CommandSender {
     }
 
     @Override
-    public void editMessage(TextMessage message) {
-        getBot().getApi().V2.channelMessageApi.editChannelMessage(messageId, message.toString());
+    public Result editMessage(TextMessage message) {
+        return getBot().getApi().V2.channelMessageApi.editChannelMessage(messageId, message.toString());
     }
 }

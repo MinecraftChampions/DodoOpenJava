@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.impl;
 
 import io.github.minecraftchampions.dodoopenjava.Bot;
+import io.github.minecraftchampions.dodoopenjava.Result;
 import io.github.minecraftchampions.dodoopenjava.api.User;
 import io.github.minecraftchampions.dodoopenjava.message.Message;
 import lombok.Getter;
@@ -132,18 +133,18 @@ public class DodoUserImpl implements User {
     }
 
     @Override
-    public void editNickName(String nickName) {
-        getBot().getApi().V2.memberApi.editMemberNickName(getIslandSourceId(), getDodoSourceId(), nickName);
+    public Result editNickName(String nickName) {
+        return getBot().getApi().V2.memberApi.editMemberNickName(getIslandSourceId(), getDodoSourceId(), nickName);
     }
 
     @Override
-    public void mute(int mills) {
-        getBot().getApi().V2.memberApi.addMemberMute(getIslandSourceId(), getDodoSourceId(), mills);
+    public Result mute(int mills) {
+        return getBot().getApi().V2.memberApi.addMemberMute(getIslandSourceId(), getDodoSourceId(), mills);
     }
 
     @Override
-    public void mute(int mills, String reason) {
-        getBot().getApi().V2.memberApi.addMemberReasonMute(getIslandSourceId(), getDodoSourceId(), mills, reason);
+    public Result mute(int mills, String reason) {
+        return getBot().getApi().V2.memberApi.addMemberReasonMute(getIslandSourceId(), getDodoSourceId(), mills, reason);
     }
 
     @Override
@@ -154,37 +155,37 @@ public class DodoUserImpl implements User {
     }
 
     @Override
-    public void ban(String reason, String noticeChannelId) {
+    public Result ban(String reason, String noticeChannelId) {
         if (noticeChannelId == null && reason == null) {
-            getBot().getApi().V2.memberApi.addMemberBan(getIslandSourceId(), getDodoSourceId());
+            return getBot().getApi().V2.memberApi.addMemberBan(getIslandSourceId(), getDodoSourceId());
         }
-        if (noticeChannelId == null && reason != null) {
-            getBot().getApi().V2.memberApi.addMemberReasonBan(getIslandSourceId(), getDodoSourceId(), reason);
+        if (noticeChannelId == null) {
+            return getBot().getApi().V2.memberApi.addMemberReasonBan(getIslandSourceId(), getDodoSourceId(), reason);
         }
-        if (reason == null && noticeChannelId != null) {
-            getBot().getApi().V2.memberApi.addMemberChannelBan(getIslandSourceId(), getDodoSourceId(), noticeChannelId);
+        if (reason == null) {
+            return getBot().getApi().V2.memberApi.addMemberChannelBan(getIslandSourceId(), getDodoSourceId(), noticeChannelId);
         }
-        getBot().getApi().V2.memberApi.addMemberReasonChannelBan(getIslandSourceId(), getDodoSourceId(), reason, noticeChannelId);
+        return getBot().getApi().V2.memberApi.addMemberReasonChannelBan(getIslandSourceId(), getDodoSourceId(), reason, noticeChannelId);
     }
 
     @Override
-    public void unmute() {
-        getBot().getApi().V2.memberApi.removeMemberMute(getIslandSourceId(), getDodoSourceId());
+    public Result unmute() {
+        return getBot().getApi().V2.memberApi.removeMemberMute(getIslandSourceId(), getDodoSourceId());
     }
 
     @Override
-    public void unban() {
-        getBot().getApi().V2.memberApi.removeMemberBan(getIslandSourceId(), getDodoSourceId());
+    public Result unban() {
+        return getBot().getApi().V2.memberApi.removeMemberBan(getIslandSourceId(), getDodoSourceId());
     }
 
     @Override
-    public void addRole(String roleId) {
-        getBot().getApi().V2.roleApi.addRoleMember(getIslandSourceId(), getDodoSourceId(), roleId);
+    public Result addRole(String roleId) {
+        return getBot().getApi().V2.roleApi.addRoleMember(getIslandSourceId(), getDodoSourceId(), roleId);
     }
 
     @Override
-    public void removeRole(String roleId) {
-        getBot().getApi().V2.roleApi.removeRoleMember(getIslandSourceId(), getDodoSourceId(), roleId);
+    public Result removeRole(String roleId) {
+        return getBot().getApi().V2.roleApi.removeRoleMember(getIslandSourceId(), getDodoSourceId(), roleId);
     }
 
     @Override
@@ -195,18 +196,18 @@ public class DodoUserImpl implements User {
     }
 
     @Override
-    public void editIntegral(int type, long integral) {
-        getBot().getApi().V2.integralApi.setIntegralEdit(getIslandSourceId(), getDodoSourceId(), type, integral);
+    public Result editIntegral(int type, long integral) {
+        return getBot().getApi().V2.integralApi.setIntegralEdit(getIslandSourceId(), getDodoSourceId(), type, integral);
     }
 
     @Override
-    public void addIntegral(long integral) {
-        editIntegral(1, integral);
+    public Result addIntegral(long integral) {
+        return editIntegral(1, integral);
     }
 
     @Override
-    public void removeIntegral(long integral) {
-        editIntegral(2, integral);
+    public Result removeIntegral(long integral) {
+        return editIntegral(2, integral);
     }
 
     @Override
