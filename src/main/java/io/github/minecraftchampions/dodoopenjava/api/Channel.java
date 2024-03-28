@@ -1,7 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.api;
 
 import io.github.minecraftchampions.dodoopenjava.Result;
-import io.github.minecraftchampions.dodoopenjava.message.Message;
 
 /**
  * 频道
