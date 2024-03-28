@@ -24,4 +24,8 @@ public interface Role {
     Result editPermission(Permission permission);
 
     Result editPermission(String permission);
+
+    Result removeMember(String dodoId);
+
+    Result addMember(String dodoId);
 }
