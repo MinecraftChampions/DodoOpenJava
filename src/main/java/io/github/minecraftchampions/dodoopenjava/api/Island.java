@@ -121,4 +121,17 @@ public interface Island {
      * @return 频道
      */
     Channel getChannel(String channelId);
+
+    /**
+     * 获取身份组列表
+     * @return list
+     */
+    List<Role> getRoleList();
+
+    /**
+     * 获取身份组
+     * @param roleId id
+     * @return role
+     */
+    Role getRole(String roleId);
 }
