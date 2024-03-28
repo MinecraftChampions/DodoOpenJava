@@ -124,12 +124,14 @@ public interface Island {
 
     /**
      * 获取身份组列表
+     *
      * @return list
      */
     List<Role> getRoleList();
 
     /**
      * 获取身份组
+     *
      * @param roleId id
      * @return role
      */
