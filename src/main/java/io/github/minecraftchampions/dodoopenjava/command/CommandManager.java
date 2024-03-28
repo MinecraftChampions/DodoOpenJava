@@ -1,7 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.command;
 
-import io.github.minecraftchampions.dodoopenjava.Bot;
 import io.github.minecraftchampions.dodoopenjava.api.CommandSender;
+import io.github.minecraftchampions.dodoopenjava.api.Bot;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;

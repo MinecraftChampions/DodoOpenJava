@@ -1,6 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.event;
 
-import io.github.minecraftchampions.dodoopenjava.Bot;
+import io.github.minecraftchampions.dodoopenjava.api.Bot;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.java_websocket.WebSocket;

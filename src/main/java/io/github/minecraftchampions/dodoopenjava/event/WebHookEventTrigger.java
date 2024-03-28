@@ -2,7 +2,7 @@ package io.github.minecraftchampions.dodoopenjava.event;
 
 import com.sun.net.httpserver.*;
 import com.sun.net.httpserver.spi.HttpServerProvider;
-import io.github.minecraftchampions.dodoopenjava.Bot;
+import io.github.minecraftchampions.dodoopenjava.api.Bot;
 import io.github.minecraftchampions.dodoopenjava.util.OpenSecretUtil;
 import lombok.Getter;
 import lombok.NonNull;

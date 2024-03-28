@@ -1,6 +1,5 @@
 package io.github.minecraftchampions.dodoopenjava.impl;
 
-import io.github.minecraftchampions.dodoopenjava.Bot;
 import io.github.minecraftchampions.dodoopenjava.Result;
 import io.github.minecraftchampions.dodoopenjava.api.CommandSender;
 import io.github.minecraftchampions.dodoopenjava.message.text.TextMessage;
@@ -39,7 +38,7 @@ public class CommandSenderImpl extends DodoUserImpl implements CommandSender {
      *
      * @param jsontext JSONText
      */
-    public CommandSenderImpl(@NonNull JSONObject jsontext, @NonNull Bot bot, boolean personalMessage) {
+    public CommandSenderImpl(@NonNull JSONObject jsontext, @NonNull BotImpl bot, boolean personalMessage) {
         super(jsontext.getJSONObject("data").getJSONObject("eventBody").getString("dodoSourceId"),
                 jsontext.getJSONObject("data").getJSONObject("eventBody").getString("islandSourceId"),
                 bot);

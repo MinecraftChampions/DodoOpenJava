@@ -1,5 +1,9 @@
-package io.github.minecraftchampions.dodoopenjava;
+package io.github.minecraftchampions.dodoopenjava.impl;
 
+import io.github.minecraftchampions.dodoopenjava.ApiResultsLogger;
+import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
+import io.github.minecraftchampions.dodoopenjava.Result;
+import io.github.minecraftchampions.dodoopenjava.api.Bot;
 import io.github.minecraftchampions.dodoopenjava.api.User;
 import io.github.minecraftchampions.dodoopenjava.command.CommandExecutor;
 import io.github.minecraftchampions.dodoopenjava.command.CommandManager;
@@ -7,7 +11,6 @@ import io.github.minecraftchampions.dodoopenjava.event.AbstractEventTrigger;
 import io.github.minecraftchampions.dodoopenjava.event.EventManager;
 import io.github.minecraftchampions.dodoopenjava.event.Listener;
 import io.github.minecraftchampions.dodoopenjava.event.WebSocketEventTrigger;
-import io.github.minecraftchampions.dodoopenjava.impl.DodoUserImpl;
 import io.github.minecraftchampions.dodoopenjava.message.Message;
 import io.github.minecraftchampions.dodoopenjava.message.card.CardMessage;
 import io.github.minecraftchampions.dodoopenjava.message.text.TextMessage;
@@ -30,7 +33,7 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @Slf4j
-public class Bot {
+public class BotImpl implements Bot {
     /**
      * 机器人唯一标识
      */
@@ -68,6 +71,7 @@ public class Bot {
      *
      * @return authorization
      */
+    @Override
     public String getAuthorization() {
         return BaseUtil.generateAuthorization(clientId, token);
     }
@@ -75,6 +79,7 @@ public class Bot {
     /**
      * 启用日志记录器
      */
+    @Override
     public void enableApiResultsLogger() {
         DodoOpenJava.enableApiResultsLogger(this);
     }
@@ -82,6 +87,7 @@ public class Bot {
     /**
      * 卸载日志记录器
      */
+    @Override
     public void disableApiResultsLogger() {
         DodoOpenJava.disableApiResultsLogger(this);
     }
@@ -91,6 +97,7 @@ public class Bot {
      *
      * @param listener 监听器
      */
+    @Override
     public synchronized void registerListener(@NonNull Listener listener) {
         if (eventTrigger == null) {
             initEventListenSystem(new WebSocketEventTrigger(this));
@@ -104,6 +111,7 @@ public class Bot {
     /**
      * 移除事件监听器
      */
+    @Override
     public synchronized void removeEventTrigger() {
         if (eventTrigger != null) {
             eventTrigger.close();
@@ -116,6 +124,7 @@ public class Bot {
      *
      * @param listeners 监听器
      */
+    @Override
     public void registerListeners(@NonNull Listener... listeners) {
         for (Listener listener : listeners) {
             registerListener(listener);
@@ -127,6 +136,7 @@ public class Bot {
      *
      * @param commandExecutor 命令处理器
      */
+    @Override
     public void registerCommand(@NonNull CommandExecutor commandExecutor) {
         commandManager.registerCommand(commandExecutor);
     }
@@ -136,6 +146,7 @@ public class Bot {
      *
      * @return ApiResultsLogger
      */
+    @Override
     public ApiResultsLogger getApiResultsLogger() {
         ApiResultsLogger apiResultsLogger = DodoOpenJava.LOGGER_MAP.get(this.getAuthorization());
         if (apiResultsLogger != null) {
@@ -151,6 +162,7 @@ public class Bot {
      *
      * @param commandExecutors 命令处理器
      */
+    @Override
     public void registerCommands(@NonNull CommandExecutor... commandExecutors) {
         for (CommandExecutor commandExecutor : commandExecutors) {
             registerCommand(commandExecutor);
@@ -167,6 +179,7 @@ public class Bot {
      *
      * @param t EventTrigger
      */
+    @Override
     public synchronized void initEventListenSystem(@NonNull AbstractEventTrigger t) {
         if (t.getBot() != this) {
             return;
@@ -180,6 +193,7 @@ public class Bot {
     /**
      * 卸载这个bot
      */
+    @Override
     public void disable() {
         DodoOpenJava.disableBot(this);
     }
@@ -189,6 +203,7 @@ public class Bot {
      *
      * @return 名字
      */
+    @Override
     public String getName() {
         return this.getApi().V2.botApi.getBotInfo().getJSONObjectData().getString("nickName");
     }
@@ -198,6 +213,7 @@ public class Bot {
      *
      * @return dodoId
      */
+    @Override
     public String getDodoSourceId() {
         return this.getApi().V2.botApi.getBotInfo().getJSONObjectData().getString("dodoSourceId");
     }
@@ -207,6 +223,7 @@ public class Bot {
      *
      * @return url
      */
+    @Override
     public String getAvatarUrl() {
         JSONObject jsonObject = new JSONObject();
         return this.getApi().V2.botApi.getBotInfo().getJSONObjectData().getString("avatarUrl");
@@ -216,7 +233,7 @@ public class Bot {
      * Api类
      */
     public static class Api {
-        Api(Bot bot) {
+        Api(BotImpl bot) {
             V2 = new V2(bot);
         }
 
@@ -224,9 +241,9 @@ public class Bot {
 
         @Getter
         public static class V2 {
-            private final Bot bot;
+            private final BotImpl bot;
 
-            V2(Bot bot) {
+            V2(BotImpl bot) {
                 this.bot = bot;
             }
 

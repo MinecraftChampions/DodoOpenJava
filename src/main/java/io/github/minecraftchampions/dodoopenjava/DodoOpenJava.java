@@ -1,5 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava;
 
+import io.github.minecraftchampions.dodoopenjava.api.Bot;
+import io.github.minecraftchampions.dodoopenjava.impl.BotImpl;
 import io.github.minecraftchampions.dodoopenjava.util.BaseUtil;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
@@ -31,7 +33,7 @@ public class DodoOpenJava {
      * @return Bot
      */
     public static synchronized Bot createBot(@NonNull String clientId, @NonNull String token) {
-        Bot bot = new Bot(clientId, token);
+        Bot bot = new BotImpl(clientId, token);
         BOT_LIST.add(bot);
         return bot;
     }
@@ -41,8 +43,8 @@ public class DodoOpenJava {
      *
      * @return 返回的是浅拷贝的列表
      */
-    public static List<Bot> getBotList() {
-        return BaseUtil.castList(BOT_LIST.clone(), Bot.class);
+    public static List<BotImpl> getBotList() {
+        return BaseUtil.castList(BOT_LIST.clone(), BotImpl.class);
     }
 
     /**
