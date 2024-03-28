@@ -9,6 +9,9 @@ import io.github.minecraftchampions.dodoopenjava.event.Listener;
 import io.github.minecraftchampions.dodoopenjava.impl.BotImpl.Api;
 import lombok.NonNull;
 
+/**
+ * 机器人
+ */
 public interface Bot {
     /**
      * 获取authorization

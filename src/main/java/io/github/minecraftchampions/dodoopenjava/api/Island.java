@@ -4,6 +4,9 @@ import org.json.JSONObject;
 
 import java.util.List;
 
+/**
+ * 超级群
+ */
 public interface Island {
     /**
      * 获取群ID
@@ -103,4 +106,19 @@ public interface Island {
      * @return user
      */
     User getUser(String dodoId);
+
+    /**
+     * 获取频道列表
+     *
+     * @return list
+     */
+    List<Channel> getChannelList();
+
+    /**
+     * 获取频道
+     *
+     * @param channelId 频道id
+     * @return 频道
+     */
+    Channel getChannel(String channelId);
 }
