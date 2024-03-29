@@ -43,8 +43,8 @@ public class DodoOpenJava {
      *
      * @return 返回的是浅拷贝的列表
      */
-    public static List<BotImpl> getBotList() {
-        return BaseUtil.castList(BOT_LIST.clone(), BotImpl.class);
+    public static List<Bot> getBotList() {
+        return BaseUtil.castList(BOT_LIST.clone(), Bot.class);
     }
 
     /**
