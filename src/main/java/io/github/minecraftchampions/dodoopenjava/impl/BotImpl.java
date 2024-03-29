@@ -241,9 +241,9 @@ public class BotImpl implements Bot {
 
         @Getter
         public static class V2 {
-            private final BotImpl bot;
+            private final Bot bot;
 
-            V2(BotImpl bot) {
+            V2(Bot bot) {
                 this.bot = bot;
             }
 
