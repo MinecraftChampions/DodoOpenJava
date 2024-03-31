@@ -50,6 +50,15 @@ public interface Channel {
     int getDefaultFlag();
 
     /**
+     * 是否为默认访问频道
+     *
+     * @return type
+     */
+    default boolean isDefaultChannel() {
+        return getDefaultFlag() == 1;
+    }
+
+    /**
      * 获取分组ID
      *
      * @return id
