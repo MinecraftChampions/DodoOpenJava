@@ -45,7 +45,7 @@ public class RoleImpl implements Role {
 
     @Override
     public Result editPermission(Permission permission) {
-        return null;
+        return editPermission(permission.toHexString());
     }
 
     @Override
