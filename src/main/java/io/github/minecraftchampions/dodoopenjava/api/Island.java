@@ -136,4 +136,21 @@ public interface Island {
      * @return role
      */
     Role getRole(String roleId);
+
+    /**
+     * 创建频道
+     *
+     * @param channelName 名
+     * @param channelType 类型
+     * @return Channel
+     */
+    Channel createChannel(String channelName, int channelType);
+
+    /**
+     * 创建频道
+     *
+     * @param channelType 类型
+     * @return Channel
+     */
+    Channel createChannel(int channelType);
 }
