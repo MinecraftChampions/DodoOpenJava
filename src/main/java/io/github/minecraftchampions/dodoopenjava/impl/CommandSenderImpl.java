@@ -26,12 +26,14 @@ public class CommandSenderImpl extends DodoUserImpl implements CommandSender {
      * 获取触发命令的消息ID
      * 私聊命令为null
      */
+    @NonNull
     private final String messageId;
 
     /**
      * -- GETTER --
      * 是否私聊
      */
+    @NonNull
     private final boolean isPersonalChat;
 
     /**

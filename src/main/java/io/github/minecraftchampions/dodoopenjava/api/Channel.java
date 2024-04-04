@@ -73,11 +73,6 @@ public interface Channel {
     String getGroupName();
 
     /**
-     * 创建频道
-     */
-    Result create();
-
-    /**
      * 删除频道
      */
     Result delete();

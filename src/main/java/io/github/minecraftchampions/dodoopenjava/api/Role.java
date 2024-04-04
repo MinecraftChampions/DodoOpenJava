@@ -17,11 +17,6 @@ public interface Role {
     String getRoleId();
 
     /**
-     * 创建
-     */
-    Result create();
-
-    /**
      * 删除
      */
     Result delete();
