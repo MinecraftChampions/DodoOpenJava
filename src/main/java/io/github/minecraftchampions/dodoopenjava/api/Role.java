@@ -17,6 +17,13 @@ public interface Role {
     String getRoleId();
 
     /**
+     * 获取群id
+     *
+     * @return id
+     */
+    String getIslandSourceId();
+
+    /**
      * 删除
      */
     Result delete();

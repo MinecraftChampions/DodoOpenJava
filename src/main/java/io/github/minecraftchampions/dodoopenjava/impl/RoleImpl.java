@@ -8,17 +8,28 @@ import io.github.minecraftchampions.dodoopenjava.permission.Permission;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * 身份组实现
  */
 @Getter
+@Slf4j
 @AllArgsConstructor
 public class RoleImpl implements Role {
     @NonNull
     private String roleId;
+
+    @NonNull
+    private String islandSourceId;
 
     @NonNull
     private Bot bot;
@@ -70,6 +81,34 @@ public class RoleImpl implements Role {
 
     @Override
     public List<User> getMemberList() {
-        return null;
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
+        List<User> userList = new ArrayList<>();
+        int maxId = 0;
+        List<CompletableFuture<?>> completableFutures = new ArrayList<>();
+        while (true) {
+            Result result = bot.getApi().V2.getRoleApi().getMemberList(getIslandSourceId(), getRoleId(),
+                    100, maxId).ifFailure(r -> {
+                log.error("获取频道信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
+            });
+            if (result.isSuccess()) {
+                JSONArray array = result.getJSONObjectData().getJSONObject("data")
+                        .getJSONArray("list");
+                completableFutures.add(CompletableFuture.runAsync(() -> array.forEach(o -> {
+                    if (o instanceof JSONObject jsonObject) {
+                        userList.add(new DodoUserImpl(jsonObject.getString("dodoSourceId"), getIslandSourceId(), getBot()));
+                    }
+                }), executorService));
+                maxId = result.getJSONObjectData().getJSONObject("data")
+                        .getInt("maxId");
+                if (maxId == -1) {
+                    break;
+                }
+            } else {
+                break;
+            }
+        }
+        CompletableFuture.allOf(completableFutures.toArray(CompletableFuture[]::new)).join();
+        executorService.shutdown();
+        return userList;
     }
 }

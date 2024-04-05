@@ -13,6 +13,7 @@ import java.net.URL;
 import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -36,7 +37,7 @@ public class NetUtil {
             header.put("Content-Type", "application/json");
             header.put("Authorization", authorization);
             String str = sendPostRequest(url, header, param);
-            Result result = Result.of(new JSONObject(str));
+            Result result = Result.of(new JSONObject(str), new JSONObject(param));
             if (DodoOpenJava.LOGGER_MAP.containsKey(authorization)) {
                 DodoOpenJava.LOGGER_MAP.get(authorization).addResult(result);
             }
@@ -165,7 +166,8 @@ public class NetUtil {
                                           @NonNull String path,
                                           @NonNull String url) throws IOException {
         String str = uploadFile(header, path, url);
-        Result result = Result.of(new JSONObject(Objects.requireNonNull(str)));
+        Result result = Result.of(new JSONObject(Objects.requireNonNull(str)),
+                new JSONObject(Map.of("message", "文件内容，不予展示")));
         String authorization = header.get("Authorization");
         if (DodoOpenJava.LOGGER_MAP.containsKey(authorization)) {
             DodoOpenJava.LOGGER_MAP.get(authorization).addResult(result);

@@ -97,11 +97,14 @@ public class Result implements Comparable<Result> {
 
     private final JSONObject JSONObjectData;
 
-    private Result(@NonNull JSONObject jsonObject) {
+    private final JSONObject requestData;
+
+    private Result(@NonNull JSONObject jsonObject, @NonNull JSONObject requestData) {
         this.JSONObjectData = jsonObject;
         this.statusCode = jsonObject.getInt("status");
         this.message = jsonObject.getString("message");
         this.timestamp = System.currentTimeMillis();
+        this.requestData = requestData;
     }
 
     /**
@@ -110,8 +113,8 @@ public class Result implements Comparable<Result> {
      * @param jsonObject jsonObject
      * @return Result
      */
-    public static Result of(@NonNull JSONObject jsonObject) {
-        return new Result(jsonObject);
+    public static Result of(@NonNull JSONObject jsonObject, @NonNull JSONObject requestData) {
+        return new Result(jsonObject, requestData);
     }
 
     /**
@@ -121,10 +124,28 @@ public class Result implements Comparable<Result> {
      * @return this
      */
     public Result ifSuccess(@NonNull Consumer<Result> consumer) {
-        if (statusCode == 0) {
+        if (isSuccess()) {
             consumer.accept(this);
         }
         return this;
+    }
+
+    /**
+     * 是否成功
+     *
+     * @return ture/false
+     */
+    public boolean isSuccess() {
+        return statusCode == 0;
+    }
+
+    /**
+     * 是否失败
+     *
+     * @return ture/false
+     */
+    public boolean isFailure() {
+        return statusCode != 0;
     }
 
     /**
@@ -134,7 +155,7 @@ public class Result implements Comparable<Result> {
      * @return this
      */
     public Result ifFailure(@NonNull Consumer<Result> consumer) {
-        if (statusCode != 0) {
+        if (isFailure()) {
             consumer.accept(this);
         }
         return this;
@@ -147,7 +168,7 @@ public class Result implements Comparable<Result> {
      * @return this
      */
     public <T> T ifSuccess(@NonNull Function<Result, T> function) {
-        if (statusCode == 0) {
+        if (isSuccess()) {
             return function.apply(this);
         } else {
             return null;
@@ -161,7 +182,7 @@ public class Result implements Comparable<Result> {
      * @return this
      */
     public <T> T ifFailure(@NonNull Function<Result, T> function) {
-        if (statusCode != 0) {
+        if (isFailure()) {
             return function.apply(this);
         } else {
             return null;
@@ -171,7 +192,7 @@ public class Result implements Comparable<Result> {
 
     @Override
     public String toString() {
-        return getJSONObjectData().toString();
+        return "Request:" + getRequestData() + "\n" + "Result:" + getJSONObjectData();
     }
 
     @Override
