@@ -714,6 +714,11 @@ public class BotImpl implements Bot {
                 public Result deleteRole(String islandSourceId, String roleId) {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.RoleApi.deleteRole(bot.getAuthorization(), islandSourceId, roleId);
                 }
+
+                @SneakyThrows
+                public Result getMemberList(String islandSourceId, String roleId, int pageSize, int maxId) {
+                    return io.github.minecraftchampions.dodoopenjava.api.v2.RoleApi.getMemberList(bot.getAuthorization(), islandSourceId, roleId, pageSize, maxId);
+                }
             }
         }
     }

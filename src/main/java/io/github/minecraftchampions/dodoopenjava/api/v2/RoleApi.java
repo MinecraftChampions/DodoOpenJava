@@ -8,6 +8,7 @@ import io.github.minecraftchampions.dodoopenjava.util.NetUtil;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * 身份组API
@@ -71,9 +72,7 @@ public class RoleApi {
     public static Result addRoleMember(String authorization, String islandSourceId, String dodoSourceId, String roleId) throws IOException {
         String url = DodoOpenJava.BASEURL + "role/member/add";
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("islandSourceId", islandSourceId)
-                .put("dodoSourceId", dodoSourceId)
-                .put("roleId", roleId);
+        jsonObject.put("islandSourceId", islandSourceId).put("dodoSourceId", dodoSourceId).put("roleId", roleId);
         return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
@@ -105,9 +104,7 @@ public class RoleApi {
     public static Result removeRoleMember(String authorization, String islandSourceId, String dodoSourceId, String roleId) throws IOException {
         String url = DodoOpenJava.BASEURL + "role/member/remove";
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("islandSourceId", islandSourceId)
-                .put("dodoSourceId", dodoSourceId)
-                .put("roleId", roleId);
+        jsonObject.put("islandSourceId", islandSourceId).put("dodoSourceId", dodoSourceId).put("roleId", roleId);
         return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
@@ -175,8 +172,7 @@ public class RoleApi {
      */
     public static Result addRole(String authorization, String islandSourceId, String roleName, String roleColor, int position, String permission) throws IOException {
         String url = DodoOpenJava.BASEURL + "role/add";
-        JSONObject param = new JSONObject("{" +
-                                          "  \"islandSourceId\": \"" + islandSourceId + "\"}");
+        JSONObject param = new JSONObject("{" + "  \"islandSourceId\": \"" + islandSourceId + "\"}");
         return sendResult(authorization, roleName, roleColor, position, permission, url, param);
     }
 
@@ -199,6 +195,39 @@ public class RoleApi {
     }
 
     /**
+     * 获取成员列表
+     *
+     * @param authorization  authorization
+     * @param islandSourceId 群号
+     * @param roleId         身份组ID
+     * @param pageSize       页大小，最大100
+     * @param maxId          上一页最大ID值，为提升分页查询性能，需要传入上一页查询记录中的最大ID值，首页请传0
+     * @return JSON对象
+     * @throws IOException 失败后抛出
+     */
+    public static Result getMemberList(String authorization, String islandSourceId, String roleId, int pageSize, int maxId) throws IOException {
+        String url = DodoOpenJava.BASEURL + "role/member/list";
+        JSONObject param = new JSONObject(Map.of("islandSourceId", islandSourceId, "roleId", roleId, "pageSize", pageSize, "maxId", maxId));
+        return NetUtil.sendRequest(param.toString(), url, authorization);
+    }
+
+    /**
+     * 获取成员列表
+     *
+     * @param clientId       clientId
+     * @param token          token
+     * @param islandSourceId 群号
+     * @param roleId         身份组ID
+     * @param pageSize       页大小，最大100
+     * @param maxId          上一页最大ID值，为提升分页查询性能，需要传入上一页查询记录中的最大ID值，首页请传0
+     * @return JSON对象
+     * @throws IOException 失败后抛出
+     */
+    public static Result getMemberList(String clientId, String token, String islandSourceId, String roleId, int pageSize, int maxId) throws IOException {
+        return getMemberList(BaseUtil.generateAuthorization(clientId, token), islandSourceId, roleId, pageSize, maxId);
+    }
+
+    /**
      * 编辑身份组
      *
      * @param authorization  authorization
@@ -213,9 +242,7 @@ public class RoleApi {
      */
     public static Result editRole(String authorization, String islandSourceId, String roleId, String roleName, String roleColor, int position, String permission) throws IOException {
         String url = DodoOpenJava.BASEURL + "role/edit";
-        JSONObject param = new JSONObject("{" +
-                                          "  \"islandSourceId\": \"" + islandSourceId + "\"," +
-                                          "  \"roleId\": \"" + roleId + "\"}");
+        JSONObject param = new JSONObject("{" + "  \"islandSourceId\": \"" + islandSourceId + "\"," + "  \"roleId\": \"" + roleId + "\"}");
         return sendResult(authorization, roleName, roleColor, position, permission, url, param);
     }
 
@@ -299,8 +326,7 @@ public class RoleApi {
     public static Result deleteRole(String authorization, String islandSourceId, String roleId) throws IOException {
         String url = DodoOpenJava.BASEURL + "role/remove";
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("islandSourceId", islandSourceId)
-                .put("roleId", roleId);
+        jsonObject.put("islandSourceId", islandSourceId).put("roleId", roleId);
         return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 }

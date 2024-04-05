@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.impl;
 
 import io.github.minecraftchampions.dodoopenjava.Result;
+import io.github.minecraftchampions.dodoopenjava.api.Bot;
 import io.github.minecraftchampions.dodoopenjava.api.Role;
 import io.github.minecraftchampions.dodoopenjava.api.User;
 import io.github.minecraftchampions.dodoopenjava.permission.Permission;
@@ -18,6 +19,10 @@ import java.util.List;
 public class RoleImpl implements Role {
     @NonNull
     private String roleId;
+
+    @NonNull
+    private Bot bot;
+
     @Override
     public Result delete() {
         return null;
