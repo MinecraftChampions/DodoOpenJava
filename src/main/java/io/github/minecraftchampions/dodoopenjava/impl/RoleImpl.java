@@ -36,7 +36,7 @@ public class RoleImpl implements Role {
 
     @Override
     public Result delete() {
-        return null;
+        return getBot().getApi().V2.getRoleApi().deleteRole(getIslandSourceId(), getRoleId());
     }
 
     @Override
@@ -46,37 +46,42 @@ public class RoleImpl implements Role {
 
     @Override
     public Result editRoleName(String name) {
-        return null;
+        return getBot().getApi().V2.getRoleApi().editRole(getIslandSourceId(), getRoleId()
+                , name, null, (Integer) null, (String) null);
     }
 
     @Override
     public Result editRoleColor(String color) {
-        return null;
+        return getBot().getApi().V2.getRoleApi().editRole(getIslandSourceId(), getRoleId()
+                , null, color, (Integer) null, (String) null);
     }
 
     @Override
     public Result editPosition(int position) {
-        return null;
+        return getBot().getApi().V2.getRoleApi().editRole(getIslandSourceId(), getRoleId()
+                , null, null, position, (String) null);
     }
 
     @Override
     public Result editPermission(Permission permission) {
-        return editPermission(permission.toHexString());
+        return getBot().getApi().V2.getRoleApi().editRole(getIslandSourceId(), getRoleId()
+                , null, null, (Integer) null, permission);
     }
 
     @Override
     public Result editPermission(String permission) {
-        return null;
+        return getBot().getApi().V2.getRoleApi().editRole(getIslandSourceId(), getRoleId()
+                , null, null, (Integer) null, permission);
     }
 
     @Override
     public Result removeMember(String dodoId) {
-        return null;
+        return getBot().getApi().V2.getRoleApi().removeRoleMember(getIslandSourceId(), dodoId, getRoleId());
     }
 
     @Override
     public Result addMember(String dodoId) {
-        return null;
+        return getBot().getApi().V2.getRoleApi().addRoleMember(getIslandSourceId(), dodoId, getRoleId());
     }
 
     @Override
