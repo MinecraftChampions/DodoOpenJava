@@ -3,10 +3,7 @@ package io.github.minecraftchampions.dodoopenjava.impl;
 import io.github.minecraftchampions.dodoopenjava.Result;
 import io.github.minecraftchampions.dodoopenjava.api.Bot;
 import io.github.minecraftchampions.dodoopenjava.api.Channel;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NonNull;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.function.Function;
@@ -16,6 +13,7 @@ import java.util.function.Function;
  */
 @Slf4j
 @Getter
+@ToString
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class ChannelImpl implements Channel {
     @NonNull

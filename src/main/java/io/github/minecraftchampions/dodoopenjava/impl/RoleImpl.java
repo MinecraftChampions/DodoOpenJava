@@ -8,6 +8,7 @@ import io.github.minecraftchampions.dodoopenjava.permission.Permission;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -24,6 +25,7 @@ import java.util.concurrent.Executors;
 @Getter
 @Slf4j
 @AllArgsConstructor
+@ToString
 public class RoleImpl implements Role {
     @NonNull
     private String roleId;

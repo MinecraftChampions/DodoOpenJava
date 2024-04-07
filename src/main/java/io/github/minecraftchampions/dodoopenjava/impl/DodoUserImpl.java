@@ -7,6 +7,7 @@ import io.github.minecraftchampions.dodoopenjava.message.Message;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
 /**
  * Dodo用户实现
@@ -15,6 +16,7 @@ import lombok.RequiredArgsConstructor;
  */
 @Getter
 @RequiredArgsConstructor
+@ToString
 public class DodoUserImpl implements User {
     /**
      * -- GETTER --
