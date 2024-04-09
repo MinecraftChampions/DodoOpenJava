@@ -5,10 +5,7 @@ import io.github.minecraftchampions.dodoopenjava.api.Bot;
 import io.github.minecraftchampions.dodoopenjava.api.Role;
 import io.github.minecraftchampions.dodoopenjava.api.User;
 import io.github.minecraftchampions.dodoopenjava.permission.Permission;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.ToString;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -18,13 +15,15 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 身份组实现
  */
 @Getter
 @Slf4j
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
 public class RoleImpl implements Role {
     @NonNull
@@ -43,7 +42,19 @@ public class RoleImpl implements Role {
 
     @Override
     public long getMemberCount() {
-        return 0;
+        Result result = bot.getApi().V2.getRoleApi().getRoleList(getIslandSourceId());
+        if (result.isFailure()) {
+            log.error("获取频道信息失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
+            return 0;
+        }
+        JSONArray array = result.getJSONObjectData().getJSONArray("data");
+        String str = array.toString();
+        Pattern pattern = Pattern.compile("\"roleId\":\""+getRoleId()+"\"[^m]+memberCount\":([0-9]+),");
+        Matcher matcher = pattern.matcher(str);
+        if (!matcher.find()) {
+            return 0;
+        }
+        return Long.parseLong(matcher.group(1));
     }
 
     @Override

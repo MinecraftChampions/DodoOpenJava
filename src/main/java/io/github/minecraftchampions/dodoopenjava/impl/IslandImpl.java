@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -115,6 +116,16 @@ public class IslandImpl implements Island {
 
     @Override
     public Role getRole(String roleId) {
+        Result result = bot.getApi().V2.getRoleApi().getRoleList(getIslandId());
+        if (result.isFailure()) {
+            log.error("获取频道信息失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
+            return null;
+        }
+        JSONArray array = result.getJSONObjectData().getJSONArray("data");
+        String str = array.toString();
+        if (str.contains("\"roleId\":\"" + roleId + "\",")) {
+            return new RoleImpl(roleId, getIslandId(), bot);
+        }
         return null;
     }
 
