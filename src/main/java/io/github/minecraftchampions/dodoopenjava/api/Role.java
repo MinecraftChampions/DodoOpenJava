@@ -2,6 +2,7 @@ package io.github.minecraftchampions.dodoopenjava.api;
 
 import io.github.minecraftchampions.dodoopenjava.Result;
 import io.github.minecraftchampions.dodoopenjava.permission.Permission;
+import lombok.NonNull;
 
 import java.util.List;
 
@@ -40,14 +41,14 @@ public interface Role {
      *
      * @param name name
      */
-    Result editRoleName(String name);
+    Result editRoleName(@NonNull String name);
 
     /**
      * 编辑身份组颜色
      *
      * @param color 颜色
      */
-    Result editRoleColor(String color);
+    Result editRoleColor(@NonNull String color);
 
     /**
      * 编辑排序优先度
@@ -61,28 +62,28 @@ public interface Role {
      *
      * @param permission permission
      */
-    Result editPermission(Permission permission);
+    Result editPermission(@NonNull Permission permission);
 
     /**
      * 编辑权限
      *
      * @param permission permission
      */
-    Result editPermission(String permission);
+    Result editPermission(@NonNull String permission);
 
     /**
      * 移除成员
      *
      * @param dodoId id
      */
-    Result removeMember(String dodoId);
+    Result removeMember(@NonNull String dodoId);
 
     /**
      * 新增成员
      *
      * @param dodoId id
      */
-    Result addMember(String dodoId);
+    Result addMember(@NonNull String dodoId);
 
     /**
      * 获取成员列表

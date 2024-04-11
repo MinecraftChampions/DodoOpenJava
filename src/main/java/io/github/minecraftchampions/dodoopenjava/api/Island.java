@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.api;
 
+import lombok.NonNull;
 import org.json.JSONObject;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public interface Island {
      *
      * @return id
      */
-    String getIslandId();
+    String getIslandSourceId();
 
     /**
      * 获取群名
@@ -65,6 +66,14 @@ public interface Island {
     String getSystemChannelId();
 
     /**
+     * 获取指定身份组的成员数量
+     *
+     * @param roleId id
+     * @return count
+     */
+    List<User> getRoleMemberList(@NonNull String roleId);
+
+    /**
      * 获取群主id
      *
      * @return id
@@ -83,14 +92,14 @@ public interface Island {
      *
      * @return list
      */
-    List<JSONObject> getIslandMuteList();
+    List<User> getIslandMuteList();
 
     /**
      * 获取封禁列表
      *
      * @return list
      */
-    List<JSONObject> getIslandBanList();
+    List<User> getIslandBanList();
 
     /**
      * 获取成员列表
@@ -105,7 +114,7 @@ public interface Island {
      * @param dodoId id
      * @return user
      */
-    User getUser(String dodoId);
+    User getUser(@NonNull String dodoId);
 
     /**
      * 获取频道列表
@@ -120,7 +129,7 @@ public interface Island {
      * @param channelId 频道id
      * @return 频道
      */
-    Channel getChannel(String channelId);
+    Channel getChannel(@NonNull String channelId);
 
     /**
      * 获取身份组列表
@@ -135,7 +144,7 @@ public interface Island {
      * @param roleId id
      * @return role
      */
-    Role getRole(String roleId);
+    Role getRole(@NonNull String roleId);
 
     /**
      * 创建频道
@@ -144,7 +153,7 @@ public interface Island {
      * @param channelType 类型
      * @return Channel
      */
-    Channel createChannel(String channelName, int channelType);
+    Channel createChannel(@NonNull String channelName, int channelType);
 
     /**
      * 创建频道

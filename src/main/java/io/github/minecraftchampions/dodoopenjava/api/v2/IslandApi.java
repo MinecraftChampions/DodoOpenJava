@@ -107,11 +107,13 @@ public class IslandApi {
      * @param clientId       机器人唯一标识
      * @param token          机器人鉴权Token
      * @param islandSourceId 群号
+     * @param pageSize       页大小，最大100
+     * @param maxId          上一页最大ID值，为提升分页查询性能，需要传入上一页查询记录中的最大ID值，首页请传0
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static Result getIslandMuteList(String clientId, String token, String islandSourceId) throws IOException {
-        return getIslandMuteList(BaseUtil.generateAuthorization(clientId, token), islandSourceId);
+    public static Result getIslandMuteList(String clientId, String token, String islandSourceId, int pageSize, long maxId) throws IOException {
+        return getIslandMuteList(BaseUtil.generateAuthorization(clientId, token), islandSourceId, pageSize, maxId);
     }
 
     /**
@@ -119,13 +121,17 @@ public class IslandApi {
      *
      * @param authorization  authorization
      * @param islandSourceId 群号
+     * @param pageSize       页大小，最大100
+     * @param maxId          上一页最大ID值，为提升分页查询性能，需要传入上一页查询记录中的最大ID值，首页请传0
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static Result getIslandMuteList(String authorization, String islandSourceId) throws IOException {
+    public static Result getIslandMuteList(String authorization, String islandSourceId, int pageSize, long maxId) throws IOException {
         String url = DodoOpenJava.BASEURL + "island/mute/list";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId);
+        jsonObject.put("pageSize", pageSize);
+        jsonObject.put("maxId", maxId);
         return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
@@ -135,11 +141,13 @@ public class IslandApi {
      * @param clientId       机器人唯一标识
      * @param token          机器人鉴权Token
      * @param islandSourceId 群号
+     * @param pageSize       页大小，最大100
+     * @param maxId          上一页最大ID值，为提升分页查询性能，需要传入上一页查询记录中的最大ID值，首页请传0
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static Result getIslandBanList(String clientId, String token, String islandSourceId) throws IOException {
-        return getIslandBanList(BaseUtil.generateAuthorization(clientId, token), islandSourceId);
+    public static Result getIslandBanList(String clientId, String token, String islandSourceId, int pageSize, long maxId) throws IOException {
+        return getIslandBanList(BaseUtil.generateAuthorization(clientId, token), islandSourceId, pageSize, maxId);
     }
 
     /**
@@ -147,13 +155,17 @@ public class IslandApi {
      *
      * @param authorization  authorization
      * @param islandSourceId 群号
+     * @param pageSize       页大小，最大100
+     * @param maxId          上一页最大ID值，为提升分页查询性能，需要传入上一页查询记录中的最大ID值，首页请传0
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static Result getIslandBanList(String authorization, String islandSourceId) throws IOException {
+    public static Result getIslandBanList(String authorization, String islandSourceId, int pageSize, long maxId) throws IOException {
         String url = DodoOpenJava.BASEURL + "island/ban/list";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId);
+        jsonObject.put("pageSize", pageSize);
+        jsonObject.put("maxId", maxId);
         return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 }

@@ -2,6 +2,7 @@ package io.github.minecraftchampions.dodoopenjava.api;
 
 import io.github.minecraftchampions.dodoopenjava.Result;
 import io.github.minecraftchampions.dodoopenjava.message.text.TextMessage;
+import lombok.NonNull;
 
 /**
  * 命令发送者接口
@@ -14,7 +15,7 @@ public interface CommandSender extends User {
      *
      * @param message 编辑后的消息
      */
-    Result editMessage(TextMessage message);
+    Result editMessage(@NonNull TextMessage message);
 
     /**
      * 获取触发事件的频道ID

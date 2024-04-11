@@ -43,6 +43,14 @@ public interface Bot {
     void removeEventTrigger();
 
     /**
+     * 获取超级群
+     *
+     * @param islandSourceId id
+     * @return island
+     */
+    Island getIsland(@NonNull String islandSourceId);
+
+    /**
      * 注册事件监听器
      *
      * @param listeners 监听器

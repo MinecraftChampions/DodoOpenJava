@@ -14,7 +14,7 @@ import java.util.function.Function;
 @Slf4j
 @Getter
 @ToString
-@AllArgsConstructor(access = AccessLevel.PUBLIC)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class ChannelImpl implements Channel {
     @NonNull
     private String channelId;
@@ -25,7 +25,7 @@ public class ChannelImpl implements Channel {
     @NonNull
     private Bot bot;
 
-    public ChannelImpl(String channelId, Bot bot) {
+    public ChannelImpl(@NonNull String channelId, @NonNull Bot bot) {
         this.channelId = channelId;
         this.bot = bot;
         this.islandId = bot.getApi().V2.getChannelApi().getChannelInfo(channelId).ifFailure(result -> {
@@ -37,7 +37,7 @@ public class ChannelImpl implements Channel {
     }
 
     @Override
-    public Result editChannelName(String name) {
+    public Result editChannelName(@NonNull String name) {
         return bot.getApi().V2.getChannelApi().editChannel(islandId, name, channelId);
     }
 

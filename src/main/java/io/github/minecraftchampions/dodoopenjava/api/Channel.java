@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.api;
 
 import io.github.minecraftchampions.dodoopenjava.Result;
+import lombok.NonNull;
 
 /**
  * 频道
@@ -11,7 +12,7 @@ public interface Channel {
      *
      * @param name 名
      */
-    Result editChannelName(String name);
+    Result editChannelName(@NonNull String name);
 
     /**
      * 获取频道名

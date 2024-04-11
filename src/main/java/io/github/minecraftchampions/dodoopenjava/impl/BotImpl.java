@@ -4,6 +4,7 @@ import io.github.minecraftchampions.dodoopenjava.ApiResultsLogger;
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.Result;
 import io.github.minecraftchampions.dodoopenjava.api.Bot;
+import io.github.minecraftchampions.dodoopenjava.api.Island;
 import io.github.minecraftchampions.dodoopenjava.api.User;
 import io.github.minecraftchampions.dodoopenjava.command.CommandExecutor;
 import io.github.minecraftchampions.dodoopenjava.command.CommandManager;
@@ -117,6 +118,19 @@ public class BotImpl implements Bot {
             eventTrigger.close();
             eventTrigger = null;
         }
+    }
+
+    @Override
+    public Island getIsland(@NonNull String islandSourceId) {
+        Result result = getApi().V2.getIslandApi().getIslandList();
+        if (result.isFailure()) {
+            log.error("获取频道信息失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
+            return null;
+        }
+        if (result.getJSONObjectData().toString().contains("\"islandSourceId\": \"" + islandSourceId + "\"")) {
+            return new IslandImpl(islandSourceId, this);
+        }
+        return null;
     }
 
     /**
@@ -529,13 +543,13 @@ public class BotImpl implements Bot {
                 }
 
                 @SneakyThrows
-                public Result getIslandMuteList(String islandSourceId) {
-                    return io.github.minecraftchampions.dodoopenjava.api.v2.IslandApi.getIslandMuteList(bot.getAuthorization(), islandSourceId);
+                public Result getIslandMuteList(String islandSourceId, int pageSize, long maxId) {
+                    return io.github.minecraftchampions.dodoopenjava.api.v2.IslandApi.getIslandMuteList(bot.getAuthorization(), islandSourceId, pageSize, maxId);
                 }
 
                 @SneakyThrows
-                public Result getIslandBanList(String islandSourceId) {
-                    return io.github.minecraftchampions.dodoopenjava.api.v2.IslandApi.getIslandBanList(bot.getAuthorization(), islandSourceId);
+                public Result getIslandBanList(String islandSourceId, int pageSize, long maxId) {
+                    return io.github.minecraftchampions.dodoopenjava.api.v2.IslandApi.getIslandBanList(bot.getAuthorization(), islandSourceId, pageSize, maxId);
                 }
             }
 
