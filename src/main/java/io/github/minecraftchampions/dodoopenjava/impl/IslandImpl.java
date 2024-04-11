@@ -218,7 +218,7 @@ public class IslandImpl implements Island {
             log.error("获取频道信息失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
             return null;
         }
-        if (result.getJSONObjectData().toString().contains("\"channelId\": \"" + channelId + "\"")) {
+        if (result.getJSONObjectData().toString().contains("\"channelId\":\"" + channelId + "\"")) {
             return new ChannelImpl(channelId, getBot());
         }
         return null;

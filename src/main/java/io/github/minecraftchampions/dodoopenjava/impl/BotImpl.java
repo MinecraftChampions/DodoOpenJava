@@ -127,7 +127,7 @@ public class BotImpl implements Bot {
             log.error("获取频道信息失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
             return null;
         }
-        if (result.getJSONObjectData().toString().contains("\"islandSourceId\": \"" + islandSourceId + "\"")) {
+        if (result.getJSONObjectData().toString().contains("\"islandSourceId\":\"" + islandSourceId + "\"")) {
             return new IslandImpl(islandSourceId, this);
         }
         return null;
