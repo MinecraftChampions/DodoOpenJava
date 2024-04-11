@@ -70,118 +70,155 @@ public class IslandImpl implements Island {
 
     @Override
     public List<User> getIslandMuteList() {
-        ExecutorService executorService = Executors.newFixedThreadPool(3);
-        List<User> userList = new ArrayList<>();
-        Int maxId = new Int(0);
-        List<CompletableFuture<?>> completableFutures = new ArrayList<>();
-        while (true) {
-            Result result = bot.getApi().V2.getIslandApi().getIslandMuteList(getIslandSourceId(),
-                    100, maxId.getValue()).ifFailure(r -> {
-                log.error("获取成员信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
-            });
-            if (result.isSuccess()) {
-                if (!(splice(result,userList,maxId,completableFutures,executorService))) {
+        return CompletableFuture.supplyAsync(() -> {
+            ExecutorService executorService = Executors.newFixedThreadPool(3);
+            List<User> userList = new ArrayList<>();
+            Longer maxId = new Longer(0);
+            List<CompletableFuture<?>> completableFutures = new ArrayList<>();
+            while (true) {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                Result result = bot.getApi().V2.getIslandApi().getIslandMuteList(getIslandSourceId(),
+                        100, maxId.getValue()).ifFailure(r -> {
+                    log.error("获取成员信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
+                });
+                if (result.isSuccess()) {
+                    if (!(splice(result, userList, maxId, completableFutures, executorService))) {
+                        break;
+                    }
+                } else {
                     break;
                 }
-            } else {
-                break;
             }
-        }
-        CompletableFuture.allOf(completableFutures.toArray(CompletableFuture[]::new)).join();
-        executorService.shutdown();
-        return userList;
+            CompletableFuture.allOf(completableFutures.toArray(CompletableFuture[]::new)).join();
+            executorService.shutdown();
+            return userList;
+        }).join();
     }
 
     @Override
     public List<User> getIslandBanList() {
-        ExecutorService executorService = Executors.newFixedThreadPool(3);
-        List<User> userList = new ArrayList<>();
-        Int maxId = new Int(0);
-        List<CompletableFuture<?>> completableFutures = new ArrayList<>();
-        while (true) {
-            Result result = bot.getApi().V2.getIslandApi().getIslandBanList(getIslandSourceId(),
-                    100, maxId.getValue()).ifFailure(r -> {
-                log.error("获取成员信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
-            });
-            if (result.isSuccess()) {
-                if (!(splice(result,userList,maxId,completableFutures,executorService))) {
+        return CompletableFuture.supplyAsync(() -> {
+            ExecutorService executorService = Executors.newFixedThreadPool(3);
+            List<User> userList = new ArrayList<>();
+            Longer maxId = new Longer(0);
+            List<CompletableFuture<?>> completableFutures = new ArrayList<>();
+            while (true) {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                Result result = bot.getApi().V2.getIslandApi().getIslandBanList(getIslandSourceId(),
+                        100, maxId.getValue()).ifFailure(r -> {
+                    log.error("获取成员信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
+                });
+                if (result.isSuccess()) {
+                    if (!(splice(result, userList, maxId, completableFutures, executorService))) {
+                        break;
+                    }
+                } else {
                     break;
                 }
-            } else {
-                break;
             }
-        }
-        CompletableFuture.allOf(completableFutures.toArray(CompletableFuture[]::new)).join();
-        executorService.shutdown();
-        return userList;
+            CompletableFuture.allOf(completableFutures.toArray(CompletableFuture[]::new)).join();
+            executorService.shutdown();
+            return userList;
+        }).join();
     }
 
     @Override
     public List<User> getRoleMemberList(@NonNull String roleId) {
-        ExecutorService executorService = Executors.newFixedThreadPool(3);
-        List<User> userList = new ArrayList<>();
-        Int maxId = new Int(0);
-        List<CompletableFuture<?>> completableFutures = new ArrayList<>();
-        while (true) {
-            Result result = bot.getApi().V2.getRoleApi().getMemberList(getIslandSourceId(), roleId,
-                    100, maxId.getValue()).ifFailure(r -> {
-                log.error("获取成员信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
-            });
-            if (result.isSuccess()) {
-                if (!(splice(result,userList,maxId,completableFutures,executorService))) {
+        return CompletableFuture.supplyAsync(() -> {
+            ExecutorService executorService = Executors.newFixedThreadPool(3);
+            List<User> userList = new ArrayList<>();
+            Longer maxId = new Longer(0);
+            List<CompletableFuture<?>> completableFutures = new ArrayList<>();
+            while (true) {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                Result result = bot.getApi().V2.getRoleApi().getMemberList(getIslandSourceId(), roleId,
+                        100, maxId.getValue()).ifFailure(r -> {
+                    log.error("获取成员信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
+                });
+                if (result.isSuccess()) {
+                    if (!(splice(result, userList, maxId, completableFutures, executorService))) {
+                        break;
+                    }
+                } else {
                     break;
                 }
-            } else {
-                break;
             }
-        }
-        CompletableFuture.allOf(completableFutures.toArray(CompletableFuture[]::new)).join();
-        executorService.shutdown();
-        return userList;
+            CompletableFuture.allOf(completableFutures.toArray(CompletableFuture[]::new)).join();
+            executorService.shutdown();
+            return userList;
+        }).join();
     }
 
-    private boolean splice(Result result, List<User> userList, Int maxId,
-                           List<CompletableFuture<?>> completableFutures,ExecutorService executorService) {
-        JSONArray array = result.getJSONObjectData().getJSONObject("data")
-                .getJSONArray("list");
+    private boolean splice(Result result, List<User> userList, Longer maxId,
+                           List<CompletableFuture<?>> completableFutures, ExecutorService executorService) {
+        if (maxId.getValue() == -1) {
+            return false;
+        }
+        JSONObject json = result.getJSONObjectData().getJSONObject("data");
+        if (json.isEmpty()) {
+            return false;
+        }
+        JSONArray array = json.getJSONArray("list");
+        if (array.isEmpty()) {
+            return false;
+        }
         completableFutures.add(CompletableFuture.runAsync(() -> array.forEach(o -> {
             if (o instanceof JSONObject jsonObject) {
                 userList.add(new DodoUserImpl(jsonObject.getString("dodoSourceId"), getIslandSourceId(), getBot()));
             }
         }), executorService));
         maxId.setValue(result.getJSONObjectData().getJSONObject("data")
-                .getInt("maxId"));
-        return maxId.getValue() != -1;
+                .getLong("maxId"));
+        return true;
     }
 
     @Data
     @AllArgsConstructor
-    private static class Int {
-        private int value;
+    private static class Longer {
+        private long value;
     }
 
     @Override
     public List<User> getMemberList() {
-        ExecutorService executorService = Executors.newFixedThreadPool(3);
-        List<User> userList = new ArrayList<>();
-        Int maxId = new Int(0);
-        List<CompletableFuture<?>> completableFutures = new ArrayList<>();
-        while (true) {
-            Result result = bot.getApi().V2.getMemberApi().getMemberList(getIslandSourceId(),
-                    100, maxId.getValue()).ifFailure(r -> {
-                log.error("获取成员信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
-            });
-            if (result.isSuccess()) {
-                if (!(splice(result,userList,maxId,completableFutures,executorService))) {
+        return CompletableFuture.supplyAsync(() -> {
+            ExecutorService executorService = Executors.newFixedThreadPool(3);
+            List<User> userList = new ArrayList<>();
+            Longer maxId = new Longer(0);
+            List<CompletableFuture<?>> completableFutures = new ArrayList<>();
+            while (true) {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                Result result = bot.getApi().V2.getMemberApi().getMemberList(getIslandSourceId(),
+                        100, maxId.getValue()).ifFailure(r -> {
+                    log.error("获取成员信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
+                });
+                if (result.isSuccess()) {
+                    if (!(splice(result, userList, maxId, completableFutures, executorService))) {
+                        break;
+                    }
+                } else {
                     break;
                 }
-            } else {
-                break;
             }
-        }
-        CompletableFuture.allOf(completableFutures.toArray(CompletableFuture[]::new)).join();
-        executorService.shutdown();
-        return userList;
+            CompletableFuture.allOf(completableFutures.toArray(CompletableFuture[]::new)).join();
+            executorService.shutdown();
+            return userList;
+        }).join();
     }
 
     @Override

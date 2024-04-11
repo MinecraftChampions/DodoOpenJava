@@ -205,7 +205,7 @@ public class RoleApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static Result getMemberList(String authorization, String islandSourceId, String roleId, int pageSize, int maxId) throws IOException {
+    public static Result getMemberList(String authorization, String islandSourceId, String roleId, int pageSize, long maxId) throws IOException {
         String url = DodoOpenJava.BASEURL + "role/member/list";
         JSONObject param = new JSONObject(Map.of("islandSourceId", islandSourceId, "roleId", roleId, "pageSize", pageSize, "maxId", maxId));
         return NetUtil.sendRequest(param.toString(), url, authorization);
@@ -223,7 +223,7 @@ public class RoleApi {
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static Result getMemberList(String clientId, String token, String islandSourceId, String roleId, int pageSize, int maxId) throws IOException {
+    public static Result getMemberList(String clientId, String token, String islandSourceId, String roleId, int pageSize, long maxId) throws IOException {
         return getMemberList(BaseUtil.generateAuthorization(clientId, token), islandSourceId, roleId, pageSize, maxId);
     }
 

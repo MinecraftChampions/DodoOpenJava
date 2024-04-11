@@ -733,7 +733,7 @@ public class BotImpl implements Bot {
                 }
 
                 @SneakyThrows
-                public Result getMemberList(String islandSourceId, String roleId, int pageSize, int maxId) {
+                public Result getMemberList(String islandSourceId, String roleId, int pageSize, long maxId) {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.RoleApi.getMemberList(bot.getAuthorization(), islandSourceId, roleId, pageSize, maxId);
                 }
             }
