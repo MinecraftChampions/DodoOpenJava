@@ -35,7 +35,7 @@ import java.util.Objects;
 @Slf4j
 public class BotImpl implements Bot {
     public String toString() {
-        return getAuthorization();
+        return getClientId();
     }
 
     /**
