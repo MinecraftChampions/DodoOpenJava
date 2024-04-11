@@ -31,10 +31,13 @@ import java.util.Objects;
  * @author qscbm187531
  */
 @Getter
-@ToString
 @RequiredArgsConstructor
 @Slf4j
 public class BotImpl implements Bot {
+    public String toString() {
+        return getAuthorization();
+    }
+
     /**
      * 机器人唯一标识
      */

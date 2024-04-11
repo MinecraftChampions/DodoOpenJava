@@ -155,9 +155,8 @@ public class IslandImpl implements Island {
     }
 
     @Data
-    @RequiredArgsConstructor
+    @AllArgsConstructor
     private static class Int {
-        @NonNull
         private int value;
     }
 
