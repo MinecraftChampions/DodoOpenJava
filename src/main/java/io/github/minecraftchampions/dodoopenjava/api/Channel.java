@@ -33,7 +33,7 @@ public interface Channel {
      *
      * @return id
      */
-    String getIslandId();
+    String getIslandSourceId();
 
     /**
      * 获取类型
@@ -77,4 +77,11 @@ public interface Channel {
      * 删除频道
      */
     Result delete();
+
+    /**
+     * 获取超级群
+     *
+     * @return 超级群
+     */
+    Island getIsland();
 }

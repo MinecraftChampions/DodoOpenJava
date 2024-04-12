@@ -3,6 +3,7 @@ package io.github.minecraftchampions.dodoopenjava.impl;
 import io.github.minecraftchampions.dodoopenjava.Result;
 import io.github.minecraftchampions.dodoopenjava.api.Bot;
 import io.github.minecraftchampions.dodoopenjava.api.Channel;
+import io.github.minecraftchampions.dodoopenjava.api.Island;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,7 +21,7 @@ public class ChannelImpl implements Channel {
     private String channelId;
 
     @NonNull
-    private String islandId;
+    private String islandSourceId;
 
     @NonNull
     private Bot bot;
@@ -28,7 +29,7 @@ public class ChannelImpl implements Channel {
     public ChannelImpl(@NonNull String channelId, @NonNull Bot bot) {
         this.channelId = channelId;
         this.bot = bot;
-        this.islandId = bot.getApi().V2.getChannelApi().getChannelInfo(channelId).ifFailure(result -> {
+        this.islandSourceId = bot.getApi().V2.getChannelApi().getChannelInfo(channelId).ifFailure(result -> {
                     log.error("获取频道信息失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
                 })
                 .ifSuccess((Function<Result, String>) (result) ->
@@ -38,7 +39,7 @@ public class ChannelImpl implements Channel {
 
     @Override
     public Result editChannelName(@NonNull String name) {
-        return bot.getApi().V2.getChannelApi().editChannel(islandId, name, channelId);
+        return bot.getApi().V2.getChannelApi().editChannel(islandSourceId, name, channelId);
     }
 
     @Override
@@ -73,6 +74,11 @@ public class ChannelImpl implements Channel {
 
     @Override
     public Result delete() {
-        return bot.getApi().V2.getChannelApi().deleteChannel(getIslandId(), getChannelId());
+        return bot.getApi().V2.getChannelApi().deleteChannel(getIslandSourceId(), getChannelId());
+    }
+
+    @Override
+    public Island getIsland() {
+        return new IslandImpl(getIslandSourceId(), bot);
     }
 }

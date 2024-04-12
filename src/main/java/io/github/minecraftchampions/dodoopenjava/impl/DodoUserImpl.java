@@ -2,6 +2,7 @@ package io.github.minecraftchampions.dodoopenjava.impl;
 
 import io.github.minecraftchampions.dodoopenjava.Result;
 import io.github.minecraftchampions.dodoopenjava.api.Bot;
+import io.github.minecraftchampions.dodoopenjava.api.Island;
 import io.github.minecraftchampions.dodoopenjava.api.User;
 import io.github.minecraftchampions.dodoopenjava.message.Message;
 import lombok.*;
@@ -35,6 +36,11 @@ public class DodoUserImpl implements User {
      */
     @NonNull
     private final Bot bot;
+
+    @Override
+    public Island getIsland() {
+        return new IslandImpl(getIslandSourceId(), bot);
+    }
 
     /**
      * 获取加入时间

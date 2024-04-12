@@ -91,4 +91,11 @@ public interface Role {
      * @return list
      */
     List<User> getMemberList();
+
+    /**
+     * 获取超级群
+     *
+     * @return 超级群
+     */
+    Island getIsland();
 }

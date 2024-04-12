@@ -197,4 +197,11 @@ public interface User {
      * @return id
      */
     String sendPersonalMessage(@NonNull Message message);
+
+    /**
+     * 获取超级群
+     *
+     * @return 超级群
+     */
+    Island getIsland();
 }

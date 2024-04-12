@@ -2,6 +2,7 @@ package io.github.minecraftchampions.dodoopenjava.impl;
 
 import io.github.minecraftchampions.dodoopenjava.Result;
 import io.github.minecraftchampions.dodoopenjava.api.Bot;
+import io.github.minecraftchampions.dodoopenjava.api.Island;
 import io.github.minecraftchampions.dodoopenjava.api.Role;
 import io.github.minecraftchampions.dodoopenjava.api.User;
 import io.github.minecraftchampions.dodoopenjava.permission.Permission;
@@ -94,6 +95,11 @@ public class RoleImpl implements Role {
 
     @Override
     public List<User> getMemberList() {
-        return getBot().getIsland(getIslandSourceId()).getRoleMemberList(getRoleId());
+        return getIsland().getRoleMemberList(getRoleId());
+    }
+
+    @Override
+    public Island getIsland() {
+        return new IslandImpl(getIslandSourceId(), bot);
     }
 }
