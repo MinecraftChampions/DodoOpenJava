@@ -103,8 +103,10 @@ public class ChannelApi {
         String url = DodoOpenJava.BASEURL + "channel/add";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
-                .put("channelName", channelName)
                 .put("channelType", channelType);
+        if (channelName != null) {
+            jsonObject.put("channelName", channelName);
+        }
         return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
