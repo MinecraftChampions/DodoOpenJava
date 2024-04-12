@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.api;
 
+import io.github.minecraftchampions.dodoopenjava.permission.Permission;
 import lombok.NonNull;
 import org.json.JSONObject;
 
@@ -162,4 +163,16 @@ public interface Island {
      * @return Channel
      */
     Channel createChannel(int channelType);
+
+    /**
+     * 创建身分组
+     * 可传 null
+     *
+     * @param roleName   name
+     * @param roleColor  color
+     * @param position   权重
+     * @param permission 权限
+     * @return role
+     */
+    Role createRole(String roleName, String roleColor, int position, Permission permission);
 }

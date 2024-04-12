@@ -2,6 +2,7 @@ package io.github.minecraftchampions.dodoopenjava.impl;
 
 import io.github.minecraftchampions.dodoopenjava.Result;
 import io.github.minecraftchampions.dodoopenjava.api.*;
+import io.github.minecraftchampions.dodoopenjava.permission.Permission;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONArray;
@@ -333,7 +334,7 @@ public class IslandImpl implements Island {
     public Channel createChannel(@NonNull String channelName, int channelType) {
         Result result = bot.getApi().V2.getChannelApi().addChannel(getIslandSourceId(), channelName, channelType);
         if (result.isFailure()) {
-            log.error("创建失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
+            log.error("创建频道失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
             return null;
         }
         return new ChannelImpl(result.getJSONObjectData().getString("channelId"), getIslandSourceId(), bot);
@@ -342,5 +343,15 @@ public class IslandImpl implements Island {
     @Override
     public Channel createChannel(int channelType) {
         return createChannel(null, channelType);
+    }
+
+    @Override
+    public Role createRole(String roleName, String roleColor, int position, Permission permission) {
+        Result result = bot.getApi().V2.getRoleApi().addRole(getIslandSourceId(), roleName, roleColor, position, permission);
+        if (result.isFailure()) {
+            log.error("创建身份组失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
+            return null;
+        }
+        return new RoleImpl(result.getJSONObjectData().getString("roleId"), getIslandSourceId(), bot);
     }
 }
