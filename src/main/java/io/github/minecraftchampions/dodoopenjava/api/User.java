@@ -190,6 +190,8 @@ public interface User {
      */
     Result removeIntegral(long integral);
 
+    Bot getBot();
+
     /**
      * 发送私聊
      *

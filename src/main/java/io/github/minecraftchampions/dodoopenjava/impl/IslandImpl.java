@@ -203,7 +203,7 @@ public class IslandImpl implements Island {
         }).join();
     }
 
-    private boolean splice(Result result, List<User> userList, Longer maxId,
+    protected boolean splice(Result result, List<User> userList, Longer maxId,
                            List<CompletableFuture<?>> completableFutures, ExecutorService executorService) {
         JSONObject json = result.getJSONObjectData().getJSONObject("data");
         if (json.isEmpty()) {
@@ -225,7 +225,7 @@ public class IslandImpl implements Island {
 
     @Data
     @AllArgsConstructor
-    private static class Longer {
+    protected static class Longer {
         private long value;
     }
 

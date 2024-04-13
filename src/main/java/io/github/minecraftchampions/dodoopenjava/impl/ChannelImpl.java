@@ -1,9 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.impl;
 
 import io.github.minecraftchampions.dodoopenjava.Result;
-import io.github.minecraftchampions.dodoopenjava.api.Bot;
-import io.github.minecraftchampions.dodoopenjava.api.Channel;
-import io.github.minecraftchampions.dodoopenjava.api.Island;
+import io.github.minecraftchampions.dodoopenjava.api.*;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
@@ -49,9 +47,9 @@ public class ChannelImpl implements Channel {
     }
 
     @Override
-    public int getChannelType() {
-        return bot.getApi().V2.getChannelApi().getChannelInfo(channelId).ifSuccess((Function<Result, Integer>) result ->
-                result.getJSONObjectData().getJSONObject("data").getInt("channelType"));
+    public ChannelType getChannelType() {
+        return ChannelType.of(bot.getApi().V2.getChannelApi().getChannelInfo(channelId).ifSuccess((Function<Result, Integer>) result ->
+                result.getJSONObjectData().getJSONObject("data").getInt("channelType")));
     }
 
     @Override

@@ -85,6 +85,8 @@ public interface Role {
      */
     Result addMember(@NonNull String dodoId);
 
+    Bot getBot();
+
     /**
      * 获取成员列表
      *

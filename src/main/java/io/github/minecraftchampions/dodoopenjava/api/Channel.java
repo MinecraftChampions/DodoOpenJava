@@ -40,7 +40,7 @@ public interface Channel {
      *
      * @return type
      */
-    int getChannelType();
+    ChannelType getChannelType();
 
 
     /**
@@ -84,4 +84,6 @@ public interface Channel {
      * @return 超级群
      */
     Island getIsland();
+
+    Bot getBot();
 }

@@ -164,6 +164,8 @@ public interface Island {
      */
     Channel createChannel(int channelType);
 
+    Bot getBot();
+
     /**
      * 创建身分组
      * 可传 null
