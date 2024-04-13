@@ -17,7 +17,10 @@ import io.github.minecraftchampions.dodoopenjava.message.card.CardMessage;
 import io.github.minecraftchampions.dodoopenjava.message.text.TextMessage;
 import io.github.minecraftchampions.dodoopenjava.permission.Permission;
 import io.github.minecraftchampions.dodoopenjava.util.BaseUtil;
-import lombok.*;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 
@@ -460,6 +463,21 @@ public class BotImpl implements Bot {
                 @SneakyThrows
                 public Result sendMessage(String channelId, Message messageBody) {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.ChannelMessageApi.sendMessage(bot.getAuthorization(), channelId, messageBody);
+                }
+
+                @SneakyThrows
+                public Result editChannelMessage(String messageId, Message message) {
+                    return io.github.minecraftchampions.dodoopenjava.api.v2.ChannelMessageApi.editChannelMessage(bot.getAuthorization(), messageId, messageId);
+                }
+
+                @SneakyThrows
+                public Result referencedMessage(String channelId, Message message, String referencedMessageId) {
+                    return io.github.minecraftchampions.dodoopenjava.api.v2.ChannelMessageApi.referencedMessage(bot.getAuthorization(), channelId, message, referencedMessageId);
+                }
+
+                @SneakyThrows
+                public Result sendChannelPersonalMessage(String channelId, Message messageBody, String dodoSourceId) {
+                    return io.github.minecraftchampions.dodoopenjava.api.v2.ChannelMessageApi.sendChannelPersonalMessage(bot.getAuthorization(), channelId, messageBody, dodoSourceId);
                 }
             }
 

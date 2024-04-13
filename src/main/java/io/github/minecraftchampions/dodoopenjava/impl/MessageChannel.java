@@ -31,8 +31,8 @@ public class MessageChannel extends ChannelImpl {
      * @param message message
      * @return result
      */
-    public Result sendMessage(Message message) {
-        return null;
+    public Result sendMessage(@NonNull Message message) {
+        return getBot().getApi().V2.getChannelMessageApi().sendMessage(getChannelId(), message);
     }
 
     /**
@@ -42,18 +42,44 @@ public class MessageChannel extends ChannelImpl {
      * @param message   消息
      * @return result
      */
-    public Result editMessage(String messageId, Message message) {
-        return null;
+    public Result editMessage(@NonNull String messageId, @NonNull Message message) {
+        return getBot().getApi().V2.getChannelMessageApi().editChannelMessage(messageId, message);
+    }
+
+    /**
+     * 回复消息
+     *
+     * @param messageId 消息id
+     * @param message   消息
+     * @return result
+     */
+    public Result referencedMessage(@NonNull String messageId, @NonNull Message message) {
+        return getBot().getApi().V2.getChannelMessageApi().referencedMessage(getChannelId(), message, messageId);
+    }
+
+    /**
+     * 发送频道私信
+     *
+     * @param dodoSourceId id
+     * @param message      消息
+     * @return result
+     */
+    public Result sendPersonalMessage(@NonNull String dodoSourceId, @NonNull Message message) {
+        return getBot().getApi().V2.getChannelMessageApi().sendChannelPersonalMessage(getChannelId(), message, dodoSourceId);
     }
 
     /**
      * 撤回消息
      *
      * @param messageId 消息id
+     * @param reason    理由(传null视为不传参数)
      * @return result
      */
-    public Result withdrawMessage(String messageId) {
-        return null;
+    public Result withdrawMessage(@NonNull String messageId, String reason) {
+        if (reason != null) {
+            return getBot().getApi().V2.getChannelMessageApi().withdrawChannelMessageWithReason(messageId, reason);
+        }
+        return getBot().getApi().V2.getChannelMessageApi().withdrawChannelMessage(messageId);
     }
 
     /**
@@ -62,7 +88,7 @@ public class MessageChannel extends ChannelImpl {
      * @param messageId 消息id
      * @return result
      */
-    public Result pinMessage(String messageId) {
+    public Result pinMessage(@NonNull String messageId) {
         return null;
     }
 
@@ -72,7 +98,7 @@ public class MessageChannel extends ChannelImpl {
      * @param messageId 消息id
      * @return result
      */
-    public Result unpinMessage(String messageId) {
+    public Result unpinMessage(@NonNull String messageId) {
         return null;
     }
 
@@ -82,7 +108,7 @@ public class MessageChannel extends ChannelImpl {
      * @param messageId 消息id
      * @return 反应列表（前为反应表情，后为数量）
      */
-    public Map<Emoji, Integer> getMessageReactionList(String messageId) {
+    public Map<Emoji, Integer> getMessageReactionList(@NonNull String messageId) {
         return null;
     }
 
@@ -93,7 +119,7 @@ public class MessageChannel extends ChannelImpl {
      * @param emoji     消息反应
      * @return 用户列表
      */
-    public List<User> getMessageReactionMemberList(String messageId, Emoji emoji) {
+    public List<User> getMessageReactionMemberList(@NonNull String messageId, @NonNull Emoji emoji) {
         return null;
     }
 
@@ -104,7 +130,7 @@ public class MessageChannel extends ChannelImpl {
      * @param emoji     消息反应
      * @return result
      */
-    public Result addMessageReactionList(String messageId, Emoji emoji) {
+    public Result addMessageReactionList(@NonNull String messageId, @NonNull Emoji emoji) {
         return null;
     }
 
@@ -115,7 +141,7 @@ public class MessageChannel extends ChannelImpl {
      * @param emoji     消息反应
      * @return result
      */
-    public Result removeMessageReactionMemberList(String messageId, Emoji emoji) {
+    public Result removeMessageReactionMemberList(@NonNull String messageId, @NonNull Emoji emoji) {
         return null;
     }
 }

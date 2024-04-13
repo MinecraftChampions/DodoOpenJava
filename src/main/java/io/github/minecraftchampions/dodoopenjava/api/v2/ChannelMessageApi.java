@@ -226,6 +226,41 @@ public class ChannelMessageApi {
         return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
+
+    /**
+     * 回复消息
+     *
+     * @param clientId            机器人唯一标识
+     * @param token               机器人鉴权Token
+     * @param message             发送的消息
+     * @param referencedMessageId 回复的消息ID
+     * @param channelId           频道号
+     * @return JSON对象
+     * @throws IOException 失败后抛出
+     */
+    public static Result referencedMessage(String clientId, String token, String channelId, Message message, String referencedMessageId) throws IOException {
+        return referencedMessage(BaseUtil.generateAuthorization(clientId, token), channelId, message, referencedMessageId);
+    }
+
+    /**
+     * 回复消息
+     *
+     * @param authorization       authorization
+     * @param message             发送的消息
+     * @param channelId           频道号
+     * @param referencedMessageId 回复的消息ID
+     * @return JSON对象
+     * @throws IOException 失败后抛出
+     */
+    public static Result referencedMessage(String authorization, String channelId, Message message, String referencedMessageId) throws IOException {
+        String url = DodoOpenJava.BASEURL + "channel/message/send";
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("channelId", channelId)
+                .put("messageType", 1)
+                .put("messageBody", message);
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+    }
+
     /**
      * 发送图片消息
      *
@@ -520,6 +555,37 @@ public class ChannelMessageApi {
     }
 
     /**
+     * 编辑消息
+     *
+     * @param clientId  机器人唯一标识
+     * @param token     机器人鉴权Token
+     * @param messageId 待编辑的消息ID
+     * @param message   message
+     * @return JSON对象
+     * @throws IOException 失败后抛出
+     */
+    public static Result editChannelMessage(String clientId, String token, String messageId, Message message) throws IOException {
+        return editChannelMessage(BaseUtil.generateAuthorization(clientId, token), messageId, message);
+    }
+
+    /**
+     * 编辑消息
+     *
+     * @param authorization authorization
+     * @param messageId     待编辑的消息ID
+     * @param message       message
+     * @return JSON对象
+     * @throws IOException 失败后抛出
+     */
+    public static Result editChannelMessage(String authorization, String messageId, Message message) throws IOException {
+        String url = DodoOpenJava.BASEURL + "channel/message/edit";
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("messageId", messageId)
+                .put("messageBody", message.toMessage());
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+    }
+
+    /**
      * 撤回消息
      *
      * @param clientId  机器人唯一标识
@@ -744,6 +810,41 @@ public class ChannelMessageApi {
         jsonObject.put("channelId", channelId)
                 .put("messageType", messageBody.getType())
                 .put("messageBody", messageBody.toMessage());
+        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+    }
+
+    /**
+     * 发送频道私信消息
+     *
+     * @param clientId     机器人唯一标识
+     * @param token        机器人鉴权Token
+     * @param channelId    频道号
+     * @param messageBody  消息
+     * @param dodoSourceId id
+     * @return JSON对象
+     * @throws IOException 失败后抛出
+     */
+    public static Result sendChannelPersonalMessage(String clientId, String token, String channelId, Message messageBody, String dodoSourceId) throws IOException {
+        return sendChannelPersonalMessage(BaseUtil.generateAuthorization(clientId, token), channelId, messageBody, dodoSourceId);
+    }
+
+    /**
+     * 发送频道私信消息
+     *
+     * @param authorization authorization
+     * @param channelId     频道号
+     * @param messageBody   消息
+     * @param dodoSourceId  id
+     * @return JSON对象
+     * @throws IOException 失败后抛出
+     */
+    public static Result sendChannelPersonalMessage(String authorization, String channelId, Message messageBody, String dodoSourceId) throws IOException {
+        String url = DodoOpenJava.BASEURL + "channel/message/send";
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("channelId", channelId)
+                .put("messageType", messageBody.getType())
+                .put("messageBody", messageBody.toMessage())
+                .put("dodoSourceId", dodoSourceId);
         return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
