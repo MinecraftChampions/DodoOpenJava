@@ -11,9 +11,13 @@ import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * 消息频道实现
@@ -96,7 +100,7 @@ public class MessageChannel extends ChannelImpl {
      * @return result
      */
     public Result pinMessage(@NonNull String messageId) {
-        return getBot().getApi().V2.getChannelMessageApi().setChannelMessageTop(messageId,1);
+        return getBot().getApi().V2.getChannelMessageApi().setChannelMessageTop(messageId, 1);
     }
 
     /**
@@ -106,7 +110,7 @@ public class MessageChannel extends ChannelImpl {
      * @return result
      */
     public Result unpinMessage(@NonNull String messageId) {
-        return getBot().getApi().V2.getChannelMessageApi().setChannelMessageTop(messageId,0);
+        return getBot().getApi().V2.getChannelMessageApi().setChannelMessageTop(messageId, 0);
     }
 
     /**
@@ -143,7 +147,33 @@ public class MessageChannel extends ChannelImpl {
      * @return 用户列表
      */
     public List<User> getMessageReactionMemberList(@NonNull String messageId, @NonNull Emoji emoji) {
-        return null;
+        return CompletableFuture.supplyAsync(() -> {
+            ExecutorService executorService = Executors.newFixedThreadPool(3);
+            List<User> userList = new ArrayList<>();
+            IslandImpl.Longer maxId = new IslandImpl.Longer(0);
+            List<CompletableFuture<?>> completableFutures = new ArrayList<>();
+            while (true) {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                Result result = getBot().getApi().V2.getChannelMessageApi().getChannelMessageReactionMemberList(messageId, 1, emoji.getId(),
+                        100, maxId.getValue()).ifFailure(r -> {
+                    log.error("获取消息信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
+                });
+                if (result.isSuccess()) {
+                    if (!(((IslandImpl) getIsland()).splice(result, userList, maxId, completableFutures, executorService))) {
+                        break;
+                    }
+                } else {
+                    break;
+                }
+            }
+            CompletableFuture.allOf(completableFutures.toArray(CompletableFuture[]::new)).join();
+            executorService.shutdown();
+            return userList;
+        }).join();
     }
 
     /**
@@ -154,17 +184,18 @@ public class MessageChannel extends ChannelImpl {
      * @return result
      */
     public Result addMessageReaction(@NonNull String messageId, @NonNull Emoji emoji) {
-        return null;
+        return getBot().getApi().V2.getChannelMessageApi().addChannelMessageReaction(messageId, emoji.getId());
     }
 
     /**
      * 移除表情反应
      *
-     * @param messageId 消息id
-     * @param emoji     消息反应
+     * @param messageId    消息id
+     * @param emoji        消息反应
+     * @param dodoSourceId id
      * @return result
      */
-    public Result removeMessageReaction(@NonNull String messageId, @NonNull Emoji emoji) {
-        return null;
+    public Result removeMessageReaction(@NonNull String messageId, @NonNull Emoji emoji, @NonNull String dodoSourceId) {
+        return getBot().getApi().V2.getChannelMessageApi().removeChannelMessageReaction(messageId, emoji.getId(), dodoSourceId);
     }
 }
