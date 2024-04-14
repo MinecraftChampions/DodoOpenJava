@@ -3,14 +3,12 @@ package io.github.minecraftchampions.dodoopenjava.message;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;
 
 /**
  * 消息反应
  */
 @Data
-@RequiredArgsConstructor
 @AllArgsConstructor(staticName = "of")
 public class Emoji {
     @NonNull

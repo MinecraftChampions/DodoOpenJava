@@ -304,7 +304,7 @@ public class IslandImpl implements Island {
         Result result = bot.getApi().V2.getRoleApi().getRoleList(getIslandSourceId());
         if (result.isFailure()) {
             log.error("获取身份组信息失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
-            return new ArrayList<>();
+            return null;
         }
         List<JSONObject> list = result.getJSONObjectData().getJSONArray("data").toList().stream().map((o) -> {
             if (o instanceof Map<?, ?> map) {

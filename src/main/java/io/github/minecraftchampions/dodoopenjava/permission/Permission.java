@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
 public class Permission {
-    @NonNull
     private int value;
 
     /**

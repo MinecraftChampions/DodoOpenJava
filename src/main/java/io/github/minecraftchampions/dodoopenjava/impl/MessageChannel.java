@@ -1,17 +1,24 @@
 package io.github.minecraftchampions.dodoopenjava.impl;
 
 import io.github.minecraftchampions.dodoopenjava.Result;
-import io.github.minecraftchampions.dodoopenjava.api.*;
+import io.github.minecraftchampions.dodoopenjava.api.Bot;
+import io.github.minecraftchampions.dodoopenjava.api.Channel;
+import io.github.minecraftchampions.dodoopenjava.api.ChannelType;
+import io.github.minecraftchampions.dodoopenjava.api.User;
 import io.github.minecraftchampions.dodoopenjava.message.Emoji;
 import io.github.minecraftchampions.dodoopenjava.message.Message;
 import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
+import org.json.JSONObject;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
  * 消息频道实现
  */
+@Slf4j
 public class MessageChannel extends ChannelImpl {
 
     private MessageChannel(@NonNull String channelId, @NonNull String islandSourceId, @NonNull Bot bot) {
@@ -89,7 +96,7 @@ public class MessageChannel extends ChannelImpl {
      * @return result
      */
     public Result pinMessage(@NonNull String messageId) {
-        return null;
+        return getBot().getApi().V2.getChannelMessageApi().setChannelMessageTop(messageId,1);
     }
 
     /**
@@ -99,7 +106,7 @@ public class MessageChannel extends ChannelImpl {
      * @return result
      */
     public Result unpinMessage(@NonNull String messageId) {
-        return null;
+        return getBot().getApi().V2.getChannelMessageApi().setChannelMessageTop(messageId,0);
     }
 
     /**
@@ -109,7 +116,23 @@ public class MessageChannel extends ChannelImpl {
      * @return 反应列表（前为反应表情，后为数量）
      */
     public Map<Emoji, Integer> getMessageReactionList(@NonNull String messageId) {
-        return null;
+        Result result = getBot().getApi().V2.getChannelMessageApi().getChannelMessageReactionList(messageId);
+        if (result.isFailure()) {
+            log.error("获取消息信息失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
+            return null;
+        }
+        List<JSONObject> list = result.getJSONObjectData().getJSONArray("data").toList().stream().map((o) -> {
+            if (o instanceof Map<?, ?> map) {
+                return new JSONObject(map);
+            }
+            return new JSONObject();
+        }).toList();
+        Map<Emoji, Integer> map = new HashMap<>();
+        list.forEach((jsonObject) -> {
+            Emoji emoji = Emoji.of(jsonObject.getJSONObject("emoji").getString("id"));
+            map.put(emoji, jsonObject.getInt("count"));
+        });
+        return map;
     }
 
     /**
@@ -130,7 +153,7 @@ public class MessageChannel extends ChannelImpl {
      * @param emoji     消息反应
      * @return result
      */
-    public Result addMessageReactionList(@NonNull String messageId, @NonNull Emoji emoji) {
+    public Result addMessageReaction(@NonNull String messageId, @NonNull Emoji emoji) {
         return null;
     }
 
@@ -141,7 +164,7 @@ public class MessageChannel extends ChannelImpl {
      * @param emoji     消息反应
      * @return result
      */
-    public Result removeMessageReactionMemberList(@NonNull String messageId, @NonNull Emoji emoji) {
+    public Result removeMessageReaction(@NonNull String messageId, @NonNull Emoji emoji) {
         return null;
     }
 }
