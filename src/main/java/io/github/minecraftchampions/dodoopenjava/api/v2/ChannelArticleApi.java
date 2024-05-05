@@ -46,9 +46,13 @@ public class ChannelArticleApi {
         String url = DodoOpenJava.BASEURL + "channel/article/add";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("title", title)
-                .put("channelId", channelId)
-                .put("content", content)
-                .put("imageUrl", imageUrl);
+                .put("channelId", channelId);
+        if (content != null) {
+            jsonObject.put("content",content);
+        }
+        if (imageUrl != null) {
+            jsonObject.put("imageUrl",imageUrl);
+        }
         return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
