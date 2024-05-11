@@ -37,5 +37,37 @@ public class ArticleChannel extends ChannelImpl {
         return getBot().getApi().V2.getChannelArticleApi().addChannelArticle(channelId, title, content, imageUrl).ifSuccess((Function<Result, String>) result -> result.getJSONObjectData().getJSONObject("data").getString("articleId"));
     }
 
+    public Result remove(int type, String id) {
+        return getBot().getApi().V2.getChannelArticleApi().removeChannelArticle(type, id, getChannelId());
+    }
 
+    /**
+     * 删除帖子
+     *
+     * @param articleId 帖子id
+     * @return result
+     */
+    public Result removeArticle(String articleId) {
+        return getBot().getApi().V2.getChannelArticleApi().removeChannelArticle(1, articleId, getChannelId());
+    }
+
+    /**
+     * 删除帖子评论
+     *
+     * @param commentId 评论id
+     * @return result
+     */
+    public Result removeComment(String commentId) {
+        return getBot().getApi().V2.getChannelArticleApi().removeChannelArticle(2, commentId, getChannelId());
+    }
+
+    /**
+     * 删除帖子评论回复
+     *
+     * @param replyId 帖子评论回复id
+     * @return result
+     */
+    public Result removeReply(String replyId) {
+        return getBot().getApi().V2.getChannelArticleApi().removeChannelArticle(3, replyId, getChannelId());
+    }
 }
