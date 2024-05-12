@@ -2,11 +2,9 @@ package io.github.minecraftchampions.dodoopenjava.util;
 
 import io.github.minecraftchampions.dodoopenjava.Result;
 import lombok.NonNull;
-import org.json.JSONObject;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,25 +47,6 @@ public class BaseUtil {
             returnList.add(o.toString());
         }
         return returnList;
-    }
-
-    /**
-     * 判断一个文本中是否含有敏感词（词库URL：<a href="https://mcchampions.github.io/database.json">词库地址</a>)
-     *
-     * @param text 文本
-     * @return true代表是
-     */
-    public static boolean hasSensitiveWord(@NonNull String text) throws IOException {
-        //获取词库内容
-        List<String> list = toStringList((new JSONObject(NetUtil.simulationBrowserRequest("https://mcchampions.github.io/database.json"))).getJSONArray("words").toList());
-        boolean isSensitiveWord = false;
-        for (String word : list) {
-            if (text.contains(word)) {
-                isSensitiveWord = true;
-                break;
-            }
-        }
-        return isSensitiveWord;
     }
 
     /**
