@@ -3,6 +3,7 @@ package io.github.minecraftchampions.dodoopenjava.impl;
 import io.github.minecraftchampions.dodoopenjava.api.Bot;
 import io.github.minecraftchampions.dodoopenjava.api.Channel;
 import io.github.minecraftchampions.dodoopenjava.api.ChannelType;
+import io.github.minecraftchampions.dodoopenjava.api.VoiceMember;
 import lombok.NonNull;
 
 public class VoiceChannel extends ChannelImpl {
@@ -15,5 +16,9 @@ public class VoiceChannel extends ChannelImpl {
             throw new RuntimeException("错误的频道类型");
         }
         return new VoiceChannel(channel.getChannelId(), channel.getIslandSourceId(), channel.getBot());
+    }
+
+    public VoiceMember getMember(@NonNull String dodoSourceId) {
+        return null;
     }
 }
