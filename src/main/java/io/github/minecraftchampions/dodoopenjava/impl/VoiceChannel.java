@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.impl;
 
+import io.github.minecraftchampions.dodoopenjava.Result;
 import io.github.minecraftchampions.dodoopenjava.api.Bot;
 import io.github.minecraftchampions.dodoopenjava.api.Channel;
 import io.github.minecraftchampions.dodoopenjava.api.ChannelType;
@@ -19,6 +20,31 @@ public class VoiceChannel extends ChannelImpl {
     }
 
     public VoiceMember getMember(@NonNull String dodoSourceId) {
-        return null;
+        return new VoiceMemberImpl(dodoSourceId, this.getIslandSourceId(), this.getBot());
     }
+
+    public Result moveMemberTo(@NonNull VoiceMember voiceMember, @NonNull VoiceChannel targetChannel) {
+        return getBot().getApi().V2.getChannelVoiceApi().moveChannelVoiceMember(getIslandSourceId(), voiceMember.getDodoSourceId(), targetChannel.getChannelId());
+    }
+
+    public Result editMemberStatus(@NonNull VoiceMember voiceMember,int type) {
+        return getBot().getApi().V2.getChannelVoiceApi().editChannelVoiceMember(type, voiceMember.getDodoSourceId(), getChannelId());
+    }
+
+    public Result onMic(@NonNull VoiceMember voiceMember) {
+        return editMemberStatus(voiceMember,1);
+    }
+
+    public Result underMic(@NonNull VoiceMember voiceMember) {
+        return editMemberStatus(voiceMember,0);
+    }
+
+    public Result closeMic(@NonNull VoiceMember voiceMember) {
+        return editMemberStatus(voiceMember,2);
+    }
+
+    public Result removeMember(@NonNull VoiceMember voiceMember) {
+        return editMemberStatus(voiceMember,3);
+    }
+
 }
