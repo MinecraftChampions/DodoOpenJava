@@ -13,84 +13,73 @@ import java.util.List;
  */
 @Getter
 public class GoodsPurchaseEvent extends AbstractShopEvent {
-    /**
-     * -- GETTER --
-     * 获取时间戳
-     */
-    public Integer timestamp;
-
-    /**
-     * -- GETTER --
-     * 获取事件ID
-     */
-    public String eventId;
 
     /**
      * -- GETTER --
      * 获取群号
      */
-    public String islandSourceId;
+    protected String islandSourceId;
 
     /**
      * -- GETTER --
      * 获取DodoId
      */
-    public String dodoSourceId;
+    protected String dodoSourceId;
 
     /**
      * -- GETTER --
      * 获取变动时间
      */
-    public String modifyTime;
+    protected String modifyTime;
 
     /**
      * -- GETTER --
      * 获取JSONObject
      */
-    public JSONObject jsonObject;
+    protected JSONObject jsonObject;
 
     /**
      * -- GETTER --
      * 获取JsonString
      */
-    public String jsonString;
+    protected String jsonString;
 
     /**
      * -- GETTER --
      * 获取订单号
      */
-    public String orderNo;
+    protected String orderNo;
 
     /**
      * -- GETTER --
      * 获取商品类型
      * 1：身份组，2：自定义商品
      */
-    public int goodsType;
+    protected int goodsType;
 
     /**
      * -- GETTER --
      * 获取商品ID
      */
-    public String goodsId;
+    protected String goodsId;
 
     /**
      * -- GETTER --
      * 获取商品图片列表，链接后接参数可以调整图片样式
      */
-    public String goodsName;
+    protected String goodsName;
 
     /**
      * -- GETTER --
      * 获取订单号
      */
-    public List<String> goodsImageList;
+    protected List<String> goodsImageList;
 
     public GoodsPurchaseEvent(JSONObject json) {
         super(true);
         this.jsonObject = json;
         this.jsonString = json.toString();
-        this.timestamp = json.getJSONObject("data").getInt("timestamp");
+        this.timestamp = json.getJSONObject("data").getLong("timestamp");
         this.eventId = json.getJSONObject("data").getString("eventId");
         this.islandSourceId = json.getJSONObject("data").getJSONObject("eventBody").getString("islandSourceId");
         this.dodoSourceId = json.getJSONObject("data").getJSONObject("eventBody").getString("dodoSourceId");

@@ -11,95 +11,72 @@ import org.json.JSONObject;
  */
 @Getter
 public class MemberLeaveEvent extends AbstractMemberEvent {
-    /**
-     * -- GETTER --
-     * 获取时间戳
-     */
-    public Integer timestamp;
-
-    /**
-     * -- GETTER --
-     * 获取事件ID
-     */
-    public String eventId;
 
     /**
      * -- GETTER --
      * 获取群号
      */
-    public String islandSourceId;
+    protected String islandSourceId;
 
     /**
      * -- GETTER --
      * 获取DodoSourceId
      */
-    public String dodoSourceId;
+    protected String dodoSourceId;
 
     /**
      * -- GETTER --
      * 获取成员Object
      */
-    public JSONObject personal;
+    protected JSONObject personal;
 
     /**
      * -- GETTER --
      * 获取发送者名字
      */
-    public String userNickName;
+    protected String userNickName;
 
     /**
      * -- GETTER --
      * 获取发送者头像URL
      */
-    public String userAvatarUrl;
+    protected String userAvatarUrl;
 
     /**
      * -- GETTER --
      * 获取性别（Int类型）
      */
-    public Integer userIntSex;
+    protected Integer userIntSex;
 
     /**
      * -- GETTER --
      * 获取性别（String类型）
      */
-    public String userSex;
+    protected String userSex;
 
     /**
      * -- GETTER --
      * 获取变动时间
      */
-    public String modifyTime;
-
-    /**
-     * -- GETTER --
-     * 获取JSONObject
-     */
-    public JSONObject jsonObject;
-
-    /**
-     * -- GETTER --
-     * 获取JsonString
-     */
-    public String jsonString;
+    protected String modifyTime;
 
     /**
      * -- GETTER --
      * 获取离开类型（String）
      */
-    public String leaveType;
+    protected String leaveType;
 
     /**
      * -- GETTER --
      * 获取离开类型（Int）
      */
-    public Integer leaveIntType;
+    protected Integer leaveIntType;
 
     /**
      * -- GETTER --
      * 获取操作者Dodo号
      */
-    public String operateDoDoId;
+    protected String operateDoDoId;
 
     public MemberLeaveEvent(JSONObject json) {
         super(true);
@@ -110,7 +87,7 @@ public class MemberLeaveEvent extends AbstractMemberEvent {
         this.userIntSex = json.getJSONObject("data").getJSONObject("eventBody").getJSONObject("personal").getInt("sex");
         this.jsonObject = json;
         this.jsonString = json.toString();
-        this.timestamp = json.getJSONObject("data").getInt("timestamp");
+        this.timestamp = json.getJSONObject("data").getLong("timestamp");
         this.eventId = json.getJSONObject("data").getString("eventId");
         this.islandSourceId = json.getJSONObject("data").getJSONObject("eventBody").getString("islandSourceId");
         this.dodoSourceId = json.getJSONObject("data").getJSONObject("eventBody").getString("dodoSourceId");

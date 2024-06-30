@@ -10,71 +10,60 @@ import org.json.JSONObject;
  */
 @Getter
 public class MemberInviteEvent extends AbstractMemberEvent {
-    /**
-     * -- GETTER --
-     * 获取时间戳
-     */
-    public Integer timestamp;
-
-    /**
-     * -- GETTER --
-     * 获取事件ID
-     */
-    public String eventId;
 
     /**
      * -- GETTER --
      * 获取群号
      */
-    public String islandSourceId;
+    protected String islandSourceId;
 
     /**
      * -- GETTER --
      * 获取DodoSourceId
      */
-    public String dodoSourceId;
+    protected String dodoSourceId;
 
     /**
      * -- GETTER --
      * 获取变动时间
      */
-    public String modifyTime;
+    protected String modifyTime;
 
     /**
      * -- GETTER --
      * 获取JSONObject
      */
-    public JSONObject jsonObject;
+    protected JSONObject jsonObject;
 
     /**
      * -- GETTER --
      * 获取JsonString
      */
-    public String jsonString;
+    protected String jsonString;
 
     /**
      * -- GETTER --
      * 获取邀请人群昵称
      */
-    public String dodoIslandNickName;
+    protected String dodoIslandNickName;
 
     /**
      * -- GETTER --
      * 获取被邀请人DoDoID
      */
-    public String toDodoSourceId;
+    protected String toDodoSourceId;
 
     /**
      * -- GETTER --
      * 获取被邀请人群昵称
      */
-    public String toDodoIslandNickName;
+    protected String toDodoIslandNickName;
 
     public MemberInviteEvent(JSONObject json) {
         super(true);
         this.jsonObject = json;
         this.jsonString = json.toString();
-        this.timestamp = json.getJSONObject("data").getInt("timestamp");
+        this.timestamp = json.getJSONObject("data").getLong("timestamp");
         this.eventId = json.getJSONObject("data").getString("eventId");
         this.islandSourceId = json.getJSONObject("data").getJSONObject("eventBody").getString("islandSourceId");
         this.dodoSourceId = json.getJSONObject("data").getJSONObject("eventBody").getString("dodoSourceId");

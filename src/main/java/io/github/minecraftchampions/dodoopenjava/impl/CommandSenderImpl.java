@@ -1,6 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.impl;
 
-import io.github.minecraftchampions.dodoopenjava.Result;
+import io.github.minecraftchampions.dodoopenjava.debug.Result;
 import io.github.minecraftchampions.dodoopenjava.api.Bot;
 import io.github.minecraftchampions.dodoopenjava.api.CommandSender;
 import io.github.minecraftchampions.dodoopenjava.message.text.TextMessage;

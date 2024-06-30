@@ -1,6 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.impl;
 
-import io.github.minecraftchampions.dodoopenjava.Result;
+import io.github.minecraftchampions.dodoopenjava.debug.Result;
 import io.github.minecraftchampions.dodoopenjava.api.*;
 import io.github.minecraftchampions.dodoopenjava.permission.Permission;
 import lombok.*;

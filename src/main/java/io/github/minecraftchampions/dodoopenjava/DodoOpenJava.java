@@ -1,6 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava;
 
 import io.github.minecraftchampions.dodoopenjava.api.Bot;
+import io.github.minecraftchampions.dodoopenjava.debug.DebugLogger;
 import io.github.minecraftchampions.dodoopenjava.impl.BotImpl;
 import io.github.minecraftchampions.dodoopenjava.util.BaseUtil;
 import lombok.NonNull;
@@ -23,7 +24,7 @@ public class DodoOpenJava {
 
     private static final ArrayList<Bot> BOT_LIST = new ArrayList<>();
 
-    public static final Map<String, ApiResultsLogger> LOGGER_MAP = new ConcurrentHashMap<>();
+    public static final Map<String, DebugLogger> DEBUG_LOGGER_MAP = new ConcurrentHashMap<>();
 
     /**
      * 新建 Bot
@@ -71,7 +72,7 @@ public class DodoOpenJava {
         bot.getCommandManager().unregisterAllCommands();
         bot.getEventManager().unregisterAllListeners();
         bot.removeEventTrigger();
-        bot.disableApiResultsLogger();
+        bot.disableDebugMode();
     }
 
     /**
@@ -79,8 +80,8 @@ public class DodoOpenJava {
      *
      * @param bot bot
      */
-    public static void enableApiResultsLogger(Bot bot) {
-        enableApiResultsLogger(bot.getAuthorization());
+    public static void enableDebugMode(Bot bot) {
+        enableDebugMode(bot.getAuthorization());
     }
 
     /**
@@ -88,13 +89,13 @@ public class DodoOpenJava {
      *
      * @param authorization authorization
      */
-    public static void enableApiResultsLogger(String authorization) {
-        synchronized (LOGGER_MAP) {
-            if (LOGGER_MAP.containsKey(authorization)) {
+    public static void enableDebugMode(String authorization) {
+        synchronized (DEBUG_LOGGER_MAP) {
+            if (DEBUG_LOGGER_MAP.containsKey(authorization)) {
                 log.warn("已经调用过DodoOpenJava#enableApiResultsLogger");
                 return;
             }
-            LOGGER_MAP.put(authorization, new ApiResultsLogger(authorization));
+            DEBUG_LOGGER_MAP.put(authorization, new DebugLogger(authorization));
         }
     }
 
@@ -103,8 +104,8 @@ public class DodoOpenJava {
      *
      * @param bot bot
      */
-    public static void disableApiResultsLogger(Bot bot) {
-        disableApiResultsLogger(bot.getAuthorization());
+    public static void disableDebugMode(Bot bot) {
+        disableDebugMode(bot.getAuthorization());
     }
 
     /**
@@ -112,9 +113,9 @@ public class DodoOpenJava {
      *
      * @param authorization authorization
      */
-    public static void disableApiResultsLogger(String authorization) {
-        synchronized (LOGGER_MAP) {
-            LOGGER_MAP.remove(authorization);
+    public static void disableDebugMode(String authorization) {
+        synchronized (DEBUG_LOGGER_MAP) {
+            DEBUG_LOGGER_MAP.remove(authorization);
         }
     }
 }

@@ -1,8 +1,8 @@
 package io.github.minecraftchampions.dodoopenjava.api;
 
-import io.github.minecraftchampions.dodoopenjava.ApiResultsLogger;
 import io.github.minecraftchampions.dodoopenjava.command.CommandExecutor;
 import io.github.minecraftchampions.dodoopenjava.command.CommandManager;
+import io.github.minecraftchampions.dodoopenjava.debug.DebugLogger;
 import io.github.minecraftchampions.dodoopenjava.event.AbstractEventTrigger;
 import io.github.minecraftchampions.dodoopenjava.event.EventManager;
 import io.github.minecraftchampions.dodoopenjava.event.Listener;
@@ -23,12 +23,12 @@ public interface Bot {
     /**
      * 启用日志记录器
      */
-    void enableApiResultsLogger();
+    void enableDebugMode();
 
     /**
      * 卸载日志记录器
      */
-    void disableApiResultsLogger();
+    void disableDebugMode();
 
     /**
      * 注册事件监听器
@@ -69,7 +69,7 @@ public interface Bot {
      *
      * @return ApiResultsLogger
      */
-    ApiResultsLogger getApiResultsLogger();
+    DebugLogger getDebugLogger();
 
     /**
      * 注册命令

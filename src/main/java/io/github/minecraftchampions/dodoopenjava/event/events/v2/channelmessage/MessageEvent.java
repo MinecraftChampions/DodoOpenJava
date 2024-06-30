@@ -10,149 +10,127 @@ import org.json.JSONObject;
  */
 @Getter
 public class MessageEvent extends AbstractChannelMessageEvent {
-    /**
-     * -- GETTER --
-     * 获取时间戳
-     */
-    public Integer timestamp;
-
-    /**
-     * -- GETTER --
-     * 获取事件ID
-     */
-    public String eventId;
 
     /**
      * -- GETTER --
      * 获取群号
      */
-    public String islandSourceId;
+    protected String islandSourceId;
 
     /**
      * -- GETTER --
      * 获取频道ID
      */
-    public String channelId;
+    protected String channelId;
 
     /**
      * -- GETTER --
      * 获取DodoSourceId
      */
-    public String dodoSourceId;
+    protected String dodoSourceId;
 
     /**
      * -- GETTER --
      * 获取消息ID
      */
-    public String messageId;
+    protected String messageId;
 
     /**
      * -- GETTER --
      * 获取消息类别（Int类型）
      */
-    public Integer messageIntType;
+    protected Integer messageIntType;
 
     /**
      * -- GETTER --
      * 获取消息类别（String类型）
      */
-    public String messageType;
+    protected String messageType;
 
     /**
      * -- GETTER --
      * 获取成员Object
      */
-    public JSONObject personal;
+    protected JSONObject personal;
 
     /**
      * -- GETTER --
      * 获取发送者名字
      */
-    public String senderNickName;
+    protected String senderNickName;
 
     /**
      * -- GETTER --
      * 获取发送者头像URL
      */
-    public String senderAvatarUrl;
+    protected String senderAvatarUrl;
 
     /**
      * -- GETTER --
      * 获取性别（Int类型）
      */
-    public Integer senderIntSex;
+    protected Integer senderIntSex;
 
     /**
      * -- GETTER --
      * 获取性别（String类型）
      */
-    public String senderSex;
+    protected String senderSex;
 
     /**
      * -- GETTER --
      * 获取成员Object
      */
-    public JSONObject member;
+    protected JSONObject member;
 
     /**
      * -- GETTER --
      * 获取成员显示名
      */
-    public String memberNickName;
+    protected String memberNickName;
 
     /**
      * -- GETTER --
      * 获取成员加入时间
      */
-    public String memberJoinTime;
+    protected String memberJoinTime;
 
     /**
      * -- GETTER --
      * 获取回复 Object，没有就null
      */
-    public JSONObject reference;
+    protected JSONObject reference;
 
     /**
      * -- GETTER --
      * 获取回复的消息ID，没有就null
      */
-    public String referenceMessageId;
+    protected String referenceMessageId;
 
     /**
      * -- GETTER --
      * 获取回复的DodoSourceId，没有就null
      */
-    public String referenceDodoSourceId;
+    protected String referenceDodoSourceId;
 
     /**
      * -- GETTER --
      * 获取回复的消息名字，没有就null
      */
-    public String referenceNickName;
+    protected String referenceNickName;
 
     /**
      * -- GETTER --
      * 获取消息 Object
      */
-    public JSONObject messageBody;
+    protected JSONObject messageBody;
 
-    /**
-     * -- GETTER --
-     * 获取卡片消息JSON对象
-     */
-    public JSONObject jsonObject;
 
-    /**
-     * -- GETTER --
-     * 获取卡片消息JSON字符串
-     */
-    public String jsonString;
 
     public MessageEvent(JSONObject json) {
         super(true);
-        this.jsonObject = json;
         this.jsonString = json.toString();
-        this.timestamp = json.getJSONObject("data").getInt("timestamp");
+        this.timestamp = json.getJSONObject("data").getLong("timestamp");
         this.eventId = json.getJSONObject("data").getString("eventId");
         this.islandSourceId = json.getJSONObject("data").getJSONObject("eventBody").getString("islandSourceId");
         this.channelId = json.getJSONObject("data").getJSONObject("eventBody").getString("channelId");

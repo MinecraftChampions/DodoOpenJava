@@ -29,7 +29,7 @@ public class Main implements CommandExecutor, Listener {
         // WebHookEventTrigger webHookEventTrigger = new WebHookEventTrigger(bot,"密钥","ssl证书密码",new File("C:\\abc.com.jks"));
         // bot.initEventListenSystem(webHookEventTrigger);
         //启用日志记录功能
-        bot.enableApiResultsLogger();
+        bot.enableDebugMode();
         // 注册事件监听器
         bot.registerListener(new Main());
         // 注册命令处理器
@@ -42,7 +42,6 @@ public class Main implements CommandExecutor, Listener {
 
         bot.getApi().V2.channelMessageApi.sendTextMessage("1252355", "测试");
         testCard();
-        System.out.println(bot.getApiResultsLogger());
     }
 
     static void testCard() {
@@ -135,7 +134,7 @@ public class Main implements CommandExecutor, Listener {
   <dependency>
     <groupId>icu.qscraft</groupId>
     <artifactId>dodoopenjava</artifactId>
-    <version>3.3.0-SNAPSHOT</version>
+    <version>3.3.0</version>
   </dependency>
 </dependencies>
 ```
@@ -148,7 +147,7 @@ allprojects {
 }
 
 dependencies {
-    implementation 'icu.qscraft:dodoopenjava:3.3.0-SNAPSHOT'
+    implementation 'icu.qscraft:dodoopenjava:3.3.0'
 }
 ```
 ### 教程(过于古老，无参考价值，改日重写)

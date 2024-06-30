@@ -1,6 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.util;
 
-import io.github.minecraftchampions.dodoopenjava.Result;
+import io.github.minecraftchampions.dodoopenjava.debug.Result;
 import lombok.NonNull;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;

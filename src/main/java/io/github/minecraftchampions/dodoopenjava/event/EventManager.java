@@ -1,5 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.event;
 
+import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
+import io.github.minecraftchampions.dodoopenjava.api.Bot;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelarticle.ChannelArticleCommentEvent;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelarticle.ChannelArticlePublishEvent;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage.*;
@@ -11,6 +13,8 @@ import io.github.minecraftchampions.dodoopenjava.event.events.v2.member.MemberJo
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.member.MemberLeaveEvent;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.personal.PersonalMessageEvent;
 import io.github.minecraftchampions.dodoopenjava.event.events.v2.shop.GoodsPurchaseEvent;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
@@ -33,8 +37,12 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author qscbm187531
  */
 @Slf4j
+@AllArgsConstructor
 public class EventManager {
-    private final Map<Class<? extends AbstractEvent>, List<SimpleEntry<Method, Object>>> handlers = new ConcurrentHashMap<>();
+    @NonNull
+    @Getter
+    private final Bot bot;
+    private final Map<Class<? extends Event>, List<SimpleEntry<Method, Object>>> handlers = new ConcurrentHashMap<>();
 
     /**
      * 注册事件监听器
@@ -66,10 +74,10 @@ public class EventManager {
                 continue;
             }
             Class<?> checkClass = parameters[0];
-            if (!AbstractEvent.class.isAssignableFrom(checkClass)) {
+            if (!Event.class.isAssignableFrom(checkClass)) {
                 continue;
             }
-            final Class<? extends AbstractEvent> eventClass = checkClass.asSubclass(AbstractEvent.class);
+            final Class<? extends Event> eventClass = checkClass.asSubclass(Event.class);
             method.setAccessible(true);
             if (!handlers.containsKey(eventClass)) {
                 handlers.put(eventClass, new ArrayList<>());
@@ -101,8 +109,8 @@ public class EventManager {
      */
     public void unregisterListeners(@NonNull Listener listener) {
         synchronized (handlers) {
-            Set<Class<? extends AbstractEvent>> set = handlers.keySet();
-            for (Class<? extends AbstractEvent> clazz : set) {
+            Set<Class<? extends Event>> set = handlers.keySet();
+            for (Class<? extends Event> clazz : set) {
                 List<SimpleEntry<Method, Object>> list = handlers.get(clazz).stream().
                         filter(e -> e.getKey().getDeclaringClass() == listener.getClass()).toList();
                 handlers.get(clazz).removeAll(list);
@@ -144,11 +152,14 @@ public class EventManager {
      * @param event 事件
      * @throws RuntimeException 当事件的 EventType 为 null 或 isEmpty 时抛出
      */
-    public void fireEvent(@NonNull AbstractEvent event) throws RuntimeException {
+    public void fireEvent(@NonNull Event event) throws RuntimeException {
         if (event.getEventType() == null || event.getEventName().isEmpty()) {
             throw new RuntimeException("未知的Event");
         }
         synchronized (handlers) {
+            if (DodoOpenJava.DEBUG_LOGGER_MAP.containsKey(getBot().getAuthorization())) {
+                DodoOpenJava.DEBUG_LOGGER_MAP.get(getBot().getAuthorization()).log(event);
+            }
             fireEvent(event, handlers);
         }
     }
@@ -159,7 +170,7 @@ public class EventManager {
      * @param event    事件
      * @param handlers 储存
      */
-    public static void fireEvent(@NonNull AbstractEvent event, @NonNull Map<Class<? extends AbstractEvent>, List<SimpleEntry<Method, Object>>> handlers) {
+    public static void fireEvent(@NonNull Event event, @NonNull Map<Class<? extends Event>, List<SimpleEntry<Method, Object>>> handlers) {
         boolean isAsync = event.isAsynchronous();
         if (!handlers.containsKey(event.eventType)) {
             return;

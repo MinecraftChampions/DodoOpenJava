@@ -12,126 +12,103 @@ import java.math.BigDecimal;
  */
 @Getter
 public class GiftSendEvent extends AbstractGiftEvent {
-    /**
-     * -- GETTER --
-     * 获取时间戳
-     */
-    public Integer timestamp;
-
-    /**
-     * -- GETTER --
-     * 获取事件ID
-     */
-    public String eventId;
 
     /**
      * -- GETTER --
      * 获取来源群ID
      */
-    public String islandSourceId;
+    protected String islandSourceId;
 
     /**
      * -- GETTER --
      * 获取来源频道ID
      */
-    public String channelId;
+    protected String channelId;
 
     /**
      * -- GETTER --
      * 获取订单号
      */
-    public String orderNo;
+    protected String orderNo;
 
     /**
      * -- GETTER --
      * 获取内容类型，1：消息，2：帖子
      */
-    public Integer targetType;
+    protected Integer targetType;
 
     /**
      * -- GETTER --
      * 获取内容ID
      */
-    public String targetId;
+    protected String targetId;
 
     /**
      * -- GETTER --
      * 获取礼物总价值（铃钱）
      */
-    public BigDecimal totalAmount;
+    protected BigDecimal totalAmount;
 
     /**
      * -- GETTER --
      * 获取礼物信息Object
      */
-    public JSONObject gift;
+    protected JSONObject gift;
 
     /**
      * -- GETTER --
      * 获取群分成（百分比）
      */
-    public BigDecimal islandRatio;
+    protected BigDecimal islandRatio;
 
     /**
      * -- GETTER --
      * 获取群收入（里程）
      */
-    public BigDecimal islandIncome;
+    protected BigDecimal islandIncome;
 
     /**
      * -- GETTER --
      * 获取赠礼人DoDoID
      */
-    public String dodoSourceId;
+    protected String dodoSourceId;
 
     /**
      * -- GETTER --
      * 获取赠礼人群昵称
      */
-    public String dodoIslandNickName;
+    protected String dodoIslandNickName;
 
     /**
      * -- GETTER --
      * 获取被赠礼人DoDoID
      */
-    public String toDodoSourceId;
+    protected String toDodoSourceId;
 
     /**
      * -- GETTER --
      * 获取被赠礼人群昵称
      */
-    public String toDodoIslandNickName;
+    protected String toDodoIslandNickName;
 
     /**
      * -- GETTER --
      * 获取被赠礼人分成（百分比）
      */
-    public BigDecimal toDodoRatio;
+    protected BigDecimal toDodoRatio;
 
     /**
      * -- GETTER --
      * 获取被赠礼人收入（里程）
      */
-    public BigDecimal toDodoIncome;
-
-    /**
-     * -- GETTER --
-     * 获取事件内容
-     */
-    public JSONObject jsonObject;
-
-    /**
-     * -- GETTER --
-     * 获取事件内容
-     */
-    public String jsonString;
+    protected BigDecimal toDodoIncome;
 
     public GiftSendEvent(JSONObject json) {
         super(true);
         this.jsonObject = json;
         this.channelId = json.getJSONObject("data").getJSONObject("eventBody").getString("channelId");
         this.jsonString = json.toString();
-        this.timestamp = json.getJSONObject("data").getInt("timestamp");
+        this.timestamp = json.getJSONObject("data").getLong("timestamp");
         this.eventId = json.getJSONObject("data").getString("eventId");
         this.islandSourceId = json.getJSONObject("data").getJSONObject("eventBody").getString("islandSourceId");
         this.orderNo = json.getJSONObject("data").getJSONObject("eventBody").getString("orderNo");

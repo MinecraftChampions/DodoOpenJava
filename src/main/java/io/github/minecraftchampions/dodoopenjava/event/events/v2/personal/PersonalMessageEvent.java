@@ -12,87 +12,72 @@ import org.json.JSONObject;
 
 @Getter
 public class PersonalMessageEvent extends AbstractPersonalEvent {
-    /**
-     * -- GETTER --
-     * 获取时间戳
-     */
-    public Integer timestamp;
-
-    /**
-     * -- GETTER --
-     * 获取事件ID
-     */
-    public String eventId;
 
     /**
      * -- GETTER --
      * 获取DodoSourceId
      */
-    public String dodoSourceId;
+    protected String dodoSourceId;
 
     /**
      * -- GETTER --
      * 获取消息ID
      */
-    public String messageId;
+    protected String messageId;
 
     /**
      * -- GETTER --
      * 获取消息类别（Int类型）
      */
-    public Integer messageIntType;
+    protected Integer messageIntType;
 
     /**
      * -- GETTER --
      * 获取消息类别（String类型）
      */
-    public String messageType;
+    protected String messageType;
 
     /**
      * -- GETTER --
      * 获取成员Object
      */
-    public JSONObject personal;
+    protected JSONObject personal;
 
     /**
      * -- GETTER --
      * 获取发送者名字
      */
-    public String senderNickName;
+    protected String senderNickName;
 
     /**
      * -- GETTER --
      * 获取发送者头像URL
      */
-    public String senderAvatarUrl;
+    protected String senderAvatarUrl;
 
     /**
      * -- GETTER --
      * 获取性别（Int类型）
      */
-    public Integer senderIntSex;
+    protected Integer senderIntSex;
 
     /**
      * -- GETTER --
      * 获取性别（String类型）
      */
-    public String senderSex;
+    protected String senderSex;
 
     /**
      * -- GETTER --
      * 获取消息 Object
      */
-    public JSONObject messageBody;
-
-    public JSONObject jsonObject;
-
-    public String jsonString;
+    protected JSONObject messageBody;
 
     public PersonalMessageEvent(JSONObject json) {
         super(true);
         this.jsonObject = json;
         this.jsonString = json.toString();
-        this.timestamp = json.getJSONObject("data").getInt("timestamp");
+        this.timestamp = json.getJSONObject("data").getLong("timestamp");
         this.eventId = json.getJSONObject("data").getString("eventId");
         this.dodoSourceId = json.getJSONObject("data").getJSONObject("eventBody").getString("dodoSourceId");
         this.messageId = json.getJSONObject("data").getJSONObject("eventBody").getString("messageId");

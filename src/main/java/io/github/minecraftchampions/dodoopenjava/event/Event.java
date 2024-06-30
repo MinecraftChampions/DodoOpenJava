@@ -1,22 +1,32 @@
 package io.github.minecraftchampions.dodoopenjava.event;
 
+import io.github.minecraftchampions.dodoopenjava.debug.Result;
 import lombok.Getter;
+import org.json.JSONObject;
 
 /**
  * 代表事件.
  *
  * @author qscbm187531
  */
-public abstract class AbstractEvent {
-    private String name;
-    private final boolean async;
+@Getter
+public abstract class Event implements Comparable<Result> {
+    protected long timestamp;
+
+    protected String eventId;
+
+    protected String name;
+    protected final boolean async;
+
+    protected String jsonString;
+    protected JSONObject jsonObject;
     @Getter
-    protected Class<? extends AbstractEvent> eventType;
+    protected Class<? extends Event> eventType;
 
     /**
      * 为了更简单清晰的代码而制造。这个构造器取得的是同步的事件。
      */
-    public AbstractEvent() {
+    public Event() {
         this(false);
     }
 
@@ -25,7 +35,7 @@ public abstract class AbstractEvent {
      *
      * @param isAsync true则为异步事件
      */
-    public AbstractEvent(boolean isAsync) {
+    public Event(boolean isAsync) {
         this.async = isAsync;
     }
 
@@ -48,5 +58,15 @@ public abstract class AbstractEvent {
      */
     public final boolean isAsynchronous() {
         return async;
+    }
+
+    @Override
+    public int compareTo(Result o) {
+        return 0;
+    }
+
+    @Override
+    public String toString() {
+        return jsonString;
     }
 }

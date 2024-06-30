@@ -12,110 +12,94 @@ import org.json.JSONObject;
 public class CardMessageButtonClickEvent extends AbstractChannelMessageEvent {
     /**
      * -- GETTER --
-     * 获取时间戳
-     */
-    public Integer timestamp;
-
-    /**
-     * -- GETTER --
-     * 获取事件ID
-     */
-    public String eventId;
-
-    /**
-     * -- GETTER --
      * 获取群号
      */
-    public String islandSourceId;
+    protected String islandSourceId;
 
     /**
      * -- GETTER --
      * 获取频道ID
      */
-    public String channelId;
+    protected String channelId;
 
     /**
      * -- GETTER --
      * 获取DodoSourceId
      */
-    public String dodoSourceId;
+    protected String dodoSourceId;
 
     /**
      * -- GETTER --
      * 获取消息ID
      */
-    public String messageId;
+    protected String messageId;
 
     /**
      * -- GETTER --
      * 获取成员Object
      */
-    public JSONObject personal;
+    protected JSONObject personal;
 
     /**
      * -- GETTER --
      * 获取发送者名字
      */
-    public String senderNickName;
+    protected String senderNickName;
 
     /**
      * -- GETTER --
      * 获取发送者头像URL
      */
-    public String senderAvatarUrl;
+    protected String senderAvatarUrl;
 
     /**
      * -- GETTER --
      * 获取性别（Int类型）
      */
-    public Integer senderIntSex;
+    protected Integer senderIntSex;
 
     /**
      * -- GETTER --
      * 获取性别（String类型）
      */
-    public String senderSex;
+    protected String senderSex;
 
     /**
      * -- GETTER --
      * 获取成员Object
      */
-    public JSONObject member;
+    protected JSONObject member;
 
     /**
      * -- GETTER --
      * 获取成员显示名
      */
-    public String memberNickName;
+    protected String memberNickName;
 
     /**
      * -- GETTER --
      * 获取成员加入时间
      */
-    public String memberJoinTime;
-
-    public JSONObject jsonObject;
-
-    public String jsonString;
+    protected String memberJoinTime;
 
     /**
      * -- GETTER --
      * 获取自定义ID
      */
-    public String interactCustomId;
+    protected String interactCustomId;
 
     /**
      * -- GETTER --
      * 获取返回的值
      */
-    public String value;
+    protected String value;
 
     public CardMessageButtonClickEvent(JSONObject json) {
         super(true);
         eventType = CardMessageButtonClickEvent.class;
         this.jsonObject = json;
         this.jsonString = json.toString();
-        this.timestamp = json.getJSONObject("data").getInt("timestamp");
+        this.timestamp = json.getJSONObject("data").getLong("timestamp");
         this.eventId = json.getJSONObject("data").getString("eventId");
         this.islandSourceId = json.getJSONObject("data").getJSONObject("eventBody").getString("islandSourceId");
         this.channelId = json.getJSONObject("data").getJSONObject("eventBody").getString("channelId");

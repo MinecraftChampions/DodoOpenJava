@@ -13,111 +13,87 @@ import org.json.JSONObject;
 public class ChannelArticleCommentEvent extends AbstractChannelArticleEvent {
     /**
      * -- GETTER --
-     * 获取时间戳
-     */
-    public Integer timestamp;
-
-    /**
-     * -- GETTER --
-     * 获取事件ID
-     */
-    public String eventId;
-
-    /**
-     * -- GETTER --
      * 获取群号
      */
-    public String islandSourceId;
+    protected String islandSourceId;
 
     /**
      * -- GETTER --
      * 获取DodoSourceId
      */
-    public String dodoSourceId;
+    protected String dodoSourceId;
 
     /**
      * -- GETTER --
      * 获取频道ID
      */
-    public String channelId;
-
-    /**
-     * -- GETTER --
-     * 获取卡片消息JSON对象
-     */
-    public JSONObject jsonObject;
-
-    /**
-     * -- GETTER --
-     * 获取卡片消息JSON字符串
-     */
-    public String jsonString;
+    protected String channelId;
 
     /**
      * -- GETTER --
      * 获取成员Object
      */
-    public JSONObject personal;
+    protected JSONObject personal;
 
     /**
      * -- GETTER --
      * 获取发送者名字
      */
-    public String userNickName;
+    protected String userNickName;
 
     /**
      * -- GETTER --
      * 获取发送者头像URL
      */
-    public String userAvatarUrl;
+    protected String userAvatarUrl;
 
     /**
      * -- GETTER --
      * 获取性别（Int类型）
      */
-    public Integer userIntSex;
+    protected Integer userIntSex;
 
     /**
      * -- GETTER --
      * 获取性别（String类型）
      */
-    public String userSex;
+    protected String userSex;
 
     /**
      * -- GETTER --
      * 获取成员Object
      */
-    public JSONObject member;
+    protected JSONObject member;
 
     /**
      * -- GETTER --
      * 获取成员显示名
      */
-    public String memberNickName;
+    protected String memberNickName;
 
     /**
      * -- GETTER --
      * 获取成员加入时间
      */
-    public String memberJoinTime;
+    protected String memberJoinTime;
 
     /**
      * -- GETTER --
      * 获取帖子ID
      */
-    public String articleId;
+    protected String articleId;
 
     /**
      * -- GETTER --
      * 获取内容
      */
-    public String content;
+    protected String content;
 
     /**
      * -- GETTER --
      * 获取评论iD
      */
-    public String commentId;
+    protected String commentId;
 
     public ChannelArticleCommentEvent(JSONObject json) {
         super(true);
@@ -127,7 +103,7 @@ public class ChannelArticleCommentEvent extends AbstractChannelArticleEvent {
         this.jsonObject = json;
         this.channelId = json.getJSONObject("data").getJSONObject("eventBody").getString("channelId");
         this.jsonString = json.toString();
-        this.timestamp = json.getJSONObject("data").getInt("timestamp");
+        this.timestamp = json.getJSONObject("data").getLong("timestamp");
         this.eventId = json.getJSONObject("data").getString("eventId");
         this.islandSourceId = json.getJSONObject("data").getJSONObject("eventBody").getString("islandSourceId");
         this.dodoSourceId = json.getJSONObject("data").getJSONObject("eventBody").getString("dodoSourceId");

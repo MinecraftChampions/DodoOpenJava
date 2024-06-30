@@ -1,7 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.util;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
-import io.github.minecraftchampions.dodoopenjava.Result;
+import io.github.minecraftchampions.dodoopenjava.debug.Result;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
@@ -38,8 +38,8 @@ public class NetUtil {
             header.put("Authorization", authorization);
             String str = sendPostRequest(url, header, param);
             Result result = Result.of(new JSONObject(str), new JSONObject(param));
-            if (DodoOpenJava.LOGGER_MAP.containsKey(authorization)) {
-                DodoOpenJava.LOGGER_MAP.get(authorization).addResult(result);
+            if (DodoOpenJava.DEBUG_LOGGER_MAP.containsKey(authorization)) {
+                DodoOpenJava.DEBUG_LOGGER_MAP.get(authorization).log(result);
             }
             return result;
         } catch (UnknownHostException e) {
@@ -169,8 +169,8 @@ public class NetUtil {
         Result result = Result.of(new JSONObject(Objects.requireNonNull(str)),
                 new JSONObject(Map.of("message", "文件内容，不予展示")));
         String authorization = header.get("Authorization");
-        if (DodoOpenJava.LOGGER_MAP.containsKey(authorization)) {
-            DodoOpenJava.LOGGER_MAP.get(authorization).addResult(result);
+        if (DodoOpenJava.DEBUG_LOGGER_MAP.containsKey(authorization)) {
+            DodoOpenJava.DEBUG_LOGGER_MAP.get(authorization).log(result);
         }
         return result;
     }

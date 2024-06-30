@@ -1,8 +1,8 @@
 package io.github.minecraftchampions.dodoopenjava.impl;
 
-import io.github.minecraftchampions.dodoopenjava.ApiResultsLogger;
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
-import io.github.minecraftchampions.dodoopenjava.Result;
+import io.github.minecraftchampions.dodoopenjava.debug.DebugLogger;
+import io.github.minecraftchampions.dodoopenjava.debug.Result;
 import io.github.minecraftchampions.dodoopenjava.api.Bot;
 import io.github.minecraftchampions.dodoopenjava.api.Island;
 import io.github.minecraftchampions.dodoopenjava.api.User;
@@ -69,7 +69,7 @@ public class BotImpl implements Bot {
     /**
      * 事件管理器
      */
-    private final EventManager eventManager = new EventManager();
+    private final EventManager eventManager = new EventManager(this);
 
     private final Api api = new Api(this);
 
@@ -87,16 +87,16 @@ public class BotImpl implements Bot {
      * 启用日志记录器
      */
     @Override
-    public void enableApiResultsLogger() {
-        DodoOpenJava.enableApiResultsLogger(this);
+    public void enableDebugMode() {
+        DodoOpenJava.enableDebugMode(this);
     }
 
     /**
      * 卸载日志记录器
      */
     @Override
-    public void disableApiResultsLogger() {
-        DodoOpenJava.disableApiResultsLogger(this);
+    public void disableDebugMode() {
+        DodoOpenJava.disableDebugMode(this);
     }
 
     /**
@@ -167,8 +167,8 @@ public class BotImpl implements Bot {
      * @return ApiResultsLogger
      */
     @Override
-    public ApiResultsLogger getApiResultsLogger() {
-        ApiResultsLogger apiResultsLogger = DodoOpenJava.LOGGER_MAP.get(this.getAuthorization());
+    public DebugLogger getDebugLogger() {
+        DebugLogger apiResultsLogger = DodoOpenJava.DEBUG_LOGGER_MAP.get(this.getAuthorization());
         if (apiResultsLogger != null) {
             return apiResultsLogger;
         } else {

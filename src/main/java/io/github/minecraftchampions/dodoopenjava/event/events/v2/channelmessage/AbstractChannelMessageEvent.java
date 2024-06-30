@@ -1,13 +1,13 @@
 package io.github.minecraftchampions.dodoopenjava.event.events.v2.channelmessage;
 
-import io.github.minecraftchampions.dodoopenjava.event.AbstractEvent;
+import io.github.minecraftchampions.dodoopenjava.event.Event;
 
 /**
  * 频道消息相关事件
  *
  * @author qscbm187531
  */
-public abstract class AbstractChannelMessageEvent extends AbstractEvent {
+public abstract class AbstractChannelMessageEvent extends Event {
     public AbstractChannelMessageEvent(boolean isAsync) {
         super(isAsync);
     }
