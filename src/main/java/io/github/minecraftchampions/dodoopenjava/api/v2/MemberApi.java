@@ -4,6 +4,8 @@ import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.debug.Result;
 import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
+import lombok.Builder;
+import lombok.Data;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -135,7 +137,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result getMemberInvitationInfo(String authorization, String islandSourceId, String dodoSourceId) throws IOException {
-        String url = DodoOpenJava.BASEURL + "member/role/list";
+        String url = DodoOpenJava.BASEURL + "member/invitation/info[-0o.";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId);
@@ -285,11 +287,12 @@ public class MemberApi {
      * @param token          机器人鉴权Token
      * @param islandSourceId 群号
      * @param dodoSourceId   Dodo号
+     * @param setting        封禁成员的一些参数设置
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static Result addMemberBan(String clientId, String token, String islandSourceId, String dodoSourceId) throws IOException {
-        return addMemberBan(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId);
+    public static Result addMemberBan(String clientId, String token, String islandSourceId, String dodoSourceId, BanSetting setting) throws IOException {
+        return addMemberBan(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, setting);
     }
 
     /**
@@ -298,158 +301,21 @@ public class MemberApi {
      * @param authorization  authorization
      * @param islandSourceId 群号
      * @param dodoSourceId   Dodo号
+     * @param setting        封禁成员的一些参数设置
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static Result addMemberBan(String authorization, String islandSourceId, String dodoSourceId) throws IOException {
+    public static Result addMemberBan(String authorization, String islandSourceId, String dodoSourceId, BanSetting setting) throws IOException {
         String url = DodoOpenJava.BASEURL + "member/ban/add";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
-    }
-
-    /**
-     * 永久封禁成员
-     *
-     * @param clientId       机器人唯一标识
-     * @param token          机器人鉴权Token
-     * @param islandSourceId 群号
-     * @param dodoSourceId   Dodo号
-     * @param reason         封禁理由
-     * @return JSON对象
-     * @throws IOException 失败后抛出
-     */
-    public static Result addMemberReasonBan(String clientId, String token, String islandSourceId, String dodoSourceId, String reason) throws IOException {
-        return addMemberReasonBan(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, reason);
-    }
-
-    /**
-     * 永久封禁成员
-     *
-     * @param authorization  authorization
-     * @param islandSourceId 群号
-     * @param dodoSourceId   Dodo号
-     * @param reason         封禁理由
-     * @return JSON对象
-     * @throws IOException 失败后抛出
-     */
-    public static Result addMemberReasonBan(String authorization, String islandSourceId, String dodoSourceId, String reason) throws IOException {
-        String url = DodoOpenJava.BASEURL + "member/ban/add";
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("islandSourceId", islandSourceId)
-                .put("dodoSourceId", dodoSourceId)
-                .put("reason", reason);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
-
-    }
-
-    /**
-     * 永久封禁成员
-     *
-     * @param clientId        机器人唯一标识
-     * @param token           机器人鉴权Token
-     * @param islandSourceId  群号
-     * @param noticeChannelId 提醒频道ID
-     * @param dodoSourceId    Dodo号
-     * @param reason          封禁理由
-     * @return JSON对象
-     * @throws IOException 失败后抛出
-     */
-    public static Result addMemberReasonChannelBan(String clientId, String token, String islandSourceId, String dodoSourceId, String reason, String noticeChannelId) throws IOException {
-        return addMemberReasonChannelBan(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, reason, noticeChannelId);
-    }
-
-    /**
-     * 永久封禁成员
-     *
-     * @param authorization   authorization
-     * @param islandSourceId  群号
-     * @param dodoSourceId    Dodo号
-     * @param reason          封禁理由
-     * @param noticeChannelId 提醒频道ID
-     * @return JSON对象
-     * @throws IOException 失败后抛出
-     */
-    public static Result addMemberReasonChannelBan(String authorization, String islandSourceId, String dodoSourceId, String reason, String noticeChannelId) throws IOException {
-        String url = DodoOpenJava.BASEURL + "member/ban/add";
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("islandSourceId", islandSourceId)
-                .put("dodoSourceId", dodoSourceId)
-                .put("reason", reason)
-                .put("noticeChannelId", noticeChannelId);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
-
-    }
-
-    /**
-     * 永久封禁成员
-     *
-     * @param clientId        机器人唯一标识
-     * @param token           机器人鉴权Token
-     * @param islandSourceId  群号
-     * @param dodoSourceId    Dodo号
-     * @param noticeChannelId 通知频道ID
-     * @return JSON对象
-     * @throws IOException 失败后抛出
-     */
-    public static Result addMemberChannelBan(String clientId, String token, String islandSourceId, String dodoSourceId, String noticeChannelId) throws IOException {
-        return addMemberChannelBan(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, noticeChannelId);
-    }
-
-    /**
-     * 永久封禁成员
-     *
-     * @param authorization   authorization
-     * @param islandSourceId  群号
-     * @param dodoSourceId    Dodo号
-     * @param noticeChannelId 通知频道ID
-     * @return JSON对象
-     * @throws IOException 失败后抛出
-     */
-    public static Result addMemberChannelBan(String authorization, String islandSourceId, String dodoSourceId, String noticeChannelId) throws IOException {
-        String url = DodoOpenJava.BASEURL + "member/ban/add";
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("islandSourceId", islandSourceId)
-                .put("dodoSourceId", dodoSourceId)
-                .put("noticeChannelId", noticeChannelId);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
-    }
-
-    /**
-     * 永久封禁成员
-     *
-     * @param clientId        机器人唯一标识
-     * @param token           机器人鉴权Token
-     * @param islandSourceId  群号
-     * @param dodoSourceId    Dodo号
-     * @param noticeChannelId 通知频道ID
-     * @param reason          封禁理由，理由不能大于64个字符或32个汉字
-     * @return JSON对象
-     * @throws IOException 失败后抛出
-     */
-    public static Result addMemberBan(String clientId, String token, String islandSourceId, String dodoSourceId, String noticeChannelId, String reason) throws IOException {
-        return addMemberBan(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, noticeChannelId, reason);
-    }
-
-    /**
-     * 永久封禁成员
-     *
-     * @param authorization   authorization
-     * @param islandSourceId  群号
-     * @param dodoSourceId    Dodo号
-     * @param noticeChannelId 通知频道ID
-     * @param reason          封禁理由，理由不能大于64个字符或32个汉字
-     * @return JSON对象
-     * @throws IOException 失败后抛出
-     */
-    public static Result addMemberBan(String authorization, String islandSourceId, String dodoSourceId, String noticeChannelId, String reason) throws IOException {
-        String url = DodoOpenJava.BASEURL + "member/ban/add";
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("islandSourceId", islandSourceId)
-                .put("dodoSourceId", dodoSourceId)
-                .put("reason", reason)
-                .put("noticeChannelId", noticeChannelId);
+        if (setting.hasReason()) {
+            jsonObject.put("reason",setting.getReason());
+        }
+        if (setting.hasNoticeChannelId()) {
+            jsonObject.put("noticeChannelId",setting.getNoticeChannelId());
+        }
         return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
     }
 
@@ -510,5 +376,20 @@ public class MemberApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("dodoIdList", dodoIdList);
         return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+    }
+
+    @Data
+    @Builder
+    public static class BanSetting {
+        private String noticeChannelId;
+        private String reason;
+
+        public boolean hasReason() {
+            return reason != null && !reason.isEmpty();
+        }
+
+        public boolean hasNoticeChannelId() {
+            return noticeChannelId != null && !noticeChannelId.isEmpty();
+        }
     }
 }

@@ -1,5 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.impl;
 
+import io.github.minecraftchampions.dodoopenjava.api.v2.MemberApi;
 import io.github.minecraftchampions.dodoopenjava.debug.Result;
 import io.github.minecraftchampions.dodoopenjava.api.Bot;
 import io.github.minecraftchampions.dodoopenjava.api.Island;
@@ -161,16 +162,9 @@ public class DodoUserImpl implements User {
 
     @Override
     public Result ban(String reason, String noticeChannelId) {
-        if (noticeChannelId == null && reason == null) {
-            return getBot().getApi().V2.memberApi.addMemberBan(getIslandSourceId(), getDodoSourceId());
-        }
-        if (noticeChannelId == null) {
-            return getBot().getApi().V2.memberApi.addMemberReasonBan(getIslandSourceId(), getDodoSourceId(), reason);
-        }
-        if (reason == null) {
-            return getBot().getApi().V2.memberApi.addMemberChannelBan(getIslandSourceId(), getDodoSourceId(), noticeChannelId);
-        }
-        return getBot().getApi().V2.memberApi.addMemberReasonChannelBan(getIslandSourceId(), getDodoSourceId(), reason, noticeChannelId);
+        MemberApi.BanSetting setting = MemberApi.BanSetting.builder()
+                .reason(reason).noticeChannelId(noticeChannelId).build();
+        return getBot().getApi().V2.memberApi.addMemberBan(getIslandSourceId(), getDodoSourceId(), setting);
     }
 
     @Override

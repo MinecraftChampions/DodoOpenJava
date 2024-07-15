@@ -1,13 +1,13 @@
 package io.github.minecraftchampions.dodoopenjava.impl;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
-import io.github.minecraftchampions.dodoopenjava.debug.DebugLogger;
-import io.github.minecraftchampions.dodoopenjava.debug.Result;
 import io.github.minecraftchampions.dodoopenjava.api.Bot;
 import io.github.minecraftchampions.dodoopenjava.api.Island;
 import io.github.minecraftchampions.dodoopenjava.api.User;
 import io.github.minecraftchampions.dodoopenjava.command.CommandExecutor;
 import io.github.minecraftchampions.dodoopenjava.command.CommandManager;
+import io.github.minecraftchampions.dodoopenjava.debug.DebugLogger;
+import io.github.minecraftchampions.dodoopenjava.debug.Result;
 import io.github.minecraftchampions.dodoopenjava.event.AbstractEventTrigger;
 import io.github.minecraftchampions.dodoopenjava.event.EventManager;
 import io.github.minecraftchampions.dodoopenjava.event.Listener;
@@ -586,23 +586,13 @@ public class BotImpl implements Bot {
                 }
 
                 @SneakyThrows
-                public Result addMemberChannelBan(String islandSourceId, String dodoSourceId, String noticeChannelId) {
-                    return io.github.minecraftchampions.dodoopenjava.api.v2.MemberApi.addMemberChannelBan(bot.getAuthorization(), islandSourceId, dodoSourceId, noticeChannelId);
-                }
-
-                @SneakyThrows
                 public Result removeMemberMute(String islandSourceId, String dodoSourceId) {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.MemberApi.removeMemberMute(bot.getAuthorization(), islandSourceId, dodoSourceId);
                 }
 
                 @SneakyThrows
-                public Result addMemberBan(String islandSourceId, String dodoSourceId) {
-                    return io.github.minecraftchampions.dodoopenjava.api.v2.MemberApi.addMemberBan(bot.getAuthorization(), islandSourceId, dodoSourceId);
-                }
-
-                @SneakyThrows
-                public Result addMemberBan(String islandSourceId, String dodoSourceId, String noticeChannelId, String reason) {
-                    return io.github.minecraftchampions.dodoopenjava.api.v2.MemberApi.addMemberBan(bot.getAuthorization(), islandSourceId, dodoSourceId, noticeChannelId, reason);
+                public Result addMemberBan(String islandSourceId, String dodoSourceId, io.github.minecraftchampions.dodoopenjava.api.v2.MemberApi.BanSetting setting) {
+                    return io.github.minecraftchampions.dodoopenjava.api.v2.MemberApi.addMemberBan(bot.getAuthorization(), islandSourceId, dodoSourceId, setting);
                 }
 
                 @SneakyThrows
@@ -639,17 +629,6 @@ public class BotImpl implements Bot {
                 public Result removeMemberBan(String islandSourceId, String dodoSourceId) {
                     return io.github.minecraftchampions.dodoopenjava.api.v2.MemberApi.removeMemberBan(bot.getAuthorization(), islandSourceId, dodoSourceId);
                 }
-
-                @SneakyThrows
-                public Result addMemberReasonBan(String islandSourceId, String dodoSourceId, String reason) {
-                    return io.github.minecraftchampions.dodoopenjava.api.v2.MemberApi.addMemberReasonBan(bot.getAuthorization(), islandSourceId, dodoSourceId, reason);
-                }
-
-                @SneakyThrows
-                public Result addMemberReasonChannelBan(String islandSourceId, String dodoSourceId, String reason, String noticeChannelId) {
-                    return io.github.minecraftchampions.dodoopenjava.api.v2.MemberApi.addMemberReasonChannelBan(bot.getAuthorization(), islandSourceId, dodoSourceId, reason, noticeChannelId);
-                }
-
 
                 @SneakyThrows
                 public Result getMemberDodoIdMapList(List<String> strList) {
