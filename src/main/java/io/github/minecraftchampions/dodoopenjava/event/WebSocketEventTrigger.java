@@ -41,7 +41,7 @@ public class WebSocketEventTrigger extends AbstractEventTrigger {
 
     private int reacquireCount = 0;
 
-    private final int reacquireMaxCount = 5000;
+    private final int reacquireMaxCount = 100;
 
     @Override
     public void start() {
