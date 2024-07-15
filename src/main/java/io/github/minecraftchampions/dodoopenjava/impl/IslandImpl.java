@@ -137,7 +137,7 @@ public class IslandImpl implements Island {
                 }
                 Result result = bot.getApi().V2.getIslandApi().getIslandMuteList(getIslandSourceId(),
                         100, maxId.getValue()).ifFailure(r -> {
-                    log.error("获取成员信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
+                    log.error("获取群禁言信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
                 });
                 if (result.isSuccess()) {
                     if (!(splice(result, userList, maxId, completableFutures, executorService))) {
@@ -168,7 +168,7 @@ public class IslandImpl implements Island {
                 }
                 Result result = bot.getApi().V2.getIslandApi().getIslandBanList(getIslandSourceId(),
                         100, maxId.getValue()).ifFailure(r -> {
-                    log.error("获取成员信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
+                    log.error("获取封禁信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
                 });
                 if (result.isSuccess()) {
                     if (!(splice(result, userList, maxId, completableFutures, executorService))) {
@@ -199,7 +199,7 @@ public class IslandImpl implements Island {
                 }
                 Result result = bot.getApi().V2.getRoleApi().getMemberList(getIslandSourceId(), roleId,
                         100, maxId.getValue()).ifFailure(r -> {
-                    log.error("获取成员信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
+                    log.error("获取身份组成员信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
                 });
                 if (result.isSuccess()) {
                     if (!(splice(result, userList, maxId, completableFutures, executorService))) {
