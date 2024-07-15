@@ -1,6 +1,6 @@
 package io.github.minecraftchampions.dodoopenjava.event.events.v2.shop;
 
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
+import io.github.minecraftchampions.dodoopenjava.utils.BaseUtils;
 import lombok.Getter;
 import org.json.JSONObject;
 
@@ -88,7 +88,7 @@ public class GoodsPurchaseEvent extends AbstractShopEvent {
         this.goodsType = json.getJSONObject("data").getJSONObject("eventBody").getInt("goodsType");
         this.goodsId = json.getJSONObject("data").getJSONObject("eventBody").getString("goodsId");
         this.goodsName = json.getJSONObject("data").getJSONObject("eventBody").getString("goodsName");
-        this.goodsImageList = BaseUtil.toStringList(json.getJSONObject("data").getJSONObject("eventBody").getJSONArray("goodsImageList").toList());
+        this.goodsImageList = BaseUtils.toStringList(json.getJSONObject("data").getJSONObject("eventBody").getJSONArray("goodsImageList").toList());
         eventType = GoodsPurchaseEvent.class;
     }
 }

@@ -2,8 +2,8 @@ package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.debug.Result;
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
-import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
+import io.github.minecraftchampions.dodoopenjava.utils.BaseUtils;
+import io.github.minecraftchampions.dodoopenjava.utils.NetUtils;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -25,7 +25,7 @@ public class ChannelApi {
      * @throws IOException 失败后抛出
      */
     public static Result getChannelList(String clientId, String token, String islandSourceId) throws IOException {
-        return getChannelList(BaseUtil.generateAuthorization(clientId, token), islandSourceId);
+        return getChannelList(BaseUtils.generateAuthorization(clientId, token), islandSourceId);
     }
 
     /**
@@ -41,7 +41,7 @@ public class ChannelApi {
         String url = DodoOpenJava.BASEURL + "channel/list";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -54,7 +54,7 @@ public class ChannelApi {
      * @throws IOException 失败后抛出
      */
     public static Result getChannelInfo(String clientId, String token, String channelId) throws IOException {
-        return getChannelInfo(BaseUtil.generateAuthorization(clientId, token), channelId);
+        return getChannelInfo(BaseUtils.generateAuthorization(clientId, token), channelId);
     }
 
     /**
@@ -70,7 +70,7 @@ public class ChannelApi {
         String url = DodoOpenJava.BASEURL + "channel/info";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("channelId", channelId);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -85,7 +85,7 @@ public class ChannelApi {
      * @throws IOException 失败后抛出
      */
     public static Result addChannel(String clientId, String token, String islandSourceId, String channelName, int channelType) throws IOException {
-        return addChannel(BaseUtil.generateAuthorization(clientId, token), islandSourceId, channelName, channelType);
+        return addChannel(BaseUtils.generateAuthorization(clientId, token), islandSourceId, channelName, channelType);
     }
 
     /**
@@ -107,7 +107,7 @@ public class ChannelApi {
         if (channelName != null) {
             jsonObject.put("channelName", channelName);
         }
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -122,7 +122,7 @@ public class ChannelApi {
      * @throws IOException 失败后抛出
      */
     public static Result editChannel(String clientId, String token, String islandSourceId, String channelName, String channelId) throws IOException {
-        return editChannel(BaseUtil.generateAuthorization(clientId, token), islandSourceId, channelName, channelId);
+        return editChannel(BaseUtils.generateAuthorization(clientId, token), islandSourceId, channelName, channelId);
     }
 
     /**
@@ -142,7 +142,7 @@ public class ChannelApi {
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("channelName", channelName)
                 .put("channelId", channelId);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -156,7 +156,7 @@ public class ChannelApi {
      * @throws IOException 失败后抛出
      */
     public static Result deleteChannel(String clientId, String token, String islandSourceId, String channelId) throws IOException {
-        return deleteChannel(BaseUtil.generateAuthorization(clientId, token), islandSourceId, channelId);
+        return deleteChannel(BaseUtils.generateAuthorization(clientId, token), islandSourceId, channelId);
     }
 
     /**
@@ -174,6 +174,6 @@ public class ChannelApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("channelId", channelId);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 }

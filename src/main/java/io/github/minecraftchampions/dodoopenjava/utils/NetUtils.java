@@ -22,7 +22,7 @@ import java.util.Objects;
  * @author qscbm187531
  */
 @Slf4j
-public class NetUtil {
+public class NetUtils {
     /**
      * 发送请求（Dodo开放平台专用）
      *

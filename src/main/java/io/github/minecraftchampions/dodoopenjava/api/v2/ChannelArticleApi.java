@@ -2,8 +2,8 @@ package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.debug.Result;
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
-import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
+import io.github.minecraftchampions.dodoopenjava.utils.BaseUtils;
+import io.github.minecraftchampions.dodoopenjava.utils.NetUtils;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -27,7 +27,7 @@ public class ChannelArticleApi {
      * @throws IOException 失败后抛出
      */
     public static Result addChannelArticle(String clientId, String token, String channelId, String title, String imageUrl, String content) throws IOException {
-        return addChannelArticle(BaseUtil.generateAuthorization(clientId, token), channelId, title, content, imageUrl);
+        return addChannelArticle(BaseUtils.generateAuthorization(clientId, token), channelId, title, content, imageUrl);
     }
 
     /**
@@ -53,7 +53,7 @@ public class ChannelArticleApi {
         if (imageUrl != null) {
             jsonObject.put("imageUrl",imageUrl);
         }
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
 
@@ -69,7 +69,7 @@ public class ChannelArticleApi {
      * @throws IOException 失败后抛出
      */
     public static Result removeChannelArticle(String clientId, String token, int type, String id, String channelId) throws IOException {
-        return removeChannelArticle(BaseUtil.generateAuthorization(clientId, token), type, id, channelId);
+        return removeChannelArticle(BaseUtils.generateAuthorization(clientId, token), type, id, channelId);
     }
 
     /**
@@ -89,7 +89,7 @@ public class ChannelArticleApi {
         jsonObject.put("id", id)
                 .put("channelId", channelId)
                 .put("type", type);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
 }

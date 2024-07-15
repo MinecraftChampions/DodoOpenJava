@@ -3,7 +3,7 @@ package io.github.minecraftchampions.dodoopenjava;
 import io.github.minecraftchampions.dodoopenjava.api.Bot;
 import io.github.minecraftchampions.dodoopenjava.debug.DebugLogger;
 import io.github.minecraftchampions.dodoopenjava.impl.BotImpl;
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
+import io.github.minecraftchampions.dodoopenjava.utils.BaseUtils;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
@@ -45,7 +45,7 @@ public class DodoOpenJava {
      * @return 返回的是浅拷贝的列表
      */
     public static List<Bot> getBotList() {
-        return BaseUtil.castList(BOT_LIST.clone(), Bot.class);
+        return BaseUtils.castList(BOT_LIST.clone(), Bot.class);
     }
 
     /**

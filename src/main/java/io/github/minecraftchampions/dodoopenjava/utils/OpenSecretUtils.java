@@ -14,7 +14,7 @@ import java.security.AlgorithmParameters;
  * @author qscbm187531
  */
 @Slf4j
-public class OpenSecretUtil {
+public class OpenSecretUtils {
     /**
      * WebHook解密
      *

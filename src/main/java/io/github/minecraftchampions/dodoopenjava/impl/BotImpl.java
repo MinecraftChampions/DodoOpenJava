@@ -16,7 +16,7 @@ import io.github.minecraftchampions.dodoopenjava.message.Message;
 import io.github.minecraftchampions.dodoopenjava.message.card.CardMessage;
 import io.github.minecraftchampions.dodoopenjava.message.text.TextMessage;
 import io.github.minecraftchampions.dodoopenjava.permission.Permission;
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
+import io.github.minecraftchampions.dodoopenjava.utils.BaseUtils;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -80,7 +80,7 @@ public class BotImpl implements Bot {
      */
     @Override
     public String getAuthorization() {
-        return BaseUtil.generateAuthorization(clientId, token);
+        return BaseUtils.generateAuthorization(clientId, token);
     }
 
     /**

@@ -2,8 +2,8 @@ package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.debug.Result;
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
-import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
+import io.github.minecraftchampions.dodoopenjava.utils.BaseUtils;
+import io.github.minecraftchampions.dodoopenjava.utils.NetUtils;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -24,7 +24,7 @@ public class BotApi {
      * @throws IOException 发送请求失败后抛出
      */
     public static Result getBotInfo(String clientId, String token) throws IOException {
-        return getBotInfo(BaseUtil.generateAuthorization(clientId, token));
+        return getBotInfo(BaseUtils.generateAuthorization(clientId, token));
     }
 
     /**
@@ -38,7 +38,7 @@ public class BotApi {
     public static Result getBotInfo(String authorization) throws IOException {
         String url = DodoOpenJava.BASEURL + "bot/info";
         JSONObject jsonObject = new JSONObject();
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -51,7 +51,7 @@ public class BotApi {
      * @throws IOException 发送请求失败后抛出
      */
     public static Result setBotIslandLeave(String clientId, String token, String islandSourceId) throws IOException {
-        return setBotIslandLeave(BaseUtil.generateAuthorization(clientId, token), islandSourceId);
+        return setBotIslandLeave(BaseUtils.generateAuthorization(clientId, token), islandSourceId);
     }
 
     /**
@@ -67,7 +67,7 @@ public class BotApi {
         String url = DodoOpenJava.BASEURL + "bot/island/leave";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -82,7 +82,7 @@ public class BotApi {
      */
 
     public static Result getBotInviteList(String clientId, String token, int pageSize, long maxId) throws IOException {
-        return getBotInviteList(BaseUtil.generateAuthorization(clientId, token), pageSize, maxId);
+        return getBotInviteList(BaseUtils.generateAuthorization(clientId, token), pageSize, maxId);
     }
 
     /**
@@ -100,7 +100,7 @@ public class BotApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("pageSize", pageSize)
                 .put("maxId", maxId);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -114,7 +114,7 @@ public class BotApi {
      */
 
     public static Result addBotInvite(String clientId, String token, String dodoSourceId) throws IOException {
-        return addBotInvite(BaseUtil.generateAuthorization(clientId, token), dodoSourceId);
+        return addBotInvite(BaseUtils.generateAuthorization(clientId, token), dodoSourceId);
     }
 
     /**
@@ -130,7 +130,7 @@ public class BotApi {
         String url = DodoOpenJava.BASEURL + "bot/invite/add";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("dodoSourceId", dodoSourceId);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -144,7 +144,7 @@ public class BotApi {
      */
 
     public static Result removeBotInvite(String clientId, String token, String dodoSourceId) throws IOException {
-        return removeBotInvite(BaseUtil.generateAuthorization(clientId, token), dodoSourceId);
+        return removeBotInvite(BaseUtils.generateAuthorization(clientId, token), dodoSourceId);
     }
 
     /**
@@ -160,6 +160,6 @@ public class BotApi {
         String url = DodoOpenJava.BASEURL + "bot/invite/remove";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("dodoSourceId", dodoSourceId);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 }

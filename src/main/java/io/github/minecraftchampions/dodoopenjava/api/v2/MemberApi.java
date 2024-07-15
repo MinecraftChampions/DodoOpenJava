@@ -2,8 +2,8 @@ package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.debug.Result;
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
-import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
+import io.github.minecraftchampions.dodoopenjava.utils.BaseUtils;
+import io.github.minecraftchampions.dodoopenjava.utils.NetUtils;
 import lombok.Builder;
 import lombok.Data;
 import org.json.JSONObject;
@@ -29,7 +29,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result getMemberList(String clientId, String token, String islandSourceId, int pageSize, long maxId) throws IOException {
-        return getMemberList(BaseUtil.generateAuthorization(clientId, token), islandSourceId, pageSize, maxId);
+        return getMemberList(BaseUtils.generateAuthorization(clientId, token), islandSourceId, pageSize, maxId);
     }
 
     /**
@@ -48,7 +48,7 @@ public class MemberApi {
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("pageSize", pageSize)
                 .put("maxId", maxId);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -62,7 +62,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result getMemberInfo(String clientId, String token, String islandSourceId, String dodoSourceId) throws IOException {
-        return getMemberInfo(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId);
+        return getMemberInfo(BaseUtils.generateAuthorization(clientId, token), islandSourceId, dodoSourceId);
     }
 
     /**
@@ -79,7 +79,7 @@ public class MemberApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -93,7 +93,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result getMemberRoleList(String clientId, String token, String islandSourceId, String dodoSourceId) throws IOException {
-        return getMemberRoleList(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId);
+        return getMemberRoleList(BaseUtils.generateAuthorization(clientId, token), islandSourceId, dodoSourceId);
     }
 
     /**
@@ -110,7 +110,7 @@ public class MemberApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -124,7 +124,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result getMemberInvitationInfo(String clientId, String token, String islandSourceId, String dodoSourceId) throws IOException {
-        return getMemberInvitationInfo(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId);
+        return getMemberInvitationInfo(BaseUtils.generateAuthorization(clientId, token), islandSourceId, dodoSourceId);
     }
 
     /**
@@ -141,7 +141,7 @@ public class MemberApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -156,7 +156,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result editMemberNickName(String clientId, String token, String islandSourceId, String dodoSourceId, String nickName) throws IOException {
-        return editMemberNickName(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, nickName);
+        return editMemberNickName(BaseUtils.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, nickName);
     }
 
     /**
@@ -175,7 +175,7 @@ public class MemberApi {
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("nickName", nickName)
                 .put("dodoSourceId", dodoSourceId);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -190,7 +190,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result addMemberMute(String clientId, String token, String islandSourceId, String dodoSourceId, int duration) throws IOException {
-        return addMemberMute(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, duration);
+        return addMemberMute(BaseUtils.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, duration);
     }
 
     /**
@@ -209,7 +209,7 @@ public class MemberApi {
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId)
                 .put("duration", duration);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -225,7 +225,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result addMemberReasonMute(String clientId, String token, String islandSourceId, String dodoSourceId, int duration, String reason) throws IOException {
-        return addMemberReasonMute(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, duration, reason);
+        return addMemberReasonMute(BaseUtils.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, duration, reason);
     }
 
     /**
@@ -246,7 +246,7 @@ public class MemberApi {
                 .put("dodoSourceId", dodoSourceId)
                 .put("reason", reason)
                 .put("duration", duration);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -260,7 +260,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result removeMemberMute(String clientId, String token, String islandSourceId, String dodoSourceId) throws IOException {
-        return removeMemberMute(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId);
+        return removeMemberMute(BaseUtils.generateAuthorization(clientId, token), islandSourceId, dodoSourceId);
     }
 
     /**
@@ -277,7 +277,7 @@ public class MemberApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -292,7 +292,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result addMemberBan(String clientId, String token, String islandSourceId, String dodoSourceId, BanSetting setting) throws IOException {
-        return addMemberBan(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, setting);
+        return addMemberBan(BaseUtils.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, setting);
     }
 
     /**
@@ -316,7 +316,7 @@ public class MemberApi {
         if (setting.hasNoticeChannelId()) {
             jsonObject.put("noticeChannelId",setting.getNoticeChannelId());
         }
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -330,7 +330,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result removeMemberBan(String clientId, String token, String islandSourceId, String dodoSourceId) throws IOException {
-        return removeMemberBan(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId);
+        return removeMemberBan(BaseUtils.generateAuthorization(clientId, token), islandSourceId, dodoSourceId);
     }
 
     /**
@@ -347,7 +347,7 @@ public class MemberApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -360,7 +360,7 @@ public class MemberApi {
      * @throws IOException 失败后抛出
      */
     public static Result getMemberDodoIdMapList(String clientId, String token, List<String> dodoIdList) throws IOException {
-        return getMemberDodoIdMapList(BaseUtil.generateAuthorization(clientId, token), dodoIdList);
+        return getMemberDodoIdMapList(BaseUtils.generateAuthorization(clientId, token), dodoIdList);
     }
 
     /**
@@ -375,7 +375,7 @@ public class MemberApi {
         String url = DodoOpenJava.BASEURL + "member/dodoid/map/list";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("dodoIdList", dodoIdList);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     @Data

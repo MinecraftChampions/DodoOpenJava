@@ -2,8 +2,8 @@ package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.debug.Result;
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
-import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
+import io.github.minecraftchampions.dodoopenjava.utils.BaseUtils;
+import io.github.minecraftchampions.dodoopenjava.utils.NetUtils;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -25,7 +25,7 @@ public class ResourceApi {
      * @throws IOException 失败后抛出
      */
     public static Result uploadResource(String clientId, String token, String path) throws IOException {
-        return uploadResource(BaseUtil.generateAuthorization(clientId, token), path);
+        return uploadResource(BaseUtils.generateAuthorization(clientId, token), path);
     }
 
     /**
@@ -38,6 +38,6 @@ public class ResourceApi {
      */
     public static Result uploadResource(String authorization, String path) throws IOException {
         String url = DodoOpenJava.BASEURL + "resource/picture/upload";
-        return NetUtil.uploadFileToDodo(new HashMap<>(Map.of("Authorization", authorization)), path, url);
+        return NetUtils.uploadFileToDodo(new HashMap<>(Map.of("Authorization", authorization)), path, url);
     }
 }

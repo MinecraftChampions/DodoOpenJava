@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author qscbm187531
  */
-public class BaseUtil {
+public class BaseUtils {
     /**
      * 拼接 Authorization
      *

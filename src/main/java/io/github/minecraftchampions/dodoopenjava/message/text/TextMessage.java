@@ -1,7 +1,7 @@
 package io.github.minecraftchampions.dodoopenjava.message.text;
 
 import io.github.minecraftchampions.dodoopenjava.message.Message;
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
+import io.github.minecraftchampions.dodoopenjava.utils.BaseUtils;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -58,7 +58,7 @@ public class TextMessage implements Message {
         List<TextMessageComponent> list = messageBuilder.components;
         StringBuilder sb = new StringBuilder();
         for (TextMessageComponent component : list) {
-            String content = BaseUtil.replaceXmlSpecialCharacters(component.getContent());
+            String content = BaseUtils.replaceXmlSpecialCharacters(component.getContent());
             List<TextMessageStyle> styles = component.getStyles();
             StringBuilder stringBuilder = new StringBuilder();
             if (styles.contains(TextMessageStyle.normal) && styles.size() == 1) {
@@ -104,7 +104,7 @@ public class TextMessage implements Message {
             String input = "<" + ROOT_NODE_NAME + str + "</" + ROOT_NODE_NAME + ">";
             Document document = documentBuilder.parse(new InputSource(new StringReader(input)));
             List<TextMessageComponent> list = new ArrayList<>();
-            List<Node> nodeList = BaseUtil.getAllTextNodes(document.getFirstChild());
+            List<Node> nodeList = BaseUtils.getAllTextNodes(document.getFirstChild());
             for (Node node : nodeList) {
                 String content = node.getTextContent();
                 List<TextMessageStyle> styleList = new ArrayList<>();
