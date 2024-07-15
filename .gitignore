@@ -29,3 +29,5 @@ replay_pid*
 *.iml
 target/
 src/test/
+node_modules/
+package-lock.json

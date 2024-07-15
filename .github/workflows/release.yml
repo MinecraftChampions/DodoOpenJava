@@ -22,8 +22,7 @@ jobs:
         with:
           node-version: "22"
       - name: Install Node.js dependencies
-        run: |
-          npm install xml2js
+        run: npm install
       - name: Build with Maven
         run: mvn -B package --file pom.xml
       - name: Get version
