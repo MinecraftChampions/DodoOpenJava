@@ -98,7 +98,7 @@ public class WebSocketEventTrigger extends AbstractEventTrigger {
                 });
     }
 
-    public static long waitForTheResponseMills = 15 * 1000;
+    public static final long waitForTheResponseMills = 15 * 1000;
 
     public void sendHeartbeatPacket() {
         CompletableFuture.runAsync(() -> {

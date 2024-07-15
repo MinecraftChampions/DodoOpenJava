@@ -17,61 +17,61 @@ public class PersonalMessageEvent extends AbstractPersonalEvent {
      * -- GETTER --
      * 获取DodoSourceId
      */
-    protected String dodoSourceId;
+    protected final String dodoSourceId;
 
     /**
      * -- GETTER --
      * 获取消息ID
      */
-    protected String messageId;
+    protected final String messageId;
 
     /**
      * -- GETTER --
      * 获取消息类别（Int类型）
      */
-    protected Integer messageIntType;
+    protected final Integer messageIntType;
 
     /**
      * -- GETTER --
      * 获取消息类别（String类型）
      */
-    protected String messageType;
+    protected final String messageType;
 
     /**
      * -- GETTER --
      * 获取成员Object
      */
-    protected JSONObject personal;
+    protected final JSONObject personal;
 
     /**
      * -- GETTER --
      * 获取发送者名字
      */
-    protected String senderNickName;
+    protected final String senderNickName;
 
     /**
      * -- GETTER --
      * 获取发送者头像URL
      */
-    protected String senderAvatarUrl;
+    protected final String senderAvatarUrl;
 
     /**
      * -- GETTER --
      * 获取性别（Int类型）
      */
-    protected Integer senderIntSex;
+    protected final Integer senderIntSex;
 
     /**
      * -- GETTER --
      * 获取性别（String类型）
      */
-    protected String senderSex;
+    protected final String senderSex;
 
     /**
      * -- GETTER --
      * 获取消息 Object
      */
-    protected JSONObject messageBody;
+    protected final JSONObject messageBody;
 
     public PersonalMessageEvent(JSONObject json) {
         super(true);

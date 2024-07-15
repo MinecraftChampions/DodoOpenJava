@@ -15,27 +15,27 @@ public class IntegralChangeEvent extends AbstractIntegralEvent {
      * -- GETTER --
      * 获取群号
      */
-    protected String islandSourceId;
+    protected final String islandSourceId;
 
     /**
      * -- GETTER --
      * 获取DodoId
      */
-    protected String dodoSourceId;
+    protected final String dodoSourceId;
 
     /**
      * -- GETTER --
      * 获取场景类型
      * 1：签到，2：邀请，3：转账，4：购买商品，5：管理积分，6：退群
      */
-    protected int operateType;
+    protected final int operateType;
 
     /**
      * -- GETTER --
      * 获取积分数量
      * 正数时表示积分增加，负数时表示积分减少
      */
-    protected long integral;
+    protected final long integral;
 
     public IntegralChangeEvent(JSONObject json) {
         super(true);

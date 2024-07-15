@@ -15,19 +15,19 @@ public class MemberJoinEvent extends AbstractMemberEvent {
      * -- GETTER --
      * 获取群号
      */
-    protected String islandSourceId;
+    protected final String islandSourceId;
 
     /**
      * -- GETTER --
      * 获取DodoSourceId
      */
-    protected String dodoSourceId;
+    protected final String dodoSourceId;
 
     /**
      * -- GETTER --
      * 获取变动时间
      */
-    protected String modifyTime;
+    protected final String modifyTime;
 
     public MemberJoinEvent(JSONObject json) {
         super(true);

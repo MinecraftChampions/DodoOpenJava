@@ -18,62 +18,62 @@ public class GoodsPurchaseEvent extends AbstractShopEvent {
      * -- GETTER --
      * 获取群号
      */
-    protected String islandSourceId;
+    protected final String islandSourceId;
 
     /**
      * -- GETTER --
      * 获取DodoId
      */
-    protected String dodoSourceId;
+    protected final String dodoSourceId;
 
     /**
      * -- GETTER --
      * 获取变动时间
      */
-    protected String modifyTime;
+    protected final String modifyTime;
 
     /**
      * -- GETTER --
      * 获取JSONObject
      */
-    protected JSONObject jsonObject;
+    protected final JSONObject jsonObject;
 
     /**
      * -- GETTER --
      * 获取JsonString
      */
-    protected String jsonString;
+    protected final String jsonString;
 
     /**
      * -- GETTER --
      * 获取订单号
      */
-    protected String orderNo;
+    protected final String orderNo;
 
     /**
      * -- GETTER --
      * 获取商品类型
      * 1：身份组，2：自定义商品
      */
-    protected int goodsType;
+    protected final int goodsType;
 
     /**
      * -- GETTER --
      * 获取商品ID
      */
-    protected String goodsId;
+    protected final String goodsId;
 
     /**
      * -- GETTER --
      * 获取商品图片列表，链接后接参数可以调整图片样式
      */
-    protected String goodsName;
+    protected final String goodsName;
 
     /**
      * -- GETTER --
      * 获取订单号
      */
-    protected List<String> goodsImageList;
+    protected final List<String> goodsImageList;
 
     public GoodsPurchaseEvent(JSONObject json) {
         super(true);

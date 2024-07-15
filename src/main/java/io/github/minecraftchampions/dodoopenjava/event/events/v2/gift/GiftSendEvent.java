@@ -17,91 +17,91 @@ public class GiftSendEvent extends AbstractGiftEvent {
      * -- GETTER --
      * 获取来源群ID
      */
-    protected String islandSourceId;
+    protected final String islandSourceId;
 
     /**
      * -- GETTER --
      * 获取来源频道ID
      */
-    protected String channelId;
+    protected final String channelId;
 
     /**
      * -- GETTER --
      * 获取订单号
      */
-    protected String orderNo;
+    protected final String orderNo;
 
     /**
      * -- GETTER --
      * 获取内容类型，1：消息，2：帖子
      */
-    protected Integer targetType;
+    protected final Integer targetType;
 
     /**
      * -- GETTER --
      * 获取内容ID
      */
-    protected String targetId;
+    protected final String targetId;
 
     /**
      * -- GETTER --
      * 获取礼物总价值（铃钱）
      */
-    protected BigDecimal totalAmount;
+    protected final BigDecimal totalAmount;
 
     /**
      * -- GETTER --
      * 获取礼物信息Object
      */
-    protected JSONObject gift;
+    protected final JSONObject gift;
 
     /**
      * -- GETTER --
      * 获取群分成（百分比）
      */
-    protected BigDecimal islandRatio;
+    protected final BigDecimal islandRatio;
 
     /**
      * -- GETTER --
      * 获取群收入（里程）
      */
-    protected BigDecimal islandIncome;
+    protected final BigDecimal islandIncome;
 
     /**
      * -- GETTER --
      * 获取赠礼人DoDoID
      */
-    protected String dodoSourceId;
+    protected final String dodoSourceId;
 
     /**
      * -- GETTER --
      * 获取赠礼人群昵称
      */
-    protected String dodoIslandNickName;
+    protected final String dodoIslandNickName;
 
     /**
      * -- GETTER --
      * 获取被赠礼人DoDoID
      */
-    protected String toDodoSourceId;
+    protected final String toDodoSourceId;
 
     /**
      * -- GETTER --
      * 获取被赠礼人群昵称
      */
-    protected String toDodoIslandNickName;
+    protected final String toDodoIslandNickName;
 
     /**
      * -- GETTER --
      * 获取被赠礼人分成（百分比）
      */
-    protected BigDecimal toDodoRatio;
+    protected final BigDecimal toDodoRatio;
 
     /**
      * -- GETTER --
      * 获取被赠礼人收入（里程）
      */
-    protected BigDecimal toDodoIncome;
+    protected final BigDecimal toDodoIncome;
 
     public GiftSendEvent(JSONObject json) {
         super(true);
