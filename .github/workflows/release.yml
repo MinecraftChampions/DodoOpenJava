@@ -32,6 +32,6 @@ jobs:
         if: github.ref_name == 'release'
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "exp"
+          automatic_release_tag: "${{ steps.Get-version.outputs.version}}"
           prerelease: true
           title: "DodoOpenJava${{ steps.Get-version.outputs.version}}"
