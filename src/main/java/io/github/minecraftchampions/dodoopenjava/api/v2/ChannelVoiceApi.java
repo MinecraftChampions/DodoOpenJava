@@ -2,8 +2,8 @@ package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.debug.Result;
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
-import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
+import io.github.minecraftchampions.dodoopenjava.utils.BaseUtils;
+import io.github.minecraftchampions.dodoopenjava.utils.NetUtils;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -25,7 +25,7 @@ public class ChannelVoiceApi {
      * @throws IOException 失败后抛出
      */
     public static Result getChannelVoiceMemberStatus(String clientId, String token, String islandSourceId, String dodoSourceId) throws IOException {
-        return getChannelVoiceMemberStatus(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId);
+        return getChannelVoiceMemberStatus(BaseUtils.generateAuthorization(clientId, token), islandSourceId, dodoSourceId);
     }
 
     /**
@@ -42,7 +42,7 @@ public class ChannelVoiceApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
 
@@ -58,7 +58,7 @@ public class ChannelVoiceApi {
      * @throws IOException 失败后抛出
      */
     public static Result moveChannelVoiceMember(String clientId, String token, String islandSourceId, String dodoSourceId, String channelId) throws IOException {
-        return moveChannelVoiceMember(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, channelId);
+        return moveChannelVoiceMember(BaseUtils.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, channelId);
     }
 
     /**
@@ -77,7 +77,7 @@ public class ChannelVoiceApi {
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId)
                 .put("channelId", channelId);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -92,7 +92,7 @@ public class ChannelVoiceApi {
      * @throws IOException 失败后抛出
      */
     public static Result editChannelVoiceMember(String clientId, String token, int operateType, String dodoSourceId, String channelId) throws IOException {
-        return editChannelVoiceMember(BaseUtil.generateAuthorization(clientId, token), operateType, dodoSourceId, channelId);
+        return editChannelVoiceMember(BaseUtils.generateAuthorization(clientId, token), operateType, dodoSourceId, channelId);
     }
 
     /**
@@ -111,6 +111,6 @@ public class ChannelVoiceApi {
         jsonObject.put("operateType", operateType)
                 .put("dodoSourceId", dodoSourceId)
                 .put("channelId", channelId);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 }

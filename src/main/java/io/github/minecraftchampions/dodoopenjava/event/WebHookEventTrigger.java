@@ -3,7 +3,7 @@ package io.github.minecraftchampions.dodoopenjava.event;
 import com.sun.net.httpserver.*;
 import com.sun.net.httpserver.spi.HttpServerProvider;
 import io.github.minecraftchampions.dodoopenjava.api.Bot;
-import io.github.minecraftchampions.dodoopenjava.utils.OpenSecretUtil;
+import io.github.minecraftchampions.dodoopenjava.utils.OpenSecretUtils;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -191,7 +191,7 @@ public class WebHookEventTrigger extends AbstractEventTrigger {
                     JSONObject json = new JSONObject(s);
                     String payload = json.getString("payload");
                     CompletableFuture<JSONObject> future = CompletableFuture.supplyAsync(() -> {
-                        String event = OpenSecretUtil.webHookDecrypt(payload, secretKey);
+                        String event = OpenSecretUtils.webHookDecrypt(payload, secretKey);
                         return new JSONObject(Objects.requireNonNull(event));
                     });
                     JSONObject mJson = new JSONObject("""

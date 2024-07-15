@@ -41,7 +41,7 @@ public class WebSocketEventTrigger extends AbstractEventTrigger {
 
     private int reacquireCount = 0;
 
-    private final int reacquireMaxCount = 5000;
+    private final int reacquireMaxCount = 100;
 
     @Override
     public void start() {
@@ -87,18 +87,17 @@ public class WebSocketEventTrigger extends AbstractEventTrigger {
                 .ifFailure(result -> {
                     reacquireCount++;
                     if (reacquireCount > reacquireMaxCount) {
-                        log.error("获取websocket连接错误" + result.getMessage() +
-                                  ";\n当前重连次数:" + reacquireCount + ",已超过最大重连次数:" + reacquireMaxCount
-                                  + ",已取消重连");
+                        log.error("获取websocket连接错误{};\n当前重连次数:{},已超过最大重连次数:{},已取消重连",
+                                result.getMessage(), reacquireCount, reacquireMaxCount);
                         return;
                     }
-                    log.warn("获取websocket连接错误" + result.getMessage() +
-                             ";\n已尝试重新获取,当前重新获取次数:" + reacquireCount);
+                    log.error("获取websocket连接错误{};\n已尝试重新获取,当前重新获取次数:{}",
+                            result.getMessage(), reacquireCount);
                     v2();
                 });
     }
 
-    public static long waitForTheResponseMills = 15 * 1000;
+    public static final long waitForTheResponseMills = 15 * 1000;
 
     public void sendHeartbeatPacket() {
         CompletableFuture.runAsync(() -> {
@@ -152,8 +151,7 @@ public class WebSocketEventTrigger extends AbstractEventTrigger {
             try {
                 eventManager.parseAndFireEvent(jsontext);
             } catch (Exception e) {
-                log.warn("Websocket消息接收发生未知错误;消息内容:" + message
-                         + ";\n错误内容:" + e.getLocalizedMessage());
+                log.warn("Websocket消息接收发生未知错误;消息内容:{};\n错误内容:{}", message, e.getLocalizedMessage());
                 sendPing();
             }
         }
@@ -166,7 +164,7 @@ public class WebSocketEventTrigger extends AbstractEventTrigger {
 
         @Override
         public void onClose(int code, String reason, boolean remote) {
-            log.warn("websocket关闭;code:" + code + ":reason:" + reason + ";已自动重连");
+            log.warn("websocket关闭;code:{};reason:{};已自动重连", code, reason);
             reconnectWebsocket();
         }
     }

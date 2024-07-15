@@ -13,7 +13,7 @@ import java.util.Date;
  * @author qscbm187531
  */
 @Slf4j
-public class DateUtil {
+public class DateUtils {
     /**
      * 简化格式1
      */

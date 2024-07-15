@@ -2,8 +2,8 @@ package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.debug.Result;
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
-import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
+import io.github.minecraftchampions.dodoopenjava.utils.BaseUtils;
+import io.github.minecraftchampions.dodoopenjava.utils.NetUtils;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -25,7 +25,7 @@ public class IntegralApi {
      * @throws IOException 失败后抛出
      */
     public static Result getIntegralInfo(String clientId, String token, String islandSourceId, String dodoSourceId) throws IOException {
-        return getIntegralInfo(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId);
+        return getIntegralInfo(BaseUtils.generateAuthorization(clientId, token), islandSourceId, dodoSourceId);
     }
 
     /**
@@ -42,7 +42,7 @@ public class IntegralApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -58,7 +58,7 @@ public class IntegralApi {
      * @throws IOException 失败后抛出
      */
     public static Result setIntegralEdit(String clientId, String token, String islandSourceId, String dodoSourceId, int operateType, long integral) throws IOException {
-        return setIntegralEdit(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, operateType, integral);
+        return setIntegralEdit(BaseUtils.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, operateType, integral);
     }
 
     /**
@@ -79,6 +79,6 @@ public class IntegralApi {
                 .put("dodoSourceId", dodoSourceId)
                 .put("operateType", operateType)
                 .put("integral", integral);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 }

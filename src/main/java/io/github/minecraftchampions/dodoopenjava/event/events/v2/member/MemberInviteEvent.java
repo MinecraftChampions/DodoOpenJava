@@ -15,49 +15,49 @@ public class MemberInviteEvent extends AbstractMemberEvent {
      * -- GETTER --
      * 获取群号
      */
-    protected String islandSourceId;
+    protected final String islandSourceId;
 
     /**
      * -- GETTER --
      * 获取DodoSourceId
      */
-    protected String dodoSourceId;
+    protected final String dodoSourceId;
 
     /**
      * -- GETTER --
      * 获取变动时间
      */
-    protected String modifyTime;
+    protected final String modifyTime;
 
     /**
      * -- GETTER --
      * 获取JSONObject
      */
-    protected JSONObject jsonObject;
+    protected final JSONObject jsonObject;
 
     /**
      * -- GETTER --
      * 获取JsonString
      */
-    protected String jsonString;
+    protected final String jsonString;
 
     /**
      * -- GETTER --
      * 获取邀请人群昵称
      */
-    protected String dodoIslandNickName;
+    protected final String dodoIslandNickName;
 
     /**
      * -- GETTER --
      * 获取被邀请人DoDoID
      */
-    protected String toDodoSourceId;
+    protected final String toDodoSourceId;
 
     /**
      * -- GETTER --
      * 获取被邀请人群昵称
      */
-    protected String toDodoIslandNickName;
+    protected final String toDodoIslandNickName;
 
     public MemberInviteEvent(JSONObject json) {
         super(true);

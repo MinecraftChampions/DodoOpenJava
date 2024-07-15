@@ -3,8 +3,8 @@ package io.github.minecraftchampions.dodoopenjava.api.v2;
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.debug.Result;
 import io.github.minecraftchampions.dodoopenjava.message.Message;
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
-import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
+import io.github.minecraftchampions.dodoopenjava.utils.BaseUtils;
+import io.github.minecraftchampions.dodoopenjava.utils.NetUtils;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -27,7 +27,7 @@ public class PersonalApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendPersonalMessage(String clientId, String token, String islandSourceId, String dodoSourceId, String message) throws IOException {
-        return sendPersonalMessage(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, message);
+        return sendPersonalMessage(BaseUtils.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, message);
     }
 
     /**
@@ -46,7 +46,7 @@ public class PersonalApi {
                 .put("dodoSourceId", dodoSourceId)
                 .put("messageType", 1)
                 .put("messageBody", Map.of("content", message));
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -61,7 +61,7 @@ public class PersonalApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendMessage(String clientId, String token, String islandSourceId, String dodoSourceId, Message messageBody) throws IOException {
-        return sendMessage(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, messageBody);
+        return sendMessage(BaseUtils.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, messageBody);
     }
 
     /**
@@ -81,7 +81,7 @@ public class PersonalApi {
                 .put("dodoSourceId", dodoSourceId)
                 .put("messageType", messageBody.getType())
                 .put("messageBody", messageBody.toMessage());
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -98,7 +98,7 @@ public class PersonalApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendDodoPictureMessage(String clientId, String token, String islandSourceId, String dodoSourceId, String url, int width, int height, Boolean isOriginal) throws IOException {
-        return sendDodoPictureMessage(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, url, width, height, isOriginal);
+        return sendDodoPictureMessage(BaseUtils.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, url, width, height, isOriginal);
     }
 
     /**
@@ -130,7 +130,7 @@ public class PersonalApi {
                         "width", width,
                         "height", height,
                         "isOriginal", original));
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -146,7 +146,7 @@ public class PersonalApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendDodoPictureMessage(String clientId, String token, String islandSourceId, String dodoSourceId, String url, int width, int height) throws IOException {
-        return sendDodoPictureMessage(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, url, width, height);
+        return sendDodoPictureMessage(BaseUtils.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, url, width, height);
     }
 
     /**
@@ -170,7 +170,7 @@ public class PersonalApi {
                         "url", u,
                         "width", width,
                         "height", height));
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -184,7 +184,7 @@ public class PersonalApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendDodoVideoMessage(String clientId, String token, String islandSourceId, String dodoSourceId, String url) throws IOException {
-        return sendDodoVideoMessage(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, url);
+        return sendDodoVideoMessage(BaseUtils.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, url);
     }
 
     /**
@@ -205,7 +205,7 @@ public class PersonalApi {
                 .put("messageBody", Map.of(
                         "url", u
                 ));
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -222,7 +222,7 @@ public class PersonalApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendDodoVideoMessage(String clientId, String token, String islandSourceId, String dodoSourceId, String url, String coverUrl, long duration, long size) throws IOException {
-        return sendDodoVideoMessage(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, url, coverUrl, duration, size);
+        return sendDodoVideoMessage(BaseUtils.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, url, coverUrl, duration, size);
     }
 
     /**
@@ -249,6 +249,6 @@ public class PersonalApi {
                         "duration", duration,
                         "size", size
                 ));
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 }

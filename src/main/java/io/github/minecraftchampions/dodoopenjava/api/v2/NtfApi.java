@@ -2,8 +2,8 @@ package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.debug.Result;
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
-import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
+import io.github.minecraftchampions.dodoopenjava.utils.BaseUtils;
+import io.github.minecraftchampions.dodoopenjava.utils.NetUtils;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -27,7 +27,7 @@ public class NtfApi {
      * @throws IOException 失败后抛出
      */
     public static Result getMemberNftStatus(String clientId, String token, String islandSourceId, String dodoSourceId, String platform) throws IOException {
-        return getMemberNftStatus(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, platform);
+        return getMemberNftStatus(BaseUtils.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, platform);
     }
 
     /**
@@ -46,7 +46,7 @@ public class NtfApi {
         jsonObject.put("islandSourceId", islandSourceId)
                 .put("dodoSourceId", dodoSourceId)
                 .put("platform", platform);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -61,7 +61,7 @@ public class NtfApi {
      * @throws IOException 失败后抛出
      */
     public static Result getMemberNftStatus(String clientId, String token, String islandSourceId, String dodoSourceId, String platform, String issuer, String series) throws IOException {
-        return getMemberNftStatus(BaseUtil.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, platform, issuer, series);
+        return getMemberNftStatus(BaseUtils.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, platform, issuer, series);
     }
 
     /**
@@ -80,6 +80,6 @@ public class NtfApi {
                 .put("issuer", issuer)
                 .put("series", series)
                 .put("platform", platform);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 }

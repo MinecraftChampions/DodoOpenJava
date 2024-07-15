@@ -2,8 +2,8 @@ package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.debug.Result;
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
-import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
+import io.github.minecraftchampions.dodoopenjava.utils.BaseUtils;
+import io.github.minecraftchampions.dodoopenjava.utils.NetUtils;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -24,7 +24,7 @@ public class GiftApi {
      * @throws IOException 发送请求失败后抛出
      */
     public static Result getGiftAccount(String clientId, String token, String islandSourceId) throws IOException {
-        return getGiftAccount(BaseUtil.generateAuthorization(clientId, token), islandSourceId);
+        return getGiftAccount(BaseUtils.generateAuthorization(clientId, token), islandSourceId);
     }
 
     /**
@@ -40,7 +40,7 @@ public class GiftApi {
         String param = new JSONObject()
                 .put("islandSourceId", islandSourceId)
                 .toString();
-        return NetUtil.sendRequest(param, url, authorization);
+        return NetUtils.sendRequest(param, url, authorization);
     }
 
     /**
@@ -53,7 +53,7 @@ public class GiftApi {
      * @throws IOException 发送请求失败后抛出
      */
     public static Result getGiftShareRatioInfo(String clientId, String token, String islandSourceId) throws IOException {
-        return getGiftShareRatioInfo(BaseUtil.generateAuthorization(clientId, token), islandSourceId);
+        return getGiftShareRatioInfo(BaseUtils.generateAuthorization(clientId, token), islandSourceId);
     }
 
     /**
@@ -69,7 +69,7 @@ public class GiftApi {
         String param = new JSONObject()
                 .put("islandSourceId", islandSourceId)
                 .toString();
-        return NetUtil.sendRequest(param, url, authorization);
+        return NetUtils.sendRequest(param, url, authorization);
     }
 
     /**
@@ -83,7 +83,7 @@ public class GiftApi {
      * @throws IOException 发送请求失败后抛出
      */
     public static Result getGiftList(String clientId, String token, String targetId, int targetType) throws IOException {
-        return getGiftList(BaseUtil.generateAuthorization(clientId, token), targetId, targetType);
+        return getGiftList(BaseUtils.generateAuthorization(clientId, token), targetId, targetType);
     }
 
     /**
@@ -101,7 +101,7 @@ public class GiftApi {
                 .put("targetId", targetId)
                 .put("targetType", targetType)
                 .toString();
-        return NetUtil.sendRequest(param, url, authorization);
+        return NetUtils.sendRequest(param, url, authorization);
     }
 
     /**
@@ -118,7 +118,7 @@ public class GiftApi {
      * @throws IOException 发送请求失败后抛出
      */
     public static Result getGiftMemberList(String clientId, String token, String targetId, int targetType, String giftId, int pageSize, long maxId) throws IOException {
-        return getGiftMemberList(BaseUtil.generateAuthorization(clientId, token), targetId, targetType, giftId, pageSize, maxId);
+        return getGiftMemberList(BaseUtils.generateAuthorization(clientId, token), targetId, targetType, giftId, pageSize, maxId);
     }
 
     /**
@@ -142,7 +142,7 @@ public class GiftApi {
                 .put("pageSize", pageSize)
                 .put("maxId", maxId)
                 .toString();
-        return NetUtil.sendRequest(param, url, authorization);
+        return NetUtils.sendRequest(param, url, authorization);
     }
 
     /**
@@ -158,7 +158,7 @@ public class GiftApi {
      * @throws IOException 发送请求失败后抛出
      */
     public static Result getGiftGrossValueList(String clientId, String token, String targetId, int targetType, int pageSize, long maxId) throws IOException {
-        return getGiftGrossValueList(BaseUtil.generateAuthorization(clientId, token), targetId, targetType, pageSize, maxId);
+        return getGiftGrossValueList(BaseUtils.generateAuthorization(clientId, token), targetId, targetType, pageSize, maxId);
     }
 
     /**
@@ -180,6 +180,6 @@ public class GiftApi {
                 .put("pageSize", pageSize)
                 .put("maxId", maxId)
                 .toString();
-        return NetUtil.sendRequest(param, url, authorization);
+        return NetUtils.sendRequest(param, url, authorization);
     }
 }

@@ -2,8 +2,8 @@ package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.debug.Result;
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
-import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
+import io.github.minecraftchampions.dodoopenjava.utils.BaseUtils;
+import io.github.minecraftchampions.dodoopenjava.utils.NetUtils;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -21,13 +21,13 @@ public class ChannelArticleApi {
      * @param token     token
      * @param channelId 频道ID
      * @param title     标题
-     * @param content   内容，10000字符限制，支持菱形语法，内容和图片链接必填一个，剩下一个填null
+     * @param content   内容，10000个字符限制，支持菱形语法，内容和图片链接必填一个，剩下一个填null
      * @param imageUrl  图片链接，必须是官方的链接，通过上传资源图片接口可获得图片链接，内容和图片链接必填一个，剩下一个填null
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
     public static Result addChannelArticle(String clientId, String token, String channelId, String title, String imageUrl, String content) throws IOException {
-        return addChannelArticle(BaseUtil.generateAuthorization(clientId, token), channelId, title, content, imageUrl);
+        return addChannelArticle(BaseUtils.generateAuthorization(clientId, token), channelId, title, content, imageUrl);
     }
 
     /**
@@ -36,7 +36,7 @@ public class ChannelArticleApi {
      * @param authorization authorization
      * @param channelId     频道ID
      * @param title         Dodo号
-     * @param content       内容，10000字符限制，支持菱形语法，内容和图片链接必填一个，剩下一个填null
+     * @param content       内容，10000个字符限制，支持菱形语法，内容和图片链接必填一个，剩下一个填null
      * @param imageUrl      图片链接，必须是官方的链接，通过上传资源图片接口可获得图片链接，内容和图片链接必填一个，剩下一个填null
      * @return JSON对象
      * @throws IOException 失败后抛出
@@ -53,7 +53,7 @@ public class ChannelArticleApi {
         if (imageUrl != null) {
             jsonObject.put("imageUrl",imageUrl);
         }
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
 
@@ -69,7 +69,7 @@ public class ChannelArticleApi {
      * @throws IOException 失败后抛出
      */
     public static Result removeChannelArticle(String clientId, String token, int type, String id, String channelId) throws IOException {
-        return removeChannelArticle(BaseUtil.generateAuthorization(clientId, token), type, id, channelId);
+        return removeChannelArticle(BaseUtils.generateAuthorization(clientId, token), type, id, channelId);
     }
 
     /**
@@ -89,7 +89,7 @@ public class ChannelArticleApi {
         jsonObject.put("id", id)
                 .put("channelId", channelId)
                 .put("type", type);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
 }

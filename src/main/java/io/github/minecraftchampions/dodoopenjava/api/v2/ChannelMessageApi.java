@@ -5,8 +5,8 @@ import io.github.minecraftchampions.dodoopenjava.debug.Result;
 import io.github.minecraftchampions.dodoopenjava.message.Message;
 import io.github.minecraftchampions.dodoopenjava.message.card.CardMessage;
 import io.github.minecraftchampions.dodoopenjava.message.text.TextMessage;
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
-import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
+import io.github.minecraftchampions.dodoopenjava.utils.BaseUtils;
+import io.github.minecraftchampions.dodoopenjava.utils.NetUtils;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -31,7 +31,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendTextMessage(String clientId, String token, String channelId, String message) throws IOException {
-        return sendTextMessage(BaseUtil.generateAuthorization(clientId, token), channelId, message);
+        return sendTextMessage(BaseUtils.generateAuthorization(clientId, token), channelId, message);
     }
 
     /**
@@ -45,7 +45,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendTextMessage(String clientId, String token, String channelId, TextMessage textMessage) throws IOException {
-        return sendTextMessage(BaseUtil.generateAuthorization(clientId, token), channelId, textMessage);
+        return sendTextMessage(BaseUtils.generateAuthorization(clientId, token), channelId, textMessage);
     }
 
     /**
@@ -78,7 +78,7 @@ public class ChannelMessageApi {
                 .put("messageBody", Map.of(
                         "content", content
                 ));
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -107,7 +107,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result setChannelMessageTop(String clientId, String token, String messageId, int operateType) throws IOException {
-        return setChannelMessageTop(BaseUtil.generateAuthorization(clientId, token), messageId, operateType);
+        return setChannelMessageTop(BaseUtils.generateAuthorization(clientId, token), messageId, operateType);
     }
 
     /**
@@ -124,7 +124,7 @@ public class ChannelMessageApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId)
                 .put("operateType", operateType);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -137,7 +137,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result getChannelMessageReactionList(String clientId, String token, String messageId) throws IOException {
-        return getChannelMessageReactionList(BaseUtil.generateAuthorization(clientId, token), messageId);
+        return getChannelMessageReactionList(BaseUtils.generateAuthorization(clientId, token), messageId);
     }
 
     /**
@@ -152,7 +152,7 @@ public class ChannelMessageApi {
         String url = DodoOpenJava.BASEURL + "channel/message/reaction/list";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -165,7 +165,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result getChannelMessageReactionMemberList(String clientId, String token, String messageId, int type, String id, int pageSize, long maxId) throws IOException {
-        return getChannelMessageReactionMemberList(BaseUtil.generateAuthorization(clientId, token), messageId, type, id, pageSize, maxId);
+        return getChannelMessageReactionMemberList(BaseUtils.generateAuthorization(clientId, token), messageId, type, id, pageSize, maxId);
     }
 
     /**
@@ -186,7 +186,7 @@ public class ChannelMessageApi {
                         "type", type,
                         "id", id
                 ));
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -201,7 +201,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result referencedMessage(String clientId, String token, String channelId, String message, String referencedMessageId) throws IOException {
-        return referencedMessage(BaseUtil.generateAuthorization(clientId, token), channelId, message, referencedMessageId);
+        return referencedMessage(BaseUtils.generateAuthorization(clientId, token), channelId, message, referencedMessageId);
     }
 
     /**
@@ -223,7 +223,7 @@ public class ChannelMessageApi {
                         "content", content,
                         "referencedMessageId", referencedMessageId
                 ));
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
 
@@ -239,7 +239,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result referencedMessage(String clientId, String token, String channelId, Message message, String referencedMessageId) throws IOException {
-        return referencedMessage(BaseUtil.generateAuthorization(clientId, token), channelId, message, referencedMessageId);
+        return referencedMessage(BaseUtils.generateAuthorization(clientId, token), channelId, message, referencedMessageId);
     }
 
     /**
@@ -258,7 +258,7 @@ public class ChannelMessageApi {
         jsonObject.put("channelId", channelId)
                 .put("messageType", 1)
                 .put("messageBody", message);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -275,7 +275,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendChannelPictureMessage(String clientId, String token, String channelId, String url, int width, int height, Boolean isOriginal) throws IOException {
-        return sendChannelPictureMessage(BaseUtil.generateAuthorization(clientId, token), channelId, url, width, height, isOriginal);
+        return sendChannelPictureMessage(BaseUtils.generateAuthorization(clientId, token), channelId, url, width, height, isOriginal);
     }
 
     /**
@@ -307,7 +307,7 @@ public class ChannelMessageApi {
                         "height", height,
                         "isOriginal", original
                 ));
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -323,7 +323,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendChannelPictureMessage(String clientId, String token, String channelId, String url, int width, int height) throws IOException {
-        return sendChannelPictureMessage(BaseUtil.generateAuthorization(clientId, token), channelId, url, width, height);
+        return sendChannelPictureMessage(BaseUtils.generateAuthorization(clientId, token), channelId, url, width, height);
     }
 
     /**
@@ -347,7 +347,7 @@ public class ChannelMessageApi {
                         "width", width,
                         "height", height
                 ));
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -381,7 +381,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendChannelVideoMessage(String clientId, String token, String channelId, String url) throws IOException {
-        return sendChannelVideoMessage(BaseUtil.generateAuthorization(clientId, token), channelId, url);
+        return sendChannelVideoMessage(BaseUtils.generateAuthorization(clientId, token), channelId, url);
     }
 
     /**
@@ -401,7 +401,7 @@ public class ChannelMessageApi {
                 .put("messageBody", Map.of(
                         "url", videoUrl
                 ));
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -418,7 +418,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendChannelVideoMessage(String clientId, String token, String channelId, String url, String coverUrl, long duration, long size) throws IOException {
-        return sendChannelVideoMessage(BaseUtil.generateAuthorization(clientId, token), channelId, url, coverUrl, duration, size);
+        return sendChannelVideoMessage(BaseUtils.generateAuthorization(clientId, token), channelId, url, coverUrl, duration, size);
     }
 
     /**
@@ -444,7 +444,7 @@ public class ChannelMessageApi {
                         "duration", duration,
                         "size", size
                 ));
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -458,7 +458,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendChannelShareMessage(String clientId, String token, String channelId, String jumpUrl) throws IOException {
-        return sendChannelShareMessage(BaseUtil.generateAuthorization(clientId, token), channelId, jumpUrl);
+        return sendChannelShareMessage(BaseUtils.generateAuthorization(clientId, token), channelId, jumpUrl);
     }
 
     /**
@@ -478,7 +478,7 @@ public class ChannelMessageApi {
                 .put("messageBody", Map.of(
                         "jumpUrl", jumpUrl
                 ));
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -494,7 +494,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendChannelFileMessage(String clientId, String token, String channelId, String url, String name, long size) throws IOException {
-        return sendChannelFileMessage(BaseUtil.generateAuthorization(clientId, token), channelId, url, name, size);
+        return sendChannelFileMessage(BaseUtils.generateAuthorization(clientId, token), channelId, url, name, size);
     }
 
     /**
@@ -518,7 +518,7 @@ public class ChannelMessageApi {
                         "name", name,
                         "size", size
                 ));
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -532,7 +532,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result editChannelMessage(String clientId, String token, String messageId, String content) throws IOException {
-        return editChannelMessage(BaseUtil.generateAuthorization(clientId, token), messageId, content);
+        return editChannelMessage(BaseUtils.generateAuthorization(clientId, token), messageId, content);
     }
 
     /**
@@ -551,7 +551,7 @@ public class ChannelMessageApi {
                 .put("messageBody", Map.of(
                         "content", content
                 ));
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -565,7 +565,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result editChannelMessage(String clientId, String token, String messageId, Message message) throws IOException {
-        return editChannelMessage(BaseUtil.generateAuthorization(clientId, token), messageId, message);
+        return editChannelMessage(BaseUtils.generateAuthorization(clientId, token), messageId, message);
     }
 
     /**
@@ -582,7 +582,7 @@ public class ChannelMessageApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId)
                 .put("messageBody", message.toMessage());
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -595,7 +595,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result withdrawChannelMessage(String clientId, String token, String messageId) throws IOException {
-        return withdrawChannelMessage(BaseUtil.generateAuthorization(clientId, token), messageId);
+        return withdrawChannelMessage(BaseUtils.generateAuthorization(clientId, token), messageId);
     }
 
     /**
@@ -610,7 +610,7 @@ public class ChannelMessageApi {
         String url = DodoOpenJava.BASEURL + "channel/message/withdraw";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -624,7 +624,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result withdrawChannelMessageWithReason(String clientId, String token, String messageId, String reason) throws IOException {
-        return withdrawChannelMessageWithReason(BaseUtil.generateAuthorization(clientId, token), messageId, reason);
+        return withdrawChannelMessageWithReason(BaseUtils.generateAuthorization(clientId, token), messageId, reason);
     }
 
     /**
@@ -641,7 +641,7 @@ public class ChannelMessageApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId)
                 .put("reason", reason);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -655,7 +655,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result addChannelMessageReaction(String clientId, String token, String messageId, String id) throws IOException {
-        return addChannelMessageReaction(BaseUtil.generateAuthorization(clientId, token), messageId, id);
+        return addChannelMessageReaction(BaseUtils.generateAuthorization(clientId, token), messageId, id);
     }
 
     /**
@@ -675,7 +675,7 @@ public class ChannelMessageApi {
                         "type", 1,
                         "id", id
                 ));
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -690,7 +690,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result removeChannelMessageReaction(String clientId, String token, String messageId, String id, String dodoSourceId) throws IOException {
-        return removeChannelMessageReaction(BaseUtil.generateAuthorization(clientId, token), messageId, id, dodoSourceId);
+        return removeChannelMessageReaction(BaseUtils.generateAuthorization(clientId, token), messageId, id, dodoSourceId);
     }
 
     /**
@@ -712,7 +712,7 @@ public class ChannelMessageApi {
                         "type", 1,
                         "id", id
                 ));
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -726,7 +726,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result removeChannelMessageBotReaction(String clientId, String token, String messageId, String id) throws IOException {
-        return removeChannelMessageBotReaction(BaseUtil.generateAuthorization(clientId, token), messageId, id);
+        return removeChannelMessageBotReaction(BaseUtils.generateAuthorization(clientId, token), messageId, id);
     }
 
     /**
@@ -746,7 +746,7 @@ public class ChannelMessageApi {
                         "type", 1,
                         "id", id
                 ));
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -760,7 +760,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendCardMessage(String clientId, String token, String channelId, CardMessage messageBody) throws IOException {
-        return sendCardMessage(BaseUtil.generateAuthorization(clientId, token), channelId, messageBody);
+        return sendCardMessage(BaseUtils.generateAuthorization(clientId, token), channelId, messageBody);
     }
 
     /**
@@ -778,7 +778,7 @@ public class ChannelMessageApi {
         jsonObject.put("channelId", channelId)
                 .put("messageType", 6)
                 .put("messageBody", messageBody.toMessage());
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -792,7 +792,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendMessage(String clientId, String token, String channelId, Message messageBody) throws IOException {
-        return sendMessage(BaseUtil.generateAuthorization(clientId, token), channelId, messageBody);
+        return sendMessage(BaseUtils.generateAuthorization(clientId, token), channelId, messageBody);
     }
 
     /**
@@ -810,7 +810,7 @@ public class ChannelMessageApi {
         jsonObject.put("channelId", channelId)
                 .put("messageType", messageBody.getType())
                 .put("messageBody", messageBody.toMessage());
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -825,7 +825,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result sendChannelPersonalMessage(String clientId, String token, String channelId, Message messageBody, String dodoSourceId) throws IOException {
-        return sendChannelPersonalMessage(BaseUtil.generateAuthorization(clientId, token), channelId, messageBody, dodoSourceId);
+        return sendChannelPersonalMessage(BaseUtils.generateAuthorization(clientId, token), channelId, messageBody, dodoSourceId);
     }
 
     /**
@@ -845,7 +845,7 @@ public class ChannelMessageApi {
                 .put("messageType", messageBody.getType())
                 .put("messageBody", messageBody.toMessage())
                 .put("dodoSourceId", dodoSourceId);
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
     /**
@@ -859,7 +859,7 @@ public class ChannelMessageApi {
      * @throws IOException 失败后抛出
      */
     public static Result editChannelCardMessage(String clientId, String token, String messageId, CardMessage messageBody) throws IOException {
-        return editChannelCardMessage(BaseUtil.generateAuthorization(clientId, token), messageId, messageBody);
+        return editChannelCardMessage(BaseUtils.generateAuthorization(clientId, token), messageId, messageBody);
     }
 
     /**
@@ -876,7 +876,7 @@ public class ChannelMessageApi {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("messageId", messageId)
                 .put("messageBody", messageBody.toString());
-        return NetUtil.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
 }

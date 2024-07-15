@@ -15,87 +15,87 @@ public class MessageReactionEvent extends AbstractChannelMessageEvent {
      * -- GETTER --
      * 获取群号
      */
-    protected String islandSourceId;
+    protected final String islandSourceId;
 
     /**
      * -- GETTER --
      * 获取频道ID
      */
-    protected String channelId;
+    protected final String channelId;
 
     /**
      * -- GETTER --
      * 获取DodoSourceId
      */
-    protected String dodoSourceId;
+    protected final String dodoSourceId;
 
     /**
      * -- GETTER --
      * 获取消息ID
      */
-    protected String messageId;
+    protected final String messageId;
 
-    protected String reactionType;
+    protected final String reactionType;
 
     /**
      * -- GETTER --
      * 获取成员Object
      */
-    protected JSONObject personal;
+    protected final JSONObject personal;
 
     /**
      * -- GETTER --
      * 获取发送者名字
      */
-    protected String senderNickName;
+    protected final String senderNickName;
 
     /**
      * -- GETTER --
      * 获取发送者头像URL
      */
-    protected String senderAvatarUrl;
+    protected final String senderAvatarUrl;
 
     /**
      * -- GETTER --
      * 获取性别（Int类型）
      */
-    protected Integer senderIntSex;
+    protected final Integer senderIntSex;
 
     /**
      * -- GETTER --
      * 获取性别（String类型）
      */
-    protected String senderSex;
+    protected final String senderSex;
 
     /**
      * -- GETTER --
      * 获取成员Object
      */
-    protected JSONObject member;
+    protected final JSONObject member;
 
     /**
      * -- GETTER --
      * 获取成员显示名
      */
-    protected String memberNickName;
+    protected final String memberNickName;
 
     /**
      * -- GETTER --
      * 获取成员加入时间
      */
-    protected String memberJoinTime;
+    protected final String memberJoinTime;
 
     /**
      * -- GETTER --
      * 获取表情 Object
      */
-    protected JSONObject reactionEmoji;
+    protected final JSONObject reactionEmoji;
 
     /**
      * -- GETTER --
      * 获取表情的EmojiId
      */
-    protected String reactionEmojiId;
+    protected final String reactionEmojiId;
 
     public MessageReactionEvent(JSONObject json) {
         super(true);

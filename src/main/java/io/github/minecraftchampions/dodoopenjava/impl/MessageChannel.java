@@ -1,10 +1,10 @@
 package io.github.minecraftchampions.dodoopenjava.impl;
 
-import io.github.minecraftchampions.dodoopenjava.debug.Result;
 import io.github.minecraftchampions.dodoopenjava.api.Bot;
 import io.github.minecraftchampions.dodoopenjava.api.Channel;
 import io.github.minecraftchampions.dodoopenjava.api.ChannelType;
 import io.github.minecraftchampions.dodoopenjava.api.User;
+import io.github.minecraftchampions.dodoopenjava.debug.Result;
 import io.github.minecraftchampions.dodoopenjava.message.Emoji;
 import io.github.minecraftchampions.dodoopenjava.message.Message;
 import lombok.NonNull;
@@ -122,7 +122,7 @@ public class MessageChannel extends ChannelImpl {
     public Map<Emoji, Integer> getMessageReactionList(@NonNull String messageId) {
         Result result = getBot().getApi().V2.getChannelMessageApi().getChannelMessageReactionList(messageId);
         if (result.isFailure()) {
-            log.error("获取消息信息失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
+            log.error("获取消息反应失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
             return null;
         }
         List<JSONObject> list = result.getJSONObjectData().getJSONArray("data").toList().stream().map((o) -> {
@@ -160,7 +160,7 @@ public class MessageChannel extends ChannelImpl {
                 }
                 Result result = getBot().getApi().V2.getChannelMessageApi().getChannelMessageReactionMemberList(messageId, 1, emoji.getId(),
                         100, maxId.getValue()).ifFailure(r -> {
-                    log.error("获取消息信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
+                    log.error("获取消息反应成员列表失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
                 });
                 if (result.isSuccess()) {
                     if (!(((IslandImpl) getIsland()).splice(result, userList, maxId, completableFutures, executorService))) {

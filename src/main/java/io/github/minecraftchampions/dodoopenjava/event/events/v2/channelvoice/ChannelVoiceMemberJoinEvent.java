@@ -16,21 +16,21 @@ public class ChannelVoiceMemberJoinEvent extends AbstractChannelVoiceEvent {
      * -- GETTER --
      * 获取群号
      */
-    protected String islandSourceId;
+    protected final String islandSourceId;
 
     /**
      * -- GETTER --
      * 获取DodoSourceId
      */
-    protected String dodoSourceId;
+    protected final String dodoSourceId;
 
     /**
      * -- GETTER --
      * 获取频道ID
      */
-    protected String channelId;
+    protected final String channelId;
 
-    protected String modifyTime;
+    protected final String modifyTime;
 
 
 
@@ -38,49 +38,49 @@ public class ChannelVoiceMemberJoinEvent extends AbstractChannelVoiceEvent {
      * -- GETTER --
      * 获取成员Object
      */
-    protected JSONObject personal;
+    protected final JSONObject personal;
 
     /**
      * -- GETTER --
      * 获取发送者名字
      */
-    protected String userNickName;
+    protected final String userNickName;
 
     /**
      * -- GETTER --
      * 获取发送者头像URL
      */
-    protected String userAvatarUrl;
+    protected final String userAvatarUrl;
 
     /**
      * -- GETTER --
      * 获取性别（Int类型）
      */
-    protected Integer userIntSex;
+    protected final Integer userIntSex;
 
     /**
      * -- GETTER --
      * 获取性别（String类型）
      */
-    protected String userSex;
+    protected final String userSex;
 
     /**
      * -- GETTER --
      * 获取成员Object
      */
-    protected JSONObject member;
+    protected final JSONObject member;
 
     /**
      * -- GETTER --
      * 获取成员显示名
      */
-    protected String memberNickName;
+    protected final String memberNickName;
 
     /**
      * -- GETTER --
      * 获取成员加入时间
      */
-    protected String memberJoinTime;
+    protected final String memberJoinTime;
 
     public ChannelVoiceMemberJoinEvent(JSONObject json) {
         super(true);

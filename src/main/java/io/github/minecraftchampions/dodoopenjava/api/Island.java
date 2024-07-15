@@ -2,7 +2,6 @@ package io.github.minecraftchampions.dodoopenjava.api;
 
 import io.github.minecraftchampions.dodoopenjava.permission.Permission;
 import lombok.NonNull;
-import org.json.JSONObject;
 
 import java.util.List;
 
@@ -83,10 +82,10 @@ public interface Island {
 
     /**
      * 获取等级排行榜
-     *
-     * @return rank
+     * 返回List,第一个是第一名,第二个是第二名
+     * @return 等级排行榜
      */
-    List<JSONObject> getIslandLevelRankList();
+    List<User> getIslandLevelRankList();
 
     /**
      * 获取禁言列表

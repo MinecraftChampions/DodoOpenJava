@@ -16,7 +16,7 @@ import io.github.minecraftchampions.dodoopenjava.message.Message;
 import io.github.minecraftchampions.dodoopenjava.message.card.CardMessage;
 import io.github.minecraftchampions.dodoopenjava.message.text.TextMessage;
 import io.github.minecraftchampions.dodoopenjava.permission.Permission;
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
+import io.github.minecraftchampions.dodoopenjava.utils.BaseUtils;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -80,7 +80,7 @@ public class BotImpl implements Bot {
      */
     @Override
     public String getAuthorization() {
-        return BaseUtil.generateAuthorization(clientId, token);
+        return BaseUtils.generateAuthorization(clientId, token);
     }
 
     /**
@@ -172,7 +172,7 @@ public class BotImpl implements Bot {
         if (apiResultsLogger != null) {
             return apiResultsLogger;
         } else {
-            log.error("没有启用日志记录系统就调用Bot#getApiResultsLogger方法,bot:" + getAuthorization());
+            log.error("没有启用日志记录系统就调用Bot#getApiResultsLogger方法,bot:{}",getAuthorization());
             return null;
         }
     }
@@ -549,8 +549,8 @@ public class BotImpl implements Bot {
 
             public class IslandApi {
                 @SneakyThrows
-                public Result getIslandLevelRankList(String islandSourceId, int pageSize, long maxId) {
-                    return io.github.minecraftchampions.dodoopenjava.api.v2.IslandApi.getIslandLevelRankList(bot.getAuthorization(), islandSourceId, pageSize, maxId);
+                public Result getIslandLevelRankList(String islandSourceId) {
+                    return io.github.minecraftchampions.dodoopenjava.api.v2.IslandApi.getIslandLevelRankList(bot.getAuthorization(), islandSourceId);
                 }
 
                 @SneakyThrows
