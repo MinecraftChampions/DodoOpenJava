@@ -106,8 +106,20 @@ public class IslandImpl implements Island {
     }
 
     @Override
-    public List<JSONObject> getIslandLevelRankList() {
-        return null;
+    public List<User> getIslandLevelRankList() {
+        Result result = bot.getApi().V2.getIslandApi()
+                .getIslandLevelRankList(getIslandSourceId()).ifFailure(r -> {
+            log.error("获取排行失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
+        });
+        JSONArray array = result.getJSONObjectData().getJSONArray("data");
+        List<User> userList = new ArrayList<>();
+        for (Object o : array) {
+            if (o instanceof JSONObject jsonObject) {
+                userList.add(getBot().getApi().V2.getMemberApi().getUser(islandSourceId,
+                        jsonObject.getString("dodoSourceId")));
+            }
+        }
+        return userList;
     }
 
     @Override

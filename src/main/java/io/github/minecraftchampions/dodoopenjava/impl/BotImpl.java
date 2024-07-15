@@ -549,8 +549,8 @@ public class BotImpl implements Bot {
 
             public class IslandApi {
                 @SneakyThrows
-                public Result getIslandLevelRankList(String islandSourceId, int pageSize, long maxId) {
-                    return io.github.minecraftchampions.dodoopenjava.api.v2.IslandApi.getIslandLevelRankList(bot.getAuthorization(), islandSourceId, pageSize, maxId);
+                public Result getIslandLevelRankList(String islandSourceId) {
+                    return io.github.minecraftchampions.dodoopenjava.api.v2.IslandApi.getIslandLevelRankList(bot.getAuthorization(), islandSourceId);
                 }
 
                 @SneakyThrows

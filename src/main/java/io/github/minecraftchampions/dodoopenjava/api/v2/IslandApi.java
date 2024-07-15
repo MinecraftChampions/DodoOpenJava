@@ -73,13 +73,11 @@ public class IslandApi {
      * @param clientId       机器人唯一标识
      * @param token          机器人鉴权Token
      * @param islandSourceId 群号
-     * @param pageSize       页大小，最大100
-     * @param maxId          上一页最大ID值，为提升分页查询性能，需要传入上一页查询记录中的最大ID值，首页请传0
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static Result getIslandLevelRankList(String clientId, String token, String islandSourceId, int pageSize, long maxId) throws IOException {
-        return getIslandLevelRankList(BaseUtils.generateAuthorization(clientId, token), islandSourceId, pageSize, maxId);
+    public static Result getIslandLevelRankList(String clientId, String token, String islandSourceId) throws IOException {
+        return getIslandLevelRankList(BaseUtils.generateAuthorization(clientId, token), islandSourceId);
     }
 
     /**
@@ -87,17 +85,13 @@ public class IslandApi {
      *
      * @param authorization  authorization
      * @param islandSourceId 群号
-     * @param pageSize       页大小，最大100
-     * @param maxId          上一页最大ID值，为提升分页查询性能，需要传入上一页查询记录中的最大ID值，首页请传0
      * @return JSON对象
      * @throws IOException 失败后抛出
      */
-    public static Result getIslandLevelRankList(String authorization, String islandSourceId, int pageSize, long maxId) throws IOException {
-        String url = DodoOpenJava.BASEURL + "island/info";
+    public static Result getIslandLevelRankList(String authorization, String islandSourceId) throws IOException {
+        String url = DodoOpenJava.BASEURL + "/api/v2/island/level/rank/list";
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("islandSourceId", islandSourceId)
-                .put("pageSize", pageSize)
-                .put("maxId", maxId);
+        jsonObject.put("islandSourceId", islandSourceId);
         return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
     }
 
