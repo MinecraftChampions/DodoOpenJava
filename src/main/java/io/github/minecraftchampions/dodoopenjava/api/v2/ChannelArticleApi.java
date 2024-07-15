@@ -21,7 +21,7 @@ public class ChannelArticleApi {
      * @param token     token
      * @param channelId 频道ID
      * @param title     标题
-     * @param content   内容，10000字符限制，支持菱形语法，内容和图片链接必填一个，剩下一个填null
+     * @param content   内容，10000个字符限制，支持菱形语法，内容和图片链接必填一个，剩下一个填null
      * @param imageUrl  图片链接，必须是官方的链接，通过上传资源图片接口可获得图片链接，内容和图片链接必填一个，剩下一个填null
      * @return JSON对象
      * @throws IOException 失败后抛出
@@ -36,7 +36,7 @@ public class ChannelArticleApi {
      * @param authorization authorization
      * @param channelId     频道ID
      * @param title         Dodo号
-     * @param content       内容，10000字符限制，支持菱形语法，内容和图片链接必填一个，剩下一个填null
+     * @param content       内容，10000个字符限制，支持菱形语法，内容和图片链接必填一个，剩下一个填null
      * @param imageUrl      图片链接，必须是官方的链接，通过上传资源图片接口可获得图片链接，内容和图片链接必填一个，剩下一个填null
      * @return JSON对象
      * @throws IOException 失败后抛出

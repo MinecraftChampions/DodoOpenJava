@@ -172,7 +172,7 @@ public class BotImpl implements Bot {
         if (apiResultsLogger != null) {
             return apiResultsLogger;
         } else {
-            log.error("没有启用日志记录系统就调用Bot#getApiResultsLogger方法,bot:" + getAuthorization());
+            log.error("没有启用日志记录系统就调用Bot#getApiResultsLogger方法,bot:{}",getAuthorization());
             return null;
         }
     }
