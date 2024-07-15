@@ -30,9 +30,9 @@ jobs:
       - name: Create Tag
         uses: negz/create-tag@v1
         with:
-          version: ${{ steps.Get-version.outputs.version}}"
-          message: Release version
-          token: ${{ secrets.GITHUB_TOKEN }}
+          version: "${{ steps.Get-version.outputs.version}}"
+          message: "Release version"
+          token: "${{ secrets.GITHUB_TOKEN }}"
       - name: Automatic Releases
         uses: marvinpinto/action-automatic-releases@v1.2.1
         if: github.ref_name == 'release'
