@@ -1,4 +1,4 @@
-package io.github.minecraftchampions.dodoopenjava.util;
+package io.github.minecraftchampions.dodoopenjava.utils;
 
 import io.github.minecraftchampions.dodoopenjava.debug.Result;
 import lombok.NonNull;

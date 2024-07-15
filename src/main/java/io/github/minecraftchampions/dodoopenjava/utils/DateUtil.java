@@ -1,4 +1,4 @@
-package io.github.minecraftchampions.dodoopenjava.util;
+package io.github.minecraftchampions.dodoopenjava.utils;
 
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
@@ -42,7 +42,7 @@ public class DateUtil {
         try {
             return (new SimpleDateFormat(format)).parse(string);
         } catch (ParseException e) {
-            log.error("解析事件错误", e);
+            log.error("解析时间错误", e);
             return null;
         }
     }

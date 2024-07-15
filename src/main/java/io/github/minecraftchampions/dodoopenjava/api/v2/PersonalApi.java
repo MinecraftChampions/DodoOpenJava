@@ -3,8 +3,8 @@ package io.github.minecraftchampions.dodoopenjava.api.v2;
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.debug.Result;
 import io.github.minecraftchampions.dodoopenjava.message.Message;
-import io.github.minecraftchampions.dodoopenjava.util.BaseUtil;
-import io.github.minecraftchampions.dodoopenjava.util.NetUtil;
+import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
+import io.github.minecraftchampions.dodoopenjava.utils.NetUtil;
 import org.json.JSONObject;
 
 import java.io.IOException;

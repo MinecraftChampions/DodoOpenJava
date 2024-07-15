@@ -16,7 +16,7 @@ import io.github.minecraftchampions.dodoopenjava.message.Message;
 import io.github.minecraftchampions.dodoopenjava.message.card.CardMessage;
 import io.github.minecraftchampions.dodoopenjava.message.text.TextMessage;
 import io.github.minecraftchampions.dodoopenjava.permission.Permission;
-import io.github.minecraftchampions.dodoopenjava.util.BaseUtil;
+import io.github.minecraftchampions.dodoopenjava.utils.BaseUtil;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;

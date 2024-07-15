@@ -1,4 +1,4 @@
-package io.github.minecraftchampions.dodoopenjava.util;
+package io.github.minecraftchampions.dodoopenjava.utils;
 
 import lombok.extern.slf4j.Slf4j;
 
