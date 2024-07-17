@@ -5,6 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <properties>
+        <oldVersion>3.3.0</oldVersion>
         <java.version>16</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -13,7 +14,7 @@
 
     <groupId>io.github.minecraftchampions.dodoopenjava</groupId>
     <artifactId>DodoOpenJava</artifactId>
-    <version>3.3.0</version>
+    <version>3.3.1</version>
     <packaging>jar</packaging>
     <name>DodoOpenJava</name>
 
