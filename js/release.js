@@ -4,7 +4,7 @@ const version = process.env.version;
 let oldVersion = process.env.oldversion;
 console.log(version)
 console.log(oldVersion)
-if (oldVersion === undefined) {
+if (oldVersion == undefined) {
     console.log("没有检测的要比较的tag")
     console.log("开始自动获取")
     const tagsUrl = 'https://api.github.com/repos/MinecraftChampions/DodoOpenJava/tags';
