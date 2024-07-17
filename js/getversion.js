@@ -13,5 +13,5 @@ parser.parseString(xml, (err, result) => {
     console.info("DodoOpenJavaVersion=" + version)
     fs.appendFileSync(process.env.GITHUB_ENV, "version=" + version + "\n");
     console.log(result.project.properties)
-    fs.appendFileSync(process.env.GITHUB_ENV, "oldversion=" + result.project.properties.oldversion);
+    fs.appendFileSync(process.env.GITHUB_ENV, "oldversion=" + result.project.properties.oldversion[0]);
 });
