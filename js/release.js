@@ -1,7 +1,7 @@
 const request = require('request');
 
 const version = process.env.version;
-let oldVersion = process.env.oldVersion;
+let oldVersion = process.env.oldversion;
 
 if (oldVersion == null) {
     console.log("没有检测的要比较的tag")
