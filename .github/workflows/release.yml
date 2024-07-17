@@ -28,8 +28,6 @@ jobs:
       - name: getversion
         run: |
           node ./js/getversion.js
-          echo version=${{ steps.getverseion.outputs.version }}
-          echo version=${{ env.version }}
       - name: Create Tag
         uses: negz/create-tag@v1
         with:
@@ -40,5 +38,5 @@ jobs:
         run: node ./js/release.js
         env:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          release_title: "DodoOpenJava-${{ steps.getverseion.outputs.version }}"
+          release_title: "DodoOpenJava-${{ env.version }}"
           version: "${{ env.version }}"
