@@ -2,7 +2,8 @@ const request = require('request');
 
 const version = process.env.version;
 let oldVersion = process.env.oldversion;
-
+console.log(version)
+console.log(oldVersion)
 if (oldVersion == null) {
     console.log("没有检测的要比较的tag")
     console.log("开始自动获取")
@@ -130,6 +131,7 @@ function getChange() {
             return console.log(err);
         }
         let data = JSON.parse(body);
+        console.log(data)
         let cs = data.commits;
         cs.forEach(commit => {
             commits.push({
@@ -177,6 +179,7 @@ function startParsing(commits) {
 
 function release(content) {
     const token = process.env.repo_token;
+    console.log( process.env.repo_token)
     const url = 'https://api.github.com/repos/MinecraftChampions/DodoOpenJava/releases';
 
     let options = {
