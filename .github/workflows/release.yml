@@ -33,7 +33,7 @@ jobs:
       - name: Create Tag
         uses: negz/create-tag@v1
         with:
-          version: '${{ steps.getverseion.outputs.version }}'
+          version: "${{ env.version }}"
           message: "Release version"
           token: "${{ secrets.GITHUB_TOKEN }}"
       - name: Automatic Releases
@@ -41,4 +41,4 @@ jobs:
         env:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           release_title: "DodoOpenJava-${{ steps.getverseion.outputs.version }}"
-          version: "${{ steps.get-verseion.outputs.version }}"
+          version: "${{ env.version }}"
