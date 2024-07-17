@@ -26,7 +26,7 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --file pom.xml
       - name: Get version
-        run: node ./javascript/getversion.js
+        run: node ./js/getversion.js
       - name: Create Tag
         uses: negz/create-tag@v1
         with:
@@ -34,7 +34,7 @@ jobs:
           message: "Release version"
           token: "${{ secrets.GITHUB_TOKEN }}"
       - name: Automatic Releases
-        run: node ./javascript/release.js
+        run: node ./js/release.js
         env:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           release_title: "DodoOpenJava-${{  env.version }}"
