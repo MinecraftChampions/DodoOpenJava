@@ -25,7 +25,7 @@ jobs:
         run: npm install
       - name: Build with Maven
         run: mvn -B package --file pom.xml
-      - name: getversion
+      - name: Get Version
         run: |
           node ./js/getversion.js
       - name: Create Tag
