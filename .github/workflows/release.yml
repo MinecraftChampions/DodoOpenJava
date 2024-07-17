@@ -2,7 +2,7 @@ name: 自动发布
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "release" ]
 
 jobs:
   release:
@@ -40,3 +40,4 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           release_title: "DodoOpenJava-${{ env.version }}"
           version: "${{ env.version }}"
+          oldversion: "${{ env.oldversion }}"
