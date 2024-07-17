@@ -36,8 +36,8 @@ request(o, (err, res, body) => {
             }
         }
     }
+    getChange();
 });
-getChange();
 
 function getChangeLog(commits) {
     const typeMessageRe =
