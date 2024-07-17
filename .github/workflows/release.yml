@@ -28,7 +28,12 @@ jobs:
       - name: getversion
         run: |
           node ./js/getversion.js
-      
+      - name: Create Tag
+        uses: negz/create-tag@v1
+        with:
+          version: "${{ env.version }}"
+          message: "Release version"
+          token: "${{ secrets.GITHUB_TOKEN }}"
       - name: Automatic Releases
         run: node ./js/release.js
         env:
