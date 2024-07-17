@@ -202,6 +202,8 @@ public class BotImpl implements Bot {
     @Override
     public synchronized void initEventListenSystem(@NonNull AbstractEventTrigger t) {
         if (t.getBot() != this) {
+            log.error("传入错误的AbstractEventTrigger");
+            log.error("{}#getBot!=this",t);
             return;
         }
         if (eventTrigger != null) {
