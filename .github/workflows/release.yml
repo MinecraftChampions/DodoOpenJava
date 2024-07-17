@@ -25,17 +25,19 @@ jobs:
         run: npm install
       - name: Build with Maven
         run: mvn -B package --file pom.xml
-      - name: get version
-        run: node ./js/getversion.js
+      - name: getversion
+        run: |
+          node ./js/getversion.js
+          echo ${{ steps.getverseion.outputs.version }}
       - name: Create Tag
         uses: negz/create-tag@v1
         with:
-          version: '${{ steps.get-verseion.outputs.version }}'
+          version: '${{ steps.getverseion.outputs.version }}'
           message: "Release version"
           token: "${{ secrets.GITHUB_TOKEN }}"
       - name: Automatic Releases
         run: node ./js/release.js
         env:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          release_title: "DodoOpenJava-${{ steps.get-verseion.outputs.version }}"
+          release_title: "DodoOpenJava-${{ steps.getverseion.outputs.version }}"
           version: "${{ steps.get-verseion.outputs.version }}"
