@@ -1,47 +1,42 @@
 const request = require('request');
 
 const version = process.env.version;
-let oldVersion = process.env.oldversion;
 console.log(version)
-console.log(oldVersion)
-if (oldVersion == undefined) {
-    console.log("没有检测的要比较的tag")
-    console.log("开始自动获取")
-    const tagsUrl = 'https://api.github.com/repos/MinecraftChampions/DodoOpenJava/tags';
-    const o = {
-        url: tagsUrl,
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'User-Agent': 'Request',
-            'X-platform': 'Node'
-        }
+console.log("开始自动获取tag")
+const tagsUrl = 'https://api.github.com/repos/MinecraftChampions/DodoOpenJava/tags';
+const o = {
+    url: tagsUrl,
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'User-Agent': 'Request',
+        'X-platform': 'Node'
+    }
 
-    };
-    request(o, (err, res, body) => {
-        if (err) {
-            return console.log(err);
-        }
-        let data = JSON.parse(body);
-        if (data.length === 1) {
-            oldVersion = getEarliestCommit();
-        } else {
-            let checked = false;
-            for (const t of data) {
-                if (checked) {
-                    oldVersion = t.name;
-                    console.log("检测到旧版本:" + t.name)
-                    break;
-                } else {
-                    if (t.name === version) {
-                        checked = true;
-                    }
+};
+request(o, (err, res, body) => {
+    if (err) {
+        return console.log(err);
+    }
+    let data = JSON.parse(body);
+    if (data.length === 1) {
+        oldVersion = getEarliestCommit();
+    } else {
+        let checked = false;
+        for (const t of data) {
+            if (checked) {
+                oldVersion = t.name;
+                console.log("检测到旧版本:" + t.name)
+                break;
+            } else {
+                if (t.name === version) {
+                    checked = true;
                 }
             }
         }
-    });
-}
+    }
+});
 getChange();
 
 function getChangeLog(commits) {

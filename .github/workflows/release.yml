@@ -34,4 +34,3 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           release_title: "DodoOpenJava-${{ env.version }}"
           version: "${{ env.version }}"
-          oldversion: "${{ env.oldversion }}"
