@@ -89,7 +89,7 @@ function getEarliestCommit() {
     console.log("没有检测到更多的tag,开始获取第一个提交")
     const url = 'https://api.github.com/repos/MinecraftChampions/DodoOpenJava/commits';
     let commit = '';
-    const options = {
+    let options = {
         url: url,
         method: 'GET',
         headers: {
@@ -114,7 +114,7 @@ function getChange() {
     const url = 'https://api.github.com/repos/MinecraftChampions/DodoOpenJava/compare/'
         + oldVersion + '...' + version;
 
-    const options = {
+    let options = {
         url: url,
         method: 'GET',
         headers: {
@@ -179,7 +179,7 @@ function release(content) {
     const token = process.env.repo_token;
     const url = 'https://api.github.com/repos/MinecraftChampions/DodoOpenJava/releases';
 
-    const options = {
+    let options = {
         url: url,
         method: 'POST',
         json: true,
