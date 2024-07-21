@@ -40,3 +40,5 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           release_title: "DodoOpenJava-${{ env.version }}"
           version: "${{ env.version }}"
+      - name: Deploy jitpack
+        run:  curl -s -m 30 https://jitpack.io/com/github/MinecraftChampions/DodoOpenJava/${{ env.version }}/ || true
