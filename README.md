@@ -9,8 +9,6 @@ Dodo开放平台：https://open.imdodo.com/
 ### 代码范例
 
 ```java
-package io.github.minecraftchampions.dodoopenjava.test;
-
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
 import io.github.minecraftchampions.dodoopenjava.command.CommandExecutor;
 import io.github.minecraftchampions.dodoopenjava.api.CommandSender;
@@ -35,12 +33,12 @@ public class Main implements CommandExecutor, Listener {
         // 注册命令处理器
         bot.registerCommand(new Main());
         // bot.getCommandManager().getCommandTrigger().setCommandHeader("/");;
-        System.out.println(bot.getApi().geteventApi.getWebSocketConnection().getJSONObjectData().getJSONObject("data").getString("endpoint"));
-        bot.getApi().getbotApi.getBotInfo().ifSuccess(result -> {
+        System.out.println(bot.getApi().getEventApi().getWebSocketConnection().getJSONObjectData().getJSONObject("data").getString("endpoint"));
+        bot.getApi().getBotApi().getBotInfo().ifSuccess(result -> {
             System.out.println("成功");
         });
 
-        bot.getApi().getchannelMessageApi.sendTextMessage("1252355", "测试");
+        bot.getApi().getChannelMessageApi().sendTextMessage("1252355", "测试");
         testCard();
     }
 
@@ -84,7 +82,7 @@ public class Main implements CommandExecutor, Listener {
                 .remark(remarkComponent).countdown(countdownComponent).video(videoComponent)
                 .button(buttonGroupComponent).section(moduleComponent1).listSelector(listSelectorComponent)
                 .section(moduleComponent2).build();
-        bot.getApi().getchannelMessageApi.sendMessage("1252355", m);
+        bot.getApi().getChannelMessageApi().sendMessage("1252355", m);
         //你也可以通过调用io.github.minecraftchampions.dodoopenjava.api.v2下的各个类的方法来调用Dodo接口
     }
 
@@ -92,7 +90,7 @@ public class Main implements CommandExecutor, Listener {
     public void onEvent(MessageEvent e) {
         System.out.println(e.getEventName());
         System.out.println(e.getMessageId());
-        bot.getApi().getchannelMessageApi.sendTextMessage(e.getChannelId(), "你发送了" + e.getMessageBody());
+        bot.getApi().getChannelMessageApi().sendTextMessage(e.getChannelId(), "你发送了" + e.getMessageBody());
     }
 
     @Override
@@ -109,7 +107,7 @@ public class Main implements CommandExecutor, Listener {
     public void onCommand(CommandSender commandSender, String[] strings) {
         System.out.println(commandSender.getName());
         commandSender.editNickName("测试名字");
-        bot.getApi().getchannelMessageApi.sendTextMessage(commandSender.getChannelId(), "测试成功");
+        bot.getApi().getChannelMessageApi().sendTextMessage(commandSender.getChannelId(), "测试成功");
     }
 }
 
