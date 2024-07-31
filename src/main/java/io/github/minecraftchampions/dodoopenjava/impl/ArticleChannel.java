@@ -34,7 +34,7 @@ public class ArticleChannel extends ChannelImpl {
      */
     public String addArticle(@NonNull String channelId, @NonNull String title,
                              @NonNull String content, @NonNull String imageUrl) {
-        return getBot().getApi().getChannelArticleApi().addChannelArticle(channelId, title, content, imageUrl).ifSuccess((Function<Result, String>) result -> result.getJSONObjectData().getJSONObject("data").getString("articleId"));
+        return getBot().getApi().getChannelArticleApi().addChannelArticle(channelId, title, content, imageUrl).ifSuccess((Function<Result, String>) result -> result.getData().getJSONObject("data").getString("articleId"));
     }
 
     public Result remove(int type, String id) {

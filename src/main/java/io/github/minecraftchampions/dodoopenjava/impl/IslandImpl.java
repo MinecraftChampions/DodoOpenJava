@@ -28,50 +28,38 @@ public class IslandImpl implements Island {
     public String getIslandName() {
         Result result = getBot().getApi().getIslandApi().getIslandInfo(getIslandSourceId());
         if (result.isFailure()) {
-            log.error("获取群名字失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
+            log.error("获取群名字失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getData());
             return null;
         }
-        return result.getJSONObjectData().getJSONObject("data").getString("islandName");
+        return result.getData().getJSONObject("data").getString("islandName");
     }
 
     @Override
     public String getCoverUrl() {
         Result result = getBot().getApi().getIslandApi().getIslandInfo(getIslandSourceId());
         if (result.isFailure()) {
-            log.error("获取群头像失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
+            log.error("获取群头像失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getData());
             return null;
         }
-        return result.getJSONObjectData().getJSONObject("data").getString("coverUrl");
+        return result.getData().getJSONObject("data").getString("coverUrl");
     }
 
     @Override
     public int getMemberCount() {
         Result result = getBot().getApi().getIslandApi().getIslandInfo(getIslandSourceId());
-        if (result.isFailure()) {
-            log.error("获取成员数量失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
-            return 0;
-        }
-        return result.getJSONObjectData().getJSONObject("data").getInt("memberCount");
+        return result.getData().getJSONObject("data").getInt("memberCount");
     }
 
     @Override
     public int getOnlineMemberCount() {
         Result result = getBot().getApi().getIslandApi().getIslandInfo(getIslandSourceId());
-        if (result.isFailure()) {
-            log.error("获取在线成员数量失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
-            return 0;
-        }
-        return result.getJSONObjectData().getJSONObject("data").getInt("onlineMemberCount");
+        return result.getData().getJSONObject("data").getInt("onlineMemberCount");
     }
 
     @Override
     public String getDescription() {
         Result result = getBot().getApi().getIslandApi().getIslandInfo(getIslandSourceId());
-        if (result.isFailure()) {
-            log.error("获取群简介失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
-            return null;
-        }
-        return result.getJSONObjectData().getJSONObject("data").getString("description");
+        return result.getData().getJSONObject("data").getString("description");
 
     }
 
@@ -79,39 +67,37 @@ public class IslandImpl implements Island {
     public String getDefaultChannelId() {
         Result result = getBot().getApi().getIslandApi().getIslandInfo(getIslandSourceId());
         if (result.isFailure()) {
-            log.error("获取默认访问频道id失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
+            log.error("获取默认访问频道id失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getData());
             return null;
         }
-        return result.getJSONObjectData().getJSONObject("data").getString("defaultChannelId");
+        return result.getData().getJSONObject("data").getString("defaultChannelId");
     }
 
     @Override
     public String getSystemChannelId() {
         Result result = getBot().getApi().getIslandApi().getIslandInfo(getIslandSourceId());
         if (result.isFailure()) {
-            log.error("获取系统消息频道id失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
+            log.error("获取系统消息频道id失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getData());
             return null;
         }
-        return result.getJSONObjectData().getJSONObject("data").getString("systemChannelId");
+        return result.getData().getJSONObject("data").getString("systemChannelId");
     }
 
     @Override
     public String getOwnerDodoId() {
         Result result = getBot().getApi().getIslandApi().getIslandInfo(getIslandSourceId());
         if (result.isFailure()) {
-            log.error("获取群主人id失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
+            log.error("获取群主人id失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getData());
             return null;
         }
-        return result.getJSONObjectData().getJSONObject("data").getString("ownerDodoSourceId");
+        return result.getData().getJSONObject("data").getString("ownerDodoSourceId");
     }
 
     @Override
     public List<User> getIslandLevelRankList() {
         Result result = bot.getApi().getIslandApi()
-                .getIslandLevelRankList(getIslandSourceId()).ifFailure(r -> {
-            log.error("获取排行失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
-        });
-        JSONArray array = result.getJSONObjectData().getJSONArray("data");
+                .getIslandLevelRankList(getIslandSourceId());
+        JSONArray array = result.getData().getJSONArray("data");
         List<User> userList = new ArrayList<>();
         for (Object o : array) {
             if (o instanceof JSONObject jsonObject) {
@@ -137,7 +123,7 @@ public class IslandImpl implements Island {
                 }
                 Result result = bot.getApi().getIslandApi().getIslandMuteList(getIslandSourceId(),
                         100, maxId.getValue()).ifFailure(r -> {
-                    log.error("获取群禁言信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
+                    log.error("获取群禁言信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getData());
                 });
                 if (result.isSuccess()) {
                     if (!(splice(result, userList, maxId, completableFutures, executorService))) {
@@ -168,7 +154,7 @@ public class IslandImpl implements Island {
                 }
                 Result result = bot.getApi().getIslandApi().getIslandBanList(getIslandSourceId(),
                         100, maxId.getValue()).ifFailure(r -> {
-                    log.error("获取封禁信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
+                    log.error("获取封禁信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getData());
                 });
                 if (result.isSuccess()) {
                     if (!(splice(result, userList, maxId, completableFutures, executorService))) {
@@ -199,7 +185,7 @@ public class IslandImpl implements Island {
                 }
                 Result result = bot.getApi().getRoleApi().getMemberList(getIslandSourceId(), roleId,
                         100, maxId.getValue()).ifFailure(r -> {
-                    log.error("获取身份组成员信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
+                    log.error("获取身份组成员信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getData());
                 });
                 if (result.isSuccess()) {
                     if (!(splice(result, userList, maxId, completableFutures, executorService))) {
@@ -217,7 +203,7 @@ public class IslandImpl implements Island {
 
     protected boolean splice(Result result, List<User> userList, Longer maxId,
                            List<CompletableFuture<?>> completableFutures, ExecutorService executorService) {
-        JSONObject json = result.getJSONObjectData().getJSONObject("data");
+        JSONObject json = result.getData().getJSONObject("data");
         if (json.isEmpty()) {
             return false;
         }
@@ -230,7 +216,7 @@ public class IslandImpl implements Island {
                 userList.add(new DodoUserImpl(jsonObject.getString("dodoSourceId"), getIslandSourceId(), getBot()));
             }
         }), executorService));
-        maxId.setValue(result.getJSONObjectData().getJSONObject("data")
+        maxId.setValue(result.getData().getJSONObject("data")
                 .getLong("maxId"));
         return maxId.getValue() > 0;
     }
@@ -256,7 +242,7 @@ public class IslandImpl implements Island {
                 }
                 Result result = bot.getApi().getMemberApi().getMemberList(getIslandSourceId(),
                         100, maxId.getValue()).ifFailure(r -> {
-                    log.error("获取成员信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
+                    log.error("获取成员信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getData());
                 });
                 if (result.isSuccess()) {
                     if (!(splice(result, userList, maxId, completableFutures, executorService))) {
@@ -278,7 +264,7 @@ public class IslandImpl implements Island {
         if (result.isSuccess()) {
             return new DodoUserImpl(dodoId, getIslandSourceId(), bot);
         }
-        log.error("获取用户信息失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
+        log.error("获取用户信息失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getData());
         return null;
     }
 
@@ -286,10 +272,10 @@ public class IslandImpl implements Island {
     public List<Channel> getChannelList() {
         Result result = bot.getApi().getChannelApi().getChannelList(getIslandSourceId());
         if (result.isFailure()) {
-            log.error("获取频道列表失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
+            log.error("获取频道列表失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getData());
             return null;
         }
-        List<JSONObject> list = result.getJSONObjectData().getJSONArray("data").toList().stream().map((o) -> {
+        List<JSONObject> list = result.getData().getJSONArray("data").toList().stream().map((o) -> {
             if (o instanceof Map<?, ?> map) {
                 return new JSONObject(map);
             }
@@ -302,10 +288,10 @@ public class IslandImpl implements Island {
     public Channel getChannel(@NonNull String channelId) {
         Result result = bot.getApi().getChannelApi().getChannelList(getIslandSourceId());
         if (result.isFailure()) {
-            log.error("获取频道信息失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
+            log.error("获取频道信息失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getData());
             return null;
         }
-        if (result.getJSONObjectData().toString().contains("\"channelId\":\"" + channelId + "\"")) {
+        if (result.getData().toString().contains("\"channelId\":\"" + channelId + "\"")) {
             return new ChannelImpl(channelId, getBot());
         }
         return null;
@@ -315,10 +301,10 @@ public class IslandImpl implements Island {
     public List<Role> getRoleList() {
         Result result = bot.getApi().getRoleApi().getRoleList(getIslandSourceId());
         if (result.isFailure()) {
-            log.error("获取身份组列表失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
+            log.error("获取身份组列表失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getData());
             return null;
         }
-        List<JSONObject> list = result.getJSONObjectData().getJSONArray("data").toList().stream().map((o) -> {
+        List<JSONObject> list = result.getData().getJSONArray("data").toList().stream().map((o) -> {
             if (o instanceof Map<?, ?> map) {
                 return new JSONObject(map);
             }
@@ -331,10 +317,10 @@ public class IslandImpl implements Island {
     public Role getRole(@NonNull String roleId) {
         Result result = bot.getApi().getRoleApi().getRoleList(getIslandSourceId());
         if (result.isFailure()) {
-            log.error("获取身份组信息失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
+            log.error("获取身份组信息失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getData());
             return null;
         }
-        JSONArray array = result.getJSONObjectData().getJSONArray("data");
+        JSONArray array = result.getData().getJSONArray("data");
         String str = array.toString();
         if (str.contains("\"roleId\":\"" + roleId + "\",")) {
             return new RoleImpl(roleId, getIslandSourceId(), bot);
@@ -346,10 +332,10 @@ public class IslandImpl implements Island {
     public Channel createChannel(@NonNull String channelName, int channelType) {
         Result result = bot.getApi().getChannelApi().addChannel(getIslandSourceId(), channelName, channelType);
         if (result.isFailure()) {
-            log.error("创建频道失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
+            log.error("创建频道失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getData());
             return null;
         }
-        return new ChannelImpl(result.getJSONObjectData().getString("channelId"), getIslandSourceId(), bot);
+        return new ChannelImpl(result.getData().getString("channelId"), getIslandSourceId(), bot);
     }
 
     @Override
@@ -361,9 +347,9 @@ public class IslandImpl implements Island {
     public Role createRole(String roleName, String roleColor, int position, Permission permission) {
         Result result = bot.getApi().getRoleApi().addRole(getIslandSourceId(), roleName, roleColor, position, permission);
         if (result.isFailure()) {
-            log.error("创建身份组失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
+            log.error("创建身份组失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getData());
             return null;
         }
-        return new RoleImpl(result.getJSONObjectData().getString("roleId"), getIslandSourceId(), bot);
+        return new RoleImpl(result.getData().getString("roleId"), getIslandSourceId(), bot);
     }
 }

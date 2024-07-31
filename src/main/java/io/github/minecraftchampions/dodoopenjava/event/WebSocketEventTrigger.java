@@ -66,7 +66,7 @@ public class WebSocketEventTrigger extends AbstractEventTrigger {
         bot.getApi().getEventApi().getWebSocketConnection()
                 .ifSuccess(result -> {
                     reacquireCount = 0;
-                    wssLo = result.getJSONObjectData().getJSONObject("data").getString("endpoint");
+                    wssLo = result.getData().getJSONObject("data").getString("endpoint");
                     try {
                         mWebSocket = new WsListenerC(new URI(wssLo));
                         mWebSocket.setConnectionLostTimeout(0);

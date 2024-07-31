@@ -40,10 +40,10 @@ public class RoleImpl implements Role {
     public long getMemberCount() {
         Result result = bot.getApi().getRoleApi().getRoleList(getIslandSourceId());
         if (result.isFailure()) {
-            log.error("获取成员信息失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
+            log.error("获取成员信息失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getData());
             return 0;
         }
-        JSONArray array = result.getJSONObjectData().getJSONArray("data");
+        JSONArray array = result.getData().getJSONArray("data");
         String str = array.toString();
         Pattern pattern = Pattern.compile("\"roleId\":\"" + getRoleId() + "\"[^m]+memberCount\":([0-9]+),");
         Matcher matcher = pattern.matcher(str);

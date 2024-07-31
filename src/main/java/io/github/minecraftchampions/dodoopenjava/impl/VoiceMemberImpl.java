@@ -15,28 +15,28 @@ public class VoiceMemberImpl extends DodoUserImpl implements VoiceMember {
     @NonNull
     public String getChannelId() {
         return getBot().getApi().getChannelVoiceApi().getChannelVoiceMemberStatus(getIslandSourceId(), getDodoSourceId()).ifSuccess((Function<Result, String>) result ->
-                result.getJSONObjectData().getJSONObject("data").getString("channelId")
+                result.getData().getJSONObject("data").getString("channelId")
         );
     }
 
     @Override
     public int getSpkStatus() {
         return getBot().getApi().getChannelVoiceApi().getChannelVoiceMemberStatus(getIslandSourceId(), getDodoSourceId()).ifSuccess((Function<Result, Integer>) result ->
-                result.getJSONObjectData().getJSONObject("data").getInt("spkStatus")
+                result.getData().getJSONObject("data").getInt("spkStatus")
         );
     }
 
     @Override
     public int getMicStatus() {
         return getBot().getApi().getChannelVoiceApi().getChannelVoiceMemberStatus(getIslandSourceId(), getDodoSourceId()).ifSuccess((Function<Result, Integer>) result ->
-                result.getJSONObjectData().getJSONObject("data").getInt("micStatus")
+                result.getData().getJSONObject("data").getInt("micStatus")
         );
     }
 
     @Override
     public int getMicSortStatus() {
         return getBot().getApi().getChannelVoiceApi().getChannelVoiceMemberStatus(getIslandSourceId(), getDodoSourceId()).ifSuccess((Function<Result, Integer>) result ->
-                result.getJSONObjectData().getJSONObject("data").getInt("micSortStatus")
+                result.getData().getJSONObject("data").getInt("micSortStatus")
         );
     }
 }

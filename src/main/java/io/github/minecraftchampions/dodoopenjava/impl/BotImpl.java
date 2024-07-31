@@ -123,10 +123,10 @@ public class BotImpl implements Bot {
     public Island getIsland(@NonNull String islandSourceId) {
         Result result = getApi().getIslandApi().getIslandList();
         if (result.isFailure()) {
-            log.error("获取频道信息失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
+            log.error("获取频道信息失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getData());
             return null;
         }
-        if (result.getJSONObjectData().toString().contains("\"islandSourceId\":\"" + islandSourceId + "\"")) {
+        if (result.getData().toString().contains("\"islandSourceId\":\"" + islandSourceId + "\"")) {
             return new IslandImpl(islandSourceId, this);
         }
         return null;
@@ -220,7 +220,7 @@ public class BotImpl implements Bot {
      */
     @Override
     public String getName() {
-        return this.getApi().getBotApi().getBotInfo().getJSONObjectData().getString("nickName");
+        return this.getApi().getBotApi().getBotInfo().getData().getString("nickName");
     }
 
     /**
@@ -230,7 +230,7 @@ public class BotImpl implements Bot {
      */
     @Override
     public String getDodoSourceId() {
-        return this.getApi().getBotApi().getBotInfo().getJSONObjectData().getString("dodoSourceId");
+        return this.getApi().getBotApi().getBotInfo().getData().getString("dodoSourceId");
     }
 
     /**
@@ -241,7 +241,7 @@ public class BotImpl implements Bot {
     @Override
     public String getAvatarUrl() {
         JSONObject jsonObject = new JSONObject();
-        return this.getApi().getBotApi().getBotInfo().getJSONObjectData().getString("avatarUrl");
+        return this.getApi().getBotApi().getBotInfo().getData().getString("avatarUrl");
     }
 
     /**

@@ -95,12 +95,20 @@ public class Result implements Comparable<Result> {
 
     private final long timestamp;
 
-    private final JSONObject JSONObjectData;
+    private final JSONObject jsonObjectData;
+
+    public JSONObject getData() {
+        if (isFailure()) {
+            log.error("调用Dodo开放平台api时出错,错误消息:{};状态code:{};错误数据:{}", getMessage(), getStatusCode(), getData());
+            return new JSONObject();
+        }
+        return jsonObjectData;
+    }
 
     private final JSONObject requestData;
 
     private Result(@NonNull JSONObject jsonObject, @NonNull JSONObject requestData) {
-        this.JSONObjectData = jsonObject;
+        this.jsonObjectData = jsonObject;
         this.statusCode = jsonObject.getInt("status");
         this.message = jsonObject.getString("message");
         this.timestamp = System.currentTimeMillis();
@@ -192,7 +200,7 @@ public class Result implements Comparable<Result> {
 
     @Override
     public String toString() {
-        return "Request:" + getRequestData() + "\n" + "Result:" + getJSONObjectData();
+        return "Request:" + getRequestData() + "\n" + "Result:" + getData();
     }
 
     @Override

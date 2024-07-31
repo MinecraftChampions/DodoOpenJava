@@ -33,7 +33,7 @@ public class Main implements CommandExecutor, Listener {
         // 注册命令处理器
         bot.registerCommand(new Main());
         // bot.getCommandManager().getCommandTrigger().setCommandHeader("/");;
-        System.out.println(bot.getApi().getEventApi().getWebSocketConnection().getJSONObjectData().getJSONObject("data").getString("endpoint"));
+        System.out.println(bot.getApi().getEventApi().getWebSocketConnection().getData().getJSONObject("data").getString("endpoint"));
         bot.getApi().getBotApi().getBotInfo().ifSuccess(result -> {
             System.out.println("成功");
         });
