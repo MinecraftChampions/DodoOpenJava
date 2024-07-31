@@ -213,7 +213,7 @@ public class ChannelMessageApi {
         if (!file.exists()) {
             throw new RuntimeException("传入的文件不存在");
         }
-        JSONObject jsonObject = ResourceApi.uploadResource(bot.getAuthorization(), file.getPath()).getData();
+        JSONObject jsonObject = bot.getApi().getResourceApi().uploadResource(file.getPath()).getData();
         int width = jsonObject.getInt("width");
         int height = jsonObject.getInt("height");
         String url = jsonObject.getString("url");
