@@ -269,19 +269,19 @@ public class BotImpl implements Bot {
             roleApi = new RoleApi(bot);
         }
 
-        public final BotApi botApi;
-        public final ChannelApi channelApi;
-        public final ChannelArticleApi channelArticleApi;
-        public final ChannelMessageApi channelMessageApi;
-        public final ChannelVoiceApi channelVoiceApi;
-        public final EventApi eventApi;
-        public final GiftApi giftApi;
-        public final IntegralApi integralApi;
-        public final IslandApi islandApi;
-        public final MemberApi memberApi;
-        public final NtfApi ntfApi;
-        public final PersonalApi personalApi;
-        public final ResourceApi resourceApi;
-        public final RoleApi roleApi;
+        private final BotApi botApi;
+        private final ChannelApi channelApi;
+        private final ChannelArticleApi channelArticleApi;
+        private final ChannelMessageApi channelMessageApi;
+        private final ChannelVoiceApi channelVoiceApi;
+        private final EventApi eventApi;
+        private final GiftApi giftApi;
+        private final IntegralApi integralApi;
+        private final IslandApi islandApi;
+        private final MemberApi memberApi;
+        private final NtfApi ntfApi;
+        private final PersonalApi personalApi;
+        private final ResourceApi resourceApi;
+        private final RoleApi roleApi;
     }
 }
