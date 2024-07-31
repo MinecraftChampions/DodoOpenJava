@@ -1,41 +1,33 @@
 package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
+import io.github.minecraftchampions.dodoopenjava.api.Bot;
 import io.github.minecraftchampions.dodoopenjava.debug.Result;
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtils;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtils;
+import lombok.Data;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;
-
-import java.io.IOException;
 
 /**
  * 事件API
  *
  * @author qscbm187531
  */
+@RequiredArgsConstructor
+@Data
 public class EventApi {
-    /**
-     * 获取WebSocket连接
-     *
-     * @param clientId 机器人唯一标识
-     * @param token    机器人鉴权Token
-     * @return JSON对象
-     * @throws IOException 失败后抛出
-     */
-    public static Result getWebSocketConnection(String clientId, String token) throws IOException {
-        return getWebSocketConnection(BaseUtils.generateAuthorization(clientId, token));
-    }
+    @NonNull
+    private Bot bot;
 
     /**
      * 获取WebSocket连接
      *
-     * @param authorization authorization
-     * @return JSON对象
-     * @throws IOException 失败后抛出
+     * @return result
      */
-    public static Result getWebSocketConnection(String authorization) throws IOException {
+    public Result getWebSocketConnection() {
         String url = DodoOpenJava.BASEURL + "websocket/connection";
         JSONObject jsonObject = new JSONObject();
-        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, bot.getAuthorization());
     }
 }

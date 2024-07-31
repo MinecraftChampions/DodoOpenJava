@@ -1,13 +1,15 @@
 package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
+import io.github.minecraftchampions.dodoopenjava.api.Bot;
 import io.github.minecraftchampions.dodoopenjava.debug.Result;
 import io.github.minecraftchampions.dodoopenjava.permission.Permission;
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtils;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtils;
+import lombok.Data;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -15,273 +17,143 @@ import java.util.Map;
  *
  * @author qscbm187531
  */
+@Data
+@RequiredArgsConstructor
 public class RoleApi {
-    /**
-     * 获取身份组列表
-     *
-     * @param clientId       机器人唯一标识
-     * @param token          机器人鉴权Token
-     * @param islandSourceId 群号
-     * @return JSON对象
-     * @throws IOException 失败后抛出
-     */
-    public static Result getRoleList(String clientId, String token, String islandSourceId) throws IOException {
-        return getRoleList(BaseUtils.generateAuthorization(clientId, token), islandSourceId);
-    }
+    @NonNull
+    private Bot bot;
 
     /**
      * 获取身份组列表
      *
-     * @param authorization  authorization
      * @param islandSourceId 群号
-     * @return JSON对象
-     * @throws IOException 失败后抛出
+     * @return result
      */
-    public static Result getRoleList(String authorization, String islandSourceId) throws IOException {
+    public Result getRoleList(String islandSourceId) {
         String url = DodoOpenJava.BASEURL + "role/list";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId);
-        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, bot.getAuthorization());
     }
 
     /**
      * 赋予成员身份组
      *
-     * @param clientId       机器人唯一标识
-     * @param token          机器人鉴权Token
      * @param islandSourceId 群号
      * @param dodoSourceId   Dodo号
      * @param roleId         身份组ID
-     * @return JSON对象
-     * @throws IOException 失败后抛出
+     * @return result
      */
-    public static Result addRoleMember(String clientId, String token, String islandSourceId, String dodoSourceId, String roleId) throws IOException {
-        return addRoleMember(BaseUtils.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, roleId);
-    }
-
-    /**
-     * 赋予成员身份组
-     *
-     * @param authorization  authorization
-     * @param islandSourceId 群号
-     * @param dodoSourceId   Dodo号
-     * @param roleId         身份组ID
-     * @return JSON对象
-     * @throws IOException 失败后抛出
-     */
-    public static Result addRoleMember(String authorization, String islandSourceId, String dodoSourceId, String roleId) throws IOException {
+    public Result addRoleMember(String islandSourceId, String dodoSourceId, String roleId) {
         String url = DodoOpenJava.BASEURL + "role/member/add";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId).put("dodoSourceId", dodoSourceId).put("roleId", roleId);
-        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, bot.getAuthorization());
     }
 
     /**
      * 取消成员身份组
      *
-     * @param clientId       机器人唯一标识
-     * @param token          机器人鉴权Token
      * @param islandSourceId 群号
      * @param dodoSourceId   Dodo号
      * @param roleId         身份组ID
-     * @return JSON对象
-     * @throws IOException 失败后抛出
+     * @return result
      */
-    public static Result removeRoleMember(String clientId, String token, String islandSourceId, String dodoSourceId, String roleId) throws IOException {
-        return removeRoleMember(BaseUtils.generateAuthorization(clientId, token), islandSourceId, dodoSourceId, roleId);
-    }
-
-    /**
-     * 取消成员身份组
-     *
-     * @param authorization  authorization
-     * @param islandSourceId 群号
-     * @param dodoSourceId   Dodo号
-     * @param roleId         身份组ID
-     * @return JSON对象
-     * @throws IOException 失败后抛出
-     */
-    public static Result removeRoleMember(String authorization, String islandSourceId, String dodoSourceId, String roleId) throws IOException {
+    public Result removeRoleMember(String islandSourceId, String dodoSourceId, String roleId) {
         String url = DodoOpenJava.BASEURL + "role/member/remove";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId).put("dodoSourceId", dodoSourceId).put("roleId", roleId);
-        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, bot.getAuthorization());
     }
+
 
     /**
      * 创建身份组
      *
-     * @param clientId       机器人唯一标识
-     * @param token          机器人鉴权Token
-     * @param islandSourceId 群号
-     * @param roleName       身份组名称，设置为null时默认为：“为新的身份组”，不能大于32个字符或16个汉字
-     * @param roleColor      身份组颜色，设置为null时默认为：“#333333”，16进制HEX格式颜色码
-     * @param position       身份组排序位置，设置为1时默认为：“1”（废话），不可传比机器人身份组大的排序值
-     * @param permission     身份组权限值（16进制），设置为null时默认为：“0”
-     * @return JSON对象
-     * @throws IOException 失败后抛出
-     */
-    public static Result addRole(String clientId, String token, String islandSourceId, String roleName, String roleColor, int position, String permission) throws IOException {
-        return addRole(BaseUtils.generateAuthorization(clientId, token), islandSourceId, roleName, roleColor, position, permission);
-    }
-
-    /**
-     * 创建身份组
-     *
-     * @param clientId       机器人唯一标识
-     * @param token          机器人鉴权Token
      * @param islandSourceId 群号
      * @param roleName       身份组名称，设置为null时默认为：“为新的身份组”，不能大于32个字符或16个汉字
      * @param roleColor      身份组颜色，设置为null时默认为：“#333333”，16进制HEX格式颜色码
      * @param position       身份组排序位置，设置为1时默认为：“1”（废话），不可传比机器人身份组大的排序值
      * @param permission     权限
-     * @return JSON对象
-     * @throws IOException 失败后抛出
+     * @return result
      */
-    public static Result addRole(String clientId, String token, String islandSourceId, String roleName, String roleColor, int position, Permission permission) throws IOException {
-        return addRole(BaseUtils.generateAuthorization(clientId, token), islandSourceId, roleName, roleColor, position, permission.toHexString());
+    public Result addRole(String islandSourceId, String roleName, String roleColor,
+                          int position, Permission permission) {
+        return addRole(islandSourceId, roleName, roleColor, position, permission.toHexString());
     }
 
     /**
      * 创建身份组
      *
-     * @param authorization  authorization
-     * @param islandSourceId 群号
-     * @param roleName       身份组名称，设置为null时默认为：“为新的身份组”，不能大于32个字符或16个汉字
-     * @param roleColor      身份组颜色，设置为null时默认为：“#333333”，16进制HEX格式颜色码
-     * @param position       身份组排序位置，设置为1时默认为：“1”（废话），不可传比机器人身份组大的排序值
-     * @param permission     权限
-     * @return JSON对象
-     * @throws IOException 失败后抛出
-     */
-    public static Result addRole(String authorization, String islandSourceId, String roleName, String roleColor, int position, Permission permission) throws IOException {
-        return addRole(authorization, islandSourceId, roleName, roleColor, position, permission.toHexString());
-    }
-
-    /**
-     * 创建身份组
-     *
-     * @param authorization  authorization
      * @param islandSourceId 群号
      * @param roleName       身份组名称，设置为null时默认为：“为新的身份组”，不能大于32个字符或16个汉字
      * @param roleColor      身份组颜色，设置为null时默认为：“#333333”，16进制HEX格式颜色码
      * @param position       身份组排序位置，设置为1时默认为：“1”（废话），不可传比机器人身份组大的排序值
      * @param permission     身份组权限值（16进制），设置为null时默认为：“0”
-     * @return JSON对象
-     * @throws IOException 失败后抛出
+     * @return result
      */
-    public static Result addRole(String authorization, String islandSourceId, String roleName, String roleColor, int position, String permission) throws IOException {
+    public Result addRole(String islandSourceId, String roleName, String roleColor,
+                          int position, String permission) {
         String url = DodoOpenJava.BASEURL + "role/add";
         JSONObject param = new JSONObject("{" + "  \"islandSourceId\": \"" + islandSourceId + "\"}");
-        return sendResult(authorization, roleName, roleColor, position, permission, url, param);
-    }
-
-    /**
-     * 编辑身份组
-     *
-     * @param clientId       机器人唯一标识
-     * @param token          机器人鉴权Token
-     * @param islandSourceId 群号
-     * @param roleId         身份组ID
-     * @param roleName       身份组名称，设置为null时默认为：“为新的身份组”，不能大于32个字符或16个汉字
-     * @param roleColor      身份组颜色，设置为null时默认为：“#333333”，16进制HEX格式颜色码
-     * @param position       身份组排序位置，设置为1时默认为：“1”（废话），不可传比机器人身份组大的排序值
-     * @param permission     身份组权限值（16进制），设置为null时默认为：“0”
-     * @return JSON对象
-     * @throws IOException 失败后抛出
-     */
-    public static Result editRole(String clientId, String token, String islandSourceId, String roleId, String roleName, String roleColor, int position, String permission) throws IOException {
-        return editRole(BaseUtils.generateAuthorization(clientId, token), islandSourceId, roleId, roleName, roleColor, position, permission);
+        return sendResult(roleName, roleColor, position, permission, url, param);
     }
 
     /**
      * 获取成员列表
      *
-     * @param authorization  authorization
      * @param islandSourceId 群号
      * @param roleId         身份组ID
      * @param pageSize       页大小，最大100
      * @param maxId          上一页最大ID值，为提升分页查询性能，需要传入上一页查询记录中的最大ID值，首页请传0
-     * @return JSON对象
-     * @throws IOException 失败后抛出
+     * @return result
      */
-    public static Result getMemberList(String authorization, String islandSourceId, String roleId, int pageSize, long maxId) throws IOException {
+    public Result getMemberList(String islandSourceId, String roleId, int pageSize, long maxId) {
         String url = DodoOpenJava.BASEURL + "role/member/list";
-        JSONObject param = new JSONObject(Map.of("islandSourceId", islandSourceId, "roleId", roleId, "pageSize", pageSize, "maxId", maxId));
-        return NetUtils.sendRequest(param.toString(), url, authorization);
-    }
-
-    /**
-     * 获取成员列表
-     *
-     * @param clientId       clientId
-     * @param token          token
-     * @param islandSourceId 群号
-     * @param roleId         身份组ID
-     * @param pageSize       页大小，最大100
-     * @param maxId          上一页最大ID值，为提升分页查询性能，需要传入上一页查询记录中的最大ID值，首页请传0
-     * @return JSON对象
-     * @throws IOException 失败后抛出
-     */
-    public static Result getMemberList(String clientId, String token, String islandSourceId, String roleId, int pageSize, long maxId) throws IOException {
-        return getMemberList(BaseUtils.generateAuthorization(clientId, token), islandSourceId, roleId, pageSize, maxId);
+        JSONObject param = new JSONObject(Map.of("islandSourceId", islandSourceId,
+                "roleId", roleId,
+                "pageSize", pageSize,
+                "maxId", maxId));
+        return NetUtils.sendRequest(param.toString(), url, bot.getAuthorization());
     }
 
     /**
      * 编辑身份组
      *
-     * @param authorization  authorization
      * @param islandSourceId 群号
      * @param roleId         身份组ID
      * @param roleName       身份组名称，设置为null时默认为：“为新的身份组”，不能大于32个字符或16个汉字
      * @param roleColor      身份组颜色，设置为null时默认为：“#333333”，16进制HEX格式颜色码
      * @param position       身份组排序位置，设置为1时默认为：“1”（废话），不可传比机器人身份组大的排序值
      * @param permission     身份组权限值（16进制），设置为null时默认为：“0”
-     * @return JSON对象
-     * @throws IOException 失败后抛出
+     * @return result
      */
-    public static Result editRole(String authorization, String islandSourceId, String roleId, String roleName, String roleColor, int position, String permission) throws IOException {
+    public Result editRole(String islandSourceId, String roleId, String roleName,
+                           String roleColor, int position, String permission) {
         String url = DodoOpenJava.BASEURL + "role/edit";
-        JSONObject param = new JSONObject("{" + "  \"islandSourceId\": \"" + islandSourceId + "\"," + "  \"roleId\": \"" + roleId + "\"}");
-        return sendResult(authorization, roleName, roleColor, position, permission, url, param);
+        JSONObject param = new JSONObject();
+        param.put("islandSourceId", islandSourceId);
+        param.put("roleId", roleId);
+        return sendResult(roleName, roleColor, position, permission, url, param);
     }
 
     /**
      * 编辑身份组
      *
-     * @param clientId       机器人唯一标识
-     * @param token          机器人鉴权Token
      * @param islandSourceId 群号
      * @param roleId         身份组ID
      * @param roleName       身份组名称，设置为null时默认为：“为新的身份组”，不能大于32个字符或16个汉字
      * @param roleColor      身份组颜色，设置为null时默认为：“#333333”，16进制HEX格式颜色码
      * @param position       身份组排序位置，设置为1时默认为：“1”（废话），不可传比机器人身份组大的排序值
      * @param permission     权限
-     * @return JSON对象
-     * @throws IOException 失败后抛出
+     * @return result
      */
-    public static Result editRole(String clientId, String token, String islandSourceId, String roleId, String roleName, String roleColor, int position, Permission permission) throws IOException {
-        return editRole(BaseUtils.generateAuthorization(clientId, token), islandSourceId, roleId, roleName, roleColor, position, permission.toHexString());
+    public Result editRole(String islandSourceId, String roleId, String roleName,
+                           String roleColor, int position, Permission permission) {
+        return editRole(islandSourceId, roleId, roleName, roleColor, position, permission.toHexString());
     }
 
-    /**
-     * 编辑身份组
-     *
-     * @param authorization  authorization
-     * @param islandSourceId 群号
-     * @param roleId         身份组ID
-     * @param roleName       身份组名称，设置为null时默认为：“为新的身份组”，不能大于32个字符或16个汉字
-     * @param roleColor      身份组颜色，设置为null时默认为：“#333333”，16进制HEX格式颜色码
-     * @param position       身份组排序位置，设置为1时默认为：“1”（废话），不可传比机器人身份组大的排序值
-     * @param permission     权限
-     * @return JSON对象
-     * @throws IOException 失败后抛出
-     */
-    public static Result editRole(String authorization, String islandSourceId, String roleId, String roleName, String roleColor, int position, Permission permission) throws IOException {
-        return editRole(authorization, islandSourceId, roleId, roleName, roleColor, position, permission.toHexString());
-    }
-
-    private static Result sendResult(String authorization, String roleName, String roleColor, int position, String permission, String url, JSONObject param) throws IOException {
+    private Result sendResult(String roleName, String roleColor, int position, String permission, String url, JSONObject param) {
         if (roleName != null) {
             param.put("roleName", roleName);
         }
@@ -297,36 +169,20 @@ public class RoleApi {
         if (roleColor != null) {
             param.put("permission", permission);
         }
-        return NetUtils.sendRequest(param.toString(), url, authorization);
+        return NetUtils.sendRequest(param.toString(), url, bot.getAuthorization());
     }
 
     /**
      * 删除身份组
      *
-     * @param clientId       机器人唯一标识
-     * @param token          机器人鉴权Token
      * @param islandSourceId 群号
      * @param roleId         身份组ID
-     * @return JSON对象
-     * @throws IOException 失败后抛出
+     * @return result
      */
-    public static Result deleteRole(String clientId, String token, String islandSourceId, String roleId) throws IOException {
-        return deleteRole(BaseUtils.generateAuthorization(clientId, token), islandSourceId, roleId);
-    }
-
-    /**
-     * 删除身份组
-     *
-     * @param authorization  authorization
-     * @param islandSourceId 群号
-     * @param roleId         身份组ID
-     * @return JSON对象
-     * @throws IOException 失败后抛出
-     */
-    public static Result deleteRole(String authorization, String islandSourceId, String roleId) throws IOException {
+    public Result deleteRole(String islandSourceId, String roleId) {
         String url = DodoOpenJava.BASEURL + "role/remove";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId).put("roleId", roleId);
-        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, bot.getAuthorization());
     }
 }

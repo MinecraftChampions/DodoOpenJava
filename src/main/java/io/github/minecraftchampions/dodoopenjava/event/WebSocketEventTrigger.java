@@ -63,7 +63,7 @@ public class WebSocketEventTrigger extends AbstractEventTrigger {
 
     @SneakyThrows
     public synchronized void v2() {
-        bot.getApi().V2.eventApi.getWebSocketConnection()
+        bot.getApi().eventApi.getWebSocketConnection()
                 .ifSuccess(result -> {
                     reacquireCount = 0;
                     wssLo = result.getJSONObjectData().getJSONObject("data").getString("endpoint");

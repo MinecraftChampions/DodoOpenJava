@@ -31,7 +31,7 @@ public class NetUtils {
      * @param authorization Authorization
      */
     public static Result sendRequest(@NonNull String param, @NonNull String url,
-                                     @NonNull String authorization) throws IOException {
+                                     @NonNull String authorization) {
         try {
             HashMap<String, String> header = new HashMap<>(2);
             header.put("Content-Type", "application/json");
@@ -50,6 +50,8 @@ public class NetUtils {
                 throw new RuntimeException(ex);
             }
             return sendRequest(param, url, authorization);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -164,15 +166,19 @@ public class NetUtils {
 
     public static Result uploadFileToDodo(@NonNull HashMap<String, String> header,
                                           @NonNull String path,
-                                          @NonNull String url) throws IOException {
-        String str = uploadFile(header, path, url);
-        Result result = Result.of(new JSONObject(Objects.requireNonNull(str)),
-                new JSONObject(Map.of("message", "文件内容，不予展示")));
-        String authorization = header.get("Authorization");
-        if (DodoOpenJava.DEBUG_LOGGER_MAP.containsKey(authorization)) {
-            DodoOpenJava.DEBUG_LOGGER_MAP.get(authorization).log(result);
+                                          @NonNull String url)  {
+        try {
+            String str = uploadFile(header, path, url);
+            Result result = Result.of(new JSONObject(Objects.requireNonNull(str)),
+                    new JSONObject(Map.of("message", "文件内容，不予展示")));
+            String authorization = header.get("Authorization");
+            if (DodoOpenJava.DEBUG_LOGGER_MAP.containsKey(authorization)) {
+                DodoOpenJava.DEBUG_LOGGER_MAP.get(authorization).log(result);
+            }
+            return result;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        return result;
     }
 
 

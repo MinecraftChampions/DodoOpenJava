@@ -27,7 +27,7 @@ public class ChannelImpl implements Channel {
     public ChannelImpl(@NonNull String channelId, @NonNull Bot bot) {
         this.channelId = channelId;
         this.bot = bot;
-        this.islandSourceId = bot.getApi().V2.getChannelApi().getChannelInfo(channelId).ifFailure(result -> {
+        this.islandSourceId = bot.getApi().getChannelApi().getChannelInfo(channelId).ifFailure(result -> {
                     log.error("获取频道信息失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
                 })
                 .ifSuccess((Function<Result, String>) (result) ->
@@ -37,42 +37,42 @@ public class ChannelImpl implements Channel {
 
     @Override
     public Result editChannelName(@NonNull String name) {
-        return bot.getApi().V2.getChannelApi().editChannel(islandSourceId, name, channelId);
+        return bot.getApi().getChannelApi().editChannel(islandSourceId, name, channelId);
     }
 
     @Override
     public String getChannelName() {
-        return bot.getApi().V2.getChannelApi().getChannelInfo(channelId).ifSuccess((Function<Result, String>) result ->
+        return bot.getApi().getChannelApi().getChannelInfo(channelId).ifSuccess((Function<Result, String>) result ->
                 result.getJSONObjectData().getJSONObject("data").getString("channelName"));
     }
 
     @Override
     public ChannelType getChannelType() {
-        return ChannelType.of(bot.getApi().V2.getChannelApi().getChannelInfo(channelId).ifSuccess((Function<Result, Integer>) result ->
+        return ChannelType.of(bot.getApi().getChannelApi().getChannelInfo(channelId).ifSuccess((Function<Result, Integer>) result ->
                 result.getJSONObjectData().getJSONObject("data").getInt("channelType")));
     }
 
     @Override
     public int getDefaultFlag() {
-        return bot.getApi().V2.getChannelApi().getChannelInfo(channelId).ifSuccess((Function<Result, Integer>) result ->
+        return bot.getApi().getChannelApi().getChannelInfo(channelId).ifSuccess((Function<Result, Integer>) result ->
                 result.getJSONObjectData().getJSONObject("data").getInt("defaultFlag"));
     }
 
     @Override
     public String getGroupId() {
-        return bot.getApi().V2.getChannelApi().getChannelInfo(channelId).ifSuccess((Function<Result, String>) result ->
+        return bot.getApi().getChannelApi().getChannelInfo(channelId).ifSuccess((Function<Result, String>) result ->
                 result.getJSONObjectData().getJSONObject("data").getString("groupId"));
     }
 
     @Override
     public String getGroupName() {
-        return bot.getApi().V2.getChannelApi().getChannelInfo(channelId).ifSuccess((Function<Result, String>) result ->
+        return bot.getApi().getChannelApi().getChannelInfo(channelId).ifSuccess((Function<Result, String>) result ->
                 result.getJSONObjectData().getJSONObject("data").getString("groupName"));
     }
 
     @Override
     public Result delete() {
-        return bot.getApi().V2.getChannelApi().deleteChannel(getIslandSourceId(), getChannelId());
+        return bot.getApi().getChannelApi().deleteChannel(getIslandSourceId(), getChannelId());
     }
 
     @Override

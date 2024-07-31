@@ -54,6 +54,6 @@ public class CommandSenderImpl extends DodoUserImpl implements CommandSender {
 
     @Override
     public Result editMessage(TextMessage message) {
-        return getBot().getApi().V2.channelMessageApi.editChannelMessage(messageId, message.toString());
+        return getBot().getApi().channelMessageApi.editChannelMessage(messageId, message.toString());
     }
 }

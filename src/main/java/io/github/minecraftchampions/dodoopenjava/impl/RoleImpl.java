@@ -33,12 +33,12 @@ public class RoleImpl implements Role {
 
     @Override
     public Result delete() {
-        return getBot().getApi().V2.getRoleApi().deleteRole(getIslandSourceId(), getRoleId());
+        return getBot().getApi().getRoleApi().deleteRole(getIslandSourceId(), getRoleId());
     }
 
     @Override
     public long getMemberCount() {
-        Result result = bot.getApi().V2.getRoleApi().getRoleList(getIslandSourceId());
+        Result result = bot.getApi().getRoleApi().getRoleList(getIslandSourceId());
         if (result.isFailure()) {
             log.error("获取成员信息失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
             return 0;
@@ -55,42 +55,42 @@ public class RoleImpl implements Role {
 
     @Override
     public Result editRoleName(@NonNull String name) {
-        return getBot().getApi().V2.getRoleApi().editRole(getIslandSourceId(), getRoleId()
+        return getBot().getApi().getRoleApi().editRole(getIslandSourceId(), getRoleId()
                 , name, null, (Integer) null, (String) null);
     }
 
     @Override
     public Result editRoleColor(@NonNull String color) {
-        return getBot().getApi().V2.getRoleApi().editRole(getIslandSourceId(), getRoleId()
+        return getBot().getApi().getRoleApi().editRole(getIslandSourceId(), getRoleId()
                 , null, color, (Integer) null, (String) null);
     }
 
     @Override
     public Result editPosition(int position) {
-        return getBot().getApi().V2.getRoleApi().editRole(getIslandSourceId(), getRoleId()
+        return getBot().getApi().getRoleApi().editRole(getIslandSourceId(), getRoleId()
                 , null, null, position, (String) null);
     }
 
     @Override
     public Result editPermission(@NonNull Permission permission) {
-        return getBot().getApi().V2.getRoleApi().editRole(getIslandSourceId(), getRoleId()
+        return getBot().getApi().getRoleApi().editRole(getIslandSourceId(), getRoleId()
                 , null, null, (Integer) null, permission);
     }
 
     @Override
     public Result editPermission(@NonNull String permission) {
-        return getBot().getApi().V2.getRoleApi().editRole(getIslandSourceId(), getRoleId()
+        return getBot().getApi().getRoleApi().editRole(getIslandSourceId(), getRoleId()
                 , null, null, (Integer) null, permission);
     }
 
     @Override
     public Result removeMember(@NonNull String dodoId) {
-        return getBot().getApi().V2.getRoleApi().removeRoleMember(getIslandSourceId(), dodoId, getRoleId());
+        return getBot().getApi().getRoleApi().removeRoleMember(getIslandSourceId(), dodoId, getRoleId());
     }
 
     @Override
     public Result addMember(@NonNull String dodoId) {
-        return getBot().getApi().V2.getRoleApi().addRoleMember(getIslandSourceId(), dodoId, getRoleId());
+        return getBot().getApi().getRoleApi().addRoleMember(getIslandSourceId(), dodoId, getRoleId());
     }
 
     @Override

@@ -43,7 +43,7 @@ public class MessageChannel extends ChannelImpl {
      * @return result
      */
     public Result sendMessage(@NonNull Message message) {
-        return getBot().getApi().V2.getChannelMessageApi().sendMessage(getChannelId(), message);
+        return getBot().getApi().getChannelMessageApi().sendMessage(getChannelId(), message);
     }
 
     /**
@@ -54,7 +54,7 @@ public class MessageChannel extends ChannelImpl {
      * @return result
      */
     public Result editMessage(@NonNull String messageId, @NonNull Message message) {
-        return getBot().getApi().V2.getChannelMessageApi().editChannelMessage(messageId, message);
+        return getBot().getApi().getChannelMessageApi().editChannelMessage(messageId, message);
     }
 
     /**
@@ -65,7 +65,7 @@ public class MessageChannel extends ChannelImpl {
      * @return result
      */
     public Result referencedMessage(@NonNull String messageId, @NonNull Message message) {
-        return getBot().getApi().V2.getChannelMessageApi().referencedMessage(getChannelId(), message, messageId);
+        return getBot().getApi().getChannelMessageApi().referencedMessage(getChannelId(), message, messageId);
     }
 
     /**
@@ -76,7 +76,7 @@ public class MessageChannel extends ChannelImpl {
      * @return result
      */
     public Result sendPersonalMessage(@NonNull String dodoSourceId, @NonNull Message message) {
-        return getBot().getApi().V2.getChannelMessageApi().sendChannelPersonalMessage(getChannelId(), message, dodoSourceId);
+        return getBot().getApi().getChannelMessageApi().sendChannelPersonalMessage(getChannelId(), message, dodoSourceId);
     }
 
     /**
@@ -88,9 +88,9 @@ public class MessageChannel extends ChannelImpl {
      */
     public Result withdrawMessage(@NonNull String messageId, String reason) {
         if (reason != null) {
-            return getBot().getApi().V2.getChannelMessageApi().withdrawChannelMessageWithReason(messageId, reason);
+            return getBot().getApi().getChannelMessageApi().withdrawChannelMessageWithReason(messageId, reason);
         }
-        return getBot().getApi().V2.getChannelMessageApi().withdrawChannelMessage(messageId);
+        return getBot().getApi().getChannelMessageApi().withdrawChannelMessage(messageId);
     }
 
     /**
@@ -100,7 +100,7 @@ public class MessageChannel extends ChannelImpl {
      * @return result
      */
     public Result pinMessage(@NonNull String messageId) {
-        return getBot().getApi().V2.getChannelMessageApi().setChannelMessageTop(messageId, 1);
+        return getBot().getApi().getChannelMessageApi().setChannelMessageTop(messageId, 1);
     }
 
     /**
@@ -110,7 +110,7 @@ public class MessageChannel extends ChannelImpl {
      * @return result
      */
     public Result unpinMessage(@NonNull String messageId) {
-        return getBot().getApi().V2.getChannelMessageApi().setChannelMessageTop(messageId, 0);
+        return getBot().getApi().getChannelMessageApi().setChannelMessageTop(messageId, 0);
     }
 
     /**
@@ -120,7 +120,7 @@ public class MessageChannel extends ChannelImpl {
      * @return 反应列表（前为反应表情，后为数量）
      */
     public Map<Emoji, Integer> getMessageReactionList(@NonNull String messageId) {
-        Result result = getBot().getApi().V2.getChannelMessageApi().getChannelMessageReactionList(messageId);
+        Result result = getBot().getApi().getChannelMessageApi().getChannelMessageReactionList(messageId);
         if (result.isFailure()) {
             log.error("获取消息反应失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
             return null;
@@ -158,7 +158,7 @@ public class MessageChannel extends ChannelImpl {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                Result result = getBot().getApi().V2.getChannelMessageApi().getChannelMessageReactionMemberList(messageId, 1, emoji.getId(),
+                Result result = getBot().getApi().getChannelMessageApi().getChannelMessageReactionMemberList(messageId, 1, emoji.getId(),
                         100, maxId.getValue()).ifFailure(r -> {
                     log.error("获取消息反应成员列表失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
                 });
@@ -184,7 +184,7 @@ public class MessageChannel extends ChannelImpl {
      * @return result
      */
     public Result addMessageReaction(@NonNull String messageId, @NonNull Emoji emoji) {
-        return getBot().getApi().V2.getChannelMessageApi().addChannelMessageReaction(messageId, emoji.getId());
+        return getBot().getApi().getChannelMessageApi().addChannelMessageReaction(messageId, emoji.getId());
     }
 
     /**
@@ -196,6 +196,6 @@ public class MessageChannel extends ChannelImpl {
      * @return result
      */
     public Result removeMessageReaction(@NonNull String messageId, @NonNull Emoji emoji, @NonNull String dodoSourceId) {
-        return getBot().getApi().V2.getChannelMessageApi().removeChannelMessageReaction(messageId, emoji.getId(), dodoSourceId);
+        return getBot().getApi().getChannelMessageApi().removeChannelMessageReaction(messageId, emoji.getId(), dodoSourceId);
     }
 }

@@ -1,95 +1,65 @@
 package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
+import io.github.minecraftchampions.dodoopenjava.api.Bot;
 import io.github.minecraftchampions.dodoopenjava.debug.Result;
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtils;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtils;
+import lombok.Data;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;
-
-import java.io.IOException;
 
 /**
  * 帖子频道API
  *
  * @author qscbm187531
  */
+@Data
+@RequiredArgsConstructor
 public class ChannelArticleApi {
+    @NonNull
+    private Bot bot;
+
     /**
      * 发布帖子
      *
-     * @param clientId  clientId
-     * @param token     token
      * @param channelId 频道ID
-     * @param title     标题
+     * @param title     Dodo号
      * @param content   内容，10000个字符限制，支持菱形语法，内容和图片链接必填一个，剩下一个填null
      * @param imageUrl  图片链接，必须是官方的链接，通过上传资源图片接口可获得图片链接，内容和图片链接必填一个，剩下一个填null
-     * @return JSON对象
-     * @throws IOException 失败后抛出
+     * @return result
      */
-    public static Result addChannelArticle(String clientId, String token, String channelId, String title, String imageUrl, String content) throws IOException {
-        return addChannelArticle(BaseUtils.generateAuthorization(clientId, token), channelId, title, content, imageUrl);
-    }
-
-    /**
-     * 发布帖子
-     *
-     * @param authorization authorization
-     * @param channelId     频道ID
-     * @param title         Dodo号
-     * @param content       内容，10000个字符限制，支持菱形语法，内容和图片链接必填一个，剩下一个填null
-     * @param imageUrl      图片链接，必须是官方的链接，通过上传资源图片接口可获得图片链接，内容和图片链接必填一个，剩下一个填null
-     * @return JSON对象
-     * @throws IOException 失败后抛出
-     */
-
-    public static Result addChannelArticle(String authorization, String channelId, String title, String content, String imageUrl) throws IOException {
+    public Result addChannelArticle(String channelId, String title, String content,
+                                    String imageUrl) {
         String url = DodoOpenJava.BASEURL + "channel/article/add";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("title", title)
                 .put("channelId", channelId);
         if (content != null) {
-            jsonObject.put("content",content);
+            jsonObject.put("content", content);
         }
         if (imageUrl != null) {
-            jsonObject.put("imageUrl",imageUrl);
+            jsonObject.put("imageUrl", imageUrl);
         }
-        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, bot.getAuthorization());
     }
 
 
     /**
      * 删除帖子评论回复
      *
-     * @param clientId  clientId
-     * @param token     token
      * @param type      业务类型，1：帖子，2：帖子评论，3：帖子评论回复
      * @param id        业务ID，业务类型为1时，代表帖子ID；类型为2时，代表帖子评论ID；类型为3时，代表帖子评论回复ID
      * @param channelId 频道号
-     * @return JSON对象
-     * @throws IOException 失败后抛出
+     * @return result
      */
-    public static Result removeChannelArticle(String clientId, String token, int type, String id, String channelId) throws IOException {
-        return removeChannelArticle(BaseUtils.generateAuthorization(clientId, token), type, id, channelId);
-    }
-
-    /**
-     * 删除帖子评论回复
-     *
-     * @param authorization authorization
-     * @param type          业务类型，1：帖子，2：帖子评论，3：帖子评论回复
-     * @param id            业务ID，业务类型为1时，代表帖子ID；类型为2时，代表帖子评论ID；类型为3时，代表帖子评论回复ID
-     * @param channelId     频道号
-     * @return JSON对象
-     * @throws IOException 失败后抛出
-     */
-
-    public static Result removeChannelArticle(String authorization, int type, String id, String channelId) throws IOException {
+    public Result removeChannelArticle(int type, String id, String channelId) {
         String url = DodoOpenJava.BASEURL + "channel/article/remove";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("id", id)
                 .put("channelId", channelId)
                 .put("type", type);
-        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, bot.getAuthorization());
     }
 
 }

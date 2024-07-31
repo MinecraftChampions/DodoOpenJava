@@ -34,11 +34,11 @@ public class ArticleChannel extends ChannelImpl {
      */
     public String addArticle(@NonNull String channelId, @NonNull String title,
                              @NonNull String content, @NonNull String imageUrl) {
-        return getBot().getApi().V2.getChannelArticleApi().addChannelArticle(channelId, title, content, imageUrl).ifSuccess((Function<Result, String>) result -> result.getJSONObjectData().getJSONObject("data").getString("articleId"));
+        return getBot().getApi().getChannelArticleApi().addChannelArticle(channelId, title, content, imageUrl).ifSuccess((Function<Result, String>) result -> result.getJSONObjectData().getJSONObject("data").getString("articleId"));
     }
 
     public Result remove(int type, String id) {
-        return getBot().getApi().V2.getChannelArticleApi().removeChannelArticle(type, id, getChannelId());
+        return getBot().getApi().getChannelArticleApi().removeChannelArticle(type, id, getChannelId());
     }
 
     /**
@@ -48,7 +48,7 @@ public class ArticleChannel extends ChannelImpl {
      * @return result
      */
     public Result removeArticle(String articleId) {
-        return getBot().getApi().V2.getChannelArticleApi().removeChannelArticle(1, articleId, getChannelId());
+        return getBot().getApi().getChannelArticleApi().removeChannelArticle(1, articleId, getChannelId());
     }
 
     /**
@@ -58,7 +58,7 @@ public class ArticleChannel extends ChannelImpl {
      * @return result
      */
     public Result removeComment(String commentId) {
-        return getBot().getApi().V2.getChannelArticleApi().removeChannelArticle(2, commentId, getChannelId());
+        return getBot().getApi().getChannelArticleApi().removeChannelArticle(2, commentId, getChannelId());
     }
 
     /**
@@ -68,6 +68,6 @@ public class ArticleChannel extends ChannelImpl {
      * @return result
      */
     public Result removeReply(String replyId) {
-        return getBot().getApi().V2.getChannelArticleApi().removeChannelArticle(3, replyId, getChannelId());
+        return getBot().getApi().getChannelArticleApi().removeChannelArticle(3, replyId, getChannelId());
     }
 }

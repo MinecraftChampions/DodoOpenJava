@@ -14,7 +14,7 @@ import lombok.*;
  * @author qscbm187531
  */
 @Getter
-@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
+@RequiredArgsConstructor
 @ToString
 public class DodoUserImpl implements User {
     /**
@@ -50,7 +50,7 @@ public class DodoUserImpl implements User {
      */
     @Override
     public String getJoinTime() {
-        return getBot().getApi().V2.memberApi.getMemberInfo(getIslandSourceId(), getDodoSourceId()).ifSuccess((result) -> {
+        return getBot().getApi().memberApi.getMemberInfo(getIslandSourceId(), getDodoSourceId()).ifSuccess((result) -> {
             return result.getJSONObjectData().getJSONObject("data").getString("joinTime");
         });
     }
@@ -62,7 +62,7 @@ public class DodoUserImpl implements User {
      */
     @Override
     public String getNickName() {
-        return getBot().getApi().V2.memberApi.getMemberInfo(getIslandSourceId(), getDodoSourceId()).ifSuccess((result) -> {
+        return getBot().getApi().memberApi.getMemberInfo(getIslandSourceId(), getDodoSourceId()).ifSuccess((result) -> {
             return result.getJSONObjectData().getJSONObject("data").getString("nickName");
         });
     }
@@ -74,7 +74,7 @@ public class DodoUserImpl implements User {
      */
     @Override
     public String getName() {
-        return getBot().getApi().V2.memberApi.getMemberInfo(getIslandSourceId(), getDodoSourceId()).ifSuccess((result) -> {
+        return getBot().getApi().memberApi.getMemberInfo(getIslandSourceId(), getDodoSourceId()).ifSuccess((result) -> {
             return result.getJSONObjectData().getJSONObject("data").getString("personalNickName");
         });
     }
@@ -86,7 +86,7 @@ public class DodoUserImpl implements User {
      */
     @Override
     public String getAvatarUrl() {
-        return getBot().getApi().V2.memberApi.getMemberInfo(getIslandSourceId(), getDodoSourceId()).ifSuccess((result) -> {
+        return getBot().getApi().memberApi.getMemberInfo(getIslandSourceId(), getDodoSourceId()).ifSuccess((result) -> {
             return result.getJSONObjectData().getJSONObject("data").getString("avatarUrl");
         });
     }
@@ -98,64 +98,64 @@ public class DodoUserImpl implements User {
      */
     @Override
     public int getLevel() {
-        return getBot().getApi().V2.memberApi.getMemberInfo(getIslandSourceId(), getDodoSourceId()).ifSuccess((result) -> {
+        return getBot().getApi().memberApi.getMemberInfo(getIslandSourceId(), getDodoSourceId()).ifSuccess((result) -> {
             return result.getJSONObjectData().getJSONObject("data").getInt("level");
         });
     }
 
     @Override
     public int getSex() {
-        return getBot().getApi().V2.memberApi.getMemberInfo(getIslandSourceId(), getDodoSourceId()).ifSuccess((result) -> {
+        return getBot().getApi().memberApi.getMemberInfo(getIslandSourceId(), getDodoSourceId()).ifSuccess((result) -> {
             return result.getJSONObjectData().getJSONObject("data").getInt("sex");
         });
     }
 
     @Override
     public int isBot() {
-        return getBot().getApi().V2.memberApi.getMemberInfo(getIslandSourceId(), getDodoSourceId()).ifSuccess((result) -> {
+        return getBot().getApi().memberApi.getMemberInfo(getIslandSourceId(), getDodoSourceId()).ifSuccess((result) -> {
             return result.getJSONObjectData().getJSONObject("data").getInt("isBot");
         });
     }
 
     @Override
     public int getOnlineDevice() {
-        return getBot().getApi().V2.memberApi.getMemberInfo(getIslandSourceId(), getDodoSourceId()).ifSuccess((result) -> {
+        return getBot().getApi().memberApi.getMemberInfo(getIslandSourceId(), getDodoSourceId()).ifSuccess((result) -> {
             return result.getJSONObjectData().getJSONObject("data").getInt("onlineDevice");
         });
     }
 
     @Override
     public int getOnlineStatus() {
-        return getBot().getApi().V2.memberApi.getMemberInfo(getIslandSourceId(), getDodoSourceId()).ifSuccess((result) -> {
+        return getBot().getApi().memberApi.getMemberInfo(getIslandSourceId(), getDodoSourceId()).ifSuccess((result) -> {
             return result.getJSONObjectData().getJSONObject("data").getInt("onlineStatus");
         });
     }
 
     @Override
     public String getInviterDodoSourceId() {
-        return getBot().getApi().V2.memberApi.getMemberInfo(getIslandSourceId(), getDodoSourceId()).ifSuccess((result) -> {
+        return getBot().getApi().memberApi.getMemberInfo(getIslandSourceId(), getDodoSourceId()).ifSuccess((result) -> {
             return result.getJSONObjectData().getJSONObject("data").getString("inviterDodoSourceId");
         });
     }
 
     @Override
     public Result editNickName(String nickName) {
-        return getBot().getApi().V2.memberApi.editMemberNickName(getIslandSourceId(), getDodoSourceId(), nickName);
+        return getBot().getApi().memberApi.editMemberNickName(getIslandSourceId(), getDodoSourceId(), nickName);
     }
 
     @Override
     public Result mute(int mills) {
-        return getBot().getApi().V2.memberApi.addMemberMute(getIslandSourceId(), getDodoSourceId(), mills);
+        return getBot().getApi().memberApi.addMemberMute(getIslandSourceId(), getDodoSourceId(), mills);
     }
 
     @Override
     public Result mute(int mills, String reason) {
-        return getBot().getApi().V2.memberApi.addMemberReasonMute(getIslandSourceId(), getDodoSourceId(), mills, reason);
+        return getBot().getApi().memberApi.addMemberReasonMute(getIslandSourceId(), getDodoSourceId(), mills, reason);
     }
 
     @Override
     public int getInvitationCount() {
-        return getBot().getApi().V2.memberApi.getMemberInvitationInfo(getIslandSourceId(), getDodoSourceId()).ifSuccess((result) -> {
+        return getBot().getApi().memberApi.getMemberInvitationInfo(getIslandSourceId(), getDodoSourceId()).ifSuccess((result) -> {
             return result.getJSONObjectData().getJSONObject("data").getInt("invitationCount");
         });
     }
@@ -164,39 +164,39 @@ public class DodoUserImpl implements User {
     public Result ban(String reason, String noticeChannelId) {
         MemberApi.BanSetting setting = MemberApi.BanSetting.builder()
                 .reason(reason).noticeChannelId(noticeChannelId).build();
-        return getBot().getApi().V2.memberApi.addMemberBan(getIslandSourceId(), getDodoSourceId(), setting);
+        return getBot().getApi().memberApi.addMemberBan(getIslandSourceId(), getDodoSourceId(), setting);
     }
 
     @Override
     public Result unmute() {
-        return getBot().getApi().V2.memberApi.removeMemberMute(getIslandSourceId(), getDodoSourceId());
+        return getBot().getApi().memberApi.removeMemberMute(getIslandSourceId(), getDodoSourceId());
     }
 
     @Override
     public Result unban() {
-        return getBot().getApi().V2.memberApi.removeMemberBan(getIslandSourceId(), getDodoSourceId());
+        return getBot().getApi().memberApi.removeMemberBan(getIslandSourceId(), getDodoSourceId());
     }
 
     @Override
     public Result addRole(String roleId) {
-        return getBot().getApi().V2.roleApi.addRoleMember(getIslandSourceId(), getDodoSourceId(), roleId);
+        return getBot().getApi().roleApi.addRoleMember(getIslandSourceId(), getDodoSourceId(), roleId);
     }
 
     @Override
     public Result removeRole(String roleId) {
-        return getBot().getApi().V2.roleApi.removeRoleMember(getIslandSourceId(), getDodoSourceId(), roleId);
+        return getBot().getApi().roleApi.removeRoleMember(getIslandSourceId(), getDodoSourceId(), roleId);
     }
 
     @Override
     public long getIntegralBalance() {
-        return getBot().getApi().V2.integralApi.getIntegralInfo(getIslandSourceId(), getDodoSourceId()).ifSuccess((result) -> {
+        return getBot().getApi().integralApi.getIntegralInfo(getIslandSourceId(), getDodoSourceId()).ifSuccess((result) -> {
             return result.getJSONObjectData().getJSONObject("data").getLong("integralBalance");
         });
     }
 
     @Override
     public Result editIntegral(int type, long integral) {
-        return getBot().getApi().V2.integralApi.setIntegralEdit(getIslandSourceId(), getDodoSourceId(), type, integral);
+        return getBot().getApi().integralApi.setIntegralEdit(getIslandSourceId(), getDodoSourceId(), type, integral);
     }
 
     @Override
@@ -211,7 +211,7 @@ public class DodoUserImpl implements User {
 
     @Override
     public String sendPersonalMessage(Message message) {
-        return getBot().getApi().V2.personalApi.sendMessage(getIslandSourceId(), getDodoSourceId(), message).ifSuccess((result) -> {
+        return getBot().getApi().personalApi.sendMessage(getIslandSourceId(), getDodoSourceId(), message).ifSuccess((result) -> {
             return result.getJSONObjectData().getJSONObject("data").getString("messageId");
         });
     }

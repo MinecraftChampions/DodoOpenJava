@@ -14,28 +14,28 @@ public class VoiceMemberImpl extends DodoUserImpl implements VoiceMember {
 
     @NonNull
     public String getChannelId() {
-        return getBot().getApi().V2.getChannelVoiceApi().getChannelVoiceMemberStatus(getIslandSourceId(), getDodoSourceId()).ifSuccess((Function<Result, String>) result ->
+        return getBot().getApi().getChannelVoiceApi().getChannelVoiceMemberStatus(getIslandSourceId(), getDodoSourceId()).ifSuccess((Function<Result, String>) result ->
                 result.getJSONObjectData().getJSONObject("data").getString("channelId")
         );
     }
 
     @Override
     public int getSpkStatus() {
-        return getBot().getApi().V2.getChannelVoiceApi().getChannelVoiceMemberStatus(getIslandSourceId(), getDodoSourceId()).ifSuccess((Function<Result, Integer>) result ->
+        return getBot().getApi().getChannelVoiceApi().getChannelVoiceMemberStatus(getIslandSourceId(), getDodoSourceId()).ifSuccess((Function<Result, Integer>) result ->
                 result.getJSONObjectData().getJSONObject("data").getInt("spkStatus")
         );
     }
 
     @Override
     public int getMicStatus() {
-        return getBot().getApi().V2.getChannelVoiceApi().getChannelVoiceMemberStatus(getIslandSourceId(), getDodoSourceId()).ifSuccess((Function<Result, Integer>) result ->
+        return getBot().getApi().getChannelVoiceApi().getChannelVoiceMemberStatus(getIslandSourceId(), getDodoSourceId()).ifSuccess((Function<Result, Integer>) result ->
                 result.getJSONObjectData().getJSONObject("data").getInt("micStatus")
         );
     }
 
     @Override
     public int getMicSortStatus() {
-        return getBot().getApi().V2.getChannelVoiceApi().getChannelVoiceMemberStatus(getIslandSourceId(), getDodoSourceId()).ifSuccess((Function<Result, Integer>) result ->
+        return getBot().getApi().getChannelVoiceApi().getChannelVoiceMemberStatus(getIslandSourceId(), getDodoSourceId()).ifSuccess((Function<Result, Integer>) result ->
                 result.getJSONObjectData().getJSONObject("data").getInt("micSortStatus")
         );
     }

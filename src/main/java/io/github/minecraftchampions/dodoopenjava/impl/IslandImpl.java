@@ -26,7 +26,7 @@ public class IslandImpl implements Island {
 
     @Override
     public String getIslandName() {
-        Result result = getBot().getApi().V2.getIslandApi().getIslandInfo(getIslandSourceId());
+        Result result = getBot().getApi().getIslandApi().getIslandInfo(getIslandSourceId());
         if (result.isFailure()) {
             log.error("获取群名字失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
             return null;
@@ -36,7 +36,7 @@ public class IslandImpl implements Island {
 
     @Override
     public String getCoverUrl() {
-        Result result = getBot().getApi().V2.getIslandApi().getIslandInfo(getIslandSourceId());
+        Result result = getBot().getApi().getIslandApi().getIslandInfo(getIslandSourceId());
         if (result.isFailure()) {
             log.error("获取群头像失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
             return null;
@@ -46,7 +46,7 @@ public class IslandImpl implements Island {
 
     @Override
     public int getMemberCount() {
-        Result result = getBot().getApi().V2.getIslandApi().getIslandInfo(getIslandSourceId());
+        Result result = getBot().getApi().getIslandApi().getIslandInfo(getIslandSourceId());
         if (result.isFailure()) {
             log.error("获取成员数量失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
             return 0;
@@ -56,7 +56,7 @@ public class IslandImpl implements Island {
 
     @Override
     public int getOnlineMemberCount() {
-        Result result = getBot().getApi().V2.getIslandApi().getIslandInfo(getIslandSourceId());
+        Result result = getBot().getApi().getIslandApi().getIslandInfo(getIslandSourceId());
         if (result.isFailure()) {
             log.error("获取在线成员数量失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
             return 0;
@@ -66,7 +66,7 @@ public class IslandImpl implements Island {
 
     @Override
     public String getDescription() {
-        Result result = getBot().getApi().V2.getIslandApi().getIslandInfo(getIslandSourceId());
+        Result result = getBot().getApi().getIslandApi().getIslandInfo(getIslandSourceId());
         if (result.isFailure()) {
             log.error("获取群简介失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
             return null;
@@ -77,7 +77,7 @@ public class IslandImpl implements Island {
 
     @Override
     public String getDefaultChannelId() {
-        Result result = getBot().getApi().V2.getIslandApi().getIslandInfo(getIslandSourceId());
+        Result result = getBot().getApi().getIslandApi().getIslandInfo(getIslandSourceId());
         if (result.isFailure()) {
             log.error("获取默认访问频道id失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
             return null;
@@ -87,7 +87,7 @@ public class IslandImpl implements Island {
 
     @Override
     public String getSystemChannelId() {
-        Result result = getBot().getApi().V2.getIslandApi().getIslandInfo(getIslandSourceId());
+        Result result = getBot().getApi().getIslandApi().getIslandInfo(getIslandSourceId());
         if (result.isFailure()) {
             log.error("获取系统消息频道id失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
             return null;
@@ -97,7 +97,7 @@ public class IslandImpl implements Island {
 
     @Override
     public String getOwnerDodoId() {
-        Result result = getBot().getApi().V2.getIslandApi().getIslandInfo(getIslandSourceId());
+        Result result = getBot().getApi().getIslandApi().getIslandInfo(getIslandSourceId());
         if (result.isFailure()) {
             log.error("获取群主人id失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
             return null;
@@ -107,7 +107,7 @@ public class IslandImpl implements Island {
 
     @Override
     public List<User> getIslandLevelRankList() {
-        Result result = bot.getApi().V2.getIslandApi()
+        Result result = bot.getApi().getIslandApi()
                 .getIslandLevelRankList(getIslandSourceId()).ifFailure(r -> {
             log.error("获取排行失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
         });
@@ -115,7 +115,7 @@ public class IslandImpl implements Island {
         List<User> userList = new ArrayList<>();
         for (Object o : array) {
             if (o instanceof JSONObject jsonObject) {
-                userList.add(getBot().getApi().V2.getMemberApi().getUser(islandSourceId,
+                userList.add(getBot().getApi().getMemberApi().getUser(islandSourceId,
                         jsonObject.getString("dodoSourceId")));
             }
         }
@@ -135,7 +135,7 @@ public class IslandImpl implements Island {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                Result result = bot.getApi().V2.getIslandApi().getIslandMuteList(getIslandSourceId(),
+                Result result = bot.getApi().getIslandApi().getIslandMuteList(getIslandSourceId(),
                         100, maxId.getValue()).ifFailure(r -> {
                     log.error("获取群禁言信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
                 });
@@ -166,7 +166,7 @@ public class IslandImpl implements Island {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                Result result = bot.getApi().V2.getIslandApi().getIslandBanList(getIslandSourceId(),
+                Result result = bot.getApi().getIslandApi().getIslandBanList(getIslandSourceId(),
                         100, maxId.getValue()).ifFailure(r -> {
                     log.error("获取封禁信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
                 });
@@ -197,7 +197,7 @@ public class IslandImpl implements Island {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                Result result = bot.getApi().V2.getRoleApi().getMemberList(getIslandSourceId(), roleId,
+                Result result = bot.getApi().getRoleApi().getMemberList(getIslandSourceId(), roleId,
                         100, maxId.getValue()).ifFailure(r -> {
                     log.error("获取身份组成员信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
                 });
@@ -254,7 +254,7 @@ public class IslandImpl implements Island {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-                Result result = bot.getApi().V2.getMemberApi().getMemberList(getIslandSourceId(),
+                Result result = bot.getApi().getMemberApi().getMemberList(getIslandSourceId(),
                         100, maxId.getValue()).ifFailure(r -> {
                     log.error("获取成员信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getJSONObjectData());
                 });
@@ -274,7 +274,7 @@ public class IslandImpl implements Island {
 
     @Override
     public User getUser(@NonNull String dodoId) {
-        Result result = bot.getApi().V2.getMemberApi().getMemberInfo(getIslandSourceId(), dodoId);
+        Result result = bot.getApi().getMemberApi().getMemberInfo(getIslandSourceId(), dodoId);
         if (result.isSuccess()) {
             return new DodoUserImpl(dodoId, getIslandSourceId(), bot);
         }
@@ -284,7 +284,7 @@ public class IslandImpl implements Island {
 
     @Override
     public List<Channel> getChannelList() {
-        Result result = bot.getApi().V2.getChannelApi().getChannelList(getIslandSourceId());
+        Result result = bot.getApi().getChannelApi().getChannelList(getIslandSourceId());
         if (result.isFailure()) {
             log.error("获取频道列表失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
             return null;
@@ -300,7 +300,7 @@ public class IslandImpl implements Island {
 
     @Override
     public Channel getChannel(@NonNull String channelId) {
-        Result result = bot.getApi().V2.getChannelApi().getChannelList(getIslandSourceId());
+        Result result = bot.getApi().getChannelApi().getChannelList(getIslandSourceId());
         if (result.isFailure()) {
             log.error("获取频道信息失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
             return null;
@@ -313,7 +313,7 @@ public class IslandImpl implements Island {
 
     @Override
     public List<Role> getRoleList() {
-        Result result = bot.getApi().V2.getRoleApi().getRoleList(getIslandSourceId());
+        Result result = bot.getApi().getRoleApi().getRoleList(getIslandSourceId());
         if (result.isFailure()) {
             log.error("获取身份组列表失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
             return null;
@@ -329,7 +329,7 @@ public class IslandImpl implements Island {
 
     @Override
     public Role getRole(@NonNull String roleId) {
-        Result result = bot.getApi().V2.getRoleApi().getRoleList(getIslandSourceId());
+        Result result = bot.getApi().getRoleApi().getRoleList(getIslandSourceId());
         if (result.isFailure()) {
             log.error("获取身份组信息失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
             return null;
@@ -344,7 +344,7 @@ public class IslandImpl implements Island {
 
     @Override
     public Channel createChannel(@NonNull String channelName, int channelType) {
-        Result result = bot.getApi().V2.getChannelApi().addChannel(getIslandSourceId(), channelName, channelType);
+        Result result = bot.getApi().getChannelApi().addChannel(getIslandSourceId(), channelName, channelType);
         if (result.isFailure()) {
             log.error("创建频道失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
             return null;
@@ -359,7 +359,7 @@ public class IslandImpl implements Island {
 
     @Override
     public Role createRole(String roleName, String roleColor, int position, Permission permission) {
-        Result result = bot.getApi().V2.getRoleApi().addRole(getIslandSourceId(), roleName, roleColor, position, permission);
+        Result result = bot.getApi().getRoleApi().addRole(getIslandSourceId(), roleName, roleColor, position, permission);
         if (result.isFailure()) {
             log.error("创建身份组失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getJSONObjectData());
             return null;

@@ -1,165 +1,87 @@
 package io.github.minecraftchampions.dodoopenjava.api.v2;
 
 import io.github.minecraftchampions.dodoopenjava.DodoOpenJava;
+import io.github.minecraftchampions.dodoopenjava.api.Bot;
 import io.github.minecraftchampions.dodoopenjava.debug.Result;
-import io.github.minecraftchampions.dodoopenjava.utils.BaseUtils;
 import io.github.minecraftchampions.dodoopenjava.utils.NetUtils;
+import lombok.Data;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.json.JSONObject;
-
-import java.io.IOException;
 
 /**
  * 机器人API
  *
  * @author qscbm187531
  */
+@Data
+@RequiredArgsConstructor
 public class BotApi {
+    @NonNull
+    private Bot bot;
 
     /**
      * 获取机器人信息
      *
-     * @param clientId 机器人唯一标识
-     * @param token    机器人鉴权Token
-     * @return 返回JSON对象
-     * @throws IOException 发送请求失败后抛出
+     * @return result
      */
-    public static Result getBotInfo(String clientId, String token) throws IOException {
-        return getBotInfo(BaseUtils.generateAuthorization(clientId, token));
-    }
-
-    /**
-     * 获取机器人信息
-     *
-     * @param authorization authorization
-     * @return 返回JSON对象
-     * @throws IOException 发送请求失败后抛出
-     */
-
-    public static Result getBotInfo(String authorization) throws IOException {
+    public Result getBotInfo() {
         String url = DodoOpenJava.BASEURL + "bot/info";
         JSONObject jsonObject = new JSONObject();
-        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, bot.getAuthorization());
     }
 
     /**
      * 机器人退群
      *
-     * @param clientId       机器人唯一标识
-     * @param token          机器人鉴权Token
      * @param islandSourceId 群号
-     * @return 返回JSON对象
-     * @throws IOException 发送请求失败后抛出
+     * @return result
      */
-    public static Result setBotIslandLeave(String clientId, String token, String islandSourceId) throws IOException {
-        return setBotIslandLeave(BaseUtils.generateAuthorization(clientId, token), islandSourceId);
-    }
-
-    /**
-     * 机器人退群
-     *
-     * @param authorization  authorization
-     * @param islandSourceId 群号
-     * @return 返回JSON对象
-     * @throws IOException 发送请求失败后抛出
-     */
-
-    public static Result setBotIslandLeave(String authorization, String islandSourceId) throws IOException {
+    public Result setBotIslandLeave(String islandSourceId) {
         String url = DodoOpenJava.BASEURL + "bot/island/leave";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("islandSourceId", islandSourceId);
-        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, bot.getAuthorization());
     }
 
     /**
      * 获取机器人邀请列表
      *
-     * @param clientId 机器人唯一标识
-     * @param token    机器人鉴权Token
      * @param pageSize 页大小，最大100
      * @param maxId    上一页最大ID值，为提升分页查询性能，需要传入上一页查询记录中的最大ID值，首页请传0
-     * @return 返回JSON对象
-     * @throws IOException 发送请求失败后抛出
+     * @return result
      */
-
-    public static Result getBotInviteList(String clientId, String token, int pageSize, long maxId) throws IOException {
-        return getBotInviteList(BaseUtils.generateAuthorization(clientId, token), pageSize, maxId);
-    }
-
-    /**
-     * 获取机器人邀请列表
-     *
-     * @param authorization authorization
-     * @param pageSize      页大小，最大100
-     * @param maxId         上一页最大ID值，为提升分页查询性能，需要传入上一页查询记录中的最大ID值，首页请传0
-     * @return 返回JSON对象
-     * @throws IOException 发送请求失败后抛出
-     */
-
-    public static Result getBotInviteList(String authorization, int pageSize, long maxId) throws IOException {
+    public Result getBotInviteList(int pageSize, long maxId) {
         String url = DodoOpenJava.BASEURL + "bot/invite/list";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("pageSize", pageSize)
                 .put("maxId", maxId);
-        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, bot.getAuthorization());
     }
 
     /**
      * 添加成员到机器人邀请列表
      *
-     * @param clientId     机器人唯一标识
-     * @param token        机器人鉴权Token
      * @param dodoSourceId dodoSourceId
-     * @return 返回JSON对象
-     * @throws IOException 发送请求失败后抛出
+     * @return result
      */
-
-    public static Result addBotInvite(String clientId, String token, String dodoSourceId) throws IOException {
-        return addBotInvite(BaseUtils.generateAuthorization(clientId, token), dodoSourceId);
-    }
-
-    /**
-     * 添加成员到机器人邀请列表
-     *
-     * @param authorization authorization
-     * @param dodoSourceId  dodoSourceId
-     * @return 返回JSON对象
-     * @throws IOException 发送请求失败后抛出
-     */
-
-    public static Result addBotInvite(String authorization, String dodoSourceId) throws IOException {
+    public Result addBotInvite(String dodoSourceId) {
         String url = DodoOpenJava.BASEURL + "bot/invite/add";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("dodoSourceId", dodoSourceId);
-        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, bot.getAuthorization());
     }
 
     /**
      * 移除成员出机器人邀请列表
      *
-     * @param clientId     机器人唯一标识
-     * @param token        机器人鉴权Token
      * @param dodoSourceId dodoSourceId
-     * @return 返回JSON对象
-     * @throws IOException 发送请求失败后抛出
+     * @return result
      */
-
-    public static Result removeBotInvite(String clientId, String token, String dodoSourceId) throws IOException {
-        return removeBotInvite(BaseUtils.generateAuthorization(clientId, token), dodoSourceId);
-    }
-
-    /**
-     * 移除成员出机器人邀请列表
-     *
-     * @param authorization authorization
-     * @param dodoSourceId  dodoSourceId
-     * @return 返回JSON对象
-     * @throws IOException 发送请求失败后抛出
-     */
-
-    public static Result removeBotInvite(String authorization, String dodoSourceId) throws IOException {
+    public Result removeBotInvite(String dodoSourceId) {
         String url = DodoOpenJava.BASEURL + "bot/invite/remove";
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("dodoSourceId", dodoSourceId);
-        return NetUtils.sendRequest(jsonObject.toString(), url, authorization);
+        return NetUtils.sendRequest(jsonObject.toString(), url, bot.getAuthorization());
     }
 }

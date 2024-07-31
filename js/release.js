@@ -159,7 +159,7 @@ function startParsing(commits) {
     }
     if (hasOthers) {
         let key = "others";
-        let c = '';
+        let c;
         let messages = result[key];
         c = '## ' + key;
         for (let message of messages) {

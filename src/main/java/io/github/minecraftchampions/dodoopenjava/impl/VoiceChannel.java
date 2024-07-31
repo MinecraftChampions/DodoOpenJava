@@ -24,11 +24,11 @@ public class VoiceChannel extends ChannelImpl {
     }
 
     public Result moveMemberTo(@NonNull VoiceMember voiceMember, @NonNull VoiceChannel targetChannel) {
-        return getBot().getApi().V2.getChannelVoiceApi().moveChannelVoiceMember(getIslandSourceId(), voiceMember.getDodoSourceId(), targetChannel.getChannelId());
+        return getBot().getApi().getChannelVoiceApi().moveChannelVoiceMember(getIslandSourceId(), voiceMember.getDodoSourceId(), targetChannel.getChannelId());
     }
 
     public Result editMemberStatus(@NonNull VoiceMember voiceMember,int type) {
-        return getBot().getApi().V2.getChannelVoiceApi().editChannelVoiceMember(type, voiceMember.getDodoSourceId(), getChannelId());
+        return getBot().getApi().getChannelVoiceApi().editChannelVoiceMember(type, voiceMember.getDodoSourceId(), getChannelId());
     }
 
     public Result onMic(@NonNull VoiceMember voiceMember) {
