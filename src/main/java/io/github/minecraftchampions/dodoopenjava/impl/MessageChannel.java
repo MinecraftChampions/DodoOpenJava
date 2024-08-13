@@ -153,11 +153,6 @@ public class MessageChannel extends ChannelImpl {
             IslandImpl.Longer maxId = new IslandImpl.Longer(0);
             List<CompletableFuture<?>> completableFutures = new ArrayList<>();
             while (true) {
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
                 Result result = getBot().getApi().getChannelMessageApi().getChannelMessageReactionMemberList(messageId, 1, emoji.getId(),
                         100, maxId.getValue()).ifFailure(r -> {
                     log.error("获取消息反应成员列表失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getData());
@@ -168,6 +163,11 @@ public class MessageChannel extends ChannelImpl {
                     }
                 } else {
                     break;
+                }
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
             }
             CompletableFuture.allOf(completableFutures.toArray(CompletableFuture[]::new)).join();
