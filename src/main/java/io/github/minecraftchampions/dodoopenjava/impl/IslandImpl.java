@@ -116,11 +116,6 @@ public class IslandImpl implements Island {
             Longer maxId = new Longer(0);
             List<CompletableFuture<?>> completableFutures = new ArrayList<>();
             while (true) {
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
                 Result result = bot.getApi().getIslandApi().getIslandMuteList(getIslandSourceId(),
                         100, maxId.getValue()).ifFailure(r -> {
                     log.error("获取群禁言信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getData());
@@ -131,6 +126,11 @@ public class IslandImpl implements Island {
                     }
                 } else {
                     break;
+                }
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
             }
             CompletableFuture.allOf(completableFutures.toArray(CompletableFuture[]::new)).join();
@@ -147,11 +147,6 @@ public class IslandImpl implements Island {
             Longer maxId = new Longer(0);
             List<CompletableFuture<?>> completableFutures = new ArrayList<>();
             while (true) {
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
                 Result result = bot.getApi().getIslandApi().getIslandBanList(getIslandSourceId(),
                         100, maxId.getValue()).ifFailure(r -> {
                     log.error("获取封禁信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getData());
@@ -162,6 +157,11 @@ public class IslandImpl implements Island {
                     }
                 } else {
                     break;
+                }
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
             }
             CompletableFuture.allOf(completableFutures.toArray(CompletableFuture[]::new)).join();
@@ -178,11 +178,6 @@ public class IslandImpl implements Island {
             Longer maxId = new Longer(0);
             List<CompletableFuture<?>> completableFutures = new ArrayList<>();
             while (true) {
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
                 Result result = bot.getApi().getRoleApi().getMemberList(getIslandSourceId(), roleId,
                         100, maxId.getValue()).ifFailure(r -> {
                     log.error("获取身份组成员信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getData());
@@ -193,6 +188,11 @@ public class IslandImpl implements Island {
                     }
                 } else {
                     break;
+                }
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
             }
             CompletableFuture.allOf(completableFutures.toArray(CompletableFuture[]::new)).join();
@@ -235,11 +235,6 @@ public class IslandImpl implements Island {
             Longer maxId = new Longer(0);
             List<CompletableFuture<?>> completableFutures = new ArrayList<>();
             while (true) {
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
                 Result result = bot.getApi().getMemberApi().getMemberList(getIslandSourceId(),
                         100, maxId.getValue()).ifFailure(r -> {
                     log.error("获取成员信息失败, 错误消息:{};状态code:{};错误数据:{}", r.getMessage(), r.getStatusCode(), r.getData());
@@ -250,6 +245,11 @@ public class IslandImpl implements Island {
                     }
                 } else {
                     break;
+                }
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
             }
             CompletableFuture.allOf(completableFutures.toArray(CompletableFuture[]::new)).join();
