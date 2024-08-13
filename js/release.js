@@ -41,7 +41,7 @@ request(o, (err, res, body) => {
 
 function getChangeLog(commits) {
     const typeMessageRe =
-        /^(feat|fix|docs|style|refactor|perf|test|chore|revert|build|ci|wip|merge|release|hotfix|deps): /
+        /^(feat|fix|docs|style|refactor|perf|test|chore|revert|build|ci): /
     const result = {};
     for (const commit of commits) {
         let message = commit.message;
@@ -52,7 +52,7 @@ function getChangeLog(commits) {
         let type = '';
         const sha = commit.sha.substring(0, 7);
         if (index === -1) {
-            type = "others";
+            type = "Others";
             message = sha + ": " + message + '([' + commit.commiter
                 + '](https://github.com/MinecraftChampions/DodoOpenJava/commit/' +
                 commit.sha + '))'
@@ -64,6 +64,40 @@ function getChangeLog(commits) {
             }
         } else {
             const temp = message.split(': ');
+            switch (temp[0]) {
+                case "fix":
+                    type = "Bug Fixes"
+                    break;
+                case "feat":
+                    type = "Features"
+                    break;
+                case "docs":
+                    type = "Documentation"
+                    break;
+                case "style":
+                    type = "Styles"
+                    break;
+                case "refactor":
+                    type = "Code Refactoring"
+                    break;
+                case "perf":
+                    type = "Performance Improvements"
+                    break;
+                case "test":
+                    type = "Tests"
+                    break;
+                case "build":
+                    type = "Builds"
+                    break;
+                case "ci":
+                    type = "Continuous Integration"
+                    break;
+                case "chore":
+                    type = "Chores"
+                    break;
+                default:
+                    type = "Reverts"
+            }
             type = temp[0];
             const str = message.replace(typeMessageRe, '');
             message = sha + ": " + str + '([' + commit.commiter
