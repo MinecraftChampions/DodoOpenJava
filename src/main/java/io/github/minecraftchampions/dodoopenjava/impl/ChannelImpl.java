@@ -68,11 +68,11 @@ public class ChannelImpl implements Channel {
 
     @Override
     public Result delete() {
-        return bot.getApi().getChannelApi().deleteChannel(getIslandSourceId(), getChannelId());
+        return bot.getApi().getChannelApi().deleteChannel(islandSourceId, channelId);
     }
 
     @Override
     public Island getIsland() {
-        return new IslandImpl(getIslandSourceId(), bot);
+        return new IslandImpl(islandSourceId, bot);
     }
 }

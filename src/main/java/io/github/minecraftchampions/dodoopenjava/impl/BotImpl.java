@@ -17,7 +17,6 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.json.JSONObject;
 
 import java.util.Objects;
 
@@ -31,7 +30,7 @@ import java.util.Objects;
 @Slf4j
 public class BotImpl implements Bot {
     public String toString() {
-        return getClientId();
+        return clientId;
     }
 
     /**
@@ -105,7 +104,7 @@ public class BotImpl implements Bot {
         if (!eventTrigger.isConnect()) {
             eventTrigger.start();
         }
-        getEventManager().registerListener(listener);
+        eventManager.registerListener(listener);
     }
 
     /**
@@ -121,7 +120,7 @@ public class BotImpl implements Bot {
 
     @Override
     public Island getIsland(@NonNull String islandSourceId) {
-        Result result = getApi().getIslandApi().getIslandList();
+        Result result = api.getIslandApi().getIslandList();
         if (result.isFailure()) {
             log.error("获取频道信息失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getData());
             return null;
@@ -220,7 +219,7 @@ public class BotImpl implements Bot {
      */
     @Override
     public String getName() {
-        return this.getApi().getBotApi().getBotInfo().getData().getString("nickName");
+        return this.api.getBotApi().getBotInfo().getData().getString("nickName");
     }
 
     /**
@@ -230,7 +229,7 @@ public class BotImpl implements Bot {
      */
     @Override
     public String getDodoSourceId() {
-        return this.getApi().getBotApi().getBotInfo().getData().getString("dodoSourceId");
+        return this.api.getBotApi().getBotInfo().getData().getString("dodoSourceId");
     }
 
     /**
@@ -240,8 +239,7 @@ public class BotImpl implements Bot {
      */
     @Override
     public String getAvatarUrl() {
-        JSONObject jsonObject = new JSONObject();
-        return this.getApi().getBotApi().getBotInfo().getData().getString("avatarUrl");
+        return this.api.getBotApi().getBotInfo().getData().getString("avatarUrl");
     }
 
     /**

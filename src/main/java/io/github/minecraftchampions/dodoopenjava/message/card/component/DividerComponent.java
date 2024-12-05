@@ -18,6 +18,6 @@ public class DividerComponent implements CardComponent {
 
     @Override
     public JSONObject toJsonObject() {
-        return new JSONObject(Map.of("type", getType()));
+        return new JSONObject(Map.of("type", type));
     }
 }

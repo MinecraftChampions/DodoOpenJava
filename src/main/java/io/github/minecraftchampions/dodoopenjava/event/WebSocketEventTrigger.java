@@ -30,7 +30,7 @@ public class WebSocketEventTrigger extends AbstractEventTrigger {
         return mWebSocket != null && mWebSocket.isOpen();
     }
 
-    public WebSocketClient mWebSocket = null;
+    public WebSocketClient mWebSocket;
 
     public static final long PING_INTERVAL = 20 * 1000;
 
@@ -39,7 +39,7 @@ public class WebSocketEventTrigger extends AbstractEventTrigger {
         this.bot = bot;
     }
 
-    private int reacquireCount = 0;
+    private int reacquireCount;
 
     private final int reacquireMaxCount = 100;
 

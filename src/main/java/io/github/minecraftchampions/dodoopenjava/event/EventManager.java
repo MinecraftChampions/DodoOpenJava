@@ -22,11 +22,8 @@ import org.json.JSONObject;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.*;
 import java.util.AbstractMap.SimpleEntry;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -109,11 +106,10 @@ public class EventManager {
      */
     public void unregisterListeners(@NonNull Listener listener) {
         synchronized (handlers) {
-            Set<Class<? extends Event>> set = handlers.keySet();
-            for (Class<? extends Event> clazz : set) {
-                List<SimpleEntry<Method, Object>> list = handlers.get(clazz).stream().
+            for (List<SimpleEntry<Method, Object>> simpleEntries : handlers.values()) {
+                List<SimpleEntry<Method, Object>> list = simpleEntries.stream().
                         filter(e -> e.getKey().getDeclaringClass() == listener.getClass()).toList();
-                handlers.get(clazz).removeAll(list);
+                simpleEntries.removeAll(list);
             }
         }
     }
@@ -157,8 +153,8 @@ public class EventManager {
             throw new RuntimeException("未知的Event");
         }
         synchronized (handlers) {
-            if (DodoOpenJava.DEBUG_LOGGER_MAP.containsKey(getBot().getAuthorization())) {
-                DodoOpenJava.DEBUG_LOGGER_MAP.get(getBot().getAuthorization()).log(event);
+            if (DodoOpenJava.DEBUG_LOGGER_MAP.containsKey(bot.getAuthorization())) {
+                DodoOpenJava.DEBUG_LOGGER_MAP.get(bot.getAuthorization()).log(event);
             }
             fireEvent(event, handlers);
         }

@@ -29,9 +29,9 @@ public class Permission {
         if (length == 0) {
             return Optional.empty();
         }
-        int permissionValue = permissions[0].getValue();
+        int permissionValue = permissions[0].value;
         for (int i = 1; i < length; i++) {
-            permissionValue |= permissions[i].getValue();
+            permissionValue |= permissions[i].value;
         }
         return Optional.of(new Permission(permissionValue));
     }
@@ -54,7 +54,7 @@ public class Permission {
      * @return 是否存在
      */
     public static boolean checkPermissionExist(@NonNull Permission permission, @NonNull Permission target) {
-        return (permission.getValue() & target.getValue()) == target.getValue();
+        return (permission.value & target.value) == target.value;
     }
 
     /**

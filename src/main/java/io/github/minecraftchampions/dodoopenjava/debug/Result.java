@@ -99,7 +99,7 @@ public class Result implements Comparable<Result> {
 
     public JSONObject getData() {
         if (isFailure()) {
-            log.error("调用Dodo开放平台api时出错,错误消息:{};状态code:{};错误数据:{}", getMessage(), getStatusCode(), getData());
+            log.error("调用Dodo开放平台api时出错,错误消息:{};状态code:{};错误数据:{}", message, statusCode, getData());
             return new JSONObject();
         }
         return jsonObjectData;
@@ -200,7 +200,7 @@ public class Result implements Comparable<Result> {
 
     @Override
     public String toString() {
-        return "Request:" + getRequestData() + "\n" + "Result:" + getData();
+        return "Request:" + requestData + "\n" + "Result:" + getData();
     }
 
     @Override

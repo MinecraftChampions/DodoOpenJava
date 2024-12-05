@@ -24,7 +24,7 @@ public class SectionComponent implements CardComponent {
     @Override
     public JSONObject toJsonObject() {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("type", getType());
+        jsonObject.put("type", type);
         jsonObject.put("text", text.toJsonObject());
         return jsonObject;
     }

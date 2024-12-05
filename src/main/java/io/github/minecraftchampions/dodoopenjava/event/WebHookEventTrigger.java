@@ -29,7 +29,7 @@ import java.util.concurrent.*;
  */
 @Slf4j
 public class WebHookEventTrigger extends AbstractEventTrigger {
-    boolean isConnect = false;
+    boolean isConnect;
 
     public WebHookEventTrigger(@NonNull Bot bot, @NonNull String secretKey,
                                @NonNull String password, @NonNull File file) {
@@ -70,7 +70,7 @@ public class WebHookEventTrigger extends AbstractEventTrigger {
 
     private final HttpServerProvider provider = HttpServerProvider.provider();
 
-    private HttpsServer server = null;
+    private HttpsServer server;
 
     /**
      * 启动监听
@@ -82,7 +82,7 @@ public class WebHookEventTrigger extends AbstractEventTrigger {
             return;
         }
         server = provider.createHttpsServer(new InetSocketAddress(port), 1000);
-        server.createContext(getPath(), new Handler());
+        server.createContext(path, new Handler());
         server.setExecutor(new ThreadPoolExecutor(3, 10, 3,
                 TimeUnit.SECONDS, new LinkedBlockingDeque<>(3),
                 Executors.defaultThreadFactory(), new ThreadPoolExecutor.DiscardOldestPolicy()));
@@ -143,7 +143,7 @@ public class WebHookEventTrigger extends AbstractEventTrigger {
      */
     @Override
     public synchronized void close() {
-        if (server == null || isConnect()) {
+        if (server == null || isConnect) {
             return;
         }
         server.stop(0);
@@ -169,7 +169,7 @@ public class WebHookEventTrigger extends AbstractEventTrigger {
         @Override
         public void handle(HttpExchange httpExchange) {
             try {
-                InputStream ss = httpExchange.getRequestBody();
+                httpExchange.getRequestBody();
                 String requestMethod = httpExchange.getRequestMethod();
                 Headers responseHeaders = httpExchange.getResponseHeaders();
                 responseHeaders.set("Content-Type", "application/json;charset=utf-8");

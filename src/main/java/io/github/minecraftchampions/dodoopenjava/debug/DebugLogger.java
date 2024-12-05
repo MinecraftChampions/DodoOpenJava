@@ -20,7 +20,7 @@ public class DebugLogger {
      * @param result result
      */
     public void log(@NonNull Result result) {
-        log("{} 调用api结果: {}", getBotAuthorization(), result);
+        log("{} 调用api结果: {}", botAuthorization, result);
     }
 
     /**
@@ -29,14 +29,14 @@ public class DebugLogger {
      * @param event event
      */
     public void log(@NonNull Event event) {
-        log("{} 监听事件: {}", getBotAuthorization(), event);
+        log("{} 监听事件: {}", botAuthorization, event);
     }
 
-    public void log(@NonNull String str,Object... params) {
+    public static void log(@NonNull String str, Object... params) {
         log.debug(str,params);
     }
 
-    public void log(@NonNull String str) {
+    public static void log(@NonNull String str) {
         log.debug(str);
     }
 }

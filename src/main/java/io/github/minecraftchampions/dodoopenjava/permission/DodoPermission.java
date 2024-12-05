@@ -141,7 +141,7 @@ public enum DodoPermission {
      */
     public static DodoPermission findDodoPermissionByPermission(@NonNull Permission targetPermission) {
         for (DodoPermission dodoPermission : values()) {
-            if (dodoPermission.getPermission().equals(targetPermission)) {
+            if (dodoPermission.permission.equals(targetPermission)) {
                 return dodoPermission;
             }
         }

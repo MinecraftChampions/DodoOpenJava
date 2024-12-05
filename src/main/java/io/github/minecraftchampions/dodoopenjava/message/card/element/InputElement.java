@@ -75,11 +75,11 @@ public class InputElement extends AbstractElement.AbstractInteractiveElement {
 
     @Override
     public JSONObject toJsonObject() {
-        JSONObject jsonObject = new JSONObject(Map.of("type", "input", "key", getKey(),
-                "title", getTitle(), "rows", getRows(), "minChar", getMinChar(),
-                "maxChar", getMaxChar()));
+        JSONObject jsonObject = new JSONObject(Map.of("type", "input", "key", key,
+                "title", title, "rows", rows, "minChar", minChar,
+                "maxChar", maxChar));
         if (placeholder != null) {
-            jsonObject.put("placeholder", getPlaceholder());
+            jsonObject.put("placeholder", placeholder);
         }
         return jsonObject;
     }

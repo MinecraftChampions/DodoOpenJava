@@ -7,6 +7,7 @@ import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * 一些常用的方法
@@ -14,6 +15,8 @@ import java.util.List;
  * @author qscbm187531
  */
 public class BaseUtils {
+    private static final Pattern PATTERN = Pattern.compile("\"");
+
     /**
      * 拼接 Authorization
      *
@@ -56,7 +59,7 @@ public class BaseUtils {
      * @return str
      */
     public static String replaceXmlSpecialCharacters(@NonNull String text) {
-        return text.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("'", "&apos;").replaceAll("\"", "&quot;");
+        return PATTERN.matcher(text.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("'", "&apos;")).replaceAll("&quot;");
     }
 
     /**

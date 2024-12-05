@@ -104,7 +104,7 @@ public class MemberLeaveEvent extends AbstractMemberEvent {
      * @param type 类型
      * @return 类型
      */
-    public String intLeaveTypeToLeaveType(Integer type) {
+    public static String intLeaveTypeToLeaveType(Integer type) {
         return switch (type) {
             case 1 -> "主动";
             case 2 -> "被踢";

@@ -30,6 +30,6 @@ public enum TextType {
 
     @Override
     public String toString() {
-        return getType();
+        return type;
     }
 }

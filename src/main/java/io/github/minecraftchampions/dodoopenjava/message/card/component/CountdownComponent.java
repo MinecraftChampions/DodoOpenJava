@@ -22,10 +22,10 @@ public class CountdownComponent implements CardComponent {
 
     @Override
     public JSONObject toJsonObject() {
-        JSONObject jsonObject = new JSONObject(Map.of("type", getType(),
-                "style", getStyle().toString(), "endTime", getEndTime()));
+        JSONObject jsonObject = new JSONObject(Map.of("type", type,
+                "style", style.toString(), "endTime", endTime));
         if (title != null) {
-            jsonObject.put("title", getTitle());
+            jsonObject.put("title", title);
         }
         return jsonObject;
     }

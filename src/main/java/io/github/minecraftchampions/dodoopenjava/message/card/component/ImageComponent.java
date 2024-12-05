@@ -24,7 +24,7 @@ public class ImageComponent implements CardComponent {
 
     @Override
     public JSONObject toJsonObject() {
-        return new JSONObject(Map.of("type", getType(), "src", image.getLink()));
+        return new JSONObject(Map.of("type", type, "src", image.getLink()));
     }
 
     public static ImageComponent of(@NonNull String link) {

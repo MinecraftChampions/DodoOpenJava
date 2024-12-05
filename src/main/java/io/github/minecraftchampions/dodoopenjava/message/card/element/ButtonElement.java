@@ -42,8 +42,8 @@ public class ButtonElement extends AbstractElement.AbstractInteractiveElement im
         return new JSONObject(map1);
     }
 
-    public ButtonElement of(@NonNull ButtonColor color, @NonNull String name,
-                            @NonNull Action action, @NonNull String interactCustomId) {
+    public static ButtonElement of(@NonNull ButtonColor color, @NonNull String name,
+                                   @NonNull Action action, @NonNull String interactCustomId) {
         ButtonElement buttonElement = ButtonElement.of(color, name, action);
         buttonElement.setInteractCustomId(interactCustomId);
         return buttonElement;

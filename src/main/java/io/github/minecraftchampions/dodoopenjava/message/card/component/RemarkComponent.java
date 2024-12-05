@@ -26,7 +26,7 @@ public class RemarkComponent implements CardComponent {
 
     @Override
     public JSONObject toJsonObject() {
-        JSONObject jsonObject = new JSONObject(Map.of("type", getType(), "elements", new JSONArray()));
+        JSONObject jsonObject = new JSONObject(Map.of("type", type, "elements", new JSONArray()));
         synchronized (elementList) {
             for (AbstractElement element : elementList) {
                 if (element instanceof TextElement.ParagraphText paragraphText) {

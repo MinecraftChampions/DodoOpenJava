@@ -22,6 +22,6 @@ public class ImageElement extends AbstractElement.AbstractDataElement implements
 
     @Override
     public JSONObject toJsonObject() {
-        return new JSONObject(Map.of("type", "image", "src", getLink()));
+        return new JSONObject(Map.of("type", "image", "src", link));
     }
 }

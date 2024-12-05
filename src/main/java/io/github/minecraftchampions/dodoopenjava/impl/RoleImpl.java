@@ -33,19 +33,19 @@ public class RoleImpl implements Role {
 
     @Override
     public Result delete() {
-        return getBot().getApi().getRoleApi().deleteRole(getIslandSourceId(), getRoleId());
+        return bot.getApi().getRoleApi().deleteRole(islandSourceId, roleId);
     }
 
     @Override
     public long getMemberCount() {
-        Result result = bot.getApi().getRoleApi().getRoleList(getIslandSourceId());
+        Result result = bot.getApi().getRoleApi().getRoleList(islandSourceId);
         if (result.isFailure()) {
             log.error("获取成员信息失败, 错误消息:{};状态code:{};错误数据:{}", result.getMessage(), result.getStatusCode(), result.getData());
             return 0;
         }
         JSONArray array = result.getData().getJSONArray("data");
         String str = array.toString();
-        Pattern pattern = Pattern.compile("\"roleId\":\"" + getRoleId() + "\"[^m]+memberCount\":([0-9]+),");
+        Pattern pattern = Pattern.compile("\"roleId\":\"" + roleId + "\"[^m]+memberCount\":([0-9]+),");
         Matcher matcher = pattern.matcher(str);
         if (!matcher.find()) {
             return 0;
@@ -55,51 +55,51 @@ public class RoleImpl implements Role {
 
     @Override
     public Result editRoleName(@NonNull String name) {
-        return getBot().getApi().getRoleApi().editRole(getIslandSourceId(), getRoleId()
+        return bot.getApi().getRoleApi().editRole(islandSourceId, roleId
                 , name, null, (Integer) null, (String) null);
     }
 
     @Override
     public Result editRoleColor(@NonNull String color) {
-        return getBot().getApi().getRoleApi().editRole(getIslandSourceId(), getRoleId()
+        return bot.getApi().getRoleApi().editRole(islandSourceId, roleId
                 , null, color, (Integer) null, (String) null);
     }
 
     @Override
     public Result editPosition(int position) {
-        return getBot().getApi().getRoleApi().editRole(getIslandSourceId(), getRoleId()
+        return bot.getApi().getRoleApi().editRole(islandSourceId, roleId
                 , null, null, position, (String) null);
     }
 
     @Override
     public Result editPermission(@NonNull Permission permission) {
-        return getBot().getApi().getRoleApi().editRole(getIslandSourceId(), getRoleId()
+        return bot.getApi().getRoleApi().editRole(islandSourceId, roleId
                 , null, null, (Integer) null, permission);
     }
 
     @Override
     public Result editPermission(@NonNull String permission) {
-        return getBot().getApi().getRoleApi().editRole(getIslandSourceId(), getRoleId()
+        return bot.getApi().getRoleApi().editRole(islandSourceId, roleId
                 , null, null, (Integer) null, permission);
     }
 
     @Override
     public Result removeMember(@NonNull String dodoId) {
-        return getBot().getApi().getRoleApi().removeRoleMember(getIslandSourceId(), dodoId, getRoleId());
+        return bot.getApi().getRoleApi().removeRoleMember(islandSourceId, dodoId, roleId);
     }
 
     @Override
     public Result addMember(@NonNull String dodoId) {
-        return getBot().getApi().getRoleApi().addRoleMember(getIslandSourceId(), dodoId, getRoleId());
+        return bot.getApi().getRoleApi().addRoleMember(islandSourceId, dodoId, roleId);
     }
 
     @Override
     public List<User> getMemberList() {
-        return getIsland().getRoleMemberList(getRoleId());
+        return getIsland().getRoleMemberList(roleId);
     }
 
     @Override
     public Island getIsland() {
-        return new IslandImpl(getIslandSourceId(), bot);
+        return new IslandImpl(islandSourceId, bot);
     }
 }

@@ -27,7 +27,7 @@ public class ImageGroupComponent implements CardComponent {
 
     @Override
     public JSONObject toJsonObject() {
-        JSONObject jsonObject = new JSONObject(Map.of("type", getType(), "elements", new JSONArray()));
+        JSONObject jsonObject = new JSONObject(Map.of("type", type, "elements", new JSONArray()));
         elementList.forEach(image -> jsonObject.getJSONArray("elements").put(image.toJsonObject()));
         return jsonObject;
     }

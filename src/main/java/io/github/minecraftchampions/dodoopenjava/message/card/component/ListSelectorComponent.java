@@ -64,7 +64,7 @@ public class ListSelectorComponent implements CardComponent {
 
     @Override
     public JSONObject toJsonObject() {
-        JSONObject jsonObject = new JSONObject(Map.of("type", getType(), "min", getMin(), "max", getMax(), "elements", new JSONArray()));
+        JSONObject jsonObject = new JSONObject(Map.of("type", type, "min", min, "max", max, "elements", new JSONArray()));
         if (placeholder != null) {
             jsonObject.put("placeholder", placeholder);
         }
