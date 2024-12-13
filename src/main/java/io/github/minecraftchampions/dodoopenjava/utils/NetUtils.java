@@ -45,7 +45,7 @@ public class NetUtils {
         } catch (UnknownHostException e) {
             log.warn("解析Dodo域名错误,本错误理应是偶发事件,不会造成问题,如果一直提醒最终陷入死循环,请检查网络环境");
             try {
-                Thread.sleep(2000);
+                Thread.sleep(250);
             } catch (InterruptedException ex) {
                 throw new RuntimeException(ex);
             }
