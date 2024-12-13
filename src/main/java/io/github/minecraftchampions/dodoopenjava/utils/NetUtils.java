@@ -61,7 +61,7 @@ public class NetUtils {
      * @param url 链接地址
      */
     public static String sendPostRequest(@NonNull String url) throws IOException {
-        return sendPostRequest(url, new HashMap<>(0), "");
+        return sendPostRequest(url, EMPTY_HEADER_MAP, "");
     }
 
     /**
@@ -80,7 +80,7 @@ public class NetUtils {
      * @param url 链接地址
      */
     public static String sendPostRequest(@NonNull String url, @NonNull String param) throws IOException {
-        return sendPostRequest(url, new HashMap<>(0), param);
+        return sendPostRequest(url, EMPTY_HEADER_MAP, param);
     }
 
     /**
@@ -221,7 +221,7 @@ public class NetUtils {
         }
     }
 
-    private static final Map<String, String> browserHeaderMap = new HashMap<>(
+    private static final Map<String, String> BROWSER_HEADER_MAP = new HashMap<>(
             Map.of("User-Agent",
                     "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36"));
 
@@ -231,8 +231,10 @@ public class NetUtils {
      * @param url 链接地址
      */
     public static String simulationBrowserRequest(@NonNull String url) throws IOException {
-        return sendGetRequest(url, browserHeaderMap);
+        return sendGetRequest(url, BROWSER_HEADER_MAP);
     }
+
+    public static final Map<String,String> EMPTY_HEADER_MAP = new HashMap<>(0);
 
     /**
      * 发送普通的Get请求
@@ -240,6 +242,6 @@ public class NetUtils {
      * @param url 链接地址
      */
     public static String sendGetRequest(@NonNull String url) throws IOException {
-        return sendGetRequest(url, new HashMap<>(0));
+        return sendGetRequest(url, EMPTY_HEADER_MAP);
     }
 }
