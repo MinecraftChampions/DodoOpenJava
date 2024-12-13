@@ -76,8 +76,7 @@ public class BaseUtils {
             if ("#text".equals(child.getNodeName())) {
                 result.add(child);
             } else {
-                List<Node> childTextNodes = getAllTextNodes(child);
-                result.addAll(childTextNodes);
+                result.addAll(getAllTextNodes(child));
             }
         }
         return result;
