@@ -197,10 +197,9 @@ public class NetUtils {
             File file = new File(path);
             String boundary = "===" + System.currentTimeMillis() + "===";
             header.put("Content-Type", "multipart/form-data; boundary=" + boundary);
-            sb.append("--").append(boundary).append("\r\n")
-                    .append("Content-Disposition: form-data; name=\"file\"; filename=\"")
+            sb.append("--").append(boundary).append("\r\nContent-Disposition: form-data; name=\"file\"; filename=\"")
                     .append(file.getName()).append("\"")
-                    .append("\r\n").append("Content-Type: ")
+                    .append("\r\nContent-Type: ")
                     .append(HttpURLConnection.guessContentTypeFromName(file.getName())).append("\r\n")
                     .append("\r\n");
             String start = sb.toString();
