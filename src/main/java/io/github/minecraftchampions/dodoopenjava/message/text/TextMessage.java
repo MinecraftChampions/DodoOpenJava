@@ -91,6 +91,9 @@ public class TextMessage implements Message {
      */
     public static final String ROOT_NODE_NAME = "root";
 
+
+    public static final DocumentBuilderFactory DOCUMENT_BUILDER_FACTORY = DocumentBuilderFactory.newInstance();
+
     /**
      * 反序列化
      *
@@ -99,8 +102,7 @@ public class TextMessage implements Message {
      */
     public static TextMessage deserialize(@NonNull String str) {
         try {
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder documentBuilder = factory.newDocumentBuilder();
+            DocumentBuilder documentBuilder = DOCUMENT_BUILDER_FACTORY.newDocumentBuilder();
             String input = "<" + ROOT_NODE_NAME + str + "</" + ROOT_NODE_NAME + ">";
             Document document = documentBuilder.parse(new InputSource(new StringReader(input)));
             List<TextMessageComponent> list = new ArrayList<>();
