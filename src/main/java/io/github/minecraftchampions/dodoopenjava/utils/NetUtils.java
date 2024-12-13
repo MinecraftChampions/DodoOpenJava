@@ -70,7 +70,7 @@ public class NetUtils {
      * @param url 链接地址
      */
     public static String sendPostRequest(@NonNull String url,
-                                         @NonNull HashMap<String, String> header) throws IOException {
+                                         @NonNull Map<String, String> header) throws IOException {
         return sendPostRequest(url, header, "");
     }
 
@@ -91,7 +91,7 @@ public class NetUtils {
      * @param param     参数
      */
     public static String sendPostRequest(@NonNull String stringUrl,
-                                         @NonNull HashMap<String, String> header,
+                                         @NonNull Map<String, String> header,
                                          @NonNull String param) throws IOException {
         return sendPostRequest(stringUrl, header, param.getBytes(StandardCharsets.UTF_8));
     }
@@ -104,7 +104,7 @@ public class NetUtils {
      * @param param     参数
      */
     public static String sendPostRequest(@NonNull String stringUrl,
-                                         @NonNull HashMap<String, String> header,
+                                         @NonNull Map<String, String> header,
                                          byte[] param) throws IOException {
         try {
             URL url = new URL(stringUrl);
@@ -144,7 +144,7 @@ public class NetUtils {
      * @param stringUrl 链接地址
      */
     public static String sendGetRequest(@NonNull String stringUrl,
-                                        @NonNull HashMap<String, String> header) throws IOException {
+                                        @NonNull Map<String, String> header) throws IOException {
         URL url = new URL(stringUrl);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
@@ -164,9 +164,9 @@ public class NetUtils {
         return sb.toString();
     }
 
-    public static Result uploadFileToDodo(@NonNull HashMap<String, String> header,
+    public static Result uploadFileToDodo(@NonNull Map<String, String> header,
                                           @NonNull String path,
-                                          @NonNull String url)  {
+                                          @NonNull String url) {
         try {
             String str = uploadFile(header, path, url);
             Result result = Result.of(new JSONObject(Objects.requireNonNull(str)),
@@ -189,7 +189,7 @@ public class NetUtils {
      * @param url    上传链接
      * @param header header
      */
-    public static String uploadFile(@NonNull HashMap<String, String> header,
+    public static String uploadFile(@NonNull Map<String, String> header,
                                     @NonNull String path,
                                     @NonNull String url) throws IOException {
         try {
@@ -221,15 +221,17 @@ public class NetUtils {
         }
     }
 
+    private static Map<String, String> browserHeaderMap = new HashMap<>(
+            Map.of("User-Agent",
+                    "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36"));
+
     /**
      * 模拟浏览器发送请求
      *
      * @param url 链接地址
      */
     public static String simulationBrowserRequest(@NonNull String url) throws IOException {
-        HashMap<String, String> header = new HashMap<>(1);
-        header.put("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36");
-        return sendGetRequest(url, header);
+        return sendGetRequest(url, browserHeaderMap);
     }
 
     /**
