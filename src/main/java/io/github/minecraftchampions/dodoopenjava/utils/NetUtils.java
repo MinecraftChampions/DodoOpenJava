@@ -170,7 +170,7 @@ public class NetUtils {
         try {
             String str = uploadFile(header, path, url);
             Result result = Result.of(new JSONObject(Objects.requireNonNull(str)),
-                    new JSONObject(Map.of("message", "文件内容，不予展示")));
+                    new JSONObject(Map.of("message", "文件内容, 不予展示")));
             String authorization = header.get("Authorization");
             if (DodoOpenJava.DEBUG_LOGGER_MAP.containsKey(authorization)) {
                 DodoOpenJava.DEBUG_LOGGER_MAP.get(authorization).log(result);
