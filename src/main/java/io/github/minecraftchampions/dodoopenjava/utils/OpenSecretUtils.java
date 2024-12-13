@@ -6,6 +6,8 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.AlgorithmParameters;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidParameterSpecException;
 
 /**
  * 开放秘密工具
@@ -24,29 +26,37 @@ public class OpenSecretUtils {
      */
     public static String webHookDecrypt(String payload, String secretKey) {
         try {
-            return aesDecrypt(hexToBytes(payload), hexToBytes(secretKey), new byte[16], Cipher.getInstance("AES/CBC/PKCS5Padding"));
+            return aesDecrypt(hexToBytes(payload), hexToBytes(secretKey), Cipher.getInstance("AES/CBC/PKCS5Padding"));
         } catch (Exception e) {
             log.error("WebHook数据解密时错误", e);
             return null;
         }
     }
 
+    public static final AlgorithmParameters AES_PARAMS;
+
+    static {
+        try {
+            AES_PARAMS = AlgorithmParameters.getInstance("AES");
+            AES_PARAMS.init(new IvParameterSpec(new byte[16]));
+        } catch (NoSuchAlgorithmException | InvalidParameterSpecException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     /**
      * AES解密
      *
      * @param payload   加密消息
      * @param secretKey 解密密钥
-     * @param iv        IV向量
      * @param cipher    AES配置
      * @return 解密密过后的值
      */
-    private static String aesDecrypt(byte[] payload, byte[] secretKey, byte[] iv, Cipher cipher) throws Exception {
-        var sKeySpec = new SecretKeySpec(secretKey, "AES");
-        var params = AlgorithmParameters.getInstance("AES");
-        params.init(new IvParameterSpec(iv));
-        cipher.init(Cipher.DECRYPT_MODE, sKeySpec, params);
-        var result = cipher.doFinal(payload);
+    private static String aesDecrypt(byte[] payload, byte[] secretKey, Cipher cipher) throws Exception {
+        SecretKeySpec sKeySpec = new SecretKeySpec(secretKey, "AES");
+
+        cipher.init(Cipher.DECRYPT_MODE, sKeySpec, AES_PARAMS);
+        byte[] result = cipher.doFinal(payload);
         return new String(result);
     }
 
