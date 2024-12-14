@@ -16,6 +16,8 @@ import java.util.regex.Pattern;
  */
 public class BaseUtils {
     private static final Pattern PATTERN = Pattern.compile("\"");
+    private static final Pattern REGEX = Pattern.compile("'");
+    private static final Pattern REGEXP = Pattern.compile("&");
 
     /**
      * 拼接 Authorization
@@ -59,7 +61,7 @@ public class BaseUtils {
      * @return str
      */
     public static String replaceXmlSpecialCharacters(@NonNull String text) {
-        return PATTERN.matcher(text.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("'", "&apos;")).replaceAll("&quot;");
+        return PATTERN.matcher(REGEX.matcher(REGEXP.matcher(text).replaceAll("&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")).replaceAll("&apos;")).replaceAll("&quot;");
     }
 
     /**

@@ -87,7 +87,7 @@ public class WebHookEventTrigger extends AbstractEventTrigger {
                 TimeUnit.SECONDS, new LinkedBlockingDeque<>(3),
                 Executors.defaultThreadFactory(), new ThreadPoolExecutor.DiscardOldestPolicy()));
         isConnect = true;
-        String type = file.getName().substring(file.getName().lastIndexOf(".") + 1).toUpperCase();
+        String type = file.getName().substring(file.getName().lastIndexOf('.') + 1).toUpperCase();
         KeyStore keyStore = KeyStore.getInstance(type);
         keyStore.load(new FileInputStream(file), password.toCharArray());
         KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance("SunX509");
