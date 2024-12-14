@@ -23,8 +23,11 @@ public class ImageGroupComponent implements CardComponent {
     @Getter(AccessLevel.NONE)
     private final List<ImageElement> elementList = new ArrayList<>();
 
-    @Getter
     private static final String type = "image-group";
+
+    public String getType() {
+        return type;
+    }
 
     @Override
     public JSONObject toJsonObject() {
