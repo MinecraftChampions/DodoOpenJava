@@ -79,9 +79,9 @@ public class OpenSecretUtils {
             result = new byte[arrayLen];
         }
         for (int i = 0; i < arrayLen; i++) {
-            int high = Integer.parseInt(hex.substring(i * 2, i * 2 + 1), 16);
-            int low = Integer.parseInt(hex.substring(i * 2 + 1, i * 2 + 2), 16);
-            result[i] = (byte) (high * 16 + low);
+            int high = Integer.parseInt(hex.substring(i << 1, (i << 1) + 1), 16);
+            int low = Integer.parseInt(hex.substring((i << 1) + 1, (i << 1) + 2), 16);
+            result[i] = (byte) ((high << 4) + low);
         }
         return result;
     }
