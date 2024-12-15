@@ -5,7 +5,6 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -31,9 +30,11 @@ public class ImageGroupComponent implements CardComponent {
 
     @Override
     public JSONObject toJsonObject() {
-        JSONObject jsonObject = new JSONObject(Map.of("type", type, "elements", new JSONArray()));
-        elementList.forEach(image -> jsonObject.getJSONArray("elements").put(image.toJsonObject()));
-        return jsonObject;
+        List<JSONObject> imageList = new ArrayList<>(elementList.size());
+        for (ImageElement image : elementList) {
+            imageList.add(image.toJsonObject());
+        }
+        return new JSONObject(Map.of("type", type, "elements", imageList));
     }
 
     public static ImageGroupComponent of(@NonNull ImageElement... elements) {
