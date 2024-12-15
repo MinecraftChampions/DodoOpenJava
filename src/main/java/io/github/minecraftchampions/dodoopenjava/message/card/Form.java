@@ -3,7 +3,6 @@ package io.github.minecraftchampions.dodoopenjava.message.card;
 import io.github.minecraftchampions.dodoopenjava.message.card.element.InputElement;
 import lombok.*;
 import lombok.experimental.Accessors;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -36,6 +35,6 @@ public class Form {
         for (InputElement inputElement : list) {
             objects.add(inputElement.toJsonObject());
         }
-        return new JSONObject(Map.of("title", title, "elements", new JSONArray(objects)));
+        return new JSONObject(Map.of("title", title, "elements", objects));
     }
 }
