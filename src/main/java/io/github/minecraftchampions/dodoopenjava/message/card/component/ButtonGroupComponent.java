@@ -36,21 +36,21 @@ public class ButtonGroupComponent implements CardComponent {
 
     public ButtonGroupComponent append(@NonNull ButtonElement element) {
         synchronized (elementList) {
-            this.elementList.add(element);
+            elementList.add(element);
             return this;
         }
     }
 
     public ButtonGroupComponent insert(int index, @NonNull ButtonElement element) {
         synchronized (elementList) {
-            this.elementList.add(index, element);
+            elementList.add(index, element);
             return this;
         }
     }
 
     public ButtonGroupComponent prepend(int index, @NonNull ButtonElement element) {
         synchronized (elementList) {
-            this.elementList.add(0, element);
+            elementList.add(0, element);
             return this;
         }
     }
