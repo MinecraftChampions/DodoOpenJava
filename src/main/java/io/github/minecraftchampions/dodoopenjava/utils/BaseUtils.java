@@ -18,6 +18,8 @@ public class BaseUtils {
     private static final Pattern PATTERN = Pattern.compile("\"");
     private static final Pattern REGEX = Pattern.compile("'");
     private static final Pattern REGEXP = Pattern.compile("&");
+    private static final Pattern PATTERN1 = Pattern.compile("<");
+    private static final Pattern PATTERN2 = Pattern.compile(">");
 
     /**
      * 拼接 Authorization
@@ -61,7 +63,7 @@ public class BaseUtils {
      * @return str
      */
     public static String replaceXmlSpecialCharacters(@NonNull String text) {
-        return PATTERN.matcher(REGEX.matcher(REGEXP.matcher(text).replaceAll("&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")).replaceAll("&apos;")).replaceAll("&quot;");
+        return PATTERN.matcher(REGEX.matcher(PATTERN2.matcher(PATTERN1.matcher(REGEXP.matcher(text).replaceAll("&amp;")).replaceAll("&lt;")).replaceAll("&gt;")).replaceAll("&apos;")).replaceAll("&quot;");
     }
 
     /**
