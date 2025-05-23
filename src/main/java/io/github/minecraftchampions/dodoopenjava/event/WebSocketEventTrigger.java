@@ -32,8 +32,6 @@ public class WebSocketEventTrigger extends AbstractEventTrigger {
 
     public WebSocketClient mWebSocket;
 
-    public static final long PING_INTERVAL = 20 * 1000;
-
 
     public WebSocketEventTrigger(Bot bot) {
         this.bot = bot;
