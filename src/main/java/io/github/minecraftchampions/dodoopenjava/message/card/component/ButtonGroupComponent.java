@@ -25,10 +25,11 @@ public class ButtonGroupComponent implements CardComponent {
 
     @Override
     public JSONObject toJsonObject() {
-        JSONObject jsonObject = new JSONObject(Map.of("type", type, "elements", new JSONArray()));
+        JSONArray jsonArray = new JSONArray();
+        JSONObject jsonObject = new JSONObject(Map.of("type", type, "elements", jsonArray));
         synchronized (elementList) {
             for (AbstractElement element : elementList) {
-                jsonObject.getJSONArray("elements").put(element.toJsonObject());
+                jsonArray.put(element.toJsonObject());
             }
         }
         return jsonObject;

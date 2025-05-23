@@ -198,13 +198,14 @@ public class CardMessage implements Message {
         }
 
         public CardMessage build() {
-            JSONObject json = new JSONObject(Map.of("type", "card", "components", new JSONArray(),
+            JSONArray jsonArray = new JSONArray();
+            JSONObject json = new JSONObject(Map.of("type", "card", "components", jsonArray,
                     "theme", theme.toString()));
             if (title != null) {
                 json.put("title", title);
             }
-            synchronized (this.components) {
-                components.forEach(component -> json.getJSONArray("components").put(component.toJsonObject()));
+            synchronized (components) {
+                components.forEach(component -> jsonArray.put(component.toJsonObject()));
             }
             JSONObject jsonObject = new JSONObject(Map.of("card", json));
             if (content != null) {

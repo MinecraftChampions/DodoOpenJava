@@ -26,13 +26,14 @@ public class RemarkComponent implements CardComponent {
 
     @Override
     public JSONObject toJsonObject() {
-        JSONObject jsonObject = new JSONObject(Map.of("type", type, "elements", new JSONArray()));
+        JSONArray jsonArray = new JSONArray();
+        JSONObject jsonObject = new JSONObject(Map.of("type", type, "elements", jsonArray));
         synchronized (elementList) {
             for (AbstractElement element : elementList) {
                 if (element instanceof TextElement.ParagraphText paragraphText) {
-                    paragraphText.forEach((text) -> jsonObject.getJSONArray("elements").put(text.toJsonObject()));
+                    paragraphText.forEach((text) -> jsonArray.put(text.toJsonObject()));
                 } else {
-                    jsonObject.getJSONArray("elements").put(element.toJsonObject());
+                    jsonArray.put(element.toJsonObject());
                 }
             }
         }
@@ -41,21 +42,21 @@ public class RemarkComponent implements CardComponent {
 
     public RemarkComponent append(@NonNull AbstractElement.AbstractDataElement element) {
         synchronized (elementList) {
-            this.elementList.add(element);
+            elementList.add(element);
             return this;
         }
     }
 
     public RemarkComponent insert(int index, @NonNull AbstractElement.AbstractDataElement element) {
         synchronized (elementList) {
-            this.elementList.add(index, element);
+            elementList.add(index, element);
             return this;
         }
     }
 
     public RemarkComponent prepend(int index, @NonNull AbstractElement.AbstractDataElement element) {
         synchronized (elementList) {
-            this.elementList.add(0, element);
+            elementList.add(0, element);
             return this;
         }
     }

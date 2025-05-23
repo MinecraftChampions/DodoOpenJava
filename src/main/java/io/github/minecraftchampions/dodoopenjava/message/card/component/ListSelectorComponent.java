@@ -64,7 +64,8 @@ public class ListSelectorComponent implements CardComponent {
 
     @Override
     public JSONObject toJsonObject() {
-        JSONObject jsonObject = new JSONObject(Map.of("type", type, "min", min, "max", max, "elements", new JSONArray()));
+        JSONArray jsonArray = new JSONArray();
+        JSONObject jsonObject = new JSONObject(Map.of("type", type, "min", min, "max", max, "elements", jsonArray));
         if (placeholder != null) {
             jsonObject.put("placeholder", placeholder);
         }
@@ -72,7 +73,7 @@ public class ListSelectorComponent implements CardComponent {
             jsonObject.put("interactCustomId", interactCustomId);
         }
         for (OptionElement element : elementList) {
-            jsonObject.getJSONArray("elements").put(element.toJsonObject());
+            jsonArray.put(element.toJsonObject());
         }
         return jsonObject;
     }
